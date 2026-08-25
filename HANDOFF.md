@@ -132,30 +132,13 @@ compound and works as a wordmark. Alternatives if it doesn't land: *Craft & Stud
 *Grade 5 Craft*, *The Study Realm*, *Overworld Fifth Grade*. Changing it is one
 line — the `<h1 class="wordmark">` and the `<title>`.
 
-- **Title screen.** `assets/banner.jpg`, 1400×418 (3.35:1), 113 KB. Cropped
-  from a taller 16:9 render Keith generated — the crop keeps the wordmark, the
-  "fifth grade" sign, the creeper medallion, the village on the left and the
-  dragon on the right, and **drops the body text that was baked into the lower
-  half**. That text had to go: baked copy is unreadable at phone width and it
-  froze the splash line, which is supposed to rotate. The live splash and rule
-  line now sit on a dark band under the image where they stay legible at any
-  size. The old CSS dirt field survives underneath as the fallback if the JPEG
-  ever fails to load, and the `<h1>` is still real text, visually hidden, so
-  screen readers and a broken image both still get a title.
-- **The banner has Minecraft character art in it** — a creeper and the ender
-  dragon. The repo is public. That is the same call Keith already made
-  knowingly about the sprite set; noting it here so it stays a decision rather
-  than an accident. The second candidate banner was passed over partly for
-  putting recognisable Steve and Alex renders front and centre.
-- **Splash text.** Yellow, angled, bobbing, picked at random from nineteen
-  lines and re-rollable by tapping it. This is the bit a ten-year-old will poke
-  at first. Add or edit lines in the `SPLASH` array. **Keep them true** — an
-  earlier line read "Spelling is a boss fight!", which stopped being accurate
-  the moment every subject got its own dragon.
-- **A line under the tagline names the win condition** in plain words: *"Ace a
-  subject's hardest level without losing a heart — slay the ender dragon."*
-  The splash is a joke that rotates; this is the one sentence that always says
-  what the goal is.
+- **Title screen.** Tiled dirt field with a grass crown, drawn entirely in CSS
+  gradients — no image asset, so it costs nothing. The wordmark uses the
+  four-layer offset shadow that gives the Minecraft logo its bevel. Grey for
+  STUDY, grass green for CRAFT.
+- **Splash text.** Yellow, angled, bobbing, picked at random from fifteen lines
+  and re-rollable by tapping it. This is the bit a ten-year-old will poke at
+  first. Add or edit lines in the `SPLASH` array.
 - **Your gear.** The real 9-slot hotbar showing the tools he's actually earned,
   with a live count and an XP bar across all 17 activities. Hovering or tapping
   a filled slot names the tool. Hidden detail: the bar animates its width on
@@ -225,7 +208,17 @@ What shipped, against the agreed design:
   writes his own sentences. Worth checking he's happy with that rule; it was the
   one part of the design not pinned down.
 - Right answer bursts a win sprite (cycles allay → axolotl → fox → bee); wrong
-  bursts a bad sprite, shakes, and takes half a heart. Both well under a second.
+  bursts a bad sprite, shakes, and takes half a heart. **Sized 320px on desktop
+  and phone-scaled below that** — the first version was pinned at 128px on
+  every screen, which was tiny on a monitor. The source sprites are 128px, so
+  2.5× upscaling relies on `image-rendering:pixelated`, which reads as
+  deliberate chunky pixels rather than blur. Capped against viewport *height*
+  too, so a landscape phone does not get a sprite covering the question and the
+  hotbar at once.
+- The bursts now **hold at full size for about half their life before fading**
+  — roughly 1.3s for a win, 1.15s for a miss, up from well under a second.
+  Only one is ever on screen: a new burst removes any previous one, so answering
+  fast cannot stack them.
 - Results: chest-closed nudges until tapped, then opens to the loot, a NEW
   banner if a tool was earned, and the dragon on a flawless run.
 - **The ender dragon falls on any level played perfectly** — 100% *and* every

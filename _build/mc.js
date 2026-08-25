@@ -51,7 +51,7 @@
   function has(slot) { var u = unlocked(); return slot === 9 ? u.nine : slot <= u.count; }
 
   /* ---------- state ---------- */
-  var cfg = { app: "app", shake: null, lift: null, burst: 128, hud: true,
+  var cfg = { app: "app", shake: null, lift: null, burst: 320, hud: true,
               /* Which activities can summon the dragon. null = any level in this
                  app. An array restricts it to those ids — spelling passes ["l7"]
                  so only Challenge 2, the hardest level of whatever week's list
@@ -97,15 +97,16 @@
   function fit() {
     if (!hud) return;
     var vw = Math.max(280, document.documentElement.clientWidth || window.innerWidth);
+    var vh = Math.max(320, document.documentElement.clientHeight || window.innerHeight);
+    var bsz = Math.max(150, Math.min(cfg.burst, Math.round(vw * 0.55), Math.round(vh * 0.42)));
     var avail = Math.min(430, vw - 16);
     var ss = Math.max(24, Math.min(46, Math.floor(avail / 9)));
     var barw = ss * 9;
     hud.style.setProperty("--mc-ss", ss + "px");
     hud.style.setProperty("--mc-barw", barw + "px");
     hud.style.setProperty("--mc-hh", Math.max(13, Math.round(ss * 0.5)) + "px");
-    hud.style.setProperty("--mc-burst", Math.min(cfg.burst, Math.round(vw * 0.42)) + "px");
-    document.documentElement.style.setProperty(
-      "--mc-burst", Math.min(cfg.burst, Math.round(vw * 0.42)) + "px");
+    hud.style.setProperty("--mc-burst", bsz + "px");
+    document.documentElement.style.setProperty("--mc-burst", bsz + "px");
     lift();
     // keep app content clear of the HUD
     var h = hud.offsetHeight || 70;
@@ -150,12 +151,14 @@
 
   /* ---------- sprite bursts ---------- */
   function burst(name, cls, narrow) {
+    var old = document.querySelector(".mc-burst");
+    if (old && old.parentNode) old.parentNode.removeChild(old);
     var d = document.createElement("div");
     d.className = "mc-burst " + cls;
     if (narrow) d.setAttribute("data-w", "narrow");
     d.innerHTML = '<img alt="" src="' + url(name) + '">';
     document.body.appendChild(d);
-    setTimeout(function () { if (d.parentNode) d.parentNode.removeChild(d); }, 900);
+    setTimeout(function () { if (d.parentNode) d.parentNode.removeChild(d); }, 1600);
   }
 
   function shake() {
