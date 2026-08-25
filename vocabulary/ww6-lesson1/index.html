@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Word List 1 — Wordly Wise Book 6</title>
+<style>
+:root{
+  --bg:#231B2E; --panel:#2F2540; --line:#443657; --paper:#F8F4EE; --paper2:#EDE5DA;
+  --ink:#211A29; --dim:#A697B5;
+  --violet:#B07ACC; --teal:#2FA6A0; --amber:#E8A93C; --red:#E0685A; --green:#5CB47F;
+  --disp:"Avenir Next","Segoe UI Variable Display","Trebuchet MS",system-ui,sans-serif;
+  --body:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --mono:ui-monospace,"SF Mono","Cascadia Mono",Consolas,monospace;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+body{background:var(--bg);background-image:radial-gradient(circle at 12% -5%,#382B49 0%,transparent 55%);
+  background-attachment:fixed;color:var(--paper);font-family:var(--body);line-height:1.55;
+  padding:0 0 108px;overflow-x:hidden;-webkit-user-select:none;user-select:none}
+.wrap{max-width:760px;margin:0 auto;padding:0 16px}
+button{font:inherit;color:inherit;cursor:pointer;border:none;background:none}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--violet)}
+.hublink{display:inline-flex;align-items:center;gap:6px;margin:20px 0 0;padding:7px 13px;
+  border:1px solid var(--line);border-radius:20px;background:var(--panel);
+  font:700 11px var(--mono);letter-spacing:.11em;text-transform:uppercase;
+  color:var(--dim);text-decoration:none}
+.hublink:hover{color:var(--paper);border-color:var(--violet)}
+header{padding:12px 0 16px}
+h1{font-family:var(--disp);font-size:clamp(27px,7vw,38px);line-height:1.04;margin:9px 0 6px;
+  letter-spacing:-.02em;font-weight:800}
+h1 em{font-style:normal;color:var(--violet)}
+.sub{color:var(--dim);font-size:14.5px;margin:0;max-width:52ch}
+.listbtn{margin:13px 0 0;padding:9px 15px;border:1px solid var(--line);border-radius:11px;
+  background:var(--panel);font-size:14px;font-weight:650;color:var(--paper)}
+.listbtn:hover{border-color:var(--violet)}
+
+.tray{position:sticky;top:0;z-index:20;background:var(--bg);padding:11px 0;
+  border-bottom:1px solid var(--line);margin-bottom:16px;
+  box-shadow:0 10px 18px -8px rgba(20,12,28,.9)}
+.trayhead{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px;gap:10px}
+.trayhead .n{font:700 11px var(--mono);color:var(--amber);letter-spacing:.07em;white-space:nowrap}
+.chips{display:flex;flex-wrap:wrap;gap:6px;max-height:31vh;overflow-y:auto}
+.chip{background:var(--paper);color:var(--ink);border-radius:9px;padding:8px 12px;
+  font-size:14.5px;font-weight:700;box-shadow:0 3px 8px rgba(0,0,0,.25);touch-action:none;
+  transition:transform .12s,opacity .12s}
+.chip:active{transform:scale(.96)}
+.chip.sel{background:var(--violet);color:#fff;box-shadow:0 0 0 3px rgba(176,122,204,.32)}
+.chip.gone{display:none}
+.chip.ghost{position:fixed;z-index:999;pointer-events:none;transform:scale(1.08) rotate(-2deg);
+  box-shadow:0 14px 30px rgba(0,0,0,.45);margin:0;display:block}
+.alldone{font-size:13.5px;color:var(--green);font-weight:650;padding:8px 2px}
+
+.defs{display:grid;gap:9px}
+.def{background:var(--paper);color:var(--ink);border-radius:13px;padding:12px 13px;
+  display:flex;gap:11px;align-items:flex-start;outline:2px solid transparent;outline-offset:2px;
+  transition:outline-color .14s,box-shadow .14s}
+.def.over{outline-color:var(--violet);box-shadow:0 0 0 4px rgba(176,122,204,.2)}
+.def.wrongmark{outline-color:var(--red);background:#FCEFED}
+.def .num{flex:none;width:23px;height:23px;border-radius:7px;background:var(--paper2);
+  color:#7C6B8A;font:700 11px var(--mono);display:grid;place-items:center;margin-top:2px}
+.def .mid{flex:1;min-width:0}
+.def .txt{font-size:14.5px;line-height:1.45;color:#3A3145}
+.drop{margin-top:9px;display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.hole{min-width:112px;min-height:36px;border:2px dashed #CBBFD6;border-radius:10px;
+  display:grid;place-items:center;font:700 11px var(--mono);color:#A395B0;letter-spacing:.07em;padding:0 12px}
+.placed{background:var(--violet);color:#fff;border-radius:10px;padding:8px 12px;font-size:14.5px;font-weight:700}
+.placed.wrongmark{background:var(--red)}
+.postag{display:inline-block;border-radius:6px;padding:2px 7px;margin-right:7px;
+  font:800 11px var(--mono);letter-spacing:.05em;vertical-align:1px}
+.postag[data-p="n"]{background:var(--teal);color:#fff}
+.postag[data-p="v"]{background:var(--amber);color:var(--ink)}
+.postag[data-p="adj"]{background:var(--violet);color:#fff}
+
+.bar{position:fixed;left:0;right:0;bottom:0;z-index:25;background:rgba(35,27,46,.96);
+  border-top:1px solid var(--line);padding:10px 16px calc(10px + env(safe-area-inset-bottom))}
+.bar .in{max-width:760px;margin:0 auto;display:flex;gap:8px}
+.btn{border-radius:12px;padding:12px 14px;font-weight:750;font-size:15px;text-align:center;flex:1}
+.btn:disabled{opacity:.35;cursor:default}
+.btn.p{background:var(--violet);color:#fff}
+.btn.o{background:transparent;border:2px solid var(--line);color:var(--paper);flex:0 0 auto}
+.btn.h{background:transparent;border:2px solid var(--red);color:#F0A79C;flex:0 0 auto}
+#fb:empty{display:none}
+#fb{width:100%;margin-bottom:9px}
+.fb{border-radius:12px;padding:10px 12px;font-size:13.5px;line-height:1.45;
+  display:flex;align-items:flex-start;gap:10px;animation:pop .22s}
+.fb.no{background:#3E2832;border-left:4px solid var(--red);color:#F3C4BC}
+.fb.ok{background:#243C2E;border-left:4px solid var(--green);color:#B9E4C9}
+.fb .msg{flex:1;min-width:0}
+.fb strong{display:block;font-family:var(--disp);font-size:14.5px;margin-bottom:1px;color:#fff}
+.fb .jump{flex:none;align-self:center;border:1.5px solid currentColor;border-radius:8px;
+  padding:6px 10px;font:700 11px var(--mono);letter-spacing:.05em;white-space:nowrap}
+.hintnote{font:600 11.5px var(--mono);color:#F0A79C;margin:6px 0 0}
+@keyframes pop{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+.scrim{position:fixed;inset:0;background:rgba(12,8,18,.66);opacity:0;pointer-events:none;
+  transition:opacity .25s;z-index:40}
+.scrim.on{opacity:1;pointer-events:auto}
+.drawer{position:fixed;left:0;right:0;bottom:0;z-index:50;max-height:88vh;background:var(--paper);
+  color:var(--ink);border-radius:20px 20px 0 0;transform:translateY(101%);
+  transition:transform .3s cubic-bezier(.22,.9,.3,1);display:flex;flex-direction:column}
+.drawer.on{transform:none}
+.dhead{background:#12857F;color:#fff;border-radius:20px 20px 0 0;padding:15px 18px;flex:none;position:relative}
+.dhead h3{font-family:var(--disp);font-size:18px;margin:2px 0 0;font-weight:750}
+.dhead .eyebrow{color:#A8E5E1}
+.x{position:absolute;right:13px;top:13px;width:32px;height:32px;border-radius:9px;
+  background:rgba(255,255,255,.2);display:grid;place-items:center}
+.x svg{width:14px;height:14px;stroke:#fff;stroke-width:2.5}
+.dbody{overflow-y:auto;padding:14px 18px 22px;-webkit-overflow-scrolling:touch}
+.entry{background:#D9F0EE;border-radius:11px;padding:11px 13px;margin-bottom:9px}
+.entry .w{font-family:var(--disp);font-size:17px;font-weight:800;color:#0E6B66}
+.entry ol{margin:6px 0 0;padding-left:18px}
+.entry li{font-size:14px;margin-bottom:3px;color:#2C4442}
+.entry .p{font-family:var(--mono);font-size:11px;font-weight:700;color:#12857F;margin-right:5px}
+.dfoot{flex:none;padding:11px 18px calc(13px + env(safe-area-inset-bottom));
+  border-top:1px solid #DDD2E4;background:var(--paper)}
+.dfoot .btn{width:100%}
+
+.score{background:var(--paper);color:var(--ink);border-radius:18px;padding:24px 20px;text-align:center;margin-top:16px}
+.ring{font-family:var(--disp);font-size:56px;font-weight:800;line-height:1}
+.band{font:700 12px var(--mono);letter-spacing:.15em;text-transform:uppercase;margin-top:5px}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:18px 0 0;text-align:left}
+.stat{background:var(--paper2);border-radius:11px;padding:10px 12px}
+.stat b{display:block;font-family:var(--disp);font-size:21px;font-weight:750}
+.stat span{font:600 10px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:#7C6B8A}
+.review{margin:14px 0 0;text-align:left;background:#FBF0DC;border-radius:12px;padding:12px 14px;font-size:14px}
+.review b{display:block;margin-bottom:5px;font-family:var(--disp);font-size:15px}
+.score .act{display:grid;gap:8px;margin-top:16px}
+.score .btn{width:100%}
+footer{margin:34px 0 0;padding-top:15px;border-top:1px solid var(--line);color:#8C7C9B;
+  font-size:11.5px;text-align:center;line-height:1.6}
+.hide{display:none!important}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<div id="sheet" class="wrap">
+  <a class="hublink" href="../../">&lsaquo; All subjects</a>
+  <header>
+    <div class="eyebrow" style="margin-top:12px">Wordly Wise 3000 &middot; Book 6</div>
+    <h1>Word <em>List 1</em></h1>
+    <p class="sub">Every meaning from the list is below. Drag each word onto its meaning, Each meaning is already labelled as a noun, a verb, or an adjective — use that as your clue. Words with more than one meaning appear more than once.</p>
+    <button class="listbtn" id="showlist">Study the word list first</button>
+  </header>
+
+  <div class="tray">
+    <div class="trayhead"><span class="eyebrow">Words</span><span class="n" id="left"></span></div>
+    <div class="chips" id="chips"></div>
+  </div>
+
+  <div class="defs" id="defs"></div>
+  <footer>Definitions are from Wordly Wise 3000, Book 6, Lesson 1, for personal study use.</footer>
+</div>
+
+<div id="done" class="wrap hide">
+  <a class="hublink" href="../../">&lsaquo; All subjects</a>
+  <div class="score" id="scorebox"></div>
+</div>
+
+<div class="bar" id="bar">
+  <div class="in"><div id="fb"></div></div>
+  <div class="in">
+    <button class="btn o" id="reset">Clear</button>
+    <button class="btn p" id="go" disabled>Check my answers</button>
+  </div>
+</div>
+
+<div class="scrim" id="scrim"></div>
+<div class="drawer" id="drawer" role="dialog" aria-modal="true" aria-label="Word list">
+  <div class="dhead">
+    <div class="eyebrow">Wordly Wise 3000 &middot; Book 6</div>
+    <h3>Word List 1</h3>
+    <button class="x" id="dclose" aria-label="Close">
+      <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+  <div class="dbody" id="dbody"></div>
+  <div class="dfoot"><button class="btn p" id="dgo">Close</button></div>
+</div>
+
+<script>
+/* Wordly Wise 3000, Book 6 — Lesson 1 Word List.
+   Definitions transcribed verbatim from the printed word list.
+   pos: n = noun, v = verb, adj = adjective. */
+const DATA = {
+  book: "Wordly Wise 3000, Book 6",
+  lesson: "Lesson 1",
+
+  /* the full list, shown in the pop-up */
+  list: [
+    { w:"affection",   entries:[["n","A fond or tender feeling."]] },
+    { w:"appeal",      entries:[["v","To make an earnest request; to ask."],
+                                ["v","To be of interest to; to be attractive to."],
+                                ["n","An earnest request for help."],
+                                ["n","The power to attract or be of interest."]] },
+    { w:"clasp",       entries:[["v","To grasp or hold tightly."],
+                                ["n","A strong grasp or hold."],
+                                ["n","Something, such as a hook or fastener, that holds two parts together."]] },
+    { w:"conspicuous", entries:[["adj","Easily or plainly seen."]] },
+    { w:"contribute",  entries:[["v","To give along with others who are giving."],
+                                ["v","To have a part in bringing about."]] },
+    { w:"declare",     entries:[["v","To make known; to state openly."]] },
+    { w:"eloquent",    entries:[["adj","Skilled at speaking or writing; having the power to move people."]] },
+    { w:"exhibit",     entries:[["v","To show in public."],
+                                ["n","An item or collection of items in a public show."]] },
+    { w:"ferry",       entries:[["n","A boat that carries people and goods back and forth across a stretch of water."],
+                                ["v","To move people or goods by boat across a stretch of water."]] },
+    { w:"immigrant",   entries:[["n","A person who comes into a country to live there."]] },
+    { w:"lofty",       entries:[["adj","Very tall or high."],
+                                ["adj","Noble in feeling or ideals."],
+                                ["adj","Showing a too-proud or superior attitude."]] },
+    { w:"pedestal",    entries:[["n","A base or support on which something stands."]] },
+    { w:"persecute",   entries:[["v","To treat cruelly or harshly because of political, religious, or other differences."]] },
+    { w:"poverty",     entries:[["n","The state of being poor."]] },
+    { w:"unveil",      entries:[["v","To remove a covering from."],
+                                ["v","To make known or reveal for the first time."]] }
+  ],
+
+  /* three rounds, easiest first */
+  rounds: [
+    { id:"r1", name:"One meaning each", blurb:"Eight words that mean exactly one thing.",
+      items:[
+        ["affection",   "n",  "A fond or tender feeling."],
+        ["conspicuous", "adj","Easily or plainly seen."],
+        ["immigrant",   "n",  "A person who comes into a country to live there."],
+        ["pedestal",    "n",  "A base or support on which something stands."],
+        ["poverty",     "n",  "The state of being poor."],
+        ["declare",     "v",  "To make known; to state openly."],
+        ["persecute",   "v",  "To treat cruelly or harshly because of political, religious, or other differences."],
+        ["eloquent",    "adj","Skilled at speaking or writing; having the power to move people."]
+      ]},
+    { id:"r2", name:"Words that do two jobs", blurb:"Four words, two meanings apiece. Each one appears twice.",
+      items:[
+        ["ferry",      "n","A boat that carries people and goods back and forth across a stretch of water."],
+        ["ferry",      "v","To move people or goods by boat across a stretch of water."],
+        ["exhibit",    "v","To show in public."],
+        ["exhibit",    "n","An item or collection of items in a public show."],
+        ["unveil",     "v","To remove a covering from."],
+        ["unveil",     "v","To make known or reveal for the first time."],
+        ["contribute", "v","To give along with others who are giving."],
+        ["contribute", "v","To have a part in bringing about."]
+      ]},
+    { id:"r3", name:"The tricky three", blurb:"Appeal, clasp, and lofty — the words with the most meanings.",
+      items:[
+        ["appeal","v","To make an earnest request; to ask."],
+        ["appeal","v","To be of interest to; to be attractive to."],
+        ["appeal","n","An earnest request for help."],
+        ["appeal","n","The power to attract or be of interest."],
+        ["clasp", "v","To grasp or hold tightly."],
+        ["clasp", "n","A strong grasp or hold."],
+        ["clasp", "n","Something, such as a hook or fastener, that holds two parts together."],
+        ["lofty", "adj","Very tall or high."],
+        ["lofty", "adj","Noble in feeling or ideals."],
+        ["lofty", "adj","Showing a too-proud or superior attitude."]
+      ]}
+  ]
+};
+
+
+const POS={n:"noun",v:"verb",adj:"adjective"};
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]];}return a;};
+
+const ITEMS=[];
+DATA.list.forEach(e=>e.entries.forEach(([p,d])=>ITEMS.push({word:e.w,pos:p,txt:d})));
+
+let chips=[], slots=[], sel=null, tries=0, hinted=false, marks=new Set();
+
+function build(){
+  tries=0; hinted=false; marks=new Set(); sel=null;
+  slots=shuffle(ITEMS).map((it,n)=>({n,word:it.word,pos:it.pos,txt:it.txt,chip:null}));
+  chips=ITEMS.map((it,n)=>({id:"c"+n,word:it.word,at:null}))
+             .sort((a,b)=>a.word.localeCompare(b.word));
+  $("fb").innerHTML=""; $("bar").classList.remove("hide");
+  if($("hint")) $("hint").remove();
+  $("sheet").classList.remove("hide"); $("done").classList.add("hide");
+  draw(); window.scrollTo(0,0);
+}
+
+function draw(){
+  const free=chips.filter(c=>c.at===null);
+  $("left").textContent = free.length
+    ? free.length+" word"+(free.length>1?"s":"")+" left"
+    : "ready to check";
+  $("chips").innerHTML = free.length
+    ? chips.map(c=>`<button class="chip ${c.at!==null?"gone":""} ${sel===c.id?"sel":""}" data-c="${c.id}">${esc(c.word)}</button>`).join("")
+    : `<div class="alldone">All ${slots.length} words placed. Tap a placed word to send it back.</div>`;
+
+  $("defs").innerHTML = slots.map(s=>{
+    const c = s.chip ? chips.find(x=>x.id===s.chip) : null;
+    return `<div class="def ${marks.has(s.n)?"wrongmark":""}" data-s="${s.n}">
+      <span class="num">${s.n+1}</span>
+      <span class="mid">
+        <span class="txt"><span class="postag" data-p="${s.pos}">${s.pos}.</span>${esc(s.txt)}</span>
+        <span class="drop">
+          ${c?`<button class="placed ${marks.has(s.n)?"wrongmark":""}" data-pull="${s.n}">${esc(c.word)}</button>`
+             :`<span class="hole">DROP HERE</span>`}
+        </span>
+      </span>
+    </div>`;}).join("");
+
+  [...document.querySelectorAll(".chip")].forEach(b=>{
+    b.onclick=()=>{ if(b.classList.contains("gone"))return; sel = sel===b.dataset.c?null:b.dataset.c; draw(); };
+    b.addEventListener("pointerdown",e=>startDrag(e,b.dataset.c));
+  });
+  [...document.querySelectorAll(".def")].forEach(b=>b.onclick=e=>{
+    if(e.target.closest(".pos")||e.target.closest("[data-pull]"))return;
+    if(sel) place(sel,+b.dataset.s);
+  });
+  [...document.querySelectorAll("[data-pull]")].forEach(b=>b.onclick=e=>{ e.stopPropagation(); pull(+b.dataset.pull); });
+  const doneN = slots.filter(s=>s.chip).length;
+  $("go").disabled = doneN===0;
+  $("go").textContent = doneN===slots.length ? "Check my answers"
+                      : "Check the "+doneN+" I've done";
+}
+
+function wireJump(){
+  const j=$("jump"); if(!j) return;
+  j.onclick=()=>{
+    const first=[...marks].sort((a,b)=>a-b)[0];
+    const el=document.querySelector(`.def[data-s="${first}"]`);
+    if(el) el.scrollIntoView({behavior:"smooth",block:"center"});
+  };
+}
+function clearNotice(){ if($("fb").innerHTML) $("fb").innerHTML=""; }
+
+function place(chipId,slotN){
+  const s=slots[slotN];
+  if(s.chip){ const old=chips.find(c=>c.id===s.chip); if(old) old.at=null; }
+  const c=chips.find(x=>x.id===chipId); if(c) c.at=slotN;
+  s.chip=chipId; marks.delete(slotN); sel=null; clearNotice(); draw();
+}
+function pull(slotN){
+  const s=slots[slotN];
+  if(s.chip){ const c=chips.find(x=>x.id===s.chip); if(c) c.at=null; s.chip=null; }
+  marks.delete(slotN); clearNotice(); draw();
+}
+
+let drag=null;
+function startDrag(e,chipId){
+  const src=e.currentTarget;
+  if(src.classList.contains("gone"))return;
+  const r=src.getBoundingClientRect();
+  drag={id:chipId,x0:e.clientX,y0:e.clientY,dx:e.clientX-r.left,dy:e.clientY-r.top,el:null,moved:false};
+  const move=ev=>{
+    if(!drag)return;
+    if(!drag.moved && Math.hypot(ev.clientX-drag.x0,ev.clientY-drag.y0)<7)return;
+    if(!drag.moved){
+      drag.moved=true;
+      const g=src.cloneNode(true);
+      g.className="chip ghost"; g.style.width=r.width+"px";
+      document.body.appendChild(g); drag.el=g; src.style.opacity=".25";
+    }
+    drag.el.style.left=(ev.clientX-drag.dx)+"px";
+    drag.el.style.top =(ev.clientY-drag.dy)+"px";
+    const t=document.elementFromPoint(ev.clientX,ev.clientY);
+    document.querySelectorAll(".def.over").forEach(d=>d.classList.remove("over"));
+    const d=t&&t.closest&&t.closest(".def"); if(d) d.classList.add("over");
+    ev.preventDefault();
+  };
+  const up=ev=>{
+    document.removeEventListener("pointermove",move);
+    document.removeEventListener("pointerup",up);
+    document.removeEventListener("pointercancel",up);
+    if(drag&&drag.moved){
+      if(drag.el) drag.el.style.display="none";
+      const t=document.elementFromPoint(ev.clientX,ev.clientY);
+      const d=t&&t.closest&&t.closest(".def");
+      if(drag.el) drag.el.remove();
+      document.querySelectorAll(".def.over").forEach(x=>x.classList.remove("over"));
+      if(d) place(drag.id,+d.dataset.s); else src.style.opacity="";
+    }
+    drag=null;
+  };
+  document.addEventListener("pointermove",move,{passive:false});
+  document.addEventListener("pointerup",up);
+  document.addEventListener("pointercancel",up);
+}
+
+const isDone  = s => !!s.chip;
+const isWrong = s => { const c=chips.find(x=>x.id===s.chip);
+                       return !c || c.word!==s.word; };
+/* only lines he has actually finished are judged */
+const wrongSlots = () => slots.filter(s=>isDone(s) && isWrong(s)).map(s=>s.n);
+
+$("go").onclick=()=>{
+  const w=wrongSlots();
+  const done=slots.filter(isDone).length, all=slots.length;
+
+  if(!w.length && done===all){ win(); return; }
+
+  if(!w.length){                       /* everything finished so far is right */
+    $("fb").innerHTML=`<div class="fb ok"><span class="msg"><strong>All good so far.</strong>${
+      done===1?"That one is right.":"All "+done+" lines you've finished are right."
+    } ${all-done} to go.</span></div>`;
+    return;                            /* checking correct work costs nothing */
+  }
+
+  tries++;
+  $("fb").innerHTML=`<div class="fb no"><span class="msg"><strong>Not yet.</strong>${
+    w.length===1?"One of the lines you've finished is wrong.":w.length+" of the "+done+" lines you've finished are wrong."
+  }${
+    done<all?" The "+(all-done)+" you haven't finished aren't being judged yet.":""
+  }</span>${marks.size?`<button class="jump" id="jump">FIND IT</button>`:""}</div>`;
+  wireJump();
+  if(!hinted && !$("hint")){
+    $("bar").querySelector(".in").insertAdjacentHTML("afterbegin",
+      `<button class="btn h" id="hint">Show wrong</button>`);
+    $("hint").onclick=()=>{ hinted=true; marks=new Set(wrongSlots()); $("hint").remove();
+      const m=$("fb").querySelector(".msg");
+      if(m) m.insertAdjacentHTML("beforeend",
+        `<p class="hintnote">Hint used \u2014 the red lines are wrong. This now scores 25%.</p>`);
+      if(!$("jump")) $("fb").querySelector(".fb").insertAdjacentHTML("beforeend",
+        `<button class="jump" id="jump">FIND IT</button>`);
+      wireJump(); draw(); };
+  }
+  draw();
+};
+
+$("reset").onclick=()=>{
+  chips.forEach(c=>c.at=null); slots.forEach(s=>{s.chip=null;});
+  marks=new Set(); sel=null; $("fb").innerHTML=""; draw(); window.scrollTo(0,0);
+};
+
+function win(){
+  const pts = hinted?25:(tries===1?100:tries===2?75:tries===3?50:25);
+  const band = pts>=90?["Nailed it","#5CB47F"]:pts>=75?["Solid","#2FA6A0"]:pts>=50?["Getting there","#E8A93C"]:["Run it again","#E0685A"];
+  $("bar").classList.add("hide");
+  $("scorebox").innerHTML=`
+    <div class="ring" style="color:${band[1]}">${pts}%</div>
+    <div class="band" style="color:${band[1]}">${band[0]}</div>
+    <div class="stats">
+      <div class="stat"><b>${slots.length}</b><span>Meanings matched</span></div>
+      <div class="stat"><b>${tries}</b><span>Tries</span></div>
+    </div>
+    ${hinted?`<div class="review"><b>Hint used</b>Worth running the sheet again without it.</div>`:""}
+    <div class="review"><b>Say these out loud</b>Pick any three words and use each one in a sentence of your own.</div>
+    <div class="act">
+      <button class="btn p" id="again">Do the sheet again</button>
+      <button class="btn o" id="list2" style="border-color:#DDD2E4;color:#5A4E66">Look at the word list</button>
+    </div>`;
+  $("again").onclick=build;
+  $("list2").onclick=openList;
+  $("sheet").classList.add("hide"); $("done").classList.remove("hide");
+  window.scrollTo(0,0);
+}
+
+function openList(){
+  $("dbody").innerHTML = DATA.list.map(e=>`
+    <div class="entry">
+      <div class="w">${esc(e.w)}</div>
+      <ol>${e.entries.map(([p,d])=>`<li><span class="p">${p}.</span>${esc(d)}</li>`).join("")}</ol>
+    </div>`).join("");
+  $("dbody").scrollTop=0;
+  $("drawer").classList.add("on"); $("scrim").classList.add("on");
+}
+const closeD=()=>{ $("drawer").classList.remove("on"); $("scrim").classList.remove("on"); };
+$("dclose").onclick=closeD; $("scrim").onclick=closeD; $("dgo").onclick=closeD;
+$("showlist").onclick=openList;
+document.addEventListener("keydown",e=>{ if(e.key==="Escape") closeD(); });
+
+build();
+</script>
+</body>
+</html>
