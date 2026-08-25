@@ -92,6 +92,10 @@ def vocab(s):
 
 def hist(s):
     p = Patcher(s, "history")
+    # without viewport-fit=cover, env(safe-area-inset-*) resolves to 0, so the
+    # HUD's bottom padding does nothing on a notched iPhone
+    p.at('content="width=device-width, initial-scale=1"',
+         after__raw='content="width=device-width, initial-scale=1, viewport-fit=cover"')
     p.at('S.set = Math.random()*DATA.sets.length|0;\nrender();',
          after__raw='S.set = Math.random()*DATA.sets.length|0;\nMC.begin();\nrender();')
     p.at('  next.onclick = ()=>{ S.set=(S.set+1)%DATA.sets.length; S.idx=0; S.results=[]; render(); };',

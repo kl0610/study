@@ -26,7 +26,7 @@
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 img{image-rendering:pixelated}
 body{margin:0;background:var(--panel-2);color:var(--paper);font-family:var(--body);
-  line-height:1.55;padding:0 0 60px}
+  line-height:1.55;padding:0 0 calc(60px + env(safe-area-inset-bottom))}
 .wrap{max-width:660px;margin:0 auto;padding:0 16px}
 
 /* ---------- the title screen ---------- */
@@ -673,7 +673,10 @@ function paintGear(){
   const owned = u.count + (u.nine?1:0);
   document.getElementById("gear").hidden = false;
 
-  const ss = Math.max(30, Math.min(44, Math.floor(Math.min(400, innerWidth-52)/9)));
+  /* chrome to subtract: .wrap padding 16*2, .gear padding 14*2, border 3*2 = 66.
+     The old figure was 52, which overflowed the panel at every phone width. */
+  const room = Math.min(430, innerWidth - 70);
+  const ss = Math.max(22, Math.min(44, Math.floor(room / 9)));
   document.getElementById("hotbar").innerHTML = Array.from({length:9},(_,i)=>{
     const n = i+1, on = n===9 ? u.nine : n<=u.count;
     return `<button class="slot" data-n="${n}" data-on="${on?1:0}"

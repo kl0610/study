@@ -158,6 +158,30 @@ Subjects are now keyed to ores rather than arbitrary hues — history gold,
 science diamond, reading emerald, spelling redstone, vocabulary amethyst, math
 copper. The ore name shows under each subject's count.
 
+## Mobile
+
+Audited rather than assumed. What is in place:
+
+- All five pages ship `viewport-fit=cover`. **History was missing it**, which
+  silently resolved every `env(safe-area-inset-*)` to 0 — so the HUD sat under
+  the home indicator on a notched iPhone. Patched in `build_theme.py`.
+- Every text input is **16px or larger** (`.sentin` 16px, `.freein` 27px, the
+  hidden tile input 16px). Anything smaller makes iOS zoom the page on focus and
+  not zoom back, which is the single most common mobile-form annoyance.
+- **The hub hotbar overflowed at every phone width.** It subtracted 52px of
+  chrome when the real figure is 66 (wrap padding 16×2, gear padding 14×2,
+  border 3×2), so the ninth slot pushed past the panel edge on anything under
+  ~500px. Now subtracts 70 with a 22px floor; verified 320–660px.
+- The in-app HUD sizes its own slots from the viewport and was already correct;
+  the spelling tiles have `fitTiles()`, verified 300–1024px.
+- Vocabulary drag-and-drop uses **pointer events, not the HTML5 drag API**,
+  which silently fails on touch. Tap-to-place also works. No app uses
+  `dataTransfer`.
+- No fixed widths above 380px anywhere, so nothing forces horizontal scroll.
+
+Worth re-checking whenever a new app is added: input font sizes, whether any
+9-across row does its own arithmetic, and that `viewport-fit=cover` is present.
+
 ## Build pipeline
 
 Each app is assembled from pieces by a small Python string-replace, then written as one file:
@@ -208,17 +232,13 @@ What shipped, against the agreed design:
   writes his own sentences. Worth checking he's happy with that rule; it was the
   one part of the design not pinned down.
 - Right answer bursts a win sprite (cycles allay → axolotl → fox → bee); wrong
-  bursts a bad sprite, shakes, and takes half a heart. **Sized 320px on desktop
-  and phone-scaled below that** — the first version was pinned at 128px on
-  every screen, which was tiny on a monitor. The source sprites are 128px, so
-  2.5× upscaling relies on `image-rendering:pixelated`, which reads as
-  deliberate chunky pixels rather than blur. Capped against viewport *height*
-  too, so a landscape phone does not get a sprite covering the question and the
-  hotbar at once.
-- The bursts now **hold at full size for about half their life before fading**
-  — roughly 1.3s for a win, 1.15s for a miss, up from well under a second.
-  Only one is ever on screen: a new burst removes any previous one, so answering
-  fast cannot stack them.
+  bursts a bad sprite, shakes, and takes half a heart. **320px on desktop**,
+  scaled down on phones and capped against viewport *height* as well as width.
+  The first version was pinned at 128px on every screen. Source sprites are
+  128px, so 2.5× relies on `image-rendering:pixelated` reading as chunky
+  rather than blurry. Bursts hold at full size for about half their life before
+  fading (~1.3s win, ~1.15s miss), and a new burst removes any previous one so
+  fast answering cannot stack them.
 - Results: chest-closed nudges until tapped, then opens to the loot, a NEW
   banner if a tool was earned, and the dragon on a flawless run.
 - **The ender dragon falls on any level played perfectly** — 100% *and* every
