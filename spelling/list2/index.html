@@ -170,6 +170,44 @@ h1 em{font-style:normal;color:var(--rose)}
 .dfoot .btn{width:100%}
 footer{margin:32px 0 0;padding-top:15px;border-top:1px solid var(--line);color:#7D8A9E;
   font-size:11.5px;text-align:center}
+.chips{display:flex;flex-wrap:wrap;gap:7px}
+.chip{background:var(--paper2);color:var(--ink);border-radius:9px;padding:8px 12px;font-size:14.5px;font-weight:700}
+.chip.sel{background:var(--rose);color:#fff}
+.chip.gone{display:none}
+.alldone{font-size:13px;color:#7A8598;font-weight:600}
+.rvrow{background:#fff;border:2px solid #E4DCCB;border-radius:12px;padding:11px 12px;margin-bottom:8px;
+  display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.rvrow.wrongmark{border-color:var(--red);background:#FDEEEC}
+.rvdef{flex:1;min-width:150px;font-size:14px;color:#3A4354;line-height:1.4}
+.placed{background:var(--rose);color:#fff;border-radius:9px;padding:7px 11px;font-size:14px;font-weight:700}
+.placed.wrongmark{background:var(--red)}
+.hole{min-width:104px;min-height:34px;border:2px dashed #D6CDBB;border-radius:9px;display:grid;
+  place-items:center;font:700 10px var(--mono);color:#B0A896;letter-spacing:.07em;padding:0 10px}
+.bigword{font-family:var(--disp);font-size:clamp(28px,8vw,40px);font-weight:800;text-align:center;
+  color:var(--ink);letter-spacing:-.01em;margin:6px 0 4px;word-break:keep-all}
+.wordmeta{text-align:center;font-size:14px;color:#6B7688;margin:0 0 16px;line-height:1.4}
+.sentin{width:100%;border:2px solid #DDD5C4;border-radius:12px;padding:12px;font-family:var(--body);
+  font-size:16px;line-height:1.5;color:var(--ink);background:#fff;resize:vertical;min-height:86px;outline:none}
+.sentin:focus{border-color:var(--rose)}
+.sentin.bad{border-color:var(--red);background:#FDF2F0}
+.chgroup{margin-bottom:22px}
+.chhead{display:flex;align-items:center;gap:8px;font:700 12.5px var(--mono);letter-spacing:.09em;
+  text-transform:uppercase;color:var(--paper);margin-bottom:3px}
+.chcount{margin-left:auto;color:var(--dim);font-size:11px;letter-spacing:.07em}
+.chnote{font-size:12.5px;color:var(--dim);margin:0 0 10px 17px}
+.chdot{width:10px;height:10px;border-radius:50%;flex:none}
+.chdot.two{background:var(--rose);box-shadow:0 0 0 3px rgba(224,112,154,.25)}
+.chdot.one{background:var(--rose);opacity:.6}
+.chdot.none{background:#4E5D75}
+.chgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(164px,1fr));gap:9px}
+.chw{background:var(--paper);border-radius:12px;padding:12px}
+.chword{font-family:var(--disp);font-size:clamp(16px,4.6vw,20px);font-weight:800;color:#12161F;
+  white-space:nowrap;overflow-x:auto;letter-spacing:-.005em;line-height:1.2}
+.chword b{color:var(--rose)}
+.chpairs{display:flex;gap:5px;margin-top:6px}
+.chpairs span{background:#FBE3EC;color:#B3446E;border-radius:5px;padding:1px 6px;
+  font:800 11px var(--mono);letter-spacing:.04em}
+.chdef{font-size:12px;color:#6B7688;line-height:1.35;margin-top:6px}
 .hide{display:none!important}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
@@ -185,6 +223,7 @@ footer{margin:32px 0 0;padding-top:15px;border-top:1px solid var(--line);color:#
   </header>
   <div class="grid" id="levels"></div>
   <button class="listbtn" id="showlist">Study the twelve words first</button>
+  <button class="listbtn" id="chart1" style="margin-top:9px">See the doubled letters side by side</button>
   <footer>Twelve words, three ways. Test Friday, Aug 28.</footer>
 </div>
 
@@ -202,6 +241,31 @@ footer{margin:32px 0 0;padding-top:15px;border-top:1px solid var(--line);color:#
 <div id="done" class="wrap hide">
   <a class="hublink" href="../../">&lsaquo; All subjects</a>
   <div class="score" id="scorebox" style="margin-top:16px"></div>
+</div>
+
+<div id="chart" class="wrap hide">
+  <div class="pagehead">
+    <button class="back" id="chback" aria-label="Back">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+    </button>
+    <div class="t"><strong>All twelve words</strong><span>Doubled letters in pink</span></div>
+  </div>
+  <div id="chbody"></div>
+</div>
+
+<div id="rev" class="wrap hide">
+  <div class="pagehead">
+    <button class="back" id="rvback" aria-label="Back">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+    </button>
+    <div class="t"><strong>Review the misses</strong><span>Match each word to its meaning</span></div>
+  </div>
+  <div class="card">
+    <div class="chips" id="rvchips" style="margin-bottom:14px"></div>
+    <div id="rvslots"></div>
+    <div id="rvfb"></div>
+    <div class="act" id="rvact"><button class="btn p" id="rvgo" disabled>Check the matches</button></div>
+  </div>
 </div>
 
 <div class="scrim" id="scrim"></div>
@@ -266,23 +330,32 @@ const DATA = {
   root: { stem:"agr", means:"field" },
   /* prompt: what he reads.  clue: how many letters he gets. */
   levels: [
-    { id:"l1", name:"Warm up", prompt:"def", input:"boxes", clue:"first",
+    { id:"l1", name:"Warm up", prompt:"def", input:"boxes", clue:"syllable", wide:true,
+      tag:"Syllable by syllable",
+      blurb:"The boxes are split into syllable chunks with a gap between each one, and every chunk starts you off with its first letter." },
+    { id:"l2", name:"Definitions", prompt:"def", input:"boxes", clue:"first",
       tag:"Meaning \u00b7 first letter",
-      blurb:"Read what the word means. The first letter is filled in and the boxes are grouped by syllable." },
-    { id:"l2", name:"In a sentence", prompt:"sent", input:"boxes", clue:"first",
+      blurb:"Same syllable chunks, but now only the very first letter of the whole word is given." },
+    { id:"l3", name:"In a sentence", prompt:"sent", input:"boxes", clue:"first",
       tag:"Sentence \u00b7 first letter",
       blurb:"A sentence with the word missing. Work out which word fits, then spell it." },
-    { id:"l3", name:"Step up", prompt:"both", input:"free",
+    { id:"l4", name:"Step up", prompt:"both", input:"free",
       tag:"Listen \u00b7 meaning and sentence",
-      blurb:"Hear the word. You get the meaning and a sentence to lean on \u2014 but no boxes, no letters, no clue how long it is." },
-    { id:"l4", name:"Test day", prompt:"none", input:"free",
+      blurb:"Hear the word. Meaning and sentence to lean on, but no boxes and no letters." },
+    { id:"l5", name:"Test day", prompt:"none", input:"free",
       tag:"Listen \u00b7 nothing else",
-      blurb:"Dictation, the way Friday works. Hear it, spell it. No meaning, no sentence, no hints." }
+      blurb:"Dictation, the way Friday works. Hear the word, spell it. Nothing else on screen." },
+    { id:"l6", name:"Challenge", prompt:"none", input:"free", dictate:"def", boss:true,
+      tag:"Hear the meaning \u00b7 name the word",
+      blurb:"You hear the definition read out loud \u2014 not the word \u2014 and you work out which word it is and spell it from nothing." },
+    { id:"l7", name:"Challenge 2", prompt:"word", input:"sentence", boss:true,
+      tag:"Write your own sentence",
+      blurb:"You get the word. Write a sentence that uses it properly. Miss twice and you will see one that works." }
   ]
 };
 
 
-const COLORS=["#63BE7B","#5AA9DB","#E9B23C","#E0709A"];
+const COLORS=["#8FCB9B","#63BE7B","#5AA9DB","#E9B23C","#E0709A","#B3446E"];
 const $=id=>document.getElementById(id);
 const esc=s=>String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
 const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]];}return a;};
@@ -290,9 +363,14 @@ const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.random(
 /* positions that are part of a doubled letter */
 function doubles(w){const s=new Set();for(let i=0;i<w.length-1;i++) if(w[i]===w[i+1]){s.add(i);s.add(i+1);}return s;}
 /* which letters are given away, by level */
-function clueSet(w,mode){
+function clueSet(w,mode,syl){
   if(mode==="first")  return new Set([0]);
   if(mode==="none")   return new Set();
+  if(mode==="syllable"){                       /* start of each chunk */
+    const out=new Set(); let i=0;
+    (syl||[]).forEach(part=>{ out.add(i); i+=part.length; });
+    return out;
+  }
   const d=doubles(w), out=new Set();          /* scatter: never a doubled letter */
   for(let i=1;i<w.length;i++) if(i%3===1 && !d.has(i)) out.add(i);
   return out;
@@ -301,7 +379,7 @@ const LVL = () => DATA.levels[LV];
 /* syllable grouping is the scaffold; it drops away once no letters are given */
 const grouped = () => LVL().clue !== "none";
 
-let LV=0, order=[], idx=0, typed="", tries=0, log=[], shown=false;
+let LV=0, order=[], idx=0, typed="", tries=0, log=[], shown=false, missed=[], lastScreen="home";
 const best={};
 
 /* ---------- home ---------- */
@@ -317,11 +395,13 @@ function home(){
   [...document.querySelectorAll(".lv")].forEach(b=>b.onclick=()=>start(+b.dataset.l));
   show("home");
 }
-function show(w){["home","play","done"].forEach(x=>$(x).classList.toggle("hide",x!==w));window.scrollTo(0,0);}
+function show(w){["home","play","done","rev","chart"].forEach(x=>$(x).classList.toggle("hide",x!==w));window.scrollTo(0,0);}
 
 /* ---------- round ---------- */
-function start(l){
-  LV=l; order=shuffle(DATA.words.map((_,i)=>i)); idx=0; log=[];
+function start(l,subset){
+  LV=l;
+  order = shuffle(subset && subset.length ? subset.slice() : DATA.words.map((_,i)=>i));
+  idx=0; log=[];
   $("lname").textContent=DATA.levels[l].name;
   $("lclue").textContent=DATA.levels[l].tag;
   show("play"); render();
@@ -338,18 +418,27 @@ function render(){
   $("card").innerHTML=`
     <div class="meta">
       <span class="qn">Word ${idx+1} of ${order.length}</span>
-      ${LVL().prompt==="none"?`<span class="qn" style="color:#E0709A">Dictation</span>`:""}
+      ${LVL().prompt==="none"?`<span class="qn" style="color:#E0709A">${LVL().dictate==="def"?"Name the word":"Dictation"}</span>`:""}
       ${LVL().prompt!=="none"?`<span class="postag" data-p="${w.pos}">${w.pos}.</span>`:""}
       ${w.root && LVL().prompt!=="none"?`<span class="rootpill">ROOT AGR = FIELD</span>`:""}
     </div>
     ${LVL().prompt==="def"||LVL().prompt==="both"?`<p class="def">${esc(w.def)}</p>`:""}
     ${LVL().prompt==="sent"||LVL().prompt==="both"?`<p class="sent">${sentenceHTML(w)}</p>`:""}
-    ${free?`
+    ${LVL().input==="sentence"?`
+      <div class="bigword">${esc(w.w)}</div>
+      <div class="wordmeta">${w.pos}. \u2014 ${esc(w.def)}</div>
+      <textarea class="sentin" id="typed" rows="3" autocomplete="off" autocapitalize="sentences"
+        spellcheck="false" placeholder="Write a sentence that uses this word\u2026"></textarea>
+      <div class="tools"><button class="tool" id="say">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M15.5 8.5a5 5 0 010 7"/><path d="M19 5a9 9 0 010 14"/></svg>
+        Hear it</button>
+        <button class="tool" id="clear">Clear</button></div>
+    `:free?`
       <div class="listen">
         <button class="big" id="say" aria-label="Hear the word">
           <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M15.5 8.5a5 5 0 010 7"/><path d="M19 5a9 9 0 010 14"/></svg>
         </button>
-        <span class="lab">Tap to hear it again</span>
+        <span class="lab">${LVL().dictate==="def"?"Tap to hear the meaning again":"Tap to hear it again"}</span>
       </div>
       <div class="freewrap">
         <input class="freein" id="typed" type="text" inputmode="text" autocomplete="off"
@@ -378,30 +467,36 @@ function render(){
 
   const inp=$("typed");
   inp.value="";
+  const sentMode = LVL().input==="sentence";
   inp.addEventListener("input",()=>{
-    typed=inp.value.toLowerCase().replace(/[^a-z]/g,"");
-    if(!free) typed=typed.slice(0,w.w.length);
-    inp.value=typed; inp.classList.remove("bad");
+    if(sentMode){ typed=inp.value; }
+    else {
+      typed=inp.value.toLowerCase().replace(/[^a-z]/g,"");
+      if(!free) typed=typed.slice(0,w.w.length);
+      inp.value=typed;
+    }
+    inp.classList.remove("bad");
     $("fb").innerHTML=""; paint();
   });
-  inp.addEventListener("keydown",e=>{ if(e.key==="Enter" && !$("go").disabled) checkNow(); });
-  $("say").onclick=()=>speak(w.w);
+  inp.addEventListener("keydown",e=>{ if(e.key==="Enter" && !e.shiftKey && !sentMode && !$("go").disabled) checkNow(); });
+  $("say").onclick=()=>speak(LVL().dictate==="def"?w.def:w.w);
   $("clear").onclick=()=>{ typed=""; inp.value=""; inp.classList.remove("bad");
                            $("fb").innerHTML=""; paint(); inp.focus(); };
   $("go").onclick=checkNow;
   if(!free){ $("tiles").onclick=()=>inp.focus(); $("tap").onclick=()=>inp.focus(); }
   paint();
   setTimeout(()=>inp.focus(),80);
-  if(free) setTimeout(()=>speak(w.w),320);          /* dictation starts on its own */
+  if(free) setTimeout(()=>speak(LVL().dictate==="def"?w.def:w.w),320);
+  if(sentMode) $("go").textContent="Check my sentence";
 }
 
 function fitTiles(w){
   const box=$("tiles"); if(!box) return;
   const N=w.w.length, G=w.syl.length;
   const avail=(box.clientWidth||box.parentElement.clientWidth||300)-8;   /* rounding buffer */
-  let gi=4, go=10;
+  let gi=4, go=LVL().wide?20:10;
   let tw=Math.floor((avail-(N-G)*gi-(G-1)*go)/N);
-  if(tw<20){ gi=2; go=6; tw=Math.floor((avail-(N-G)*gi-(G-1)*go)/N); }   /* tighten before shrinking */
+  if(tw<20){ gi=2; go=LVL().wide?12:6; tw=Math.floor((avail-(N-G)*gi-(G-1)*go)/N); }
   tw=Math.max(13,Math.min(30,tw));
   box.style.setProperty("--tw",tw+"px");
   box.style.setProperty("--th",Math.max(30,Math.round(tw*1.32))+"px");
@@ -412,8 +507,9 @@ function fitTiles(w){
 
 function paint(){
   const w=DATA.words[order[idx]];
+  if(LVL().input==="sentence"){ $("go").disabled = typed.trim().split(/\s+/).filter(Boolean).length<3; return; }
   if(LVL().input==="free"){ $("go").disabled = typed.length<2; return; }
-  const clue=clueSet(w.w,LVL().clue);
+  const clue=clueSet(w.w,LVL().clue,w.syl);
   let i=0;
   const tile=(ch,pos)=>{
     const isClue=clue.has(pos) && pos>=typed.length;
@@ -452,8 +548,42 @@ function speak(word){
 function flash(msg){ $("fb").innerHTML=`<div class="fb no"><strong>Hmm.</strong>${esc(msg)}</div>`; }
 
 /* ---------- checking ---------- */
+/* accepts the word plus its ordinary endings: -s -es -ed -d -ing -ies */
+function usesWord(text,w){
+  const stem=w.replace(/e$/,"").replace(/y$/,"");
+  const re=new RegExp("\\b"+stem+"(e|es|s|ed|d|ing|y|ies|ily|ly|ally)?\\b","i");
+  return re.test(text);
+}
+function judgeSentence(text,w){
+  const t=text.trim();
+  const words=t.split(/\s+/).filter(Boolean);
+  if(!usesWord(t,w.w))            return "Your sentence has to actually use the word \u201c"+w.w+"\u201d.";
+  if(words.length<6)              return "That is a bit short. Give it enough around the word to show what it means.";
+  if(!/[.!?]$/.test(t))           return "Sentences finish with a full stop, a question mark, or an exclamation mark.";
+  if(!/^[A-Z]/.test(t))           return "Start it with a capital letter.";
+  if(t.toLowerCase()===w.sent.replace("___",w.w).toLowerCase())
+                                  return "That is the example. Write one of your own.";
+  return null;
+}
+
 function checkNow(){
   const w=DATA.words[order[idx]], free=LVL().input==="free";
+
+  if(LVL().input==="sentence"){
+    tries++;
+    const problem=judgeSentence(typed,w);
+    if(problem){
+      $("typed").classList.add("bad");
+      $("fb").innerHTML=`<div class="fb no"><strong>Not yet.</strong>${esc(problem)}</div>`;
+      if(tries>=2 && !$("egbtn")) $("card").querySelector(".act")
+        .insertAdjacentHTML("beforeend",`<button class="btn o" id="egbtn">Show me one that works</button>`);
+      if($("egbtn")) $("egbtn").onclick=()=>showExample(w,false);
+      return;
+    }
+    showExample(w,true);
+    return;
+  }
+
   if(free ? typed.length<2 : typed.length!==w.w.length) return;
   tries++;
   if(typed===w.w){ good(); return; }
@@ -465,7 +595,7 @@ function checkNow(){
     $("fb").innerHTML=`<div class="fb no"><strong>Not quite.</strong>Tap the speaker and listen again.${
       dbl && tries===1?" Listen for the doubled letter \u2014 that is the rule this week.":""
     }</div>`;
-    setTimeout(()=>speak(w.w),260);
+    setTimeout(()=>speak(LVL().dictate==="def"?w.def:w.w),260);
   } else {
     const wrong=[...typed].filter((c,i)=>c!==w.w[i]).length;
     [...document.querySelectorAll(".tile")].forEach((t,i)=>{ if(typed[i]!==w.w[i]) t.classList.add("bad"); });
@@ -480,6 +610,39 @@ function checkNow(){
   if($("show")) $("show").onclick=()=>{ shown=true; good(true); };
   setTimeout(()=>{ typed=""; const t=$("typed"); if(t){ t.value=""; t.classList.remove("bad"); }
                    paint(); if(t) t.focus(); }, free?1400:900);
+}
+
+function showExample(w,passed){
+  $("fb").innerHTML=`
+    <div class="fb ${passed?"yes":"no"}"><strong>${passed?"That works mechanically.":"Here is one that works."}</strong>
+      ${passed?"It uses the word, it is a full sentence, and it is punctuated. Now the part I cannot check \u2014 does it actually make sense?"
+              :"Read it, then have another go at your own."}</div>
+    <div class="reveal" style="text-align:left">
+      <div class="cap" style="margin:0 0 5px">Example sentence</div>
+      <div style="font-size:15.5px;line-height:1.5">${esc(w.sent.replace("___",w.w))}</div>
+    </div>`;
+  const act=$("card").querySelector(".act");
+  if(passed){
+    act.innerHTML=`<button class="btn g" id="yes">Mine makes sense \u2014 next</button>
+                   <button class="btn o" id="no">Let me rewrite mine</button>`;
+    $("yes").onclick=()=>sentDone(true);
+    $("no").onclick=()=>{ $("fb").innerHTML=""; $("typed").focus(); resetSentAct(); };
+  } else {
+    act.innerHTML=`<button class="btn p" id="go2">Try mine again</button>
+                   <button class="btn o" id="skip">Move on</button>`;
+    $("go2").onclick=()=>{ $("fb").innerHTML=""; $("typed").value=""; typed="";
+                           $("typed").classList.remove("bad"); paint(); $("typed").focus(); resetSentAct(); };
+    $("skip").onclick=()=>sentDone(false);
+  }
+}
+function resetSentAct(){
+  $("card").querySelector(".act").innerHTML=`<button class="btn p" id="go" disabled>Check my sentence</button>`;
+  $("go").onclick=checkNow; paint();
+}
+function sentDone(ok){
+  log[idx]= ok && tries===1;
+  if(idx===order.length-1) finish();
+  else { idx++; render(); window.scrollTo(0,0); }
 }
 
 function good(revealed){
@@ -506,30 +669,120 @@ function good(revealed){
 }
 
 function finish(){
-  const first=log.filter(x=>x===true).length;
-  const pct=Math.round(first/order.length*100);
+  const right = order.filter((_,i)=>log[i]===true).length;
+  const wrongIdx = order.filter((_,i)=>log[i]!==true);
+  const wrong = wrongIdx.length;
+  const pct=Math.round(right/order.length*100);
   const band=pct>=90?["Ready for Friday","#63BE7B"]:pct>=75?["Nearly there","#5AA9DB"]:pct>=50?["Keep going","#E9B23C"]:["Run it again","#E0685A"];
-  const missed=order.map((o,i)=>log[i]?null:DATA.words[o].w).filter(Boolean);
-  best[DATA.levels[LV].id]=Math.max(best[DATA.levels[LV].id]||0,pct);
+  best[LVL().id]=Math.max(best[LVL().id]||0,pct);
+  missed = wrongIdx;
   $("scorebox").innerHTML=`
     <div class="ring" style="color:${band[1]}">${pct}%</div>
     <div class="band" style="color:${band[1]}">${band[0]}</div>
     <div class="stats">
-      <div class="stat"><b>${first} / ${order.length}</b><span>First try</span></div>
-      <div class="stat"><b>${DATA.levels[LV].name}</b><span>Level</span></div>
+      <div class="stat" style="border-left:4px solid var(--lime)"><b>${right}</b><span>Correct, first try</span></div>
+      <div class="stat" style="border-left:4px solid ${wrong?"var(--red)":"#D6CDBB"}"><b>${wrong}</b><span>Missed</span></div>
     </div>
-    ${missed.length?`<div class="review"><b>Practise these again</b><ul>${missed.map(m=>`<li>${esc(m)}</li>`).join("")}</ul></div>`
-                   :`<div class="review"><b>Every word first try.</b>Try the next level up.</div>`}
+    ${wrong?`<div class="review"><b>The ${wrong===1?"one you missed":wrong+" you missed"}</b>
+       <ul>${wrongIdx.map(i=>`<li>${esc(DATA.words[i].w)}</li>`).join("")}</ul></div>`
+      :`<div class="review"><b>Every word, first try.</b>${LV<DATA.levels.length-1?"Move up a level.":"That was the Challenge \u2014 nothing left to beat."}</div>`}
     <div class="review"><b>Now say it out loud</b>Pick any three words and use each one in a sentence \u2014 that is the other half of Friday's test.</div>
     <div class="act">
-      <button class="btn p" id="again">Run this level again</button>
+      ${wrong?`<button class="btn p" id="retry">Spell the ${wrong===1?"missed one":wrong+" I missed"} again</button>`:""}
+      ${wrong>1?`<button class="btn o" id="rev">Review and match them</button>`:""}
+      <button class="btn ${wrong?"o":"p"}" id="again">Run the whole level again</button>
       ${LV<DATA.levels.length-1?`<button class="btn o" id="up">Try ${esc(DATA.levels[LV+1].name)}</button>`:""}
+      <button class="btn o" id="chart2">See all 12 words \u2014 doubles in pink</button>
       <button class="btn o" id="pick">Pick a level</button>
     </div>`;
+  if($("retry")) $("retry").onclick=()=>start(LV,missed);
+  if($("rev"))   $("rev").onclick=()=>review(missed);
   $("again").onclick=()=>start(LV);
   if($("up")) $("up").onclick=()=>start(LV+1);
+  $("chart2").onclick=()=>{ lastScreen="done"; chart(); };
   $("pick").onclick=home;
   show("done");
+}
+
+/* ---------- review: match the missed words to their meanings ---------- */
+let rvChips=[], rvSlots=[], rvSel=null, rvMarks=new Set();
+function review(list){
+  rvChips = shuffle(list.map((wi,n)=>({id:"r"+n,wi,at:null})));
+  rvSlots = shuffle(list.slice()).map((wi,n)=>({n,wi,chip:null}));
+  rvSel=null; rvMarks=new Set();
+  show("rev"); rvDraw();
+}
+function rvDraw(){
+  const free=rvChips.filter(c=>c.at===null);
+  $("rvchips").innerHTML = free.length
+    ? rvChips.map(c=>`<button class="chip ${c.at!==null?"gone":""} ${rvSel===c.id?"sel":""}" data-c="${c.id}">${esc(DATA.words[c.wi].w)}</button>`).join("")
+    : `<div class="alldone">All placed \u2014 tap a word to send it back.</div>`;
+  $("rvslots").innerHTML = rvSlots.map(sl=>{
+    const c = sl.chip ? rvChips.find(x=>x.id===sl.chip) : null;
+    return `<div class="rvrow ${rvMarks.has(sl.n)?"wrongmark":""}" data-s="${sl.n}">
+      <div class="rvdef">${esc(DATA.words[sl.wi].def)}</div>
+      ${c?`<button class="placed ${rvMarks.has(sl.n)?"wrongmark":""}" data-pull="${sl.n}">${esc(DATA.words[c.wi].w)}</button>`
+         :`<span class="hole">DROP HERE</span>`}
+    </div>`;}).join("");
+  [...document.querySelectorAll("#rvchips .chip")].forEach(b=>b.onclick=()=>{
+    if(b.classList.contains("gone"))return; rvSel = rvSel===b.dataset.c?null:b.dataset.c; rvDraw(); });
+  [...document.querySelectorAll(".rvrow")].forEach(b=>b.onclick=e=>{
+    if(e.target.closest("[data-pull]"))return;
+    if(rvSel){ const n=+b.dataset.s;
+      for(const c of rvChips) if(c.at===n) c.at=null;
+      const sl=rvSlots[n]; if(sl.chip){ const o=rvChips.find(x=>x.id===sl.chip); if(o) o.at=null; }
+      const c=rvChips.find(x=>x.id===rvSel); c.at=n; sl.chip=rvSel; rvSel=null;
+      rvMarks.delete(n); $("rvfb").innerHTML=""; rvDraw(); } });
+  [...document.querySelectorAll("[data-pull]")].forEach(b=>b.onclick=e=>{
+    e.stopPropagation(); const n=+b.dataset.pull; const sl=rvSlots[n];
+    const c=rvChips.find(x=>x.id===sl.chip); if(c) c.at=null; sl.chip=null;
+    rvMarks.delete(n); $("rvfb").innerHTML=""; rvDraw(); });
+  $("rvgo").disabled = rvSlots.some(sl=>!sl.chip);
+}
+$("rvgo").onclick=()=>{
+  const bad=rvSlots.filter(sl=>{const c=rvChips.find(x=>x.id===sl.chip); return !c||c.wi!==sl.wi;});
+  if(!bad.length){
+    $("rvfb").innerHTML=`<div class="fb yes"><strong>All matched.</strong>Now go back and spell them.</div>`;
+    rvMarks=new Set(); rvDraw(); $("rvgo").disabled=true;
+    $("rvact").insertAdjacentHTML("afterbegin",`<button class="btn p" id="rvspell">Spell them again</button>`);
+    $("rvspell").onclick=()=>start(LV,missed);
+  } else {
+    rvMarks=new Set(bad.map(sl=>sl.n));
+    $("rvfb").innerHTML=`<div class="fb no"><strong>Not yet.</strong>${bad.length} ${bad.length===1?"is":"are"} in the wrong place \u2014 marked in red.</div>`;
+    rvDraw();
+  }
+};
+
+function pairsIn(w){                       /* how many doubled pairs the word contains */
+  const out=[]; for(let i=0;i<w.length-1;i++) if(w[i]===w[i+1]){ out.push(w[i]+w[i+1]); i++; }
+  return out;
+}
+function chart(){
+  const card=(x)=>{
+    const d=doubles(x.w);
+    const html=[...x.w].map((ch,i)=>d.has(i)?`<b>${ch}</b>`:ch).join("");   /* whole word, no breaks */
+    const p=pairsIn(x.w);
+    return `<div class="chw"><div class="chword">${html}</div>
+      ${p.length?`<div class="chpairs">${p.map(q=>`<span>${q}</span>`).join("")}</div>`:""}
+      <div class="chdef">${esc(x.def)}</div></div>`;};
+
+  const groups=[
+    { n:2, head:"Two pairs", note:"two doubled letters in the same word", dot:"two" },
+    { n:1, head:"One pair",  note:"a single doubled letter",              dot:"one" },
+    { n:0, head:"No pairs",  note:"the agr root words",                   dot:"none" }
+  ];
+  $("chbody").innerHTML = groups.map(g=>{
+    const list=DATA.words.filter(x=>pairsIn(x.w).length===g.n);
+    if(!list.length) return "";
+    return `<div class="chgroup">
+      <div class="chhead"><span class="chdot ${g.dot}"></span>${g.head}
+        <span class="chcount">${list.length} word${list.length>1?"s":""}</span></div>
+      <div class="chnote">${esc(g.note)}</div>
+      <div class="chgrid">${list.map(card).join("")}</div>
+    </div>`;}).join("") +
+    `<div class="act" style="margin-top:18px"><button class="btn o" id="chdone">Back</button></div>`;
+  $("chdone").onclick=()=>show(lastScreen);
+  show("chart");
 }
 
 /* ---------- word list ---------- */
@@ -548,8 +801,11 @@ function openList(){
 const closeD=()=>{ $("drawer").classList.remove("on"); $("scrim").classList.remove("on"); };
 $("dclose").onclick=closeD; $("scrim").onclick=closeD; $("dgo").onclick=closeD;
 $("showlist").onclick=openList;
+$("chart1").onclick=()=>{ lastScreen="home"; chart(); };
+$("chback").onclick=()=>show(lastScreen);
 document.addEventListener("keydown",e=>{ if(e.key==="Escape") closeD(); });
 $("quit").onclick=home;
+$("rvback").onclick=()=>show("done");
 let rt; addEventListener("resize",()=>{ clearTimeout(rt); rt=setTimeout(()=>{
   if(!$("play").classList.contains("hide") && LVL().input==="boxes") fitTiles(DATA.words[order[idx]]);
 },120); });
