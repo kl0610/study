@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Spelling List 2 — Double Consonants</title>
+<style>
+:root{
+  --bg:#141C2B; --panel:#1F2A3D; --line:#33425B; --paper:#FBF7EE; --paper2:#F0E9DA;
+  --ink:#1A2233; --dim:#93A3BC;
+  --rose:#E0709A; --lime:#63BE7B; --amber:#E9B23C; --red:#E0685A; --sky:#5AA9DB;
+  --disp:"Avenir Next","Segoe UI Variable Display","Trebuchet MS",system-ui,sans-serif;
+  --body:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --mono:ui-monospace,"SF Mono","Cascadia Mono",Consolas,monospace;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+body{background:var(--bg);background-image:radial-gradient(circle at 14% -6%,#25334C 0%,transparent 55%);
+  background-attachment:fixed;color:var(--paper);font-family:var(--body);line-height:1.55;
+  padding:0 0 40px;overflow-x:hidden}
+.wrap{max-width:720px;margin:0 auto;padding:0 16px}
+button{font:inherit;color:inherit;cursor:pointer;border:none;background:none}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--rose)}
+.hublink{display:inline-flex;gap:6px;margin:20px 0 0;padding:7px 13px;border:1px solid var(--line);
+  border-radius:20px;background:var(--panel);font:700 11px var(--mono);letter-spacing:.11em;
+  text-transform:uppercase;color:var(--dim);text-decoration:none}
+.hublink:hover{color:var(--paper);border-color:var(--rose)}
+header{padding:12px 0 18px}
+h1{font-family:var(--disp);font-size:clamp(28px,7vw,40px);line-height:1.03;margin:9px 0 6px;
+  letter-spacing:-.02em;font-weight:800}
+h1 em{font-style:normal;color:var(--rose)}
+.rule{display:inline-block;margin-top:6px;background:var(--panel);border:1px solid var(--line);
+  border-radius:10px;padding:8px 13px;font-size:13.5px;color:#C6D3E5}
+.rule b{color:var(--rose)}
+
+.grid{display:grid;gap:12px;margin:22px 0 0}
+.lv{display:block;width:100%;text-align:left;background:var(--paper);color:var(--ink);border-radius:15px;
+  padding:15px 17px;position:relative;overflow:hidden;box-shadow:0 10px 24px rgba(0,0,0,.3);
+  transition:transform .16s}
+.lv:hover{transform:translateY(-3px)}
+.lv::before{content:"";position:absolute;left:0;top:0;bottom:0;width:6px;background:var(--c)}
+.lv .tag{font:700 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:#7D8A9E}
+.lv h3{font-family:var(--disp);font-size:19px;margin:2px 0 3px;font-weight:750}
+.lv p{margin:0;font-size:14px;color:#54607A}
+.lv .go{margin-top:9px;display:inline-block;font-weight:700;font-size:13.5px;color:var(--c)}
+.badge{position:absolute;right:13px;bottom:13px;font:600 11px var(--mono);background:var(--lime);
+  color:#0F2216;padding:3px 9px;border-radius:20px}
+.listbtn{margin:16px 0 0;padding:10px 15px;border:1px solid var(--line);border-radius:11px;
+  background:var(--panel);font-size:14px;font-weight:650;color:var(--paper);width:100%}
+.listbtn:hover{border-color:var(--rose)}
+
+.pagehead{display:flex;align-items:center;gap:12px;padding:16px 0 12px}
+.back{width:38px;height:38px;border-radius:11px;background:var(--panel);border:1px solid var(--line);
+  display:grid;place-items:center;flex:none}
+.back svg{width:16px;height:16px}
+.pagehead .t{flex:1;min-width:0}
+.pagehead .t strong{display:block;font-family:var(--disp);font-size:17px;font-weight:750}
+.pagehead .t span{font:600 11px var(--mono);color:var(--dim);letter-spacing:.1em;text-transform:uppercase}
+.dots{display:flex;gap:4px;margin-bottom:14px}
+.dot{height:5px;flex:1;border-radius:3px;background:var(--line)}
+.dot.ok{background:var(--lime)} .dot.miss{background:var(--amber)} .dot.now{background:var(--rose)}
+
+.card{background:var(--paper);color:var(--ink);border-radius:18px;padding:18px 16px 20px;
+  box-shadow:0 14px 36px rgba(0,0,0,.32)}
+.meta{display:flex;align-items:center;gap:8px;margin-bottom:9px;flex-wrap:wrap}
+.qn{font:700 11px var(--mono);letter-spacing:.13em;text-transform:uppercase;color:#8A96AA}
+.postag{border-radius:6px;padding:2px 7px;font:800 11px var(--mono);background:var(--sky);color:#fff}
+.postag[data-p="v"]{background:var(--amber);color:var(--ink)}
+.postag[data-p="adj"]{background:var(--rose)}
+.rootpill{border-radius:6px;padding:2px 8px;font:800 10px var(--mono);background:#2F7D68;color:#fff;
+  letter-spacing:.06em}
+.def{font-family:var(--disp);font-size:19px;line-height:1.32;font-weight:650;margin:0 0 4px}
+.sent{font-family:var(--disp);font-size:18px;line-height:1.45;font-weight:600;margin:0 0 4px;color:#2A3346}
+.sent .blank{display:inline-block;width:74px;border-bottom:3px solid var(--rose);
+  margin:0 3px;vertical-align:-3px}
+.def + .sent{margin-top:9px;padding-top:9px;border-top:1px solid #E4DCCB;font-size:16px;font-weight:500;color:#4A5568}
+.sylnote{font:600 11.5px var(--mono);color:#8A96AA;letter-spacing:.05em;margin-bottom:14px}
+
+.tilewrap{position:relative;margin:0 0 4px}
+.tiles{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;padding:4px 0}
+.syl{display:flex;gap:4px}
+.tile{width:30px;height:40px;border-bottom:3px solid #C9BFA9;display:grid;place-items:center;
+  font-family:var(--disp);font-size:23px;font-weight:750;color:var(--ink);text-transform:lowercase;
+  transition:border-color .14s,color .14s}
+.tile.clue{color:#A9B3C4;border-bottom-color:#D9D1C0}
+.tile.typed{border-bottom-color:var(--ink)}
+.tile.cursor{border-bottom-color:var(--rose);animation:blink 1s step-end infinite}
+.tile.bad{color:var(--red);border-bottom-color:var(--red)}
+.tile.good{color:var(--lime);border-bottom-color:var(--lime)}
+@keyframes blink{50%{border-bottom-color:transparent}}
+.tilewrap input{position:absolute;inset:0;opacity:0;font-size:16px;border:none;background:transparent;
+  width:100%;height:100%;-webkit-user-select:text}
+.freewrap{margin:18px 0 4px;text-align:center}
+.freein{opacity:1;position:static;height:auto;display:block;margin:0 auto;width:100%;max-width:380px;background:transparent;border:none;border-bottom:3px solid #C9BFA9;
+  font-family:var(--disp);font-size:27px;font-weight:750;color:var(--ink);text-align:center;
+  padding:6px 4px 8px;outline:none;letter-spacing:.02em}
+.freein:focus{border-bottom-color:var(--rose)}
+.freein.bad{color:var(--red);border-bottom-color:var(--red)}
+.freein.good{color:var(--lime);border-bottom-color:var(--lime)}
+.freein::placeholder{color:#CFC6B4;font-weight:500;font-size:20px;letter-spacing:0}
+.listen{display:flex;flex-direction:column;align-items:center;gap:10px;margin:6px 0 4px;
+  background:var(--paper2);border-radius:16px;padding:20px 16px}
+.listen .big{width:74px;height:74px;border-radius:50%;background:var(--rose);display:grid;
+  place-items:center;box-shadow:0 8px 20px rgba(224,112,154,.4);transition:transform .12s}
+.listen .big:active{transform:scale(.94)}
+.listen .big svg{width:30px;height:30px;stroke:#fff;fill:none;stroke-width:2.2}
+.listen .lab{font:700 12px var(--mono);letter-spacing:.11em;text-transform:uppercase;color:#8A96AA}
+.tap{text-align:center;font:600 11.5px var(--mono);color:#A9B3C4;letter-spacing:.06em;margin-top:2px}
+
+.tools{display:flex;gap:8px;margin:16px 0 0}
+.tool{flex:1;border:2px solid #DDD5C4;border-radius:11px;padding:10px;font-size:13.5px;font-weight:700;
+  color:#54607A;background:#fff;display:flex;align-items:center;justify-content:center;gap:7px}
+.tool:hover{border-color:var(--rose)}
+.tool svg{width:15px;height:15px;flex:none}
+.act{display:grid;gap:8px;margin-top:12px}
+.btn{border-radius:12px;padding:13px;font-weight:750;font-size:15px;text-align:center}
+.btn:disabled{opacity:.35;cursor:default}
+.btn.p{background:var(--rose);color:#fff}
+.btn.g{background:var(--lime);color:#0F2216}
+.btn.o{background:#fff;border:2px solid #DDD5C4;color:#54607A}
+.fb{border-radius:12px;padding:12px 14px;margin-top:12px;font-size:14px;animation:pop .22s}
+.fb.no{background:#FDEEEC;border-left:4px solid var(--red);color:#8C3428}
+.fb.yes{background:#EDF8F0;border-left:4px solid var(--lime);color:#265C36}
+.fb strong{display:block;font-family:var(--disp);font-size:15.5px;margin-bottom:2px}
+@keyframes pop{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.reveal{margin-top:12px;background:var(--paper2);border-radius:12px;padding:13px;text-align:center}
+.reveal .word{font-family:var(--disp);font-size:26px;font-weight:800;letter-spacing:.01em}
+.reveal .word i{font-style:normal;color:#B9AF9A;font-weight:400;margin:0 1px}
+.reveal .word b{color:var(--rose)}
+.reveal .cap{font:600 11px var(--mono);color:#8A96AA;letter-spacing:.07em;margin-top:5px}
+
+.score{background:var(--paper);color:var(--ink);border-radius:18px;padding:24px 20px;text-align:center}
+.ring{font-family:var(--disp);font-size:54px;font-weight:800;line-height:1}
+.band{font:700 12px var(--mono);letter-spacing:.14em;text-transform:uppercase;margin-top:5px}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:18px 0 0;text-align:left}
+.stat{background:var(--paper2);border-radius:11px;padding:10px 12px}
+.stat b{display:block;font-family:var(--disp);font-size:21px;font-weight:750}
+.stat span{font:600 10px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:#8A96AA}
+.review{margin:14px 0 0;text-align:left;background:#FDF3DC;border-radius:12px;padding:12px 14px;font-size:14px}
+.review b{display:block;margin-bottom:5px;font-family:var(--disp);font-size:15px}
+.review li{margin-bottom:3px}
+.score .act .btn{width:100%}
+
+.scrim{position:fixed;inset:0;background:rgba(8,12,20,.66);opacity:0;pointer-events:none;
+  transition:opacity .25s;z-index:40}
+.scrim.on{opacity:1;pointer-events:auto}
+.drawer{position:fixed;left:0;right:0;bottom:0;z-index:50;max-height:88vh;background:var(--paper);
+  color:var(--ink);border-radius:20px 20px 0 0;transform:translateY(101%);
+  transition:transform .3s cubic-bezier(.22,.9,.3,1);display:flex;flex-direction:column}
+.drawer.on{transform:none}
+.dhead{background:#B3446E;color:#fff;border-radius:20px 20px 0 0;padding:15px 18px;flex:none;position:relative}
+.dhead h3{font-family:var(--disp);font-size:18px;margin:2px 0 0;font-weight:750}
+.dhead .eyebrow{color:#F5C4D6}
+.x{position:absolute;right:13px;top:13px;width:32px;height:32px;border-radius:9px;
+  background:rgba(255,255,255,.2);display:grid;place-items:center}
+.x svg{width:14px;height:14px;stroke:#fff;stroke-width:2.5}
+.dbody{overflow-y:auto;padding:14px 18px 22px}
+.we{background:var(--paper2);border-radius:11px;padding:11px 13px;margin-bottom:8px}
+.we .h{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.we .w{font-family:var(--disp);font-size:17px;font-weight:800}
+.we .w b{color:var(--rose)}
+.we .s{font:600 11px var(--mono);color:#8A96AA}
+.we .d{font-size:13.5px;color:#4A5568;margin-top:3px}
+.we .ex{font-size:13px;color:#7A8598;margin-top:5px;font-style:italic}
+.dfoot{flex:none;padding:11px 18px calc(13px + env(safe-area-inset-bottom));
+  border-top:1px solid #DDD5C4;background:var(--paper)}
+.dfoot .btn{width:100%}
+footer{margin:32px 0 0;padding-top:15px;border-top:1px solid var(--line);color:#7D8A9E;
+  font-size:11.5px;text-align:center}
+.hide{display:none!important}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<div id="home" class="wrap">
+  <a class="hublink" href="../../">&lsaquo; All subjects</a>
+  <header>
+    <div class="eyebrow" style="margin-top:14px">Spelling &middot; Week 2</div>
+    <h1>List <em>2</em></h1>
+    <div class="rule">Rule: <b>syllabication with double consonants</b> &mdash; ten of these twelve words hide a doubled letter.</div>
+  </header>
+  <div class="grid" id="levels"></div>
+  <button class="listbtn" id="showlist">Study the twelve words first</button>
+  <footer>Twelve words, three ways. Test Friday, Aug 28.</footer>
+</div>
+
+<div id="play" class="wrap hide">
+  <div class="pagehead">
+    <button class="back" id="quit" aria-label="Back">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+    </button>
+    <div class="t"><strong id="lname"></strong><span id="lclue"></span></div>
+  </div>
+  <div class="dots" id="dots"></div>
+  <div class="card" id="card"></div>
+</div>
+
+<div id="done" class="wrap hide">
+  <a class="hublink" href="../../">&lsaquo; All subjects</a>
+  <div class="score" id="scorebox" style="margin-top:16px"></div>
+</div>
+
+<div class="scrim" id="scrim"></div>
+<div class="drawer" id="drawer" role="dialog" aria-modal="true" aria-label="Word list">
+  <div class="dhead">
+    <div class="eyebrow">Spelling List 2</div>
+    <h3>All twelve words</h3>
+    <button class="x" id="dclose" aria-label="Close">
+      <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+  <div class="dbody" id="dbody"></div>
+  <div class="dfoot"><button class="btn p" id="dgo">Close</button></div>
+</div>
+
+<script>
+/* Spelling List 2 — Week 2, 8/24–8/28. Test Friday 8/28/26.
+   Rule: Syllabication with Double Consonants.
+   "___" in a sentence marks where the word belongs. */
+const DATA = {
+  title: "Spelling List 2",
+  rule: "Syllabication with Double Consonants",
+  week: "Week 2 \u00b7 Test Friday, Aug 28",
+  words: [
+    { w:"questionnaire", syl:["ques","tion","naire"], pos:"n",
+      def:"a written set of questions used to collect information from people",
+      sent:"Before the field trip, every family had to fill out a ___ about food allergies." },
+    { w:"accumulate", syl:["ac","cu","mu","late"], pos:"v",
+      def:"to gather or collect something gradually over time",
+      sent:"If you never clean the gutters, wet leaves will ___ until the rain has nowhere to go." },
+    { w:"successor", syl:["suc","ces","sor"], pos:"n",
+      def:"a person who takes over a position or job after someone else",
+      sent:"When the principal retired in June, the school board spent all summer choosing her ___." },
+    { w:"disappearance", syl:["dis","ap","pear","ance"], pos:"n",
+      def:"the act of becoming impossible to see or find",
+      sent:"The magician's best trick was the ___ of a bicycle from the middle of the stage." },
+    { w:"essential", syl:["es","sen","tial"], pos:"adj",
+      def:"absolutely necessary or extremely important",
+      sent:"Water is ___ for every living thing; nothing survives long without it." },
+    { w:"accommodate", syl:["ac","com","mo","date"], pos:"v",
+      def:"to provide enough space or meet someone's needs",
+      sent:"The waiter pushed three tables together to ___ the whole birthday party." },
+    { w:"necessity", syl:["ne","ces","si","ty"], pos:"n",
+      def:"something that is needed or required",
+      sent:"On a camping trip a flashlight is not a luxury, it is a ___." },
+    { w:"dilemma", syl:["di","lem","ma"], pos:"n",
+      def:"a difficult situation in which a person must choose between two or more options",
+      sent:"Ana faced a ___: she could go to the concert or finish her science project, but not both." },
+    { w:"occasional", syl:["oc","ca","sion","al"], pos:"adj",
+      def:"happening sometimes, but not regularly or often",
+      sent:"Apart from an ___ rainy afternoon, the whole month was warm and clear." },
+    { w:"assistance", syl:["as","sis","tance"], pos:"n",
+      def:"help or support given to someone",
+      sent:"Jamal asked the librarian for ___ in finding a book about volcanoes." },
+    { w:"agrochemical", syl:["ag","ro","chem","i","cal"], pos:"n", root:true,
+      def:"a chemical, such as a fertilizer or pesticide, used in agriculture",
+      sent:"The farmer sprayed an ___ on the corn to keep the beetles away." },
+    { w:"agronomy", syl:["a","gron","o","my"], pos:"n", root:true,
+      def:"the science of soil management and growing crops",
+      sent:"Priya wants to study ___ so she can help farmers grow more food from the same soil." }
+  ],
+  root: { stem:"agr", means:"field" },
+  /* prompt: what he reads.  clue: how many letters he gets. */
+  levels: [
+    { id:"l1", name:"Warm up", prompt:"def", input:"boxes", clue:"first",
+      tag:"Meaning \u00b7 first letter",
+      blurb:"Read what the word means. The first letter is filled in and the boxes are grouped by syllable." },
+    { id:"l2", name:"In a sentence", prompt:"sent", input:"boxes", clue:"first",
+      tag:"Sentence \u00b7 first letter",
+      blurb:"A sentence with the word missing. Work out which word fits, then spell it." },
+    { id:"l3", name:"Step up", prompt:"both", input:"free",
+      tag:"Listen \u00b7 meaning and sentence",
+      blurb:"Hear the word. You get the meaning and a sentence to lean on \u2014 but no boxes, no letters, no clue how long it is." },
+    { id:"l4", name:"Test day", prompt:"none", input:"free",
+      tag:"Listen \u00b7 nothing else",
+      blurb:"Dictation, the way Friday works. Hear it, spell it. No meaning, no sentence, no hints." }
+  ]
+};
+
+
+const COLORS=["#63BE7B","#5AA9DB","#E9B23C","#E0709A"];
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]];}return a;};
+
+/* positions that are part of a doubled letter */
+function doubles(w){const s=new Set();for(let i=0;i<w.length-1;i++) if(w[i]===w[i+1]){s.add(i);s.add(i+1);}return s;}
+/* which letters are given away, by level */
+function clueSet(w,mode){
+  if(mode==="first")  return new Set([0]);
+  if(mode==="none")   return new Set();
+  const d=doubles(w), out=new Set();          /* scatter: never a doubled letter */
+  for(let i=1;i<w.length;i++) if(i%3===1 && !d.has(i)) out.add(i);
+  return out;
+}
+const LVL = () => DATA.levels[LV];
+/* syllable grouping is the scaffold; it drops away once no letters are given */
+const grouped = () => LVL().clue !== "none";
+
+let LV=0, order=[], idx=0, typed="", tries=0, log=[], shown=false;
+const best={};
+
+/* ---------- home ---------- */
+function home(){
+  $("levels").innerHTML = DATA.levels.map((l,i)=>`
+    <button class="lv" style="--c:${COLORS[i]}" data-l="${i}">
+      <span class="tag">${esc(l.tag)}</span>
+      <h3>${esc(l.name)}</h3>
+      <p>${esc(l.blurb)}</p>
+      <span class="go">${DATA.words.length} words &rsaquo;</span>
+      ${best[l.id]!=null?`<span class="badge">best ${best[l.id]}%</span>`:""}
+    </button>`).join("");
+  [...document.querySelectorAll(".lv")].forEach(b=>b.onclick=()=>start(+b.dataset.l));
+  show("home");
+}
+function show(w){["home","play","done"].forEach(x=>$(x).classList.toggle("hide",x!==w));window.scrollTo(0,0);}
+
+/* ---------- round ---------- */
+function start(l){
+  LV=l; order=shuffle(DATA.words.map((_,i)=>i)); idx=0; log=[];
+  $("lname").textContent=DATA.levels[l].name;
+  $("lclue").textContent=DATA.levels[l].tag;
+  show("play"); render();
+}
+
+function render(){
+  typed=""; tries=0; shown=false;
+  const w=DATA.words[order[idx]];
+  const free = LVL().input==="free";
+  $("dots").innerHTML=order.map((_,i)=>{
+    const r=log[i];
+    return `<span class="dot ${i===idx?"now":r===undefined?"":r?"ok":"miss"}"></span>`;}).join("");
+
+  $("card").innerHTML=`
+    <div class="meta">
+      <span class="qn">Word ${idx+1} of ${order.length}</span>
+      ${LVL().prompt==="none"?`<span class="qn" style="color:#E0709A">Dictation</span>`:""}
+      ${LVL().prompt!=="none"?`<span class="postag" data-p="${w.pos}">${w.pos}.</span>`:""}
+      ${w.root && LVL().prompt!=="none"?`<span class="rootpill">ROOT AGR = FIELD</span>`:""}
+    </div>
+    ${LVL().prompt==="def"||LVL().prompt==="both"?`<p class="def">${esc(w.def)}</p>`:""}
+    ${LVL().prompt==="sent"||LVL().prompt==="both"?`<p class="sent">${sentenceHTML(w)}</p>`:""}
+    ${free?`
+      <div class="listen">
+        <button class="big" id="say" aria-label="Hear the word">
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M15.5 8.5a5 5 0 010 7"/><path d="M19 5a9 9 0 010 14"/></svg>
+        </button>
+        <span class="lab">Tap to hear it again</span>
+      </div>
+      <div class="freewrap">
+        <input class="freein" id="typed" type="text" inputmode="text" autocomplete="off"
+               autocapitalize="off" autocorrect="off" spellcheck="false"
+               placeholder="spell it here" aria-label="Type the word">
+      </div>
+      <div class="tools"><button class="tool" id="clear">Clear</button></div>
+    `:`
+      <div class="sylnote">${w.syl.length} syllables \u2014 the gaps show where they break</div>
+      <div class="tilewrap">
+        <div class="tiles" id="tiles"></div>
+        <input id="typed" type="text" inputmode="text" autocomplete="off"
+               autocapitalize="off" autocorrect="off" spellcheck="false" aria-label="Type the word">
+      </div>
+      <div class="tap" id="tap">tap the letters to start typing</div>
+      <div class="tools">
+        <button class="tool" id="say">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M15.5 8.5a5 5 0 010 7"/><path d="M19 5a9 9 0 010 14"/></svg>
+          Hear it
+        </button>
+        <button class="tool" id="clear">Clear</button>
+      </div>
+    `}
+    <div class="act"><button class="btn p" id="go" disabled>Check spelling</button></div>
+    <div id="fb"></div>`;
+
+  const inp=$("typed");
+  inp.value="";
+  inp.addEventListener("input",()=>{
+    typed=inp.value.toLowerCase().replace(/[^a-z]/g,"");
+    if(!free) typed=typed.slice(0,w.w.length);
+    inp.value=typed; inp.classList.remove("bad");
+    $("fb").innerHTML=""; paint();
+  });
+  inp.addEventListener("keydown",e=>{ if(e.key==="Enter" && !$("go").disabled) checkNow(); });
+  $("say").onclick=()=>speak(w.w);
+  $("clear").onclick=()=>{ typed=""; inp.value=""; inp.classList.remove("bad");
+                           $("fb").innerHTML=""; paint(); inp.focus(); };
+  $("go").onclick=checkNow;
+  if(!free){ $("tiles").onclick=()=>inp.focus(); $("tap").onclick=()=>inp.focus(); }
+  paint();
+  setTimeout(()=>inp.focus(),80);
+  if(free) setTimeout(()=>speak(w.w),320);          /* dictation starts on its own */
+}
+
+function paint(){
+  const w=DATA.words[order[idx]];
+  if(LVL().input==="free"){ $("go").disabled = typed.length<2; return; }
+  const clue=clueSet(w.w,LVL().clue);
+  let i=0;
+  const tile=(ch,pos)=>{
+    const isClue=clue.has(pos) && pos>=typed.length;
+    const shownCh = pos<typed.length ? typed[pos] : (isClue?ch:"");
+    const cls=["tile"];
+    if(pos<typed.length) cls.push("typed");
+    else if(isClue) cls.push("clue");
+    if(pos===typed.length) cls.push("cursor");
+    return `<span class="${cls.join(" ")}">${esc(shownCh)}</span>`;
+  };
+  if(grouped()){
+    $("tiles").innerHTML = w.syl.map(s=>{
+      const inner=[...s].map(ch=>tile(ch,i++)).join("");
+      return `<span class="syl">${inner}</span>`;}).join("");
+  } else {
+    $("tiles").innerHTML = `<span class="syl">${[...w.w].map(ch=>tile(ch,i++)).join("")}</span>`;
+  }
+  $("go").disabled = typed.length!==w.w.length;
+  $("tap").style.visibility = typed.length?"hidden":"visible";
+}
+
+function sentenceHTML(w){
+  const [a,b] = w.sent.split("___");
+  return esc(a)+`<span class="blank"></span>`+esc(b);
+}
+
+/* ---------- speech ---------- */
+function speak(word){
+  if(!("speechSynthesis" in window)){ flash("This browser can't read the word out loud."); return; }
+  speechSynthesis.cancel();
+  const u=new SpeechSynthesisUtterance(word);
+  u.rate=.75; u.pitch=1; u.lang="en-US";
+  speechSynthesis.speak(u);
+}
+function flash(msg){ $("fb").innerHTML=`<div class="fb no"><strong>Hmm.</strong>${esc(msg)}</div>`; }
+
+/* ---------- checking ---------- */
+function checkNow(){
+  const w=DATA.words[order[idx]], free=LVL().input==="free";
+  if(free ? typed.length<2 : typed.length!==w.w.length) return;
+  tries++;
+  if(typed===w.w){ good(); return; }
+  const dbl=doubles(w.w).size>0;
+
+  if(free){
+    /* say nothing about length or position — that would hand him the shape */
+    $("typed").classList.add("bad");
+    $("fb").innerHTML=`<div class="fb no"><strong>Not quite.</strong>Tap the speaker and listen again.${
+      dbl && tries===1?" Listen for the doubled letter \u2014 that is the rule this week.":""
+    }</div>`;
+    setTimeout(()=>speak(w.w),260);
+  } else {
+    const wrong=[...typed].filter((c,i)=>c!==w.w[i]).length;
+    [...document.querySelectorAll(".tile")].forEach((t,i)=>{ if(typed[i]!==w.w[i]) t.classList.add("bad"); });
+    $("fb").innerHTML=`<div class="fb no"><strong>Not quite.</strong>${
+      wrong===1?"One letter is off.":wrong+" letters are off."
+    }${dbl && tries===1?" Remember the rule \u2014 this word has a doubled letter.":""}</div>`;
+  }
+
+  const act=$("card").querySelector(".act");
+  if(tries>=2 && !$("show")) act.insertAdjacentHTML("beforeend",
+    `<button class="btn o" id="show">Show me the word</button>`);
+  if($("show")) $("show").onclick=()=>{ shown=true; good(true); };
+  setTimeout(()=>{ typed=""; const t=$("typed"); if(t){ t.value=""; t.classList.remove("bad"); }
+                   paint(); if(t) t.focus(); }, free?1400:900);
+}
+
+function good(revealed){
+  const w=DATA.words[order[idx]];
+  log[idx] = revealed ? false : (tries===1);
+  const d=doubles(w.w);
+  let i=0;
+  const pretty = w.syl.map(s=>[...s].map(ch=>{
+    const pos=i++; return d.has(pos)?`<b>${ch}</b>`:ch;
+  }).join("")).join("<i>\u00b7</i>");
+  $("card").querySelector(".act").innerHTML=
+    `<button class="btn g" id="next">${idx===order.length-1?"See how I did":"Next word"}</button>`;
+  $("fb").innerHTML=`<div class="fb ${revealed?"no":"yes"}"><strong>${
+    revealed?"Here it is.":(tries===1?"Right, first try.":"Got it.")
+  }</strong>${d.size?"The doubled letters are in pink. That is the part the test is looking for.":"No double consonant in this one \u2014 it is a root word."}</div>
+  <div class="reveal"><div class="word">${pretty}</div>
+    <div class="cap">${w.syl.length} syllables${w.root?" \u00b7 agr = field":""}</div></div>`;
+  [...document.querySelectorAll(".tile")].forEach(t=>{t.classList.remove("bad","cursor");t.classList.add("good");});
+  const t=$("typed");
+  if(t){ if(LVL().input==="free"){ t.value=w.w; t.classList.remove("bad"); t.classList.add("good"); t.readOnly=true; }
+         t.blur(); }
+  $("next").onclick=()=>{ if(idx===order.length-1) finish(); else { idx++; render(); window.scrollTo(0,0);} };
+  speak(w.w);
+}
+
+function finish(){
+  const first=log.filter(x=>x===true).length;
+  const pct=Math.round(first/order.length*100);
+  const band=pct>=90?["Ready for Friday","#63BE7B"]:pct>=75?["Nearly there","#5AA9DB"]:pct>=50?["Keep going","#E9B23C"]:["Run it again","#E0685A"];
+  const missed=order.map((o,i)=>log[i]?null:DATA.words[o].w).filter(Boolean);
+  best[DATA.levels[LV].id]=Math.max(best[DATA.levels[LV].id]||0,pct);
+  $("scorebox").innerHTML=`
+    <div class="ring" style="color:${band[1]}">${pct}%</div>
+    <div class="band" style="color:${band[1]}">${band[0]}</div>
+    <div class="stats">
+      <div class="stat"><b>${first} / ${order.length}</b><span>First try</span></div>
+      <div class="stat"><b>${DATA.levels[LV].name}</b><span>Level</span></div>
+    </div>
+    ${missed.length?`<div class="review"><b>Practise these again</b><ul>${missed.map(m=>`<li>${esc(m)}</li>`).join("")}</ul></div>`
+                   :`<div class="review"><b>Every word first try.</b>Try the next level up.</div>`}
+    <div class="review"><b>Now say it out loud</b>Pick any three words and use each one in a sentence \u2014 that is the other half of Friday's test.</div>
+    <div class="act">
+      <button class="btn p" id="again">Run this level again</button>
+      ${LV<DATA.levels.length-1?`<button class="btn o" id="up">Try ${esc(DATA.levels[LV+1].name)}</button>`:""}
+      <button class="btn o" id="pick">Pick a level</button>
+    </div>`;
+  $("again").onclick=()=>start(LV);
+  if($("up")) $("up").onclick=()=>start(LV+1);
+  $("pick").onclick=home;
+  show("done");
+}
+
+/* ---------- word list ---------- */
+function openList(){
+  $("dbody").innerHTML = DATA.words.map(w=>{
+    const d=doubles(w.w); let i=0;
+    const pretty=w.syl.map(s=>[...s].map(ch=>{const p=i++;return d.has(p)?`<b>${ch}</b>`:ch;}).join("")).join("\u00b7");
+    return `<div class="we">
+      <div class="h"><span class="w">${pretty}</span><span class="s">${w.pos}.</span>
+        ${w.root?`<span class="s">agr = field</span>`:""}</div>
+      <div class="d">${esc(w.def)}</div>
+      <div class="ex">${esc(w.sent.replace("___",w.w))}</div></div>`;}).join("");
+  $("dbody").scrollTop=0;
+  $("drawer").classList.add("on"); $("scrim").classList.add("on");
+}
+const closeD=()=>{ $("drawer").classList.remove("on"); $("scrim").classList.remove("on"); };
+$("dclose").onclick=closeD; $("scrim").onclick=closeD; $("dgo").onclick=closeD;
+$("showlist").onclick=openList;
+document.addEventListener("keydown",e=>{ if(e.key==="Escape") closeD(); });
+$("quit").onclick=home;
+home();
+</script>
+</body>
+</html>

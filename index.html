@@ -7,7 +7,7 @@
 <style>
 :root{
   --bg:#171A1C; --bg2:#1F2427; --line:#31383C; --paper:#F4F1E9; --dim:#96A2A6;
-  --history:#E0A83C; --science:#3FB4CE; --reading:#5FB88A; --vocab:#B07ACC; --math:#E8894A;
+  --history:#E0A83C; --science:#3FB4CE; --reading:#5FB88A; --vocab:#B07ACC; --spelling:#E0709A; --math:#E8894A;
   --disp:"Avenir Next","Segoe UI Variable Display","Trebuchet MS",system-ui,sans-serif;
   --body:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
   --mono:ui-monospace,"SF Mono","Cascadia Mono",Consolas,monospace;
@@ -101,6 +101,11 @@ const SUBJECTS = [
     chapters:[
       { n:1, t:"Story 1" }, { n:2, t:"Story 2" },
       { n:3, t:"Story 3" }, { n:4, t:"Story 4" }
+    ]},
+  { name:"Spelling", c:"var(--spelling)", book:"Weekly spelling lists",
+    chapters:[
+      { n:2, t:"List 2 \u2014 Double Consonants", note:"Four nights, test Friday Aug 28", href:"spelling/list2/" },
+      { n:3, t:"List 3" }, { n:4, t:"List 4" }
     ]},
   { name:"Vocabulary", c:"var(--vocab)", book:"Wordly Wise 3000, Book 6",
     chapters:[
