@@ -18,7 +18,9 @@ Pages is configured: Deploy from a branch → `main` → `/(root)`. Don't touch 
 study/
 ├── index.html                          hub — Study Craft title screen, gear, subjects
 ├── history/g5-maya-ch1/index.html      CKHG Maya Ch1  (615 KB, has 3 embedded photos)
+├── history/g5-maya-ch2/index.html      CKHG Maya Ch2  (Maya Science and Daily Life)
 ├── science/g5-matter-ch1/index.html    CKSci Matter Ch1
+├── science/g5-matter-ch2/index.html    CKSci Matter Ch2 (Applying Properties)
 ├── spelling/list2/index.html           Spelling List 2
 ├── vocabulary/ww6-lesson1/index.html   Wordly Wise Book 6 List 1
 ├── assets/                             Minecraft sprites (wired up)
@@ -54,6 +56,84 @@ first for the miss-tracking design.
 ### History — "The Hieroglyphic Stairway" (CKHG G5 U2 Ch1)
 Five practice sets × seven formats. Built earlier; see the older handoff notes in the repo
 history if needed. 615 KB because three photos are base64'd in.
+
+### History — Chapter 2, "Maya Science and Daily Life"
+
+Built from the Student Reader pp. 10–19 and the Chapter 2 Teacher Guide.
+Three sets of eight, one per section of the chapter: *Wisdom in the Sky*
+(pp. 10–14), *How They Lived* (pp. 14–17), *Where Did Everybody Go?*
+(pp. 18–19). Not parallel forms — each covers different material — so the
+card list with badges, not the chip strip.
+
+**Teacher's Guide findings:**
+- The Big Question is *"Why is the 365-day solar calendar employed by the Maya
+  particularly impressive?"*
+- Core Vocabulary is exactly five: **astronomy, leap year, equinox, "initiation
+  ceremony", priest**. Every one gets its own question, worded from the TG's own
+  definition. Verified by a coverage check in the build tests.
+- The TG's four Primary Focus Objectives are achievements, how religious belief
+  drove the science, specific discoveries, and the vocabulary — the three
+  sets map onto those.
+- TG question types are labelled LITERAL / INFERENTIAL / EVALUATIVE / CHALLENGE.
+  The literal and inferential ones are mirrored directly; several answers are
+  the TG's own model answers.
+
+**The Big Question is built, not written.** Every set ends with six evidence
+tiles; he picks the three that actually answer it. The three correct ones are
+exactly the three points the TG's Check for Understanding asks students to cite.
+The three distractors are all **true statements from the reader** that simply
+do not answer this question — pok-ta-pok, mud-and-grass huts, the crops —
+so the skill being tested is telling evidence from mere fact, which a blank
+text box never tests. Get it right and the full sentence assembles itself, with
+the numbers underneath: Maya 365.2420, modern 365.2422, **17 seconds apart per
+year** — about one day's drift in five thousand years. That number is the
+thing worth him remembering.
+
+There is also a **sequencing question** (put the Maya path from childhood to
+adulthood back in order) using up/down buttons rather than drag, since drag is
+the fiddliest thing on a phone and this needed no dragging to work.
+
+### Science — Chapter 2, "Applying Properties of Matter"
+
+**A correction to this document.** Earlier notes said CKSci Chapter 2 was the
+mystery powder investigation and would suit an evidence-and-conclusions format.
+Half right. The *Student Reader* chapter is **the design process** — a rusty
+swing chain, criteria, constraints, and five ordered steps. The powders belong
+to the Teacher Guide's three-day hands-on investigation in the same lesson. The
+app covers both, because the lesson does.
+
+SR Chapter 2 = **TG Lesson 3**, the same one-lesson offset as Chapter 1.
+
+- Big Question: *"How can I use properties as evidence to identify matter?"*
+- **Core Vocabulary is exactly two: design process, solution.** Same shape as
+  Chapter 1's two. Both are tested.
+- Four sets of six: *Five Steps, In Order* (the design process), *The Swing
+  Chain* (criteria vs constraints), *Five White Powders* (reading evidence),
+  *Be the Engineer* (capstone). Dragon sits on m4.
+
+**The ordering question Keith asked for lives here** and is not a gimmick —
+the design process is a genuine five-step procedure with its own diagram in the
+reader: Define the Problem → Plan a Solution → Make a Model → Test the
+Model → Evaluate and Redesign. Up/down buttons, not drag.
+
+**The lab bench.** Questions that need evidence display the Teacher Guide's own
+results table — what each of the five powders does in water and in vinegar —
+and he reasons from it rather than recalling it. The table is one object (`EV`)
+used by every bench question, so it cannot drift out of sync with the answers.
+
+**The best teaching moment in the chapter, and the app is built around it:**
+salt and sugar behave *identically* in water — both just dissolve. So one test
+cannot tell them apart. In vinegar, salt shows no change and sugar partly
+dissolves. Two consecutive questions walk him through exactly that: first
+"you have done no other test, what can you say?" (answer: it is either salt or
+sugar), then the vinegar result settles it. That pair is the Big Question in
+miniature and it is worth more than any definition question.
+
+**The capstone is the lesson's own design problem:** a hole in a wall. Plaster
+absorbs water and hardens, so plaster wins. Then a claim-and-evidence build —
+pick the two observations that support the claim, from five real results. The
+distractors are all true observations *about other samples*, so the thing being
+tested is that evidence has to be about the sample you are claiming about.
 
 ### Science — "The Property Bench" (CKSci G5 Investigating Matter Ch1)
 Four missions × six questions. Formats: illustrated multiple choice, tap-the-instrument,
@@ -322,11 +402,18 @@ Never drag the `study` folder itself into a repo named `study` — you get `stud
 1. **Watch how he actually uses the hub.** The gear panel and "worth another
    look" are new and untested on a real ten-year-old. The open question is
    whether the tool ladder motivates or whether he beelines past it.
-2. **Reading — Sherlock Holmes.** Keith's class started it; he was going to check the cover.
-   *Which edition matters a lot:* the original Conan Doyle canon is public domain in the US
-   (last stories cleared in 2023), so passages can be quoted freely. An adapted/abridged
-   school edition is under copyright and can't be reproduced. Hub already has a Reading
-   placeholder with 4 empty slots.
+2. **Reading — Sherlock Holmes. The licence question is settled, and well.**
+   The book is Core Knowledge's own *Core Classics* edition, "Sherlock Holmes,
+   Abridged for Young Readers", and it is released under **CC BY-NC-SA 4.0** —
+   the same licence as CKHG and CKSci. So it is an abridgement (which would
+   normally be under copyright) but Core Knowledge's abridgement, freely
+   quotable under the attribution already in every footer. **Passages can be
+   used directly.**
+   It contains five *stories*, not chapters: The Speckled Band (p. 1),
+   The Red-Headed League (p. 45), The Adventure of the Engineer's Thumb (p. 87),
+   The Adventure of the Blue Carbuncle (p. 126), The Adventure of the Copper
+   Beeches (p. 165). Worth confirming with Keith whether "chapters one and two"
+   means the first two stories.
 3. **Next week's spelling list** — same seven-level structure, swap the words.
 4. **CKSci Chapter 2** (mystery powder) — better as applied evidence-and-conclusions than a quiz.
 5. **CKHG Maya Chapters 2–7**, then a cumulative Unit 2 review matching the real

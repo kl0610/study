@@ -616,11 +616,13 @@ newSplash();
    To add a chapter: set its href and its ids. No href shows it as "soon". */
 const SUBJECTS = [
   { name:"History", ore:"gold", c:"var(--history)", app:"history",
+    /* chapters may record under different app keys — `app` on a chapter wins */
     book:"CKHG Grade 5, Unit 2 — Maya, Aztec, and Inca Civilizations",
     chapters:[
       { n:1, t:"The Maya: Rainforest Civilization", note:"Hieroglyphic Stairway",
         href:"history/g5-maya-ch1/", ids:["set0","set1","set2","set3","set4"] },
-      { n:2, t:"Maya Science and Daily Life" },
+      { n:2, t:"Maya Science and Daily Life", note:"Wisdom in the Sky",
+        href:"history/g5-maya-ch2/", app:"history2", ids:["s1","s2","s3"] },
       { n:3, t:"Chapter 3" }, { n:4, t:"Chapter 4" }, { n:5, t:"Chapter 5" },
       { n:6, t:"Chapter 6" }, { n:7, t:"Chapter 7" }
     ]},
@@ -629,7 +631,8 @@ const SUBJECTS = [
     chapters:[
       { n:1, t:"Properties of Matter", note:"The Property Bench",
         href:"science/g5-matter-ch1/", ids:["m1","m2","m3","m4"] },
-      { n:2, t:"Applying Properties of Matter" },
+      { n:2, t:"Applying Properties of Matter", note:"The design process",
+        href:"science/g5-matter-ch2/", app:"science2", ids:["m1","m2","m3","m4"] },
       { n:3, t:"Too Small to Be Seen" },
       { n:4, t:"How Matter Changes" },
       { n:5, t:"Matter Can Change Chemically" },
@@ -694,7 +697,7 @@ document.getElementById("subjects").innerHTML = SUBJECTS.map(s=>{
            <span class="t">${esc(c.t)}</span>
            <span class="stat"><b>&mdash;</b><small>not built</small></span>
            <span class="go">SOON</span></span></li>`;
-      const p = progress(s.app, c.ids);
+      const p = progress(c.app || s.app, c.ids);
       const all = p && p.done===p.of;
       const stat = `<span class="stat${all?" all":(p&&p.done?" part":"")}">
            <b>${all?"CLEARED":(p?`${p.done} / ${p.of}`:"&mdash;")}</b>

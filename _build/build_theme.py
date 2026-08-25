@@ -112,6 +112,17 @@ def vocab(s):
     return p
 
 
+def sci2(s):
+    """CKSci Chapter 2 — written theme-aware; config only."""
+    return Patcher(s, "science2")
+
+
+def hist2(s):
+    """CKHG Chapter 2 — written already knowing about the theme, so it needs
+    only the config; every hook is in the source."""
+    return Patcher(s, "history2")
+
+
 def hist(s):
     p = Patcher(s, "history")
     # without viewport-fit=cover, env(safe-area-inset-*) resolves to 0, so the
@@ -164,6 +175,13 @@ APPS = {
                                            dragon=["sheet"])),
     "history/g5-maya-ch1":    (hist,  dict(app="history",    shake="#stela",  lift=None,
                                            dragon=None)),
+    # Ch2's three sets are distinct sections of the chapter, not parallel forms,
+    # so the dragon sits on the last one — the hardest run.
+    "history/g5-maya-ch2":    (hist2, dict(app="history2",   shake="#card",   lift=None,
+                                           dragon=["s3"])),
+    # m4 "Be the Engineer" is the capstone — the dragon lives there.
+    "science/g5-matter-ch2":  (sci2,  dict(app="science2",   shake="#card",   lift=None,
+                                           dragon=["m4"])),
 }
 
 # ---------------------------------------------------------------- machinery
