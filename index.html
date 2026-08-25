@@ -3,152 +3,719 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Study — pick a subject</title>
+<title>Study Craft — fifth grade</title>
+<meta name="theme-color" content="#1A1A1D">
 <style>
 :root{
-  --bg:#171A1C; --bg2:#1F2427; --line:#31383C; --paper:#F4F1E9; --dim:#96A2A6;
-  --history:#E0A83C; --science:#3FB4CE; --reading:#5FB88A; --vocab:#B07ACC; --spelling:#E0709A; --math:#E8894A;
-  --disp:"Avenir Next","Segoe UI Variable Display","Trebuchet MS",system-ui,sans-serif;
+  /* palette pulled from Minecraft's own blocks and ores, not a generic scheme */
+  --dirt:#7B5432; --dirt-2:#6A4728; --dirt-3:#8A6039;
+  --stone:#7D7D7D; --stone-d:#4A4A4A;
+  --grass:#63A93E; --grass-d:#4A8230;
+  --panel:#26262A; --panel-2:#1A1A1D; --line:#3A3A40;
+  --paper:#E9E6DE; --dim:#9A968D;
+  --gold:#FCFC54;          /* splash text */
+  --heart:#D2423B;
+  --end:#A855C8;           /* end portal — the boss accent */
+  /* one ore per subject */
+  --history:#F2B233; --science:#4AEDD9; --reading:#42D18C;
+  --spelling:#E0574F; --vocab:#B57CE0; --math:#E08A4B;
+  --disp:"Trebuchet MS","Segoe UI",Verdana,system-ui,sans-serif;
   --body:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
   --mono:ui-monospace,"SF Mono","Cascadia Mono",Consolas,monospace;
 }
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-body{margin:0;background:var(--bg);color:var(--paper);font-family:var(--body);line-height:1.55;
-  background-image:radial-gradient(circle at 15% -5%,#242B2E 0%,transparent 55%);
-  background-attachment:fixed;padding:0 0 70px}
-.wrap{max-width:660px;margin:0 auto;padding:0 18px}
-.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim)}
-header{padding:44px 0 26px}
-h1{font-family:var(--disp);font-size:clamp(31px,8vw,44px);line-height:1.02;margin:9px 0 8px;
-  letter-spacing:-.025em;font-weight:800}
-h1 em{font-style:normal;color:var(--history)}
-.sub{color:var(--dim);font-size:15px;margin:0;max-width:46ch}
+img{image-rendering:pixelated}
+body{margin:0;background:var(--panel-2);color:var(--paper);font-family:var(--body);
+  line-height:1.55;padding:0 0 60px}
+.wrap{max-width:660px;margin:0 auto;padding:0 16px}
 
-.subj{background:var(--bg2);border:1px solid var(--line);border-radius:18px;
-  margin-bottom:13px;position:relative;overflow:hidden;transition:border-color .18s}
-.subj::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--c);z-index:1}
+/* ---------- the title screen ---------- */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
+  clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.title{margin:0 0 22px;border-bottom:5px solid var(--grass-d);
+  /* fallback dirt, visible only if banner.jpg fails */
+  background-color:var(--dirt);
+  background-image:
+    repeating-linear-gradient(90deg, rgba(0,0,0,.16) 0 8px, rgba(0,0,0,0) 8px 16px),
+    repeating-linear-gradient(0deg,  rgba(0,0,0,.16) 0 8px, rgba(0,0,0,0) 8px 16px);
+}
+.banner{display:block;width:100%;height:auto;max-height:44vh;object-fit:cover;
+  object-position:center top}
+.titlebar{background:var(--panel-2);padding:14px 16px 16px;text-align:center;
+  border-top:3px solid #101012}
+#splash{
+  display:inline-block;margin:0;padding:2px 6px;border:0;background:none;cursor:pointer;
+  font:800 15px var(--disp);color:var(--gold);text-shadow:2px 2px 0 #3E3E10;
+  transform:rotate(-3deg);animation:bob 1.1s ease-in-out infinite;
+}
+#splash:focus-visible{outline:3px solid #fff;outline-offset:2px}
+@keyframes bob{0%,100%{transform:rotate(-3deg) scale(1)}50%{transform:rotate(-3deg) scale(1.06)}}
+.rule{margin:12px auto 0;max-width:40ch;font-size:12.5px;line-height:1.5;color:var(--dim)}
+
+/* ---------- your gear: the real hotbar ---------- */
+.gear{background:var(--panel);border:3px solid var(--line);
+  padding:14px 14px 12px;margin-bottom:20px;
+  box-shadow:inset -3px -3px 0 rgba(0,0,0,.35), inset 3px 3px 0 rgba(255,255,255,.05)}
+.gear h2{margin:0 0 10px;font:700 11px var(--mono);letter-spacing:.18em;
+  text-transform:uppercase;color:var(--dim)}
+.hotbar{display:flex;justify-content:center;margin-bottom:10px}
+.slot{position:relative;flex:0 0 auto;width:var(--ss,40px);height:var(--ss,40px);
+  background-size:100% 100%;background-repeat:no-repeat;background-color:transparent;
+  border:0;padding:0;cursor:default}
+.slot[data-on="1"]{cursor:pointer}
+.slot img.tool{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  width:69%;height:69%;object-fit:contain;transition:transform .14s}
+.slot[data-n="9"] img.tool{width:62%;height:62%}
+.slot[data-on="1"]:hover img.tool,
+.slot[data-on="1"]:focus-visible img.tool{transform:translate(-50%,-60%)}
+.slot:focus-visible{outline:2px solid var(--gold);outline-offset:-2px}
+.gearline{margin:0;text-align:center;font:700 12.5px var(--mono);color:var(--dim);min-height:1.5em}
+.gearline b{color:var(--gold)}
+.xp{height:9px;margin:11px 2px 0;background:#141416;border:2px solid #0D0D0F;overflow:hidden}
+.xp i{display:block;height:100%;background:var(--grass);
+  box-shadow:inset 0 -3px 0 rgba(0,0,0,.25);transition:width .7s cubic-bezier(.2,.9,.3,1)}
+
+/* ---------- subjects ---------- */
+.subj{background:var(--panel);border:3px solid var(--line);
+  margin-bottom:11px;position:relative;overflow:hidden;
+  box-shadow:inset -3px -3px 0 rgba(0,0,0,.3), inset 3px 3px 0 rgba(255,255,255,.045)}
+.subj::before{content:"";position:absolute;left:0;top:0;bottom:0;width:6px;background:var(--c);z-index:1}
 .subj[open]{border-color:var(--c)}
-summary{list-style:none;cursor:pointer;padding:17px 19px;display:flex;align-items:center;gap:13px}
+summary{list-style:none;cursor:pointer;padding:15px 16px;display:flex;align-items:center;gap:12px}
 summary::-webkit-details-marker{display:none}
-summary:focus-visible{outline:2px solid var(--c);outline-offset:-3px;border-radius:18px}
-.dot{flex:none;width:34px;height:34px;border-radius:11px;background:var(--c);color:#12171A;
-  display:grid;place-items:center;font:800 14px var(--mono)}
+summary:focus-visible{outline:2px solid var(--c);outline-offset:-3px}
+.ore{flex:none;width:34px;height:34px;background:var(--c);color:#141416;
+  display:grid;place-items:center;font:800 13px var(--mono);
+  box-shadow:inset -3px -3px 0 rgba(0,0,0,.32), inset 3px 3px 0 rgba(255,255,255,.3)}
 .stext{flex:1;min-width:0}
-.subj h2{font-family:var(--disp);font-size:19.5px;margin:0;font-weight:750;line-height:1.2}
-.book{font-size:12.5px;color:var(--dim);margin:2px 0 0;
+.subj h2{font-family:var(--disp);font-size:18.5px;margin:0;font-weight:750;line-height:1.2}
+.book{font-size:12px;color:var(--dim);margin:2px 0 0;
   white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.count{font-family:var(--mono);font-size:10px;letter-spacing:.09em;text-transform:uppercase;
-  color:var(--c);white-space:nowrap;flex:none}
-.caret{flex:none;width:16px;height:16px;color:var(--dim);transition:transform .22s ease}
+.tally{font:700 10px var(--mono);letter-spacing:.09em;text-transform:uppercase;
+  color:var(--c);white-space:nowrap;flex:none;text-align:right}
+.tally small{display:block;color:var(--dim);letter-spacing:.06em}
+.caret{flex:none;width:15px;height:15px;color:var(--dim);transition:transform .22s ease}
 .subj[open] .caret{transform:rotate(90deg)}
 .subj[open] .book{white-space:normal;overflow:visible}
-.inner{padding:0 19px 7px;animation:drop .22s ease}
+.inner{padding:0 16px 6px;animation:drop .22s ease}
 @keyframes drop{from{opacity:0;transform:translateY(-5px)}to{opacity:1;transform:none}}
 ol{list-style:none;margin:0;padding:0}
-li{border-top:1px solid var(--line)}
+li{border-top:2px solid #303036}
 li:first-child{border-top:none}
-a.ch,span.ch{display:flex;align-items:center;gap:12px;padding:12px 2px;text-decoration:none;color:var(--paper)}
-.n{flex:none;width:27px;height:27px;border-radius:8px;background:var(--c);color:#12171A;
-  font:800 12px var(--mono);display:grid;place-items:center}
+a.ch,span.ch{display:flex;align-items:center;gap:11px;padding:11px 2px;
+  text-decoration:none;color:var(--paper)}
+.n{flex:none;width:26px;height:26px;background:var(--c);color:#141416;
+  font:800 11px var(--mono);display:grid;place-items:center;
+  box-shadow:inset -2px -2px 0 rgba(0,0,0,.3), inset 2px 2px 0 rgba(255,255,255,.28)}
 .ch .t{flex:1;min-width:0;font-size:14.5px;font-weight:600}
-.ch .t small{display:block;font:600 10px var(--mono);letter-spacing:.09em;text-transform:uppercase;
-  color:var(--dim);font-weight:600;margin-top:1px}
+.ch .t small{display:block;font:600 10px var(--mono);letter-spacing:.08em;
+  text-transform:uppercase;color:var(--dim);margin-top:1px}
 a.ch .go{flex:none;font:800 11px var(--mono);letter-spacing:.09em;color:var(--c)}
 a.ch:hover .t{text-decoration:underline;text-underline-offset:3px}
-span.ch{opacity:.4}
-span.ch .n{background:transparent;border:1.5px dashed var(--line);color:var(--dim)}
-span.ch .go{flex:none;font:600 10px var(--mono);letter-spacing:.09em;color:var(--dim)}
+span.ch{opacity:.42}
+span.ch .n{background:transparent;box-shadow:inset 0 0 0 2px var(--line);color:var(--dim)}
+span.ch .go{font:600 10px var(--mono);letter-spacing:.09em;color:var(--dim)}
+.done{flex:none;font:800 10.5px var(--mono);letter-spacing:.06em;color:#141416;
+  background:var(--grass);padding:3px 6px;
+  box-shadow:inset -2px -2px 0 rgba(0,0,0,.28), inset 2px 2px 0 rgba(255,255,255,.28)}
+.done.part{background:var(--history)}
+
+/* ---------- worth another look ---------- */
+.again{background:var(--panel);border:3px solid var(--line);border-left:6px solid var(--end);
+  padding:14px 16px;margin:20px 0 0}
+.again h2{margin:0 0 4px;font:700 11px var(--mono);letter-spacing:.18em;
+  text-transform:uppercase;color:var(--end)}
+.again p{margin:0 0 10px;font-size:13px;color:var(--dim)}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tag{background:#141416;border:2px solid #34343A;padding:4px 9px;
+  font:700 12.5px var(--mono);color:var(--paper)}
+.tag i{font-style:normal;color:var(--heart);margin-left:5px}
+
+footer{margin:30px 0 0;padding-top:16px;border-top:2px solid var(--line);
+  color:#7C7870;font-size:11.5px;line-height:1.65}
+.reset{background:none;border:0;color:#7C7870;font:inherit;text-decoration:underline;
+  cursor:pointer;padding:0}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
-footer{margin:34px 0 0;padding-top:17px;border-top:1px solid var(--line);
-  color:#7A8689;font-size:11.5px;line-height:1.65}
 </style>
 </head>
 <body>
+
+<header class="title">
+  <h1 class="sr-only">Study Craft &mdash; fifth grade</h1>
+  <img class="banner" src="assets/banner.jpg" alt="" width="1400" height="418">
+  <div class="titlebar">
+    <button id="splash" type="button" aria-label="New splash message"></button>
+    <p class="rule">Ace a subject's hardest level without losing a heart &mdash; slay the ender dragon</p>
+  </div>
+</header>
+
 <div class="wrap">
-  <header>
-    <p class="eyebrow">Fifth grade</p>
-    <h1>Pick a <em>subject</em></h1>
-    <p class="sub">Tap a subject to see its chapters. Everything here is practice, not a test — replay any of it as often as you like.</p>
-  </header>
+  <section class="gear" id="gear" hidden>
+    <h2>Your gear</h2>
+    <div class="hotbar" id="hotbar"></div>
+    <p class="gearline" id="gearline"></p>
+    <div class="xp"><i id="xpbar" style="width:0%"></i></div>
+  </section>
+
   <div id="subjects"></div>
+  <section class="again" id="again" hidden></section>
+
   <footer>
     Reading passages are reproduced from Core Knowledge materials under CC BY-NC-SA 4.0.
     Based on an original work of the Core Knowledge Foundation (coreknowledge.org).
     This does not imply that the Core Knowledge Foundation endorses this work.
+    <br><br>
+    <button class="reset" id="reset" type="button">Start my gear over</button>
   </footer>
 </div>
 
+<script>window.__MC_PREFIX__="assets/";window.__MC_HAS_BOSS__=true;</script>
+<script>/* ===== Minecraft theme layer — shared source =====
+   Built once, injected into every app. Do not edit inside an app's
+   index.html; edit theme/mc.js and rebuild, or the four copies drift.
+
+   Contract:
+     MC.config({app, shake, lift, dragon})  once, before anything else
+     MC.begin(id)                           entering a level — refills hearts
+     MC.right()                             a correct answer
+     MC.wrong(missKey)                      a wrong answer — costs half a heart
+     MC.note(missKey)                       record a miss without spending one
+     MC.credit(missKey)                     count a fix without a burst
+     MC.clear(id, pct, {boss})              level finished — may award a tool
+     MC.chest(el, pct, {id})                paint the results reveal into el
+     MC.state()                             read-only snapshot (used by the hub)
+
+   No death, no game over. Hearts only shrink the loot. A kid who is stuck
+   must never hit a wall — see HANDOFF.
+*/
+(function () {
+  "use strict";
+
+  var PREFIX = window.__MC_PREFIX__ || "../../assets/";
+  var INLINE = window.__MC_INLINE__ || null;
+  var HAS_BOSS = window.__MC_HAS_BOSS__ === true;
+  var url = function (n) { return INLINE ? (INLINE[n] || "") : PREFIX + n + ".png"; };
+
+  /* ---------- persistence (shared origin, so shared across all four apps) ---------- */
+  var KEY = "mc.study.v1";
+  var S;
+  try { S = JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) { S = {}; }
+  if (!S.cleared || typeof S.cleared !== "object") S.cleared = {};
+  if (!S.misses || typeof S.misses !== "object") S.misses = {};
+  if (typeof S.tool9 !== "boolean") S.tool9 = false;
+  function save() { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} }
+
+  var TOOLS = ["wooden pickaxe", "stone pickaxe", "iron pickaxe", "diamond pickaxe",
+               "sword", "torch", "shield", "bow", "elytra"];
+
+  /* Tools 1-8 come from how many activities have been cleared anywhere on the
+     site at 75%+. Tool 9, the elytra, only ever comes from spelling Challenge 2 —
+     the one level where he writes his own sentences. */
+  function clearedCount() {
+    var n = 0, k;
+    for (k in S.cleared) if (S.cleared[k] >= 75) n++;
+    return n;
+  }
+  function unlocked() {
+    var n = Math.min(8, clearedCount());
+    return { count: n, nine: !!S.tool9 };
+  }
+  function has(slot) { var u = unlocked(); return slot === 9 ? u.nine : slot <= u.count; }
+
+  /* ---------- state ---------- */
+  var cfg = { app: "app", shake: null, lift: null, burst: 128, hud: true,
+              /* Which activities can summon the dragon. null = any level in this
+                 app. An array restricts it to those ids — spelling passes ["l7"]
+                 so only Challenge 2, the hardest level of whatever week's list
+                 is loaded, can wake it. */
+              dragon: null };
+  var halves = 20;          // 10 hearts, tracked in halves
+  var missedHere = {};      // keys missed during this level
+  var fixedHere = 0;        // ...and later got right — the comeback count
+  var partialRun = false;   // a correction round over just the missed items
+  var hud, heartsEl, barEl, lastNew = 0;
+  var goodN = 0, badN = 0;  // cycle the sprites so it isn't the same one every time
+
+  /* ---------- HUD ---------- */
+  function build() {
+    if (hud || cfg.hud === false) return;
+    hud = document.createElement("div");
+    hud.className = "mc-hud";
+    hud.id = "mc-hud";
+    hud.innerHTML = '<div class="mc-hearts" id="mc-hearts"></div>' +
+                    '<div class="mc-bar" id="mc-bar"></div>';
+    document.body.appendChild(hud);
+    heartsEl = hud.querySelector("#mc-hearts");
+    barEl = hud.querySelector("#mc-bar");
+    drawBar();
+    drawHearts();
+    fit();
+    window.addEventListener("resize", fit);
+    // the app's own bar can grow when feedback appears — ride above it
+    if (cfg.lift && window.ResizeObserver) {
+      var t = document.querySelector(cfg.lift);
+      if (t) new ResizeObserver(function () { lift(); }).observe(t);
+    }
+    // the HUD is appended before the rest of the page parses, so its height
+    // is not final yet; re-measure once the document is up
+    if (document.readyState === "loading")
+      document.addEventListener("DOMContentLoaded", fit);
+    else setTimeout(fit, 0);
+    window.addEventListener("orientationchange", function () { setTimeout(fit, 120); });
+  }
+
+  /* The hotbar must never wrap and must never overflow. Size the slot from the
+     viewport and let the hearts follow it. Checked 300-1024px. */
+  function fit() {
+    if (!hud) return;
+    var vw = Math.max(280, document.documentElement.clientWidth || window.innerWidth);
+    var avail = Math.min(430, vw - 16);
+    var ss = Math.max(24, Math.min(46, Math.floor(avail / 9)));
+    var barw = ss * 9;
+    hud.style.setProperty("--mc-ss", ss + "px");
+    hud.style.setProperty("--mc-barw", barw + "px");
+    hud.style.setProperty("--mc-hh", Math.max(13, Math.round(ss * 0.5)) + "px");
+    hud.style.setProperty("--mc-burst", Math.min(cfg.burst, Math.round(vw * 0.42)) + "px");
+    document.documentElement.style.setProperty(
+      "--mc-burst", Math.min(cfg.burst, Math.round(vw * 0.42)) + "px");
+    lift();
+    // keep app content clear of the HUD
+    var h = hud.offsetHeight || 70;
+    document.body.style.paddingBottom = (h + (cfg._liftpx || 0) + 10) + "px";
+  }
+
+  /* Only the vocabulary app has a persistent fixed bar of its own, and it grows
+     when feedback appears. Ride above whatever height it currently is. */
+  function lift() {
+    if (!cfg.lift || !hud) return;
+    var t = document.querySelector(cfg.lift);
+    var px = (t && t.offsetParent !== null) ? t.offsetHeight : 0;
+    cfg._liftpx = px;
+    hud.style.setProperty("--mc-lift", px + "px");
+  }
+
+  function drawHearts() {
+    if (!heartsEl) return;
+    var out = "", i, v;
+    for (i = 0; i < 10; i++) {
+      v = Math.max(0, Math.min(2, halves - i * 2));
+      out += '<img class="mc-heart" data-v="' + v + '" alt="" src="' +
+             url(v === 2 ? "heart-full" : v === 1 ? "heart-half" : "heart-empty") + '">';
+    }
+    heartsEl.innerHTML = out;
+  }
+
+  function drawBar() {
+    if (!barEl) return;
+    var out = "", i, on;
+    for (i = 1; i <= 9; i++) {
+      on = has(i);
+      out += '<div class="mc-slot' + (i === lastNew ? " mc-new" : "") + '" data-n="' + i +
+             '" style="background-image:url(' + url("slot") + ')" title="' +
+             (on ? TOOLS[i - 1] : "locked") + '">' +
+             '<img class="mc-frame" alt="" src="' + url("slot-frame") + '">' +
+             (on ? '<img class="mc-tool" alt="' + TOOLS[i - 1] + '" src="' + url("tool-" + i) + '">' : "") +
+             "</div>";
+    }
+    barEl.innerHTML = out;
+  }
+
+  /* ---------- sprite bursts ---------- */
+  function burst(name, cls, narrow) {
+    var d = document.createElement("div");
+    d.className = "mc-burst " + cls;
+    if (narrow) d.setAttribute("data-w", "narrow");
+    d.innerHTML = '<img alt="" src="' + url(name) + '">';
+    document.body.appendChild(d);
+    setTimeout(function () { if (d.parentNode) d.parentNode.removeChild(d); }, 900);
+  }
+
+  function shake() {
+    if (!cfg.shake) return;                 // science already shakes its own card
+    var t = document.querySelector(cfg.shake);
+    if (!t) return;
+    t.classList.remove("mc-shake");
+    void t.offsetWidth;
+    t.classList.add("mc-shake");
+    setTimeout(function () { t.classList.remove("mc-shake"); }, 400);
+  }
+
+  /* ---------- public ---------- */
+  var MC = {
+    config: function (o) {
+      for (var k in o) if (o.hasOwnProperty(k)) cfg[k] = o[k];
+      if (document.body) build(); else
+        document.addEventListener("DOMContentLoaded", build);
+      return MC;
+    },
+
+    /* Entering a level. Pass {partial:true} for a correction round that
+       replays only the missed items — those must not overwrite a best score
+       or hand out the big rewards, since three words at 100% is not the same
+       achievement as twelve. */
+    begin: function (opts) {
+      halves = 20; lastNew = 0;
+      missedHere = {}; fixedHere = 0;
+      partialRun = !!(opts && opts.partial);
+      build(); drawHearts(); drawBar(); fit();
+    },
+
+    /* Credit a fix without any fanfare. The vocabulary sheet settles 26 words
+       on a single check — that is one burst, not twenty-six. */
+    credit: function (missKey) {
+      if (missKey && missedHere[missKey]) { fixedHere++; delete missedHere[missKey]; }
+    },
+
+    /* Pass the same key you passed to wrong()/note() and the correction is
+       counted — that is what earns the comeback badge. */
+    right: function (missKey) {
+      build();
+      MC.credit(missKey);
+      goodN = goodN % 4 + 1;
+      burst("win-" + goodN, "mc-good");
+    },
+
+    /* Record a miss without any cost. Used where one action covers several
+       items, or where the answer is revealed after the miss already landed. */
+    note: function (missKey) {
+      if (!missKey) return;
+      missedHere[missKey] = true;
+      var a = cfg.app;
+      if (!S.misses[a]) S.misses[a] = {};
+      S.misses[a][missKey] = (S.misses[a][missKey] || 0) + 1;
+      save();
+    },
+
+    wrong: function (missKey) {
+      build();
+      badN = badN % 4 + 1;
+      burst("bad-" + badN, "mc-bad", badN === 2 || badN === 4);
+      shake();
+      if (halves > 0) {
+        halves--;                            // floors at zero — never a game over
+        drawHearts();
+        var i = Math.floor(halves / 2);
+        var h = heartsEl && heartsEl.children[Math.min(9, i)];
+        if (h) h.classList.add("mc-hit");
+      }
+      MC.note(missKey);
+    },
+
+    /* Records the score, may award a tool. Returns what happened so the
+       results screen can talk about it. */
+    /* Records the score, may award a tool, and works out what he earned.
+       Every band is a real Minecraft tier, because every one of them is a
+       tool you are glad to have — there is no booby prize here. */
+    clear: function (id, pct, opts) {
+      opts = opts || {};
+      pct = Math.round(pct);
+      var key = cfg.app + ":" + id;
+      var prev = S.cleared[key];
+      var before = unlocked();
+      var got = null;
+
+      if (!partialRun) {
+        S.cleared[key] = Math.max(prev || 0, pct);
+        if (key === "spelling:l7" && pct >= 75) S.tool9 = true;
+        save();
+        var after = unlocked();
+        if (after.nine && !before.nine) got = 9;
+        else if (after.count > before.count) got = after.count;
+        lastNew = got || 0;
+        drawBar();
+      }
+
+      var clean = pct >= 100 && halves === 20;
+      var dragon = clean && !partialRun &&
+                   (cfg.dragon === null || cfg.dragon.indexOf(id) !== -1);
+
+      var tier;
+      if (partialRun)   tier = ["CORRECTIONS", "You went back and fixed them. That is the part that sticks."];
+      else if (dragon)  tier = ["DRAGON SLAIN", "Perfect. Not one miss, not one heart."];
+      else if (clean)   tier = ["NETHERITE", "Every single one right."];
+      else if (pct >= 90) tier = ["DIAMOND", "So close to flawless."];
+      else if (pct >= 75) tier = ["IRON", "Solid work \u2014 this one is holding."];
+      else if (pct >= 50) tier = ["STONE", "You got through it. Now you know where to dig."];
+      else                tier = ["WOOD", "You finished it, and that is where everyone starts."];
+
+      /* Badges stack. They reward things accuracy alone does not see. */
+      var badges = [];
+      if (fixedHere)
+        badges.push(fixedHere === 1 ? "TURNED ONE AROUND" : "TURNED " + fixedHere + " AROUND");
+      if (!partialRun && prev != null && pct > prev)
+        badges.push("NEW BEST \u2014 BEAT " + prev + "%");
+      if (!partialRun && (prev == null || prev < 75) && pct >= 75)
+        badges.push("FIRST CLEAR");
+      if (halves > 0 && halves <= 4 && pct >= 50)
+        badges.push("STUCK IT OUT");
+
+      return {
+        tool: got,
+        toolName: got ? TOOLS[got - 1] : null,
+        loot: halves >= 20 ? 4 : halves >= 15 ? 3 : halves >= 8 ? 2 : 1,
+        hearts: halves / 2,
+        fixed: fixedHere,
+        partial: partialRun,
+        tier: tier[0], blurb: tier[1], badges: badges,
+        boss: dragon
+      };
+    },
+
+    /* Paints chest-closed, then opens it on tap or after a beat. */
+    chest: function (host, pct, opts) {
+      if (!host) return null;
+      var r = MC.clear(opts.id, pct, opts);
+      var box = document.createElement("div");
+      box.className = "mc-chest";
+      box.innerHTML = '<img class="mc-lid mc-shut" alt="Closed chest" src="' + url("chest-closed") + '">' +
+                      '<div class="mc-loot"></div>' +
+                      '<div class="mc-tier"></div>' +
+                      '<div class="mc-cap">Tap the chest</div>';
+      host.insertBefore(box, host.firstChild);
+      var lid = box.querySelector(".mc-lid"),
+          loot = box.querySelector(".mc-loot"),
+          tierEl = box.querySelector(".mc-tier"),
+          cap = box.querySelector(".mc-cap"),
+          opened = false;
+
+      function open() {
+        if (opened) return;
+        opened = true;
+        lid.classList.remove("mc-shut");
+        lid.src = url("chest-open");
+        lid.alt = "Open chest";
+        lid.style.cursor = "default";
+        var html = "", i;
+        for (i = 1; i <= r.loot; i++) html += '<img alt="" src="' + url("win-" + i) + '">';
+        loot.innerHTML = html;
+        tierEl.textContent = r.tier;
+        tierEl.setAttribute("data-t", r.tier.split(" ")[0].toLowerCase());
+        cap.textContent = r.blurb;
+        if (r.badges.length) {
+          box.insertAdjacentHTML("beforeend", '<div class="mc-badges">' +
+            r.badges.map(function (b) { return '<span class="mc-badge">' + b + "</span>"; })
+              .join("") + "</div>");
+        }
+        if (r.tool) {
+          box.insertAdjacentHTML("beforeend",
+            '<div class="mc-earned"><img alt="" src="' + url("tool-" + r.tool) + '">' +
+            "<span>NEW &middot; " + r.toolName.toUpperCase() + "</span></div>");
+        }
+        if (r.boss) {
+          box.insertAdjacentHTML("beforeend", HAS_BOSS
+            ? '<img class="mc-boss" alt="Ender dragon defeated" src="' + url("boss-defeated") + '">'
+            : '<div class="mc-bossfall">DRAGON SLAIN<small>Perfect run \u2014 no misses, no hearts lost</small></div>');
+        }
+      }
+      lid.addEventListener("click", open);
+      setTimeout(open, 2600);                // opens itself if he doesn't tap
+      return r;
+    },
+
+    state: function () {
+      var u = unlocked();
+      return {
+        tools: u, toolNames: TOOLS,
+        cleared: JSON.parse(JSON.stringify(S.cleared)),
+        misses: JSON.parse(JSON.stringify(S.misses)),
+        url: url
+      };
+    },
+
+    reset: function () { S = { cleared: {}, misses: {}, tool9: false }; save(); drawBar(); },
+    _relift: lift
+  };
+
+  window.MC = MC;
+})();
+</script>
 <script>
-/* To add a chapter: set its href. Leave href out and it shows as "soon". */
+MC.config({app:"hub", hud:false});
+
+/* ---------- splash text ---------- */
+const SPLASH = [
+  "Perfect runs only!","The dragon is watching!","No misses, no lost hearts!",
+  "The dragon guards the hardest level!","Netherite is still netherite!",
+  "Wood is where everyone starts!","Fix a miss, earn a badge!",
+  "Also try Wordly Wise!","100% obsidian!","Diamonds are just rocks that studied!",
+  "Don't dig straight down!","Watch out for creepers!","The elytra is earnable!",
+  "No mobs were harmed!","Crafted, not mined!","Every answer is retryable!",
+  "Hearts refill. Always.","Zero fall damage!","Nine slots to fill!"
+];
+const splash = document.getElementById("splash");
+let last = -1;
+function newSplash(){
+  let i; do { i = Math.random()*SPLASH.length|0; } while(i===last && SPLASH.length>1);
+  last = i; splash.textContent = SPLASH[i];
+}
+splash.addEventListener("click", newSplash);
+newSplash();
+
+/* ---------- subjects ----------
+   Each chapter lists the activity ids its app records, so the hub shows real
+   progress. Ids match MC.state().cleared keys, which are "<app>:<id>".
+   To add a chapter: set its href and its ids. No href shows it as "soon". */
 const SUBJECTS = [
-  { name:"History", c:"var(--history)", book:"CKHG Grade 5, Unit 2 — Maya, Aztec, and Inca Civilizations",
+  { name:"History", ore:"gold", c:"var(--history)", app:"history",
+    book:"CKHG Grade 5, Unit 2 — Maya, Aztec, and Inca Civilizations",
     chapters:[
-      { n:1, t:"The Maya: Rainforest Civilization", note:"Hieroglyphic Stairway", href:"history/g5-maya-ch1/" },
+      { n:1, t:"The Maya: Rainforest Civilization", note:"Hieroglyphic Stairway",
+        href:"history/g5-maya-ch1/", ids:["set0","set1","set2","set3","set4"] },
       { n:2, t:"Maya Science and Daily Life" },
       { n:3, t:"Chapter 3" }, { n:4, t:"Chapter 4" }, { n:5, t:"Chapter 5" },
       { n:6, t:"Chapter 6" }, { n:7, t:"Chapter 7" }
     ]},
-  { name:"Science", c:"var(--science)", book:"CKSci Grade 5 — Investigating Matter",
+  { name:"Science", ore:"diamond", c:"var(--science)", app:"science",
+    book:"CKSci Grade 5 — Investigating Matter",
     chapters:[
-      { n:1, t:"Properties of Matter", note:"The Property Bench", href:"science/g5-matter-ch1/" },
+      { n:1, t:"Properties of Matter", note:"The Property Bench",
+        href:"science/g5-matter-ch1/", ids:["m1","m2","m3","m4"] },
       { n:2, t:"Applying Properties of Matter" },
       { n:3, t:"Too Small to Be Seen" },
       { n:4, t:"How Matter Changes" },
       { n:5, t:"Matter Can Change Chemically" },
       { n:6, t:"The Language of Chemistry" }
     ]},
-  { name:"Reading", c:"var(--reading)", book:"Sherlock Holmes",
+  { name:"Reading", ore:"emerald", c:"var(--reading)", app:"reading",
+    book:"Sherlock Holmes",
     chapters:[
       { n:1, t:"Story 1" }, { n:2, t:"Story 2" },
       { n:3, t:"Story 3" }, { n:4, t:"Story 4" }
     ]},
-  { name:"Spelling", c:"var(--spelling)", book:"Weekly spelling lists",
+  { name:"Spelling", ore:"redstone", c:"var(--spelling)", app:"spelling",
+    book:"Weekly spelling lists",
     chapters:[
-      { n:2, t:"List 2 \u2014 Double Consonants", note:"Six levels, test Friday Aug 28", href:"spelling/list2/" },
+      { n:2, t:"List 2 \u2014 Double Consonants", note:"Seven levels",
+        href:"spelling/list2/", ids:["l1","l2","l3","l4","l5","l6","l7"] },
       { n:3, t:"List 3" }, { n:4, t:"List 4" }
     ]},
-  { name:"Vocabulary", c:"var(--vocab)", book:"Wordly Wise 3000, Book 6",
+  { name:"Vocabulary", ore:"amethyst", c:"var(--vocab)", app:"vocabulary",
+    book:"Wordly Wise 3000, Book 6",
     chapters:[
-      { n:1, t:"Word List 1", note:"All 26 meanings on one sheet", href:"vocabulary/ww6-lesson1/" },
+      { n:1, t:"Word List 1", note:"All 26 meanings on one sheet",
+        href:"vocabulary/ww6-lesson1/", ids:["sheet"] },
       { n:2, t:"Word List 2" }, { n:3, t:"Word List 3" }, { n:4, t:"Word List 4" }
     ]},
-  { name:"Math", c:"var(--math)", book:"Saxon Math, Course 1",
+  { name:"Math", ore:"copper", c:"var(--math)", app:"math",
+    book:"Saxon Math, Course 1",
     chapters:[ { n:1, t:"Practice sets" } ]}
 ];
 
 const esc = s => String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+const S = MC.state();
+
+/* how many of a chapter's activities are cleared at 75%+, and the best score */
+function progress(app, ids){
+  if(!ids) return null;
+  let done = 0, best = 0;
+  ids.forEach(id=>{
+    const v = S.cleared[app+":"+id];
+    if(v!=null){ best = Math.max(best,v); if(v>=75) done++; }
+  });
+  return {done, of:ids.length, best};
+}
 
 document.getElementById("subjects").innerHTML = SUBJECTS.map(s=>{
-  const ready = s.chapters.filter(c=>c.href).length;
+  const live = s.chapters.filter(c=>c.href);
   return `<details class="subj" style="--c:${s.c}">
     <summary>
-      <span class="dot">${esc(s.name[0])}</span>
+      <span class="ore">${esc(s.name[0])}</span>
       <span class="stext">
         <h2>${esc(s.name)}</h2>
         <p class="book">${esc(s.book)}</p>
       </span>
-      <span class="count">${ready} of ${s.chapters.length}</span>
+      <span class="tally">${live.length} of ${s.chapters.length}<small>${esc(s.ore)}</small></span>
       <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"
            stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
     </summary>
     <div class="inner">
-    <ol>${s.chapters.map(c=>`<li>${c.href
-      ? `<a class="ch" href="${c.href}">
-           <span class="n">${c.n}</span>
-           <span class="t">${esc(c.t)}${c.note?`<small>${esc(c.note)}</small>`:""}</span>
-           <span class="go">START &rsaquo;</span></a>`
-      : `<span class="ch">
+    <ol>${s.chapters.map(c=>{
+      if(!c.href) return `<li><span class="ch">
            <span class="n">${c.n}</span>
            <span class="t">${esc(c.t)}</span>
-           <span class="go">SOON</span></span>`}</li>`).join("")}</ol>
+           <span class="go">SOON</span></span></li>`;
+      const p = progress(s.app, c.ids);
+      let badge = "";
+      if(p && p.done===p.of) badge = `<span class="done">CLEARED</span>`;
+      else if(p && p.done)   badge = `<span class="done part">${p.done}/${p.of}</span>`;
+      return `<li><a class="ch" href="${c.href}">
+           <span class="n">${c.n}</span>
+           <span class="t">${esc(c.t)}${c.note?`<small>${esc(c.note)}</small>`:""}</span>
+           ${badge}
+           <span class="go">${p&&p.best?"AGAIN &rsaquo;":"START &rsaquo;"}</span></a></li>`;
+    }).join("")}</ol>
     </div>
   </details>`;
 }).join("");
 
-/* Only one subject open at a time — keeps the page short on a phone. */
+/* one subject open at a time — keeps the page short on a phone */
 document.querySelectorAll("details.subj").forEach(d=>d.addEventListener("toggle",()=>{
   if(d.open) document.querySelectorAll("details.subj").forEach(o=>{ if(o!==d) o.open=false; });
 }));
+
+/* ---------- gear ---------- */
+const TOTAL = SUBJECTS.reduce((n,s)=>
+  n + s.chapters.reduce((m,c)=>m+(c.ids?c.ids.length:0), 0), 0);
+
+function paintGear(){
+  const st = MC.state(), u = st.tools;
+  const cleared = Object.keys(st.cleared).filter(k=>st.cleared[k]>=75).length;
+  const owned = u.count + (u.nine?1:0);
+  document.getElementById("gear").hidden = false;
+
+  const ss = Math.max(30, Math.min(44, Math.floor(Math.min(400, innerWidth-52)/9)));
+  document.getElementById("hotbar").innerHTML = Array.from({length:9},(_,i)=>{
+    const n = i+1, on = n===9 ? u.nine : n<=u.count;
+    return `<button class="slot" data-n="${n}" data-on="${on?1:0}"
+      style="--ss:${ss}px;background-image:url(${st.url("slot")})"
+      ${on?`data-name="${esc(st.toolNames[i])}"`:"disabled"}
+      aria-label="${on?esc(st.toolNames[i]):"empty slot "+n}">
+      ${on?`<img class="tool" alt="" src="${st.url("tool-"+n)}">`:""}</button>`;
+  }).join("");
+
+  const line = document.getElementById("gearline");
+  const base = owned
+    ? `<b>${owned}</b> of 9 tools &middot; <b>${cleared}</b> of ${TOTAL} levels cleared`
+    : `Clear a level to earn your first tool.`;
+  line.innerHTML = base;
+  document.getElementById("xpbar").style.width = Math.round(cleared/TOTAL*100)+"%";
+
+  document.querySelectorAll(".slot[data-on='1']").forEach(b=>{
+    const say = ()=>{ line.innerHTML = `<b>${esc(b.dataset.name)}</b>`; };
+    const back = ()=>{ line.innerHTML = base; };
+    b.addEventListener("click", say);
+    b.addEventListener("mouseenter", say); b.addEventListener("mouseleave", back);
+    b.addEventListener("focus", say);      b.addEventListener("blur", back);
+  });
+}
+paintGear();
+addEventListener("resize", paintGear);
+
+/* ---------- worth another look ---------- */
+const missed = [];
+Object.keys(S.misses).forEach(app=>{
+  Object.keys(S.misses[app]).forEach(k=>{
+    /* show word-shaped keys only — the quiz apps store "m1-3" style item ids */
+    if(/^[a-zA-Z][a-zA-Z'-]{2,}$/.test(k)) missed.push({k, n:S.misses[app][k]});
+  });
+});
+missed.sort((a,b)=>b.n-a.n);
+if(missed.length){
+  const box = document.getElementById("again");
+  box.hidden = false;
+  box.innerHTML =
+    `<h2>Worth another look</h2>
+     <p>The ones that tripped you up most. Not a punishment \u2014 just where the
+        next run pays off fastest.</p>
+     <div class="tags">${missed.slice(0,12).map(m=>
+        `<span class="tag">${esc(m.k)}${m.n>1?`<i>&times;${m.n}</i>`:""}</span>`).join("")}</div>`;
+}
+
+document.getElementById("reset").addEventListener("click", ()=>{
+  if(confirm("Clear every tool, score and missed word, and start over from nothing?")){
+    MC.reset(); location.reload();
+  }
+});
 </script>
 </body>
 </html>
