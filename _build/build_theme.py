@@ -117,6 +117,11 @@ def sci2(s):
     return Patcher(s, "science2")
 
 
+def read(s):
+    """Sherlock, The Speckled Band pp.1-13 — written theme-aware; config only."""
+    return Patcher(s, "reading")
+
+
 def hist2(s):
     """CKHG Chapter 2 — written already knowing about the theme, so it needs
     only the config; every hook is in the source."""
@@ -178,6 +183,10 @@ APPS = {
     # Ch2's three sets are distinct sections of the chapter, not parallel forms,
     # so the dragon sits on the last one — the hardest run.
     "history/g5-maya-ch2":    (hist2, dict(app="history2",   shake="#card",   lift=None,
+                                           dragon=["s3"])),
+    # The three sections are consecutive stretches of one story, not parallel
+    # forms, so the dragon sits on the last — the night Julia died.
+    "reading/sherlock-speckled-1": (read, dict(app="reading", shake="#card", lift=None,
                                            dragon=["s3"])),
     # m4 "Be the Engineer" is the capstone — the dragon lives there.
     "science/g5-matter-ch2":  (sci2,  dict(app="science2",   shake="#card",   lift=None,

@@ -1,6 +1,17 @@
 # Handoff — Keith's study site
 
-Written 25 Aug 2026. Updated after the theme build and the hub rebuild.
+Written 25 Aug 2026, updated later the same day. Current as of the end of that session.
+
+**Read this first.** Two things have to be re-uploaded at the start of any new
+session, because the sandbox resets and nothing survives it:
+
+1. **`study.zip`** — the built site. Needed to modify any app.
+2. **The curriculum PDFs** for whatever is being built — needed for new content.
+   Nothing is ever written from memory; see Standing preferences.
+
+**The Sherlock build is done** — see The seven apps. Nothing about it needs
+re-uploading: the passage and every question round-trip out of the built
+`index.html`, which is where `test_reading.js` reads them from.
 
 ---
 
@@ -19,6 +30,7 @@ study/
 ├── index.html                          hub — Study Craft title screen, gear, subjects
 ├── history/g5-maya-ch1/index.html      CKHG Maya Ch1  (615 KB, has 3 embedded photos)
 ├── history/g5-maya-ch2/index.html      CKHG Maya Ch2  (Maya Science and Daily Life)
+├── reading/sherlock-speckled-1/index.html  The Speckled Band, pages 1–13
 ├── science/g5-matter-ch1/index.html    CKSci Matter Ch1
 ├── science/g5-matter-ch2/index.html    CKSci Matter Ch2 (Applying Properties)
 ├── spelling/list2/index.html           Spelling List 2
@@ -51,7 +63,7 @@ first for the miss-tracking design.
 
 ---
 
-## The four apps
+## The seven apps
 
 ### History — "The Hieroglyphic Stairway" (CKHG G5 U2 Ch1)
 Five practice sets × seven formats. Built earlier; see the older handoff notes in the repo
@@ -134,6 +146,76 @@ absorbs water and hardens, so plaster wins. Then a claim-and-evidence build —
 pick the two observations that support the claim, from five real results. The
 distractors are all true observations *about other samples*, so the thing being
 tested is that evidence has to be about the sample you are claiming about.
+
+### Reading — "The Speckled Band", pages 1–13
+
+Three sets of eight, one per section of the story, cut where the story actually
+breaks rather than at equal page counts:
+
+| Set | Pages | Ends on |
+|---|---|---|
+| The client at dawn | 1–5 | "I am all attention, madam." |
+| The stepfather | 5–9 | Holmes half-opens his eyes and glances at his visitor |
+| The night Julia died | 10–13 | "Such was the dreadful end of my beloved sister." |
+
+**The passage is in the app.** Each section carries its own text, verbatim,
+paragraph by paragraph, with the book's page number in the margin. Reachable
+from the set card, from the results screen, and — the point of it — from inside
+a question.
+
+**Two rungs of help, deliberately in this order.** The first miss offers **"Find
+it in the passage"**, which opens the passage scrolled to the paragraph that
+settles the question, highlighted. Only the *second* miss offers "Show me the
+answer". Locating evidence in a text is the skill; being shown it is not. The
+target paragraph is not hand-numbered — the build finds which paragraph contains
+the excerpt and fails if it is not exactly one, so the highlight cannot drift out
+of sync with the question.
+
+**Teacher's Guide findings:**
+
+- The guide has fifteen study questions for this story. **Only four fall inside
+  page 13** — its questions 1–4. All five of its Questions for Further Discussion
+  need the ending (one cites page 44). Those four are mirrored directly and
+  labelled in the app; twelve of the twenty-four items carry a guide label.
+- Its vocabulary list for the story is fifteen words, of which **exactly five
+  occur in pages 1–13**: *deduction* (p2), *aristocrat* and *pauper* (p6),
+  *hereditary* (p7), *writhe* (p12). All five are tested, one item each, worded
+  from the guide's own definitions, and a build check fails if any is missed or
+  doubled. The other ten are later in the story.
+- *pauper* is glossed by the reader itself in the page-6 margin, so that item
+  uses the book's own wording rather than the guide's.
+- The guide's Appendix has an **Investigator** role — track the clues, then sort
+  the real ones from the red herrings. That is where the two evidence-picking
+  questions come from.
+
+**The three questions worth more than the other twenty-one:**
+
+1. **The dogcart** (set 1, capstone). Six things Watson notices about the woman;
+   pick the two Holmes actually reasons *from*. The four distractors are all true
+   and all noticed — her veil, her grey hair, her shivering, the hour she
+   arrived. Noticing something and using it as evidence are different things, and
+   a blank text box never tests that.
+2. **What a wedding costs him** (set 2, capstone). The mother's money is Dr.
+   Roylott's while the sisters live with him; each marriage takes an annual sum
+   back out of it. Six true facts, pick the two that are about money. This is the
+   motive, and it is reachable from page 6 alone — the guide only asks about it
+   at its question 8, long past where the class has read.
+3. **The order of that night** (set 3). Most people, asked to recall it, put the
+   whistle first. The book does not: the **scream** comes first, then Helen is out
+   of bed and opening her door *before* she hears the whistle, and the clang a few
+   moments after that. Up/down buttons, not drag.
+
+Set 3's capstone stops exactly where the class stopped: a whistle, a metallic
+clang, and three words nobody can explain. That is what Holmes has, and he has
+not yet seen the house.
+
+**Scope is enforced, not just intended.** `node _build/test_reading.js` asserts
+that every citation and every passage paragraph sits inside pages 1–13, and that
+the text never leaks *ventilator*, *bell-rope* or *swamp adder* from later in the
+story. It also re-checks the excerpt-to-paragraph mapping, the four-option shape,
+and — the bug that shipped in vocabulary — what a flawless run actually scores.
+Answer positions are shuffled at render, and the test draws 20,000 of them to
+confirm A/B/C/D come up evenly with no long runs.
 
 ### Science — "The Property Bench" (CKSci G5 Investigating Matter Ch1)
 Four missions × six questions. Formats: illustrated multiple choice, tap-the-instrument,
@@ -223,6 +305,10 @@ line — the `<h1 class="wordmark">` and the `<title>`.
   with a live count and an XP bar across all 17 activities. Hovering or tapping
   a filled slot names the tool. Hidden detail: the bar animates its width on
   load, so returning after clearing something is visibly rewarding.
+- **Every chapter title on the hub is now real**, taken from the readers' own
+  tables of contents — History's seven, Science's six, and Reading's five
+  Core Classics story titles. No "Chapter 4" placeholders remain. Reading now
+  correctly shows five stories, not four.
 - **Per-chapter progress column.** Every row shows the cleared count on top
   (`3 / 7`, or CLEARED in green) and the best score beneath. Fixed width so the
   numbers line up as chapters are added; "soon" rows read "not built".
@@ -373,13 +459,16 @@ could exist in a future app: check what a zero-mistake run actually scores.
 
 ### Verification
 
+`node _build/test_reading.js` — 34 assertions on the Sherlock app's content; see
+its section above.
+
 `node _build/test_theme.js` — 22 assertions covering heart arithmetic, the
 floor-at-zero guarantee, the tool ladder (including "under 75% awards nothing"
 and "replaying a cleared level awards nothing"), loot bands, the boss trigger,
 persistence across a simulated reload, and a corrupt-localStorage fallback. Every
 script block in all four built apps was also re-parsed after injection.
 
-## Uploading — this went wrong three times, read this
+## Uploading — this went wrong three times, then went right
 
 GitHub's uploader preserves folder structure only if you **drag folders**, and Windows lets
 you browse a zip like a folder, which does *not* work. The failures were:
@@ -387,6 +476,11 @@ you browse a zip like a folder, which does *not* work. The failures were:
 1. A stray `index (2).html` from Downloads got uploaded instead of the real files — Chrome
    renames duplicates and Keith had several loose `index.html` files.
 2. Dragging from inside the zip preview window rather than an extracted folder.
+
+It has since worked twice in a row using the sequence below. The file-list
+preview before committing is the checkpoint that catches everything — on the
+one occasion a file was missing (`HANDOFF.md`), the preview showed 36 of 37 and
+it was caught before the commit.
 
 **The reliable sequence:** download `study.zip` → **Extract all** (not double-click-browse) →
 open the extracted `study` folder → select the items *inside* it → drag them together onto
@@ -402,24 +496,34 @@ Never drag the `study` folder itself into a repo named `study` — you get `stud
 1. **Watch how he actually uses the hub.** The gear panel and "worth another
    look" are new and untested on a real ten-year-old. The open question is
    whether the tool ladder motivates or whether he beelines past it.
-2. **Reading — Sherlock Holmes. The licence question is settled, and well.**
-   The book is Core Knowledge's own *Core Classics* edition, "Sherlock Holmes,
-   Abridged for Young Readers", and it is released under **CC BY-NC-SA 4.0** —
-   the same licence as CKHG and CKSci. So it is an abridgement (which would
-   normally be under copyright) but Core Knowledge's abridgement, freely
-   quotable under the attribution already in every footer. **Passages can be
-   used directly.**
-   It contains five *stories*, not chapters: The Speckled Band (p. 1),
-   The Red-Headed League (p. 45), The Adventure of the Engineer's Thumb (p. 87),
-   The Adventure of the Blue Carbuncle (p. 126), The Adventure of the Copper
-   Beeches (p. 165). Worth confirming with Keith whether "chapters one and two"
-   means the first two stories.
+2. **Reading — the rest of The Speckled Band.** Pages 1–13 are built. The
+   story runs to page 44, and the Teacher's Guide's remaining eleven study
+   questions and ten remaining vocabulary words are all waiting in the range
+   the class has not reached. Build the next stretch the same way — cut at
+   the story's own seams, not at equal page counts. The reader PDF is needed
+   again for new pages; the existing app is editable without it.
+
+   The guide also carries material that only works **once the whole story is
+   read**, and it is worth saving rather than losing: the **six rules of a good
+   detective story** (significant crime, memorable detective, worthy criminal,
+   clues shared with the reader, suspects introduced early, reasonable
+   solution), which the guide turns into a writing assignment; **Watson as a
+   foil**; and grammar exercises drawn from this story's own sentences —
+   subjects and verbs, nouns, prepositional phrases. The nouns passage is
+   Holmes's closing explanation, so it is out of range for now.
+
 3. **Next week's spelling list** — same seven-level structure, swap the words.
-4. **CKSci Chapter 2** (mystery powder) — better as applied evidence-and-conclusions than a quiz.
-5. **CKHG Maya Chapters 2–7**, then a cumulative Unit 2 review matching the real
-   25 MC + 10 matching assessment format.
+4. **CKHG Maya Chapters 3–7.** Chapter 2 is built. Chapters 3–4 are Aztec,
+   5–6 Inca, 7 the end of both empires — the Student Reader text for all of
+   them is in the same PDF already used for Chapter 2. After those, a
+   cumulative Unit 2 review matching the real 25 MC + 10 matching format.
+5. **CKSci Chapters 3–6.** Chapter 2 is built. Remaining: Too Small to Be Seen,
+   How Matter Changes, Matter Can Change Chemically, The Language of Chemistry.
+   Remember the SR-chapter-to-TG-lesson offset is **+1** (SR Ch2 = TG Lesson 3).
 6. **Saxon Course 1** remediation, and a long-promised **CTP 5 format-familiarisation sampler**.
-7. Hub still has placeholder titles for History chapters 3–7 — need the CKHG table of contents.
+7. **Hub chapter titles are all real now** — nothing left to fill in there.
+8. **The hotbar fills after eight clears** — see the pacing section. Worth doing
+   before he notices it has stopped rewarding him.
 
 ---
 
@@ -428,8 +532,10 @@ Never drag the `study` folder itself into a repo named `study` — you get `stud
 CKHG and CKSci passages are reproduced under CC BY-NC-SA 4.0. The required notice is in each
 app's footer: *Based on an original work of the Core Knowledge Foundation (coreknowledge.org).
 This does not imply that the Core Knowledge Foundation endorses this work.* Keep it, and note
-share-alike binds derivative work. Wordly Wise and the spelling list are reproduced for
-personal study use only.
+share-alike binds derivative work. The Speckled Band passage is the Core Classics
+edition, which carries the same CC BY-NC-SA 4.0 licence, so it is quoted directly and at
+length; the same footer notice covers it. Wordly Wise and the spelling list are reproduced
+for personal study use only.
 
 The Minecraft sprites are Keith's own uploads. The repo is public, so they're publicly
 readable — he's aware.

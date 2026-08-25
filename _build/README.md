@@ -8,6 +8,7 @@ mc.css          the theme's styles
 mc.js           the theme engine — hearts, hotbar, sprites, chest, localStorage
 build_theme.py  injects both into the four apps and patches their call sites
 test_theme.js   node test for the engine's logic (no browser needed)
+test_reading.js reads DATA back out of the built Sherlock app and checks it
 ```
 
 ## Rebuilding
@@ -17,6 +18,7 @@ cd study/_build
 python3 build_theme.py          # sprites linked from ../../assets/
 python3 build_theme.py --inline # sprites base64'd in, +~360 KB per app
 node test_theme.js              # 22 assertions on hearts / tools / persistence
+node test_reading.js            # 34 assertions on the Sherlock app's content
 ```
 
 The script is idempotent — running it on already-themed files reports
@@ -89,6 +91,36 @@ One key, `mc.study.v1`, shared across all four apps because they're one origin:
 
 Corrupt or absent JSON falls back to an empty state rather than throwing.
 `MC.reset()` clears it from the console.
+
+## Extracting the Core Classics reader
+
+Worth writing down, because it took a session to get right and the same book
+holds four more stories.
+
+`pdftotext -raw` is the only mode whose **spacing** survives this book: the
+kerning is tight enough that `-layout` and pdfplumber both emit `ofthe` and
+`Moran.These`, and the page-6 margin glossary gets spliced straight into the
+body lines. Two cleanups are still needed on the raw output — rejoin words
+broken across lines at a hyphen, and re-insert the space after `.,;!?` where
+it was eaten.
+
+`-raw` gives no **paragraph breaks**, though, and indentation is not a safe
+substitute: the glossary box shoves ordinary body lines into the same x range
+as a real indent. Font is safe. The body face is **VendettaMedium at 14pt**,
+so filtering on it alone drops the running heads (VendettaBold), the
+small-caps illustration captions (VendettaBold 8.2pt) and the glossary
+(Frutiger 9pt). Among what is left, a paragraph opens at **x0 ≈ 145** against
+a body margin of **x0 = 109** — but treat that as a band, not a floor: the
+drop cap on page 1 wraps at x0 = 161, and the drop cap glyph itself is a
+separate 80pt word that has to be glued back onto the first line ("O" + "f
+the many cases"). Belt and braces: only accept an indent as a paragraph break
+when the previous line ended a sentence.
+
+Match the pdfplumber markers into the raw text with **whitespace stripped from
+both sides**, so pdfplumber's own dropped spaces cannot break the join.
+
+Book page 1 is **PDF page 14**. Page 8 is entirely illustration and yields no
+body text at all, which is correct, not a bug.
 
 ## Preparing sprites
 
