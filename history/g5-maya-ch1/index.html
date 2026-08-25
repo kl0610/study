@@ -469,6 +469,43 @@ cite.src{
   .mc-shake{animation:none}
   .mc-chest .mc-lid.mc-shut{animation:none}
 }
+
+/* ---- level-picker status ----
+   The apps' own .badge sat in the bottom-right corner of a tall card, so
+   checking seven levels meant scanning seven different corners. Moved to the
+   top-right, level with each card's eyebrow, which gives one straight vertical
+   line to run your eye down. These sit later in the cascade at equal
+   specificity, so they win without editing app CSS. */
+.mc-best{
+  top:11px !important; right:12px !important; bottom:auto !important;
+  background:#E8A93C !important; color:#3A2A08 !important;
+  font-weight:800 !important; letter-spacing:.04em; white-space:nowrap;
+  padding:4px 9px !important; border-radius:3px;
+  box-shadow:inset -2px -2px 0 rgba(0,0,0,.16), inset 2px 2px 0 rgba(255,255,255,.35);
+}
+.mc-best.mc-done{background:#63A93E !important; color:#0F2216 !important}
+/* and mark the card itself, so status is legible even mid-scroll */
+.mc-cleared{box-shadow:inset 0 0 0 3px #63A93E !important}
+.mc-tried{box-shadow:inset 0 0 0 3px #E8A93C !important}
+
+/* ---- level chips (MC.picker) ----
+   For apps whose levels are parallel and equally valid — history's five
+   practice sets — so you can see and choose, not just be dealt one. */
+.mc-picker{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 12px}
+.mc-chip{
+  flex:1 1 auto; min-width:56px; min-height:44px; padding:5px 8px;
+  border:2px solid #C7B48C; background:#F0E6CF; color:#5A4A2E; cursor:pointer;
+  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:1px;
+  box-shadow:inset -2px -2px 0 rgba(0,0,0,.14), inset 2px 2px 0 rgba(255,255,255,.5);
+}
+.mc-chip:hover{filter:brightness(1.05)}
+.mc-chip:focus-visible{outline:3px solid #63A93E;outline-offset:2px}
+.mc-chip-l{font:800 13px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.04em}
+.mc-chip-s{font:700 10px ui-monospace,SFMono-Regular,Menlo,monospace;opacity:.7}
+.mc-chip.mc-cleared{background:#63A93E;border-color:#3F7028;color:#0F2216}
+.mc-chip.mc-tried{background:#E8A93C;border-color:#B07E18;color:#3A2A08}
+.mc-chip.mc-now{box-shadow:inset -2px -2px 0 rgba(0,0,0,.14),
+  inset 2px 2px 0 rgba(255,255,255,.5), 0 0 0 3px #2B79C2}
 </style>
 </head>
 <body>
@@ -488,6 +525,8 @@ window.__MC_HAS_BOSS__=true;</script>
      MC.credit(missKey)                     count a fix without a burst
      MC.clear(id, pct, {boss})              level finished — may award a tool
      MC.chest(el, pct, {id})                paint the results reveal into el
+     MC.bests()                             {id: bestPct} for this app
+     MC.picker(el, items, cur, onPick)       a strip of level chips
      MC.state()                             read-only snapshot (used by the hub)
 
    No death, no game over. Hearts only shrink the loot. A kid who is stuck
@@ -820,6 +859,46 @@ window.__MC_HAS_BOSS__=true;</script>
       return r;
     },
 
+    /* Best score per activity for THIS app, keyed by bare id — lets an app's
+       level picker show scores that survive a reload. The apps each kept their
+       own in-memory `best` object, which forgot everything on refresh. */
+    bests: function () {
+      var out = {}, pre = cfg.app + ":", k;
+      for (k in S.cleared) if (k.indexOf(pre) === 0) out[k.slice(pre.length)] = S.cleared[k];
+      return out;
+    },
+
+    /* A strip of level chips, each showing whether it has been cleared.
+       Reusable: any app with several parallel levels calls this rather than
+       rolling its own, so history, and anything added later, look the same.
+
+         MC.picker(hostEl, [{id:"set0", label:"1"}, ...], currentId, onPick)
+
+       Chips colour themselves from MC.bests(): green cleared, amber attempted,
+       plain untouched. Re-call it to repaint after a score changes. */
+    picker: function (host, items, current, onPick) {
+      if (!host) return;
+      var best = MC.bests();
+      host.className = "mc-picker";
+      host.innerHTML = items.map(function (it) {
+        var b = best[it.id];
+        var cls = b == null ? "" : (b >= 75 ? " mc-cleared" : " mc-tried");
+        if (it.id === current) cls += " mc-now";
+        return '<button type="button" class="mc-chip' + cls + '" data-id="' + it.id +
+               '" aria-pressed="' + (it.id === current) + '"' +
+               ' title="' + (b == null ? "not tried yet" : "best " + b + "%") + '">' +
+               '<span class="mc-chip-l">' + it.label + "</span>" +
+               '<span class="mc-chip-s">' + (b == null ? "&mdash;" : b + "%") + "</span>" +
+               "</button>";
+      }).join("");
+      var bs = host.querySelectorAll(".mc-chip");
+      for (var i = 0; i < bs.length; i++) {
+        bs[i].addEventListener("click", function () {
+          onPick(this.getAttribute("data-id"));
+        });
+      }
+    },
+
     state: function () {
       var u = unlocked();
       return {
@@ -847,6 +926,7 @@ window.__MC_HAS_BOSS__=true;</script>
 
   <div class="stair-shell">
     <div class="stair-cap"><span id="setname">Set 1</span><span id="progress">Step 1 of 7</span></div>
+    <div id="setpick"></div>
     <div class="stairs" id="stairs" role="img" aria-label="Progress up the stairway"></div>
   </div>
 
@@ -1412,6 +1492,7 @@ function renderSummary(){
   st.appendChild(sc);
   st.appendChild(el("p","hint", advice));
   MC.chest(st, pct, {id:"set"+S.set, boss: S.set===DATA.sets.length-1});
+  paintPicker();
 
   const stats = el("div","stats");
   [[first+" of 7","first try"],
@@ -1460,7 +1541,7 @@ function renderSummary(){
   const next = el("button","btn","Climb a new set");
   next.onclick = ()=>{ S.set=(S.set+1)%DATA.sets.length; S.idx=0; S.results=[]; MC.begin(); render(); };
   const again = el("button","btn ghost","Redo this set");
-  again.onclick = ()=>{ S.idx=0; S.results=[]; MC.begin(); render(); };
+  again.onclick = ()=>{ S.idx=0; S.results=[]; MC.begin(); paintPicker(); render(); };
   bar.appendChild(next); bar.appendChild(again);
   st.appendChild(bar);
 }
@@ -1480,7 +1561,17 @@ function render(retry){
 
 $("#bigq").textContent = DATA.bigQuestion;
 S.set = Math.random()*DATA.sets.length|0;
+function paintPicker(){
+  MC.picker(document.getElementById("setpick"),
+    DATA.sets.map((s,i)=>({id:"set"+i, label:String(i+1)})),
+    "set"+S.set,
+    id=>{ const n=+id.slice(3); if(n===S.set) return;
+          S.set=n; S.idx=0; S.results=[]; MC.begin();
+          paintPicker(); render();
+          window.scrollTo({top:0,behavior:"smooth"}); });
+}
 MC.begin();
+paintPicker();
 render();
 </script>
 </body>

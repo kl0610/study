@@ -27,6 +27,12 @@ function mkEl(tag) {
       return null;
     },
     setAttribute(){},
+    querySelectorAll(sel){
+      /* good enough for the picker: count what innerHTML declared */
+      const cls = sel.replace(".","");
+      const n = (e._html.match(new RegExp('class="'+cls,"g"))||[]).length;
+      return Array.from({length:n}, ()=>mkEl("button"));
+    },
   };
   Object.defineProperty(e, "innerHTML", {
     get(){ return e._html; },
@@ -213,6 +219,45 @@ const MC2 = load();                       // simulate a new session
 const m = MC2.state().misses.vocabulary;
 ok("misses survive reload", m && m.lofty === 2 && m.clasp === 1, JSON.stringify(m));
 ok("tools survive reload", MC2.state().tools.count === 1, "got "+MC2.state().tools.count);
+
+console.log("\nbests() for level pickers");
+for(const k in store) delete store[k];
+MC = load(); MC.config({app:"science", shake:null, dragon:["m4"]});
+MC.begin(); MC.clear("m1", 100, {});
+MC.begin(); MC.clear("m2", 60,  {});
+MC.begin(); MC.clear("m2", 85,  {});          // improves
+MC.config({app:"spelling", shake:"#card", dragon:["l7"]});
+MC.begin(); MC.clear("l4", 90, {});
+MC.config({app:"science", shake:null, dragon:["m4"]});
+const bs = MC.bests();
+ok("bests() is keyed by bare id", bs.m1 === 100 && bs.m2 === 85, JSON.stringify(bs));
+ok("bests() keeps the highest, not the latest", bs.m2 === 85);
+ok("bests() does not leak other apps", bs.l4 === undefined && Object.keys(bs).length === 2);
+const MC4 = load();
+MC4.config({app:"science", shake:null});
+ok("bests() survives a reload", MC4.bests().m1 === 100, JSON.stringify(MC4.bests()));
+MC4.config({app:"reading", shake:null});
+ok("an app with no history gets an empty object",
+   Object.keys(MC4.bests()).length === 0);
+
+console.log("\npicker chips");
+for(const k in store) delete store[k];
+MC = load(); MC.config({app:"history", shake:"#stela", dragon:null});
+MC.begin(); MC.clear("set0", 100, {});
+MC.begin(); MC.clear("set2", 55,  {});
+const host = mkEl("div");
+let picked = null;
+MC.picker(host, [0,1,2,3,4].map(i=>({id:"set"+i,label:String(i+1)})), "set1", id=>{picked=id;});
+const html = host.innerHTML;
+ok("renders one chip per set", (html.match(/data-id="set/g)||[]).length === 5,
+   String((html.match(/data-id="set/g)||[]).length));
+ok("cleared set is green", /data-id="set0"/.test(html) && /mc-chip mc-cleared/.test(html));
+ok("attempted set is amber", /mc-chip mc-tried/.test(html));
+ok("current set is marked", /mc-now/.test(html) && /aria-pressed="true"/.test(html));
+ok("untried sets show a dash", (html.match(/&mdash;/g)||[]).length === 3,
+   String((html.match(/&mdash;/g)||[]).length));
+ok("scores are shown on the chips", /100%/.test(html) && /55%/.test(html));
+ok("a missing host is a no-op", (MC.picker(null,[],"x",()=>{}), true));
 
 console.log("\ncorrupt store");
 store["mc.study.v1"] = "{not json";

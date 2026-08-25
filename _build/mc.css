@@ -143,3 +143,40 @@
   .mc-shake{animation:none}
   .mc-chest .mc-lid.mc-shut{animation:none}
 }
+
+/* ---- level-picker status ----
+   The apps' own .badge sat in the bottom-right corner of a tall card, so
+   checking seven levels meant scanning seven different corners. Moved to the
+   top-right, level with each card's eyebrow, which gives one straight vertical
+   line to run your eye down. These sit later in the cascade at equal
+   specificity, so they win without editing app CSS. */
+.mc-best{
+  top:11px !important; right:12px !important; bottom:auto !important;
+  background:#E8A93C !important; color:#3A2A08 !important;
+  font-weight:800 !important; letter-spacing:.04em; white-space:nowrap;
+  padding:4px 9px !important; border-radius:3px;
+  box-shadow:inset -2px -2px 0 rgba(0,0,0,.16), inset 2px 2px 0 rgba(255,255,255,.35);
+}
+.mc-best.mc-done{background:#63A93E !important; color:#0F2216 !important}
+/* and mark the card itself, so status is legible even mid-scroll */
+.mc-cleared{box-shadow:inset 0 0 0 3px #63A93E !important}
+.mc-tried{box-shadow:inset 0 0 0 3px #E8A93C !important}
+
+/* ---- level chips (MC.picker) ----
+   For apps whose levels are parallel and equally valid — history's five
+   practice sets — so you can see and choose, not just be dealt one. */
+.mc-picker{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 12px}
+.mc-chip{
+  flex:1 1 auto; min-width:56px; min-height:44px; padding:5px 8px;
+  border:2px solid #C7B48C; background:#F0E6CF; color:#5A4A2E; cursor:pointer;
+  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:1px;
+  box-shadow:inset -2px -2px 0 rgba(0,0,0,.14), inset 2px 2px 0 rgba(255,255,255,.5);
+}
+.mc-chip:hover{filter:brightness(1.05)}
+.mc-chip:focus-visible{outline:3px solid #63A93E;outline-offset:2px}
+.mc-chip-l{font:800 13px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.04em}
+.mc-chip-s{font:700 10px ui-monospace,SFMono-Regular,Menlo,monospace;opacity:.7}
+.mc-chip.mc-cleared{background:#63A93E;border-color:#3F7028;color:#0F2216}
+.mc-chip.mc-tried{background:#E8A93C;border-color:#B07E18;color:#3A2A08}
+.mc-chip.mc-now{box-shadow:inset -2px -2px 0 rgba(0,0,0,.14),
+  inset 2px 2px 0 rgba(255,255,255,.5), 0 0 0 3px #2B79C2}

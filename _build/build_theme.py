@@ -32,6 +32,17 @@ INLINE = "--inline" in sys.argv
 
 def sci(s):
     p = Patcher(s, "science")
+    # the picker's "best X%" badges were in-memory only and forgot everything
+    # on reload; MC has been persisting the same numbers all along
+    p.at('const best = {};', after__raw='const best = MC.bests();')
+    p.at('<button class="mission" style="--c:${COLORS[i]}" data-m="${i}"',
+         after__raw='<button class="mission ${best[m.id]==null?\'\':'
+                    '(best[m.id]>=75?\'mc-cleared\':\'mc-tried\')}"'
+                    ' style="--c:${COLORS[i]}" data-m="${i}"')
+    p.at('${best[m.id]!=null?`<span class="badge">best ${best[m.id]}%</span>`:""}',
+         after__raw='${best[m.id]!=null?`<span class="badge mc-best'
+                    '${best[m.id]>=75?" mc-done":""}">${best[m.id]>=75?"CLEARED &middot; ":""}'
+                    'best ${best[m.id]}%</span>`:""}')
     p.at('function start(i){\n  M = DATA.missions[i]; idx=0; log=[];',
          after='\n  MC.begin();')
     p.at('function miss(it,msg){\n',
@@ -47,6 +58,17 @@ def sci(s):
 
 def spell(s):
     p = Patcher(s, "spelling")
+    p.at('const best={};', after__raw='const best = MC.bests();')
+    # ring the card itself, so status survives a glance mid-scroll
+    p.at('<button class="lv" style="--c:${COLORS[i]}" data-l="${i}">',
+         after__raw='<button class="lv ${best[l.id]==null?\'\':'
+                    '(best[l.id]>=75?\'mc-cleared\':\'mc-tried\')}"'
+                    ' style="--c:${COLORS[i]}" data-l="${i}">')
+    # the badge only ever said "best X%" — say plainly whether it is cleared
+    p.at('${best[l.id]!=null?`<span class="badge">best ${best[l.id]}%</span>`:""}',
+         after__raw='${best[l.id]!=null?`<span class="badge mc-best'
+                    '${best[l.id]>=75?" mc-done":""}">${best[l.id]>=75?"CLEARED &middot; ":""}'
+                    'best ${best[l.id]}%</span>`:""}')
     p.at('function start(l,subset){\n  LV=l;',
          after='\n  MC.begin({partial: !!(subset && subset.length)});')
     p.at('function good(revealed){\n  const w=DATA.words[order[idx]];\n'
@@ -102,13 +124,30 @@ def hist(s):
          after__raw='  next.onclick = ()=>{ S.set=(S.set+1)%DATA.sets.length; S.idx=0; S.results=[];'
                     ' MC.begin(); render(); };')
     p.at('  again.onclick = ()=>{ S.idx=0; S.results=[]; render(); };',
-         after__raw='  again.onclick = ()=>{ S.idx=0; S.results=[]; MC.begin(); render(); };')
+         after__raw='  again.onclick = ()=>{ S.idx=0; S.results=[]; MC.begin();'
+                    ' paintPicker(); render(); };')
     p.at('function solved(text, extra){\n',
          after='  MC.right(DATA.sets[S.set].label+"-"+S.idx);\n')
     p.at('function sendToReader(it, note){\n',
          after='  MC.wrong(DATA.sets[S.set].label+"-"+S.idx);\n')
+    # a strip of the five practice sets, above the stairway — history dealt one
+    # at random and never showed the other four or which were cleared
+    p.at('    <div class="stairs" id="stairs" role="img"',
+         before='    <div id="setpick"></div>\n')
+    p.at('S.set = Math.random()*DATA.sets.length|0;\nMC.begin();\nrender();',
+         after__raw='S.set = Math.random()*DATA.sets.length|0;\n'
+                    'function paintPicker(){\n'
+                    '  MC.picker(document.getElementById("setpick"),\n'
+                    '    DATA.sets.map((s,i)=>({id:"set"+i, label:String(i+1)})),\n'
+                    '    "set"+S.set,\n'
+                    '    id=>{ const n=+id.slice(3); if(n===S.set) return;\n'
+                    '          S.set=n; S.idx=0; S.results=[]; MC.begin();\n'
+                    '          paintPicker(); render();\n'
+                    '          window.scrollTo({top:0,behavior:"smooth"}); });\n'
+                    '}\nMC.begin();\npaintPicker();\nrender();')
     p.at('  st.appendChild(el("p","hint", advice));',
-         after='\n  MC.chest(st, pct, {id:"set"+S.set, boss: S.set===DATA.sets.length-1});')
+         after='\n  MC.chest(st, pct, {id:"set"+S.set, boss: S.set===DATA.sets.length-1});'
+               '\n  paintPicker();')
     return p
 
 

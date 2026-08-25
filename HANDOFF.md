@@ -143,13 +143,9 @@ line — the `<h1 class="wordmark">` and the `<title>`.
   with a live count and an XP bar across all 17 activities. Hovering or tapping
   a filled slot names the tool. Hidden detail: the bar animates its width on
   load, so returning after clearing something is visibly rewarding.
-- **Per-chapter progress column.** Every row carries a right-aligned column with
-  the cleared count on top (`3 / 7`, or CLEARED in green when all of them are)
-  and the best score beneath (`best 92%`). It is a fixed-width column rather
-  than a floating badge so the numbers line up down the list as chapters are
-  added. "Soon" rows carry the same column reading "not built", which keeps the
-  alignment honest. On screens under 430px the START/AGAIN chevron is hidden
-  — the whole row is the tap target anyway — so the score column always fits.
+- **Per-chapter progress column.** Every row shows the cleared count on top
+  (`3 / 7`, or CLEARED in green) and the best score beneath. Fixed width so the
+  numbers line up as chapters are added; "soon" rows read "not built".
   This is driven by the `ids` array on each chapter in `SUBJECTS` — those are
   the real activity ids the apps record (`history:set0–set4`, `science:m1–m4`,
   `spelling:l1–l7`, `vocabulary:sheet`). **Add ids when you add a chapter** or
@@ -163,61 +159,43 @@ Subjects are now keyed to ores rather than arbitrary hues — history gold,
 science diamond, reading emerald, spelling redstone, vocabulary amethyst, math
 copper. The ore name shows under each subject's count.
 
-## Mobile
+## Knowing *which* level was cleared
 
-Audited rather than assumed. What is in place:
+Three layers: which subject → which chapter (the hub's `1 / 7 · best 100%`
+column) → which level inside it.
 
-- All five pages ship `viewport-fit=cover`. **History was missing it**, which
-  silently resolved every `env(safe-area-inset-*)` to 0 — so the HUD sat under
-  the home indicator on a notched iPhone. Patched in `build_theme.py`.
-- Every text input is **16px or larger** (`.sentin` 16px, `.freein` 27px, the
-  hidden tile input 16px). Anything smaller makes iOS zoom the page on focus and
-  not zoom back, which is the single most common mobile-form annoyance.
-- **The hub hotbar overflowed at every phone width.** It subtracted 52px of
-  chrome when the real figure is 66 (wrap padding 16×2, gear padding 14×2,
-  border 3×2), so the ninth slot pushed past the panel edge on anything under
-  ~500px. Now subtracts 70 with a 22px floor; verified 320–660px.
-- The in-app HUD sizes its own slots from the viewport and was already correct;
-  the spelling tiles have `fitTiles()`, verified 300–1024px.
-- Vocabulary drag-and-drop uses **pointer events, not the HTML5 drag API**,
-  which silently fails on touch. Tap-to-place also works. No app uses
-  `dataTransfer`.
-- No fixed widths above 380px anywhere, so nothing forces horizontal scroll.
+That last layer took four passes:
 
-Worth re-checking whenever a new app is added: input font sizes, whether any
-9-across row does its own arithmetic, and that `viewport-fit=cover` is present.
+1. Each app kept scores in a bare `const best = {}` that **forgot everything on
+   reload**, so badges were blank every time. They now seed from `MC.bests()`.
+2. The badge said `best X%`, never whether the level was *done*. It now leads
+   with CLEARED at 75%+.
+3. It still was not **scannable** — the badge sat in the bottom-right corner of
+   a tall card, so seven levels meant seven corners. Moved to the top-right,
+   level with each card's eyebrow, and the card carries a coloured ring: green
+   cleared, amber attempted, none untouched.
+4. **History had no picker at all.** It scored and stored five practice sets
+   separately but dealt one at *random* and only offered "Climb a new set" to
+   advance in sequence — so he could not choose a set, could not return to a
+   weak one, and could not see which were cleared. Fixed with a chip strip
+   above the stairway.
 
-## The hotbar runs out — read this before adding chapters
+### MC.picker — use this for any new subject
 
-Counted properly, the current ladder does not last the year.
+```js
+MC.picker(hostEl, [{id:"set0", label:"1"}, ...], currentId, onPick)
+```
 
-| | activities |
-|---|---|
-| today (4 chapters) | 17 |
-| projected by June | ~350 |
+Renders a strip of chips, each coloured from `MC.bests()`: green cleared, amber
+attempted, plain untouched, with the best score under the label and a blue ring
+on the current one. Chips are 44px minimum so they are a real tap target.
+Re-call it to repaint after a score lands — history calls `paintPicker()` on
+boot, on set change, and at the end of `renderSummary()`.
 
-Tools 1–8 unlock on the 1st through 8th clear, and tool 9 on spelling
-Challenge 2. **Slot 8 fills on the eighth clear — about 2% of the year's
-work.** He has one clear now, so the arsenal is full in roughly a week and then
-shows nothing new until June. The XP bar keeps moving (it divides by the summed
-`ids`, so it grows as chapters are added) but the hotbar itself is done.
-
-Three ways forward, cheapest first:
-
-1. **Armour.** Minecraft's four-piece set — helmet, chestplate, leggings,
-   boots — rendered as a second row above the hotbar. Canonical, obviously
-   collectable, and only **four new sprites** (64×64, transparent, named
-   `armour-1`…`armour-4`). Buys four more milestones and looks right.
-2. **Stretch the ladder.** Award tools at 1, 3, 6, 10, 15, 21, 28, 36 clears
-   instead of every clear. No art needed, one line in `unlocked()`. Makes the
-   existing nine last into the spring rather than the first week.
-3. **Trophies for firsts**, not counts — first dragon in each subject, first
-   perfect week of spelling. Needs art per trophy and more bookkeeping.
-
-**Recommended: do 2 now, and 1 when you have a spare art generation.** Stretching
-the ladder costs nothing and fixes the pacing immediately; armour then extends
-it past thirty-six clears. Do not add slots to the hotbar — nine is the
-Minecraft hotbar and breaking it makes the whole thing look wrong.
+**Any new app with several parallel levels should call this rather than rolling
+its own**, so they all look and behave the same. Apps whose levels are a
+difficulty ladder (spelling, science) use the card list with badges instead;
+apps with one activity (vocabulary) need neither.
 
 ## Build pipeline
 
@@ -269,13 +247,7 @@ What shipped, against the agreed design:
   writes his own sentences. Worth checking he's happy with that rule; it was the
   one part of the design not pinned down.
 - Right answer bursts a win sprite (cycles allay → axolotl → fox → bee); wrong
-  bursts a bad sprite, shakes, and takes half a heart. **320px on desktop**,
-  scaled down on phones and capped against viewport *height* as well as width.
-  The first version was pinned at 128px on every screen. Source sprites are
-  128px, so 2.5× relies on `image-rendering:pixelated` reading as chunky
-  rather than blurry. Bursts hold at full size for about half their life before
-  fading (~1.3s win, ~1.15s miss), and a new burst removes any previous one so
-  fast answering cannot stack them.
+  bursts a bad sprite, shakes, and takes half a heart. Both well under a second.
 - Results: chest-closed nudges until tapped, then opens to the loot, a NEW
   banner if a tool was earned, and the dragon on a flawless run.
 - **The ender dragon falls on any level played perfectly** — 100% *and* every
