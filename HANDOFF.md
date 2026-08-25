@@ -143,8 +143,13 @@ line — the `<h1 class="wordmark">` and the `<title>`.
   with a live count and an XP bar across all 17 activities. Hovering or tapping
   a filled slot names the tool. Hidden detail: the bar animates its width on
   load, so returning after clearing something is visibly rewarding.
-- **Per-chapter progress.** Each live chapter shows CLEARED, or a partial badge
-  like 3/7, and its button reads AGAIN instead of START once he's scored on it.
+- **Per-chapter progress column.** Every row carries a right-aligned column with
+  the cleared count on top (`3 / 7`, or CLEARED in green when all of them are)
+  and the best score beneath (`best 92%`). It is a fixed-width column rather
+  than a floating badge so the numbers line up down the list as chapters are
+  added. "Soon" rows carry the same column reading "not built", which keeps the
+  alignment honest. On screens under 430px the START/AGAIN chevron is hidden
+  — the whole row is the tap target anyway — so the score column always fits.
   This is driven by the `ids` array on each chapter in `SUBJECTS` — those are
   the real activity ids the apps record (`history:set0–set4`, `science:m1–m4`,
   `spelling:l1–l7`, `vocabulary:sheet`). **Add ids when you add a chapter** or
@@ -181,6 +186,38 @@ Audited rather than assumed. What is in place:
 
 Worth re-checking whenever a new app is added: input font sizes, whether any
 9-across row does its own arithmetic, and that `viewport-fit=cover` is present.
+
+## The hotbar runs out — read this before adding chapters
+
+Counted properly, the current ladder does not last the year.
+
+| | activities |
+|---|---|
+| today (4 chapters) | 17 |
+| projected by June | ~350 |
+
+Tools 1–8 unlock on the 1st through 8th clear, and tool 9 on spelling
+Challenge 2. **Slot 8 fills on the eighth clear — about 2% of the year's
+work.** He has one clear now, so the arsenal is full in roughly a week and then
+shows nothing new until June. The XP bar keeps moving (it divides by the summed
+`ids`, so it grows as chapters are added) but the hotbar itself is done.
+
+Three ways forward, cheapest first:
+
+1. **Armour.** Minecraft's four-piece set — helmet, chestplate, leggings,
+   boots — rendered as a second row above the hotbar. Canonical, obviously
+   collectable, and only **four new sprites** (64×64, transparent, named
+   `armour-1`…`armour-4`). Buys four more milestones and looks right.
+2. **Stretch the ladder.** Award tools at 1, 3, 6, 10, 15, 21, 28, 36 clears
+   instead of every clear. No art needed, one line in `unlocked()`. Makes the
+   existing nine last into the spring rather than the first week.
+3. **Trophies for firsts**, not counts — first dragon in each subject, first
+   perfect week of spelling. Needs art per trophy and more bookkeeping.
+
+**Recommended: do 2 now, and 1 when you have a spare art generation.** Stretching
+the ladder costs nothing and fixes the pacing immediately; armour then extends
+it past thirty-six clears. Do not add slots to the hotbar — nine is the
+Minecraft hotbar and breaking it makes the whole thing look wrong.
 
 ## Build pipeline
 
