@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Study — pick a subject</title>
+<style>
+:root{
+  --bg:#171A1C; --bg2:#1F2427; --line:#31383C; --paper:#F4F1E9; --dim:#96A2A6;
+  --history:#E0A83C; --science:#3FB4CE; --reading:#5FB88A; --vocab:#B07ACC; --math:#E8894A;
+  --disp:"Avenir Next","Segoe UI Variable Display","Trebuchet MS",system-ui,sans-serif;
+  --body:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --mono:ui-monospace,"SF Mono","Cascadia Mono",Consolas,monospace;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;background:var(--bg);color:var(--paper);font-family:var(--body);line-height:1.55;
+  background-image:radial-gradient(circle at 15% -5%,#242B2E 0%,transparent 55%);
+  background-attachment:fixed;padding:0 0 70px}
+.wrap{max-width:660px;margin:0 auto;padding:0 18px}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim)}
+header{padding:44px 0 26px}
+h1{font-family:var(--disp);font-size:clamp(31px,8vw,44px);line-height:1.02;margin:9px 0 8px;
+  letter-spacing:-.025em;font-weight:800}
+h1 em{font-style:normal;color:var(--history)}
+.sub{color:var(--dim);font-size:15px;margin:0;max-width:46ch}
+
+.subj{background:var(--bg2);border:1px solid var(--line);border-radius:18px;
+  margin-bottom:13px;position:relative;overflow:hidden;transition:border-color .18s}
+.subj::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--c);z-index:1}
+.subj[open]{border-color:var(--c)}
+summary{list-style:none;cursor:pointer;padding:17px 19px;display:flex;align-items:center;gap:13px}
+summary::-webkit-details-marker{display:none}
+summary:focus-visible{outline:2px solid var(--c);outline-offset:-3px;border-radius:18px}
+.dot{flex:none;width:34px;height:34px;border-radius:11px;background:var(--c);color:#12171A;
+  display:grid;place-items:center;font:800 14px var(--mono)}
+.stext{flex:1;min-width:0}
+.subj h2{font-family:var(--disp);font-size:19.5px;margin:0;font-weight:750;line-height:1.2}
+.book{font-size:12.5px;color:var(--dim);margin:2px 0 0;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.count{font-family:var(--mono);font-size:10px;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--c);white-space:nowrap;flex:none}
+.caret{flex:none;width:16px;height:16px;color:var(--dim);transition:transform .22s ease}
+.subj[open] .caret{transform:rotate(90deg)}
+.subj[open] .book{white-space:normal;overflow:visible}
+.inner{padding:0 19px 7px;animation:drop .22s ease}
+@keyframes drop{from{opacity:0;transform:translateY(-5px)}to{opacity:1;transform:none}}
+ol{list-style:none;margin:0;padding:0}
+li{border-top:1px solid var(--line)}
+li:first-child{border-top:none}
+a.ch,span.ch{display:flex;align-items:center;gap:12px;padding:12px 2px;text-decoration:none;color:var(--paper)}
+.n{flex:none;width:27px;height:27px;border-radius:8px;background:var(--c);color:#12171A;
+  font:800 12px var(--mono);display:grid;place-items:center}
+.ch .t{flex:1;min-width:0;font-size:14.5px;font-weight:600}
+.ch .t small{display:block;font:600 10px var(--mono);letter-spacing:.09em;text-transform:uppercase;
+  color:var(--dim);font-weight:600;margin-top:1px}
+a.ch .go{flex:none;font:800 11px var(--mono);letter-spacing:.09em;color:var(--c)}
+a.ch:hover .t{text-decoration:underline;text-underline-offset:3px}
+span.ch{opacity:.4}
+span.ch .n{background:transparent;border:1.5px dashed var(--line);color:var(--dim)}
+span.ch .go{flex:none;font:600 10px var(--mono);letter-spacing:.09em;color:var(--dim)}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+footer{margin:34px 0 0;padding-top:17px;border-top:1px solid var(--line);
+  color:#7A8689;font-size:11.5px;line-height:1.65}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <p class="eyebrow">Fifth grade</p>
+    <h1>Pick a <em>subject</em></h1>
+    <p class="sub">Tap a subject to see its chapters. Everything here is practice, not a test — replay any of it as often as you like.</p>
+  </header>
+  <div id="subjects"></div>
+  <footer>
+    Reading passages are reproduced from Core Knowledge materials under CC BY-NC-SA 4.0.
+    Based on an original work of the Core Knowledge Foundation (coreknowledge.org).
+    This does not imply that the Core Knowledge Foundation endorses this work.
+  </footer>
+</div>
+
+<script>
+/* To add a chapter: set its href. Leave href out and it shows as "soon". */
+const SUBJECTS = [
+  { name:"History", c:"var(--history)", book:"CKHG Grade 5, Unit 2 — Maya, Aztec, and Inca Civilizations",
+    chapters:[
+      { n:1, t:"The Maya: Rainforest Civilization", note:"Hieroglyphic Stairway", href:"history/g5-maya-ch1/" },
+      { n:2, t:"Maya Science and Daily Life" },
+      { n:3, t:"Chapter 3" }, { n:4, t:"Chapter 4" }, { n:5, t:"Chapter 5" },
+      { n:6, t:"Chapter 6" }, { n:7, t:"Chapter 7" }
+    ]},
+  { name:"Science", c:"var(--science)", book:"CKSci Grade 5 — Investigating Matter",
+    chapters:[
+      { n:1, t:"Properties of Matter", note:"The Property Bench", href:"science/g5-matter-ch1/" },
+      { n:2, t:"Applying Properties of Matter" },
+      { n:3, t:"Too Small to Be Seen" },
+      { n:4, t:"How Matter Changes" },
+      { n:5, t:"Matter Can Change Chemically" },
+      { n:6, t:"The Language of Chemistry" }
+    ]},
+  { name:"Reading", c:"var(--reading)", book:"Sherlock Holmes",
+    chapters:[
+      { n:1, t:"Story 1" }, { n:2, t:"Story 2" },
+      { n:3, t:"Story 3" }, { n:4, t:"Story 4" }
+    ]},
+  { name:"Vocabulary", c:"var(--vocab)", book:"Wordly Wise 3000, Book 6",
+    chapters:[ { n:1, t:"Chapter 1" }, { n:2, t:"Chapter 2" }, { n:3, t:"Chapter 3" } ]},
+  { name:"Math", c:"var(--math)", book:"Saxon Math, Course 1",
+    chapters:[ { n:1, t:"Practice sets" } ]}
+];
+
+const esc = s => String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+
+document.getElementById("subjects").innerHTML = SUBJECTS.map(s=>{
+  const ready = s.chapters.filter(c=>c.href).length;
+  return `<details class="subj" style="--c:${s.c}">
+    <summary>
+      <span class="dot">${esc(s.name[0])}</span>
+      <span class="stext">
+        <h2>${esc(s.name)}</h2>
+        <p class="book">${esc(s.book)}</p>
+      </span>
+      <span class="count">${ready} of ${s.chapters.length}</span>
+      <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"
+           stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+    </summary>
+    <div class="inner">
+    <ol>${s.chapters.map(c=>`<li>${c.href
+      ? `<a class="ch" href="${c.href}">
+           <span class="n">${c.n}</span>
+           <span class="t">${esc(c.t)}${c.note?`<small>${esc(c.note)}</small>`:""}</span>
+           <span class="go">START &rsaquo;</span></a>`
+      : `<span class="ch">
+           <span class="n">${c.n}</span>
+           <span class="t">${esc(c.t)}</span>
+           <span class="go">SOON</span></span>`}</li>`).join("")}</ol>
+    </div>
+  </details>`;
+}).join("");
+
+/* Only one subject open at a time — keeps the page short on a phone. */
+document.querySelectorAll("details.subj").forEach(d=>d.addEventListener("toggle",()=>{
+  if(d.open) document.querySelectorAll("details.subj").forEach(o=>{ if(o!==d) o.open=false; });
+}));
+</script>
+</body>
+</html>

@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Property Bench — Investigating Matter, Chapter 1</title>
+<style>
+:root{
+  --bench:#12333B; --deep:#0B2126; --panel:#194550; --line:#2B5A66;
+  --paper:#FBF6EC; --paper2:#F1E9D8; --ink:#16292E; --muted:#8FA9AF;
+  --copper:#D07A45; --cyan:#3FB4CE; --amber:#EFB04A; --red:#E0685A; --green:#59B27C; --violet:#7C5BA6;
+  --r:16px;
+  --disp:"Avenir Next","Segoe UI Variable Display","Trebuchet MS",system-ui,sans-serif;
+  --body:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --mono:ui-monospace,"SF Mono","Cascadia Mono",Consolas,monospace;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+body{
+  background:var(--bench);
+  background-image:radial-gradient(circle at 18% 0%,#1D4A56 0%,transparent 55%),
+                   radial-gradient(circle at 92% 12%,#17414C 0%,transparent 45%);
+  background-attachment:fixed;
+  color:var(--paper); font-family:var(--body); line-height:1.55;
+  padding:0 0 96px; overflow-x:hidden;
+}
+.wrap{max-width:760px;margin:0 auto;padding:0 18px}
+button{font:inherit;color:inherit;cursor:pointer;border:none;background:none}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--cyan)}
+.hublink{display:inline-flex;align-items:center;gap:6px;margin:22px 0 0;padding:7px 13px;
+  border:1px solid var(--line);border-radius:20px;background:var(--panel);
+  font:700 11px var(--mono);letter-spacing:.11em;text-transform:uppercase;
+  color:var(--muted);text-decoration:none;transition:color .15s,border-color .15s}
+.hublink:hover{color:var(--paper);border-color:var(--cyan)}
+
+/* ---------- header ---------- */
+header{padding:34px 0 22px;text-align:center}
+h1{font-family:var(--disp);font-size:clamp(30px,7.5vw,46px);line-height:1.03;margin:10px 0 6px;letter-spacing:-.02em;font-weight:800}
+h1 em{font-style:normal;color:var(--amber)}
+.sub{color:var(--muted);font-size:15px;max-width:44ch;margin:0 auto}
+.bq{margin:20px auto 0;max-width:520px;background:var(--panel);border:1px solid var(--line);
+    border-radius:var(--r);padding:14px 18px}
+.bq .eyebrow{color:var(--amber)}
+.bq p{margin:4px 0 0;font-family:var(--disp);font-size:19px;font-weight:600}
+
+/* ---------- mission cards ---------- */
+.grid{display:grid;gap:14px;margin:26px 0 0}
+.mission{display:block;width:100%;text-align:left;background:var(--paper);color:var(--ink);
+  border-radius:var(--r);padding:16px 18px;position:relative;overflow:hidden;
+  box-shadow:0 10px 26px rgba(0,0,0,.28);transition:transform .16s ease,box-shadow .16s ease}
+.mission:hover{transform:translateY(-3px);box-shadow:0 16px 34px rgba(0,0,0,.34)}
+.mission:active{transform:translateY(0)}
+.mission::before{content:"";position:absolute;left:0;top:0;bottom:0;width:6px;background:var(--c)}
+.mission .top{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.mission h3{font-family:var(--disp);font-size:20px;margin:2px 0 3px;font-weight:750}
+.mission .tag{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#7A8C85}
+.mission p{margin:0;font-size:14px;color:#4A5A5E}
+.mission .go{margin-top:10px;display:inline-flex;align-items:center;gap:7px;font-weight:700;font-size:14px;color:var(--c)}
+.chev{width:16px;height:16px;flex:none}
+.badge{position:absolute;right:14px;bottom:14px;font-family:var(--mono);font-size:11px;
+  background:var(--green);color:#fff;padding:3px 9px;border-radius:20px;letter-spacing:.06em}
+
+/* ---------- videos ---------- */
+.shelf{margin:38px 0 0}
+.shelf h2,.pagehead h2{font-family:var(--disp);font-size:22px;margin:6px 0 4px;font-weight:750}
+.shelf .note{color:var(--muted);font-size:14px;margin:0 0 14px}
+.vid{display:flex;gap:14px;align-items:flex-start;background:var(--panel);border:1px solid var(--line);
+  border-radius:14px;padding:13px 14px;margin-bottom:10px;text-decoration:none;color:var(--paper);
+  transition:border-color .16s ease,transform .16s ease}
+.vid:hover{border-color:var(--cyan);transform:translateX(3px)}
+.play{flex:none;width:46px;height:34px;border-radius:8px;background:var(--red);display:grid;place-items:center}
+.play svg{width:14px;height:14px;fill:#fff}
+.vid h4{margin:0 0 2px;font-size:15px;font-weight:700}
+.vid .src{font-family:var(--mono);font-size:10.5px;color:var(--cyan);letter-spacing:.08em;text-transform:uppercase}
+.vid p{margin:5px 0 0;font-size:13px;color:#B9CDD2}
+.vid .when{margin-top:5px;font-size:12px;color:var(--amber);font-weight:600}
+
+/* ---------- play screen ---------- */
+.pagehead{display:flex;align-items:center;gap:12px;padding:20px 0 12px}
+.back{width:38px;height:38px;border-radius:11px;background:var(--panel);border:1px solid var(--line);
+  display:grid;place-items:center;flex:none}
+.back svg{width:16px;height:16px}
+.pagehead .t{flex:1;min-width:0}
+.pagehead .t strong{display:block;font-family:var(--disp);font-size:17px;font-weight:750;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pagehead .t span{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase}
+.dots{display:flex;gap:5px;margin:0 0 16px}
+.dot{height:5px;flex:1;border-radius:3px;background:var(--line)}
+.dot.done{background:var(--green)}
+.dot.now{background:var(--amber)}
+
+.card{background:var(--paper);color:var(--ink);border-radius:20px;padding:18px;
+  box-shadow:0 14px 40px rgba(0,0,0,.3)}
+.qnum{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#8A9B94}
+.q{font-family:var(--disp);font-size:18.5px;line-height:1.35;font-weight:650;margin:6px 0 14px}
+.artbox{background:var(--paper2);border-radius:14px;padding:8px;margin:0 0 14px}
+svg.art{display:block;width:100%;height:auto;max-height:210px}
+.cap{font:600 9px var(--mono);fill:#6E7F79;text-anchor:middle;letter-spacing:.04em}
+.cap2{font:400 8px var(--mono);fill:#8A9B94;text-anchor:middle}
+.cap3{font:700 9px var(--mono);fill:#FBF6EC;text-anchor:middle}
+.cap4{font:700 11px var(--mono);fill:#16292E;text-anchor:middle}
+
+/* options */
+.opts{display:grid;gap:8px}
+.opt{display:flex;gap:11px;align-items:flex-start;text-align:left;width:100%;
+  background:#fff;border:2px solid #E4DBC8;border-radius:13px;padding:12px 13px;font-size:15px;
+  transition:border-color .14s,background .14s,transform .1s}
+.opt:hover:not(:disabled){border-color:var(--copper)}
+.opt:active:not(:disabled){transform:scale(.99)}
+.opt .k{flex:none;width:24px;height:24px;border-radius:7px;background:#F0E8D6;color:#6E7F79;
+  font:700 12px var(--mono);display:grid;place-items:center}
+.opt.out{opacity:.4}
+.opt.out .k{background:#E0D6C2}
+.opt:disabled{cursor:default}
+.opt.good{border-color:var(--green);background:#EFF8F2}
+.opt.good .k{background:var(--green);color:#fff}
+.opt.bad{border-color:var(--red);background:#FDF0EE}
+.opt.bad .k{background:var(--red);color:#fff}
+/* select-all */
+.opt.multi .k{border-radius:50%}
+.opt.on{border-color:var(--violet);background:#F4EFFA}
+.opt.on .k{background:var(--violet);color:#fff}
+.counter{font:600 12px var(--mono);color:#8A9B94;margin:10px 0 0;text-align:center;letter-spacing:.06em}
+
+/* tools */
+.tools{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.tool{background:#fff;border:2px solid #E4DBC8;border-radius:14px;padding:10px 8px 8px;text-align:center;
+  transition:border-color .14s,transform .1s}
+.tool:hover:not(:disabled){border-color:var(--copper)}
+.tool:active:not(:disabled){transform:scale(.98)}
+.tool svg{height:78px;width:100%}
+.tool span{display:block;font-size:12.5px;font-weight:650;margin-top:4px;line-height:1.25}
+.tool.out{opacity:.38}
+.tool.good{border-color:var(--green);background:#EFF8F2}
+.tool.bad{border-color:var(--red);background:#FDF0EE}
+
+/* chips + slots */
+.instr{font-size:13.5px;color:#5C6C6F;margin:0 0 10px;font-style:italic}
+.chips{display:flex;flex-wrap:wrap;gap:7px;margin:0 0 14px;min-height:8px}
+.chip{background:#fff;border:2px solid #E4DBC8;border-radius:10px;padding:8px 11px;font-size:14px;font-weight:600;
+  transition:transform .1s,border-color .14s}
+.chip:active{transform:scale(.97)}
+.chip.sel{border-color:var(--violet);background:#F4EFFA;box-shadow:0 0 0 3px rgba(124,91,166,.16)}
+.chip.used{display:none}
+.slots{display:grid;gap:8px}
+.slots.bins{grid-template-columns:1fr 1fr}
+.slot{background:#F6F0E2;border:2px dashed #D6C9AF;border-radius:13px;padding:10px 12px;text-align:left;width:100%;
+  transition:border-color .14s,background .14s}
+.slot:hover{border-color:var(--copper)}
+.slot .lab{font-size:13.5px;font-weight:650;color:#3E4E52;line-height:1.3}
+.slot.bins .lab{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#6E7F79}
+.slot .held{display:flex;flex-wrap:wrap;gap:6px;margin-top:7px}
+.held span{background:var(--violet);color:#fff;border-radius:8px;padding:5px 9px;font-size:13px;font-weight:600}
+.slot.filled{border-style:solid;border-color:#C9BCA0;background:#fff}
+.slot.hot{border-color:var(--violet);background:#F8F4FE}
+.held span.wrongmark{background:var(--red);box-shadow:0 0 0 3px rgba(224,104,90,.2)}
+.slot.wrongmark{border-color:var(--red);border-style:solid}
+.hintnote{font:600 12px var(--mono);color:var(--red);letter-spacing:.05em;margin:10px 0 0;text-align:center}
+
+/* mystery table */
+.mtable{display:grid;gap:8px}
+.mrow{background:#fff;border:2px solid #E4DBC8;border-radius:13px;padding:10px 12px}
+.mrow.hot{border-color:var(--violet);background:#F8F4FE}
+.mrow.wrongmark{border-color:var(--red);background:#FDF0EE}
+.mrow .named.wrongmark{background:var(--red)}
+.mrow .rh{display:flex;align-items:center;gap:9px;margin-bottom:7px}
+.mrow .key{width:26px;height:26px;border-radius:8px;background:var(--bench);color:var(--paper);
+  font:700 13px var(--mono);display:grid;place-items:center;flex:none}
+.mrow .named{background:var(--violet);color:#fff;border-radius:8px;padding:4px 10px;font-size:13px;font-weight:700}
+.cells{display:grid;grid-template-columns:repeat(2,1fr);gap:5px}
+.cell{background:#F6F0E2;border-radius:8px;padding:5px 8px}
+.cell b{display:block;font:600 9px var(--mono);letter-spacing:.09em;text-transform:uppercase;color:#8A9B94}
+.cell span{font-size:12.5px;font-weight:600;color:#3E4E52}
+
+/* actions + feedback */
+.act{margin:14px 0 0;display:grid;gap:8px}
+.btn{border-radius:13px;padding:13px;font-weight:750;font-size:15px;text-align:center;
+  transition:transform .1s,filter .14s}
+.btn:active{transform:scale(.99)}
+.btn:disabled{opacity:.4;cursor:default}
+.btn.p{background:var(--bench);color:var(--paper)}
+.btn.g{background:var(--green);color:#fff}
+.btn.o{background:#fff;border:2px solid var(--bench);color:var(--bench)}
+.btn.h{background:#fff;border:2px solid var(--red);color:#A93F33}
+.fb{border-radius:14px;padding:13px 15px;margin:14px 0 0;font-size:14.5px;animation:pop .28s ease}
+.fb.no{background:#FDF0EE;border-left:5px solid var(--red);color:#7A2E26}
+.fb.yes{background:#EFF8F2;border-left:5px solid var(--green);color:#1E5637}
+.fb strong{display:block;font-family:var(--disp);font-size:16px;margin-bottom:3px}
+@keyframes pop{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}
+.shake{animation:sh .38s}
+@keyframes sh{0%,100%{transform:none}22%{transform:translateX(-7px)}44%{transform:translateX(7px)}70%{transform:translateX(-3px)}}
+
+/* ---------- reader drawer ---------- */
+.scrim{position:fixed;inset:0;background:rgba(6,20,24,.62);opacity:0;pointer-events:none;
+  transition:opacity .26s;z-index:40;backdrop-filter:blur(2px)}
+.scrim.on{opacity:1;pointer-events:auto}
+.drawer{position:fixed;left:0;right:0;bottom:0;z-index:50;max-height:88vh;
+  background:var(--paper);color:var(--ink);border-radius:22px 22px 0 0;
+  transform:translateY(101%);transition:transform .32s cubic-bezier(.22,.9,.3,1);
+  display:flex;flex-direction:column;box-shadow:0 -14px 44px rgba(0,0,0,.4)}
+.drawer.on{transform:none}
+.dhead{background:#7B2C7E;color:#fff;border-radius:22px 22px 0 0;padding:16px 20px 15px;flex:none;position:relative}
+.dhead .eyebrow{color:#F0C4F2}
+.dhead h3{font-family:var(--disp);font-size:19px;margin:3px 0 0;font-weight:750;padding-right:44px}
+.dhead .pg{font-family:var(--mono);font-size:11px;color:#EBC0EE;margin-top:4px;letter-spacing:.05em}
+.x{position:absolute;right:14px;top:14px;width:34px;height:34px;border-radius:10px;
+  background:rgba(255,255,255,.18);display:grid;place-items:center}
+.x svg{width:15px;height:15px;stroke:#fff;stroke-width:2.4}
+.dbody{overflow-y:auto;padding:18px 20px 26px;-webkit-overflow-scrolling:touch}
+.dbody p{margin:0 0 13px;font-size:15.5px;line-height:1.66}
+.dbody p:last-of-type{margin-bottom:0}
+.vbox{background:#EADCF0;border-radius:12px;padding:12px 14px;margin:0 0 15px}
+.vbox .vh{background:#7B2C7E;color:#fff;display:inline-block;font:700 11px var(--mono);
+  letter-spacing:.12em;text-transform:uppercase;padding:3px 10px;border-radius:7px;margin-bottom:8px}
+.vbox dt{color:#7B2C7E;font-weight:800;display:inline}
+.vbox dd{display:inline;margin:0}
+.dfoot{flex:none;padding:12px 20px calc(14px + env(safe-area-inset-bottom));
+  border-top:1px solid #E7DECB;background:var(--paper);border-radius:0 0 22px 22px}
+.dfoot .btn{width:100%}
+.leadin{font-size:13.5px;color:#5C6C6F;margin:0 0 4px}
+.morepg{margin:22px 0 0;border-top:2px dashed #D6C9AF;padding-top:16px}
+.morepg .eyebrow{color:#8A9B94}
+.hint{margin:16px 0 0;padding:12px 14px;background:#F6F0E2;border-radius:12px;font-size:13.5px;color:#5C6C6F}
+.exwrap{margin:22px 0 0;border-top:2px dashed #D6C9AF;padding-top:18px}
+.exwrap .eyebrow{color:#B07A1E}
+.ex{background:#FDF4DD;border-left:5px solid var(--amber);border-radius:0 12px 12px 0;
+  padding:13px 15px;margin:9px 0 0}
+.ex p{margin:0 0 10px;font-size:15.5px;line-height:1.6;font-weight:500}
+.ex p:last-child{margin:0}
+.exsrc{font:600 11px var(--mono);color:#8A7343;letter-spacing:.08em;margin-top:9px}
+.vidbtn{display:flex;gap:13px;align-items:center;margin:16px 0 0;background:var(--bench);color:var(--paper);
+  border-radius:14px;padding:13px 15px;text-decoration:none}
+.vidbtn .play{flex:none;width:44px;height:32px;border-radius:8px;background:var(--red);display:grid;place-items:center}
+.vidbtn .play svg{width:13px;height:13px;fill:#fff}
+.vidbtn .src{font:600 10px var(--mono);color:var(--cyan);letter-spacing:.09em;text-transform:uppercase}
+.vidbtn h4{margin:1px 0 2px;font-size:15px;font-weight:750}
+.vidbtn p{margin:0;font-size:12.5px;color:#B9CDD2;line-height:1.4}
+.hint b{color:var(--ink)}
+
+/* ---------- results ---------- */
+.score{background:var(--paper);color:var(--ink);border-radius:20px;padding:24px 20px;text-align:center;
+  box-shadow:0 14px 40px rgba(0,0,0,.3)}
+.ring{font-family:var(--disp);font-size:58px;font-weight:800;line-height:1;letter-spacing:-.03em}
+.band{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;margin-top:6px}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:20px 0 0;text-align:left}
+.stat{background:#F6F0E2;border-radius:12px;padding:11px 13px}
+.stat b{display:block;font-family:var(--disp);font-size:22px;font-weight:750}
+.stat span{font:600 10px var(--mono);letter-spacing:.09em;text-transform:uppercase;color:#8A9B94}
+.review{margin:16px 0 0;text-align:left;background:#FDF6E6;border-radius:13px;padding:13px 15px;font-size:14px}
+.review b{display:block;margin-bottom:6px;font-family:var(--disp);font-size:15px}
+.review li{margin:0 0 5px}
+.aloud{margin:16px 0 0;background:var(--bench);color:var(--paper);border-radius:14px;padding:15px 17px;text-align:left}
+.aloud .eyebrow{color:var(--amber)}
+.aloud p{margin:5px 0 0;font-size:15px}
+
+footer{margin:42px 0 0;padding:18px 0 0;border-top:1px solid var(--line);
+  color:#7C979E;font-size:11.5px;line-height:1.6;text-align:center}
+.hide{display:none!important}
+@media(max-width:400px){.tools{grid-template-columns:1fr}.slots.bins{grid-template-columns:1fr}.cells{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<!-- HOME -->
+<div id="home" class="wrap">
+  <header>
+    <a class="hublink" href="../../">&lsaquo; All subjects</a>
+    <div class="eyebrow">CKSci Grade 5 &middot; Investigating Matter</div>
+    <h1>The <em>Property</em> Bench</h1>
+    <p class="sub">Four missions on Chapter 1. Pick any one, in any order, as many times as you like.</p>
+    <div class="bq">
+      <div class="eyebrow">The Big Question</div>
+      <p>What properties can I use to describe matter?</p>
+    </div>
+  </header>
+  <div class="grid" id="missions"></div>
+  <div class="shelf">
+    <div class="eyebrow">Watch first, or watch after</div>
+    <h2>Three short videos</h2>
+    <p class="note">Each is about five minutes. They open on YouTube.</p>
+    <div id="vids"></div>
+  </div>
+  <footer id="foot"></footer>
+</div>
+
+<!-- PLAY -->
+<div id="play" class="wrap hide">
+  <div class="pagehead">
+    <button class="back" id="quit" aria-label="Back to missions">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+    </button>
+    <div class="t"><strong id="mname"></strong><span id="mtag"></span></div>
+  </div>
+  <div class="dots" id="dots"></div>
+  <div class="card" id="card"></div>
+</div>
+
+<!-- RESULTS -->
+<div id="done" class="wrap hide">
+  <div class="pagehead">
+    <button class="back" id="quit2" aria-label="Back to missions">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+    </button>
+    <div class="t"><strong>Mission complete</strong><span id="dtag"></span></div>
+  </div>
+  <div class="score" id="scorebox"></div>
+</div>
+
+<div class="scrim" id="scrim"></div>
+<div class="drawer" id="drawer" role="dialog" aria-modal="true" aria-label="Student Reader">
+  <div class="dhead">
+    <div class="eyebrow">From your Student Reader</div>
+    <h3 id="dtitle"></h3>
+    <div class="pg" id="dcite"></div>
+    <button class="x" id="dclose" aria-label="Close">
+      <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+  <div class="dbody" id="dbody"></div>
+  <div class="dfoot" id="dfoot"></div>
+</div>
+
+<script>
+const ART = {
+
+balloon: `<svg viewBox="0 0 200 150" class="art">
+  <ellipse cx="62" cy="66" rx="26" ry="32" fill="#F2A0A8"/>
+  <ellipse cx="54" cy="55" rx="8" ry="12" fill="#F8C6CB" opacity=".8"/>
+  <path d="M62 98 l-6 10 h12 z" fill="#E4838D"/>
+  <path d="M62 108 q4 22 -16 30" stroke="#8B6F5E" stroke-width="2" fill="none"/>
+  <ellipse cx="146" cy="60" rx="40" ry="46" fill="#F2A0A8"/>
+  <ellipse cx="132" cy="44" rx="11" ry="17" fill="#F8C6CB" opacity=".8"/>
+  <path d="M146 106 l-7 11 h14 z" fill="#E4838D"/>
+  <path d="M146 117 q5 20 -14 28" stroke="#8B6F5E" stroke-width="2" fill="none"/>
+  <g fill="#12333B">
+    <circle cx="136" cy="44" r="3.2"/><circle cx="158" cy="52" r="3.2"/><circle cx="145" cy="70" r="3.2"/>
+    <circle cx="160" cy="78" r="3.2"/><circle cx="128" cy="66" r="3.2"/><circle cx="150" cy="34" r="3.2"/>
+    <circle cx="56" cy="60" r="3.2"/><circle cx="70" cy="72" r="3.2"/><circle cx="60" cy="82" r="3.2"/>
+  </g>
+  <text x="62" y="140" class="cap">less air</text>
+  <text x="146" y="140" class="cap">more air</text>
+</svg>`,
+
+balance: `<svg viewBox="0 0 200 150" class="art">
+  <rect x="86" y="60" width="28" height="62" rx="4" fill="#8B99A0"/>
+  <rect x="70" y="120" width="60" height="12" rx="5" fill="#6D7C84"/>
+  <rect x="30" y="52" width="140" height="9" rx="4.5" fill="#6D7C84"/>
+  <circle cx="100" cy="56" r="7" fill="#C96F3F"/>
+  <path d="M40 56 v14" stroke="#6D7C84" stroke-width="3"/>
+  <path d="M160 56 v26" stroke="#6D7C84" stroke-width="3"/>
+  <path d="M18 70 h44 l-8 12 h-28 z" fill="#B8C4C9"/>
+  <path d="M138 82 h44 l-8 12 h-28 z" fill="#B8C4C9"/>
+  <circle cx="40" cy="62" r="11" fill="#FDFBF5" stroke="#DCD3C2" stroke-width="1.5"/>
+  <path d="M160 74 q-13 -3 -13 -12 q0 -9 13 -9 q13 0 13 9 q0 9 -13 12z" fill="#7E8A82"/>
+  <circle cx="154" cy="58" r="2" fill="#9BA79F"/><circle cx="165" cy="63" r="1.6" fill="#9BA79F"/>
+  <text x="40" y="106" class="cap">cotton ball</text>
+  <text x="160" y="118" class="cap">rock</text>
+  <text x="100" y="142" class="cap">same size \u2014 different weight</text>
+</svg>`,
+
+bread: `<svg viewBox="0 0 200 150" class="art">
+  <path d="M22 48 h56 v54 h-56 z" fill="#F0D9A8"/>
+  <path d="M22 48 l14 -12 h56 l-14 12 z" fill="#F7E8C8"/>
+  <path d="M78 48 l14 -12 v54 l-14 12 z" fill="#E0C48E"/>
+  <path d="M22 102 h56 l14 -12" fill="none" stroke="#C9A96E" stroke-width="2"/>
+  <path d="M28 56 h44 v40 h-44z" fill="#FBF2DC"/>
+  <path d="M150 60 q22 -6 30 12 q8 20 -12 30 q-24 12 -38 -6 q-10 -14 4 -26 q6 -6 16 -10z" fill="#E8CD9B"/>
+  <path d="M156 72 q10 -4 16 6 q4 10 -8 14 q-12 4 -16 -6 q-2 -8 8 -14z" fill="#F7E8C8" opacity=".7"/>
+  <path d="M104 76 h24 m0 0 l-7 -6 m7 6 l-7 6" stroke="#C96F3F" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="57" y="128" class="cap">before</text>
+  <text x="163" y="128" class="cap">squeezed</text>
+</svg>`,
+
+cylinder: `<svg viewBox="0 0 200 150" class="art">
+  <ellipse cx="100" cy="128" rx="34" ry="8" fill="#C9D3D7"/>
+  <path d="M78 30 h44 v96 h-44 z" fill="#DFE9EC" opacity=".55"/>
+  <path d="M78 62 h44 v64 h-44 z" fill="#5EC08C" opacity=".8"/>
+  <ellipse cx="100" cy="62" rx="22" ry="5" fill="#8AD5AC"/>
+  <ellipse cx="100" cy="30" rx="22" ry="5" fill="#EFF6F8"/>
+  <path d="M78 30 h44 v96 h-44 z" fill="none" stroke="#A9BCC2" stroke-width="2"/>
+  <g stroke="#7E9299" stroke-width="1.5">
+    <path d="M108 44 h12"/><path d="M112 54 h8"/><path d="M108 64 h12"/><path d="M112 74 h8"/>
+    <path d="M108 84 h12"/><path d="M112 94 h8"/><path d="M108 104 h12"/>
+  </g>
+  <path d="M122 32 q10 -4 12 4" fill="none" stroke="#A9BCC2" stroke-width="2"/>
+  <text x="100" y="146" class="cap">graduated cylinder</text>
+</svg>`,
+
+iceglass: `<svg viewBox="0 0 200 150" class="art">
+  <path d="M72 26 h56 l-6 100 h-44 z" fill="#DCEBF0" opacity=".5"/>
+  <path d="M74 46 h52 l-5 80 h-42 z" fill="#9FD4E8" opacity=".6"/>
+  <g fill="#EAF7FC" stroke="#BEE0EE" stroke-width="1.5">
+    <rect x="82" y="56" width="22" height="20" rx="3"/>
+    <rect x="100" y="76" width="22" height="20" rx="3"/>
+    <rect x="80" y="94" width="22" height="20" rx="3"/>
+  </g>
+  <path d="M72 26 h56 l-6 100 h-44 z" fill="none" stroke="#A9C6D2" stroke-width="2.5"/>
+  <ellipse cx="100" cy="26" rx="28" ry="6" fill="#F4FAFC" stroke="#A9C6D2" stroke-width="2"/>
+  <g fill="#EAF7FC" stroke="#BEE0EE" stroke-width="1.5">
+    <rect x="140" y="98" width="24" height="22" rx="3"/>
+    <rect x="152" y="86" width="24" height="22" rx="3"/>
+  </g>
+  <text x="100" y="144" class="cap">both are solids \u2014 only one melts</text>
+</svg>`,
+
+beakers: `<svg viewBox="0 0 200 150" class="art">
+  <g>
+    <path d="M18 44 h44 v62 a6 6 0 0 1 -6 6 h-32 a6 6 0 0 1 -6 -6 z" fill="#DCEBF0" opacity=".5" stroke="#A9C6D2" stroke-width="2"/>
+    <path d="M20 68 h40 v38 a6 6 0 0 1 -6 6 h-28 a6 6 0 0 1 -6 -6 z" fill="#9FD4E8" opacity=".55"/>
+    <text x="40" y="130" class="cap">sugar</text><text x="40" y="142" class="cap2">dissolves fast</text>
+  </g>
+  <g>
+    <path d="M78 44 h44 v62 a6 6 0 0 1 -6 6 h-32 a6 6 0 0 1 -6 -6 z" fill="#DCEBF0" opacity=".5" stroke="#A9C6D2" stroke-width="2"/>
+    <path d="M80 68 h40 v38 a6 6 0 0 1 -6 6 h-28 a6 6 0 0 1 -6 -6 z" fill="#9FD4E8" opacity=".55"/>
+    <g fill="#FBF6EC"><circle cx="94" cy="96" r="2.4"/><circle cx="104" cy="102" r="2.4"/><circle cx="112" cy="94" r="2.4"/></g>
+    <text x="100" y="130" class="cap">salt</text><text x="100" y="142" class="cap2">dissolves slower</text>
+  </g>
+  <g>
+    <path d="M138 44 h44 v62 a6 6 0 0 1 -6 6 h-32 a6 6 0 0 1 -6 -6 z" fill="#DCEBF0" opacity=".5" stroke="#A9C6D2" stroke-width="2"/>
+    <path d="M140 68 h40 v38 a6 6 0 0 1 -6 6 h-28 a6 6 0 0 1 -6 -6 z" fill="#9FD4E8" opacity=".55"/>
+    <path d="M144 100 q16 -8 32 0 v6 a6 6 0 0 1 -6 6 h-20 a6 6 0 0 1 -6 -6 z" fill="#D9C295"/>
+    <text x="160" y="130" class="cap">sand</text><text x="160" y="142" class="cap2">never dissolves</text>
+  </g>
+</svg>`,
+
+pumice: `<svg viewBox="0 0 200 150" class="art">
+  <path d="M20 96 q40 -14 80 0 t80 0 v30 h-160z" fill="#9FD4E8" opacity=".55"/>
+  <path d="M46 58 q30 -18 52 2 q18 18 0 32 q-24 20 -48 2 q-16 -14 -4 -36z" fill="#C7CEC7"/>
+  <g fill="#8E978F">
+    <circle cx="62" cy="70" r="3.4"/><circle cx="80" cy="64" r="2.6"/><circle cx="90" cy="78" r="3.8"/>
+    <circle cx="68" cy="86" r="2.8"/><circle cx="54" cy="80" r="2.2"/><circle cx="84" cy="90" r="2.4"/>
+  </g>
+  <path d="M132 104 q22 -10 32 6 q8 16 -12 22 q-22 6 -26 -10 q-2 -12 6 -18z" fill="#7E8A82"/>
+  <circle cx="142" cy="114" r="2.4" fill="#98A49B"/><circle cx="154" cy="120" r="1.8" fill="#98A49B"/>
+  <text x="72" y="132" class="cap">pumice floats</text>
+  <text x="150" y="146" class="cap">granite sinks</text>
+</svg>`,
+
+copper: `<svg viewBox="0 0 200 150" class="art">
+  <g fill="none" stroke="#C96F3F" stroke-width="11" stroke-linecap="round">
+    <path d="M64 44 q40 -8 72 12"/>
+    <path d="M60 66 q40 -8 76 12"/>
+    <path d="M62 88 q40 -8 74 12"/>
+  </g>
+  <g fill="none" stroke="#E39468" stroke-width="3.5" stroke-linecap="round">
+    <path d="M70 40 q34 -6 60 10"/>
+    <path d="M66 62 q36 -6 64 10"/>
+  </g>
+  <g stroke="#F6D2B6" stroke-width="2" stroke-linecap="round" opacity=".9">
+    <path d="M148 40 l14 -10"/><path d="M154 52 l16 -2"/><path d="M150 62 l13 8"/>
+  </g>
+  <text x="100" y="134" class="cap">copper \u2014 shiny, hard, sinks</text>
+</svg>`,
+
+magnet: `<svg viewBox="0 0 200 150" class="art">
+  <path d="M64 96 v-30 a36 36 0 0 1 72 0 v30 h-22 v-30 a14 14 0 0 0 -28 0 v30 z" fill="#D6584A"/>
+  <path d="M64 96 h22 v20 h-22z" fill="#C9D3D7"/>
+  <path d="M114 96 h22 v20 h-22z" fill="#C9D3D7"/>
+  <g stroke="#8B99A0" stroke-width="2.5" fill="none">
+    <rect x="66" y="118" width="18" height="9" rx="4.5"/>
+    <rect x="70" y="128" width="18" height="9" rx="4.5"/>
+    <rect x="116" y="118" width="18" height="9" rx="4.5"/>
+  </g>
+  <g><circle cx="168" cy="120" r="10" fill="#C96F3F"/><text x="168" y="124" class="cap3">1\u00a2</text></g>
+  <path d="M150 120 h8" stroke="#D6584A" stroke-width="2.5" stroke-dasharray="3 3"/>
+  <text x="100" y="146" class="cap">iron sticks \u2014 copper does not</text>
+</svg>`,
+
+pot: `<svg viewBox="0 0 200 150" class="art">
+  <rect x="34" y="112" width="120" height="16" rx="6" fill="#5A666C"/>
+  <g stroke="#E8A33D" stroke-width="4" fill="none" stroke-linecap="round">
+    <path d="M76 112 q6 -12 0 -20"/><path d="M94 112 q6 -12 0 -20"/><path d="M112 112 q6 -12 0 -20"/>
+  </g>
+  <path d="M50 56 h96 l-8 40 a10 10 0 0 1 -10 8 h-60 a10 10 0 0 1 -10 -8 z" fill="#6D7C84"/>
+  <ellipse cx="98" cy="56" rx="48" ry="9" fill="#8B99A0"/>
+  <ellipse cx="98" cy="56" rx="38" ry="6" fill="#4C5A61"/>
+  <rect x="140" y="52" width="48" height="12" rx="6" fill="#3B2E28"/>
+  <rect x="176" y="46" width="12" height="24" rx="6" fill="#3B2E28"/>
+  <text x="98" y="146" class="cap">metal pan, non-metal handle</text>
+</svg>`,
+
+scratch: `<svg viewBox="0 0 200 150" class="art">
+  <path d="M40 68 q34 -22 62 0 q20 20 -2 36 q-28 18 -54 -2 q-16 -14 -6 -34z" fill="#C7CEC7"/>
+  <g fill="#8E978F">
+    <circle cx="58" cy="80" r="3"/><circle cx="76" cy="74" r="2.4"/><circle cx="86" cy="90" r="3.4"/><circle cx="64" cy="96" r="2.6"/>
+  </g>
+  <path d="M52 86 l44 -14" stroke="#FBF6EC" stroke-width="4" stroke-linecap="round"/>
+  <path d="M52 86 l44 -14" stroke="#6E7871" stroke-width="1.6" stroke-linecap="round"/>
+  <g fill="none" stroke="#C96F3F" stroke-width="9" stroke-linecap="round">
+    <path d="M112 58 q30 6 44 26"/>
+  </g>
+  <path d="M118 56 q26 6 38 22" stroke="#E39468" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <text x="70" y="128" class="cap">pumice: scratched</text>
+  <text x="150" y="102" class="cap">copper</text>
+</svg>`,
+
+thermo: `<svg viewBox="0 0 200 150" class="art">
+  <rect x="56" y="24" width="18" height="82" rx="9" fill="#EFF6F8" stroke="#A9BCC2" stroke-width="2"/>
+  <circle cx="65" cy="112" r="15" fill="#9FD4E8" stroke="#A9BCC2" stroke-width="2"/>
+  <rect x="61" y="72" width="8" height="34" fill="#2FA9C4"/>
+  <circle cx="65" cy="112" r="10" fill="#2FA9C4"/>
+  <text x="112" y="52" class="cap4">32\u00b0F</text><text x="112" y="66" class="cap2">ice melts</text>
+  <rect x="132" y="24" width="18" height="82" rx="9" fill="#EFF6F8" stroke="#A9BCC2" stroke-width="2"/>
+  <circle cx="141" cy="112" r="15" fill="#F2B0A6" stroke="#A9BCC2" stroke-width="2"/>
+  <rect x="137" y="30" width="8" height="76" fill="#D6584A"/>
+  <circle cx="141" cy="112" r="10" fill="#D6584A"/>
+  <text x="176" y="52" class="cap4">2,500\u00b0F</text><text x="176" y="66" class="cap2">steel melts</text>
+  <text x="100" y="144" class="cap">melting point is a property</text>
+</svg>`,
+
+wind: `<svg viewBox="0 0 200 150" class="art">
+  <path d="M96 120 v-42" stroke="#6E5A48" stroke-width="7" stroke-linecap="round"/>
+  <path d="M96 82 q-22 -30 6 -44 q30 -14 40 12 q10 24 -14 32 q-18 6 -32 0z" fill="#5E9E6B"/>
+  <path d="M96 82 q10 -12 26 -14" stroke="#4A8256" stroke-width="2.5" fill="none"/>
+  <rect x="62" y="118" width="76" height="8" rx="4" fill="#8B7355"/>
+  <g stroke="#2FA9C4" stroke-width="4" fill="none" stroke-linecap="round" opacity=".85">
+    <path d="M14 48 h34 q10 0 10 -8 q0 -7 -8 -6"/>
+    <path d="M10 70 h48 q11 0 11 -9"/>
+    <path d="M18 92 h30 q10 0 10 8 q0 7 -8 6"/>
+  </g>
+  <text x="100" y="146" class="cap">you can't see air \u2014 you can see what it does</text>
+</svg>`,
+
+tongue: `<svg viewBox="0 0 120 100" class="art">
+  <circle cx="60" cy="48" r="34" fill="#F2C9A0"/>
+  <path d="M42 40 q6 -6 12 0" stroke="#6E5A48" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <path d="M66 40 q6 -6 12 0" stroke="#6E5A48" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <path d="M46 58 q14 14 28 0 q-4 16 -14 16 q-10 0 -14 -16z" fill="#D6584A"/>
+  <circle cx="60" cy="50" r="44" fill="none" stroke="#D6584A" stroke-width="6"/>
+  <path d="M28 82 L92 18" stroke="#D6584A" stroke-width="6" stroke-linecap="round"/>
+</svg>`
+};
+
+const DATA = {
+  chapter: "Chapter 1 — Properties of Matter",
+  bigQuestion: "What properties can I use to describe matter?",
+
+  passages: {
+    matter: {
+      title: "Properties of Matter",
+      cite: "Student Reader, page 1",
+      vocab: [["matter, n.", "anything that has mass and takes up space"]],
+      text: [
+        "Everywhere you look there are objects to describe. What do all these have in common? They are made of matter. Everything in the universe is made up of matter. This includes all solids, liquids, and gases. Matter is anything that has mass and takes up space.",
+        "It is easy to name many different kinds of matter. Just think of what you can see and touch. You can see and touch a rope, a fish, a boat, or water. But there is also matter that you cannot see and matter that isn't easy to touch. Air is matter\u2014it has mass and takes up space. You cannot see air or grab it, though you can feel it as wind. Blow up a balloon with air, and you can see that the air takes up space inside. Air is matter because the gases in it have mass and take up space."
+      ]
+    },
+    weightvolume: {
+      title: "Weight and Volume Help Describe Amounts of Matter",
+      cite: "Student Reader, page 2",
+      vocab: [],
+      text: [
+        "Mass and Weight: Some objects are made up of more matter than others. Mass refers to the amount of matter an object is made of. A cotton ball has a small mass. A rock that is the same size as the cotton ball has a greater mass. The rock contains more matter than the cotton ball, even though the two objects are the same size.",
+        "You can tell which of two objects has more matter by weighing each one. Earth's gravity pulls on all matter near the planet. You can measure the force of gravity on an object by placing it on a scale. Scales determine an object's weight. The more matter an object contains, the greater the pull of gravity on it, and the more it weighs.",
+        "Volume: All matter takes up space. When you breathe in, air takes up space in your lungs. You can measure how much space an object takes up using tools such as graduated cylinders and rulers to determine dimensions. These tools help you to measure the volume of an object.",
+        "A piece of bread can be described using weight and volume. If it is squeezed into a tight lump, it will take up less space. The weight will be the same, but the volume will be reduced."
+      ]
+    },
+    identify: {
+      title: "Properties Describe and Help to Identify Types of Matter",
+      cite: "Student Reader, page 3",
+      vocab: [["property, n.", "a quality, trait, or detail used to describe something"]],
+      text: [
+        "Measurements such as weight and volume help us describe the amount of matter in objects. We use other means to describe matter. When we describe how a material looks, feels, or behaves, we are describing the material's properties.",
+        "What is the solid matter in this picture? You might have identified the glass, but you could also identify the ice cubes. If asked to identify the transparent matter, the material you can see through, you could have named the glass, the ice, and the water.",
+        "What is the difference between the glass and the ice, though they are both solids that look a lot alike? You might explain that the ice cubes will melt at room temperature but the glass will not. We can use a combination of properties to describe different examples of matter and tell them apart.",
+        "Think About Melting: Ice melts at thirty-two degrees Fahrenheit. Other substances, such as steel, have different properties and do not melt until the temperature is much hotter. Steel is made of a combination of metals that does not melt until the temperature reaches around 2,500 degrees Fahrenheit! The temperature at which an object melts, its melting point, is a property of matter."
+      ]
+    },
+    solubility: {
+      title: "Matter Has Physical Properties \u2014 Solubility",
+      cite: "Student Reader, page 4",
+      vocab: [],
+      text: [
+        "Solubility: If you crush a sugar cube, you know that the powder that results is still sugar. You still have the same amount of sugar. You could even measure the weight to be sure.",
+        "But what if you mix the sugar into a cup of tea and stir it? The sugar seems to disappear. When you taste the tea, how can you tell the sugar is still there?",
+        "The sugar has dissolved in the tea. Tea is mostly water. The property of how matter dissolves is called solubility. Sugar is a type of matter that dissolves in water very easily. It has a high solubility. Sand does not dissolve in water and has low solubility.",
+        "How might you describe the differences between table salt, sugar, and white sand that you find on a beach? One way might be to test the solubility of each. Table salt looks a lot like sugar, but the salt takes longer to dissolve in water than sugar. White beach sand looks a lot like both sugar and salt, but it won't dissolve in a glass of water at all. Like other properties, solubility allows you to describe and identify the matter you see around you."
+      ]
+    },
+    rockmetal: {
+      title: "Color, Hardness, Reflectivity, and Buoyancy",
+      cite: "Student Reader, page 5",
+      vocab: [],
+      text: [
+        "Knowing the properties of matter can help us identify materials and use them to solve engineering problems. Look at the physical properties of a rock called pumice and the metal copper.",
+        "Color: Though it can be darker, pumice is usually light tan or gray. What color is the copper? Well, it's \u201ccopper\u201d! Copper is so recognizable by the property called color that the name of the color and the name of the mineral are the same.",
+        "Hardness: Some rocks and minerals are harder than others. Hardness is tested by scratching the materials with each other to determine which is harder. This is called a scratch test, which you can use to show that copper is harder than pumice.",
+        "Reflectivity: When you look in a mirror, you see your image in the shiny, reflective surface. Many rocks and minerals have shiny surfaces that reflect light. Metals such as copper have high reflectivity. Dull materials, such as pumice, have low reflectivity.",
+        "Buoyancy: Pumice is an unusual rock because it floats in water. Pumice floats because the matter in the rock is more spread out than the matter in water. Buoyancy describes an object's ability to float. The more buoyant an object is, the more likely it will float. Copper is not considered buoyant because it sinks."
+      ]
+    },
+    metals: {
+      title: "Metals Have Certain Properties",
+      cite: "Student Reader, page 6",
+      vocab: [],
+      text: [
+        "People use the properties of matter to describe different metals as well. Copper, iron, aluminum, and stainless steel are all metals, but they have different properties. Let's look at three properties that these metals share to varying degrees.",
+        "Electrical Conductivity: Copper is used for wires because it is a metal that conducts electricity. An electric current passes through it easily. But an electric current is not conducted at all through the plastic coating on wire. Metals vary in their ability to conduct an electric current.",
+        "Heat Conductivity: Pots and pans are made of materials that conduct heat to help cook food. They allow heat to pass through them easily from the stove to the food. Most metals conduct heat well. Many kinds of pots and pans are made from cast iron or copper because these metals conduct heat better than stainless steel and aluminum. You might also notice that most pots and pans have handles made of different materials from the part that sits on the stove burner to make it safer to hold.",
+        "Magnetism: Matter can be described and identified by its magnetic properties as well. Iron, nickel, and cobalt are metals that are attracted to magnets. Not all metals respond to magnets, though. Try to pick up a copper penny or a piece of aluminum foil with a magnet, and nothing will happen."
+      ]
+    }
+  },
+
+  videos: [
+    { id: "ELchwUIlWa8", t: "What's Matter?", s: "Crash Course Kids #3.1", d: "5 min. What matter is, and a balloon experiment that proves air is matter \u2014 the same one on page 1.", when: "Start here." },
+    { id: "ZZYnERZe3Cg", t: "Hunting for Properties", s: "Crash Course Kids #9.1", d: "5 min. What a property is and how you measure one. Built on the exact standard this chapter teaches.", when: "Best match to the chapter." },
+    { id: "YCQXDegwnoE", t: "Wood, Water, and Properties", s: "Crash Course Kids #15.1", d: "5 min. Comparing two materials property by property \u2014 reflectivity, transparency, hardness.", when: "Watch after page 5." }
+  ],
+
+  missions: [
+    {
+      id: "m1", name: "What Counts as Matter", tag: "Pages 1\u20132",
+      blurb: "Mass, weight, volume, and the invisible stuff.",
+      items: [
+        { type: "pick", art: "balloon", p: "matter",
+          q: "Ana blows up a balloon. Her brother says, \u201cThat proves nothing \u2014 air isn't really matter. You can't even see it or hold it.\u201d What is the strongest evidence Ana can give that air IS matter?",
+          opts: ["Air is invisible, and invisible things are always matter.",
+                 "The balloon changed color when it stretched.",
+                 "The air pushed the balloon outward, so it takes up space \u2014 and it has mass.",
+                 "The balloon felt cooler after she blew into it."],
+          a: 2,
+          why: "Matter is anything that has mass and takes up space. Being invisible has nothing to do with it \u2014 that's the trap in the first choice. The reader uses this exact balloon to make the point." },
+
+        { type: "pick", art: "balance", p: "weightvolume",
+          q: "A cotton ball and a small rock are exactly the same size. On a scale, the rock weighs much more. What does that tell you?",
+          opts: ["The rock takes up more space than the cotton ball.",
+                 "The rock is made of more matter than the cotton ball.",
+                 "Gravity does not pull on the cotton ball at all.",
+                 "The cotton ball is not made of matter."],
+          a: 1,
+          why: "Mass is the amount of matter in an object. The first choice can't be right \u2014 the question says they are the same size. \u201cMore matter\u201d is the whole answer expected at this grade." },
+
+        { type: "pick", art: "bread", p: "weightvolume",
+          q: "Jamal squeezes a slice of bread into a tight little lump. Which statement describes what happened?",
+          opts: ["Both the weight and the volume got smaller.",
+                 "The weight got smaller, but the volume stayed the same.",
+                 "Both the weight and the volume stayed exactly the same.",
+                 "The weight stayed the same, but the volume got smaller."],
+          a: 3,
+          why: "Squeezing changes how much space the bread fills. Nothing was added and nothing was taken away, so the weight can't change." },
+
+        { type: "tool", p: "weightvolume",
+          q: "Priya wants to find out how much SPACE a small stone takes up. Which tool should she reach for?",
+          tools: ["balance", "cylinder", "magnet", "thermo"],
+          labels: ["Balance scale", "Graduated cylinder", "Magnet", "Thermometer"],
+          a: 1,
+          why: "Volume is the amount of space something takes up, and the reader names graduated cylinders and rulers as the tools for measuring it. A scale would give her weight instead." },
+
+        { type: "sort", p: "weightvolume",
+          q: "Sort each clue into the measurement it belongs to.",
+          bins: ["Weight", "Volume"],
+          chips: [
+            ["How much matter is in it", 0],
+            ["How much space it fills", 1],
+            ["You measure it with a scale", 0],
+            ["You measure it with a graduated cylinder", 1],
+            ["Stays the same when bread is squeezed", 0],
+            ["Gets smaller when bread is squeezed", 1]
+          ],
+          why: "Weight answers \u201chow much matter?\u201d and volume answers \u201chow much space?\u201d Squeezing the bread separates them cleanly \u2014 one changes and one doesn't." },
+
+        { type: "match", p: "matter",
+          q: "Match each word to the definition your teacher's guide uses.",
+          pairs: [
+            ["matter", "anything that has mass and takes up space"],
+            ["property", "a quality, trait, or detail used to describe something"],
+            ["mass", "the amount of matter in an object"],
+            ["volume", "the amount of space an object occupies"],
+            ["weight", "the pull of gravity on an object's mass"]
+          ],
+          why: "These are the exact definitions from the glossary in the back of the teacher's guide." }
+      ]
+    },
+
+    {
+      id: "m2", name: "Telling Look-Alikes Apart", tag: "Pages 3\u20134",
+      blurb: "When two things look the same, properties settle it.",
+      items: [
+        { type: "pick", art: "iceglass", p: "identify",
+          q: "A drinking glass and an ice cube are both solids, and they look a lot alike. Which property tells them apart?",
+          opts: ["The glass is a solid and the ice is a liquid.",
+                 "The ice will melt at room temperature, but the glass will not.",
+                 "The ice is transparent and the glass is not.",
+                 "They both look alike, so nothing can tell them apart."],
+          a: 1,
+          why: "Both are transparent solids, so transparency is no help here. Melting point is the property that separates them." },
+
+        { type: "pick", art: "thermo", p: "identify",
+          q: "Ice melts at 32\u00b0F. Steel doesn't melt until around 2,500\u00b0F. The temperature at which something melts is called its \u2014",
+          opts: ["solubility", "buoyancy", "reflectivity", "melting point"],
+          a: 3,
+          why: "The reader calls the melting point a property of matter, which is why it can be used to identify what something is made of." },
+
+        { type: "pick", art: "beakers", p: "solubility",
+          q: "Table salt, sugar, and white beach sand all look alike in a jar. Ana tests all three by stirring them into water. What does she see?",
+          opts: ["All three dissolve at exactly the same speed.",
+                 "Sand dissolves fastest because its grains are smallest.",
+                 "Sugar dissolves easily, salt takes longer, and sand doesn't dissolve at all.",
+                 "None of the three dissolve in water."],
+          a: 2,
+          why: "Solubility is the property of how matter dissolves. Three look-alike white solids behave three different ways in water, so one test identifies all three." },
+
+        { type: "sort", p: "rockmetal",
+          q: "Imagine breaking a rock cleanly in half. Sort each property by whether it would stay the same or change.",
+          bins: ["Describes the MATERIAL", "Describes just THIS PIECE"],
+          chips: [
+            ["Color", 0], ["Hardness", 0], ["Reflectivity", 0],
+            ["Whether a magnet grabs it", 0],
+            ["Shape", 1], ["Size", 1], ["Weight", 1]
+          ],
+          why: "This is the biggest idea in the chapter. Break the rock in half and its shape, size, and weight all change \u2014 so those describe the piece you happen to be holding. Its color, hardness, reflectivity, and magnetism don't change, so those tell you what the material actually IS." },
+
+        { type: "selectall", p: "rockmetal",
+          q: "An unknown rock sample is sitting on the lab table. Which of these could help you identify what MATERIAL it is made of? Select every correct answer.",
+          opts: [["Hardness", 1], ["Shape", 0], ["Reflectivity", 1], ["Size", 0], ["Color", 1], ["Whether a magnet picks it up", 1]],
+          why: "Four of these are properties of the material and stay the same no matter which piece you pick up. Shape and size belong to that one piece of rock and tell you nothing about what it is." },
+
+        { type: "pick", art: "scratch", p: "rockmetal",
+          q: "Jamal drags a piece of copper across a piece of pumice and leaves a scratch. What has he tested?",
+          opts: ["Buoyancy", "Hardness", "Reflectivity", "Solubility"],
+          a: 1,
+          why: "A scratch test compares hardness. Whichever material gets scratched is the softer one \u2014 so this shows copper is harder than pumice." }
+      ]
+    },
+
+    {
+      id: "m3", name: "Rocks, Metals, and Tests", tag: "Pages 5\u20136",
+      blurb: "Pumice, copper, magnets, and hot pans.",
+      items: [
+        { type: "pick", art: "pumice", p: "rockmetal",
+          q: "Pumice floats in water. Copper sinks. Which property are you observing?",
+          opts: ["Reflectivity", "Hardness", "Buoyancy", "Solubility"],
+          a: 2,
+          why: "Buoyancy describes an object's ability to float. Pumice is unusual for a rock because the matter in it is more spread out than the matter in water." },
+
+        { type: "pick", art: "copper", p: "rockmetal",
+          q: "Copper has high reflectivity. Pumice has low reflectivity. What does that mean?",
+          opts: ["Copper's shiny surface bounces back more light than dull pumice does.",
+                 "Copper is harder than pumice.",
+                 "Copper floats and pumice sinks.",
+                 "Copper dissolves in water and pumice does not."],
+          a: 0,
+          why: "Reflectivity is about light bouncing off a surface. The other three choices are real properties \u2014 they're just the wrong ones, and two of them aren't even true." },
+
+        { type: "pick", art: "pot", p: "metals",
+          q: "A frying pan is made of cast iron, but its handle is made of a different material. Why would a designer do that?",
+          opts: ["The handle needs to be magnetic so it sticks to the stove.",
+                 "Iron is more reflective than the handle material.",
+                 "Iron dissolves in water, so the handle protects it.",
+                 "Iron conducts heat well so it cooks the food; the handle material blocks heat so it's safe to hold."],
+          a: 3,
+          why: "Heat conductivity drives the whole design. The pan has to pass heat through to the food and the handle has to stop heat from reaching your hand \u2014 two jobs, so two materials." },
+
+        { type: "pick", art: "magnet", p: "metals",
+          q: "A magnet picks up an iron nail, but nothing happens with a copper penny or aluminum foil. What does this show?",
+          opts: ["Copper and aluminum are not really metals.",
+                 "Only some metals are attracted to magnets.",
+                 "All metals are attracted to magnets.",
+                 "The penny is not made of matter."],
+          a: 1,
+          why: "Iron, nickel, and cobalt are attracted to magnets. Copper and aluminum are still metals \u2014 they just don't have that property. \u201cMetal\u201d and \u201cmagnetic\u201d are not the same word." },
+
+        { type: "tool", p: "solubility",
+          q: "Two white powders look identical. One is sugar and one is sand. Which test tells them apart?",
+          tools: ["magnet", "beakers", "tongue", "balance"],
+          labels: ["Hold a magnet over them", "Stir each into water", "Taste a pinch of each", "Weigh them on a scale"],
+          a: 1,
+          why: "Solubility separates them: sugar dissolves, sand doesn't. Never taste an unknown material \u2014 that's a standing safety rule in the teacher's guide. A magnet is no help since neither is magnetic, and weighing tells you only how much you poured." },
+
+        { type: "selectall", p: "metals",
+          q: "Copper wire is wrapped in a plastic coating. Select every true statement.",
+          opts: [["An electric current passes easily through copper", 1],
+                 ["An electric current is not conducted at all through the plastic coating", 1],
+                 ["All metals conduct electricity equally well", 0],
+                 ["Metals vary in how well they conduct an electric current", 1]],
+          why: "Copper carries the current and the plastic stops it \u2014 that's why wires are built this way. The third statement is the one to reject: the reader says metals vary in their ability to conduct." }
+      ]
+    },
+
+    {
+      id: "m4", name: "Be the Scientist", tag: "All 6 pages",
+      blurb: "Put it together and identify four unknowns.",
+      items: [
+        { type: "pick", art: "wind", p: "matter",
+          q: "Priya can't see the air, but she can feel wind push against her face and she can watch it bend a tree. Which sentence explains why air still counts as matter?",
+          opts: ["Anything you can feel is matter, whether or not it has mass.",
+                 "Air becomes matter only when it is moving as wind.",
+                 "The gases in air have mass and take up space.",
+                 "Air is matter because trees are matter."],
+          a: 2,
+          why: "The test never changes: does it have mass, and does it take up space? Air passes both, moving or still." },
+
+        { type: "selectall", p: "weightvolume",
+          q: "A slice of bread is squeezed into a tight lump. Which properties changed? Select every correct answer. (Careful \u2014 there may be only one.)",
+          opts: [["Volume", 1], ["Weight", 0], ["Color", 0], ["The type of matter it is", 0], ["Hardness", 0]],
+          why: "Only the volume changed. It's still bread, it still weighs the same, and nothing was added or removed. \u201cSelect every correct answer\u201d does not mean there must be several." },
+
+        { type: "pick", art: "cylinder", p: "weightvolume",
+          q: "Two objects sit on the table. Object A is much bigger than Object B, but Object B is much heavier. Which is true?",
+          opts: ["Object B contains more matter than Object A.",
+                 "Object A contains more matter than Object B.",
+                 "Object B takes up more space than Object A.",
+                 "Object A cannot be matter if it weighs less."],
+          a: 0,
+          why: "This is the cotton ball and the rock again. Bigger doesn't mean more matter \u2014 weighing is what tells you which one holds more." },
+
+        { type: "match", p: "identify",
+          q: "Match each science word to what a scientist does with it.",
+          pairs: [
+            ["observe", "to inspect or notice something"],
+            ["measure", "to compare an amount of something to a known quantity"],
+            ["evidence", "information that helps answer a question or support a claim"],
+            ["property", "a quality, trait, or detail used to describe something"]
+          ],
+          why: "You observe a property, you measure it, and what you write down becomes evidence. That is the whole job of this chapter." },
+
+        { type: "pick", art: "beakers", p: "solubility",
+          q: "Ana crushes a sugar cube into powder and weighs it. Then she stirs the powder into a glass of water until it disappears. Is the sugar gone?",
+          opts: ["Yes \u2014 dissolving destroys the sugar.",
+                 "No \u2014 it dissolved, so it spread out through the water and is still there.",
+                 "Yes \u2014 the sugar turned into water.",
+                 "No \u2014 the sugar sank to the bottom where you can't see it."],
+          a: 1,
+          why: "Crushing the cube didn't change how much sugar there was, and neither did dissolving it. You can still taste it, which is your evidence that it's there." },
+
+        { type: "mystery", p: "rockmetal",
+          q: "Four unknown samples are on the bench. Use the test results to name each one.",
+          headers: ["Color", "In water", "Magnet", "Scratch test"],
+          rows: [
+            { key: "A", cells: ["Reddish-orange", "Sinks", "No reaction", "Scratches pumice"], answer: "Copper" },
+            { key: "B", cells: ["Light gray, full of holes", "Floats", "No reaction", "Gets scratched"], answer: "Pumice" },
+            { key: "C", cells: ["White grains", "Dissolves", "No reaction", "Not tested"], answer: "Sugar" },
+            { key: "D", cells: ["Silver-gray", "Sinks", "Sticks hard", "Scratches pumice"], answer: "Iron" }
+          ],
+          choices: ["Copper", "Pumice", "Sugar", "Iron"],
+          why: "Every sample gives itself away with one standout property. The holes and floating mark the pumice, the magnet finds the iron, dissolving finds the sugar, and the reddish-orange color names the copper \u2014 the reader points out that copper is so recognizable the color and the mineral share a name." }
+      ]
+    }
+  ]
+};
+
+/* Exact sentences lifted from the Student Reader, per question.
+   Every string here is verified as a verbatim substring of its own passage. */
+DATA.excerpts = {
+  "m1-0": ["Matter is anything that has mass and takes up space.",
+           "Air is matter\u2014it has mass and takes up space.",
+           "Blow up a balloon with air, and you can see that the air takes up space inside."],
+  "m1-1": ["Mass refers to the amount of matter an object is made of.",
+           "The rock contains more matter than the cotton ball, even though the two objects are the same size."],
+  "m1-2": ["If it is squeezed into a tight lump, it will take up less space. The weight will be the same, but the volume will be reduced."],
+  "m1-3": ["You can measure how much space an object takes up using tools such as graduated cylinders and rulers to determine dimensions. These tools help you to measure the volume of an object."],
+  "m1-4": ["Scales determine an object's weight.",
+           "These tools help you to measure the volume of an object.",
+           "The weight will be the same, but the volume will be reduced."],
+  "m1-5": ["Matter is anything that has mass and takes up space."],
+
+  "m2-0": ["You might explain that the ice cubes will melt at room temperature but the glass will not.",
+           "We can use a combination of properties to describe different examples of matter and tell them apart."],
+  "m2-1": ["The temperature at which an object melts, its melting point, is a property of matter."],
+  "m2-2": ["Table salt looks a lot like sugar, but the salt takes longer to dissolve in water than sugar. White beach sand looks a lot like both sugar and salt, but it won't dissolve in a glass of water at all."],
+  "m2-3": ["Knowing the properties of matter can help us identify materials and use them to solve engineering problems."],
+  "m2-4": ["Knowing the properties of matter can help us identify materials and use them to solve engineering problems.",
+           "Hardness is tested by scratching the materials with each other to determine which is harder.",
+           "Metals such as copper have high reflectivity. Dull materials, such as pumice, have low reflectivity."],
+  "m2-5": ["Hardness is tested by scratching the materials with each other to determine which is harder. This is called a scratch test, which you can use to show that copper is harder than pumice."],
+
+  "m3-0": ["Buoyancy describes an object's ability to float. The more buoyant an object is, the more likely it will float. Copper is not considered buoyant because it sinks."],
+  "m3-1": ["Many rocks and minerals have shiny surfaces that reflect light. Metals such as copper have high reflectivity. Dull materials, such as pumice, have low reflectivity."],
+  "m3-2": ["They allow heat to pass through them easily from the stove to the food.",
+           "You might also notice that most pots and pans have handles made of different materials from the part that sits on the stove burner to make it safer to hold."],
+  "m3-3": ["Iron, nickel, and cobalt are metals that are attracted to magnets. Not all metals respond to magnets, though. Try to pick up a copper penny or a piece of aluminum foil with a magnet, and nothing will happen."],
+  "m3-4": ["Sugar is a type of matter that dissolves in water very easily. It has a high solubility. Sand does not dissolve in water and has low solubility."],
+  "m3-5": ["Copper is used for wires because it is a metal that conducts electricity. An electric current passes through it easily. But an electric current is not conducted at all through the plastic coating on wire. Metals vary in their ability to conduct an electric current."],
+
+  "m4-0": ["You cannot see air or grab it, though you can feel it as wind.",
+           "Air is matter because the gases in it have mass and take up space."],
+  "m4-1": ["If it is squeezed into a tight lump, it will take up less space. The weight will be the same, but the volume will be reduced."],
+  "m4-2": ["A cotton ball has a small mass. A rock that is the same size as the cotton ball has a greater mass. The rock contains more matter than the cotton ball, even though the two objects are the same size."],
+  "m4-3": ["When we describe how a material looks, feels, or behaves, we are describing the material's properties."],
+  "m4-4": ["If you crush a sugar cube, you know that the powder that results is still sugar. You still have the same amount of sugar.",
+           "The sugar has dissolved in the tea."],
+  "m4-5": ["Copper is so recognizable by the property called color that the name of the color and the name of the mineral are the same.",
+           "Pumice is an unusual rock because it floats in water.",
+           "Hardness is tested by scratching the materials with each other to determine which is harder."]
+};
+
+/* Which video explains each page of the reader. */
+DATA.vidFor = {
+  matter:       { id: "ELchwUIlWa8", t: "What's Matter?",              s: "Crash Course Kids #3.1",  d: "Mass, volume, and the balloon test that proves air is matter." },
+  weightvolume: { id: "ELchwUIlWa8", t: "What's Matter?",              s: "Crash Course Kids #3.1",  d: "Why everything has both weight and volume, and how they differ." },
+  identify:     { id: "ZZYnERZe3Cg", t: "Hunting for Properties",      s: "Crash Course Kids #9.1",  d: "What a property is, and how you observe and measure one." },
+  solubility:   { id: "ZZYnERZe3Cg", t: "Hunting for Properties",      s: "Crash Course Kids #9.1",  d: "Using a property as a test to tell look-alike materials apart." },
+  rockmetal:    { id: "YCQXDegwnoE", t: "Wood, Water, and Properties", s: "Crash Course Kids #15.1", d: "Two materials compared property by property \u2014 reflectivity, hardness." },
+  metals:       { id: "nlSemv2fLN8", t: "What's My Property",          s: "Crash Course Kids #35.2", d: "Metals: shiny, magnetic, and good at conducting heat and electricity." }
+};
+
+
+const COLORS = ["#D07A45","#3FB4CE","#59B27C","#7C5BA6"];
+const KEYS = ["A","B","C","D","E","F"];
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+const shuffle = a => { a=a.slice(); for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]];} return a; };
+
+let M=null, idx=0, tries=0, log=[], sel=null, place={}, chosen=new Set();
+let hintFn=null, hintMarks=new Set(), hinted=false;
+const best = {};
+
+/* ---------- home ---------- */
+function home(){
+  $("missions").innerHTML = DATA.missions.map((m,i)=>`
+    <button class="mission" style="--c:${COLORS[i]}" data-m="${i}">
+      <div class="top"><span class="tag">${esc(m.tag)}</span></div>
+      <h3>${esc(m.name)}</h3>
+      <p>${esc(m.blurb)}</p>
+      <span class="go">${m.items.length} questions
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+      </span>
+      ${best[m.id]!=null?`<span class="badge">best ${best[m.id]}%</span>`:""}
+    </button>`).join("");
+  [...document.querySelectorAll(".mission")].forEach(b=>b.onclick=()=>start(+b.dataset.m));
+
+  $("vids").innerHTML = DATA.videos.map(v=>`
+    <a class="vid" href="https://www.youtube.com/watch?v=${v.id}" target="_blank" rel="noopener">
+      <span class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+      <span>
+        <span class="src">${esc(v.s)}</span>
+        <h4>${esc(v.t)}</h4>
+        <p>${esc(v.d)}</p>
+        <div class="when">${esc(v.when)}</div>
+      </span>
+    </a>`).join("");
+
+  $("foot").innerHTML = "Based on an original work of the Core Knowledge Foundation (coreknowledge.org), used under CC BY-NC-SA 4.0. "+
+    "This does not imply that the Core Knowledge Foundation endorses this work.<br>Practice questions and artwork are not part of the original.";
+  show("home");
+}
+function show(w){ ["home","play","done"].forEach(x=>$(x).classList.toggle("hide",x!==w)); window.scrollTo(0,0); }
+
+/* ---------- mission ---------- */
+function start(i){
+  M = DATA.missions[i]; idx=0; log=[];
+  $("mname").textContent = M.name; $("mtag").textContent = M.tag;
+  show("play"); render();
+}
+function render(){
+  tries=0; sel=null; place={}; chosen=new Set();
+  hintFn=null; hintMarks=new Set(); hinted=false;
+  $("dots").innerHTML = M.items.map((_,i)=>
+    `<span class="dot ${i<idx?"done":i===idx?"now":""}"></span>`).join("");
+  const it = M.items[idx];
+  const head = `<div class="qnum">Question ${idx+1} of ${M.items.length}</div><div class="q">${esc(it.q)}</div>`;
+  const art  = it.art && ART[it.art] ? `<div class="artbox">${ART[it.art]}</div>` : "";
+  $("card").innerHTML = head + art + `<div id="body"></div><div class="act" id="act"></div><div id="fb"></div>`;
+  ({pick:rPick, selectall:rMulti, tool:rTool, sort:rPlace, match:rPlace, mystery:rMystery})[it.type](it);
+}
+
+/* ---------- pick ---------- */
+function rPick(it){
+  const order = shuffle(it.opts.map((t,i)=>({t,ok:i===it.a})));
+  $("body").innerHTML = `<div class="opts">` + order.map((o,i)=>
+    `<button class="opt" data-i="${i}"><span class="k">${KEYS[i]}</span><span>${esc(o.t)}</span></button>`).join("") + `</div>`;
+  [...document.querySelectorAll(".opt")].forEach(b=>b.onclick=()=>{
+    if(b.classList.contains("out")) return;
+    tries++;
+    if(order[+b.dataset.i].ok){ b.classList.add("good"); lockAll(".opt"); win(it); }
+    else{ b.classList.add("out"); b.disabled=true; miss(it,"That's not it."); }
+  });
+}
+function lockAll(s){ [...document.querySelectorAll(s)].forEach(b=>b.disabled=true); }
+
+/* ---------- select all ---------- */
+function rMulti(it){
+  const order = shuffle(it.opts.map(([t,ok],i)=>({t,ok:!!ok})));
+  $("body").innerHTML = `<p class="instr">Tap every answer that belongs. Then check.</p><div class="opts">` +
+    order.map((o,i)=>`<button class="opt multi" data-i="${i}"><span class="k">${KEYS[i]}</span><span>${esc(o.t)}</span></button>`).join("") +
+    `</div><div class="counter" id="cnt"></div>`;
+  const cnt = ()=> $("cnt").textContent = chosen.size===0 ? "nothing selected yet"
+      : chosen.size+" selected of "+order.length+" choices";
+  cnt();
+  [...document.querySelectorAll(".opt")].forEach(b=>b.onclick=()=>{
+    const i=+b.dataset.i;
+    if(chosen.has(i)) chosen.delete(i); else chosen.add(i);
+    b.classList.toggle("on"); cnt();
+    $("go").disabled = chosen.size===0;
+  });
+  $("act").innerHTML = `<button class="btn p" id="go" disabled>Check my answers</button>`;
+  $("go").onclick = ()=>{
+    tries++;
+    let wrong=0; order.forEach((o,i)=>{ if(o.ok!==chosen.has(i)) wrong++; });
+    if(!wrong){
+      order.forEach((o,i)=>{ if(o.ok) document.querySelector(`.opt[data-i="${i}"]`).classList.add("good"); });
+      lockAll(".opt"); $("go").remove(); win(it);
+    } else {
+      const n = wrong===1 ? "One choice is judged wrong" : wrong+" choices are judged wrong";
+      miss(it, n + " — either picked when it shouldn't be, or left out when it should be in.");
+    }
+  };
+}
+
+/* ---------- tools ---------- */
+function rTool(it){
+  const order = shuffle(it.tools.map((k,i)=>({k,lab:it.labels[i],ok:i===it.a})));
+  $("body").innerHTML = `<div class="tools">` + order.map((o,i)=>
+    `<button class="tool" data-i="${i}">${ART[o.k]||""}<span>${esc(o.lab)}</span></button>`).join("") + `</div>`;
+  [...document.querySelectorAll(".tool")].forEach(b=>b.onclick=()=>{
+    if(b.classList.contains("out")) return;
+    tries++;
+    if(order[+b.dataset.i].ok){ b.classList.add("good"); lockAll(".tool"); win(it); }
+    else{ b.classList.add("out"); b.disabled=true; miss(it,"That tool won't answer this question."); }
+  });
+}
+
+/* ---------- sort + match (chips into slots) ---------- */
+function rPlace(it){
+  const bins = it.type==="sort";
+  const chips = bins ? shuffle(it.chips.map(([t,b],i)=>({id:"c"+i,t,s:"s"+b})))
+                     : shuffle(it.pairs.map(([w],i)=>({id:"c"+i,t:w,s:"s"+i})));
+  const slots = bins ? it.bins.map((b,i)=>({id:"s"+i,t:b}))
+                     : shuffle(it.pairs.map(([,d],i)=>({id:"s"+i,t:d})));
+  const want = {}; chips.forEach(c=>want[c.id]=c.s);
+
+  $("body").innerHTML =
+    `<p class="instr">${bins?"Tap a card, then tap the box it belongs in.":"Tap a word, then tap its meaning."}</p>
+     <div class="chips" id="chips"></div>
+     <div class="slots ${bins?"bins":""}" id="slots"></div>`;
+
+  const draw = ()=>{
+    $("chips").innerHTML = chips.map(c=>
+      `<button class="chip ${place[c.id]?"used":""} ${sel===c.id?"sel":""}" data-c="${c.id}">${esc(c.t)}</button>`).join("");
+    $("slots").innerHTML = slots.map(s=>{
+      const held = chips.filter(c=>place[c.id]===s.id);
+      const anyBad = held.some(h=>hintMarks.has(h.id));
+      return `<button class="slot ${bins?"bins":""} ${held.length?"filled":""} ${sel?"hot":""} ${anyBad?"wrongmark":""}" data-s="${s.id}">
+        <span class="lab">${esc(s.t)}</span>
+        ${held.length?`<span class="held">${held.map(h=>`<span class="${hintMarks.has(h.id)?"wrongmark":""}">${esc(h.t)}</span>`).join("")}</span>`:""}
+      </button>`;}).join("");
+    [...document.querySelectorAll(".chip")].forEach(b=>b.onclick=()=>{ sel = sel===b.dataset.c?null:b.dataset.c; draw(); });
+    [...document.querySelectorAll(".slot")].forEach(b=>b.onclick=()=>{
+      const s=b.dataset.s;
+      if(sel){ if(!bins) for(const k in place) if(place[k]===s){ hintMarks.delete(k); delete place[k]; }
+               place[sel]=s; hintMarks.delete(sel); sel=null; }
+      else { const inside = chips.filter(c=>place[c.id]===s);
+             if(inside.length){ const last=inside[inside.length-1].id; hintMarks.delete(last); delete place[last]; } }
+      draw();
+    });
+    const all = chips.every(c=>place[c.id]);
+    if($("go")) $("go").disabled = !all;
+  };
+  hintFn = ()=>{ hintMarks = new Set(chips.filter(c=>place[c.id]!==want[c.id]).map(c=>c.id)); draw(); };
+  $("act").innerHTML = `<button class="btn p" id="go" disabled>Check my answers</button>`;
+  draw();
+  $("go").onclick = ()=>{
+    tries++;
+    const wrong = chips.filter(c=>place[c.id]!==want[c.id]).length;
+    if(!wrong){ $("go").remove(); document.querySelectorAll(".slot").forEach(s=>s.style.borderColor="var(--green)"); win(it); }
+    else miss(it, wrong===1 ? "One card is not where it belongs." : wrong+" cards are not where they belong.");
+  };
+}
+
+/* ---------- mystery capstone ---------- */
+function rMystery(it){
+  const choices = shuffle(it.choices);
+  const rows = it.rows;
+  $("body").innerHTML =
+    `<p class="instr">Tap a material name, then tap the sample it matches.</p>
+     <div class="chips" id="chips"></div><div class="mtable" id="rows"></div>`;
+  const draw = ()=>{
+    $("chips").innerHTML = choices.map(c=>{
+      const used = Object.values(place).includes(c);
+      return `<button class="chip ${used?"used":""} ${sel===c?"sel":""}" data-c="${esc(c)}">${esc(c)}</button>`;}).join("");
+    $("rows").innerHTML = rows.map(r=>`
+      <div class="mrow ${sel?"hot":""} ${hintMarks.has(r.key)?"wrongmark":""}" data-r="${r.key}">
+        <div class="rh"><span class="key">${r.key}</span>
+          ${place[r.key]?`<span class="named ${hintMarks.has(r.key)?"wrongmark":""}">${esc(place[r.key])}</span>`:`<span class="tag" style="font:600 11px var(--mono);color:#8A9B94;letter-spacing:.09em">UNKNOWN SAMPLE</span>`}</div>
+        <div class="cells">${r.cells.map((c,i)=>
+          `<div class="cell"><b>${esc(it.headers[i])}</b><span>${esc(c)}</span></div>`).join("")}</div>
+      </div>`).join("");
+    [...document.querySelectorAll(".chip")].forEach(b=>b.onclick=()=>{ sel = sel===b.dataset.c?null:b.dataset.c; draw(); });
+    [...document.querySelectorAll(".mrow")].forEach(b=>b.onclick=()=>{
+      const k=b.dataset.r;
+      if(sel){ for(const j in place) if(place[j]===sel){ hintMarks.delete(j); delete place[j]; }
+               place[k]=sel; hintMarks.delete(k); sel=null; }
+      else { hintMarks.delete(k); delete place[k]; }
+      draw();
+    });
+    if($("go")) $("go").disabled = rows.some(r=>!place[r.key]);
+  };
+  hintFn = ()=>{ hintMarks = new Set(rows.filter(r=>place[r.key]!==r.answer).map(r=>r.key)); draw(); };
+  $("act").innerHTML = `<button class="btn p" id="go" disabled>Name all four</button>`;
+  draw();
+  $("go").onclick = ()=>{
+    tries++;
+    const wrong = rows.filter(r=>place[r.key]!==r.answer).length;
+    if(!wrong){ $("go").remove(); document.querySelectorAll(".mrow").forEach(r=>{r.style.borderColor="var(--green)";r.style.background="#EFF8F2";}); win(it); }
+    else miss(it, wrong===1 ? "One sample is named wrong." : wrong+" samples are named wrong.");
+  };
+}
+
+/* ---------- feedback ---------- */
+function miss(it,msg){
+  $("card").classList.remove("shake"); void $("card").offsetWidth; $("card").classList.add("shake");
+  $("fb").innerHTML = `<div class="fb no"><strong>Not yet.</strong>${esc(msg)}</div>`;
+  if(!$("read")) $("act").insertAdjacentHTML("afterbegin", `<button class="btn o" id="read">Open the book again</button>`);
+  $("read").onclick=()=>drawer(it.p, M.id+"-"+idx, "retry");
+  if(tries===1) setTimeout(()=>drawer(it.p, M.id+"-"+idx, "retry"), 420);
+  if(hintFn && !hinted && !$("hint"))
+    $("act").insertAdjacentHTML("afterbegin",
+      `<button class="btn h" id="hint">Show me which ones are wrong</button>`);
+  if($("hint")) $("hint").onclick=()=>{
+    hinted = true; hintFn(); $("hint").remove();
+    $("fb").insertAdjacentHTML("beforeend",
+      `<p class="hintnote">Hint used \u2014 the ones outlined in red are in the wrong place. This question now scores 25%.</p>`);
+  };
+  $("fb").scrollIntoView({behavior:"smooth",block:"nearest"});
+}
+function win(it){
+  const pts = hinted ? 25 : (tries===1?100:tries===2?75:tries===3?50:25);
+  log.push({q:idx+1,tries,pts,p:it.p,hinted});
+  const head = hinted ? "Got it \u2014 with a hint." : (tries===1?"Got it, first try.":"Got it.");
+  $("fb").innerHTML = `<div class="fb yes"><strong>${head}</strong>${esc(it.why)}</div>`;
+  const last = idx===M.items.length-1;
+  $("act").innerHTML = `<button class="btn o" id="read">See the book page or watch the video</button>
+                        <button class="btn g" id="next">${last?"See how I did":"Next question"}</button>`;
+  $("read").onclick=()=>drawer(it.p, M.id+"-"+idx, "review");
+  $("next").onclick=()=>{ if(last) finish(); else { idx++; render(); window.scrollTo({top:0,behavior:"smooth"}); } };
+  $("fb").scrollIntoView({behavior:"smooth",block:"nearest"});
+}
+
+/* ---------- drawer ---------- */
+const closeD = ()=>{ $("drawer").classList.remove("on"); $("scrim").classList.remove("on"); };
+function drawer(key, exKey, mode){
+  const p  = DATA.passages[key];
+  const ex = DATA.excerpts[exKey];
+  const v  = DATA.vidFor[key];
+  $("dtitle").textContent = p.title;
+  $("dcite").textContent  = p.cite;
+  $("dbody").innerHTML =
+    (ex?`<p class="leadin">Here is what the book says about this question.</p>
+       <div class="ex">${ex.map(t=>`<p>${esc(t)}</p>`).join("")}</div>
+       <div class="exsrc">${esc(p.cite)}, word for word</div>`:"") +
+    (v?`<div class="exwrap" style="border-top:none;padding-top:14px">
+       <div class="eyebrow">Still fuzzy? Watch it explained</div>
+       <a class="vidbtn" href="https://www.youtube.com/watch?v=${v.id}" target="_blank" rel="noopener">
+         <span class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+         <span><span class="src">${esc(v.s)}</span><h4>${esc(v.t)}</h4><p>${esc(v.d)}</p></span>
+       </a>
+     </div>`:"") +
+    `<div class="morepg">
+       <div class="eyebrow">The whole page, for context</div>
+       ${p.vocab.length?`<div class="vbox" style="margin-top:10px"><span class="vh">Vocabulary</span>`+
+         p.vocab.map(([w,d])=>`<div><dt>${esc(w)}</dt> <dd>${esc(d)}</dd></div>`).join("")+`</div>`:""}
+       ${p.text.map(t=>`<p>${esc(t)}</p>`).join("")}
+     </div>`;
+  $("dfoot").innerHTML = mode==="retry"
+    ? `<button class="btn g" id="dgo">Got it \u2014 let me try again</button>`
+    : `<button class="btn p" id="dgo">Close</button>`;
+  $("dgo").onclick = closeD;
+  $("dbody").scrollTop=0;
+  $("drawer").classList.add("on"); $("scrim").classList.add("on");
+}
+$("dclose").onclick=closeD; $("scrim").onclick=closeD;
+document.addEventListener("keydown",e=>{ if(e.key==="Escape") closeD(); });
+
+/* ---------- results ---------- */
+function finish(){
+  const pct = Math.round(log.reduce((s,l)=>s+l.pts,0)/log.length);
+  const first = log.filter(l=>l.tries===1).length;
+  const att = log.reduce((s,l)=>s+l.tries,0);
+  const band = pct>=90?["Sharp work","#59B27C"]:pct>=75?["Solid","#3FB4CE"]:pct>=60?["Getting there","#EFB04A"]:["Worth another run","#E0685A"];
+  const rough = log.filter(l=>l.tries>1);
+  const hints = log.filter(l=>l.hinted).length;
+  const pages = [...new Set(rough.map(l=>DATA.passages[l.p].cite))];
+  best[M.id] = Math.max(best[M.id]||0, pct);
+  $("dtag").textContent = M.name;
+  $("scorebox").innerHTML = `
+    <div class="ring" style="color:${band[1]}">${pct}%</div>
+    <div class="band" style="color:${band[1]}">${band[0]}</div>
+    <div class="stats">
+      <div class="stat"><b>${first} / ${log.length}</b><span>First try</span></div>
+      <div class="stat"><b>${att}</b><span>Total tries</span></div>
+      ${hints?`<div class="stat" style="grid-column:1/-1"><b>${hints}</b><span>Hint${hints>1?"s":""} used \u2014 worth rerunning without</span></div>`:""}
+    </div>
+    ${rough.length?`<div class="review"><b>Pages worth rereading</b><ul>${pages.map(p=>`<li>${esc(p)}</li>`).join("")}</ul></div>`
+                  :`<div class="review"><b>Nothing to reread.</b>Every question went in on the first try.</div>`}
+    <div class="aloud">
+      <div class="eyebrow">Now say it out loud</div>
+      <p>${esc(DATA.bigQuestion)}</p>
+    </div>
+    <div class="act">
+      <button class="btn p" id="again">Run this mission again</button>
+      <button class="btn o" id="pick">Pick another mission</button>
+    </div>`;
+  $("again").onclick=()=>{ idx=0; log=[]; show("play"); render(); };
+  $("pick").onclick=home;
+  show("done");
+}
+
+$("quit").onclick=home; $("quit2").onclick=home;
+home();
+</script>
+</body>
+</html>
