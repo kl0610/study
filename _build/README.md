@@ -9,6 +9,7 @@ mc.js           the theme engine — hearts, hotbar, sprites, chest, localStorag
 build_theme.py  injects both into the four apps and patches their call sites
 test_theme.js   node test for the engine's logic (no browser needed)
 test_reading.js reads DATA back out of the built Sherlock app and checks it
+test_vocabtest.js  the same, for the Word List 1 test suite
 ```
 
 ## Rebuilding
@@ -19,6 +20,7 @@ python3 build_theme.py          # sprites linked from ../../assets/
 python3 build_theme.py --inline # sprites base64'd in, +~360 KB per app
 node test_theme.js              # 22 assertions on hearts / tools / persistence
 node test_reading.js            # 34 assertions on the Sherlock app's content
+node test_vocabtest.js          # 50 assertions on the vocabulary test suite
 ```
 
 The script is idempotent — running it on already-themed files reports

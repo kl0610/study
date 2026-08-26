@@ -117,6 +117,15 @@ def sci2(s):
     return Patcher(s, "science2")
 
 
+def vtest(s):
+    """Wordly Wise List 1 unit test — theme-aware; config only. It runs with
+    hud:false, because a test should not have hearts draining while it is being
+    taken: nothing is marked until Finish. Misses go in through MC.note(), so
+    they still land in the shared miss log, and a clean sheet still leaves
+    halves at 20 — which is exactly the condition the dragon wants."""
+    return Patcher(s, "vocabtest")
+
+
 def read(s):
     """Sherlock, The Speckled Band pp.1-13 — written theme-aware; config only."""
     return Patcher(s, "reading")
@@ -184,6 +193,8 @@ APPS = {
     # so the dragon sits on the last one — the hardest run.
     "history/g5-maya-ch2":    (hist2, dict(app="history2",   shake="#card",   lift=None,
                                            dragon=["s3"])),
+    "vocabulary/ww6-lesson1-test": (vtest, dict(app="vocabtest", shake=None, lift=None,
+                                           hud=False, dragon=["p2"])),
     # The three sections are consecutive stretches of one story, not parallel
     # forms, so the dragon sits on the last — the night Julia died.
     "reading/sherlock-speckled-1": (read, dict(app="reading", shake="#card", lift=None,

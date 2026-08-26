@@ -31,6 +31,7 @@ study/
 ├── history/g5-maya-ch1/index.html      CKHG Maya Ch1  (615 KB, has 3 embedded photos)
 ├── history/g5-maya-ch2/index.html      CKHG Maya Ch2  (Maya Science and Daily Life)
 ├── reading/sherlock-speckled-1/index.html  The Speckled Band, pages 1–13
+├── vocabulary/ww6-lesson1-test/index.html  Word List 1, unit-test format
 ├── science/g5-matter-ch1/index.html    CKSci Matter Ch1
 ├── science/g5-matter-ch2/index.html    CKSci Matter Ch2 (Applying Properties)
 ├── spelling/list2/index.html           Spelling List 2
@@ -63,7 +64,7 @@ first for the miss-tracking design.
 
 ---
 
-## The seven apps
+## The eight apps
 
 ### History — "The Hieroglyphic Stairway" (CKHG G5 U2 Ch1)
 Five practice sets × seven formats. Built earlier; see the older handoff notes in the repo
@@ -241,6 +242,73 @@ try again". Auto-opens on the *first* miss only.
 Videos (all verified, all built on 5-PS1-3):
 `ELchwUIlWa8` What's Matter · `ZZYnERZe3Cg` Hunting for Properties ·
 `YCQXDegwnoE` Wood Water and Properties · `nlSemv2fLN8` What's My Property
+
+### Vocabulary — Word List 1, tests
+
+The same fifteen words as the sheet, built for mastery rather than one sitting.
+A pool of **90 questions** — all 26 meanings asked three different ways, plus 12
+antonyms — dealt into four tests:
+
+| Test | Items | What it is |
+|---|---|---|
+| Form A | 24 | Every word once. First meanings. |
+| Form B | 24 | Every word once. Second meaning where a word has one, and each word asked a different way than in A. |
+| Form C | 24 | Every word once. Third meanings where they exist; questions rotate again. |
+| Comprehensive Final | 35 | All 26 meanings, one each, plus 9 antonyms. |
+
+**The forms are genuinely disjoint** — a build check fails if any two share a
+single identical question — and every word is asked three different ways across
+A, B and C, which the test prints word by word. Between them the three forms
+reach all 26 meanings; `appeal` has four, so its fourth is handed to a form
+deliberately rather than left to the sampler.
+
+**Four ways of asking**, so the same meaning can come back wearing a different
+coat: *choose the meaning* (word + part of speech → definition), *choose the
+word* (definition → word), *fill in the blank* (a sentence per meaning — all
+26 written, not one per word), and *antonyms*.
+
+**Answer positions are dealt, not shuffled.** Shuffling each item alone will
+hand him a run of five Cs sooner or later and he will spot it. Instead each
+sitting deals a balanced deck — as near a quarter per letter as the count
+allows — reshuffled until no three in a row match, and each item's options are
+then rotated so its answer lands on the slot it drew. Because 24 and 35 are not
+multiples of four, the deal is also rotated so a different letter takes the
+short straw each time. The test replays that algorithm over 3,000 sittings and
+checks the spread.
+
+**The end of a test is the point of it.** The results screen leads with actions,
+not a score:
+
+1. **Put right the N I missed** — replays only the missed meanings, each asked a
+   *different way* than the one he got wrong. Every pool item carries the indices
+   of the other ways to ask about the same meaning. This runs through
+   `MC.begin({partial:true})`, so it cannot overwrite a best score and it earns
+   the CORRECTIONS tier rather than a hollow 100%.
+2. **Go through all N answers** — the full review, each with the meaning it
+   turns on and where that meaning came from.
+3. **Try a different form** — names the next one.
+4. **Take this one again** — new order, new answer positions.
+
+Nothing is marked until Finish. He can skip, flag for review, and jump about
+with a numbered navigator. A clock runs, visible, and never stops him. Finishing
+with blanks or flags still open raises a confirm that says how many and offers
+to jump to the first. `hud:false`, so no hearts drain mid-test; misses still
+reach the shared log through `MC.note()`, and since hearts never move a clean
+sheet leaves halves at 20 — the dragon condition. It sits on Form B.
+
+**Provenance is on every item.** 52 of the 90 are the book's own wording, and
+their distractors are other definitions from the same list, so nothing there was
+invented. The other 38 say so on the review screen: Wordly Wise prints no
+antonym pairs for this list, so those prompts are ours and the fill-in sentences
+are written — but every answer *choice* in both is one of the fifteen words.
+The suite asserts the 52/38 split.
+
+**The bug worth carrying to List 2.** The first draft asked "appeal (verb) →
+pick the meaning", which is unanswerable: appeal has two verb senses and both
+were on offer. Same trap for *lofty* (three adjectives), *clasp*, *contribute*
+and *unveil*. Two fixes: definition items never draw a distractor from the
+asked word, and the reverse form ("here is a meaning → pick the word") sidesteps
+it entirely. Both are asserted.
 
 ### Vocabulary — Wordly Wise Book 6, Word List 1
 All 26 meanings on **one sheet**, not split into rounds (Keith asked for this explicitly).
