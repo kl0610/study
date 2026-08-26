@@ -145,6 +145,30 @@ span.ch .go{font:600 10px var(--mono);letter-spacing:.09em;color:var(--dim)}
   font:700 12.5px var(--mono);color:var(--paper)}
 .tag i{font-style:normal;color:var(--heart);margin-left:5px}
 
+.mine{margin-top:12px;padding-top:11px;border-top:1px solid rgba(255,255,255,.12)}
+.minehead{margin:0 0 7px;font:800 10.5px var(--mono);letter-spacing:.13em;
+  text-transform:uppercase;color:var(--gold)}
+.minehead small{display:block;font:600 11px var(--body);letter-spacing:0;
+  text-transform:none;color:#8C9A95;margin-top:2px}
+.ores{display:flex;flex-wrap:wrap;gap:9px}
+.ore{display:inline-flex;align-items:center;gap:5px;font:800 12px var(--mono);color:#E8E3D6}
+.ore i{width:17px;height:17px;background:var(--ore);border:2px solid rgba(0,0,0,.5);
+  box-shadow:inset -3px -3px 0 rgba(0,0,0,.32),inset 3px 3px 0 rgba(255,255,255,.2)}
+.ore.off{opacity:.3}
+.beacon{margin-top:10px;font:600 11.5px var(--body);color:#9FB0AA;line-height:1.5}
+.beacon b{font:800 10.5px var(--mono);letter-spacing:.1em;text-transform:uppercase;
+  color:#C4CFCB}
+.beacon small{display:block;color:#7C8A85;margin-top:2px}
+.beacon.lit b{color:#40D5D1}
+.blocks{display:flex;gap:11px;margin:7px 0 4px}
+.blk{display:flex;flex-direction:column;align-items:center;gap:1px}
+.blk img{width:34px;height:34px;image-rendering:pixelated;display:block}
+.blk.noart::before{content:"";width:30px;height:30px;background:#555;border:2px solid #000}
+.blk i{font:800 9.5px var(--mono);font-style:normal;color:#C4CFCB}
+.blk.off{opacity:.7} .blk.off i{color:#7C8A85}
+.egg{display:flex;align-items:center;gap:9px;margin-top:9px;
+  font:800 10.5px var(--mono);letter-spacing:.1em;color:#C9A6F0}
+.egg img{width:30px;height:30px;image-rendering:pixelated}
 footer{margin:30px 0 0;padding-top:16px;border-top:2px solid var(--line);
   color:#7C7870;font-size:11.5px;line-height:1.65}
 .reset{background:none;border:0;color:#7C7870;font:inherit;text-decoration:underline;
@@ -167,6 +191,7 @@ footer{margin:30px 0 0;padding-top:16px;border-top:2px solid var(--line);
   <section class="gear" id="gear" hidden>
     <h2>Your gear</h2>
     <div class="hotbar" id="hotbar"></div>
+      <div class="mine" id="mine" hidden></div>
     <p class="gearline" id="gearline"></p>
     <div class="xp"><i id="xpbar" style="width:0%"></i></div>
   </section>
@@ -219,6 +244,9 @@ footer{margin:30px 0 0;padding-top:16px;border-top:2px solid var(--line);
   if (!S.cleared || typeof S.cleared !== "object") S.cleared = {};
   if (!S.misses || typeof S.misses !== "object") S.misses = {};
   if (typeof S.tool9 !== "boolean") S.tool9 = false;
+  if (!S.ore || typeof S.ore !== "object") S.ore = {};
+  if (!S.gem || typeof S.gem !== "object") S.gem = {};   // "app:id" -> diamond taken
+  if (typeof S.dragon !== "number") S.dragon = 0;
   function save() { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} }
 
   var TOOLS = ["wooden pickaxe", "stone pickaxe", "iron pickaxe", "diamond pickaxe",
@@ -227,6 +255,38 @@ footer{margin:30px 0 0;padding-top:16px;border-top:2px solid var(--line);
   /* Tools 1-8 come from how many activities have been cleared anywhere on the
      site at 75%+. Tool 9, the elytra, only ever comes from spelling Challenge 2 —
      the one level where he writes his own sentences. */
+  /* ---------- the mine ----------
+     The tool bar was the whole ladder, and with twenty-odd activities on the
+     site he fills it long before he runs out of work. So the tools are only
+     the first age. Once all nine are held the mine opens, and from then on
+     what a run is worth depends on how well it went rather than on whether it
+     was new. Coal through gold are repeatable, so there is always something to
+     dig; diamond is once per activity, so the only way to a pile of them is
+     breadth AND mastery; emerald comes from the dragon alone. */
+  var ORE = [
+    { k: "coal",     name: "coal",     hex: "#2C2C30" },
+    { k: "copper",   name: "copper",   hex: "#C1663F" },
+    { k: "iron",     name: "iron",     hex: "#C6C2BC" },
+    { k: "gold",     name: "gold",     hex: "#E4C04A" },
+    { k: "redstone", name: "redstone", hex: "#B4262A" },
+    { k: "lapis",    name: "lapis",    hex: "#2A5CB4" },
+    { k: "diamond",  name: "diamond",  hex: "#40D5D1" },
+    { k: "emerald",  name: "emerald",  hex: "#2FA84F" }
+  ];
+  var ORE_BY = {};
+  for (var _o = 0; _o < ORE.length; _o++) ORE_BY[ORE[_o].k] = ORE[_o];
+
+  /* A beacon is built from the four block types Minecraft actually accepts.
+     Nine of a mineral makes a block. */
+  var BEACON = ["iron", "gold", "diamond", "emerald"];
+
+  function oreCount(k) { return S.ore[k] || 0; }
+  function blocks(k) { return Math.floor(oreCount(k) / 9); }
+  function beaconLit() {
+    for (var i = 0; i < BEACON.length; i++) if (blocks(BEACON[i]) < 1) return false;
+    return true;
+  }
+
   function clearedCount() {
     var n = 0, k;
     for (k in S.cleared) if (S.cleared[k] >= 75) n++;
@@ -234,8 +294,9 @@ footer{margin:30px 0 0;padding-top:16px;border-top:2px solid var(--line);
   }
   function unlocked() {
     var n = Math.min(8, clearedCount());
-    return { count: n, nine: !!S.tool9 };
+    return { count: n, nine: !!S.tool9, all9: n >= 8 && !!S.tool9 };
   }
+  function mineOpen() { return unlocked().all9; }
   function has(slot) { var u = unlocked(); return slot === 9 ? u.nine : slot <= u.count; }
 
   /* ---------- state ---------- */
@@ -320,6 +381,30 @@ footer{margin:30px 0 0;padding-top:16px;border-top:2px solid var(--line);
              url(v === 2 ? "heart-full" : v === 1 ? "heart-half" : "heart-empty") + '">';
     }
     heartsEl.innerHTML = out;
+  }
+
+  /* Renders a mineral. The coloured block is CSS, so this works before any
+     ore art exists; if the sprite is there it loads on top, and if it is not
+     the broken image removes itself rather than showing a torn-page icon. */
+  function oreChip(k, label, on) {
+    var o = ORE_BY[k];
+    return '<span class="mc-ore' + (on === false ? " mc-dim" : "") + '" title="' + o.name +
+           '" style="--ore:' + o.hex + '">' +
+           '<img alt="" src="' + url("ore-" + k) +
+           '" onerror="this.parentNode.classList.add(\'mc-noart\');this.remove()">' +
+           (label ? '<b>' + label + "</b>" : "") + "</span>";
+  }
+
+  /* A beacon slot. Earned slots show their block; an unearned one shows the
+     plain stone stand-in, so the row reads as a pyramid under construction
+     rather than as four mystery squares. Either falls back to a CSS block. */
+  function blockChip(b) {
+    var got = b.blocks >= 1;
+    return '<span class="mc-blk' + (got ? "" : " mc-dim") + '" title="' + b.name +
+           '" style="--ore:' + b.hex + '">' +
+           '<img alt="" src="' + url(got ? "block-" + b.k : "block-locked") +
+           '" onerror="this.parentNode.classList.add(\'mc-noart\');this.remove()">' +
+           "<b>" + b.blocks + "/1</b></span>";
   }
 
   function drawBar() {
@@ -445,8 +530,39 @@ footer{margin:30px 0 0;padding-top:16px;border-top:2px solid var(--line);
       }
 
       var clean = pct >= 100 && halves === 20;
-      var dragon = clean && !partialRun &&
-                   (cfg.dragon === null || cfg.dragon.indexOf(id) !== -1);
+      var isBossLevel = cfg.dragon === null || cfg.dragon.indexOf(id) !== -1;
+      /* The End portal stays shut until the whole tool set is his. A perfect
+         run before that is still a perfect run — it just does not summon a
+         dragon, and the chest says what is still missing rather than going
+         quiet about it. */
+      var ready = unlocked().all9;
+      var dragon = clean && !partialRun && isBossLevel && ready;
+      var portalShut = clean && !partialRun && isBossLevel && !ready;
+      if (dragon) { S.dragon++; save(); }
+
+      /* What the run was worth at the rock face. Coal through gold repeat, so
+         there is always something to dig; diamond is once per activity, so a
+         pile of them needs breadth AND mastery; emerald comes only from the
+         dragon. Nothing is mined at all until the tool set is complete. */
+      var mined = [];
+      function dig(k, n) {
+        S.ore[k] = (S.ore[k] || 0) + n;
+        mined.push({ k: k, n: n, name: ORE_BY[k].name, hex: ORE_BY[k].hex });
+      }
+      if (mineOpen()) {
+        if (partialRun) {
+          if (pct >= 100) dig("lapis", 1);            // every miss put right
+        } else {
+          if (pct >= 75) dig("coal", 1);
+          if (pct >= 85) dig("copper", 1);
+          if (pct >= 95) dig("iron", 1);
+          if (pct >= 100) dig("gold", 1);
+          if (pct >= 75 && halves === 20) dig("redstone", 1);
+          if (clean && !S.gem[key]) { S.gem[key] = true; dig("diamond", 1); }
+        }
+        if (dragon) dig("emerald", 1);
+        if (mined.length) save();
+      }
 
       var tier;
       if (partialRun)   tier = ["CORRECTIONS", "You went back and fixed them. That is the part that sticks."];
@@ -468,7 +584,19 @@ footer{margin:30px 0 0;padding-top:16px;border-top:2px solid var(--line);
       if (halves > 0 && halves <= 4 && pct >= 50)
         badges.push("STUCK IT OUT");
 
+      var bea = null;
+      if (mineOpen()) {
+        bea = { lit: beaconLit(), need: [] };
+        for (var bi = 0; bi < BEACON.length; bi++)
+          bea.need.push({ k: BEACON[bi], have: oreCount(BEACON[bi]),
+                          blocks: blocks(BEACON[bi]), name: ORE_BY[BEACON[bi]].name,
+                          hex: ORE_BY[BEACON[bi]].hex });
+      }
+
       return {
+        mined: mined, beacon: bea, portalShut: portalShut,
+        toolsLeft: (8 - unlocked().count) + (S.tool9 ? 0 : 1),
+        mineOpen: mineOpen(), dragons: S.dragon,
         tool: got,
         toolName: got ? TOOLS[got - 1] : null,
         loot: halves >= 20 ? 4 : halves >= 15 ? 3 : halves >= 8 ? 2 : 1,
@@ -519,6 +647,36 @@ footer{margin:30px 0 0;padding-top:16px;border-top:2px solid var(--line);
           box.insertAdjacentHTML("beforeend",
             '<div class="mc-earned"><img alt="" src="' + url("tool-" + r.tool) + '">' +
             "<span>NEW &middot; " + r.toolName.toUpperCase() + "</span></div>");
+        }
+        if (r.mined && r.mined.length) {
+          box.insertAdjacentHTML("beforeend",
+            '<div class="mc-haul"><span class="mc-haullab">MINED</span>' +
+            r.mined.map(function (m) { return oreChip(m.k, "+" + m.n); }).join("") +
+            "</div>");
+        }
+        if (r.portalShut) {
+          box.insertAdjacentHTML("beforeend",
+            '<div class="mc-shutportal"><img class="mc-portal" alt="" src="' + url("portal") +
+            '" onerror="this.remove()">THE PORTAL WILL NOT OPEN<small>A perfect run \u2014 ' +
+            'but the End stays shut until all nine tools are yours. ' +
+            (r.toolsLeft === 1 ? "One to go." : r.toolsLeft + " to go.") + "</small></div>");
+        }
+        if (r.beacon) {
+          box.insertAdjacentHTML("beforeend",
+            '<div class="mc-beacon' + (r.beacon.lit ? " mc-lit" : "") + '">' +
+            '<span class="mc-haullab">' + (r.beacon.lit ? "BEACON LIT" : "BEACON") + "</span>" +
+            r.beacon.need.map(function (b) { return blockChip(b); }).join("") +
+            "<small>" + (r.beacon.lit
+              ? "Iron, gold, diamond and emerald, a block of each. That is the whole pyramid."
+              : "Nine of a mineral makes a block. Four blocks light the beacon.") +
+            "</small></div>");
+        }
+        if (!r.boss && r.dragons > 0 && r.mineOpen) {
+          box.insertAdjacentHTML("beforeend",
+            '<div class="mc-egg"><img alt="" src="' + url("dragon-egg") +
+            '" onerror="this.remove()"><span>' +
+            (r.dragons === 1 ? "One dragon down" : r.dragons + " dragons down") +
+            "</span></div>");
         }
         if (r.boss) {
           box.insertAdjacentHTML("beforeend", HAS_BOSS
@@ -575,13 +733,20 @@ footer{margin:30px 0 0;padding-top:16px;border-top:2px solid var(--line);
       var u = unlocked();
       return {
         tools: u, toolNames: TOOLS,
+        ore: JSON.parse(JSON.stringify(S.ore)), oreKinds: ORE,
+        mineOpen: mineOpen(), dragons: S.dragon,
+        beacon: { needs: BEACON, lit: beaconLit(),
+                  blocks: BEACON.map(function (k) { return blocks(k); }) },
         cleared: JSON.parse(JSON.stringify(S.cleared)),
         misses: JSON.parse(JSON.stringify(S.misses)),
         url: url
       };
     },
 
-    reset: function () { S = { cleared: {}, misses: {}, tool9: false }; save(); drawBar(); },
+    reset: function () {
+      S = { cleared: {}, misses: {}, tool9: false, ore: {}, gem: {}, dragon: 0 };
+      save(); drawBar();
+    },
     _relift: lift
   };
 
@@ -623,7 +788,8 @@ const SUBJECTS = [
         href:"history/g5-maya-ch1/", ids:["set0","set1","set2","set3","set4"] },
       { n:2, t:"Maya Science and Daily Life", note:"Wisdom in the Sky",
         href:"history/g5-maya-ch2/", app:"history2", ids:["s1","s2","s3"] },
-      { n:3, t:"The Aztec: Empire Builders" },
+      { n:3, t:"The Aztec: Empire Builders", note:"Empire and the Five Suns",
+        href:"history/g5-maya-ch3/", app:"history3", ids:["s1","s2","s3"] },
       { n:4, t:"Tenochtitl\u00e1n: City of Wonder" },
       { n:5, t:"The Inca: Lords of the Mountains" },
       { n:6, t:"Inca Engineering" },
@@ -750,9 +916,44 @@ function paintGear(){
       ${on?`<img class="tool" alt="" src="${st.url("tool-"+n)}">`:""}</button>`;
   }).join("");
 
+  /* ---- the mine, once the bar is full ---- */
+  const mineEl = document.getElementById("mine");
+  if(st.mineOpen){
+    mineEl.hidden = false;
+    mineEl.innerHTML =
+      `<p class="minehead">The mine <small>Tools done. From here it is what you dig.</small></p>
+       <div class="ores">${st.oreKinds.map(o=>{
+         const n = st.ore[o.k] || 0;
+         return `<span class="ore${n?"":" off"}" style="--ore:${o.hex}" title="${esc(o.name)}">
+           <i></i><b>${n}</b></span>`;
+       }).join("")}</div>
+       <div class="beacon${st.beacon.lit?" lit":""}">
+         <b>${st.beacon.lit?"Beacon lit":"Beacon"}</b>
+         <span class="blocks">${st.beacon.needs.map((k,i)=>{
+           const got = st.beacon.blocks[i] >= 1;
+           return `<span class="blk${got?"":" off"}" title="${esc(k)}">
+             <img alt="" src="${st.url(got?"block-"+k:"block-locked")}"
+                  onerror="this.parentNode.classList.add('noart');this.remove()">
+             <i>${st.beacon.blocks[i]}/1</i></span>`;
+         }).join("")}</span>
+         <small>${st.beacon.lit
+           ? "Iron, gold, diamond and emerald — a block of each."
+           : "Nine of a mineral makes a block."}</small>
+       </div>
+       ${st.dragons>0?`<div class="egg"><img alt="" src="${st.url("dragon-egg")}"
+          onerror="this.remove()"><span>${st.dragons===1?"One dragon down"
+          :st.dragons+" dragons down"}</span></div>`:""}`;
+  } else {
+    mineEl.hidden = true;
+  }
+
   const line = document.getElementById("gearline");
+  const left = 9 - owned;
   const base = owned
-    ? `<b>${owned}</b> of 9 tools &middot; <b>${cleared}</b> of ${TOTAL} levels cleared`
+    ? (st.mineOpen
+        ? `<b>All 9 tools</b> &middot; <b>${cleared}</b> of ${TOTAL} levels cleared &middot; the mine is open`
+        : `<b>${owned}</b> of 9 tools &middot; <b>${cleared}</b> of ${TOTAL} levels cleared &middot; `
+          + `${left === 1 ? "one more tool" : left + " more tools"} and the End opens`)
     : `Clear a level to earn your first tool.`;
   line.innerHTML = base;
   document.getElementById("xpbar").style.width = Math.round(cleared/TOTAL*100)+"%";

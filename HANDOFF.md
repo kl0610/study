@@ -1,17 +1,51 @@
 # Handoff — Keith's study site
 
-Written 25 Aug 2026, updated later the same day. Current as of the end of that session.
+Written 25 Aug 2026, last updated 26 Aug 2026 across three sessions.
 
-**Read this first.** Two things have to be re-uploaded at the start of any new
-session, because the sandbox resets and nothing survives it:
+**Read this first.**
 
-1. **`study.zip`** — the built site. Needed to modify any app.
-2. **The curriculum PDFs** for whatever is being built — needed for new content.
-   Nothing is ever written from memory; see Standing preferences.
+1. **`study.zip` must be re-uploaded** at the start of any new session. The
+   sandbox resets and nothing survives it. *As of the end of the 26 Aug
+   session Keith had not yet downloaded the final zip* — if that download
+   never happened, the last three sessions of work are gone and this document
+   describes a site that does not exist. Check the live site against the
+   file tree below before assuming otherwise.
+2. **Curriculum PDFs** for whatever is being built. Nothing is ever written
+   from memory; see Standing preferences.
+3. **Attachment slots are limited.** Do not re-upload things that are already
+   in the zip. One session lost the slot the reader PDF needed to a duplicate
+   copy of `study.zip`.
 
-**The Sherlock build is done** — see The seven apps. Nothing about it needs
-re-uploading: the passage and every question round-trip out of the built
-`index.html`, which is where `test_reading.js` reads them from.
+**Nothing needs re-uploading to edit existing apps.** Every app's questions and
+passages round-trip out of its built `index.html` — that is where
+`test_reading.js` and `test_vocabtest.js` read them from. The PDFs are only
+needed for *new* content.
+
+**Art is complete.** All 13 sprites are in `assets/`. Keith hit an image-upload
+cap at the end of the 26 Aug session and may bring more art to the next one;
+anything new is an addition, not a gap. See The three ages.
+
+---
+
+## What changed on 26 Aug
+
+Three sessions in one day. In order:
+
+1. **Reading — The Speckled Band, pages 1–13.** New app. The last blocker (the
+   Core Classics Teacher's Guide) arrived, then the reader PDF. Passage
+   extraction took most of a session and the recipe is in `_build/README.md`.
+2. **Vocabulary — Word List 1 tests.** New app, then rebuilt on the same day
+   when Keith asked for mastery rather than one sitting: a 90-item pool, three
+   disjoint 24-question forms, a 35-question final, dealt answer positions, and
+   a results screen that leads with actions.
+3. **Gamification — the three ages.** The tool bar was the whole ladder and he
+   was filling it too fast. Tools are now age one; the mine opens at nine
+   tools; the End portal stays shut until the tool set is complete. Beacon
+   beyond that. Required a `--retheme` path, since apps were one-shot themed
+   with no way to push an engine change through.
+4. **Art.** Keith supplied blocks, then ore icons. All cut, keyed and installed.
+
+Test suites went from one to three, and from 22 assertions to 168.
 
 ---
 
@@ -30,13 +64,14 @@ study/
 ├── index.html                          hub — Study Craft title screen, gear, subjects
 ├── history/g5-maya-ch1/index.html      CKHG Maya Ch1  (615 KB, has 3 embedded photos)
 ├── history/g5-maya-ch2/index.html      CKHG Maya Ch2  (Maya Science and Daily Life)
+├── history/g5-maya-ch3/index.html      CKHG Maya Ch3  (The Aztec: Empire Builders)
 ├── reading/sherlock-speckled-1/index.html  The Speckled Band, pages 1–13
 ├── vocabulary/ww6-lesson1-test/index.html  Word List 1, unit-test format
 ├── science/g5-matter-ch1/index.html    CKSci Matter Ch1
 ├── science/g5-matter-ch2/index.html    CKSci Matter Ch2 (Applying Properties)
 ├── spelling/list2/index.html           Spelling List 2
 ├── vocabulary/ww6-lesson1/index.html   Wordly Wise Book 6 List 1
-├── assets/                             Minecraft sprites (wired up)
+├── assets/                             32 sprites: tools, hearts, ore, blocks, portal, egg
 └── _build/                             theme source + build script + tests
 ```
 
@@ -44,6 +79,45 @@ An older `kl0610/maya-practice` repo is still published. Leave it — links may 
 `kl0610/study-game` is an abandoned Vite/React attempt; it stalled because Claude Code
 can't read PDFs and started inventing curriculum content. Retire it, but check `SPEC.md`
 first for the miss-tracking design.
+
+---
+
+## The curriculum is online — stop re-uploading it
+
+**CKHG and CKSci Teacher Guides and Student Readers are free PDF downloads from
+Core Knowledge, and `web_fetch` pulls them in full.** Found on 27 Aug. It removes
+the biggest friction in this project: History and Science need **no uploads at
+all**, in this session or any future one.
+
+| What | URL |
+|---|---|
+| CKHG G5 U2 Student Reader | `coreknowledge.org/wp-content/uploads/2017/03/CKHG_G5_U2_MayaAztecInca_Student-Reader.pdf` |
+| CKHG G5 U2 Teacher Guide | `coreknowledge.org/wp-content/uploads/2017/03/CKHG_G5_U2_MayaAztecInca_Teacher-Guide.pdf` |
+| CKHG G5 U2 Timeline Cards | `...CKHG_G5_U2_MayaAztecInca_Timeline.pdf` |
+| CKSci G5 U1 Teacher Guide | `coreknowledge.org/wp-content/uploads/2019/09/CKSci_G5U1_Matter_TG.pdf` |
+| Unit landing pages | `coreknowledge.org/free-resource/ckhg-unit-02-maya-aztec-inca-civilizations/` |
+
+**Verified same edition.** The online CKHG reader puts Chapter 2 on pp. 10–19 and
+splits it into *Wisdom in the Sky*, *How They Lived*, *Where Did Everybody Go?* —
+the exact pages and headings recorded here from Keith's uploaded copy. Citations
+built from the download line up with the book in Myles's hands.
+
+**Still needs uploading**, being commercial: **Wordly Wise**, and the **Core
+Classics Sherlock reader**. Note the split on Sherlock — its *Teacher's Guide* is
+a free Core Knowledge resource, but the abridged story text is a purchased book,
+and that text is exactly what the reading app embeds.
+
+**A correction to the CKSci offset recorded below.** This document says the
+SR-chapter-to-TG-lesson offset is +1. It is not constant:
+
+`SR1 → Lesson 2 · SR2 → Lesson 3 · SR3 → Lesson 5 · SR4 → Lesson 7 · SR5 → Lesson 9 · SR6 → Lesson 11`
+
+Lesson 4 has no reader chapter. Building Science Chapter 3 off "+1" would have
+used Lesson 4 — wrong Big Question, wrong vocabulary. **Read the pacing guide;
+do not extrapolate.**
+
+**Attachment caps are per-conversation.** Eight ore PNGs used one session's
+budget and blocked the PDFs. A fresh chat resets it.
 
 ---
 
@@ -63,6 +137,108 @@ first for the miss-tracking design.
 - Keith tracks misses between sessions and expects that to drive the next materials.
 
 ---
+
+## The three ages
+
+The tool bar was the whole ladder, and with 21 activities on the site he fills
+all nine slots long before he runs out of work. So the tools are now only the
+first age.
+
+**1 — Tools (unchanged).** Eight from clearing anything at 75%+ anywhere;
+the ninth, the elytra, still only from spelling Challenge 2.
+
+**2 — The mine.** Opens the moment all nine are held, and not one run before.
+From then on what a run is worth depends on how *well* it went, not on whether
+it was new:
+
+| Mineral | Earned by | Repeats? |
+|---|---|---|
+| Coal | 75%+ | yes |
+| Copper | 85%+ | yes |
+| Iron | 95%+ | yes |
+| Gold | 100% | yes |
+| Redstone | 75%+ with no heart lost | yes |
+| Lapis | a correction round that puts every miss right | yes |
+| **Diamond** | 100% with no heart lost | **once per activity** |
+| **Emerald** | slaying the dragon | per slaying |
+
+Coal through gold repeat so there is always something to dig on a level he
+already owns. Diamond being once-per-activity is the load-bearing rule: a pile
+of them needs breadth **and** mastery, and no amount of re-running one easy set
+will produce a second.
+
+**3 — The End.** *The portal stays shut until all nine tools are his.* A perfect
+flawless run before that still scores, still banks its tier, still mines
+nothing — and the chest says so plainly: "THE PORTAL WILL NOT OPEN — a perfect
+run, but the End stays shut until all nine tools are yours. Two to go." No
+silent failure.
+
+**Beyond that: the beacon.** Nine of a mineral makes a block; one block each of
+iron, gold, diamond and emerald lights it — the four materials Minecraft
+actually accepts in a beacon pyramid. That needs 9 diamonds, so at least nine
+different activities mastered flawlessly, plus nine dragon slayings for the
+emeralds. It is deliberately a long way off, and it is the first goal on the
+site that cannot be reached by volume alone.
+
+The hub shows the mine as a second row under the hotbar once it opens, with
+live counts and beacon progress. Before that the gear line reads
+"...three more tools and the End opens", so the next rung is always named.
+
+**Art in hand.** Six sprites are installed, cut from one sheet Keith supplied
+and background-keyed to transparency: `block-gold`, `block-diamond`,
+`block-emerald`, `block-locked`, `dragon-egg` and `portal`, all 64×64 RGBA.
+- The three real blocks fill their beacon slots once earned.
+- **`block-locked` is the plain stone block**, standing in for a beacon slot
+  not yet filled, so the row reads as a pyramid under construction rather than
+  four mystery squares. It arrived labelled as iron but it is stone, which is
+  why it took this job instead.
+- `portal` is an End portal frame with the purple centre already lit, so it is
+  used for the shut notice **greyscaled and dimmed in CSS** — one asset, two
+  states. Showing a lit portal for a locked state would say the wrong thing.
+- `dragon-egg` is the trophy, shown once at least one dragon is down.
+
+**The art set is complete.** All four beacon blocks, the eight ore item icons,
+the locked stone, the portal and the dragon egg are in `assets/`, every one
+64×​64 RGBA with a transparent background.
+
+**The eight ore icons were replaced on 27 Aug** with individually-supplied
+files, and the old sheet-cut ones are gone. The reason is worth keeping: the
+sheet-cut set carried **magenta keying residue** around the alpha edges —
+91 stray pixels on coal, 70 on gold, 52 on emerald, 32 on iron. Too few to
+notice as a colour, enough to read as a dirty violet halo once the icon is
+shrunk to a 22px chip. The replacements measure 2, 8, 0 and 0. Everything
+else about them is the same: 64×​64 RGBA, same subjects, same relative sizing.
+
+Two things checked at the same time, both of which came out against the
+expected answer, so don't redo them:
+
+- **`image-rendering: pixelated` is correct here — leave it.** The suspicion
+  was that it was wrong, because none of these sprites are real pixel art:
+  every asset in `assets/` is a smooth anti-aliased render carrying 300–5,000
+  colours and soft alpha edges, and nearest-neighbour on a non-integer
+  reduction (64px source → 22px chip, 34px block) is normally how you get
+  jagged, uneven-weight icons. Rendered both ways at actual display size and
+  compared: **nearest is visibly crisper, smooth is muddy.** The blur costs
+  more than the aliasing does at this size.
+- **There is no native pixel grid to snap back to.** The recipe that rescued
+  `boss-defeated.png` (find the block size, snap, flatten the palette, scale
+  4× nearest) does not transfer. Edge-energy phase analysis across 2, 4 and
+  8px blocks finds no consistent alignment — coal weakly suggests 4px, gold,
+  diamond and redstone disagree with it and with each other. These were
+  scaled smoothly from their originals, each by its own factor. Snapping
+  would invent detail rather than recover it.
+
+The CSS fallback is still there and still worth keeping: every mineral draws as
+a shaded block in its own colour, the sprite loads on top, and a broken image
+removes itself rather than showing a torn-page icon. `build_theme.py` lists any
+missing art at the end of every run, so a future addition (netherite, a lit
+beacon, End-city art) cannot be quietly forgotten.
+
+**When cutting sprites from a sheet**, scale every icon by the *same* factor
+rather than fitting each to its own 64×​64 box — otherwise a small lump of
+coal ends up rendering the same size as a gold ingot and the row looks wrong.
+The redstone dust also has loose specks detached from the main pile, so cut on
+a grid rather than by connected component or the strays get dropped.
 
 ## The eight apps
 
@@ -147,6 +323,51 @@ absorbs water and hardens, so plaster wins. Then a claim-and-evidence build —
 pick the two observations that support the claim, from five real results. The
 distractors are all true observations *about other samples*, so the thing being
 tested is that evidence has to be about the sample you are claiming about.
+
+### History — Chapter 3, "The Aztec: Empire Builders"
+
+Built 27 Aug entirely from the downloaded Teacher Guide and Student Reader
+pp. 20–27 — the first chapter built with no uploaded PDF at all.
+
+**Teacher's Guide findings:**
+- Big Question: *"Why did the Aztec make human sacrifices?"*
+- **Core Vocabulary is exactly four: Aztec, nomadic, empire, emperor.** All four
+  are tested once each, worded from the guide's own definitions; a build check
+  fails if a fifth appears or one is doubled.
+- Four Primary Focus Objectives: how the empire was built and controlled, how
+  religious belief tied into the society's traditions, why they fought so many
+  wars, and the vocabulary. The three sets map onto those.
+- Its LITERAL / INFERENTIAL / EVALUATIVE questions are mirrored directly; several
+  answers are the guide's own model answers.
+
+**The sets follow the guide's three reading segments**, not equal page counts:
+*The Eagle and the Cactus* (20–22), *Empire and the Five Suns* (22–25),
+*Sacrifice and the Warrior* (25–27). Dragon sits on s3.
+
+**The Check for Understanding lists only TWO key points, not three** — so the
+builder wants two tiles, and it was generalised to read `N` off the data rather
+than the hardcoded 3 Chapter 2 shipped with. The four distractors are all true
+statements from the reader that answer a *different* question: two about the
+empire, one about who the victims were, one about why they fought.
+
+**The best teaching moment in the chapter, and the app is built around it.** A
+drought threatened the corn harvest, priests offered sacrifices, rain came a day
+or so later — "to the Aztec, this was no coincidence." Two consecutive questions
+walk him through it: what happened, then *why the writer chose the word "seemed"*
+in "events that **seemed** to prove that the sacrifices worked." That is
+correlation-versus-causation at ten years old, it is the guide's own inferential
+question, and it is worth more than any definition item.
+
+There is also an **ordering question** — the four lost suns, destroyed in turn by
+a jaguar, a great wind, volcanoes and floods. Up/down buttons, not drag.
+
+**Scope is enforced.** `node _build/test_history3.js` (55 assertions) checks every
+page citation sits inside pp. 20–27 and that the text never leaks Moctezuma,
+Cortés, Pizarro, Machu Picchu, Cuzco, causeways, codices, quipus or smallpox.
+**That check earned its keep immediately** — the first draft used Cuzco and Machu
+Picchu as distractors in the founding question and a causeway in the sacrifice
+question, all from chapters the class has not read. **Distractors are scope too,
+not just answers.**
 
 ### Reading — "The Speckled Band", pages 1–13
 
@@ -527,6 +748,10 @@ could exist in a future app: check what a zero-mistake run actually scores.
 
 ### Verification
 
+`node _build/test_history3.js` — 55 assertions on the Maya Chapter 3 app:
+vocabulary coverage, the two-tile builder, page-citation scope, later-chapter
+leak checks, shuffle fairness over 20,000 draws, and what a flawless run scores.
+
 `node _build/test_reading.js` — 34 assertions on the Sherlock app's content; see
 its section above.
 
@@ -561,37 +786,75 @@ Never drag the `study` folder itself into a repo named `study` — you get `stud
 
 ## Next up
 
-1. **Watch how he actually uses the hub.** The gear panel and "worth another
-   look" are new and untested on a real ten-year-old. The open question is
-   whether the tool ladder motivates or whether he beelines past it.
-2. **Reading — the rest of The Speckled Band.** Pages 1–13 are built. The
-   story runs to page 44, and the Teacher's Guide's remaining eleven study
-   questions and ten remaining vocabulary words are all waiting in the range
-   the class has not reached. Build the next stretch the same way — cut at
-   the story's own seams, not at equal page counts. The reader PDF is needed
-   again for new pages; the existing app is editable without it.
+Ordered by what will matter most to a ten-year-old, not by what is easiest.
+
+1. **Get the site live and watch him use it.** Three sessions of work have
+   never been opened in a browser — see Untested below. That is the first job,
+   ahead of building anything new.
+2. **The hotbar pacing question is now answered, but unobserved.** Twenty-one
+   activities, nine tools, then the mine. Whether the mine actually motivates
+   or whether he beelines past it is the open question. If it lands, the same
+   shape extends to netherite and End-city art. If it does not, the tools were
+   never the problem and the fix is elsewhere.
+3. **Reading — the rest of The Speckled Band.** Pages 1–13 are built. The story
+   runs to page 44, and the Teacher's Guide's remaining eleven study questions
+   and ten remaining vocabulary words all sit past where the class stopped.
+   Build the next stretch the same way — cut at the story's own seams, not at
+   equal page counts. The reader PDF is needed again for new pages; the
+   existing app is editable without it. Extraction recipe is in
+   `_build/README.md` and it took a session to derive — read it first.
 
    The guide also carries material that only works **once the whole story is
-   read**, and it is worth saving rather than losing: the **six rules of a good
-   detective story** (significant crime, memorable detective, worthy criminal,
-   clues shared with the reader, suspects introduced early, reasonable
-   solution), which the guide turns into a writing assignment; **Watson as a
-   foil**; and grammar exercises drawn from this story's own sentences —
-   subjects and verbs, nouns, prepositional phrases. The nouns passage is
-   Holmes's closing explanation, so it is out of range for now.
+   read**, worth saving rather than losing: the **six rules of a good detective
+   story** (significant crime, memorable detective, worthy criminal, clues
+   shared with the reader, suspects introduced early, reasonable solution),
+   which the guide turns into a writing assignment; **Watson as a foil**; and
+   grammar exercises drawn from this story's own sentences. The nouns passage
+   is Holmes's closing explanation, so it stays out of range for now.
 
-3. **Next week's spelling list** — same seven-level structure, swap the words.
-4. **CKHG Maya Chapters 3–7.** Chapter 2 is built. Chapters 3–4 are Aztec,
-   5–6 Inca, 7 the end of both empires — the Student Reader text for all of
-   them is in the same PDF already used for Chapter 2. After those, a
-   cumulative Unit 2 review matching the real 25 MC + 10 matching format.
-5. **CKSci Chapters 3–6.** Chapter 2 is built. Remaining: Too Small to Be Seen,
+4. **Wordly Wise List 2**, in the shape List 1 now has: a pooled bank, three
+   ~24-question forms, a 35-question final. Needs the Lesson 2 pages uploaded —
+   the Word List page and the Word Study section especially, since Book 6
+   rotates what Word Study covers and List 1's had no antonym pairs at all.
+   Read the two bugs recorded under Vocabulary — Word List 1, tests before
+   authoring anything; both will recur.
+5. **Next week's spelling list** — same seven-level structure, swap the words.
+6. **CKHG Maya Chapters 4–7.** Chapters 1–3 are built. 4 is Aztec, 5–6 Inca,
+   7 the end of both empires. **No upload needed** — fetch reader and guide from
+   the URLs above. Chapter 4's Core Vocabulary is seven (causeway, canal, scribe,
+   codex, pictogram, litter, reign), so it is a bigger chapter than 3. Then a cumulative Unit 2 review
+   matching the real 25 MC + 10 matching format.
+7. **CKSci Chapters 3–6.** Chapter 2 is built. Remaining: Too Small to Be Seen,
    How Matter Changes, Matter Can Change Chemically, The Language of Chemistry.
-   Remember the SR-chapter-to-TG-lesson offset is **+1** (SR Ch2 = TG Lesson 3).
-6. **Saxon Course 1** remediation, and a long-promised **CTP 5 format-familiarisation sampler**.
-7. **Hub chapter titles are all real now** — nothing left to fill in there.
-8. **The hotbar fills after eight clears** — see the pacing section. Worth doing
-   before he notices it has stopped rewarding him.
+   The SR-chapter-to-TG-lesson offset is **+1** (SR Ch2 = TG Lesson 3).
+8. **Saxon Course 1** remediation, and the **CTP 5 format-familiarisation
+   sampler** — the vocabulary test shell is the groundwork for that and can be
+   reused wholesale: deferred feedback, flag-for-review, navigator, timer.
+
+---
+
+## Untested — say this out loud to Keith
+
+There is **no browser, no jsdom and no network** in the sandbox. Everything
+below is verified by static analysis and by node test suites that exercise the
+data and the logic, and by nothing else. Nobody has watched any of it render.
+
+Worth a tap-through in this order, most new code first:
+
+1. **The vocabulary test results screen** — the call-to-action stack, the
+   correction round, "try a different form".
+2. **The mine and beacon rows** — the ore chips are now the cleanly-keyed
+   replacements and were inspected magnified at their true 22px render size,
+   so the old "if they look soft, re-export at 128×128" note is retired; see
+   The three ages. What is *still* unseen is the four **beacon blocks** at
+   34px, which were not replaced and still come from the original sheet. If
+   one of those shows a violet halo, it is the same keying residue the ore
+   icons had, and the fix is a clean re-cut of that block, not a CSS change.
+3. **The Sherlock passage view** — "Find it in the passage" should land the
+   highlighted paragraph centred, and coming back should preserve the wrong
+   answer still marked.
+4. **The locked-portal message.** If Myles already holds all nine tools it will
+   never appear. `MC.reset()` in the console clears everything including ore.
 
 ---
 

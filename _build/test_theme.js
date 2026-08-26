@@ -116,6 +116,32 @@ MC.begin();
 const nine = MC.clear("l7", 100, {});
 ok("Challenge 2 -> elytra (tool 9)", nine.tool === 9, "got "+nine.tool);
 
+console.log("\nthe End stays shut until the tool set is complete");
+ok("a perfect run before nine tools does not slay anything",
+   MC.clear("l7", 100, {}).boss === false);
+ok("...and it says so, rather than going quiet",
+   MC.clear("l7", 100, {}).portalShut === true);
+ok("...and it counts what is still missing",
+   MC.clear("l7", 100, {}).toolsLeft > 0);
+
+/* Hand him the full bar without touching any id another test measures: eight
+   clears in a namespace of their own, and the elytra flag set directly. */
+function arm(){
+  localStorage.setItem("mc.study.v1", JSON.stringify({
+    cleared: {"armoury:a":80,"armoury:b":80,"armoury:c":80,"armoury:d":80,
+              "armoury:e":80,"armoury:f":80,"armoury:g":80,"armoury:h":80},
+    misses: {}, tool9: true, ore: {}, gem: {}, dragon: 0
+  }));
+  return load();
+}
+MC = arm();
+MC.config({app:"spelling", shake:"#card", dragon:["l7"]});
+MC.begin();
+ok("with all nine tools the portal opens", MC.clear("l7", 100, {}).boss === true);
+MC.begin();
+ok("...and the shut-portal notice is gone",
+   MC.clear("l7", 100, {}).portalShut === false);
+
 console.log("\ndragon: spelling is restricted to Challenge 2");
 MC.config({app:"spelling", shake:"#card", dragon:["l7"]});
 MC.begin();
@@ -166,7 +192,7 @@ ok("notes still recorded", Object.keys(MC.state().misses.vocabulary).length === 
 
 console.log("\nachievement tiers");
 for(const k in store) delete store[k];
-MC = load(); MC.config({app:"science", shake:null, dragon:null});
+MC = arm(); MC.config({app:"science", shake:null, dragon:null});
 const tier = (pct, hits=0) => { MC.begin(); for(let i=0;i<hits;i++) MC.wrong("q"+i);
   return MC.clear("t"+pct+"_"+hits, pct, {}); };
 ok("100% clean -> DRAGON SLAIN", tier(100).tier === "DRAGON SLAIN", tier(100).tier);
@@ -222,7 +248,7 @@ ok("tools survive reload", MC2.state().tools.count === 1, "got "+MC2.state().too
 
 console.log("\nbests() for level pickers");
 for(const k in store) delete store[k];
-MC = load(); MC.config({app:"science", shake:null, dragon:["m4"]});
+MC = arm(); MC.config({app:"science", shake:null, dragon:["m4"]});
 MC.begin(); MC.clear("m1", 100, {});
 MC.begin(); MC.clear("m2", 60,  {});
 MC.begin(); MC.clear("m2", 85,  {});          // improves
@@ -242,7 +268,7 @@ ok("an app with no history gets an empty object",
 
 console.log("\npicker chips");
 for(const k in store) delete store[k];
-MC = load(); MC.config({app:"history", shake:"#stela", dragon:null});
+MC = arm(); MC.config({app:"history", shake:"#stela", dragon:null});
 MC.begin(); MC.clear("set0", 100, {});
 MC.begin(); MC.clear("set2", 55,  {});
 const host = mkEl("div");
@@ -263,6 +289,74 @@ console.log("\ncorrupt store");
 store["mc.study.v1"] = "{not json";
 const MC3 = load();
 ok("bad JSON does not throw", MC3.state().tools.count === 0);
+
+
+
+/* ---------- the mine ---------- */
+console.log("\nthe mine: nothing is dug until the tools are all his");
+/* a genuinely empty store -- earlier sections left the bar full */
+localStorage.setItem("mc.study.v1", JSON.stringify({cleared:{},misses:{},tool9:false}));
+MC = load();
+MC.config({app:"science", shake:null, dragon:null});
+MC.begin();
+let mr = MC.clear("m1", 100, {});
+ok("a perfect run before nine tools mines nothing", mr.mined.length === 0);
+ok("...and reports the mine shut", mr.mineOpen === false);
+
+MC = arm();
+MC.config({app:"science", shake:null, dragon:null});
+MC.begin();
+mr = MC.clear("m1", 100, {});
+ok("mine open once the bar is full", mr.mineOpen === true);
+const dug = mr.mined.map(m=>m.k);
+ok("a flawless 100% yields coal, copper, iron, gold, redstone and a diamond",
+   ["coal","copper","iron","gold","redstone","diamond"].every(k=>dug.includes(k)),
+   dug.join(","));
+
+MC.begin();
+ok("the diamond is once per activity, so the same one again does not repay it",
+   MC.clear("m1", 100, {}).mined.map(m=>m.k).indexOf("diamond") === -1);
+MC.begin();
+ok("...but a different activity does",
+   MC.clear("m2", 100, {}).mined.map(m=>m.k).indexOf("diamond") !== -1);
+
+MC.begin();
+ok("a 78% pass digs coal and nothing richer",
+   MC.clear("m3", 78, {}).mined.map(m=>m.k).join(",") === "coal,redstone");
+MC.begin(); MC.wrong("x");
+ok("losing a heart costs the redstone",
+   MC.clear("m5", 88, {}).mined.map(m=>m.k).join(",") === "coal,copper");
+MC.begin(); MC.wrong("x");
+ok("...and the diamond, even at 100%",
+   MC.clear("m6", 100, {}).mined.map(m=>m.k).indexOf("diamond") === -1);
+
+MC.begin({partial:true});
+ok("a correction round that fixes everything yields lapis",
+   MC.clear("m1", 100, {partial:true}).mined.map(m=>m.k).join(",") === "lapis");
+MC.begin({partial:true});
+ok("...and an unfinished one yields nothing",
+   MC.clear("m1", 60, {partial:true}).mined.length === 0);
+
+console.log("\nthe mine: emeralds and the beacon");
+MC.config({app:"spelling", shake:"#card", dragon:["l7"]});
+MC.begin();
+mr = MC.clear("l7", 100, {});
+ok("slaying the dragon yields an emerald", mr.mined.map(m=>m.k).indexOf("emerald") !== -1);
+ok("the beacon wants iron, gold, diamond and emerald",
+   mr.beacon.need.map(b=>b.k).join(",") === "iron,gold,diamond,emerald");
+ok("nine of a mineral makes one block",
+   mr.beacon.need.every(b => b.blocks === Math.floor(b.have / 9)));
+ok("the beacon is not lit on day one", mr.beacon.lit === false);
+
+console.log("\nthe mine: state reaches the hub");
+const hubState = MC.state();
+ok("ore totals are exposed", typeof hubState.ore.coal === "number" && hubState.ore.coal > 0);
+ok("the eight minerals are named", hubState.oreKinds.length === 8);
+ok("dragon count is exposed", hubState.dragons >= 1);
+ok("beacon progress is exposed", hubState.beacon.needs.length === 4);
+ok("reset clears the ore too", (MC.reset(), MC.state().ore.coal === undefined
+   || MC.state().ore.coal === 0));
+
 
 console.log(fails ? "\n" + fails + " FAILURES" : "\nall green");
 process.exit(fails ? 1 : 0);

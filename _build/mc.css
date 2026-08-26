@@ -180,3 +180,39 @@
 .mc-chip.mc-tried{background:#E8A93C;border-color:#B07E18;color:#3A2A08}
 .mc-chip.mc-now{box-shadow:inset -2px -2px 0 rgba(0,0,0,.14),
   inset 2px 2px 0 rgba(255,255,255,.5), 0 0 0 3px #2B79C2}
+
+/* ---------- the mine ---------- */
+.mc-ore{display:inline-flex;align-items:center;gap:5px;margin:3px 5px 3px 0;
+  font:800 11px ui-monospace,"SF Mono",Consolas,monospace;color:#E8E3D6}
+.mc-ore img{width:22px;height:22px;image-rendering:pixelated;display:block}
+.mc-ore.mc-noart::before{content:"";width:20px;height:20px;background:var(--ore);
+  box-shadow:inset -3px -3px 0 rgba(0,0,0,.34), inset 3px 3px 0 rgba(255,255,255,.22);
+  border:2px solid rgba(0,0,0,.45)}
+.mc-ore b{font-weight:800}
+.mc-ore.mc-dim{opacity:.42}
+.mc-haul,.mc-beacon{margin-top:10px;padding:9px 11px;background:rgba(0,0,0,.26);
+  border:2px solid rgba(255,255,255,.10);text-align:left}
+.mc-haullab{display:block;font:800 9.5px ui-monospace,Consolas,monospace;
+  letter-spacing:.14em;color:#9FB0AA;margin-bottom:5px}
+.mc-beacon small,.mc-shutportal small{display:block;margin-top:6px;
+  font:600 11px system-ui,sans-serif;color:#9FB0AA;line-height:1.45}
+.mc-beacon.mc-lit{border-color:#40D5D1;
+  box-shadow:0 0 0 2px rgba(64,213,209,.22), 0 0 22px rgba(64,213,209,.28)}
+.mc-shutportal{margin-top:10px;padding:10px 12px;background:#160E22;
+  border:2px solid #4B2E73;color:#C9A6F0;text-align:left;
+  font:800 11.5px ui-monospace,Consolas,monospace;letter-spacing:.1em}
+
+.mc-blk{display:inline-flex;flex-direction:column;align-items:center;gap:2px;
+  margin:4px 9px 2px 0;font:800 10px ui-monospace,Consolas,monospace;color:#C4CFCB}
+.mc-blk img{width:34px;height:34px;image-rendering:pixelated;display:block}
+.mc-blk.mc-noart::before{content:"";width:30px;height:30px;background:var(--ore);
+  box-shadow:inset -4px -4px 0 rgba(0,0,0,.34),inset 4px 4px 0 rgba(255,255,255,.22);
+  border:2px solid rgba(0,0,0,.45)}
+.mc-blk.mc-dim img{filter:grayscale(.15) brightness(.8)}
+.mc-blk.mc-dim{opacity:.75;color:#7C8A85}
+.mc-portal{float:right;width:46px;height:46px;margin:-2px 0 0 10px;image-rendering:pixelated;
+  filter:grayscale(1) brightness(.6)}
+.mc-egg{margin-top:10px;padding:8px 11px;background:rgba(0,0,0,.26);
+  border:2px solid rgba(255,255,255,.10);display:flex;align-items:center;gap:9px;
+  font:800 10.5px ui-monospace,Consolas,monospace;letter-spacing:.1em;color:#C9A6F0}
+.mc-egg img{width:30px;height:30px;image-rendering:pixelated}

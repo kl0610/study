@@ -18,7 +18,8 @@ test_vocabtest.js  the same, for the Word List 1 test suite
 cd study/_build
 python3 build_theme.py          # sprites linked from ../../assets/
 python3 build_theme.py --inline # sprites base64'd in, +~360 KB per app
-node test_theme.js              # 22 assertions on hearts / tools / persistence
+python3 build_theme.py --retheme # swap the engine under apps already themed
+node test_theme.js              # 84 assertions: hearts, tools, the mine, persistence
 node test_reading.js            # 34 assertions on the Sherlock app's content
 node test_vocabtest.js          # 50 assertions on the vocabulary test suite
 ```
@@ -145,3 +146,40 @@ The current boss came in at 256×92 with 3,861 colours and 1,131 antialiased edg
 pixels — real transparency this time, but still "pixel-art look" rather than a
 clean integer upscale, so block scoring found no sharp minimum and block-2 was
 the faithful read. Cleaned to 125×44 native → 2× → 250×88, 24 colours, 5 KB.
+
+
+## Re-theming
+
+An app is themed once. Its call sites are rewritten in place at that moment and
+those edits stay in the file, so a second plain run correctly reports "already
+themed — skipped".
+
+When `mc.js` or `mc.css` changes, `--retheme` swaps the engine and the
+stylesheet underneath those edits **without** re-running the call-site patcher —
+running it again would hunt for anchors its own first pass already rewrote. The
+injected block is fenced by `MC-THEME-JS` / `MC-THEME-CSS` comments; apps themed
+before those fences existed are still recognised by the old comment and by the
+`MC.config()` call that closes the block, so no manual migration is needed.
+
+The hub inlines the engine rather than linking it, and `--retheme` swaps that
+copy too. Always run the test suites afterwards: a retheme touches all nine
+files at once.
+
+## The three ages
+
+1. **Tools** — nine slots. Eight come from clearing any activity at 75%+
+   anywhere on the site; the ninth, the elytra, only ever comes from spelling
+   Challenge 2.
+2. **The mine** — opens when all nine are held, and not before. Coal (75%+),
+   copper (85%+), iron (95%+) and gold (100%) repeat, so there is always
+   something to dig. Redstone wants a run with no heart lost. Lapis comes from
+   a correction round that puts every miss right. **Diamond is once per
+   activity**, so a pile of them needs breadth and mastery together, not one
+   level farmed. Emerald comes only from the dragon.
+3. **The End** — the portal stays shut until the tool set is complete. A
+   perfect run before that still scores and still banks its tier; it just says
+   the portal will not open yet, and counts what is missing.
+
+Beyond that sits the **beacon**: nine of a mineral makes a block, and one block
+each of iron, gold, diamond and emerald lights it. That is the long goal, and
+it is deliberately far off.
