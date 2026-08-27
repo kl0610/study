@@ -268,7 +268,7 @@ footer{margin:42px 0 0;padding:18px 0 0;border-top:1px solid var(--line);
     <a class="hublink" href="../../">&lsaquo; All subjects</a>
     <div class="eyebrow">CKSci Grade 5 &middot; Investigating Matter</div>
     <h1>The <em>Property</em> Bench</h1>
-    <p class="sub">Four missions on Chapter 1. Pick any one, in any order, as many times as you like.</p>
+    <p class="sub">A short review of the chapter. Run it as many times as you like — the questions shuffle.</p>
     <div class="bq">
       <div class="eyebrow">The Big Question</div>
       <p>What properties can I use to describe matter?</p>
@@ -533,368 +533,440 @@ tongue: `<svg viewBox="0 0 120 100" class="art">
 };
 
 const DATA = {
-  chapter: "Chapter 1 — Properties of Matter",
-  bigQuestion: "What properties can I use to describe matter?",
-
-  passages: {
-    matter: {
-      title: "Properties of Matter",
-      cite: "Student Reader, page 1",
-      vocab: [["matter, n.", "anything that has mass and takes up space"]],
-      text: [
-        "Everywhere you look there are objects to describe. What do all these have in common? They are made of matter. Everything in the universe is made up of matter. This includes all solids, liquids, and gases. Matter is anything that has mass and takes up space.",
-        "It is easy to name many different kinds of matter. Just think of what you can see and touch. You can see and touch a rope, a fish, a boat, or water. But there is also matter that you cannot see and matter that isn't easy to touch. Air is matter\u2014it has mass and takes up space. You cannot see air or grab it, though you can feel it as wind. Blow up a balloon with air, and you can see that the air takes up space inside. Air is matter because the gases in it have mass and take up space."
-      ]
-    },
-    weightvolume: {
-      title: "Weight and Volume Help Describe Amounts of Matter",
-      cite: "Student Reader, page 2",
-      vocab: [],
-      text: [
-        "Mass and Weight: Some objects are made up of more matter than others. Mass refers to the amount of matter an object is made of. A cotton ball has a small mass. A rock that is the same size as the cotton ball has a greater mass. The rock contains more matter than the cotton ball, even though the two objects are the same size.",
-        "You can tell which of two objects has more matter by weighing each one. Earth's gravity pulls on all matter near the planet. You can measure the force of gravity on an object by placing it on a scale. Scales determine an object's weight. The more matter an object contains, the greater the pull of gravity on it, and the more it weighs.",
-        "Volume: All matter takes up space. When you breathe in, air takes up space in your lungs. You can measure how much space an object takes up using tools such as graduated cylinders and rulers to determine dimensions. These tools help you to measure the volume of an object.",
-        "A piece of bread can be described using weight and volume. If it is squeezed into a tight lump, it will take up less space. The weight will be the same, but the volume will be reduced."
-      ]
-    },
-    identify: {
-      title: "Properties Describe and Help to Identify Types of Matter",
-      cite: "Student Reader, page 3",
-      vocab: [["property, n.", "a quality, trait, or detail used to describe something"]],
-      text: [
-        "Measurements such as weight and volume help us describe the amount of matter in objects. We use other means to describe matter. When we describe how a material looks, feels, or behaves, we are describing the material's properties.",
-        "What is the solid matter in this picture? You might have identified the glass, but you could also identify the ice cubes. If asked to identify the transparent matter, the material you can see through, you could have named the glass, the ice, and the water.",
-        "What is the difference between the glass and the ice, though they are both solids that look a lot alike? You might explain that the ice cubes will melt at room temperature but the glass will not. We can use a combination of properties to describe different examples of matter and tell them apart.",
-        "Think About Melting: Ice melts at thirty-two degrees Fahrenheit. Other substances, such as steel, have different properties and do not melt until the temperature is much hotter. Steel is made of a combination of metals that does not melt until the temperature reaches around 2,500 degrees Fahrenheit! The temperature at which an object melts, its melting point, is a property of matter."
-      ]
-    },
-    solubility: {
-      title: "Matter Has Physical Properties \u2014 Solubility",
-      cite: "Student Reader, page 4",
-      vocab: [],
-      text: [
-        "Solubility: If you crush a sugar cube, you know that the powder that results is still sugar. You still have the same amount of sugar. You could even measure the weight to be sure.",
-        "But what if you mix the sugar into a cup of tea and stir it? The sugar seems to disappear. When you taste the tea, how can you tell the sugar is still there?",
-        "The sugar has dissolved in the tea. Tea is mostly water. The property of how matter dissolves is called solubility. Sugar is a type of matter that dissolves in water very easily. It has a high solubility. Sand does not dissolve in water and has low solubility.",
-        "How might you describe the differences between table salt, sugar, and white sand that you find on a beach? One way might be to test the solubility of each. Table salt looks a lot like sugar, but the salt takes longer to dissolve in water than sugar. White beach sand looks a lot like both sugar and salt, but it won't dissolve in a glass of water at all. Like other properties, solubility allows you to describe and identify the matter you see around you."
-      ]
-    },
-    rockmetal: {
-      title: "Color, Hardness, Reflectivity, and Buoyancy",
-      cite: "Student Reader, page 5",
-      vocab: [],
-      text: [
-        "Knowing the properties of matter can help us identify materials and use them to solve engineering problems. Look at the physical properties of a rock called pumice and the metal copper.",
-        "Color: Though it can be darker, pumice is usually light tan or gray. What color is the copper? Well, it's \u201ccopper\u201d! Copper is so recognizable by the property called color that the name of the color and the name of the mineral are the same.",
-        "Hardness: Some rocks and minerals are harder than others. Hardness is tested by scratching the materials with each other to determine which is harder. This is called a scratch test, which you can use to show that copper is harder than pumice.",
-        "Reflectivity: When you look in a mirror, you see your image in the shiny, reflective surface. Many rocks and minerals have shiny surfaces that reflect light. Metals such as copper have high reflectivity. Dull materials, such as pumice, have low reflectivity.",
-        "Buoyancy: Pumice is an unusual rock because it floats in water. Pumice floats because the matter in the rock is more spread out than the matter in water. Buoyancy describes an object's ability to float. The more buoyant an object is, the more likely it will float. Copper is not considered buoyant because it sinks."
-      ]
-    },
-    metals: {
-      title: "Metals Have Certain Properties",
-      cite: "Student Reader, page 6",
-      vocab: [],
-      text: [
-        "People use the properties of matter to describe different metals as well. Copper, iron, aluminum, and stainless steel are all metals, but they have different properties. Let's look at three properties that these metals share to varying degrees.",
-        "Electrical Conductivity: Copper is used for wires because it is a metal that conducts electricity. An electric current passes through it easily. But an electric current is not conducted at all through the plastic coating on wire. Metals vary in their ability to conduct an electric current.",
-        "Heat Conductivity: Pots and pans are made of materials that conduct heat to help cook food. They allow heat to pass through them easily from the stove to the food. Most metals conduct heat well. Many kinds of pots and pans are made from cast iron or copper because these metals conduct heat better than stainless steel and aluminum. You might also notice that most pots and pans have handles made of different materials from the part that sits on the stove burner to make it safer to hold.",
-        "Magnetism: Matter can be described and identified by its magnetic properties as well. Iron, nickel, and cobalt are metals that are attracted to magnets. Not all metals respond to magnets, though. Try to pick up a copper penny or a piece of aluminum foil with a magnet, and nothing will happen."
-      ]
-    }
+ "chapter": "Chapter 1 — Properties of Matter",
+ "bigQuestion": "What properties can I use to describe matter?",
+ "passages": {
+  "matter": {
+   "title": "Properties of Matter",
+   "cite": "Student Reader, page 1",
+   "vocab": [
+    [
+     "matter, n.",
+     "anything that has mass and takes up space"
+    ]
+   ],
+   "text": [
+    "Everywhere you look there are objects to describe. What do all these have in common? They are made of matter. Everything in the universe is made up of matter. This includes all solids, liquids, and gases. Matter is anything that has mass and takes up space.",
+    "It is easy to name many different kinds of matter. Just think of what you can see and touch. You can see and touch a rope, a fish, a boat, or water. But there is also matter that you cannot see and matter that isn't easy to touch. Air is matter—it has mass and takes up space. You cannot see air or grab it, though you can feel it as wind. Blow up a balloon with air, and you can see that the air takes up space inside. Air is matter because the gases in it have mass and take up space."
+   ]
   },
-
-  videos: [
-    { id: "ELchwUIlWa8", t: "What's Matter?", s: "Crash Course Kids #3.1", d: "5 min. What matter is, and a balloon experiment that proves air is matter \u2014 the same one on page 1.", when: "Start here." },
-    { id: "ZZYnERZe3Cg", t: "Hunting for Properties", s: "Crash Course Kids #9.1", d: "5 min. What a property is and how you measure one. Built on the exact standard this chapter teaches.", when: "Best match to the chapter." },
-    { id: "YCQXDegwnoE", t: "Wood, Water, and Properties", s: "Crash Course Kids #15.1", d: "5 min. Comparing two materials property by property \u2014 reflectivity, transparency, hardness.", when: "Watch after page 5." }
-  ],
-
-  missions: [
+  "weightvolume": {
+   "title": "Weight and Volume Help Describe Amounts of Matter",
+   "cite": "Student Reader, page 2",
+   "vocab": [],
+   "text": [
+    "Mass and Weight: Some objects are made up of more matter than others. Mass refers to the amount of matter an object is made of. A cotton ball has a small mass. A rock that is the same size as the cotton ball has a greater mass. The rock contains more matter than the cotton ball, even though the two objects are the same size.",
+    "You can tell which of two objects has more matter by weighing each one. Earth's gravity pulls on all matter near the planet. You can measure the force of gravity on an object by placing it on a scale. Scales determine an object's weight. The more matter an object contains, the greater the pull of gravity on it, and the more it weighs.",
+    "Volume: All matter takes up space. When you breathe in, air takes up space in your lungs. You can measure how much space an object takes up using tools such as graduated cylinders and rulers to determine dimensions. These tools help you to measure the volume of an object.",
+    "A piece of bread can be described using weight and volume. If it is squeezed into a tight lump, it will take up less space. The weight will be the same, but the volume will be reduced."
+   ]
+  },
+  "identify": {
+   "title": "Properties Describe and Help to Identify Types of Matter",
+   "cite": "Student Reader, page 3",
+   "vocab": [
+    [
+     "property, n.",
+     "a quality, trait, or detail used to describe something"
+    ]
+   ],
+   "text": [
+    "Measurements such as weight and volume help us describe the amount of matter in objects. We use other means to describe matter. When we describe how a material looks, feels, or behaves, we are describing the material's properties.",
+    "What is the solid matter in this picture? You might have identified the glass, but you could also identify the ice cubes. If asked to identify the transparent matter, the material you can see through, you could have named the glass, the ice, and the water.",
+    "What is the difference between the glass and the ice, though they are both solids that look a lot alike? You might explain that the ice cubes will melt at room temperature but the glass will not. We can use a combination of properties to describe different examples of matter and tell them apart.",
+    "Think About Melting: Ice melts at thirty-two degrees Fahrenheit. Other substances, such as steel, have different properties and do not melt until the temperature is much hotter. Steel is made of a combination of metals that does not melt until the temperature reaches around 2,500 degrees Fahrenheit! The temperature at which an object melts, its melting point, is a property of matter."
+   ]
+  },
+  "solubility": {
+   "title": "Matter Has Physical Properties — Solubility",
+   "cite": "Student Reader, page 4",
+   "vocab": [],
+   "text": [
+    "Solubility: If you crush a sugar cube, you know that the powder that results is still sugar. You still have the same amount of sugar. You could even measure the weight to be sure.",
+    "But what if you mix the sugar into a cup of tea and stir it? The sugar seems to disappear. When you taste the tea, how can you tell the sugar is still there?",
+    "The sugar has dissolved in the tea. Tea is mostly water. The property of how matter dissolves is called solubility. Sugar is a type of matter that dissolves in water very easily. It has a high solubility. Sand does not dissolve in water and has low solubility.",
+    "How might you describe the differences between table salt, sugar, and white sand that you find on a beach? One way might be to test the solubility of each. Table salt looks a lot like sugar, but the salt takes longer to dissolve in water than sugar. White beach sand looks a lot like both sugar and salt, but it won't dissolve in a glass of water at all. Like other properties, solubility allows you to describe and identify the matter you see around you."
+   ]
+  },
+  "rockmetal": {
+   "title": "Color, Hardness, Reflectivity, and Buoyancy",
+   "cite": "Student Reader, page 5",
+   "vocab": [],
+   "text": [
+    "Knowing the properties of matter can help us identify materials and use them to solve engineering problems. Look at the physical properties of a rock called pumice and the metal copper.",
+    "Color: Though it can be darker, pumice is usually light tan or gray. What color is the copper? Well, it's “copper”! Copper is so recognizable by the property called color that the name of the color and the name of the mineral are the same.",
+    "Hardness: Some rocks and minerals are harder than others. Hardness is tested by scratching the materials with each other to determine which is harder. This is called a scratch test, which you can use to show that copper is harder than pumice.",
+    "Reflectivity: When you look in a mirror, you see your image in the shiny, reflective surface. Many rocks and minerals have shiny surfaces that reflect light. Metals such as copper have high reflectivity. Dull materials, such as pumice, have low reflectivity.",
+    "Buoyancy: Pumice is an unusual rock because it floats in water. Pumice floats because the matter in the rock is more spread out than the matter in water. Buoyancy describes an object's ability to float. The more buoyant an object is, the more likely it will float. Copper is not considered buoyant because it sinks."
+   ]
+  },
+  "metals": {
+   "title": "Metals Have Certain Properties",
+   "cite": "Student Reader, page 6",
+   "vocab": [],
+   "text": [
+    "People use the properties of matter to describe different metals as well. Copper, iron, aluminum, and stainless steel are all metals, but they have different properties. Let's look at three properties that these metals share to varying degrees.",
+    "Electrical Conductivity: Copper is used for wires because it is a metal that conducts electricity. An electric current passes through it easily. But an electric current is not conducted at all through the plastic coating on wire. Metals vary in their ability to conduct an electric current.",
+    "Heat Conductivity: Pots and pans are made of materials that conduct heat to help cook food. They allow heat to pass through them easily from the stove to the food. Most metals conduct heat well. Many kinds of pots and pans are made from cast iron or copper because these metals conduct heat better than stainless steel and aluminum. You might also notice that most pots and pans have handles made of different materials from the part that sits on the stove burner to make it safer to hold.",
+    "Magnetism: Matter can be described and identified by its magnetic properties as well. Iron, nickel, and cobalt are metals that are attracted to magnets. Not all metals respond to magnets, though. Try to pick up a copper penny or a piece of aluminum foil with a magnet, and nothing will happen."
+   ]
+  }
+ },
+ "videos": [
+  {
+   "id": "ELchwUIlWa8",
+   "t": "What's Matter?",
+   "s": "Crash Course Kids #3.1",
+   "d": "5 min. What matter is, and a balloon experiment that proves air is matter — the same one on page 1.",
+   "when": "Start here."
+  },
+  {
+   "id": "ZZYnERZe3Cg",
+   "t": "Hunting for Properties",
+   "s": "Crash Course Kids #9.1",
+   "d": "5 min. What a property is and how you measure one. Built on the exact standard this chapter teaches.",
+   "when": "Best match to the chapter."
+  },
+  {
+   "id": "YCQXDegwnoE",
+   "t": "Wood, Water, and Properties",
+   "s": "Crash Course Kids #15.1",
+   "d": "5 min. Comparing two materials property by property — reflectivity, transparency, hardness.",
+   "when": "Watch after page 5."
+  }
+ ],
+ "missions": [
+  {
+   "id": "m1",
+   "name": "Chapter 1 review",
+   "tag": "10 questions · about 9 minutes",
+   "blurb": "A quick check that the chapter landed — not a test.",
+   "items": [
     {
-      id: "m1", name: "What Counts as Matter", tag: "Pages 1\u20132",
-      blurb: "Mass, weight, volume, and the invisible stuff.",
-      items: [
-        { type: "pick", art: "balloon", p: "matter",
-          q: "Ana blows up a balloon. Her brother says, \u201cThat proves nothing \u2014 air isn't really matter. You can't even see it or hold it.\u201d What is the strongest evidence Ana can give that air IS matter?",
-          opts: ["Air is invisible, and invisible things are always matter.",
-                 "The balloon changed color when it stretched.",
-                 "The air pushed the balloon outward, so it takes up space \u2014 and it has mass.",
-                 "The balloon felt cooler after she blew into it."],
-          a: 2,
-          why: "Matter is anything that has mass and takes up space. Being invisible has nothing to do with it \u2014 that's the trap in the first choice. The reader uses this exact balloon to make the point." },
-
-        { type: "pick", art: "balance", p: "weightvolume",
-          q: "A cotton ball and a small rock are exactly the same size. On a scale, the rock weighs much more. What does that tell you?",
-          opts: ["The rock takes up more space than the cotton ball.",
-                 "The rock is made of more matter than the cotton ball.",
-                 "Gravity does not pull on the cotton ball at all.",
-                 "The cotton ball is not made of matter."],
-          a: 1,
-          why: "Mass is the amount of matter in an object. The first choice can't be right \u2014 the question says they are the same size. \u201cMore matter\u201d is the whole answer expected at this grade." },
-
-        { type: "pick", art: "bread", p: "weightvolume",
-          q: "Jamal squeezes a slice of bread into a tight little lump. Which statement describes what happened?",
-          opts: ["Both the weight and the volume got smaller.",
-                 "The weight got smaller, but the volume stayed the same.",
-                 "Both the weight and the volume stayed exactly the same.",
-                 "The weight stayed the same, but the volume got smaller."],
-          a: 3,
-          why: "Squeezing changes how much space the bread fills. Nothing was added and nothing was taken away, so the weight can't change." },
-
-        { type: "tool", p: "weightvolume",
-          q: "Priya wants to find out how much SPACE a small stone takes up. Which tool should she reach for?",
-          tools: ["balance", "cylinder", "magnet", "thermo"],
-          labels: ["Balance scale", "Graduated cylinder", "Magnet", "Thermometer"],
-          a: 1,
-          why: "Volume is the amount of space something takes up, and the reader names graduated cylinders and rulers as the tools for measuring it. A scale would give her weight instead." },
-
-        { type: "sort", p: "weightvolume",
-          q: "Sort each clue into the measurement it belongs to.",
-          bins: ["Weight", "Volume"],
-          chips: [
-            ["How much matter is in it", 0],
-            ["How much space it fills", 1],
-            ["You measure it with a scale", 0],
-            ["You measure it with a graduated cylinder", 1],
-            ["Stays the same when bread is squeezed", 0],
-            ["Gets smaller when bread is squeezed", 1]
-          ],
-          why: "Weight answers \u201chow much matter?\u201d and volume answers \u201chow much space?\u201d Squeezing the bread separates them cleanly \u2014 one changes and one doesn't." },
-
-        { type: "match", p: "matter",
-          q: "Match each word to the definition your teacher's guide uses.",
-          pairs: [
-            ["matter", "anything that has mass and takes up space"],
-            ["property", "a quality, trait, or detail used to describe something"],
-            ["mass", "the amount of matter in an object"],
-            ["volume", "the amount of space an object occupies"],
-            ["weight", "the pull of gravity on an object's mass"]
-          ],
-          why: "These are the exact definitions from the glossary in the back of the teacher's guide." }
-      ]
+     "type": "pick",
+     "art": "balloon",
+     "p": "matter",
+     "q": "Ana blows up a balloon. Her brother says, “That proves nothing — air isn't really matter. You can't even see it or hold it.” What is the strongest evidence Ana can give that air IS matter?",
+     "opts": [
+      "Air is invisible, and invisible things are always matter.",
+      "The balloon changed color when it stretched.",
+      "The air pushed the balloon outward, so it takes up space — and it has mass.",
+      "The balloon felt cooler after she blew into it."
+     ],
+     "a": 2,
+     "why": "Matter is anything that has mass and takes up space. Being invisible has nothing to do with it — that's the trap in the first choice. The reader uses this exact balloon to make the point."
     },
-
     {
-      id: "m2", name: "Telling Look-Alikes Apart", tag: "Pages 3\u20134",
-      blurb: "When two things look the same, properties settle it.",
-      items: [
-        { type: "pick", art: "iceglass", p: "identify",
-          q: "A drinking glass and an ice cube are both solids, and they look a lot alike. Which property tells them apart?",
-          opts: ["The glass is a solid and the ice is a liquid.",
-                 "The ice will melt at room temperature, but the glass will not.",
-                 "The ice is transparent and the glass is not.",
-                 "They both look alike, so nothing can tell them apart."],
-          a: 1,
-          why: "Both are transparent solids, so transparency is no help here. Melting point is the property that separates them." },
-
-        { type: "pick", art: "thermo", p: "identify",
-          q: "Ice melts at 32\u00b0F. Steel doesn't melt until around 2,500\u00b0F. The temperature at which something melts is called its \u2014",
-          opts: ["solubility", "buoyancy", "reflectivity", "melting point"],
-          a: 3,
-          why: "The reader calls the melting point a property of matter, which is why it can be used to identify what something is made of." },
-
-        { type: "pick", art: "beakers", p: "solubility",
-          q: "Table salt, sugar, and white beach sand all look alike in a jar. Ana tests all three by stirring them into water. What does she see?",
-          opts: ["All three dissolve at exactly the same speed.",
-                 "Sand dissolves fastest because its grains are smallest.",
-                 "Sugar dissolves easily, salt takes longer, and sand doesn't dissolve at all.",
-                 "None of the three dissolve in water."],
-          a: 2,
-          why: "Solubility is the property of how matter dissolves. Three look-alike white solids behave three different ways in water, so one test identifies all three." },
-
-        { type: "sort", p: "rockmetal",
-          q: "Imagine breaking a rock cleanly in half. Sort each property by whether it would stay the same or change.",
-          bins: ["Describes the MATERIAL", "Describes just THIS PIECE"],
-          chips: [
-            ["Color", 0], ["Hardness", 0], ["Reflectivity", 0],
-            ["Whether a magnet grabs it", 0],
-            ["Shape", 1], ["Size", 1], ["Weight", 1]
-          ],
-          why: "This is the biggest idea in the chapter. Break the rock in half and its shape, size, and weight all change \u2014 so those describe the piece you happen to be holding. Its color, hardness, reflectivity, and magnetism don't change, so those tell you what the material actually IS." },
-
-        { type: "selectall", p: "rockmetal",
-          q: "An unknown rock sample is sitting on the lab table. Which of these could help you identify what MATERIAL it is made of? Select every correct answer.",
-          opts: [["Hardness", 1], ["Shape", 0], ["Reflectivity", 1], ["Size", 0], ["Color", 1], ["Whether a magnet picks it up", 1]],
-          why: "Four of these are properties of the material and stay the same no matter which piece you pick up. Shape and size belong to that one piece of rock and tell you nothing about what it is." },
-
-        { type: "pick", art: "scratch", p: "rockmetal",
-          q: "Jamal drags a piece of copper across a piece of pumice and leaves a scratch. What has he tested?",
-          opts: ["Buoyancy", "Hardness", "Reflectivity", "Solubility"],
-          a: 1,
-          why: "A scratch test compares hardness. Whichever material gets scratched is the softer one \u2014 so this shows copper is harder than pumice." }
-      ]
+     "type": "pick",
+     "art": "balance",
+     "p": "weightvolume",
+     "q": "A cotton ball and a small rock are exactly the same size. On a scale, the rock weighs much more. What does that tell you?",
+     "opts": [
+      "The rock takes up more space than the cotton ball.",
+      "The rock is made of more matter than the cotton ball.",
+      "Gravity does not pull on the cotton ball at all.",
+      "The cotton ball is not made of matter."
+     ],
+     "a": 1,
+     "why": "Mass is the amount of matter in an object. The first choice can't be right — the question says they are the same size. “More matter” is the whole answer expected at this grade."
     },
-
     {
-      id: "m3", name: "Rocks, Metals, and Tests", tag: "Pages 5\u20136",
-      blurb: "Pumice, copper, magnets, and hot pans.",
-      items: [
-        { type: "pick", art: "pumice", p: "rockmetal",
-          q: "Pumice floats in water. Copper sinks. Which property are you observing?",
-          opts: ["Reflectivity", "Hardness", "Buoyancy", "Solubility"],
-          a: 2,
-          why: "Buoyancy describes an object's ability to float. Pumice is unusual for a rock because the matter in it is more spread out than the matter in water." },
-
-        { type: "pick", art: "copper", p: "rockmetal",
-          q: "Copper has high reflectivity. Pumice has low reflectivity. What does that mean?",
-          opts: ["Copper's shiny surface bounces back more light than dull pumice does.",
-                 "Copper is harder than pumice.",
-                 "Copper floats and pumice sinks.",
-                 "Copper dissolves in water and pumice does not."],
-          a: 0,
-          why: "Reflectivity is about light bouncing off a surface. The other three choices are real properties \u2014 they're just the wrong ones, and two of them aren't even true." },
-
-        { type: "pick", art: "pot", p: "metals",
-          q: "A frying pan is made of cast iron, but its handle is made of a different material. Why would a designer do that?",
-          opts: ["The handle needs to be magnetic so it sticks to the stove.",
-                 "Iron is more reflective than the handle material.",
-                 "Iron dissolves in water, so the handle protects it.",
-                 "Iron conducts heat well so it cooks the food; the handle material blocks heat so it's safe to hold."],
-          a: 3,
-          why: "Heat conductivity drives the whole design. The pan has to pass heat through to the food and the handle has to stop heat from reaching your hand \u2014 two jobs, so two materials." },
-
-        { type: "pick", art: "magnet", p: "metals",
-          q: "A magnet picks up an iron nail, but nothing happens with a copper penny or aluminum foil. What does this show?",
-          opts: ["Copper and aluminum are not really metals.",
-                 "Only some metals are attracted to magnets.",
-                 "All metals are attracted to magnets.",
-                 "The penny is not made of matter."],
-          a: 1,
-          why: "Iron, nickel, and cobalt are attracted to magnets. Copper and aluminum are still metals \u2014 they just don't have that property. \u201cMetal\u201d and \u201cmagnetic\u201d are not the same word." },
-
-        { type: "tool", p: "solubility",
-          q: "Two white powders look identical. One is sugar and one is sand. Which test tells them apart?",
-          tools: ["magnet", "beakers", "tongue", "balance"],
-          labels: ["Hold a magnet over them", "Stir each into water", "Taste a pinch of each", "Weigh them on a scale"],
-          a: 1,
-          why: "Solubility separates them: sugar dissolves, sand doesn't. Never taste an unknown material \u2014 that's a standing safety rule in the teacher's guide. A magnet is no help since neither is magnetic, and weighing tells you only how much you poured." },
-
-        { type: "selectall", p: "metals",
-          q: "Copper wire is wrapped in a plastic coating. Select every true statement.",
-          opts: [["An electric current passes easily through copper", 1],
-                 ["An electric current is not conducted at all through the plastic coating", 1],
-                 ["All metals conduct electricity equally well", 0],
-                 ["Metals vary in how well they conduct an electric current", 1]],
-          why: "Copper carries the current and the plastic stops it \u2014 that's why wires are built this way. The third statement is the one to reject: the reader says metals vary in their ability to conduct." }
-      ]
+     "type": "pick",
+     "art": "bread",
+     "p": "weightvolume",
+     "q": "Jamal squeezes a slice of bread into a tight little lump. Which statement describes what happened?",
+     "opts": [
+      "Both the weight and the volume got smaller.",
+      "The weight got smaller, but the volume stayed the same.",
+      "Both the weight and the volume stayed exactly the same.",
+      "The weight stayed the same, but the volume got smaller."
+     ],
+     "a": 3,
+     "why": "Squeezing changes how much space the bread fills. Nothing was added and nothing was taken away, so the weight can't change."
     },
-
     {
-      id: "m4", name: "Be the Scientist", tag: "All 6 pages",
-      blurb: "Put it together and identify four unknowns.",
-      items: [
-        { type: "pick", art: "wind", p: "matter",
-          q: "Priya can't see the air, but she can feel wind push against her face and she can watch it bend a tree. Which sentence explains why air still counts as matter?",
-          opts: ["Anything you can feel is matter, whether or not it has mass.",
-                 "Air becomes matter only when it is moving as wind.",
-                 "The gases in air have mass and take up space.",
-                 "Air is matter because trees are matter."],
-          a: 2,
-          why: "The test never changes: does it have mass, and does it take up space? Air passes both, moving or still." },
-
-        { type: "selectall", p: "weightvolume",
-          q: "A slice of bread is squeezed into a tight lump. Which properties changed? Select every correct answer. (Careful \u2014 there may be only one.)",
-          opts: [["Volume", 1], ["Weight", 0], ["Color", 0], ["The type of matter it is", 0], ["Hardness", 0]],
-          why: "Only the volume changed. It's still bread, it still weighs the same, and nothing was added or removed. \u201cSelect every correct answer\u201d does not mean there must be several." },
-
-        { type: "pick", art: "cylinder", p: "weightvolume",
-          q: "Two objects sit on the table. Object A is much bigger than Object B, but Object B is much heavier. Which is true?",
-          opts: ["Object B contains more matter than Object A.",
-                 "Object A contains more matter than Object B.",
-                 "Object B takes up more space than Object A.",
-                 "Object A cannot be matter if it weighs less."],
-          a: 0,
-          why: "This is the cotton ball and the rock again. Bigger doesn't mean more matter \u2014 weighing is what tells you which one holds more." },
-
-        { type: "match", p: "identify",
-          q: "Match each science word to what a scientist does with it.",
-          pairs: [
-            ["observe", "to inspect or notice something"],
-            ["measure", "to compare an amount of something to a known quantity"],
-            ["evidence", "information that helps answer a question or support a claim"],
-            ["property", "a quality, trait, or detail used to describe something"]
-          ],
-          why: "You observe a property, you measure it, and what you write down becomes evidence. That is the whole job of this chapter." },
-
-        { type: "pick", art: "beakers", p: "solubility",
-          q: "Ana crushes a sugar cube into powder and weighs it. Then she stirs the powder into a glass of water until it disappears. Is the sugar gone?",
-          opts: ["Yes \u2014 dissolving destroys the sugar.",
-                 "No \u2014 it dissolved, so it spread out through the water and is still there.",
-                 "Yes \u2014 the sugar turned into water.",
-                 "No \u2014 the sugar sank to the bottom where you can't see it."],
-          a: 1,
-          why: "Crushing the cube didn't change how much sugar there was, and neither did dissolving it. You can still taste it, which is your evidence that it's there." },
-
-        { type: "mystery", p: "rockmetal",
-          q: "Four unknown samples are on the bench. Use the test results to name each one.",
-          headers: ["Color", "In water", "Magnet", "Scratch test"],
-          rows: [
-            { key: "A", cells: ["Reddish-orange", "Sinks", "No reaction", "Scratches pumice"], answer: "Copper" },
-            { key: "B", cells: ["Light gray, full of holes", "Floats", "No reaction", "Gets scratched"], answer: "Pumice" },
-            { key: "C", cells: ["White grains", "Dissolves", "No reaction", "Not tested"], answer: "Sugar" },
-            { key: "D", cells: ["Silver-gray", "Sinks", "Sticks hard", "Scratches pumice"], answer: "Iron" }
-          ],
-          choices: ["Copper", "Pumice", "Sugar", "Iron"],
-          why: "Every sample gives itself away with one standout property. The holes and floating mark the pumice, the magnet finds the iron, dissolving finds the sugar, and the reddish-orange color names the copper \u2014 the reader points out that copper is so recognizable the color and the mineral share a name." }
+     "type": "match",
+     "p": "matter",
+     "q": "Match each word to the definition your teacher's guide uses.",
+     "pairs": [
+      [
+       "matter",
+       "anything that has mass and takes up space"
+      ],
+      [
+       "property",
+       "a quality, trait, or detail used to describe something"
+      ],
+      [
+       "mass",
+       "the amount of matter in an object"
+      ],
+      [
+       "volume",
+       "the amount of space an object occupies"
+      ],
+      [
+       "weight",
+       "the pull of gravity on an object's mass"
       ]
+     ],
+     "why": "These are the exact definitions from the glossary in the back of the teacher's guide."
+    },
+    {
+     "type": "pick",
+     "art": "iceglass",
+     "p": "identify",
+     "q": "A drinking glass and an ice cube are both solids, and they look a lot alike. Which property tells them apart?",
+     "opts": [
+      "The glass is a solid and the ice is a liquid.",
+      "The ice will melt at room temperature, but the glass will not.",
+      "The ice is transparent and the glass is not.",
+      "They both look alike, so nothing can tell them apart."
+     ],
+     "a": 1,
+     "why": "Both are transparent solids, so transparency is no help here. Melting point is the property that separates them."
+    },
+    {
+     "type": "pick",
+     "art": "beakers",
+     "p": "solubility",
+     "q": "Table salt, sugar, and white beach sand all look alike in a jar. Ana tests all three by stirring them into water. What does she see?",
+     "opts": [
+      "All three dissolve at exactly the same speed.",
+      "Sand dissolves fastest because its grains are smallest.",
+      "Sugar dissolves easily, salt takes longer, and sand doesn't dissolve at all.",
+      "None of the three dissolve in water."
+     ],
+     "a": 2,
+     "why": "Solubility is the property of how matter dissolves. Three look-alike white solids behave three different ways in water, so one test identifies all three."
+    },
+    {
+     "type": "sort",
+     "p": "rockmetal",
+     "q": "Imagine breaking a rock cleanly in half. Sort each property by whether it would stay the same or change.",
+     "bins": [
+      "Describes the MATERIAL",
+      "Describes just THIS PIECE"
+     ],
+     "chips": [
+      [
+       "Color",
+       0
+      ],
+      [
+       "Hardness",
+       0
+      ],
+      [
+       "Reflectivity",
+       0
+      ],
+      [
+       "Whether a magnet grabs it",
+       0
+      ],
+      [
+       "Shape",
+       1
+      ],
+      [
+       "Size",
+       1
+      ],
+      [
+       "Weight",
+       1
+      ]
+     ],
+     "why": "This is the biggest idea in the chapter. Break the rock in half and its shape, size, and weight all change — so those describe the piece you happen to be holding. Its color, hardness, reflectivity, and magnetism don't change, so those tell you what the material actually IS."
+    },
+    {
+     "type": "selectall",
+     "p": "rockmetal",
+     "q": "An unknown rock sample is sitting on the lab table. Which of these could help you identify what MATERIAL it is made of? Select every correct answer.",
+     "opts": [
+      [
+       "Hardness",
+       1
+      ],
+      [
+       "Shape",
+       0
+      ],
+      [
+       "Reflectivity",
+       1
+      ],
+      [
+       "Size",
+       0
+      ],
+      [
+       "Color",
+       1
+      ],
+      [
+       "Whether a magnet picks it up",
+       1
+      ]
+     ],
+     "why": "Four of these are properties of the material and stay the same no matter which piece you pick up. Shape and size belong to that one piece of rock and tell you nothing about what it is."
+    },
+    {
+     "type": "pick",
+     "art": "magnet",
+     "p": "metals",
+     "q": "A magnet picks up an iron nail, but nothing happens with a copper penny or aluminum foil. What does this show?",
+     "opts": [
+      "Copper and aluminum are not really metals.",
+      "Only some metals are attracted to magnets.",
+      "All metals are attracted to magnets.",
+      "The penny is not made of matter."
+     ],
+     "a": 1,
+     "why": "Iron, nickel, and cobalt are attracted to magnets. Copper and aluminum are still metals — they just don't have that property. “Metal” and “magnetic” are not the same word."
+    },
+    {
+     "type": "mystery",
+     "p": "rockmetal",
+     "q": "Four unknown samples are on the bench. Use the test results to name each one.",
+     "headers": [
+      "Color",
+      "In water",
+      "Magnet",
+      "Scratch test"
+     ],
+     "rows": [
+      {
+       "key": "A",
+       "cells": [
+        "Reddish-orange",
+        "Sinks",
+        "No reaction",
+        "Scratches pumice"
+       ],
+       "answer": "Copper"
+      },
+      {
+       "key": "B",
+       "cells": [
+        "Light gray, full of holes",
+        "Floats",
+        "No reaction",
+        "Gets scratched"
+       ],
+       "answer": "Pumice"
+      },
+      {
+       "key": "C",
+       "cells": [
+        "White grains",
+        "Dissolves",
+        "No reaction",
+        "Not tested"
+       ],
+       "answer": "Sugar"
+      },
+      {
+       "key": "D",
+       "cells": [
+        "Silver-gray",
+        "Sinks",
+        "Sticks hard",
+        "Scratches pumice"
+       ],
+       "answer": "Iron"
+      }
+     ],
+     "choices": [
+      "Copper",
+      "Pumice",
+      "Sugar",
+      "Iron"
+     ],
+     "why": "Every sample gives itself away with one standout property. The holes and floating mark the pumice, the magnet finds the iron, dissolving finds the sugar, and the reddish-orange color names the copper — the reader points out that copper is so recognizable the color and the mineral share a name."
     }
-  ]
+   ]
+  }
+ ]
 };
-
-/* Exact sentences lifted from the Student Reader, per question.
-   Every string here is verified as a verbatim substring of its own passage. */
 DATA.excerpts = {
-  "m1-0": ["Matter is anything that has mass and takes up space.",
-           "Air is matter\u2014it has mass and takes up space.",
-           "Blow up a balloon with air, and you can see that the air takes up space inside."],
-  "m1-1": ["Mass refers to the amount of matter an object is made of.",
-           "The rock contains more matter than the cotton ball, even though the two objects are the same size."],
-  "m1-2": ["If it is squeezed into a tight lump, it will take up less space. The weight will be the same, but the volume will be reduced."],
-  "m1-3": ["You can measure how much space an object takes up using tools such as graduated cylinders and rulers to determine dimensions. These tools help you to measure the volume of an object."],
-  "m1-4": ["Scales determine an object's weight.",
-           "These tools help you to measure the volume of an object.",
-           "The weight will be the same, but the volume will be reduced."],
-  "m1-5": ["Matter is anything that has mass and takes up space."],
-
-  "m2-0": ["You might explain that the ice cubes will melt at room temperature but the glass will not.",
-           "We can use a combination of properties to describe different examples of matter and tell them apart."],
-  "m2-1": ["The temperature at which an object melts, its melting point, is a property of matter."],
-  "m2-2": ["Table salt looks a lot like sugar, but the salt takes longer to dissolve in water than sugar. White beach sand looks a lot like both sugar and salt, but it won't dissolve in a glass of water at all."],
-  "m2-3": ["Knowing the properties of matter can help us identify materials and use them to solve engineering problems."],
-  "m2-4": ["Knowing the properties of matter can help us identify materials and use them to solve engineering problems.",
-           "Hardness is tested by scratching the materials with each other to determine which is harder.",
-           "Metals such as copper have high reflectivity. Dull materials, such as pumice, have low reflectivity."],
-  "m2-5": ["Hardness is tested by scratching the materials with each other to determine which is harder. This is called a scratch test, which you can use to show that copper is harder than pumice."],
-
-  "m3-0": ["Buoyancy describes an object's ability to float. The more buoyant an object is, the more likely it will float. Copper is not considered buoyant because it sinks."],
-  "m3-1": ["Many rocks and minerals have shiny surfaces that reflect light. Metals such as copper have high reflectivity. Dull materials, such as pumice, have low reflectivity."],
-  "m3-2": ["They allow heat to pass through them easily from the stove to the food.",
-           "You might also notice that most pots and pans have handles made of different materials from the part that sits on the stove burner to make it safer to hold."],
-  "m3-3": ["Iron, nickel, and cobalt are metals that are attracted to magnets. Not all metals respond to magnets, though. Try to pick up a copper penny or a piece of aluminum foil with a magnet, and nothing will happen."],
-  "m3-4": ["Sugar is a type of matter that dissolves in water very easily. It has a high solubility. Sand does not dissolve in water and has low solubility."],
-  "m3-5": ["Copper is used for wires because it is a metal that conducts electricity. An electric current passes through it easily. But an electric current is not conducted at all through the plastic coating on wire. Metals vary in their ability to conduct an electric current."],
-
-  "m4-0": ["You cannot see air or grab it, though you can feel it as wind.",
-           "Air is matter because the gases in it have mass and take up space."],
-  "m4-1": ["If it is squeezed into a tight lump, it will take up less space. The weight will be the same, but the volume will be reduced."],
-  "m4-2": ["A cotton ball has a small mass. A rock that is the same size as the cotton ball has a greater mass. The rock contains more matter than the cotton ball, even though the two objects are the same size."],
-  "m4-3": ["When we describe how a material looks, feels, or behaves, we are describing the material's properties."],
-  "m4-4": ["If you crush a sugar cube, you know that the powder that results is still sugar. You still have the same amount of sugar.",
-           "The sugar has dissolved in the tea."],
-  "m4-5": ["Copper is so recognizable by the property called color that the name of the color and the name of the mineral are the same.",
-           "Pumice is an unusual rock because it floats in water.",
-           "Hardness is tested by scratching the materials with each other to determine which is harder."]
+ "m1-0": [
+  "Matter is anything that has mass and takes up space.",
+  "Air is matter—it has mass and takes up space.",
+  "Blow up a balloon with air, and you can see that the air takes up space inside."
+ ],
+ "m1-1": [
+  "Mass refers to the amount of matter an object is made of.",
+  "The rock contains more matter than the cotton ball, even though the two objects are the same size."
+ ],
+ "m1-2": [
+  "If it is squeezed into a tight lump, it will take up less space. The weight will be the same, but the volume will be reduced."
+ ],
+ "m1-3": [
+  "Matter is anything that has mass and takes up space."
+ ],
+ "m1-4": [
+  "You might explain that the ice cubes will melt at room temperature but the glass will not.",
+  "We can use a combination of properties to describe different examples of matter and tell them apart."
+ ],
+ "m1-5": [
+  "Table salt looks a lot like sugar, but the salt takes longer to dissolve in water than sugar. White beach sand looks a lot like both sugar and salt, but it won't dissolve in a glass of water at all."
+ ],
+ "m1-6": [
+  "Knowing the properties of matter can help us identify materials and use them to solve engineering problems."
+ ],
+ "m1-7": [
+  "Knowing the properties of matter can help us identify materials and use them to solve engineering problems.",
+  "Hardness is tested by scratching the materials with each other to determine which is harder.",
+  "Metals such as copper have high reflectivity. Dull materials, such as pumice, have low reflectivity."
+ ],
+ "m1-8": [
+  "Iron, nickel, and cobalt are metals that are attracted to magnets. Not all metals respond to magnets, though. Try to pick up a copper penny or a piece of aluminum foil with a magnet, and nothing will happen."
+ ],
+ "m1-9": [
+  "Copper is so recognizable by the property called color that the name of the color and the name of the mineral are the same.",
+  "Pumice is an unusual rock because it floats in water.",
+  "Hardness is tested by scratching the materials with each other to determine which is harder."
+ ]
 };
-
-/* Which video explains each page of the reader. */
 DATA.vidFor = {
-  matter:       { id: "ELchwUIlWa8", t: "What's Matter?",              s: "Crash Course Kids #3.1",  d: "Mass, volume, and the balloon test that proves air is matter." },
-  weightvolume: { id: "ELchwUIlWa8", t: "What's Matter?",              s: "Crash Course Kids #3.1",  d: "Why everything has both weight and volume, and how they differ." },
-  identify:     { id: "ZZYnERZe3Cg", t: "Hunting for Properties",      s: "Crash Course Kids #9.1",  d: "What a property is, and how you observe and measure one." },
-  solubility:   { id: "ZZYnERZe3Cg", t: "Hunting for Properties",      s: "Crash Course Kids #9.1",  d: "Using a property as a test to tell look-alike materials apart." },
-  rockmetal:    { id: "YCQXDegwnoE", t: "Wood, Water, and Properties", s: "Crash Course Kids #15.1", d: "Two materials compared property by property \u2014 reflectivity, hardness." },
-  metals:       { id: "nlSemv2fLN8", t: "What's My Property",          s: "Crash Course Kids #35.2", d: "Metals: shiny, magnetic, and good at conducting heat and electricity." }
+ "matter": {
+  "id": "ELchwUIlWa8",
+  "t": "What's Matter?",
+  "s": "Crash Course Kids #3.1",
+  "d": "Mass, volume, and the balloon test that proves air is matter."
+ },
+ "weightvolume": {
+  "id": "ELchwUIlWa8",
+  "t": "What's Matter?",
+  "s": "Crash Course Kids #3.1",
+  "d": "Why everything has both weight and volume, and how they differ."
+ },
+ "identify": {
+  "id": "ZZYnERZe3Cg",
+  "t": "Hunting for Properties",
+  "s": "Crash Course Kids #9.1",
+  "d": "What a property is, and how you observe and measure one."
+ },
+ "solubility": {
+  "id": "ZZYnERZe3Cg",
+  "t": "Hunting for Properties",
+  "s": "Crash Course Kids #9.1",
+  "d": "Using a property as a test to tell look-alike materials apart."
+ },
+ "rockmetal": {
+  "id": "YCQXDegwnoE",
+  "t": "Wood, Water, and Properties",
+  "s": "Crash Course Kids #15.1",
+  "d": "Two materials compared property by property — reflectivity, hardness."
+ },
+ "metals": {
+  "id": "nlSemv2fLN8",
+  "t": "What's My Property",
+  "s": "Crash Course Kids #35.2",
+  "d": "Metals: shiny, magnetic, and good at conducting heat and electricity."
+ }
 };
 
 

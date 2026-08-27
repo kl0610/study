@@ -3,1171 +3,955 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>The Speckled Band — pages 1–13</title>
+<title>The Property Bench — Investigating Matter, Chapter 1</title>
 <style>
 :root{
-  --bg:#0B1A18; --panel:#F4F1E9; --panel2:#E8E3D6; --ink:#1A211F; --dim:#6E7A76;
-  --gold:#E0A83C; --stone:#8A9490; --jade:#2F8F76; --red:#C4553F; --sky:#3D82B8;
-  --line:#D6CFBE;
-  --disp:"Trebuchet MS","Segoe UI",Verdana,system-ui,sans-serif;
+  --bench:#1C2733; --deep:#121A23; --panel:#26333F; --line:#3A4A58;
+  --paper:#FBF6EC; --paper2:#F1E9D8; --ink:#16292E; --muted:#8FA9AF;
+  --copper:#C89B5A; --cyan:#7FA8C4; --amber:#EFB04A; --red:#E0685A; --green:#59B27C; --violet:#7C5BA6;
+  --r:16px;
+  --disp:"Avenir Next","Segoe UI Variable Display","Trebuchet MS",system-ui,sans-serif;
   --body:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
   --mono:ui-monospace,"SF Mono","Cascadia Mono",Consolas,monospace;
-  --serif:Georgia,"Iowan Old Style","Palatino Linotype",serif;
 }
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-body{margin:0;background:var(--bg);color:var(--panel);font-family:var(--body);
-  line-height:1.55;padding:0 0 40px;
-  background-image:radial-gradient(circle at 12% -6%,#153029 0%,transparent 55%)}
-.wrap{max-width:680px;margin:0 auto;padding:0 16px}
-.hublink{display:inline-block;margin:16px 0 0;font:700 12px var(--mono);
-  letter-spacing:.07em;color:var(--gold);text-decoration:none}
-.hublink:hover{text-decoration:underline}
-.eyebrow{font:700 11px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--stone)}
-h1{font-family:var(--disp);font-size:clamp(27px,7vw,40px);line-height:1.05;
-  margin:8px 0 10px;font-weight:800;letter-spacing:-.02em}
-h1 em{font-style:normal;color:var(--gold)}
-.bigq{background:#122A26;border-left:5px solid var(--gold);padding:12px 15px;
-  font-size:14.5px;margin:0 0 20px}
-.bigq b{display:block;font:700 11px var(--mono);letter-spacing:.12em;
-  text-transform:uppercase;color:var(--gold);margin-bottom:3px}
+html,body{margin:0;padding:0}
+body{
+  background:var(--bench);
+  background-image:radial-gradient(circle at 18% 0%,#2E3D4C 0%,transparent 55%),
+                   radial-gradient(circle at 92% 12%,#243240 0%,transparent 45%);
+  background-attachment:fixed;
+  color:var(--paper); font-family:var(--body); line-height:1.55;
+  padding:0 0 96px; overflow-x:hidden;
+}
+.wrap{max-width:760px;margin:0 auto;padding:0 18px}
+button{font:inherit;color:inherit;cursor:pointer;border:none;background:none}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--cyan)}
+.hublink{display:inline-flex;align-items:center;gap:6px;margin:22px 0 0;padding:7px 13px;
+  border:1px solid var(--line);border-radius:20px;background:var(--panel);
+  font:700 11px var(--mono);letter-spacing:.11em;text-transform:uppercase;
+  color:var(--muted);text-decoration:none;transition:color .15s,border-color .15s}
+.hublink:hover{color:var(--paper);border-color:var(--cyan)}
 
-.grid{display:grid;gap:11px;margin-bottom:22px}
-.set{position:relative;background:var(--panel);color:var(--ink);border:none;
-  border-left:6px solid var(--c);padding:15px 17px;text-align:left;
-  display:block;width:100%;font-family:inherit}
-.set .tag{font:700 10px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--dim)}
-.set h3{font-family:var(--disp);font-size:19px;margin:3px 0 4px;font-weight:750}
-.set p{margin:0;font-size:13.5px;color:#4A544F}
-.set .row2{display:flex;gap:10px;align-items:center;margin-top:10px;flex-wrap:wrap}
-.set .go{font:800 11px var(--mono);letter-spacing:.08em;color:#fff;background:var(--c);
-  border:none;padding:9px 13px;font-family:var(--mono);cursor:pointer}
-.set .rd{font:800 11px var(--mono);letter-spacing:.08em;color:var(--ink);background:none;
-  border:2px solid var(--line);padding:7px 11px;cursor:pointer;font-family:var(--mono)}
-.badge{position:absolute;right:14px;top:12px;font:700 11px var(--mono);
-  background:var(--jade);color:#fff;padding:3px 8px}
+/* ---------- header ---------- */
+header{padding:34px 0 22px;text-align:center}
+h1{font-family:var(--disp);font-size:clamp(30px,7.5vw,46px);line-height:1.03;margin:10px 0 6px;letter-spacing:-.02em;font-weight:800}
+h1 em{font-style:normal;color:var(--amber)}
+.sub{color:var(--muted);font-size:15px;max-width:44ch;margin:0 auto}
+.bq{margin:20px auto 0;max-width:520px;background:var(--panel);border:1px solid var(--line);
+    border-radius:var(--r);padding:14px 18px}
+.bq .eyebrow{color:var(--amber)}
+.bq p{margin:4px 0 0;font-family:var(--disp);font-size:19px;font-weight:600}
 
-.card{background:var(--panel);color:var(--ink);padding:18px 17px 16px;margin-bottom:14px}
-.qnum{font:700 10.5px var(--mono);letter-spacing:.11em;text-transform:uppercase;color:var(--dim);
-  display:flex;justify-content:space-between;gap:10px}
-.qnum .tg{color:var(--sky)}
-.q{font-family:var(--disp);font-size:19.5px;font-weight:750;line-height:1.3;margin:5px 0 14px}
+/* ---------- mission cards ---------- */
+.grid{display:grid;gap:14px;margin:26px 0 0}
+.mission{display:block;width:100%;text-align:left;background:var(--paper);color:var(--ink);
+  border-radius:var(--r);padding:16px 18px;position:relative;overflow:hidden;
+  box-shadow:0 10px 26px rgba(0,0,0,.28);transition:transform .16s ease,box-shadow .16s ease}
+.mission:hover{transform:translateY(-3px);box-shadow:0 16px 34px rgba(0,0,0,.34)}
+.mission:active{transform:translateY(0)}
+.mission::before{content:"";position:absolute;left:0;top:0;bottom:0;width:6px;background:var(--c)}
+.mission .top{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.mission h3{font-family:var(--disp);font-size:20px;margin:2px 0 3px;font-weight:750}
+.mission .tag{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#7A8C85}
+.mission p{margin:0;font-size:14px;color:#4A5A5E}
+.mission .go{margin-top:10px;display:inline-flex;align-items:center;gap:7px;font-weight:700;font-size:14px;color:var(--c)}
+.chev{width:16px;height:16px;flex:none}
+.badge{position:absolute;right:14px;bottom:14px;font-family:var(--mono);font-size:11px;
+  background:var(--green);color:#fff;padding:3px 9px;border-radius:20px;letter-spacing:.06em}
+
+/* ---------- videos ---------- */
+.shelf{margin:38px 0 0}
+.shelf h2,.pagehead h2{font-family:var(--disp);font-size:22px;margin:6px 0 4px;font-weight:750}
+.shelf .note{color:var(--muted);font-size:14px;margin:0 0 14px}
+.vid{display:flex;gap:14px;align-items:flex-start;background:var(--panel);border:1px solid var(--line);
+  border-radius:14px;padding:13px 14px;margin-bottom:10px;text-decoration:none;color:var(--paper);
+  transition:border-color .16s ease,transform .16s ease}
+.vid:hover{border-color:var(--cyan);transform:translateX(3px)}
+.play{flex:none;width:46px;height:34px;border-radius:8px;background:var(--red);display:grid;place-items:center}
+.play svg{width:14px;height:14px;fill:#fff}
+.vid h4{margin:0 0 2px;font-size:15px;font-weight:700}
+.vid .src{font-family:var(--mono);font-size:10.5px;color:var(--cyan);letter-spacing:.08em;text-transform:uppercase}
+.vid p{margin:5px 0 0;font-size:13px;color:#B9CDD2}
+.vid .when{margin-top:5px;font-size:12px;color:var(--amber);font-weight:600}
+
+/* ---------- play screen ---------- */
+.pagehead{display:flex;align-items:center;gap:12px;padding:20px 0 12px}
+.back{width:38px;height:38px;border-radius:11px;background:var(--panel);border:1px solid var(--line);
+  display:grid;place-items:center;flex:none}
+.back svg{width:16px;height:16px}
+.pagehead .t{flex:1;min-width:0}
+.pagehead .t strong{display:block;font-family:var(--disp);font-size:17px;font-weight:750;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pagehead .t span{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase}
+.dots{display:flex;gap:5px;margin:0 0 16px}
+.dot{height:5px;flex:1;border-radius:3px;background:var(--line)}
+.dot.done{background:var(--green)}
+.dot.now{background:var(--amber)}
+
+.card{background:var(--paper);color:var(--ink);border-radius:20px;padding:18px;
+  box-shadow:0 14px 40px rgba(0,0,0,.3)}
+.qnum{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#8A9B94}
+.q{font-family:var(--disp);font-size:18.5px;line-height:1.35;font-weight:650;margin:6px 0 14px}
+.artbox{background:var(--paper2);border-radius:14px;padding:8px;margin:0 0 14px}
+svg.art{display:block;width:100%;height:auto;max-height:210px}
+.cap{font:600 9px var(--mono);fill:#6E7F79;text-anchor:middle;letter-spacing:.04em}
+.cap2{font:400 8px var(--mono);fill:#8A9B94;text-anchor:middle}
+.cap3{font:700 9px var(--mono);fill:#FBF6EC;text-anchor:middle}
+.cap4{font:700 11px var(--mono);fill:#16292E;text-anchor:middle}
+
+/* options */
 .opts{display:grid;gap:8px}
-.opt{background:var(--panel2);border:2px solid transparent;padding:12px 14px;
-  text-align:left;font-size:15px;font-family:inherit;color:var(--ink);cursor:pointer;
-  display:flex;gap:11px;align-items:flex-start;min-height:46px}
-.opt:hover{border-color:var(--stone)}
-.opt.sel{border-color:var(--sky);background:#DCEAF5}
-.opt.right{border-color:var(--jade);background:#DCEFE7}
-.opt.wrong{border-color:var(--red);background:#F6E0DB}
-.opt .k{flex:none;width:22px;height:22px;background:#fff;color:var(--dim);
-  font:800 11px var(--mono);display:grid;place-items:center;margin-top:1px}
+.opt{display:flex;gap:11px;align-items:flex-start;text-align:left;width:100%;
+  background:#fff;border:2px solid #E4DBC8;border-radius:13px;padding:12px 13px;font-size:15px;
+  transition:border-color .14s,background .14s,transform .1s}
+.opt:hover:not(:disabled){border-color:var(--copper)}
+.opt:active:not(:disabled){transform:scale(.99)}
+.opt .k{flex:none;width:24px;height:24px;border-radius:7px;background:#F0E8D6;color:#6E7F79;
+  font:700 12px var(--mono);display:grid;place-items:center}
+.opt.out{opacity:.4}
+.opt.out .k{background:#E0D6C2}
+.opt:disabled{cursor:default}
+.opt.good{border-color:var(--green);background:#EFF8F2}
+.opt.good .k{background:var(--green);color:#fff}
+.opt.bad{border-color:var(--red);background:#FDF0EE}
+.opt.bad .k{background:var(--red);color:#fff}
+/* select-all */
+.opt.multi .k{border-radius:50%}
+.opt.on{border-color:var(--violet);background:#F4EFFA}
+.opt.on .k{background:var(--violet);color:#fff}
+.counter{font:600 12px var(--mono);color:#8A9B94;margin:10px 0 0;text-align:center;letter-spacing:.06em}
 
-.rows{display:grid;gap:8px}
-.row{background:var(--panel2);padding:11px 13px;display:flex;gap:11px;align-items:center;
-  font-size:14.5px;min-height:48px}
-.row .n{flex:none;width:26px;height:26px;background:var(--gold);color:#20170A;
-  font:800 12px var(--mono);display:grid;place-items:center}
-.row.right{background:#DCEFE7}
-.row.wrong{background:#F6E0DB}
-.row .mv{margin-left:auto;display:flex;gap:4px}
-.row .mv button{width:34px;height:34px;border:2px solid var(--line);background:#fff;
-  font:800 14px var(--mono);color:var(--dim);cursor:pointer}
-.row .mv button:disabled{opacity:.3;cursor:default}
+/* tools */
+.tools{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.tool{background:#fff;border:2px solid #E4DBC8;border-radius:14px;padding:10px 8px 8px;text-align:center;
+  transition:border-color .14s,transform .1s}
+.tool:hover:not(:disabled){border-color:var(--copper)}
+.tool:active:not(:disabled){transform:scale(.98)}
+.tool svg{height:78px;width:100%}
+.tool span{display:block;font-size:12.5px;font-weight:650;margin-top:4px;line-height:1.25}
+.tool.out{opacity:.38}
+.tool.good{border-color:var(--green);background:#EFF8F2}
+.tool.bad{border-color:var(--red);background:#FDF0EE}
 
-.tiles{display:grid;gap:8px}
-.tile{background:var(--panel2);border:2px solid transparent;padding:12px 14px;
-  text-align:left;font-size:14.5px;font-family:inherit;color:var(--ink);cursor:pointer;
-  min-height:46px}
-.tile.sel{border-color:var(--sky);background:#DCEAF5}
-.tile.right{border-color:var(--jade);background:#DCEFE7}
-.tile.wrong{border-color:var(--red);background:#F6E0DB}
+/* chips + slots */
+.instr{font-size:13.5px;color:#5C6C6F;margin:0 0 10px;font-style:italic}
+.chips{display:flex;flex-wrap:wrap;gap:7px;margin:0 0 14px;min-height:8px}
+.chip{background:#fff;border:2px solid #E4DBC8;border-radius:10px;padding:8px 11px;font-size:14px;font-weight:600;
+  transition:transform .1s,border-color .14s}
+.chip:active{transform:scale(.97)}
+.chip.sel{border-color:var(--violet);background:#F4EFFA;box-shadow:0 0 0 3px rgba(124,91,166,.16)}
+.chip.used{display:none}
+.slots{display:grid;gap:8px}
+.slots.bins{grid-template-columns:1fr 1fr}
+.slot{background:#F6F0E2;border:2px dashed #D6C9AF;border-radius:13px;padding:10px 12px;text-align:left;width:100%;
+  transition:border-color .14s,background .14s}
+.slot:hover{border-color:var(--copper)}
+.slot .lab{font-size:13.5px;font-weight:650;color:#3E4E52;line-height:1.3}
+.slot.bins .lab{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#6E7F79}
+.slot .held{display:flex;flex-wrap:wrap;gap:6px;margin-top:7px}
+.held span{background:var(--violet);color:#fff;border-radius:8px;padding:5px 9px;font-size:13px;font-weight:600}
+.slot.filled{border-style:solid;border-color:#C9BCA0;background:#fff}
+.slot.hot{border-color:var(--violet);background:#F8F4FE}
+.held span.wrongmark{background:var(--red);box-shadow:0 0 0 3px rgba(224,104,90,.2)}
+.slot.wrongmark{border-color:var(--red);border-style:solid}
+.hintnote{font:600 12px var(--mono);color:var(--red);letter-spacing:.05em;margin:10px 0 0;text-align:center}
 
-.act{display:grid;gap:8px;margin-top:14px}
-.btn{padding:13px;font-weight:750;font-size:15px;text-align:center;border:none;
-  font-family:inherit;cursor:pointer}
-.btn.p{background:var(--jade);color:#fff}
-.btn.g{background:var(--gold);color:#20170A}
-.btn.o{background:transparent;border:2px solid var(--line);color:var(--ink)}
+/* mystery table */
+.mtable{display:grid;gap:8px}
+.mrow{background:#fff;border:2px solid #E4DBC8;border-radius:13px;padding:10px 12px}
+.mrow.hot{border-color:var(--violet);background:#F8F4FE}
+.mrow.wrongmark{border-color:var(--red);background:#FDF0EE}
+.mrow .named.wrongmark{background:var(--red)}
+.mrow .rh{display:flex;align-items:center;gap:9px;margin-bottom:7px}
+.mrow .key{width:26px;height:26px;border-radius:8px;background:var(--bench);color:var(--paper);
+  font:700 13px var(--mono);display:grid;place-items:center;flex:none}
+.mrow .named{background:var(--violet);color:#fff;border-radius:8px;padding:4px 10px;font-size:13px;font-weight:700}
+.cells{display:grid;grid-template-columns:repeat(2,1fr);gap:5px}
+.cell{background:#F6F0E2;border-radius:8px;padding:5px 8px}
+.cell b{display:block;font:600 9px var(--mono);letter-spacing:.09em;text-transform:uppercase;color:#8A9B94}
+.cell span{font-size:12.5px;font-weight:600;color:#3E4E52}
+
+/* actions + feedback */
+.act{margin:14px 0 0;display:grid;gap:8px}
+.btn{border-radius:13px;padding:13px;font-weight:750;font-size:15px;text-align:center;
+  transition:transform .1s,filter .14s}
+.btn:active{transform:scale(.99)}
 .btn:disabled{opacity:.4;cursor:default}
-.fb{padding:12px 14px;margin-top:12px;font-size:14px;line-height:1.5}
-.fb strong{display:block;font-family:var(--disp);font-size:15.5px;margin-bottom:3px}
-.fb.yes{background:#DCEFE7;border-left:5px solid var(--jade);color:#17372C}
-.fb.no{background:#F6E0DB;border-left:5px solid var(--red);color:#5A2418}
-.fb cite{display:block;font:600 11px var(--mono);color:var(--dim);margin-top:6px;font-style:normal}
+.btn.p{background:var(--bench);color:var(--paper)}
+.btn.g{background:var(--green);color:#fff}
+.btn.o{background:#fff;border:2px solid var(--bench);color:var(--bench)}
+.btn.h{background:#fff;border:2px solid var(--red);color:#A93F33}
+.fb{border-radius:14px;padding:13px 15px;margin:14px 0 0;font-size:14.5px;animation:pop .28s ease}
+.fb.no{background:#FDF0EE;border-left:5px solid var(--red);color:#7A2E26}
+.fb.yes{background:#EFF8F2;border-left:5px solid var(--green);color:#1E5637}
+.fb strong{display:block;font-family:var(--disp);font-size:16px;margin-bottom:3px}
+@keyframes pop{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}
+.shake{animation:sh .38s}
+@keyframes sh{0%,100%{transform:none}22%{transform:translateX(-7px)}44%{transform:translateX(7px)}70%{transform:translateX(-3px)}}
 
-.dots{display:flex;gap:5px;margin:0 0 12px}
-.dot{flex:1;height:5px;background:#24403A}
-.dot.done{background:var(--jade)} .dot.now{background:var(--gold)}
+/* ---------- reader drawer ---------- */
+.scrim{position:fixed;inset:0;background:rgba(6,20,24,.62);opacity:0;pointer-events:none;
+  transition:opacity .26s;z-index:40;backdrop-filter:blur(2px)}
+.scrim.on{opacity:1;pointer-events:auto}
+.drawer{position:fixed;left:0;right:0;bottom:0;z-index:50;max-height:88vh;
+  background:var(--paper);color:var(--ink);border-radius:22px 22px 0 0;
+  transform:translateY(101%);transition:transform .32s cubic-bezier(.22,.9,.3,1);
+  display:flex;flex-direction:column;box-shadow:0 -14px 44px rgba(0,0,0,.4)}
+.drawer.on{transform:none}
+.dhead{background:#5A4632;color:#fff;border-radius:22px 22px 0 0;padding:16px 20px 15px;flex:none;position:relative}
+.dhead .eyebrow{color:#F0C4F2}
+.dhead h3{font-family:var(--disp);font-size:19px;margin:3px 0 0;font-weight:750;padding-right:44px}
+.dhead .pg{font-family:var(--mono);font-size:11px;color:#EBC0EE;margin-top:4px;letter-spacing:.05em}
+.x{position:absolute;right:14px;top:14px;width:34px;height:34px;border-radius:10px;
+  background:rgba(255,255,255,.18);display:grid;place-items:center}
+.x svg{width:15px;height:15px;stroke:#fff;stroke-width:2.4}
+.dbody{overflow-y:auto;padding:18px 20px 26px;-webkit-overflow-scrolling:touch}
+.dbody p{margin:0 0 13px;font-size:15.5px;line-height:1.66}
+.dbody p:last-of-type{margin-bottom:0}
+.vbox{background:#EADCF0;border-radius:12px;padding:12px 14px;margin:0 0 15px}
+.vbox .vh{background:#7B2C7E;color:#fff;display:inline-block;font:700 11px var(--mono);
+  letter-spacing:.12em;text-transform:uppercase;padding:3px 10px;border-radius:7px;margin-bottom:8px}
+.vbox dt{color:#7B2C7E;font-weight:800;display:inline}
+.vbox dd{display:inline;margin:0}
+.dfoot{flex:none;padding:12px 20px calc(14px + env(safe-area-inset-bottom));
+  border-top:1px solid #E7DECB;background:var(--paper);border-radius:0 0 22px 22px}
+.dfoot .btn{width:100%}
+.leadin{font-size:13.5px;color:#5C6C6F;margin:0 0 4px}
+.morepg{margin:22px 0 0;border-top:2px dashed #D6C9AF;padding-top:16px}
+.morepg .eyebrow{color:#8A9B94}
+.hint{margin:16px 0 0;padding:12px 14px;background:#F6F0E2;border-radius:12px;font-size:13.5px;color:#5C6C6F}
+.exwrap{margin:22px 0 0;border-top:2px dashed #D6C9AF;padding-top:18px}
+.exwrap .eyebrow{color:#B07A1E}
+.ex{background:#FDF4DD;border-left:5px solid var(--amber);border-radius:0 12px 12px 0;
+  padding:13px 15px;margin:9px 0 0}
+.ex p{margin:0 0 10px;font-size:15.5px;line-height:1.6;font-weight:500}
+.ex p:last-child{margin:0}
+.exsrc{font:600 11px var(--mono);color:#8A7343;letter-spacing:.08em;margin-top:9px}
+.vidbtn{display:flex;gap:13px;align-items:center;margin:16px 0 0;background:var(--bench);color:var(--paper);
+  border-radius:14px;padding:13px 15px;text-decoration:none}
+.vidbtn .play{flex:none;width:44px;height:32px;border-radius:8px;background:var(--red);display:grid;place-items:center}
+.vidbtn .play svg{width:13px;height:13px;fill:#fff}
+.vidbtn .src{font:600 10px var(--mono);color:var(--cyan);letter-spacing:.09em;text-transform:uppercase}
+.vidbtn h4{margin:1px 0 2px;font-size:15px;font-weight:750}
+.vidbtn p{margin:0;font-size:12.5px;color:#B9CDD2;line-height:1.4}
+.hint b{color:var(--ink)}
 
-.reveal{background:#122A26;color:var(--panel);padding:16px;margin-top:12px}
-.reveal .lead{font:700 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;
-  color:var(--gold);margin-bottom:6px}
-.reveal p{margin:0 0 9px;font-size:14.5px}
+/* ---------- results ---------- */
+.score{background:var(--paper);color:var(--ink);border-radius:20px;padding:24px 20px;text-align:center;
+  box-shadow:0 14px 40px rgba(0,0,0,.3)}
+.ring{font-family:var(--disp);font-size:58px;font-weight:800;line-height:1;letter-spacing:-.03em}
+.band{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;margin-top:6px}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:20px 0 0;text-align:left}
+.stat{background:#F6F0E2;border-radius:12px;padding:11px 13px}
+.stat b{display:block;font-family:var(--disp);font-size:22px;font-weight:750}
+.stat span{font:600 10px var(--mono);letter-spacing:.09em;text-transform:uppercase;color:#8A9B94}
+.review{margin:16px 0 0;text-align:left;background:#FDF6E6;border-radius:13px;padding:13px 15px;font-size:14px}
+.review b{display:block;margin-bottom:6px;font-family:var(--disp);font-size:15px}
+.review li{margin:0 0 5px}
+.aloud{margin:16px 0 0;background:var(--bench);color:var(--paper);border-radius:14px;padding:15px 17px;text-align:left}
+.aloud .eyebrow{color:var(--amber)}
+.aloud p{margin:5px 0 0;font-size:15px}
 
-/* ---- the passage ---- */
-.pg{background:var(--panel);color:var(--ink);padding:20px 18px 16px}
-.pg h2{font-family:var(--disp);font-size:21px;margin:4px 0 2px;font-weight:800}
-.pg .sub{font:700 10.5px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--dim)}
-.para{position:relative;font-family:var(--serif);font-size:16.5px;line-height:1.62;
-  margin:13px 0;padding:3px 0 3px 40px}
-.para .pn{position:absolute;left:0;top:6px;font:700 10px var(--mono);color:var(--stone);
-  letter-spacing:.06em}
-.para.mark{background:#FBEFCF;box-shadow:0 0 0 8px #FBEFCF}
-.pgbar{position:sticky;bottom:0;background:var(--panel);padding:11px 0 4px;
-  border-top:1px solid var(--line);margin-top:14px}
-
-.score{background:var(--panel);color:var(--ink);padding:22px 18px;text-align:center}
-.ring{font:800 44px var(--disp);line-height:1}
-.band{font:700 12px var(--mono);letter-spacing:.1em;text-transform:uppercase;margin-top:3px}
-.stats{display:flex;gap:9px;margin:16px 0}
-.stat{flex:1;background:var(--panel2);padding:10px}
-.stat b{display:block;font:800 19px var(--mono)}
-.stat span{font:600 10px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--dim)}
-.review{background:var(--panel2);padding:12px 14px;text-align:left;margin-bottom:10px;font-size:13.5px}
-.review b{display:block;font-family:var(--disp);font-size:15px;margin-bottom:4px}
-
-footer{margin:26px 0 0;padding-top:15px;border-top:1px solid #24403A;
-  color:#5F6D69;font-size:11.5px;line-height:1.6}
+footer{margin:42px 0 0;padding:18px 0 0;border-top:1px solid var(--line);
+  color:#7C979E;font-size:11.5px;line-height:1.6;text-align:center}
 .hide{display:none!important}
+@media(max-width:400px){.tools{grid-template-columns:1fr}.slots.bins{grid-template-columns:1fr}.cells{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
-<!-- MC-THEME-CSS: generated by build_theme.py, do not hand-edit -->
-<style>
-/* ===== Minecraft theme layer — shared source, injected into all apps =====
-   Everything is prefixed .mc- / #mc- so it cannot collide with app CSS.
-   z-index budget in the apps: content < 30, HUD 30, scrim 40, drawer 50.
-   Sprite bursts sit at 60 so they play over an auto-opening drawer.        */
-
-.mc-hud{
-  position:fixed; left:0; right:0; z-index:30;
-  bottom:var(--mc-lift, 0px);
-  display:flex; flex-direction:column; align-items:center; gap:3px;
-  padding:6px 8px calc(6px + env(safe-area-inset-bottom));
-  pointer-events:none;
-  background:linear-gradient(to top, rgba(0,0,0,.42), rgba(0,0,0,0));
-  transition:bottom .18s;
-}
-.mc-hud img{image-rendering:pixelated; display:block}
-
-.mc-hearts{
-  display:flex; gap:1px; align-self:center;
-  width:var(--mc-barw, 360px); box-sizing:border-box;
-}
-.mc-heart{width:var(--mc-hh,19px); height:auto}
-/* heart-empty is very faint on dark art — read the row as sockets waiting */
-.mc-heart[data-v="0"]{filter:drop-shadow(0 0 2px rgba(255,255,255,.5)) drop-shadow(0 0 5px rgba(0,0,0,.6)); opacity:.85}
-.mc-heart.mc-hit{animation:mc-hit .42s}
-@keyframes mc-hit{
-  0%{transform:scale(1.55)} 25%{transform:scale(1.1) rotate(-8deg)}
-  55%{transform:scale(1.25)} 100%{transform:none}
-}
-
-.mc-bar{display:flex; gap:0; width:var(--mc-barw,360px); box-sizing:border-box}
-.mc-slot{
-  position:relative; width:var(--mc-ss,38px); height:var(--mc-ss,38px);
-  flex:0 0 auto; background-size:100% 100%; background-repeat:no-repeat;
-}
-.mc-slot .mc-tool{
-  position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);
-  width:69%; height:69%; object-fit:contain;
-}
-/* tool-9 already has zero side margin in the source art — don't scale it up */
-.mc-slot[data-n="9"] .mc-tool{width:62%; height:62%}
-.mc-slot .mc-frame{position:absolute; inset:-2px; width:calc(100% + 4px); height:calc(100% + 4px); opacity:0}
-.mc-slot.mc-new .mc-frame{opacity:1; animation:mc-pulse 1.1s ease-in-out 3}
-.mc-slot.mc-new .mc-tool{animation:mc-drop .5s cubic-bezier(.2,1.5,.4,1)}
-@keyframes mc-pulse{0%,100%{opacity:.35}50%{opacity:1}}
-@keyframes mc-drop{from{transform:translate(-50%,-160%) scale(.4); opacity:0}}
-
-/* ---- sprite burst ---- */
-.mc-burst{
-  position:fixed; left:50%; top:44%; z-index:60; pointer-events:none;
-  width:var(--mc-burst,128px); height:var(--mc-burst,128px);
-  transform:translate(-50%,-50%);
-}
-.mc-burst img{width:100%; height:100%; object-fit:contain; image-rendering:pixelated}
-.mc-burst.mc-good{animation:mc-good 1.35s cubic-bezier(.18,1.3,.4,1) forwards}
-.mc-burst.mc-bad{animation:mc-bad 1.15s ease-out forwards}
-/* bad-2 creeper and bad-4 zombie carry ~30px of side margin; TNT and the
-   spider fill the frame. Nudge the narrow two up so misses land evenly. */
-.mc-burst.mc-bad[data-w="narrow"] img{transform:scale(1.17)}
-@keyframes mc-good{
-  0%{transform:translate(-50%,-50%) scale(.3) rotate(-12deg); opacity:0}
-  18%{transform:translate(-50%,-50%) scale(1.12) rotate(3deg); opacity:1}
-  30%{transform:translate(-50%,-50%) scale(1) rotate(0); opacity:1}
-  72%{transform:translate(-50%,-50%) scale(1) rotate(0); opacity:1}
-  100%{transform:translate(-50%,-80%) scale(1.05); opacity:0}
-}
-@keyframes mc-bad{
-  0%{transform:translate(-50%,-50%) scale(.55); opacity:0}
-  14%{transform:translate(-50%,-50%) scale(1.08); opacity:1}
-  26%{transform:translate(-50%,-50%) scale(1); opacity:1}
-  74%{transform:translate(-50%,-50%) scale(1); opacity:1}
-  100%{transform:translate(-50%,-44%) scale(.96); opacity:0}
-}
-
-.mc-shake{animation:mc-shake .34s}
-@keyframes mc-shake{
-  10%,90%{transform:translateX(-2px)} 20%,80%{transform:translateX(4px)}
-  30%,50%,70%{transform:translateX(-7px)} 40%,60%{transform:translateX(7px)}
-}
-
-/* ---- results chest ---- */
-.mc-chest{
-  display:flex; flex-direction:column; align-items:center; gap:8px;
-  padding:14px 10px 4px; margin:2px 0 6px;
-}
-.mc-chest .mc-lid{width:120px; height:120px; object-fit:contain; image-rendering:pixelated;
-  transition:transform .2s; cursor:pointer}
-.mc-chest .mc-lid.mc-shut{animation:mc-nudge 1.5s ease-in-out infinite}
-@keyframes mc-nudge{0%,88%,100%{transform:none}92%{transform:translateY(-4px) rotate(-2deg)}96%{transform:translateY(-2px) rotate(2deg)}}
-.mc-loot{display:flex; gap:6px; justify-content:center; min-height:4px; flex-wrap:wrap}
-.mc-loot img{width:52px; height:52px; object-fit:contain; image-rendering:pixelated;
-  animation:mc-pop .5s cubic-bezier(.2,1.6,.4,1) both}
-.mc-loot img:nth-child(2){animation-delay:.09s}
-.mc-loot img:nth-child(3){animation-delay:.18s}
-.mc-loot img:nth-child(4){animation-delay:.27s}
-.mc-loot img:nth-child(5){animation-delay:.36s}
-@keyframes mc-pop{from{transform:translateY(26px) scale(.3); opacity:0}}
-.mc-tier{
-  font:800 19px ui-monospace,SFMono-Regular,Menlo,monospace; letter-spacing:.1em;
-  text-align:center; margin-top:2px;
-  animation:mc-pop .5s cubic-bezier(.2,1.6,.4,1) .3s both;
-}
-.mc-tier[data-t="dragon"]{color:#A855C8}
-.mc-tier[data-t="netherite"]{color:#6B5A6E}
-.mc-tier[data-t="diamond"]{color:#2AA7B8}
-.mc-tier[data-t="iron"]{color:#8A8A8A}
-.mc-tier[data-t="stone"]{color:#7A7A7A}
-.mc-tier[data-t="wood"]{color:#9A6B3F}
-.mc-tier[data-t="corrections"]{color:#4A8230}
-.mc-badges{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-top:4px}
-.mc-badge{
-  font:800 10.5px ui-monospace,SFMono-Regular,Menlo,monospace; letter-spacing:.07em;
-  background:#F0E6CF; color:#5A4A2E; border:2px solid #C7B48C; padding:4px 8px;
-  box-shadow:inset -2px -2px 0 rgba(0,0,0,.12), inset 2px 2px 0 rgba(255,255,255,.5);
-  animation:mc-pop .45s cubic-bezier(.2,1.6,.4,1) both;
-}
-.mc-badge:nth-child(2){animation-delay:.1s}
-.mc-badge:nth-child(3){animation-delay:.2s}
-.mc-cap{
-  font:700 12px ui-monospace,SFMono-Regular,Menlo,monospace; letter-spacing:.06em;
-  text-transform:uppercase; opacity:.72; text-align:center;
-}
-.mc-earned{
-  display:flex; align-items:center; gap:9px; justify-content:center;
-  font:700 13px ui-monospace,SFMono-Regular,Menlo,monospace;
-  animation:mc-pop .5s cubic-bezier(.2,1.6,.4,1) .45s both;
-}
-.mc-earned img{width:38px; height:38px; object-fit:contain; image-rendering:pixelated}
-
-.mc-boss{width:100%; max-width:256px; height:auto; image-rendering:pixelated;
-  animation:mc-pop .6s cubic-bezier(.2,1.5,.4,1) .3s both}
-/* fallback while boss-defeated.png is still outstanding */
-.mc-bossfall{
-  width:100%; max-width:280px; border-radius:12px; padding:13px 14px; text-align:center;
-  background:linear-gradient(140deg,#1D1526,#3A1F2E); color:#FFD98A;
-  border:2px solid #6B4A2E; box-shadow:0 6px 0 rgba(0,0,0,.25);
-  font:800 15px ui-monospace,SFMono-Regular,Menlo,monospace; letter-spacing:.05em;
-  animation:mc-pop .6s cubic-bezier(.2,1.5,.4,1) .3s both;
-}
-.mc-bossfall small{display:block; font-size:11px; opacity:.7; margin-top:4px; letter-spacing:.03em}
-
-@media (prefers-reduced-motion:reduce){
-  .mc-burst.mc-good,.mc-burst.mc-bad{animation-duration:.8s}
-  .mc-shake{animation:none}
-  .mc-chest .mc-lid.mc-shut{animation:none}
-}
-
-/* ---- level-picker status ----
-   The apps' own .badge sat in the bottom-right corner of a tall card, so
-   checking seven levels meant scanning seven different corners. Moved to the
-   top-right, level with each card's eyebrow, which gives one straight vertical
-   line to run your eye down. These sit later in the cascade at equal
-   specificity, so they win without editing app CSS. */
-.mc-best{
-  top:11px !important; right:12px !important; bottom:auto !important;
-  background:#E8A93C !important; color:#3A2A08 !important;
-  font-weight:800 !important; letter-spacing:.04em; white-space:nowrap;
-  padding:4px 9px !important; border-radius:3px;
-  box-shadow:inset -2px -2px 0 rgba(0,0,0,.16), inset 2px 2px 0 rgba(255,255,255,.35);
-}
-.mc-best.mc-done{background:#63A93E !important; color:#0F2216 !important}
-/* and mark the card itself, so status is legible even mid-scroll */
-.mc-cleared{box-shadow:inset 0 0 0 3px #63A93E !important}
-.mc-tried{box-shadow:inset 0 0 0 3px #E8A93C !important}
-
-/* ---- level chips (MC.picker) ----
-   For apps whose levels are parallel and equally valid — history's five
-   practice sets — so you can see and choose, not just be dealt one. */
-.mc-picker{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 12px}
-.mc-chip{
-  flex:1 1 auto; min-width:56px; min-height:44px; padding:5px 8px;
-  border:2px solid #C7B48C; background:#F0E6CF; color:#5A4A2E; cursor:pointer;
-  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:1px;
-  box-shadow:inset -2px -2px 0 rgba(0,0,0,.14), inset 2px 2px 0 rgba(255,255,255,.5);
-}
-.mc-chip:hover{filter:brightness(1.05)}
-.mc-chip:focus-visible{outline:3px solid #63A93E;outline-offset:2px}
-.mc-chip-l{font:800 13px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.04em}
-.mc-chip-s{font:700 10px ui-monospace,SFMono-Regular,Menlo,monospace;opacity:.7}
-.mc-chip.mc-cleared{background:#63A93E;border-color:#3F7028;color:#0F2216}
-.mc-chip.mc-tried{background:#E8A93C;border-color:#B07E18;color:#3A2A08}
-.mc-chip.mc-now{box-shadow:inset -2px -2px 0 rgba(0,0,0,.14),
-  inset 2px 2px 0 rgba(255,255,255,.5), 0 0 0 3px #2B79C2}
-
-/* ---------- the mine ---------- */
-.mc-ore{display:inline-flex;align-items:center;gap:5px;margin:3px 5px 3px 0;
-  font:800 11px ui-monospace,"SF Mono",Consolas,monospace;color:#E8E3D6}
-.mc-ore img{width:22px;height:22px;image-rendering:pixelated;display:block}
-.mc-ore.mc-noart::before{content:"";width:20px;height:20px;background:var(--ore);
-  box-shadow:inset -3px -3px 0 rgba(0,0,0,.34), inset 3px 3px 0 rgba(255,255,255,.22);
-  border:2px solid rgba(0,0,0,.45)}
-.mc-ore b{font-weight:800}
-.mc-ore.mc-dim{opacity:.42}
-.mc-haul,.mc-beacon{margin-top:10px;padding:9px 11px;background:rgba(0,0,0,.26);
-  border:2px solid rgba(255,255,255,.10);text-align:left}
-.mc-haullab{display:block;font:800 9.5px ui-monospace,Consolas,monospace;
-  letter-spacing:.14em;color:#9FB0AA;margin-bottom:5px}
-.mc-beacon small,.mc-shutportal small{display:block;margin-top:6px;
-  font:600 11px system-ui,sans-serif;color:#9FB0AA;line-height:1.45}
-.mc-beacon.mc-lit{border-color:#40D5D1;
-  box-shadow:0 0 0 2px rgba(64,213,209,.22), 0 0 22px rgba(64,213,209,.28)}
-.mc-shutportal{margin-top:10px;padding:10px 12px;background:#160E22;
-  border:2px solid #4B2E73;color:#C9A6F0;text-align:left;
-  font:800 11.5px ui-monospace,Consolas,monospace;letter-spacing:.1em}
-
-.mc-blk{display:inline-flex;flex-direction:column;align-items:center;gap:2px;
-  margin:4px 9px 2px 0;font:800 10px ui-monospace,Consolas,monospace;color:#C4CFCB}
-.mc-blk img{width:34px;height:34px;image-rendering:pixelated;display:block}
-.mc-blk.mc-noart::before{content:"";width:30px;height:30px;background:var(--ore);
-  box-shadow:inset -4px -4px 0 rgba(0,0,0,.34),inset 4px 4px 0 rgba(255,255,255,.22);
-  border:2px solid rgba(0,0,0,.45)}
-.mc-blk.mc-dim img{filter:grayscale(.15) brightness(.8)}
-.mc-blk.mc-dim{opacity:.75;color:#7C8A85}
-.mc-portal{float:right;width:46px;height:46px;margin:-2px 0 0 10px;image-rendering:pixelated;
-  filter:grayscale(1) brightness(.6)}
-.mc-egg{margin-top:10px;padding:8px 11px;background:rgba(0,0,0,.26);
-  border:2px solid rgba(255,255,255,.10);display:flex;align-items:center;gap:9px;
-  font:800 10.5px ui-monospace,Consolas,monospace;letter-spacing:.1em;color:#C9A6F0}
-.mc-egg img{width:30px;height:30px;image-rendering:pixelated}
-</style>
-<!-- /MC-THEME-CSS -->
 </head>
 <body>
-<!-- MC-THEME-JS: generated by build_theme.py, do not hand-edit -->
-<script>window.__MC_PREFIX__="../../assets/";
-window.__MC_HAS_BOSS__=true;</script>
-<script>/* ===== Minecraft theme layer — shared source =====
-   Built once, injected into every app. Do not edit inside an app's
-   index.html; edit theme/mc.js and rebuild, or the four copies drift.
 
-   Contract:
-     MC.config({app, shake, lift, dragon})  once, before anything else
-     MC.begin(id)                           entering a level — refills hearts
-     MC.right()                             a correct answer
-     MC.wrong(missKey)                      a wrong answer — costs half a heart
-     MC.note(missKey)                       record a miss without spending one
-     MC.credit(missKey)                     count a fix without a burst
-     MC.clear(id, pct, {boss})              level finished — may award a tool
-     MC.chest(el, pct, {id})                paint the results reveal into el
-     MC.bests()                             {id: bestPct} for this app
-     MC.picker(el, items, cur, onPick)       a strip of level chips
-     MC.state()                             read-only snapshot (used by the hub)
-
-   No death, no game over. Hearts only shrink the loot. A kid who is stuck
-   must never hit a wall — see HANDOFF.
-*/
-(function () {
-  "use strict";
-
-  var PREFIX = window.__MC_PREFIX__ || "../../assets/";
-  var INLINE = window.__MC_INLINE__ || null;
-  var HAS_BOSS = window.__MC_HAS_BOSS__ === true;
-  var url = function (n) { return INLINE ? (INLINE[n] || "") : PREFIX + n + ".png"; };
-
-  /* ---------- persistence (shared origin, so shared across all four apps) ---------- */
-  var KEY = "mc.study.v1";
-  var S;
-  try { S = JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) { S = {}; }
-  if (!S.cleared || typeof S.cleared !== "object") S.cleared = {};
-  if (!S.misses || typeof S.misses !== "object") S.misses = {};
-  if (typeof S.tool9 !== "boolean") S.tool9 = false;
-  if (!S.ore || typeof S.ore !== "object") S.ore = {};
-  if (!S.gem || typeof S.gem !== "object") S.gem = {};   // "app:id" -> diamond taken
-  if (typeof S.dragon !== "number") S.dragon = 0;
-  function save() { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} }
-
-  var TOOLS = ["wooden pickaxe", "stone pickaxe", "iron pickaxe", "diamond pickaxe",
-               "sword", "torch", "shield", "bow", "elytra"];
-
-  /* Tools 1-8 come from how many activities have been cleared anywhere on the
-     site at 75%+. Tool 9, the elytra, only ever comes from spelling Challenge 2 —
-     the one level where he writes his own sentences. */
-  /* ---------- the mine ----------
-     The tool bar was the whole ladder, and with twenty-odd activities on the
-     site he fills it long before he runs out of work. So the tools are only
-     the first age. Once all nine are held the mine opens, and from then on
-     what a run is worth depends on how well it went rather than on whether it
-     was new. Coal through gold are repeatable, so there is always something to
-     dig; diamond is once per activity, so the only way to a pile of them is
-     breadth AND mastery; emerald comes from the dragon alone. */
-  var ORE = [
-    { k: "coal",     name: "coal",     hex: "#2C2C30" },
-    { k: "copper",   name: "copper",   hex: "#C1663F" },
-    { k: "iron",     name: "iron",     hex: "#C6C2BC" },
-    { k: "gold",     name: "gold",     hex: "#E4C04A" },
-    { k: "redstone", name: "redstone", hex: "#B4262A" },
-    { k: "lapis",    name: "lapis",    hex: "#2A5CB4" },
-    { k: "diamond",  name: "diamond",  hex: "#40D5D1" },
-    { k: "emerald",  name: "emerald",  hex: "#2FA84F" }
-  ];
-  var ORE_BY = {};
-  for (var _o = 0; _o < ORE.length; _o++) ORE_BY[ORE[_o].k] = ORE[_o];
-
-  /* A beacon is built from the four block types Minecraft actually accepts.
-     Nine of a mineral makes a block. */
-  var BEACON = ["iron", "gold", "diamond", "emerald"];
-
-  function oreCount(k) { return S.ore[k] || 0; }
-  function blocks(k) { return Math.floor(oreCount(k) / 9); }
-  function beaconLit() {
-    for (var i = 0; i < BEACON.length; i++) if (blocks(BEACON[i]) < 1) return false;
-    return true;
-  }
-
-  function clearedCount() {
-    var n = 0, k;
-    for (k in S.cleared) if (S.cleared[k] >= 75) n++;
-    return n;
-  }
-  function unlocked() {
-    var n = Math.min(8, clearedCount());
-    return { count: n, nine: !!S.tool9, all9: n >= 8 && !!S.tool9 };
-  }
-  function mineOpen() { return unlocked().all9; }
-  function has(slot) { var u = unlocked(); return slot === 9 ? u.nine : slot <= u.count; }
-
-  /* ---------- state ---------- */
-  var cfg = { app: "app", shake: null, lift: null, burst: 320, hud: true,
-              /* Which activities can summon the dragon. null = any level in this
-                 app. An array restricts it to those ids — spelling passes ["l7"]
-                 so only Challenge 2, the hardest level of whatever week's list
-                 is loaded, can wake it. */
-              dragon: null };
-  var halves = 20;          // 10 hearts, tracked in halves
-  var missedHere = {};      // keys missed during this level
-  var fixedHere = 0;        // ...and later got right — the comeback count
-  var partialRun = false;   // a correction round over just the missed items
-  var hud, heartsEl, barEl, lastNew = 0;
-  var goodN = 0, badN = 0;  // cycle the sprites so it isn't the same one every time
-
-  /* ---------- HUD ---------- */
-  function build() {
-    if (hud || cfg.hud === false) return;
-    hud = document.createElement("div");
-    hud.className = "mc-hud";
-    hud.id = "mc-hud";
-    hud.innerHTML = '<div class="mc-hearts" id="mc-hearts"></div>' +
-                    '<div class="mc-bar" id="mc-bar"></div>';
-    document.body.appendChild(hud);
-    heartsEl = hud.querySelector("#mc-hearts");
-    barEl = hud.querySelector("#mc-bar");
-    drawBar();
-    drawHearts();
-    fit();
-    window.addEventListener("resize", fit);
-    // the app's own bar can grow when feedback appears — ride above it
-    if (cfg.lift && window.ResizeObserver) {
-      var t = document.querySelector(cfg.lift);
-      if (t) new ResizeObserver(function () { lift(); }).observe(t);
-    }
-    // the HUD is appended before the rest of the page parses, so its height
-    // is not final yet; re-measure once the document is up
-    if (document.readyState === "loading")
-      document.addEventListener("DOMContentLoaded", fit);
-    else setTimeout(fit, 0);
-    window.addEventListener("orientationchange", function () { setTimeout(fit, 120); });
-  }
-
-  /* The hotbar must never wrap and must never overflow. Size the slot from the
-     viewport and let the hearts follow it. Checked 300-1024px. */
-  function fit() {
-    if (!hud) return;
-    var vw = Math.max(280, document.documentElement.clientWidth || window.innerWidth);
-    var vh = Math.max(320, document.documentElement.clientHeight || window.innerHeight);
-    var bsz = Math.max(150, Math.min(cfg.burst, Math.round(vw * 0.55), Math.round(vh * 0.42)));
-    var avail = Math.min(430, vw - 16);
-    var ss = Math.max(24, Math.min(46, Math.floor(avail / 9)));
-    var barw = ss * 9;
-    hud.style.setProperty("--mc-ss", ss + "px");
-    hud.style.setProperty("--mc-barw", barw + "px");
-    hud.style.setProperty("--mc-hh", Math.max(13, Math.round(ss * 0.5)) + "px");
-    hud.style.setProperty("--mc-burst", bsz + "px");
-    document.documentElement.style.setProperty("--mc-burst", bsz + "px");
-    lift();
-    // keep app content clear of the HUD
-    var h = hud.offsetHeight || 70;
-    document.body.style.paddingBottom = (h + (cfg._liftpx || 0) + 10) + "px";
-  }
-
-  /* Only the vocabulary app has a persistent fixed bar of its own, and it grows
-     when feedback appears. Ride above whatever height it currently is. */
-  function lift() {
-    if (!cfg.lift || !hud) return;
-    var t = document.querySelector(cfg.lift);
-    var px = (t && t.offsetParent !== null) ? t.offsetHeight : 0;
-    cfg._liftpx = px;
-    hud.style.setProperty("--mc-lift", px + "px");
-  }
-
-  function drawHearts() {
-    if (!heartsEl) return;
-    var out = "", i, v;
-    for (i = 0; i < 10; i++) {
-      v = Math.max(0, Math.min(2, halves - i * 2));
-      out += '<img class="mc-heart" data-v="' + v + '" alt="" src="' +
-             url(v === 2 ? "heart-full" : v === 1 ? "heart-half" : "heart-empty") + '">';
-    }
-    heartsEl.innerHTML = out;
-  }
-
-  /* Renders a mineral. The coloured block is CSS, so this works before any
-     ore art exists; if the sprite is there it loads on top, and if it is not
-     the broken image removes itself rather than showing a torn-page icon. */
-  function oreChip(k, label, on) {
-    var o = ORE_BY[k];
-    return '<span class="mc-ore' + (on === false ? " mc-dim" : "") + '" title="' + o.name +
-           '" style="--ore:' + o.hex + '">' +
-           '<img alt="" src="' + url("ore-" + k) +
-           '" onerror="this.parentNode.classList.add(\'mc-noart\');this.remove()">' +
-           (label ? '<b>' + label + "</b>" : "") + "</span>";
-  }
-
-  /* A beacon slot. Earned slots show their block; an unearned one shows the
-     plain stone stand-in, so the row reads as a pyramid under construction
-     rather than as four mystery squares. Either falls back to a CSS block. */
-  function blockChip(b) {
-    var got = b.blocks >= 1;
-    return '<span class="mc-blk' + (got ? "" : " mc-dim") + '" title="' + b.name +
-           '" style="--ore:' + b.hex + '">' +
-           '<img alt="" src="' + url(got ? "block-" + b.k : "block-locked") +
-           '" onerror="this.parentNode.classList.add(\'mc-noart\');this.remove()">' +
-           "<b>" + b.blocks + "/1</b></span>";
-  }
-
-  function drawBar() {
-    if (!barEl) return;
-    var out = "", i, on;
-    for (i = 1; i <= 9; i++) {
-      on = has(i);
-      out += '<div class="mc-slot' + (i === lastNew ? " mc-new" : "") + '" data-n="' + i +
-             '" style="background-image:url(' + url("slot") + ')" title="' +
-             (on ? TOOLS[i - 1] : "locked") + '">' +
-             '<img class="mc-frame" alt="" src="' + url("slot-frame") + '">' +
-             (on ? '<img class="mc-tool" alt="' + TOOLS[i - 1] + '" src="' + url("tool-" + i) + '">' : "") +
-             "</div>";
-    }
-    barEl.innerHTML = out;
-  }
-
-  /* ---------- sprite bursts ---------- */
-  function burst(name, cls, narrow) {
-    var old = document.querySelector(".mc-burst");
-    if (old && old.parentNode) old.parentNode.removeChild(old);
-    var d = document.createElement("div");
-    d.className = "mc-burst " + cls;
-    if (narrow) d.setAttribute("data-w", "narrow");
-    d.innerHTML = '<img alt="" src="' + url(name) + '">';
-    document.body.appendChild(d);
-    setTimeout(function () { if (d.parentNode) d.parentNode.removeChild(d); }, 1600);
-  }
-
-  function shake() {
-    if (!cfg.shake) return;                 // science already shakes its own card
-    var t = document.querySelector(cfg.shake);
-    if (!t) return;
-    t.classList.remove("mc-shake");
-    void t.offsetWidth;
-    t.classList.add("mc-shake");
-    setTimeout(function () { t.classList.remove("mc-shake"); }, 400);
-  }
-
-  /* ---------- public ---------- */
-  var MC = {
-    config: function (o) {
-      for (var k in o) if (o.hasOwnProperty(k)) cfg[k] = o[k];
-      if (document.body) build(); else
-        document.addEventListener("DOMContentLoaded", build);
-      return MC;
-    },
-
-    /* Entering a level. Pass {partial:true} for a correction round that
-       replays only the missed items — those must not overwrite a best score
-       or hand out the big rewards, since three words at 100% is not the same
-       achievement as twelve. */
-    begin: function (opts) {
-      halves = 20; lastNew = 0;
-      missedHere = {}; fixedHere = 0;
-      partialRun = !!(opts && opts.partial);
-      build(); drawHearts(); drawBar(); fit();
-    },
-
-    /* Credit a fix without any fanfare. The vocabulary sheet settles 26 words
-       on a single check — that is one burst, not twenty-six. */
-    credit: function (missKey) {
-      if (missKey && missedHere[missKey]) { fixedHere++; delete missedHere[missKey]; }
-    },
-
-    /* Pass the same key you passed to wrong()/note() and the correction is
-       counted — that is what earns the comeback badge. */
-    right: function (missKey) {
-      build();
-      MC.credit(missKey);
-      goodN = goodN % 4 + 1;
-      burst("win-" + goodN, "mc-good");
-    },
-
-    /* Record a miss without any cost. Used where one action covers several
-       items, or where the answer is revealed after the miss already landed. */
-    note: function (missKey) {
-      if (!missKey) return;
-      missedHere[missKey] = true;
-      var a = cfg.app;
-      if (!S.misses[a]) S.misses[a] = {};
-      S.misses[a][missKey] = (S.misses[a][missKey] || 0) + 1;
-      save();
-    },
-
-    wrong: function (missKey) {
-      build();
-      badN = badN % 4 + 1;
-      burst("bad-" + badN, "mc-bad", badN === 2 || badN === 4);
-      shake();
-      if (halves > 0) {
-        halves--;                            // floors at zero — never a game over
-        drawHearts();
-        var i = Math.floor(halves / 2);
-        var h = heartsEl && heartsEl.children[Math.min(9, i)];
-        if (h) h.classList.add("mc-hit");
-      }
-      MC.note(missKey);
-    },
-
-    /* Records the score, may award a tool. Returns what happened so the
-       results screen can talk about it. */
-    /* Records the score, may award a tool, and works out what he earned.
-       Every band is a real Minecraft tier, because every one of them is a
-       tool you are glad to have — there is no booby prize here. */
-    clear: function (id, pct, opts) {
-      opts = opts || {};
-      pct = Math.round(pct);
-      var key = cfg.app + ":" + id;
-      var prev = S.cleared[key];
-      var before = unlocked();
-      var got = null;
-
-      if (!partialRun) {
-        S.cleared[key] = Math.max(prev || 0, pct);
-        if (key === "spelling:l7" && pct >= 75) S.tool9 = true;
-        save();
-        var after = unlocked();
-        if (after.nine && !before.nine) got = 9;
-        else if (after.count > before.count) got = after.count;
-        lastNew = got || 0;
-        drawBar();
-      }
-
-      var clean = pct >= 100 && halves === 20;
-      var isBossLevel = cfg.dragon === null || cfg.dragon.indexOf(id) !== -1;
-      /* The End portal stays shut until the whole tool set is his. A perfect
-         run before that is still a perfect run — it just does not summon a
-         dragon, and the chest says what is still missing rather than going
-         quiet about it. */
-      var ready = unlocked().all9;
-      var dragon = clean && !partialRun && isBossLevel && ready;
-      var portalShut = clean && !partialRun && isBossLevel && !ready;
-      if (dragon) { S.dragon++; save(); }
-
-      /* What the run was worth at the rock face. Coal through gold repeat, so
-         there is always something to dig; diamond is once per activity, so a
-         pile of them needs breadth AND mastery; emerald comes only from the
-         dragon. Nothing is mined at all until the tool set is complete. */
-      var mined = [];
-      function dig(k, n) {
-        S.ore[k] = (S.ore[k] || 0) + n;
-        mined.push({ k: k, n: n, name: ORE_BY[k].name, hex: ORE_BY[k].hex });
-      }
-      if (mineOpen()) {
-        if (partialRun) {
-          if (pct >= 100) dig("lapis", 1);            // every miss put right
-        } else {
-          if (pct >= 75) dig("coal", 1);
-          if (pct >= 85) dig("copper", 1);
-          if (pct >= 95) dig("iron", 1);
-          if (pct >= 100) dig("gold", 1);
-          if (pct >= 75 && halves === 20) dig("redstone", 1);
-          if (clean && !S.gem[key]) { S.gem[key] = true; dig("diamond", 1); }
-        }
-        if (dragon) dig("emerald", 1);
-        if (mined.length) save();
-      }
-
-      var tier;
-      if (partialRun)   tier = ["CORRECTIONS", "You went back and fixed them. That is the part that sticks."];
-      else if (dragon)  tier = ["DRAGON SLAIN", "Perfect. Not one miss, not one heart."];
-      else if (clean)   tier = ["NETHERITE", "Every single one right."];
-      else if (pct >= 90) tier = ["DIAMOND", "So close to flawless."];
-      else if (pct >= 75) tier = ["IRON", "Solid work \u2014 this one is holding."];
-      else if (pct >= 50) tier = ["STONE", "You got through it. Now you know where to dig."];
-      else                tier = ["WOOD", "You finished it, and that is where everyone starts."];
-
-      /* Badges stack. They reward things accuracy alone does not see. */
-      var badges = [];
-      if (fixedHere)
-        badges.push(fixedHere === 1 ? "TURNED ONE AROUND" : "TURNED " + fixedHere + " AROUND");
-      if (!partialRun && prev != null && pct > prev)
-        badges.push("NEW BEST \u2014 BEAT " + prev + "%");
-      if (!partialRun && (prev == null || prev < 75) && pct >= 75)
-        badges.push("FIRST CLEAR");
-      if (halves > 0 && halves <= 4 && pct >= 50)
-        badges.push("STUCK IT OUT");
-
-      var bea = null;
-      if (mineOpen()) {
-        bea = { lit: beaconLit(), need: [] };
-        for (var bi = 0; bi < BEACON.length; bi++)
-          bea.need.push({ k: BEACON[bi], have: oreCount(BEACON[bi]),
-                          blocks: blocks(BEACON[bi]), name: ORE_BY[BEACON[bi]].name,
-                          hex: ORE_BY[BEACON[bi]].hex });
-      }
-
-      return {
-        mined: mined, beacon: bea, portalShut: portalShut,
-        toolsLeft: (8 - unlocked().count) + (S.tool9 ? 0 : 1),
-        mineOpen: mineOpen(), dragons: S.dragon,
-        tool: got,
-        toolName: got ? TOOLS[got - 1] : null,
-        loot: halves >= 20 ? 4 : halves >= 15 ? 3 : halves >= 8 ? 2 : 1,
-        hearts: halves / 2,
-        fixed: fixedHere,
-        partial: partialRun,
-        tier: tier[0], blurb: tier[1], badges: badges,
-        boss: dragon
-      };
-    },
-
-    /* Paints chest-closed, then opens it on tap or after a beat. */
-    chest: function (host, pct, opts) {
-      if (!host) return null;
-      var r = MC.clear(opts.id, pct, opts);
-      var box = document.createElement("div");
-      box.className = "mc-chest";
-      box.innerHTML = '<img class="mc-lid mc-shut" alt="Closed chest" src="' + url("chest-closed") + '">' +
-                      '<div class="mc-loot"></div>' +
-                      '<div class="mc-tier"></div>' +
-                      '<div class="mc-cap">Tap the chest</div>';
-      host.insertBefore(box, host.firstChild);
-      var lid = box.querySelector(".mc-lid"),
-          loot = box.querySelector(".mc-loot"),
-          tierEl = box.querySelector(".mc-tier"),
-          cap = box.querySelector(".mc-cap"),
-          opened = false;
-
-      function open() {
-        if (opened) return;
-        opened = true;
-        lid.classList.remove("mc-shut");
-        lid.src = url("chest-open");
-        lid.alt = "Open chest";
-        lid.style.cursor = "default";
-        var html = "", i;
-        for (i = 1; i <= r.loot; i++) html += '<img alt="" src="' + url("win-" + i) + '">';
-        loot.innerHTML = html;
-        tierEl.textContent = r.tier;
-        tierEl.setAttribute("data-t", r.tier.split(" ")[0].toLowerCase());
-        cap.textContent = r.blurb;
-        if (r.badges.length) {
-          box.insertAdjacentHTML("beforeend", '<div class="mc-badges">' +
-            r.badges.map(function (b) { return '<span class="mc-badge">' + b + "</span>"; })
-              .join("") + "</div>");
-        }
-        if (r.tool) {
-          box.insertAdjacentHTML("beforeend",
-            '<div class="mc-earned"><img alt="" src="' + url("tool-" + r.tool) + '">' +
-            "<span>NEW &middot; " + r.toolName.toUpperCase() + "</span></div>");
-        }
-        if (r.mined && r.mined.length) {
-          box.insertAdjacentHTML("beforeend",
-            '<div class="mc-haul"><span class="mc-haullab">MINED</span>' +
-            r.mined.map(function (m) { return oreChip(m.k, "+" + m.n); }).join("") +
-            "</div>");
-        }
-        if (r.portalShut) {
-          box.insertAdjacentHTML("beforeend",
-            '<div class="mc-shutportal"><img class="mc-portal" alt="" src="' + url("portal") +
-            '" onerror="this.remove()">THE PORTAL WILL NOT OPEN<small>A perfect run \u2014 ' +
-            'but the End stays shut until all nine tools are yours. ' +
-            (r.toolsLeft === 1 ? "One to go." : r.toolsLeft + " to go.") + "</small></div>");
-        }
-        if (r.beacon) {
-          box.insertAdjacentHTML("beforeend",
-            '<div class="mc-beacon' + (r.beacon.lit ? " mc-lit" : "") + '">' +
-            '<span class="mc-haullab">' + (r.beacon.lit ? "BEACON LIT" : "BEACON") + "</span>" +
-            r.beacon.need.map(function (b) { return blockChip(b); }).join("") +
-            "<small>" + (r.beacon.lit
-              ? "Iron, gold, diamond and emerald, a block of each. That is the whole pyramid."
-              : "Nine of a mineral makes a block. Four blocks light the beacon.") +
-            "</small></div>");
-        }
-        if (!r.boss && r.dragons > 0 && r.mineOpen) {
-          box.insertAdjacentHTML("beforeend",
-            '<div class="mc-egg"><img alt="" src="' + url("dragon-egg") +
-            '" onerror="this.remove()"><span>' +
-            (r.dragons === 1 ? "One dragon down" : r.dragons + " dragons down") +
-            "</span></div>");
-        }
-        if (r.boss) {
-          box.insertAdjacentHTML("beforeend", HAS_BOSS
-            ? '<img class="mc-boss" alt="Ender dragon defeated" src="' + url("boss-defeated") + '">'
-            : '<div class="mc-bossfall">DRAGON SLAIN<small>Perfect run \u2014 no misses, no hearts lost</small></div>');
-        }
-      }
-      lid.addEventListener("click", open);
-      setTimeout(open, 2600);                // opens itself if he doesn't tap
-      return r;
-    },
-
-    /* Best score per activity for THIS app, keyed by bare id — lets an app's
-       level picker show scores that survive a reload. The apps each kept their
-       own in-memory `best` object, which forgot everything on refresh. */
-    bests: function () {
-      var out = {}, pre = cfg.app + ":", k;
-      for (k in S.cleared) if (k.indexOf(pre) === 0) out[k.slice(pre.length)] = S.cleared[k];
-      return out;
-    },
-
-    /* A strip of level chips, each showing whether it has been cleared.
-       Reusable: any app with several parallel levels calls this rather than
-       rolling its own, so history, and anything added later, look the same.
-
-         MC.picker(hostEl, [{id:"set0", label:"1"}, ...], currentId, onPick)
-
-       Chips colour themselves from MC.bests(): green cleared, amber attempted,
-       plain untouched. Re-call it to repaint after a score changes. */
-    picker: function (host, items, current, onPick) {
-      if (!host) return;
-      var best = MC.bests();
-      host.className = "mc-picker";
-      host.innerHTML = items.map(function (it) {
-        var b = best[it.id];
-        var cls = b == null ? "" : (b >= 75 ? " mc-cleared" : " mc-tried");
-        if (it.id === current) cls += " mc-now";
-        return '<button type="button" class="mc-chip' + cls + '" data-id="' + it.id +
-               '" aria-pressed="' + (it.id === current) + '"' +
-               ' title="' + (b == null ? "not tried yet" : "best " + b + "%") + '">' +
-               '<span class="mc-chip-l">' + it.label + "</span>" +
-               '<span class="mc-chip-s">' + (b == null ? "&mdash;" : b + "%") + "</span>" +
-               "</button>";
-      }).join("");
-      var bs = host.querySelectorAll(".mc-chip");
-      for (var i = 0; i < bs.length; i++) {
-        bs[i].addEventListener("click", function () {
-          onPick(this.getAttribute("data-id"));
-        });
-      }
-    },
-
-    state: function () {
-      var u = unlocked();
-      return {
-        tools: u, toolNames: TOOLS,
-        ore: JSON.parse(JSON.stringify(S.ore)), oreKinds: ORE,
-        mineOpen: mineOpen(), dragons: S.dragon,
-        beacon: { needs: BEACON, lit: beaconLit(),
-                  blocks: BEACON.map(function (k) { return blocks(k); }) },
-        cleared: JSON.parse(JSON.stringify(S.cleared)),
-        misses: JSON.parse(JSON.stringify(S.misses)),
-        url: url
-      };
-    },
-
-    reset: function () {
-      S = { cleared: {}, misses: {}, tool9: false, ore: {}, gem: {}, dragon: 0 };
-      save(); drawBar();
-    },
-    _relift: lift
-  };
-
-  window.MC = MC;
-})();
-</script>
-<script>MC.config({"app": "reading", "shake": "#card", "lift": null, "dragon": ["s3"]});</script>
-<!-- /MC-THEME-JS -->
-
-<div class="wrap">
-  <a class="hublink" href="../../">&lsaquo; All subjects</a>
-
-  <div id="home">
-    <p class="eyebrow">Core Classics &middot; Sherlock Holmes &middot; Pages 1&ndash;13</p>
-    <h1>The Speckled <em>Band</em></h1>
-    <div class="bigq"><b>Where we are</b>
-      Julia Stoner is dead, and her sister has just finished telling Holmes about it.
-      He has not yet set foot in Stoke Moran. Everything you need is in the first
-      thirteen pages &mdash; no guessing ahead.</div>
-    <div class="grid" id="sets"></div>
-    <footer id="foot"></footer>
-  </div>
-
-  <div id="read" class="hide">
-    <div class="pg">
-      <p class="sub" id="rsub"></p>
-      <h2 id="rname"></h2>
-      <div id="rbody"></div>
-      <div class="pgbar"><button class="btn o" id="rback">Back</button></div>
+<!-- HOME -->
+<div id="home" class="wrap">
+  <header>
+    <a class="hublink" href="../../">&lsaquo; All subjects</a>
+    <div class="eyebrow">Core Classics &middot; Sherlock Holmes</div>
+    <h1>The <em>Speckled</em> Band</h1>
+    <p class="sub">A short check on tonight’s pages. Run it as many times as you like — the questions shuffle.</p>
+    <div class="bq">
+      <div class="eyebrow">Keep asking</div>
+      <p>What properties can I use to describe matter?</p>
     </div>
+  </header>
+  <div class="grid" id="missions"></div>
+  <div class="shelf">
+    <div class="eyebrow">Watch first, or watch after</div>
+    <h2>Two short videos</h2>
+    <p class="note">Each is about five minutes. They open on YouTube.</p>
+    <div id="vids"></div>
   </div>
+  <footer id="foot"></footer>
+</div>
 
-  <div id="play" class="hide">
-    <p class="eyebrow" id="sname"></p>
-    <div class="dots" id="dots"></div>
-    <div class="card" id="card"></div>
+<!-- PLAY -->
+<div id="play" class="wrap hide">
+  <div class="pagehead">
+    <button class="back" id="quit" aria-label="Back to missions">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+    </button>
+    <div class="t"><strong id="mname"></strong><span id="mtag"></span></div>
   </div>
+  <div class="dots" id="dots"></div>
+  <div class="card" id="card"></div>
+</div>
 
-  <div id="done" class="hide">
-    <p class="eyebrow" id="dtag"></p>
-    <div class="score" id="scorebox"></div>
+<!-- RESULTS -->
+<div id="done" class="wrap hide">
+  <div class="pagehead">
+    <button class="back" id="quit2" aria-label="Back to missions">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+    </button>
+    <div class="t"><strong>Mission complete</strong><span id="dtag"></span></div>
   </div>
+  <div class="score" id="scorebox"></div>
+</div>
+
+<div class="scrim" id="scrim"></div>
+<div class="drawer" id="drawer" role="dialog" aria-modal="true" aria-label="Student Reader">
+  <div class="dhead">
+    <div class="eyebrow">From your Student Reader</div>
+    <h3 id="dtitle"></h3>
+    <div class="pg" id="dcite"></div>
+    <button class="x" id="dclose" aria-label="Close">
+      <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+  <div class="dbody" id="dbody"></div>
+  <div class="dfoot" id="dfoot"></div>
 </div>
 
 <script>
-/* Passage text is the Core Knowledge Core Classics reader, pages 1-13, verbatim.
-   Questions are built from that text and from Judy Gardner's Core Knowledge
-   Teacher's Guide; items carrying a TG label mirror one of its study questions. */
-const DATA = {"openQuestion":"A low whistle. A metallic clang. And three words: the speckled band. Holmes has all of that and has not yet seen the house.","sets":[{"id":"s1","name":"The client at dawn","pages":"1–5","blurb":"Holmes reads a stranger before she has said a word.","c":"var(--sky)","paras":[{"p":1,"t":"Of the many cases in which I have studied the methods of Sherlock Holmes, I cannot recall any more remarkable than that associated with the well-known family of the Roylotts of Stoke Moran. These events occurred in the early days of my association with Holmes, when we were sharing rooms as bachelors, in Baker Street."},{"p":1,"t":"I woke one morning to find Sherlock Holmes standing, fully dressed, by the side of my bed. He was a late riser as a rule, and, as the clock on the mantelpiece showed me that it was only a quarter past seven, I blinked up at him in some surprise."},{"p":1,"t":"“Sorry to wake you up, Watson,” said he. “Mrs. Hudson has been woken up, she woke me, and I you.”"},{"p":2,"t":"“What is it, then? A fire?”"},{"p":2,"t":"“No, a client. It seems that a young lady has arrived in a state of excitement who insists upon seeing me. She is waiting now in the sitting room. Now, when young ladies wander about the city at this hour of the morning and rouse sleepy people up out of their beds, I presume they have something very pressing to communicate. Should it be an interesting case, you would, I am sure, wish to follow it from the outset. I thought at any rate that I should give you the chance.”"},{"p":2,"t":"“My dear fellow, I would not miss it for anything.”"},{"p":2,"t":"I had no keener pleasure than in following Holmes in his investigations. I admired the rapid deductions, always founded on a logical basis, with which he unravelled problems. I rapidly threw on my clothes and was ready in a few minutes to accompany my friend down to the sitting room. A lady, dressed in black and heavily veiled, rose as we entered."},{"p":2,"t":"“Good morning, madam,” said Holmes."},{"p":2,"t":"“My name is Sherlock Holmes. This is my close friend, Dr. Watson, before whom you can speak freely. Ha, I am glad to see that Mrs. Hudson has had the good sense to light the fire. Pray draw up to it, and I shall order you a cup of hot coffee, for I observe that you are shivering.”"},{"p":3,"t":"“It is not cold that makes me shiver,” said the woman, changing her seat as requested."},{"p":3,"t":"“What, then?”"},{"p":3,"t":"“It is fear, Mr. Holmes. It is terror.” She raised her veil as she spoke, and we could see that she was indeed in a state of agitation, her face all drawn and grey. Her features and figure were those of a woman of thirty, but her hair was grey, and her expression was weary."},{"p":4,"t":"“You must not fear,” said Holmes soothingly. “We shall soon set matters right, I have no doubt. You have come in by train this morning, I see.”"},{"p":4,"t":"“You know me, then?”"},{"p":4,"t":"“No, but I observe half of a return ticket in your glove. You must have started early, and yet you had a good drive in a dogcart, along heavy roads, before you reached the station.”"},{"p":4,"t":"The lady stared in bewilderment at my companion."},{"p":4,"t":"“There is no mystery, my dear madam,” said he, smiling. “The left arm of your jacket is spattered with mud in seven places. The marks are perfectly fresh. No vehicle except a dogcart throws up mud in that way, and then only when you sit on the left side of the driver.”"},{"p":4,"t":"“Whatever your reasons may be, you are perfectly correct,” said she. “Sir, I can stand this strain no longer; I shall go mad if it continues. I have no one to turn to. I have heard of you, Mr. Holmes. Oh, sir, do you think you could help me? At present it is out of my power to reward you for your services, but in a month or two I shall be married, with my own income, and then you shall not find me ungrateful.”"},{"p":5,"t":"“I can only say, madam, that I shall be happy to take on your case. As to reward, my profession is its reward. And now I beg that you will lay before us everything that may help us in forming an opinion upon the matter.”"},{"p":5,"t":"“Alas!” replied our visitor. “The horror of my situation lies in the fact that my fears are so vague, and my suspicions depend upon small points, which might seem trivial to another. But I have heard, Mr. Holmes, that you can see deeply into the wickedness of the human heart. Advise me how to walk amid the dangers that encompass me.”"},{"p":5,"t":"“I am all attention, madam.”"}],"items":[{"type":"pick","tg":null,"q":"It is only a quarter past seven when Watson wakes. Why is he surprised to find Holmes already up and dressed?","opts":["Holmes was usually a late riser","Holmes had been out all night working on a case","Holmes had promised not to wake Watson before noon","Holmes never rose before Mrs. Hudson lit the fire"],"quote":"He was a late riser as a rule, and, as the clock on the mantelpiece showed me that it was only a quarter past seven, I blinked up at him in some surprise.","why":"He was a late riser as a rule, and, as the clock on the mantelpiece showed me that it was only a quarter past seven, I blinked up at him in some surprise.","cite":"Page 1","ev":1},{"type":"pick","tg":"TG study question 1","q":"Why does Holmes order the young lady a cup of hot coffee?","opts":["He notices that she is shivering","The morning is bitterly cold","She asks him for something hot to drink","He offers coffee to every client who calls"],"quote":"order you a cup of hot coffee, for I observe that you are shivering.","why":"Holmes offers it because of something he has spotted, not out of politeness: “order you a cup of hot coffee, for I observe that you are shivering.”","cite":"Page 3","ev":8},{"type":"pick","tg":"TG study question 1","q":"She says it is not the cold that makes her shiver. What is it?","opts":["Fear — she calls it terror","Exhaustion after travelling since before dawn","Anger at the way her stepfather has treated her","A fever she caught on the drive to the station"],"quote":"“It is fear, Mr. Holmes. It is terror.”","why":"“It is fear, Mr. Holmes. It is terror.”","cite":"Page 3","ev":11},{"type":"pick","tg":"TG study question 1","q":"When she raises her veil, what does Watson notice about her that does not fit?","opts":["She looks about thirty, but her hair has already gone grey","She is far older than her voice had suggested","Her hair has been cut short, like a boy’s","She is wearing black, though nobody has died recently"],"quote":"Her features and figure were those of a woman of thirty, but her hair was grey, and her expression was weary.","why":"Her features and figure were those of a woman of thirty, but her hair was grey, and her expression was weary.","cite":"Page 4","ev":11},{"type":"pick","tg":null,"q":"Holmes tells her she came in by train this morning. What told him so?","opts":["Half of a return ticket showing in her glove","Soot from the engine on the hem of her dress","She was still carrying her travelling bag","She had written to him from the station"],"quote":"“No, but I observe half of a return ticket in your glove.","why":"“No, but I observe half of a return ticket in your glove.”","cite":"Page 4","ev":14},{"type":"pick","tg":null,"q":"Holmes also says she had a drive in a dogcart before she reached the station. What told him <em>that</em>?","opts":["Fresh mud spattered on the left arm of her jacket, in seven places","Straw from the cart still caught in her skirt","Her gloves were worn through from holding the reins","The station is far too distant to reach on foot"],"quote":"“The left arm of your jacket is spattered with mud in seven places. The marks are perfectly fresh. No vehicle except a dogcart throws up mud in that way, and then only when you sit on the left side of the driver.”","why":"“The left arm of your jacket is spattered with mud in seven places. The marks are perfectly fresh. No vehicle except a dogcart throws up mud in that way, and then only when you sit on the left side of the driver.”","cite":"Page 4","ev":16},{"type":"pick","tg":"Teacher's Guide vocabulary","q":"Watson admires Holmes’s rapid <b>deductions</b>. What is a <b>deduction</b>?","opts":["A conclusion reached from facts you have observed","A guess made before you have any facts at all","A story invented to explain something strange","A question asked to catch somebody out"],"quote":"I admired the rapid deductions, always founded on a logical basis, with which he unravelled problems.","why":"A deduction is worked out <em>from</em> what you have observed — the reader says Holmes’s were “always founded on a logical basis”. A guess made before the facts is the opposite of a deduction.","cite":"Page 2 · Teacher’s Guide vocabulary","ev":6},{"type":"build","n":2,"tg":null,"q":"Before she has told him anything, Holmes works out how she travelled. Pick the <b>two</b> things he actually looked at.","tiles":[{"t":"Half of a return ticket in her glove","a":true},{"t":"Mud spattered on the left arm of her jacket","a":true},{"t":"The black dress and heavy veil she is wearing","a":false},{"t":"That her hair has turned grey","a":false},{"t":"That she is shivering","a":false},{"t":"That she arrived at a quarter past seven","a":false}],"quote":"“There is no mystery, my dear madam,” said he, smiling.","why":"The ticket gave him the train; the mud gave him the dogcart. The other four are all true — Watson notices every one of them — but Holmes did not build the journey out of them. Noticing something and using it as evidence are two different things.","miss":"All six are true. Only two of them are the evidence for the journey.","cite":"Page 4","ev":16}]},{"id":"s2","name":"The stepfather","pages":"5–9","blurb":"India, a temper, a will — and the money that hangs on a wedding.","c":"var(--red)","paras":[{"p":5,"t":"“My name is Helen Stoner. I live with my stepfather, who is the last survivor of one of the oldest Saxon families in England, the Roylotts of Stoke Moran, on the western border of Surrey.”"},{"p":5,"t":"“The name is familiar to me,” said he."},{"p":5,"t":"“The family was once among the richest in England. In the last century, however, four successive heirs were of a wasteful nature, and the family ruin was completed by a gambler. Nothing was left except a few acres and the two-hundred-year-old house. The last squire dragged out his existence there, living the life of an aristocratic pauper. But his only son, my stepfather, seeing that he must adapt to new conditions, obtained a medical degree and went to India, where he established a large practice. In a fit of anger, however, he beat his native butler to death and narrowly escaped a death sentence. As it was, he suffered a long imprisonment and later returned to England a disappointed man."},{"p":6,"t":"“When Dr. Roylott was in India he married my mother, Mrs. Stoner, the young widow of Major-General Stoner, of the Bengal Artillery. My sister Julia and I were twins, and we were only two years old at the time of my mother’s re-marriage. She had a considerable sum of money, and this she left to Dr. Roylott entirely while we resided with him, with a provision that a certain annual sum should be given to each of us in the event of our marriage. Shortly after our return to England my mother died in a railway accident. Dr. Roylott then took us to live with him in the ancestral house at Stoke Moran. The money which my mother had left was enough for all our wants, and there seemed no obstacle to our happiness."},{"p":7,"t":"“But a terrible change came over our stepfather about this time. Instead of making friends and exchanging visits with our neighbors, who had at first been overjoyed to see a Roylott back in the old family seat, he shut himself up in his house. He seldom came out except to quarrel ferociously with whoever might cross his path. Violence of temper has been hereditary in the men of the family, and in my stepfather’s case it had, I believe, been intensified by his long residence in the tropics. A series of disgraceful brawls took place, two of which ended in the police court. He became the terror of the village. Folks would fly at his approach, for he is a man of immense strength and absolutely uncontrollable anger."},{"p":7,"t":"“Last week he hurled the local blacksmith off a bridge into a stream, and it was only by paying all the money that I could gather that I was able to avert another public disclosure. He had no friends at all except the wandering gypsies, and he would allow them to camp on the few acres of bramble-covered land that represent the family estate. He would wander away with them sometimes for weeks on end. He has a passion also for Indian animals, and he has at this moment a cheetah and a baboon. They wander freely over his grounds and are feared by the villagers almost as much as their master."},{"p":9,"t":"“You can imagine from what I say that my poor sister Julia and I had no great pleasure in our lives. No servant would stay with us, and for a long time we did all the work of the house. She was only thirty at the time of her death, yet her hair had begun to whiten, just as mine has.”"},{"p":9,"t":"“Your sister is dead, then?”"},{"p":9,"t":"“She died just two years ago, and it is of her death that I wish to speak to you. You can understand that, living as I have described, we were not likely to see anyone of our own age. We had, however, an aunt, who lives near Harrow, and we were occasionally allowed to pay short visits at her house. Julia went there at Christmas two years ago and met a Major of Marines, to whom she became engaged. My stepfather offered no objection to the marriage. But within two weeks of the wedding day, the terrible event occurred that has deprived me of my only companion.”"},{"p":9,"t":"Sherlock Holmes had been leaning back in his chair with his eyes closed, and his head sunk in a cushion, but he half opened his lids now and glanced across at his visitor."}],"items":[{"type":"pick","tg":"Teacher's Guide vocabulary","q":"The last squire of Stoke Moran lived “the life of an aristocratic <b>pauper</b>”. What is a <b>pauper</b>?","opts":["Someone who is very poor","Someone who owns a great estate","Someone who has no family left alive","Someone who refuses ever to leave his house"],"quote":"The last squire dragged out his existence there, living the life of an aristocratic pauper.","why":"The reader glosses it in the margin of page 6: a pauper is someone who is very poor. The family name was still grand; the money was gone.","cite":"Page 6 · the reader’s own margin note","ev":2},{"type":"pick","tg":"TG study question 2","q":"Why did Dr. Roylott go to India?","opts":["He earned a medical degree and built up a large practice there","He was sent out with the army as a young officer","He went to look for a fortune to save the family","He was escaping the police in England"],"quote":"But his only son, my stepfather, seeing that he must adapt to new conditions, obtained a medical degree and went to India, where he established a large practice.","why":"But his only son, my stepfather, seeing that he must adapt to new conditions, obtained a medical degree and went to India, where he established a large practice.","cite":"Page 6","ev":2},{"type":"pick","tg":"TG study question 2","q":"What forced Dr. Roylott to leave India?","opts":["He beat his butler to death in a fit of anger and was imprisoned","His medical practice failed and he ran out of money","He fell ill in the heat and was sent home to recover","He inherited Stoke Moran and had to return to claim it"],"quote":"In a fit of anger, however, he beat his native butler to death and narrowly escaped a death sentence. As it was, he suffered a long imprisonment and later returned to England a disappointed man.","why":"In a fit of anger, however, he beat his native butler to death and narrowly escaped a death sentence. As it was, he suffered a long imprisonment and later returned to England a disappointed man.","cite":"Page 6","ev":2},{"type":"build","n":2,"tg":null,"q":"Helen is to be married in a month or two. Julia died two weeks before <em>her</em> wedding. Pick the <b>two</b> facts that would cost Dr. Roylott money when a stepdaughter marries.","tiles":[{"t":"Their mother’s money went to Dr. Roylott while the sisters lived with him","a":true},{"t":"If a sister married, she was to be paid a sum every year","a":true},{"t":"Violence of temper runs in the Roylott men","a":false},{"t":"He beat his butler to death during his years in India","a":false},{"t":"He keeps a cheetah and a baboon on the grounds","a":false},{"t":"He lets the wandering gypsies camp on the family land","a":false}],"quote":"She had a considerable sum of money, and this she left to Dr. Roylott entirely while we resided with him, with a provision that a certain annual sum should be given to each of us in the event of our marriage.","why":"The whole of the mother’s money is his — <em>while we resided with him</em>. Every wedding takes an annual sum back out of it. The other four facts tell you what sort of man he is; only these two tell you what a wedding costs him.","miss":"All six are true. Only two of them are about money.","cite":"Page 6","ev":3},{"type":"pick","tg":"TG study question 3","q":"How did Helen’s mother die?","opts":["In a railway accident, soon after they returned to England","Of a fever she caught during the years in India","In a fall at the house at Stoke Moran","Helen says she was never told"],"quote":"Shortly after our return to England my mother died in a railway accident.","why":"Shortly after our return to England my mother died in a railway accident.","cite":"Page 6","ev":3},{"type":"pick","tg":"TG study question 3","q":"Once the family settled at Stoke Moran, how did Dr. Roylott change?","opts":["He shut himself up in the house and quarrelled fiercely with anyone in his way","He grew generous and became well liked in the village","He spent all his time working as the village doctor","He made plans to sell the house and return to India"],"quote":"Instead of making friends and exchanging visits with our neighbors, who had at first been overjoyed to see a Roylott back in the old family seat, he shut himself up in his house. He seldom came out except to quarrel ferociously with whoever might cross his path.","why":"Instead of making friends and exchanging visits with our neighbors, who had at first been overjoyed to see a Roylott back in the old family seat, he shut himself up in his house. He seldom came out except to quarrel ferociously with whoever might cross his path.","cite":"Page 7","ev":4},{"type":"pick","tg":"Teacher's Guide vocabulary","q":"Helen says violence of temper has been <b>hereditary</b> in the men of the family. What does <b>hereditary</b> mean?","opts":["Passed down from parents to their children","Made worse by living in a hot country","Kept hidden from everyone outside the family","Growing steadily worse as a man gets older"],"quote":"Violence of temper has been hereditary in the men of the family, and in my stepfather’s case it had, I believe, been intensified by his long residence in the tropics.","why":"Hereditary means inherited — passed from parents to their children. Read the whole sentence and you get two separate ideas: the temper was <em>inherited</em>, and the tropics then made it worse.","cite":"Page 7 · Teacher’s Guide vocabulary","ev":4},{"type":"pick","tg":null,"q":"Dr. Roylott has almost no friends. Who is he willing to let onto his land, and what does he keep there?","opts":["The wandering gypsies — and a cheetah and a baboon","The blacksmith and his family — and two hunting dogs","His old companions from India — and a pair of horses","Nobody at all — and he keeps no animals"],"quote":"He had no friends at all except the wandering gypsies, and he would allow them to camp on the few acres of bramble-covered land that represent the family estate. He would wander away with them sometimes for weeks on end. He has a passion also for Indian animals, and he has at this moment a cheetah and a baboon.","why":"He had no friends at all except the wandering gypsies, and he would allow them to camp on the few acres of bramble-covered land that represent the family estate. He has a passion also for Indian animals, and he has at this moment a cheetah and a baboon. Keep all three in mind — they come back.","cite":"Page 7","ev":5}]},{"id":"s3","name":"The night Julia died","pages":"10–13","blurb":"A whistle, a clang, and three words nobody can explain.","c":"var(--gold)","paras":[{"p":10,"t":"“Pray be precise as to the details,” said he."},{"p":10,"t":"“It is easy for me to be so, for every event of that dreadful time is seared into my memory. The manor house is, as I have already said, very old, and only one wing is now inhabited. The bedrooms in this wing are on the ground floor. Of these bedrooms, the first is Dr. Roylott’s, the second my sister’s, and the third my own. There are no doors between them, but they all open out into the same corridor. Do I make myself plain?”"},{"p":10,"t":"“Perfectly so.”"},{"p":10,"t":"“The windows of the three rooms open out upon the lawn. That fatal night Dr. Roylott had gone to his room early, though we knew he had not gone to sleep, for my sister was troubled by the smell of the strong Indian cigars that it was his custom to smoke. She left her room, and came into mine, where we chatted about her wedding. At eleven o’clock she rose to leave me, but she paused at the door and looked back."},{"p":10,"t":"“ ‘Tell me, Helen,’ said she, ‘have you ever heard anyone whistle in the dead of the night?’"},{"p":10,"t":"“ ‘Never,’ said I."},{"p":10,"t":"“ ‘I suppose that you could not possibly whistle yourself in your sleep?’"},{"p":11,"t":"“ ‘Certainly not. But why?’"},{"p":11,"t":"“ ‘Because during the last few nights I have, about three in the morning, heard a low clear whistle. I am a light sleeper, and it has awakened me. I cannot tell where it came from – perhaps from the next room, perhaps from the lawn. I thought that I would just ask you whether you had heard it.’"},{"p":11,"t":"“ ‘No. It must be those wretched gypsies.’"},{"p":11,"t":"“ ‘Very likely. And yet if it were on the lawn, I wonder why you did not hear it also.’"},{"p":11,"t":"“ ‘I sleep more heavily than you.’"},{"p":11,"t":"“ ‘Well, it is of no consequence, at any rate.’ She smiled at me, closed my door, and a few moments later I heard her key turn in the lock.”"},{"p":11,"t":"“Indeed,” said Holmes. “Was it your custom always to lock yourselves in at night?”"},{"p":11,"t":"“Always.”"},{"p":11,"t":"“And why?”"},{"p":11,"t":"“I think I mentioned that the Doctor kept a cheetah and a baboon. We had no feeling of security unless our doors were locked.”"},{"p":11,"t":"“Quite so. Pray proceed.”"},{"p":11,"t":"“I could not sleep that night. A vague feeling of misfortune troubled me. It was a wild night. The wind was howling outside, and the rain was beating and splashing against the windows. Suddenly, there burst forth the scream of a terrified woman. I knew that it was my sister’s voice. I sprang from my bed and rushed into the corridor. As I opened my door I seemed to hear a low whistle, such as my sister described, and a few moments later a clanging sound, as if a metal object had fallen. As I ran down the passage, my sister’s door was open. I stared at it horror-stricken, not knowing what was about to emerge from it. By the light of the corridor lamp I saw my sister appear at the opening, her face blanched with terror, her hands groping for help, her whole figure swaying to and fro like that of a drunkard. I ran to her and threw my arms around her. At that moment her knees seemed to give way and she fell to the ground. She writhed in terrible pain, and her limbs were dreadfully convulsed. At first I thought she had not recognized me, but as I bent over her she suddenly shrieked out in a voice I shall never forget, ‘O, my God! Helen! It was the band! The speckled band!’ She stabbed with her finger into the air in the direction of the Doctor’s room, but a convulsion seized her and choked her words. I rushed out, calling loudly for my stepfather, and I met him hastening from his room in his dressing-gown. When he reached my sister’s side she was unconscious, and though he sent for medical aid from the village, all efforts were in vain, for she slowly sank and died without having recovered her consciousness. Such was the dreadful end of my beloved sister.”"}],"items":[{"type":"pick","tg":null,"q":"Only one wing of the manor house is lived in. How are its three bedrooms arranged?","opts":["Dr. Roylott’s, then Julia’s, then Helen’s — all opening onto one corridor","Helen’s, then Julia’s, then Dr. Roylott’s — all opening onto one corridor","The three rooms open into one another through connecting doors","Julia’s room is upstairs; the other two are on the ground floor"],"quote":"Of these bedrooms, the first is Dr. Roylott’s, the second my sister’s, and the third my own. There are no doors between them, but they all open out into the same corridor.","why":"Of these bedrooms, the first is Dr. Roylott’s, the second my sister’s, and the third my own. There are no doors between them, but they all open out into the same corridor.","cite":"Page 10","ev":1},{"type":"pick","tg":null,"q":"Dr. Roylott went to his room early that night, yet the sisters knew he was not asleep. How did they know?","opts":["Julia could smell the strong Indian cigars he always smoked","They could hear him pacing up and down his room","A light was still showing under his door","The cheetah had not yet been shut away for the night"],"quote":"That fatal night Dr. Roylott had gone to his room early, though we knew he had not gone to sleep, for my sister was troubled by the smell of the strong Indian cigars that it was his custom to smoke.","why":"That fatal night Dr. Roylott had gone to his room early, though we knew he had not gone to sleep, for my sister was troubled by the smell of the strong Indian cigars that it was his custom to smoke.","cite":"Page 10","ev":3},{"type":"pick","tg":"TG study question 4","q":"Julia stops at the door and asks Helen a question. What had Julia been hearing?","opts":["A low clear whistle, at about three in the morning","Footsteps moving along the corridor at night","A bell ringing somewhere inside the house","The baboon crying out on the lawn"],"quote":"during the last few nights I have, about three in the morning, heard a low clear whistle. I am a light sleeper, and it has awakened me.","why":"“Because during the last few nights I have, about three in the morning, heard a low clear whistle. I am a light sleeper, and it has awakened me.”","cite":"Page 11","ev":8},{"type":"pick","tg":null,"q":"What did Helen tell her sister the whistling must be?","opts":["The wretched gypsies camped on the grounds","The wind getting into the old chimneys","Dr. Roylott calling his cheetah in","Some bird out on the lawn"],"quote":"‘No. It must be those wretched gypsies.’","why":"“ ‘No. It must be those wretched gypsies.’ ” It is the obvious answer, and Helen gives it without a second thought — which is exactly what makes it worth doubting.","cite":"Page 11","ev":9},{"type":"pick","tg":null,"q":"Why did the two sisters always lock themselves into their rooms at night?","opts":["Because a cheetah and a baboon roamed the grounds","Because the gypsies were camped close to the house","Because their stepfather had threatened them both","Because no servant would stay in the house"],"quote":"“I think I mentioned that the Doctor kept a cheetah and a baboon. We had no feeling of security unless our doors were locked.”","why":"“I think I mentioned that the Doctor kept a cheetah and a baboon. We had no feeling of security unless our doors were locked.” Remember it: Julia’s door was locked from the inside that night.","cite":"Page 11","ev":16},{"type":"order","tg":null,"q":"Put that night back into the order Helen gives it. Read her account carefully — the sounds do not come in the order most people expect.","steps":["Helen hears the scream of a terrified woman","She springs from her bed and rushes into the corridor","As she opens her door she hears a low whistle","A few moments later she hears a clanging sound","Julia appears at her doorway and falls to the ground","Julia gasps out that it was the speckled band"],"quote":"Suddenly, there burst forth the scream of a terrified woman. I knew that it was my sister’s voice. I sprang from my bed and rushed into the corridor. As I opened my door I seemed to hear a low whistle, such as my sister described, and a few moments later a clanging sound, as if a metal object had fallen.","why":"The scream comes <em>first</em>. Only after Helen is out of bed and opening her door does she hear the whistle, and the clang a few moments after that.","miss":"Look again at where the scream sits.","cite":"Page 12","ev":18},{"type":"pick","tg":"Teacher's Guide vocabulary","q":"Helen says her sister <b>writhed</b> in terrible pain. What does <b>writhe</b> mean?","opts":["To twist and squirm about, especially in pain","To cry out loudly for help","To fall down suddenly","To shiver from cold"],"quote":"She writhed in terrible pain, and her limbs were dreadfully convulsed.","why":"To writhe is to squirm or twist, especially in pain or discomfort. Helen already tells us separately that Julia fell, and that she shrieked — writhing is the twisting itself.","cite":"Page 12 · Teacher’s Guide vocabulary","ev":18},{"type":"build","n":3,"tg":null,"q":"Julia is dead, and Holmes has not yet set foot in Stoke Moran. Pick the <b>three</b> things from that night that still have no explanation.","tiles":[{"t":"A low whistle in the dark","a":true},{"t":"A clanging sound, as if a metal object had fallen","a":true},{"t":"Julia’s last words — “the speckled band”","a":true},{"t":"Dr. Roylott hurling the blacksmith off a bridge","a":false},{"t":"A cheetah and a baboon wandering the grounds","a":false},{"t":"Mud on the left sleeve of Helen’s jacket","a":false}],"quote":"As I opened my door I seemed to hear a low whistle, such as my sister described, and a few moments later a clanging sound, as if a metal object had fallen.","why":"A whistle, a metallic clang, and three words nobody can make sense of. Everything else on that list is true, and some of it is alarming — but it belongs to other nights and other pages. This is where the class stops reading, and it is exactly where Holmes starts working.","miss":"Everything here is true. Only three of them happened on the night Julia died.","cite":"Pages 12–13","ev":18}]}]};
+const ART={};
+const DATA = {
+ "chapter": "The Speckled Band — pages 14–23",
+ "bigQuestion": "What does Holmes notice that everyone else misses?",
+ "passages": {
+  "inquest": {
+   "title": "What the coroner found",
+   "cite": "Reader, pages 14–15",
+   "vocab": [
+    [
+     "coroner, n.",
+     "a public official who investigates deaths"
+    ]
+   ],
+   "text": [
+    "“He investigated the case with great care, for Dr. Roylott's conduct had long been notorious, but he was unable to find any cause of death. My evidence showed that the door had been fastened on the inside, and the windows were blocked by old-fashioned shutters with iron bars, which were secured every night. The walls were shown to be quite solid all around, and the flooring was also thoroughly examined, with the same result. It is certain, therefore, that my sister was alone when she met her end. Besides, there were no marks of any violence upon her.”",
+    "“How about poison?”",
+    "“The doctors examined her for it, but without success.”",
+    "“What do you think that this unfortunate lady died of, then?”",
+    "“It is my belief that she died of pure fear and nervous shock, though what it was that frightened her I cannot imagine.”",
+    "“No, she was in her nightdress. In her hand was the charred stump of a match.”",
+    "“Showing that she had struck a light and looked about her. That is important. And what conclusions did the coroner come to?”"
+   ]
+  },
+  "band": {
+   "title": "A band — a speckled band",
+   "cite": "Reader, page 15",
+   "vocab": [],
+   "text": [
+    "“Were there gypsies on the estate?”",
+    "“Yes, there are nearly always some there.”",
+    "“Ah, and what did you gather from this reference to a band – a speckled band?”",
+    "“Sometimes I have thought that it was merely the wild talk of delirium, sometimes that it may have referred to the gypsies. I do not know whether the spotted handkerchiefs that many of them wear on their heads might have suggested the strange adjective that she used.”",
+    "Holmes shook his head like a man who is far from being satisfied. “These are very deep waters,” said he. “Pray go on with your story.”"
+   ]
+  },
+  "helen": {
+   "title": "Helen's own danger",
+   "cite": "Reader, pages 15–16",
+   "vocab": [],
+   "text": [
+    "“Two years have passed since then, and my life has been lonelier than ever. A month ago, however, a dear friend asked my hand in marriage. My stepfather offered no opposition, and we are to be married in the spring. Two days ago some repairs were started in the west wing of the building, so that I have had to move into the room in which my sister died, and to sleep in the very bed in which she slept. Imagine, then, my terror when last night, as I lay awake, I suddenly heard in the silence of the night the low whistle that heralded her own death. I sprang up and lit the lamp, but nothing was to be seen in the room. I was too shaken to go to bed again, however, so I dressed, and as soon as it was daylight I got a dogcart at the Crown Inn and drove to Leatherhead, from whence I have come this morning to ask your advice.”",
+    "“You have done wisely,” said my friend. “But have you told me all?”",
+    "“Yes, all.”"
+   ]
+  },
+  "theory": {
+   "title": "Holmes and Watson compare notes",
+   "cite": "Reader, pages 17–18",
+   "vocab": [],
+   "text": [
+    "“Yet if the lady is correct in saying that the flooring and walls are sound, and that the door, window, and chimney are impassable, then her sister must have been alone when she met her mysterious end.”",
+    "“What, then, of these whistles in the night and the peculiar words of the dying woman?”",
+    "“I cannot think.”",
+    "“When you combine the ideas of whistles at night, the presence of a band of gypsies who are on intimate terms with this old doctor, the fact that we have reason to believe that the doctor has an interest in preventing his stepdaughter's marriage, the dying reference to a band, and finally, the fact that Miss Helen Stoner heard a metallic clang, which might have been caused by one of those metal bars that secured the shutters falling back into place, I think that the mystery may be cleared along those lines.”",
+    "“But what, then, did the gypsies do?”",
+    "“I cannot imagine.”",
+    "“I see many objections to any such a theory.”",
+    "“And so do I. It is precisely for that reason that we are going to Stoke Moran this day.”"
+   ]
+  },
+  "roylott": {
+   "title": "Dr. Grimesby Roylott arrives",
+   "cite": "Reader, pages 19–21",
+   "vocab": [],
+   "text": [
+    "Our door had suddenly flung open, and a huge man entered. So tall was he that his hat actually brushed the top of the doorway, and his breadth seemed to span it across from side to side. A large wrinkled face, marked with every evil passion, turned from one to the other of us, while his deep eyes, and thin nose, gave him the look of a fierce old bird of prey.",
+    "“My stepdaughter has been here. I have traced her. What has she been saying to you?”",
+    "“It is a little cold for the time of year,” said Holmes.",
+    "“What has she been saying to you?” screamed the old man furiously.",
+    "“But I have heard that the crocuses promise well,” continued my companion.",
+    "“Ha! You put me off, do you?” said our new visitor, taking a step forward and shaking his hunting crop. “I know you, you scoundrel! You are Holmes the meddler.”",
+    "“I am a dangerous man to fall foul of! See here.” He stepped swiftly forward, seized the poker, and bent it into a curve with his huge brown hands.",
+    "“See that you keep out of my grip,” he snarled, and hurling the twisted poker into the fireplace, he strode out of the room.",
+    "“He seems very amiable,” said Holmes, laughing. “I am not so bulky, but if he had remained I might have shown him that my grip was not much more feeble than his own.” As he spoke he picked up the steel poker, and with a sudden effort straightened it out again."
+   ]
+  },
+  "will": {
+   "title": "The will, and the motive",
+   "cite": "Reader, pages 21–22",
+   "vocab": [],
+   "text": [
+    "It was nearly one o'clock when Sherlock Holmes returned. He held in his hand a sheet of blue paper, scrawled with notes and figures.",
+    "“I have seen the will of the deceased wife,” said he. “The total income, which at the time of the wife's death was almost £1,100, is now not more than £750. Each daughter can claim an income of £250 in case of marriage. If both girls had married, Dr. Roylott would have had a mere pittance. Even one marriage would cripple him to a serious extent. My morning's work has proved that he has the very strongest motives for standing in the way of his stepdaughters' marriages. And now, Watson, this is too serious for dawdling, so if you are ready, we shall call a cab and drive to Waterloo. Please slip your revolver into your pocket.”"
+   ]
+  },
+  "journey": {
+   "title": "The road to Stoke Moran",
+   "cite": "Reader, pages 22–23",
+   "vocab": [
+    [
+     "trap, n.",
+     "a two-wheeled carriage"
+    ]
+   ],
+   "text": [
+    "At Waterloo we were fortunate in catching a train for Leatherhead, where we hired a trap at the station inn, and drove for four or five miles through lovely Surrey lanes.",
+    "A heavily timbered park stretched up in a gentle slope, thickening into a grove at the highest point. From amidst the branches jutted out the grey gables and high roof of a mansion.",
+    "“Stoke Moran?” said he.",
+    "“Yes, sir, the house of Dr. Grimesby Roylott,” remarked the driver.",
+    "“There is some building going on there,” said Holmes. “That is where we are going.”",
+    "“And the lady, I fancy, is Miss Stoner,” observed Holmes, shading his eyes. We got off, paid our fare, and the trap rattled back on its way to Leatherhead."
+   ]
+  }
+ },
+ "videos": [
+  {
+   "id": "Bl2ptiOdrxY",
+   "t": "Making Inferences",
+   "s": "Reading strategies",
+   "d": "5 min. How to use clues in a text plus what you already know to work out what the author has not said.",
+   "when": "Start here — this is the whole skill."
+  },
+  {
+   "id": "6JZFN9Fu4Pw",
+   "t": "Character Traits",
+   "s": "Reading strategies",
+   "d": "5 min. Judging what a character is like from how they act and speak, not from being told.",
+   "when": "Watch before the Roylott questions."
+  }
+ ],
+ "missions": [
+  {
+   "id": "m1",
+   "name": "Tonight’s reading",
+   "tag": "7 questions · about 8 minutes",
+   "blurb": "A quick check that the chapter landed — not a test.",
+   "items": [
+    {
+     "type": "selectall",
+     "p": "inquest",
+     "q": "Helen lists what the coroner checked in her sister's room. Which of these were found to be sealed or solid? Select every correct answer.",
+     "opts": [
+      [
+       "The door, fastened on the inside",
+       1
+      ],
+      [
+       "The windows, with barred shutters secured every night",
+       1
+      ],
+      [
+       "The walls, shown to be quite solid all around",
+       1
+      ],
+      [
+       "The flooring, thoroughly examined",
+       1
+      ],
+      [
+       "The ceiling, torn open in the storm",
+       0
+      ]
+     ],
+     "why": "Four separate ways in, all ruled out. The reader stacks them deliberately — that is what makes it a locked-room mystery, and why the coroner had nothing left to conclude."
+    },
+    {
+     "type": "pick",
+     "p": "inquest",
+     "q": "Julia was found in her nightdress holding the charred stump of a match. Holmes calls this important. What does it tell him?",
+     "opts": [
+      "She had been trying to start a fire to keep warm.",
+      "She had struck a light and looked around the room — so something woke her and she wanted to see it.",
+      "She had been reading in bed.",
+      "She had dropped a candle and started a fire."
+     ],
+     "a": 1,
+     "why": "Holmes says it outright: it shows she struck a light and looked about her. A burnt-out match means she lit it, held it, and it burned down — she was awake, alarmed, and searching."
+    },
+    {
+     "type": "pick",
+     "p": "helen",
+     "q": "Why is Helen sleeping in the room where her sister died?",
+     "opts": [
+      "She wanted to investigate it herself.",
+      "Repairs were started in the west wing, so she had to move.",
+      "Her stepfather ordered her to sleep there.",
+      "It was the only room with a working lamp."
+     ],
+     "a": 1,
+     "why": "Repairs began two days ago in the west wing. Keep hold of that detail — building work is mentioned again when they reach Stoke Moran, and a reader who notices twice starts asking whether the repairs are real."
+    },
+    {
+     "type": "pick",
+     "p": "theory",
+     "q": "Watson says “I see many objections to any such a theory.” Holmes replies “And so do I.” Why is that surprising?",
+     "opts": [
+      "Because Holmes never agrees with Watson.",
+      "Because Holmes has just spent a paragraph building that very theory.",
+      "Because Watson is usually wrong.",
+      "Because it means Holmes has given up on the case."
+     ],
+     "a": 1,
+     "why": "He builds a case and then says he does not believe it. This is the most important moment in the chapter — Holmes is showing that a theory which fits some facts is not the same as a theory that is true."
+    },
+    {
+     "type": "sort",
+     "p": "theory",
+     "q": "Sort each statement by what it actually is.",
+     "bins": [
+      "A fact from the story",
+      "A guess someone is making"
+     ],
+     "chips": [
+      [
+       "Helen heard a low whistle in the night",
+       0
+      ],
+      [
+       "Julia died with no marks of violence on her",
+       0
+      ],
+      [
+       "Gypsies are camped on the estate",
+       0
+      ],
+      [
+       "The gypsies had something to do with the death",
+       1
+      ],
+      [
+       "The clang was a shutter bar falling",
+       1
+      ]
+     ],
+     "why": "Detective stories work by mixing these two together and letting you sort them. Everything in the first column was observed. Everything in the second is someone's idea about what it means."
+    },
+    {
+     "type": "pick",
+     "p": "roylott",
+     "q": "Roylott bends the poker. After he leaves, Holmes straightens it out again. Why does the story include this?",
+     "opts": [
+      "To show Holmes is stronger than he looks, and not actually intimidated.",
+      "To show the poker was faulty.",
+      "To prove Roylott was not really angry.",
+      "To show Holmes wants to tidy the room."
+     ],
+     "a": 0,
+     "why": "Roylott bends it as a threat. Holmes waits until he is gone, undoes it, and jokes. He answers a display of force privately rather than competing in front of the man — which says more about him than winning would."
+    },
+    {
+     "type": "pick",
+     "p": "will",
+     "q": "Holmes reads the dead wife's will. Each daughter can claim £250 on marriage, from a total income of £750. What does this prove?",
+     "opts": [
+      "That Roylott is already wealthy.",
+      "That the daughters were left nothing.",
+      "That Roylott has the strongest possible motive to stop his stepdaughters marrying.",
+      "That the will was forged."
+     ],
+     "a": 2,
+     "why": "Two marriages would leave him £250 of £750 — a pittance. Even one would cripple him. Holmes went looking for a motive and came back with a number, which is much harder to argue with than a feeling."
+    }
+   ]
+  }
+ ]
+};
+DATA.excerpts = {
+ "m1-0": [
+  "My evidence showed that the door had been fastened on the inside, and the windows were blocked by old-fashioned shutters with iron bars, which were secured every night. The walls were shown to be quite solid all around, and the flooring was also thoroughly examined, with the same result."
+ ],
+ "m1-1": [
+  "“No, she was in her nightdress. In her hand was the charred stump of a match.”",
+  "“Showing that she had struck a light and looked about her. That is important."
+ ],
+ "m1-2": [
+  "Two days ago some repairs were started in the west wing of the building, so that I have had to move into the room in which my sister died, and to sleep in the very bed in which she slept."
+ ],
+ "m1-3": [
+  "“I see many objections to any such a theory.”",
+  "“And so do I. It is precisely for that reason that we are going to Stoke Moran this day.”"
+ ],
+ "m1-4": [
+  "What, then, of these whistles in the night and the peculiar words of the dying woman?"
+ ],
+ "m1-5": [
+  "He stepped swiftly forward, seized the poker, and bent it into a curve with his huge brown hands.",
+  "As he spoke he picked up the steel poker, and with a sudden effort straightened it out again."
+ ],
+ "m1-6": [
+  "Each daughter can claim an income of £250 in case of marriage. If both girls had married, Dr. Roylott would have had a mere pittance. Even one marriage would cripple him to a serious extent."
+ ]
+};
+DATA.vidFor = {
+ "inquest": {
+  "id": "Bl2ptiOdrxY",
+  "t": "Making Inferences",
+  "s": "Reading strategies",
+  "d": "Using clues plus what you know to reach what the author did not say."
+ },
+ "band": {
+  "id": "Bl2ptiOdrxY",
+  "t": "Making Inferences",
+  "s": "Reading strategies",
+  "d": "When a character's explanation may not be the right one."
+ },
+ "helen": {
+  "id": "Bl2ptiOdrxY",
+  "t": "Making Inferences",
+  "s": "Reading strategies",
+  "d": "Noticing which details the author repeats."
+ },
+ "theory": {
+  "id": "Bl2ptiOdrxY",
+  "t": "Making Inferences",
+  "s": "Reading strategies",
+  "d": "Telling a fact apart from a guess about that fact."
+ },
+ "roylott": {
+  "id": "6JZFN9Fu4Pw",
+  "t": "Character Traits",
+  "s": "Reading strategies",
+  "d": "Judging a character by what they do, not by being told."
+ },
+ "will": {
+  "id": "Bl2ptiOdrxY",
+  "t": "Making Inferences",
+  "s": "Reading strategies",
+  "d": "What a motive is, and how evidence establishes one."
+ },
+ "journey": {
+  "id": "6JZFN9Fu4Pw",
+  "t": "Character Traits",
+  "s": "Reading strategies",
+  "d": "What a character notices tells you how they think."
+ }
+};
 
+
+const COLORS = ["#D07A45","#3FB4CE","#59B27C","#7C5BA6"];
+const KEYS = ["A","B","C","D","E","F"];
 const $ = id => document.getElementById(id);
 const esc = s => String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
 const shuffle = a => { a=a.slice(); for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]];} return a; };
 
-let S=null, idx=0, log=[], tries=0, picked=null, order=[], chosen=new Set(), backTo="home";
-const best = MC.bests();
+let M=null, idx=0, tries=0, log=[], sel=null, place={}, chosen=new Set();
+let hintFn=null, hintMarks=new Set(), hinted=false;
+const best = {};
 
+/* ---------- home ---------- */
 function home(){
-  $("sets").innerHTML = DATA.sets.map((s,i)=>{
-    const b = best[s.id], done = b!=null && b>=75;
-    return `<div class="set ${b==null?"":(done?"mc-cleared":"mc-tried")}" style="--c:${s.c}">
-      <span class="tag">Pages ${esc(s.pages)}</span>
-      <h3>${esc(s.name)}</h3>
-      <p>${esc(s.blurb)}</p>
-      <span class="row2">
-        <button class="go" data-s="${i}">${s.items.length} questions &rsaquo;</button>
-        <button class="rd" data-r="${i}">Read pages ${esc(s.pages)}</button>
+  $("missions").innerHTML = DATA.missions.map((m,i)=>`
+    <button class="mission" style="--c:${COLORS[i]}" data-m="${i}">
+      <div class="top"><span class="tag">${esc(m.tag)}</span></div>
+      <h3>${esc(m.name)}</h3>
+      <p>${esc(m.blurb)}</p>
+      <span class="go">${m.items.length} questions
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
       </span>
-      ${b!=null?`<span class="badge mc-best${done?" mc-done":""}">${done?"CLEARED &middot; ":""}best ${b}%</span>`:""}
-    </div>`;
-  }).join("");
-  [...document.querySelectorAll(".go")].forEach(b=>b.onclick=()=>start(+b.dataset.s));
-  [...document.querySelectorAll(".rd")].forEach(b=>b.onclick=()=>
-    openRead(DATA.sets[+b.dataset.r], -1, "home"));
-  $("foot").innerHTML = "Passage and study questions from the Core Knowledge Core Classics edition of "+
-    "<i>Selected Adventures of Sherlock Holmes</i> (abridged for young readers) and Judy Gardner\u2019s "+
-    "Teacher\u2019s Guide.<br>Based on an original work of the Core Knowledge Foundation "+
-    "(coreknowledge.org), used under CC BY-NC-SA 4.0. This does not imply that the Core Knowledge "+
-    "Foundation endorses this work.";
+      ${best[m.id]!=null?`<span class="badge">best ${best[m.id]}%</span>`:""}
+    </button>`).join("");
+  [...document.querySelectorAll(".mission")].forEach(b=>b.onclick=()=>start(+b.dataset.m));
+
+  $("vids").innerHTML = DATA.videos.map(v=>`
+    <a class="vid" href="https://www.youtube.com/watch?v=${v.id}" target="_blank" rel="noopener">
+      <span class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+      <span>
+        <span class="src">${esc(v.s)}</span>
+        <h4>${esc(v.t)}</h4>
+        <p>${esc(v.d)}</p>
+        <div class="when">${esc(v.when)}</div>
+      </span>
+    </a>`).join("");
+
+  $("foot").innerHTML = "Passages from Core Knowledge Core Classics, <i>Sherlock Holmes</i>, abridged for young readers, used under CC BY-NC-SA 4.0. "+
+    "Based on an original work of the Core Knowledge Foundation (coreknowledge.org). This does not imply that the Core Knowledge Foundation endorses this work.<br>Practice questions are not part of the original.";
   show("home");
 }
-function show(w){ ["home","read","play","done"].forEach(x=>$(x).classList.toggle("hide",x!==w));
-  window.scrollTo(0,0); }
+function show(w){ ["home","play","done"].forEach(x=>$(x).classList.toggle("hide",x!==w)); window.scrollTo(0,0); }
 
-/* ---------- the passage ---------- */
-function openRead(sec, mark, back){
-  backTo = back;
-  $("rsub").textContent = "The Speckled Band \u00b7 pages " + sec.pages;
-  $("rname").textContent = sec.name;
-  $("rbody").innerHTML = sec.paras.map((p,i)=>
-    `<div class="para${i===mark?" mark":""}" id="pa${i}"><span class="pn">${p.p}</span>${esc(p.t)}</div>`).join("");
-  $("rback").textContent = back==="play" ? "Back to the question" : "Back";
-  $("rback").onclick = ()=>{ if(back==="play"){ show("play"); } else home(); };
-  show("read");
-  if(mark>=0) setTimeout(()=>$("pa"+mark).scrollIntoView({behavior:"smooth",block:"center"}),60);
-}
-
+/* ---------- mission ---------- */
 function start(i){
-  S = DATA.sets[i]; idx=0; log=[];
-  MC.begin();
-  $("sname").textContent = S.name.toUpperCase() + " \u00b7 PAGES " + S.pages;
+  M = DATA.missions[i]; idx=0; log=[];
+  $("mname").textContent = M.name; $("mtag").textContent = M.tag;
   show("play"); render();
 }
-
 function render(){
-  tries=0; picked=null; chosen=new Set();
-  $("dots").innerHTML = S.items.map((_,i)=>
+  tries=0; sel=null; place={}; chosen=new Set();
+  hintFn=null; hintMarks=new Set(); hinted=false;
+  $("dots").innerHTML = M.items.map((_,i)=>
     `<span class="dot ${i<idx?"done":i===idx?"now":""}"></span>`).join("");
-  const it = S.items[idx];
-  const head = `<div class="qnum"><span>Question ${idx+1} of ${S.items.length}</span>
-    ${it.tg?`<span class="tg">${esc(it.tg)}</span>`:""}</div>`;
-  if(it.type==="pick")  return rPick(it, head);
-  if(it.type==="order") return rOrder(it, head);
-  return rBuild(it, head);
+  const it = M.items[idx];
+  const head = `<div class="qnum">Question ${idx+1} of ${M.items.length}</div><div class="q">${esc(it.q)}</div>`;
+  const art  = it.art && ART[it.art] ? `<div class="artbox">${ART[it.art]}</div>` : "";
+  $("card").innerHTML = head + art + `<div id="body"></div><div class="act" id="act"></div><div id="fb"></div>`;
+  ({pick:rPick, selectall:rMulti, tool:rTool, sort:rPlace, match:rPlace, mystery:rMystery})[it.type](it);
 }
 
-/* ---------- multiple choice ---------- */
-function rPick(it, head){
-  const opts = shuffle(it.opts.map((t,i)=>({t,ok:i===0})));
-  $("card").innerHTML = head + `<div class="q">${it.q}</div>
-    <div class="opts" id="opts"></div><div class="act" id="act"></div><div id="fb"></div>`;
-  $("opts").innerHTML = opts.map((o,i)=>
-    `<button class="opt" data-i="${i}"><span class="k">${"ABCD"[i]}</span><span>${esc(o.t)}</span></button>`).join("");
-  $("act").innerHTML = `<button class="btn p" id="go" disabled>Check my answer</button>`;
+/* ---------- pick ---------- */
+function rPick(it){
+  const order = shuffle(it.opts.map((t,i)=>({t,ok:i===it.a})));
+  $("body").innerHTML = `<div class="opts">` + order.map((o,i)=>
+    `<button class="opt" data-i="${i}"><span class="k">${KEYS[i]}</span><span>${esc(o.t)}</span></button>`).join("") + `</div>`;
   [...document.querySelectorAll(".opt")].forEach(b=>b.onclick=()=>{
-    [...document.querySelectorAll(".opt")].forEach(x=>x.classList.remove("sel"));
-    b.classList.add("sel"); picked=+b.dataset.i; $("go").disabled=false;
+    if(b.classList.contains("out")) return;
+    tries++;
+    if(order[+b.dataset.i].ok){ b.classList.add("good"); lockAll(".opt"); win(it); }
+    else{ b.classList.add("out"); b.disabled=true; miss(it,"That's not it."); }
   });
-  $("go").onclick=()=>{
-    const o = opts[picked], el = document.querySelector(`.opt[data-i="${picked}"]`);
-    if(o.ok){ el.classList.add("right"); win(it); }
-    else { el.classList.add("wrong"); el.classList.remove("sel");
-           miss(it,"Not that one. Read it again and try another."); }
-  };
 }
+function lockAll(s){ [...document.querySelectorAll(s)].forEach(b=>b.disabled=true); }
 
-/* ---------- put the night back in order ---------- */
-function rOrder(it, head){
-  order = shuffle(it.steps.map((t,i)=>({t,i})));
-  $("card").innerHTML = head + `<div class="q">${it.q}</div>
-    <div class="rows" id="rows"></div><div class="act" id="act"></div><div id="fb"></div>`;
-  $("act").innerHTML = `<button class="btn p" id="go">Check the order</button>`;
-  drawRows();
-  $("go").onclick=()=>{
-    let wrong=0;
-    document.querySelectorAll(".row").forEach((r,n)=>{
-      const ok = order[n].i===n; r.classList.add(ok?"right":"wrong"); if(!ok) wrong++;
-    });
-    if(!wrong){ $("go").remove(); win(it); }
-    else { setTimeout(()=>document.querySelectorAll(".row").forEach(r=>
-             r.classList.remove("right","wrong")),900);
-           miss(it, wrong===1?"One step is out of place.":wrong+" steps are out of place."); }
-  };
-}
-function drawRows(){
-  $("rows").innerHTML = order.map((s,n)=>
-    `<div class="row"><span class="n">${n+1}</span><span>${esc(s.t)}</span>
-      <span class="mv">
-        <button data-up="${n}" ${n===0?"disabled":""} aria-label="Move up">&uarr;</button>
-        <button data-dn="${n}" ${n===order.length-1?"disabled":""} aria-label="Move down">&darr;</button>
-      </span></div>`).join("");
-  document.querySelectorAll("[data-up]").forEach(b=>b.onclick=()=>{
-    const n=+b.dataset.up; [order[n-1],order[n]]=[order[n],order[n-1]]; drawRows(); });
-  document.querySelectorAll("[data-dn]").forEach(b=>b.onclick=()=>{
-    const n=+b.dataset.dn; [order[n+1],order[n]]=[order[n],order[n+1]]; drawRows(); });
-}
-
-/* ---------- pick the evidence ---------- */
-function rBuild(it, head){
-  const tiles = shuffle(it.tiles.map((t,i)=>({...t,i})));
-  $("card").innerHTML = head + `<div class="q">${it.q}</div>
-    <div class="tiles" id="tiles"></div><div class="act" id="act"></div><div id="fb"></div>`;
-  $("tiles").innerHTML = tiles.map((t,i)=>
-    `<button class="tile" data-i="${i}">${esc(t.t)}</button>`).join("");
-  $("act").innerHTML = `<button class="btn p" id="go" disabled></button>`;
-  const sync = ()=>{ const left = it.n - chosen.size;
-    $("go").disabled = left!==0;
-    $("go").textContent = left===0 ? "Check these "+it.n : `Pick ${left} more`; };
-  [...document.querySelectorAll(".tile")].forEach(b=>b.onclick=()=>{
+/* ---------- select all ---------- */
+function rMulti(it){
+  const order = shuffle(it.opts.map(([t,ok],i)=>({t,ok:!!ok})));
+  $("body").innerHTML = `<p class="instr">Tap every answer that belongs. Then check.</p><div class="opts">` +
+    order.map((o,i)=>`<button class="opt multi" data-i="${i}"><span class="k">${KEYS[i]}</span><span>${esc(o.t)}</span></button>`).join("") +
+    `</div><div class="counter" id="cnt"></div>`;
+  const cnt = ()=> $("cnt").textContent = chosen.size===0 ? "nothing selected yet"
+      : chosen.size+" selected of "+order.length+" choices";
+  cnt();
+  [...document.querySelectorAll(".opt")].forEach(b=>b.onclick=()=>{
     const i=+b.dataset.i;
-    if(chosen.has(i)){ chosen.delete(i); b.classList.remove("sel"); }
-    else if(chosen.size<it.n){ chosen.add(i); b.classList.add("sel"); }
-    sync();
+    if(chosen.has(i)) chosen.delete(i); else chosen.add(i);
+    b.classList.toggle("on"); cnt();
+    $("go").disabled = chosen.size===0;
   });
-  sync();
-  $("go").onclick=()=>{
-    let wrong=0;
-    chosen.forEach(i=>{
-      const el=document.querySelector(`.tile[data-i="${i}"]`);
-      if(tiles[i].a) el.classList.add("right"); else { el.classList.add("wrong"); wrong++; }
-    });
+  $("act").innerHTML = `<button class="btn p" id="go" disabled>Check my answers</button>`;
+  $("go").onclick = ()=>{
+    tries++;
+    let wrong=0; order.forEach((o,i)=>{ if(o.ok!==chosen.has(i)) wrong++; });
     if(!wrong){
-      document.querySelectorAll(".tile").forEach(t=>{
-        if(!t.classList.contains("right")) t.style.opacity=".35"; });
-      $("go").remove(); win(it, true);
+      order.forEach((o,i)=>{ if(o.ok) document.querySelector(`.opt[data-i="${i}"]`).classList.add("good"); });
+      lockAll(".opt"); $("go").remove(); win(it);
     } else {
-      setTimeout(()=>document.querySelectorAll(".tile").forEach(t=>
-        t.classList.remove("right","wrong")),1000);
-      miss(it, wrong===1 ? "One of your picks is true, but it is not the answer to this question."
-                         : wrong+" of your picks are true, but they are not the answer to this question.");
+      const n = wrong===1 ? "One choice is judged wrong" : wrong+" choices are judged wrong";
+      miss(it, n + " — either picked when it shouldn't be, or left out when it should be in.");
     }
   };
 }
 
-/* ---------- feedback ----------
-   Two rungs, deliberately in this order: first send him to find the evidence
-   himself, and only then show it. Locating it in the text is the skill. */
-function miss(it,msg){
-  tries++;
-  MC.wrong(S.id+"-"+idx);
-  $("fb").innerHTML = `<div class="fb no"><strong>Not yet.</strong>${esc(it.miss && tries===1 ? it.miss : msg)}</div>`;
-  if(tries===1 && !$("find")){
-    $("act").insertAdjacentHTML("afterbegin",
-      `<button class="btn o" id="find">Find it in the passage</button>`);
-    $("find").onclick=()=>openRead(S, it.ev, "play");
-  }
-  if(tries>=2 && !$("hint")){
-    $("act").insertAdjacentHTML("afterbegin",`<button class="btn o" id="hint">Show me the answer</button>`);
-    $("hint").onclick=()=>{
-      $("fb").innerHTML = `<div class="fb no"><strong>From the story</strong>${it.why}
-        <cite>${esc(it.cite)}</cite></div>`;
-      $("hint").remove();
-    };
-  }
+/* ---------- tools ---------- */
+function rTool(it){
+  const order = shuffle(it.tools.map((k,i)=>({k,lab:it.labels[i],ok:i===it.a})));
+  $("body").innerHTML = `<div class="tools">` + order.map((o,i)=>
+    `<button class="tool" data-i="${i}">${ART[o.k]||""}<span>${esc(o.lab)}</span></button>`).join("") + `</div>`;
+  [...document.querySelectorAll(".tool")].forEach(b=>b.onclick=()=>{
+    if(b.classList.contains("out")) return;
+    tries++;
+    if(order[+b.dataset.i].ok){ b.classList.add("good"); lockAll(".tool"); win(it); }
+    else{ b.classList.add("out"); b.disabled=true; miss(it,"That tool won't answer this question."); }
+  });
 }
-function win(it, isBuild){
-  MC.right(S.id+"-"+idx);
-  const pts = tries===0?100:tries===1?75:tries===2?50:25;
-  log.push({pts,tries});
-  const last = idx===S.items.length-1;
-  if(isBuild){
-    $("fb").innerHTML = `<div class="fb yes"><strong>That is it.</strong>
-      Those are the ones that matter.</div>
-      <div class="reveal"><div class="lead">Why those</div><p>${it.why}</p>
-        <cite style="display:block;font:600 11px var(--mono);color:var(--stone)">${esc(it.cite)}</cite></div>`;
-  } else {
-    $("fb").innerHTML = `<div class="fb yes"><strong>${tries===0?"Right, first try.":"Got it."}</strong>
-      ${it.why}<cite>${esc(it.cite)}</cite></div>`;
-  }
-  $("act").innerHTML = `<button class="btn g" id="next">${last?"See how I did":"Next question"}</button>`;
-  $("next").onclick=()=>{ if(last) finish(); else { idx++; render(); window.scrollTo(0,0); } };
+
+/* ---------- sort + match (chips into slots) ---------- */
+function rPlace(it){
+  const bins = it.type==="sort";
+  const chips = bins ? shuffle(it.chips.map(([t,b],i)=>({id:"c"+i,t,s:"s"+b})))
+                     : shuffle(it.pairs.map(([w],i)=>({id:"c"+i,t:w,s:"s"+i})));
+  const slots = bins ? it.bins.map((b,i)=>({id:"s"+i,t:b}))
+                     : shuffle(it.pairs.map(([,d],i)=>({id:"s"+i,t:d})));
+  const want = {}; chips.forEach(c=>want[c.id]=c.s);
+
+  $("body").innerHTML =
+    `<p class="instr">${bins?"Tap a card, then tap the box it belongs in.":"Tap a word, then tap its meaning."}</p>
+     <div class="chips" id="chips"></div>
+     <div class="slots ${bins?"bins":""}" id="slots"></div>`;
+
+  const draw = ()=>{
+    $("chips").innerHTML = chips.map(c=>
+      `<button class="chip ${place[c.id]?"used":""} ${sel===c.id?"sel":""}" data-c="${c.id}">${esc(c.t)}</button>`).join("");
+    $("slots").innerHTML = slots.map(s=>{
+      const held = chips.filter(c=>place[c.id]===s.id);
+      const anyBad = held.some(h=>hintMarks.has(h.id));
+      return `<button class="slot ${bins?"bins":""} ${held.length?"filled":""} ${sel?"hot":""} ${anyBad?"wrongmark":""}" data-s="${s.id}">
+        <span class="lab">${esc(s.t)}</span>
+        ${held.length?`<span class="held">${held.map(h=>`<span class="${hintMarks.has(h.id)?"wrongmark":""}">${esc(h.t)}</span>`).join("")}</span>`:""}
+      </button>`;}).join("");
+    [...document.querySelectorAll(".chip")].forEach(b=>b.onclick=()=>{ sel = sel===b.dataset.c?null:b.dataset.c; draw(); });
+    [...document.querySelectorAll(".slot")].forEach(b=>b.onclick=()=>{
+      const s=b.dataset.s;
+      if(sel){ if(!bins) for(const k in place) if(place[k]===s){ hintMarks.delete(k); delete place[k]; }
+               place[sel]=s; hintMarks.delete(sel); sel=null; }
+      else { const inside = chips.filter(c=>place[c.id]===s);
+             if(inside.length){ const last=inside[inside.length-1].id; hintMarks.delete(last); delete place[last]; } }
+      draw();
+    });
+    const all = chips.every(c=>place[c.id]);
+    if($("go")) $("go").disabled = !all;
+  };
+  hintFn = ()=>{ hintMarks = new Set(chips.filter(c=>place[c.id]!==want[c.id]).map(c=>c.id)); draw(); };
+  $("act").innerHTML = `<button class="btn p" id="go" disabled>Check my answers</button>`;
+  draw();
+  $("go").onclick = ()=>{
+    tries++;
+    const wrong = chips.filter(c=>place[c.id]!==want[c.id]).length;
+    if(!wrong){ $("go").remove(); document.querySelectorAll(".slot").forEach(s=>s.style.borderColor="var(--green)"); win(it); }
+    else miss(it, wrong===1 ? "One card is not where it belongs." : wrong+" cards are not where they belong.");
+  };
+}
+
+/* ---------- mystery capstone ---------- */
+function rMystery(it){
+  const choices = shuffle(it.choices);
+  const rows = it.rows;
+  $("body").innerHTML =
+    `<p class="instr">Tap a material name, then tap the sample it matches.</p>
+     <div class="chips" id="chips"></div><div class="mtable" id="rows"></div>`;
+  const draw = ()=>{
+    $("chips").innerHTML = choices.map(c=>{
+      const used = Object.values(place).includes(c);
+      return `<button class="chip ${used?"used":""} ${sel===c?"sel":""}" data-c="${esc(c)}">${esc(c)}</button>`;}).join("");
+    $("rows").innerHTML = rows.map(r=>`
+      <div class="mrow ${sel?"hot":""} ${hintMarks.has(r.key)?"wrongmark":""}" data-r="${r.key}">
+        <div class="rh"><span class="key">${r.key}</span>
+          ${place[r.key]?`<span class="named ${hintMarks.has(r.key)?"wrongmark":""}">${esc(place[r.key])}</span>`:`<span class="tag" style="font:600 11px var(--mono);color:#8A9B94;letter-spacing:.09em">UNKNOWN SAMPLE</span>`}</div>
+        <div class="cells">${r.cells.map((c,i)=>
+          `<div class="cell"><b>${esc(it.headers[i])}</b><span>${esc(c)}</span></div>`).join("")}</div>
+      </div>`).join("");
+    [...document.querySelectorAll(".chip")].forEach(b=>b.onclick=()=>{ sel = sel===b.dataset.c?null:b.dataset.c; draw(); });
+    [...document.querySelectorAll(".mrow")].forEach(b=>b.onclick=()=>{
+      const k=b.dataset.r;
+      if(sel){ for(const j in place) if(place[j]===sel){ hintMarks.delete(j); delete place[j]; }
+               place[k]=sel; hintMarks.delete(k); sel=null; }
+      else { hintMarks.delete(k); delete place[k]; }
+      draw();
+    });
+    if($("go")) $("go").disabled = rows.some(r=>!place[r.key]);
+  };
+  hintFn = ()=>{ hintMarks = new Set(rows.filter(r=>place[r.key]!==r.answer).map(r=>r.key)); draw(); };
+  $("act").innerHTML = `<button class="btn p" id="go" disabled>Name all four</button>`;
+  draw();
+  $("go").onclick = ()=>{
+    tries++;
+    const wrong = rows.filter(r=>place[r.key]!==r.answer).length;
+    if(!wrong){ $("go").remove(); document.querySelectorAll(".mrow").forEach(r=>{r.style.borderColor="var(--green)";r.style.background="#EFF8F2";}); win(it); }
+    else miss(it, wrong===1 ? "One sample is named wrong." : wrong+" samples are named wrong.");
+  };
+}
+
+/* ---------- feedback ---------- */
+function miss(it,msg){
+  $("card").classList.remove("shake"); void $("card").offsetWidth; $("card").classList.add("shake");
+  $("fb").innerHTML = `<div class="fb no"><strong>Not yet.</strong>${esc(msg)}</div>`;
+  if(!$("read")) $("act").insertAdjacentHTML("afterbegin", `<button class="btn o" id="read">Open the book again</button>`);
+  $("read").onclick=()=>drawer(it.p, M.id+"-"+idx, "retry");
+  if(tries===1) setTimeout(()=>drawer(it.p, M.id+"-"+idx, "retry"), 420);
+  if(hintFn && !hinted && !$("hint"))
+    $("act").insertAdjacentHTML("afterbegin",
+      `<button class="btn h" id="hint">Show me which ones are wrong</button>`);
+  if($("hint")) $("hint").onclick=()=>{
+    hinted = true; hintFn(); $("hint").remove();
+    $("fb").insertAdjacentHTML("beforeend",
+      `<p class="hintnote">Hint used \u2014 the ones outlined in red are in the wrong place. This question now scores 25%.</p>`);
+  };
   $("fb").scrollIntoView({behavior:"smooth",block:"nearest"});
 }
+function win(it){
+  const pts = hinted ? 25 : (tries===1?100:tries===2?75:tries===3?50:25);
+  log.push({q:idx+1,tries,pts,p:it.p,hinted});
+  const head = hinted ? "Got it \u2014 with a hint." : (tries===1?"Got it, first try.":"Got it.");
+  $("fb").innerHTML = `<div class="fb yes"><strong>${head}</strong>${esc(it.why)}</div>`;
+  const last = idx===M.items.length-1;
+  $("act").innerHTML = `<button class="btn o" id="read">See the book page or watch the video</button>
+                        <button class="btn g" id="next">${last?"See how I did":"Next question"}</button>`;
+  $("read").onclick=()=>drawer(it.p, M.id+"-"+idx, "review");
+  $("next").onclick=()=>{ if(last) finish(); else { idx++; render(); window.scrollTo({top:0,behavior:"smooth"}); } };
+  $("fb").scrollIntoView({behavior:"smooth",block:"nearest"});
+}
+
+/* ---------- drawer ---------- */
+const closeD = ()=>{ $("drawer").classList.remove("on"); $("scrim").classList.remove("on"); };
+function drawer(key, exKey, mode){
+  const p  = DATA.passages[key];
+  const ex = DATA.excerpts[exKey];
+  const v  = DATA.vidFor[key];
+  $("dtitle").textContent = p.title;
+  $("dcite").textContent  = p.cite;
+  $("dbody").innerHTML =
+    (ex?`<p class="leadin">Here is what the book says about this question.</p>
+       <div class="ex">${ex.map(t=>`<p>${esc(t)}</p>`).join("")}</div>
+       <div class="exsrc">${esc(p.cite)}, word for word</div>`:"") +
+    (v?`<div class="exwrap" style="border-top:none;padding-top:14px">
+       <div class="eyebrow">Still fuzzy? Watch it explained</div>
+       <a class="vidbtn" href="https://www.youtube.com/watch?v=${v.id}" target="_blank" rel="noopener">
+         <span class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+         <span><span class="src">${esc(v.s)}</span><h4>${esc(v.t)}</h4><p>${esc(v.d)}</p></span>
+       </a>
+     </div>`:"") +
+    `<div class="morepg">
+       <div class="eyebrow">The whole page, for context</div>
+       ${p.vocab.length?`<div class="vbox" style="margin-top:10px"><span class="vh">Vocabulary</span>`+
+         p.vocab.map(([w,d])=>`<div><dt>${esc(w)}</dt> <dd>${esc(d)}</dd></div>`).join("")+`</div>`:""}
+       ${p.text.map(t=>`<p>${esc(t)}</p>`).join("")}
+     </div>`;
+  $("dfoot").innerHTML = mode==="retry"
+    ? `<button class="btn g" id="dgo">Got it \u2014 let me try again</button>`
+    : `<button class="btn p" id="dgo">Close</button>`;
+  $("dgo").onclick = closeD;
+  $("dbody").scrollTop=0;
+  $("drawer").classList.add("on"); $("scrim").classList.add("on");
+}
+$("dclose").onclick=closeD; $("scrim").onclick=closeD;
+document.addEventListener("keydown",e=>{ if(e.key==="Escape") closeD(); });
 
 /* ---------- results ---------- */
 function finish(){
   const pct = Math.round(log.reduce((s,l)=>s+l.pts,0)/log.length);
-  const first = log.filter(l=>l.tries===0).length;
-  const att = log.reduce((s,l)=>s+l.tries,0)+log.length;
-  const band = pct>=90?["Elementary","#2F8F76"]:pct>=75?["Solid detective work","#3D82B8"]
-             :pct>=50?["Getting there","#E0A83C"]:["Worth reading again","#C4553F"];
-  $("dtag").textContent = S.name.toUpperCase();
+  const first = log.filter(l=>l.tries===1).length;
+  const att = log.reduce((s,l)=>s+l.tries,0);
+  const band = pct>=90?["Sharp work","#59B27C"]:pct>=75?["Solid","#3FB4CE"]:pct>=60?["Getting there","#EFB04A"]:["Worth another run","#E0685A"];
+  const rough = log.filter(l=>l.tries>1);
+  const hints = log.filter(l=>l.hinted).length;
+  const pages = [...new Set(rough.map(l=>DATA.passages[l.p].cite))];
+  best[M.id] = Math.max(best[M.id]||0, pct);
+  $("dtag").textContent = M.name;
   $("scorebox").innerHTML = `
     <div class="ring" style="color:${band[1]}">${pct}%</div>
     <div class="band" style="color:${band[1]}">${band[0]}</div>
     <div class="stats">
       <div class="stat"><b>${first} / ${log.length}</b><span>First try</span></div>
       <div class="stat"><b>${att}</b><span>Total tries</span></div>
+      ${hints?`<div class="stat" style="grid-column:1/-1"><b>${hints}</b><span>Hint${hints>1?"s":""} used \u2014 worth rerunning without</span></div>`:""}
     </div>
-    <div class="review"><b>Still unexplained</b>${esc(DATA.openQuestion)}</div>
+    ${rough.length?`<div class="review"><b>Pages worth rereading</b><ul>${pages.map(p=>`<li>${esc(p)}</li>`).join("")}</ul></div>`
+                  :`<div class="review"><b>Nothing to reread.</b>Every question went in on the first try.</div>`}
+    <div class="aloud">
+      <div class="eyebrow">Now say it out loud</div>
+      <p>${esc(DATA.bigQuestion)}</p>
+    </div>
     <div class="act">
-      <button class="btn p" id="again">Run this section again</button>
-      <button class="btn o" id="reread">Re-read pages ${esc(S.pages)}</button>
-      <button class="btn o" id="pick">Pick another section</button>
+      <button class="btn p" id="again">Run this mission again</button>
+      <button class="btn o" id="pick">Pick another mission</button>
     </div>`;
-  MC.chest($("scorebox"), pct, {id:S.id});
-  $("again").onclick=()=>start(DATA.sets.indexOf(S));
-  $("reread").onclick=()=>openRead(S, -1, "home");
-  $("pick").onclick=()=>{ Object.assign(best, MC.bests()); home(); };
+  $("again").onclick=()=>{ idx=0; log=[]; show("play"); render(); };
+  $("pick").onclick=home;
   show("done");
 }
 
+$("quit").onclick=home; $("quit2").onclick=home;
 home();
 </script>
 </body>
