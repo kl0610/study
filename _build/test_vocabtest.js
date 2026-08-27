@@ -3,7 +3,9 @@
    and that the answer positions are dealt, not merely random. */
 const fs=require("fs"),path=require("path");
 const src=fs.readFileSync(path.join(__dirname,"..","vocabulary","ww6-lesson1-test","index.html"),"utf8");
-const DATA=JSON.parse(src.match(/const DATA = (\{.*?\});\n/s)[1]);
+const m=src.match(/const DATA = (\{.*?\});\r?\n/s);
+if(!m){ console.error("could not find DATA in the built app"); process.exit(1); }
+const DATA=JSON.parse(m[1]);
 let pass=0,fail=0;
 const G=g=>console.log("\n"+g);
 const ok=(c,m)=>{c?(pass++,console.log("  ok   "+m)):(fail++,console.log("  FAIL "+m));};

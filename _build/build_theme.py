@@ -31,8 +31,17 @@ RETHEME = "--retheme" in sys.argv
 
 # ---------------------------------------------------------------- call sites
 
-def sci(s):
-    p = Patcher(s, "science")
+def mission_app(s, name):
+    """Science Ch1, Science Ch2 and the Sherlock passage are one program with
+    three data files, so they take one set of hooks: persisted best badges on
+    the picker, a heart refill entering a mission, a right/wrong beat per item,
+    and the chest above the score ring.
+
+    Only Ch1 was ever wired. Ch2 and the reading app were handed the engine and
+    a config but no call sites at all, so nothing they did reached MC — no ore,
+    no chest, no dragon, whatever the dragon target said. Routing all three
+    through here is what fixes that, and stops them drifting apart again."""
+    p = Patcher(s, name)
     # the picker's "best X%" badges were in-memory only and forgot everything
     # on reload; MC has been persisting the same numbers all along
     p.at('const best = {};', after__raw='const best = MC.bests();')
@@ -55,6 +64,10 @@ def sci(s):
          before='  MC.chest($("scorebox"), pct, {id:M.id,\n'
                 '    boss: DATA.missions.indexOf(M)===DATA.missions.length-1});\n')
     return p
+
+
+def sci(s):
+    return mission_app(s, "science")
 
 
 def spell(s):
@@ -114,8 +127,15 @@ def vocab(s):
 
 
 def sci2(s):
-    """CKSci Chapter 2 — written theme-aware; config only."""
-    return Patcher(s, "science2")
+    """CKSci Chapter 2 — the same program as Ch1, so the same hooks."""
+    return mission_app(s, "science2")
+
+
+def sci3(s):
+    """CKSci Chapter 3 — same program again. It had never been built at all:
+    no engine, no config, no call sites, so it was the one chapter with no HUD
+    of any kind rather than a HUD nothing drove."""
+    return mission_app(s, "science3")
 
 
 def vtest(s):
@@ -128,14 +148,22 @@ def vtest(s):
 
 
 def read(s):
-    """Sherlock, The Speckled Band pp.1-13 — written theme-aware; config only."""
-    return Patcher(s, "reading")
+    """Sherlock, The Speckled Band — the same program as the science chapters,
+    so the same hooks. Its one mission is also its last, so the chest asks for
+    the boss there, which is exactly what dragon=["m1"] waits on."""
+    return mission_app(s, "reading")
 
 
 def hist2(s):
     """CKHG Chapter 2 — written already knowing about the theme, so it needs
     only the config; every hook is in the source."""
     return Patcher(s, "history2")
+
+
+def hist3(s):
+    """CKHG Chapter 3 — theme-aware like Ch2: MC.begin, MC.right/wrong and
+    MC.chest are all already in the source, so this is config only."""
+    return Patcher(s, "history3")
 
 
 def hist(s):
@@ -182,8 +210,10 @@ def hist(s):
 # are parallel forms of the same seven-item test, not a difficulty ramp, so any
 # of them being perfect is the full challenge.
 APPS = {
+    # The chapter has a single mission, m1 — the old "m4" target never matched
+    # the id MC.chest() reports, so the dragon could not fire here.
     "science/g5-matter-ch1":  (sci,   dict(app="science",    shake=None,      lift=None,
-                                           dragon=["m4"])),
+                                           dragon=["m1"])),
     "spelling/list2":         (spell, dict(app="spelling",   shake="#card",   lift=None,
                                                    dragon=["l7"])),
     "vocabulary/ww6-lesson1": (vocab, dict(app="vocabulary", shake="#sheet",  lift=".bar",
@@ -194,15 +224,21 @@ APPS = {
     # so the dragon sits on the last one — the hardest run.
     "history/g5-maya-ch2":    (hist2, dict(app="history2",   shake="#card",   lift=None,
                                            dragon=["s3"])),
+    # The forms are a, b, c and final; "p2" matched none of them. The final is
+    # the capstone, so the dragon belongs there.
     "vocabulary/ww6-lesson1-test": (vtest, dict(app="vocabtest", shake=None, lift=None,
-                                           hud=False, dragon=["p2"])),
-    # The three sections are consecutive stretches of one story, not parallel
-    # forms, so the dragon sits on the last — the night Julia died.
+                                           hud=False, dragon=["final"])),
+    # The passage is one mission, m1 — the old "s3" target predates that shape.
     "reading/sherlock-speckled-1": (read, dict(app="reading", shake="#card", lift=None,
-                                           dragon=["s3"])),
-    # m4 "Be the Engineer" is the capstone — the dragon lives there.
+                                           dragon=["m1"])),
+    # Ch2 also has a single mission, m1; "m4" never matched.
     "science/g5-matter-ch2":  (sci2,  dict(app="science2",   shake="#card",   lift=None,
-                                           dragon=["m4"])),
+                                           dragon=["m1"])),
+    "history/g5-maya-ch3":    (hist3, dict(app="history3",   shake="#card",   lift=None,
+                                           dragon=["s3"])),
+    # Ch3's single mission is m1, the same shape as Ch1 and Ch2.
+    "science/g5-matter-ch3":  (sci3,  dict(app="science3",   shake="#card",   lift=None,
+                                           dragon=["m1"])),
 }
 
 # ---------------------------------------------------------------- machinery
@@ -273,8 +309,8 @@ def strip_theme(html):
 
 
 def inject(html, cfg):
-    css = (THEME / "mc.css").read_text()
-    js  = (THEME / "mc.js").read_text()
+    css = (THEME / "mc.css").read_text(encoding="utf-8")
+    js  = (THEME / "mc.js").read_text(encoding="utf-8")
     has_boss = (ASSETS / "boss-defeated.png").exists()
 
     if INLINE:
@@ -298,6 +334,13 @@ def inject(html, cfg):
         if stripped is None:
             return "UNMARKED"                          # cannot find it to remove
         html = stripped
+
+    # "All subjects" pointed at the directory, which a web server quietly
+    # resolves to index.html but a file:// browser renders as a directory
+    # listing — so the link looked broken every time the app was opened by
+    # double-clicking it. Naming the file works in both.
+    html = html.replace('href="../../"', 'href="../../index.html"')
+
     html = html.replace("</head>", style + "</head>", 1)
     return re.sub(r"(<body[^>]*>)", lambda m: m.group(1) + block, html, count=1)
 
@@ -306,10 +349,18 @@ def hub():
     """The hub gets the engine inlined too, so it doesn't fetch from _build/
     at runtime — and it reads state only, with no HUD of its own."""
     path = STUDY / "index.html"
-    src = path.read_text()
+    src = path.read_text(encoding="utf-8")
     tag = '<script src="_build/mc.js"></script>'
-    js = (THEME / "mc.js").read_text()
+    js = (THEME / "mc.js").read_text(encoding="utf-8")
     if tag not in src:
+        # No script tag can mean two very different things: the engine is already
+        # inlined (fine), or this hub was never themed at all (not fine, and it
+        # used to be reported as a skip). The inlined engine carries a marker, so
+        # its absence is a real failure rather than a no-op.
+        inlined = "<script>/* ===== Minecraft theme layer" in src
+        if not inlined:
+            return ("hub                      FAILED — never themed "
+                    "(no mc.js tag and no inlined engine)")
         if not RETHEME:
             return "hub                      already inlined — skipped"
         # swap the inlined engine for the current one: it is the single <script>
@@ -320,7 +371,7 @@ def hub():
             return "hub                      FAILED \u2014 inlined engine not found"
         before = len(src)
         src = src[:i] + "<script>%s</script>" % js + src[j + len("</script>"):]
-        path.write_text(src)
+        path.write_text(src, encoding="utf-8")
         return "hub                      re-themed  %6.1f KB -> %6.1f KB" % (before/1024, len(src)/1024)
     if INLINE:
         head = "window.__MC_INLINE__=" + json.dumps(assets_map()) + ";"
@@ -329,8 +380,8 @@ def hub():
     src = src.replace('window.__MC_HAS_BOSS__=true;',
                       'window.__MC_HAS_BOSS__=%s;'
                       % ("true" if (ASSETS / "boss-defeated.png").exists() else "false"))
-    path.write_text(src)
-    return "hub                      %6.1f KB -> %6.1f KB" % (len(path.read_text())/1024, len(src)/1024)
+    path.write_text(src, encoding="utf-8")
+    return "hub                      %6.1f KB -> %6.1f KB" % (len(path.read_text(encoding="utf-8"))/1024, len(src)/1024)
 
 
 def main():
@@ -340,7 +391,7 @@ def main():
     bad = 0
     for rel, (patch, cfg) in APPS.items():
         path = STUDY / rel / "index.html"
-        src  = path.read_text()
+        src  = path.read_text(encoding="utf-8")
 
         # An app that is already themed has had its call sites patched once and
         # for all; those edits live in the file. A retheme swaps the engine and
@@ -358,7 +409,7 @@ def main():
             continue
 
         if was_themed:
-            path.write_text(staged)
+            path.write_text(staged, encoding="utf-8")
             print("  %-24s re-themed  %6.1f KB -> %6.1f KB"
                   % (rel, len(src) / 1024, len(staged) / 1024))
             continue
@@ -371,7 +422,7 @@ def main():
                 print("        no anchor: %s" % m)
             continue
 
-        path.write_text(p.out)
+        path.write_text(p.out, encoding="utf-8")
         print("  %-24s %6.1f KB -> %6.1f KB" % (rel, len(src)/1024, len(p.out)/1024))
 
     print("  " + hub())

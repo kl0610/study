@@ -12,7 +12,7 @@ const src  = fs.readFileSync(file, "utf8");
 
 /* The data block is a JS object literal (unquoted keys), not JSON, so it is
    evaluated rather than parsed — same shape the browser sees. */
-const m = src.match(/const DATA = (\{[\s\S]*?\n\});\n/);
+const m = src.match(/const DATA = (\{[\s\S]*?\r?\n\});\r?\n/);
 if (!m) { console.error("could not find DATA in the built app"); process.exit(1); }
 const DATA = new Function("return (" + m[1] + ")")();
 
