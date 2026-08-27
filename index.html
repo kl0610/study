@@ -893,7 +893,11 @@ document.getElementById("subjects").innerHTML = SUBJECTS.map(s=>{
       const stat = `<span class="stat${all?" all":(p&&p.done?" part":"")}">
            <b>${all?"CLEARED":(p?`${p.done} / ${p.of}`:"&mdash;")}</b>
            <small>${p&&p.best?`best ${p.best}%`:"not started"}</small></span>`;
-      return `<li><a class="ch" href="${c.href}">
+      /* Name the file rather than the folder. A web server turns a directory
+         href into its index.html; a file:// browser shows a directory listing
+         instead, which is what opening the hub by double-click would hit. */
+      const go = c.href.endsWith("/") ? c.href + "index.html" : c.href;
+      return `<li><a class="ch" href="${go}">
            ${badge}
            <span class="t">${label}${c.note?`<small>${esc(c.note)}</small>`:""}</span>
            ${stat}
