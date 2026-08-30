@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>The Property Bench — Investigating Matter, Chapter 1</title>
+<title>The Night Julia Died — The Speckled Band</title>
 <style>
 :root{
-  --bench:#12333B; --deep:#0B2126; --panel:#194550; --line:#2B5A66;
+  --bench:#1C2733; --deep:#121A23; --panel:#26333F; --line:#3A4A58;
   --paper:#FBF6EC; --paper2:#F1E9D8; --ink:#16292E; --muted:#8FA9AF;
-  --copper:#D07A45; --cyan:#3FB4CE; --amber:#EFB04A; --red:#E0685A; --green:#59B27C; --violet:#7C5BA6;
+  --copper:#C89B5A; --cyan:#7FA8C4; --amber:#EFB04A; --red:#E0685A; --green:#59B27C; --violet:#7C5BA6;
   --r:16px;
   --disp:"Avenir Next","Segoe UI Variable Display","Trebuchet MS",system-ui,sans-serif;
   --body:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
@@ -18,8 +18,8 @@
 html,body{margin:0;padding:0}
 body{
   background:var(--bench);
-  background-image:radial-gradient(circle at 18% 0%,#1D4A56 0%,transparent 55%),
-                   radial-gradient(circle at 92% 12%,#17414C 0%,transparent 45%);
+  background-image:radial-gradient(circle at 18% 0%,#2E3D4C 0%,transparent 55%),
+                   radial-gradient(circle at 92% 12%,#243240 0%,transparent 45%);
   background-attachment:fixed;
   color:var(--paper); font-family:var(--body); line-height:1.55;
   padding:0 0 96px; overflow-x:hidden;
@@ -199,7 +199,7 @@ svg.art{display:block;width:100%;height:auto;max-height:210px}
   transform:translateY(101%);transition:transform .32s cubic-bezier(.22,.9,.3,1);
   display:flex;flex-direction:column;box-shadow:0 -14px 44px rgba(0,0,0,.4)}
 .drawer.on{transform:none}
-.dhead{background:#7B2C7E;color:#fff;border-radius:22px 22px 0 0;padding:16px 20px 15px;flex:none;position:relative}
+.dhead{background:#5A4632;color:#fff;border-radius:22px 22px 0 0;padding:16px 20px 15px;flex:none;position:relative}
 .dhead .eyebrow{color:#F0C4F2}
 .dhead h3{font-family:var(--disp);font-size:19px;margin:3px 0 0;font-weight:750;padding-right:44px}
 .dhead .pg{font-family:var(--mono);font-size:11px;color:#EBC0EE;margin-top:4px;letter-spacing:.05em}
@@ -1056,25 +1056,25 @@ window.__MC_HAS_BOSS__=true;</script>
   window.MC = MC;
 })();
 </script>
-<script>MC.config({"app": "science3", "shake": "#card", "lift": null, "dragon": ["m1"]});</script>
+<script>MC.config({"app": "reading1b", "shake": "#card", "lift": null, "dragon": ["m1"]});</script>
 <!-- /MC-THEME-JS -->
 
 <!-- HOME -->
 <div id="home" class="wrap">
   <header>
     <a class="hublink" href="../../index.html">&lsaquo; All subjects</a>
-    <div class="eyebrow">CKSci Grade 5 &middot; Investigating Matter</div>
-    <h1>The <em>Property</em> Bench</h1>
-    <p class="sub">A short review of the chapter. Run it as many times as you like — the questions shuffle.</p>
+    <div class="eyebrow">Core Classics &middot; Sherlock Holmes</div>
+    <h1>The <em>Speckled</em> Band</h1>
+    <p class="sub">A short check on tonight’s pages. Run it as many times as you like — the questions shuffle.</p>
     <div class="bq">
-      <div class="eyebrow">The Big Question</div>
+      <div class="eyebrow">Keep asking</div>
       <p>What properties can I use to describe matter?</p>
     </div>
   </header>
   <div class="grid" id="missions"></div>
   <div class="shelf">
     <div class="eyebrow">Watch first, or watch after</div>
-    <h2>Three short videos</h2>
+    <h2>Two short videos</h2>
     <p class="note">Each is about five minutes. They open on YouTube.</p>
     <div id="vids"></div>
   </div>
@@ -1119,564 +1119,185 @@ window.__MC_HAS_BOSS__=true;</script>
 </div>
 
 <script>
-const ART = {
-
-swing: `<svg viewBox="0 0 200 150" class="art">
-  <path d="M30 128 L58 34 h84 L170 128" fill="none" stroke="#6D7C84" stroke-width="7" stroke-linejoin="round"/>
-  <rect x="52" y="30" width="96" height="8" rx="4" fill="#8B99A0"/>
-  <g stroke="#9A5B3A" stroke-width="4" stroke-dasharray="7 5"><path d="M76 38 v46"/><path d="M124 38 v46"/></g>
-  <rect x="66" y="84" width="68" height="11" rx="4" fill="#C96F3F"/>
-  <rect x="66" y="84" width="68" height="5" rx="2" fill="#E39468"/>
-  <g fill="#A8603C" opacity=".8"><circle cx="76" cy="52" r="3.2"/><circle cx="76" cy="68" r="2.6"/><circle cx="124" cy="58" r="3"/><circle cx="124" cy="74" r="2.4"/></g>
-  <rect x="18" y="126" width="164" height="7" rx="3" fill="#5E9E6B"/>
-  <text x="100" y="146" class="cap">the chains have rusted</text>
-</svg>`,
-
-rust: `<svg viewBox="0 0 200 150" class="art">
-  <g fill="none" stroke="#8B99A0" stroke-width="10" stroke-linecap="round">
-    <ellipse cx="62" cy="66" rx="20" ry="13"/><ellipse cx="96" cy="66" rx="20" ry="13"/>
-  </g>
-  <g fill="none" stroke="#A0552F" stroke-width="10" stroke-linecap="round">
-    <ellipse cx="130" cy="66" rx="20" ry="13"/><ellipse cx="164" cy="66" rx="20" ry="13"/>
-  </g>
-  <g fill="#7C3F22" opacity=".85">
-    <circle cx="124" cy="58" r="2.6"/><circle cx="138" cy="74" r="3"/><circle cx="158" cy="56" r="2.4"/>
-    <circle cx="170" cy="72" r="2.8"/><circle cx="146" cy="62" r="2"/>
-  </g>
-  <path d="M96 100 h34 m0 0 l-7 -6 m7 6 l-7 6" stroke="#C96F3F" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <text x="80" y="122" class="cap">new metal</text>
-  <text x="148" y="122" class="cap">rusted</text>
-  <text x="100" y="142" class="cap2">water and air changed it</text>
-</svg>`,
-
-cycle: `<svg viewBox="0 0 200 150" class="art">
-  <g fill="none" stroke="#C96F3F" stroke-width="3.5">
-    <path d="M100 26 A 50 50 0 0 1 143 106" stroke-linecap="round"/>
-    <path d="M143 106 A 50 50 0 0 1 57 106" stroke-linecap="round"/>
-    <path d="M57 106 A 50 50 0 0 1 100 26" stroke-linecap="round"/>
-  </g>
-  <path d="M138 96 l7 12 l-13 2z" fill="#C96F3F"/>
-  <path d="M62 116 l14 -3 l-4 13z" fill="#C96F3F"/>
-  <path d="M56 42 l-3 -14 l13 5z" fill="#C96F3F"/>
-  <g>
-    <circle cx="100" cy="26" r="17" fill="#12333B"/><text x="100" y="24" class="cap3">DEFINE</text><text x="100" y="33" class="cap3">PROBLEM</text>
-    <circle cx="152" cy="66" r="16" fill="#2FA9C4"/><text x="152" y="64" class="cap3">PLAN</text><text x="152" y="73" class="cap3">SOLUTION</text>
-    <circle cx="132" cy="118" r="16" fill="#5EC08C"/><text x="132" y="116" class="cap3">MAKE</text><text x="132" y="125" class="cap3">MODEL</text>
-    <circle cx="68" cy="118" r="16" fill="#EFB04A"/><text x="68" y="116" class="cap4b">TEST</text><text x="68" y="125" class="cap4b">MODEL</text>
-    <circle cx="48" cy="66" r="17" fill="#C96F3F"/><text x="48" y="64" class="cap3">EVALUATE</text><text x="48" y="73" class="cap3">REDESIGN</text>
-  </g>
-</svg>`,
-
-ropes: `<svg viewBox="0 0 200 150" class="art">
-  <g stroke="#DDD5C4" stroke-width="9" stroke-linecap="round" fill="none">
-    <path d="M40 26 q7 20 0 40 q-7 20 0 40 q7 16 0 28"/>
-  </g>
-  <g stroke="#B9AF9A" stroke-width="2" fill="none">
-    <path d="M35 32 q10 6 10 12"/><path d="M35 58 q10 6 10 12"/><path d="M35 84 q10 6 10 12"/>
-  </g>
-  <rect x="92" y="24" width="16" height="110" rx="4" fill="#EFC44A"/>
-  <g stroke="#C9A32F" stroke-width="1.6"><path d="M100 26 v106"/></g>
-  <g stroke="#9A5B3A" stroke-width="9" stroke-linecap="round" fill="none">
-    <path d="M160 26 q7 20 0 40 q-7 20 0 40 q7 16 0 28"/>
-  </g>
-  <g stroke="#7C4526" stroke-width="2" fill="none">
-    <path d="M155 34 q10 6 10 12"/><path d="M155 60 q10 6 10 12"/><path d="M155 86 q10 6 10 12"/>
-  </g>
-  <text x="40" y="146" class="cap">nylon rope</text>
-  <text x="100" y="146" class="cap">nylon strap</text>
-  <text x="160" y="146" class="cap">jute rope</text>
-</svg>`,
-
-grip: `<svg viewBox="0 0 200 150" class="art">
-  <path d="M62 108 q-10 -34 4 -54 q6 -9 14 -4 q-4 -18 6 -20 q9 -2 11 16 q3 -16 12 -14 q9 2 7 18 q5 -10 12 -5 q7 6 2 20 q10 6 6 22 q-5 22 -22 28 q-30 10 -52 -7z" fill="#F2C9A0"/>
-  <path d="M52 46 h96" stroke="#9A5B3A" stroke-width="11" stroke-linecap="round"/>
-  <path d="M52 46 h96" stroke="#B87A4E" stroke-width="4" stroke-linecap="round"/>
-  <g stroke="#C96F3F" stroke-width="2.5" fill="none" stroke-linecap="round">
-    <path d="M40 40 v12"/><path d="M160 40 v12"/><path d="M40 46 h-8"/><path d="M160 46 h8"/>
-  </g>
-  <text x="100" y="132" class="cap">a hand is the size it is</text>
-  <text x="100" y="144" class="cap2">that makes it a constraint</text>
-</svg>`,
-
-cobweb: `<svg viewBox="0 0 200 150" class="art">
-  <g stroke="#9FB6C0" stroke-width="1.4" fill="none">
-    <path d="M100 18 v112"/><path d="M44 74 h112"/><path d="M58 34 L142 114"/><path d="M142 34 L58 114"/>
-    <path d="M100 30 L128 46 L142 74 L128 102 L100 118 L72 102 L58 74 L72 46 z"/>
-    <path d="M100 44 L118 54 L127 74 L118 94 L100 104 L82 94 L73 74 L82 54 z"/>
-    <path d="M100 58 L110 64 L114 74 L110 84 L100 90 L90 84 L86 74 L90 64 z"/>
-  </g>
-  <g fill="#7FC6E0">
-    <circle cx="118" cy="54" r="4"/><circle cx="82" cy="94" r="3.4"/><circle cx="127" cy="74" r="3"/>
-    <circle cx="90" cy="64" r="2.6"/><circle cx="110" cy="84" r="3.2"/><circle cx="73" cy="74" r="2.4"/>
-    <circle cx="114" cy="74" r="2"/>
-  </g>
-  <text x="100" y="144" class="cap">water \u2014 but it did not rain</text>
-</svg>`,
-
-globe: `<svg viewBox="0 0 200 150" class="art">
-  <circle cx="64" cy="66" r="38" fill="#2FA9C4"/>
-  <path d="M40 46 q14 -8 26 2 q10 8 2 16 q-12 10 -24 2 q-8 -8 -4 -20z" fill="#5EC08C"/>
-  <path d="M62 84 q16 -6 26 4 q6 8 -4 14 q-14 6 -22 -4 q-6 -8 0 -14z" fill="#5EC08C"/>
-  <g stroke="#1B7E96" stroke-width="1.2" fill="none" opacity=".7">
-    <ellipse cx="64" cy="66" rx="38" ry="14"/><ellipse cx="64" cy="66" rx="16" ry="38"/>
-  </g>
-  <rect x="60" y="104" width="8" height="18" fill="#8B6F5E"/>
-  <rect x="46" y="122" width="36" height="7" rx="3" fill="#6E5A48"/>
-  <g><rect x="118" y="40" width="62" height="52" rx="4" fill="#FBF6EC" stroke="#C9BFA9" stroke-width="2"/>
-    <path d="M124 62 q10 -10 20 -2 q10 8 20 -2" stroke="#5EC08C" stroke-width="3" fill="none"/>
-    <path d="M124 76 q12 -8 22 0 q10 8 18 -2" stroke="#2FA9C4" stroke-width="3" fill="none"/>
-    <circle cx="150" cy="52" r="3" fill="#D6584A"/>
-  </g>
-  <text x="64" y="142" class="cap">globe</text>
-  <text x="149" y="106" class="cap">map</text>
-  <text x="149" y="118" class="cap2">both are models</text>
-</svg>`,
-
-balloon2: `<svg viewBox="0 0 200 150" class="art">
-  <ellipse cx="56" cy="60" rx="24" ry="29" fill="#F2A0A8"/>
-  <path d="M56 89 l-6 10 h12z" fill="#E4838D"/>
-  <g fill="#12333B"><circle cx="50" cy="52" r="3"/><circle cx="64" cy="62" r="3"/><circle cx="54" cy="72" r="3"/></g>
-  <ellipse cx="144" cy="58" rx="40" ry="46" fill="#F2A0A8"/>
-  <path d="M144 104 l-7 11 h14z" fill="#E4838D"/>
-  <g fill="#12333B">
-    <circle cx="132" cy="40" r="3"/><circle cx="156" cy="48" r="3"/><circle cx="142" cy="66" r="3"/>
-    <circle cx="160" cy="74" r="3"/><circle cx="124" cy="62" r="3"/><circle cx="148" cy="30" r="3"/>
-    <circle cx="134" cy="84" r="3"/><circle cx="164" cy="60" r="3"/>
-  </g>
-  <g stroke="#12333B" stroke-width="1.4" opacity=".55">
-    <path d="M132 40 l10 26"/><path d="M156 48 l-14 18"/><path d="M124 62 l18 4"/><path d="M148 30 l8 18"/>
-  </g>
-  <path d="M88 60 h20 m0 0 l-6 -5 m6 5 l-6 5" stroke="#C96F3F" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <text x="100" y="140" class="cap">same particles \u2014 more space</text>
-</svg>`,
-
-window: `<svg viewBox="0 0 200 150" class="art">
-  <rect x="34" y="18" width="132" height="104" rx="4" fill="#CFE6EF" stroke="#9FB6C0" stroke-width="3"/>
-  <path d="M100 18 v104" stroke="#9FB6C0" stroke-width="3"/>
-  <path d="M34 70 h132" stroke="#9FB6C0" stroke-width="3"/>
-  <g fill="#FBFDFE" opacity=".85">
-    <ellipse cx="70" cy="46" rx="26" ry="20"/><ellipse cx="70" cy="96" rx="24" ry="18"/>
-  </g>
-  <g fill="#7FC6E0">
-    <circle cx="62" cy="42" r="3.4"/><circle cx="78" cy="50" r="4"/><circle cx="68" cy="56" r="2.6"/>
-    <circle cx="82" cy="38" r="2.4"/><circle cx="60" cy="94" r="3"/><circle cx="76" cy="100" r="3.6"/>
-    <circle cx="68" cy="88" r="2.2"/>
-  </g>
-  <g stroke="#7FC6E0" stroke-width="1.6" fill="none" opacity=".8">
-    <path d="M78 50 q2 8 -1 14"/><path d="M76 100 q2 7 -1 12"/>
-  </g>
-  <text x="100" y="140" class="cap">breath on cold glass</text>
-</svg>`,
-
-lemonade: `<svg viewBox="0 0 200 150" class="art">
-  <path d="M64 26 h72 l-9 100 a8 8 0 0 1 -8 7 h-38 a8 8 0 0 1 -8 -7 z" fill="#F2E28C" opacity=".75"/>
-  <path d="M64 26 h72 l-9 100 a8 8 0 0 1 -8 7 h-38 a8 8 0 0 1 -8 -7 z" fill="none" stroke="#C9BFA9" stroke-width="2.5"/>
-  <ellipse cx="100" cy="26" rx="36" ry="7" fill="#FAF3C8" stroke="#C9BFA9" stroke-width="2"/>
-  <g fill="#E8C84A" opacity=".9">
-    <circle cx="86" cy="52" r="2.6"/><circle cx="108" cy="62" r="2.2"/><circle cx="94" cy="78" r="2.8"/>
-    <circle cx="114" cy="88" r="2.4"/><circle cx="82" cy="96" r="2.2"/><circle cx="102" cy="106" r="2.6"/>
-    <circle cx="118" cy="46" r="2"/><circle cx="90" cy="118" r="2.2"/>
-  </g>
-  <path d="M150 34 q16 -8 24 6 q6 12 -8 16 q-16 4 -20 -8 q-2 -8 4 -14z" fill="#F6E7A8"/>
-  <path d="M156 42 q8 -4 12 4" stroke="#DCC468" stroke-width="2" fill="none"/>
-  <text x="100" y="146" class="cap">three kinds of matter \u2014 you see one</text>
-</svg>`,
-
-beakers2: `<svg viewBox="0 0 200 150" class="art">
-  <g>
-    <path d="M22 40 h44 v56 a8 8 0 0 1 -8 8 h-28 a8 8 0 0 1 -8 -8 z" fill="#DCEBF0" opacity=".5" stroke="#A9C6D2" stroke-width="2"/>
-    <path d="M24 60 h40 v36 a8 8 0 0 1 -8 8 h-24 a8 8 0 0 1 -8 -8 z" fill="#9FD4E8" opacity=".5"/>
-    <rect x="36" y="76" width="16" height="16" rx="2" fill="#FBF6EC" stroke="#DCD3C2"/>
-    <text x="44" y="120" class="cap">cube</text>
-  </g>
-  <g>
-    <path d="M78 40 h44 v56 a8 8 0 0 1 -8 8 h-28 a8 8 0 0 1 -8 -8 z" fill="#DCEBF0" opacity=".5" stroke="#A9C6D2" stroke-width="2"/>
-    <path d="M80 60 h40 v36 a8 8 0 0 1 -8 8 h-24 a8 8 0 0 1 -8 -8 z" fill="#9FD4E8" opacity=".62"/>
-    <g fill="#FBF6EC"><rect x="92" y="74" width="7" height="7" rx="1"/><rect x="104" y="82" width="6" height="6" rx="1"/><rect x="88" y="88" width="6" height="6" rx="1"/><rect x="100" y="68" width="5" height="5" rx="1"/></g>
-    <text x="100" y="120" class="cap">breaking up</text>
-  </g>
-  <g>
-    <path d="M134 40 h44 v56 a8 8 0 0 1 -8 8 h-28 a8 8 0 0 1 -8 -8 z" fill="#DCEBF0" opacity=".5" stroke="#A9C6D2" stroke-width="2"/>
-    <path d="M136 60 h40 v36 a8 8 0 0 1 -8 8 h-24 a8 8 0 0 1 -8 -8 z" fill="#9FD4E8" opacity=".78"/>
-    <g fill="#FBF6EC" opacity=".75"><circle cx="146" cy="72" r="1.5"/><circle cx="158" cy="80" r="1.5"/><circle cx="168" cy="70" r="1.5"/><circle cx="150" cy="90" r="1.5"/><circle cx="164" cy="92" r="1.5"/><circle cx="140" cy="82" r="1.5"/></g>
-    <text x="156" y="120" class="cap">too small to see</text>
-  </g>
-  <path d="M100 132 h-70 m0 0 l6 -5 m-6 5 l6 5" stroke="#C96F3F" stroke-width="2" fill="none" opacity="0"/>
-  <text x="100" y="144" class="cap2">heat and stirring speed this up</text>
-</svg>`,
-
-magnify: `<svg viewBox="0 0 200 150" class="art">
-  <rect x="46" y="48" width="54" height="54" rx="4" fill="#FBF6EC" stroke="#C9BFA9" stroke-width="2"/>
-  <g fill="#E8DFC9"><rect x="52" y="54" width="12" height="12"/><rect x="70" y="54" width="12" height="12"/><rect x="52" y="72" width="12" height="12"/><rect x="70" y="72" width="12" height="12"/><rect x="61" y="63" width="12" height="12"/><rect x="79" y="72" width="12" height="12"/><rect x="61" y="81" width="12" height="12"/></g>
-  <circle cx="128" cy="66" r="34" fill="#DCEBF0" opacity=".55" stroke="#8B99A0" stroke-width="5"/>
-  <g fill="#C96F3F">
-    <circle cx="114" cy="54" r="4"/><circle cx="132" cy="50" r="4"/><circle cx="146" cy="62" r="4"/>
-    <circle cx="120" cy="70" r="4"/><circle cx="136" cy="72" r="4"/><circle cx="126" cy="84" r="4"/>
-    <circle cx="144" cy="80" r="4"/><circle cx="110" cy="68" r="4"/>
-  </g>
-  <path d="M152 92 l22 24" stroke="#6E5A48" stroke-width="8" stroke-linecap="round"/>
-  <text x="100" y="140" class="cap">one crystal, many particles</text>
-</svg>`,
-
-saltpan: `<svg viewBox="0 0 200 150" class="art">
-  <rect x="18" y="18" width="164" height="34" rx="3" fill="#1B5F86"/>
-  <g stroke="#4E8FB5" stroke-width="2" fill="none" opacity=".8">
-    <path d="M26 30 q10 -5 20 0 t20 0 t20 0"/><path d="M96 40 q10 -5 20 0 t20 0 t20 0"/>
-  </g>
-  <rect x="18" y="56" width="164" height="76" rx="3" fill="#E8DFC9"/>
-  <g stroke="#CFC3A6" stroke-width="2.5" fill="none">
-    <path d="M18 82 h164"/><path d="M18 106 h164"/><path d="M72 56 v76"/><path d="M128 56 v76"/>
-  </g>
-  <rect x="22" y="60" width="46" height="18" fill="#B9D8E4"/>
-  <rect x="76" y="60" width="48" height="18" fill="#DCE9EC"/>
-  <rect x="132" y="60" width="46" height="18" fill="#FBF8F0"/>
-  <g fill="#fff"><rect x="136" y="64" width="4" height="4"/><rect x="150" y="68" width="5" height="5"/><rect x="164" y="63" width="4" height="4"/><rect x="144" y="72" width="4" height="4"/></g>
-  <circle cx="164" cy="30" r="11" fill="#EFB04A"/>
-  <text x="45" y="96" class="cap">full</text>
-  <text x="100" y="96" class="cap">drying</text>
-  <text x="155" y="96" class="cap">salt left</text>
-  <text x="100" y="146" class="cap2">the water leaves, the salt cannot</text>
-</svg>`
-};
-
+const ART={};
 const DATA = {
- "chapter": "Chapter 3 — Too Small to Be Seen",
- "bigQuestion": "How do models help to explain that matter is made of small particles?",
+ "chapter": "The Night Julia Died — pages 7–13",
+ "bigQuestion": "What exactly did Helen hear that night, and what did she only assume?",
  "passages": {
-  "evidence": {
-   "title": "Too Small to Be Seen",
-   "cite": "Student Reader, page 11",
-   "vocab": [
-    [
-     "evidence, n.",
-     "information that helps answer a question, support a claim, or solve a problem"
-    ]
-   ],
-   "text": [
-    "Have you ever read a mystery? Mysteries are stories with problems to solve. How do we solve a mystery? We look for clues! Clues are pieces of information that help us solve the problem.",
-    "To solve problems in science, we look for clues. We call those clues evidence. Evidence is information that supports our answers to scientific questions.",
-    "Much of the time, you can answer scientific questions using evidence from observing something. You can use the evidence you observe either directly or indirectly to support a scientific claim. For example—what if you observe that there is water on a cobweb but it hasn't rained? Where did the water come from?",
-    "By taking a close look at matter, you can probably figure out the mystery and make a claim about where this water came from."
-   ]
-  },
-  "air": {
-   "title": "Air Is Made of Small Particles",
-   "cite": "Student Reader, pages 12–13",
-   "vocab": [
-    [
-     "models, n.",
-     "pictures, symbols, or physical examples that help explain something that we cannot directly observe"
-    ],
-    [
-     "particles, n.",
-     "tiny pieces of matter that are too small to be seen"
-    ],
-    [
-     "expand, v.",
-     "to grow bigger"
-    ]
-   ],
-   "text": [
-    "Sometimes in science something is too big or too small for us to be able to see. For example, we cannot see Earth all at once because it is too big. But we use models of Earth, such as globes and maps, to represent our enormous planet. Similarly, we cannot see air or the particles that we breathe in. These particles are too small for our eyes to detect. But we can find evidence that air is all around us. Scientists often use models of matter that is not visible, such as the air in our atmosphere, to help understand and explain how it behaves.",
-    "Gathering and considering evidence is important to understanding matter, especially air. Consider this scientific claim: IF matter is made of particles too small to be seen, THEN we should be able to find evidence to support that idea.",
-    "Air is matter, so air has mass and takes up space. But how can we use a model to support this idea with evidence?",
-    "Let's generate some supporting evidence using a balloon. When you blow air—a combination of gases—into a balloon, the balloon expands, and its shape changes.",
-    "If air didn't have mass or take up space, then the balloon would not have expanded. IF air is matter and made of small particles as we have claimed, THEN the fact that the balloon expands makes sense. Perhaps the idea that matter is made of small particles is correct."
-   ]
-  },
-  "water": {
-   "title": "Water Is Made of Small Particles",
-   "cite": "Student Reader, page 14",
+  "temper": {
+   "title": "The terror of the village",
+   "cite": "Reader, page 7",
    "vocab": [],
    "text": [
-    "Now let's get back to how water ended up on the cobweb when it didn't rain. Consider this claim: There are particles of water in air that settled on the cobweb. Place your hand in front of your mouth, and breathe out. Does your breath feel dry or wet? Imagine breathing on a cold window in winter or a cold glass. What would you expect to see? Little drops of water would form on the surface of the glass. This observation can be used as evidence that supports our claim. The particles of water found in the air are known as water vapor. Water vapor is in the air even when we cannot see it!",
-    "Remember: we use evidence to support scientific claims. The claim is that small particles of water are part of the air we breathe. Look at the picture below. What evidence do you see that supports the explanation that there is water in the air?"
+    "“Instead of making friends and exchanging visits with our neighbors, he shut himself up in his house. He seldom came out except to quarrel ferociously with whoever might cross his path. A series of disgraceful brawls took place, two of which ended in the police court. He became the terror of the village. Folks would fly at his approach, for he is a man of immense strength and absolutely uncontrollable anger.",
+    "“Last week he hurled the local blacksmith off a bridge into a stream, and it was only by paying all the money that I could gather that I was able to avert another public disclosure. He had no friends at all except the wandering gypsies, and he would allow them to camp on the few acres of bramble-covered land that represent the family estate.”"
    ]
   },
-  "dissolve": {
-   "title": "Dissolving Matter Is Evidence",
-   "cite": "Student Reader, pages 15–16",
-   "vocab": [
-    [
-     "dissolve, v.",
-     "to separate and spread out particles of matter into another substance"
-    ]
-   ],
-   "text": [
-    "Moisture in your breath and condensation may be evidence that matter is made of small particles. Dissolving solid matter in a liquid may provide even more evidence.",
-    "Suppose you want a cold glass of lemonade. You start by adding sugar to water. When you add it, the sugar seems to disappear. Did it go away? No, it dissolved.",
-    "When one type of matter dissolves into another type of matter, such as sugar or lemon juice in water, the matter separates and spreads out. Three types of matter are present, but you might not be able to see two of them.",
-    "Water is one of the best substances at dissolving other substances. Salt and sugar dissolve in water. But water isn't alone. Acetic acid, also known as vinegar, is used to dissolve vegetable oil when you make a salad dressing. And the process of dissolving can change. Depending on the situation, certain kinds of matter dissolve quickly while others dissolve much more slowly.",
-    "Temperature will affect how matter dissolves. For most matter, the warmer a liquid is, the more matter will dissolve into it. A model might show that heat causes the particles of matter to move around faster, which causes them to break apart into the liquid more easily. Cooler temperatures cause the particles to move slower and group back together into a larger particle of the same matter. Less sugar or salt will dissolve in cold water, and crystals of matter will be seen at the bottom of the glass."
-   ]
-  },
-  "beaker": {
-   "title": "Consider an Example",
-   "cite": "Student Reader, page 17",
+  "whistle": {
+   "title": "Julia's question at the door",
+   "cite": "Reader, pages 10–11",
    "vocab": [],
    "text": [
-    "Matter is placed into a beaker of water. For example, this could be a sugar cube placed in water. Large crystals of sugar can be seen easily in the water. If you look at them under a magnifying glass, you can see that there are many particles inside. You can now add some heat, stir the water, or both to speed up the dissolving. Both actions will help the particles become smaller and spread out.",
-    "The matter in the beaker starts to separate into smaller particles as the crystals begin to dissolve. You might be able to see the small particles of matter, as the water won't be as clear as it was at the start.",
-    "The smaller particles in the beaker continue to break apart into even smaller pieces as they dissolve into the water. The particles get small enough that they can move between the particles of water, and eventually, the particles will become too small to see."
+    "“At eleven o'clock she rose to leave me, but she paused at the door and looked back.",
+    "“ ‘Tell me, Helen,’ said she, ‘have you ever heard anyone whistle in the dead of the night?’",
+    "“ ‘Never,’ said I.",
+    "“ ‘Because during the last few nights I have, about three in the morning, heard a low clear whistle. I am a light sleeper, and it has awakened me. I cannot tell where it came from — perhaps from the next room, perhaps from the lawn.’",
+    "“ ‘No. It must be those wretched gypsies.’",
+    "“ ‘Very likely. And yet if it were on the lawn, I wonder why you did not hear it also.’”"
    ]
   },
-  "evaporate": {
-   "title": "Evaporation Provides More Evidence",
-   "cite": "Student Reader, page 18",
-   "vocab": [
-    [
-     "evaporate, v.",
-     "to change form from liquid to gas"
-    ]
-   ],
+  "locked": {
+   "title": "Why the doors were locked",
+   "cite": "Reader, page 11",
+   "vocab": [],
    "text": [
-    "Now, let's think about a different kind of matter that dissolves in water—salt! How would you draw a model of salt water? What evidence could prove that an unknown sample of liquid is, in fact, salt water?",
-    "Is it possible that salt water is made of small particles of salt between small particles of water? You can't see the salt that is dissolved in the water. Consider this: IF we could separate the water from the sample, THEN salt should be left behind. This sounds like an investigation! If you place a shallow pool of salt water in the warm sun, the liquid water begins to evaporate and eventually turns into water vapor.",
-    "If all the water becomes water vapor, what remains? All the small particles of salt that were once dissolved in the water are now visible as a crust of whitish crystals."
+    "“Was it your custom always to lock yourselves in at night?”",
+    "“Always.”",
+    "“And why?”",
+    "“I think I mentioned that the Doctor kept a cheetah and a baboon. We had no feeling of security unless our doors were locked.”"
+   ]
+  },
+  "storm": {
+   "title": "The scream in the storm",
+   "cite": "Reader, pages 12–13",
+   "vocab": [],
+   "text": [
+    "“It was a wild night. The wind was howling outside, and the rain was beating and splashing against the windows. Suddenly, there burst forth the scream of a terrified woman. I knew that it was my sister's voice. I sprang from my bed and rushed into the corridor. As I opened my door I seemed to hear a low whistle, such as my sister described, and a few moments later a clanging sound, as if a metal object had fallen.",
+    "“By the light of the corridor lamp I saw my sister appear at the opening, her face blanched with terror, her hands groping for help, her whole figure swaying to and fro like that of a drunkard. At that moment her knees seemed to give way and she fell to the ground.",
+    "“As I bent over her she suddenly shrieked out in a voice I shall never forget, ‘O, my God! Helen! It was the band! The speckled band!’”"
    ]
   }
  },
  "videos": [
   {
-   "id": "hIY0Ykt6-Js",
-   "t": "What Is Evidence?",
-   "s": "Crash Course Kids #16.2",
-   "d": "5 min. How a claim gets supported by what you can observe.",
-   "when": "Start here."
+   "id": "Bl2ptiOdrxY",
+   "t": "Making Inferences",
+   "s": "Reading strategies",
+   "d": "5 min. How to use clues in a text plus what you already know to work out what the author has not said.",
+   "when": "Start here — this is the whole skill."
   },
   {
-   "id": "AIhU4gaAoyk",
-   "t": "Modeling and Prototypes",
-   "s": "Crash Course Kids #30.1",
-   "d": "5 min. Why scientists build models of things they cannot see.",
-   "when": "Best match to page 12."
-  },
-  {
-   "id": "ELchwUIlWa8",
-   "t": "What's Matter?",
-   "s": "Crash Course Kids #3.1",
-   "d": "5 min. Includes the balloon test — the same evidence as page 13.",
-   "when": "Watch after page 13."
+   "id": "6JZFN9Fu4Pw",
+   "t": "Character Traits",
+   "s": "Reading strategies",
+   "d": "5 min. Judging what a character is like from how they act and speak, not from being told.",
+   "when": "Watch before the Roylott questions."
   }
  ],
  "missions": [
   {
    "id": "m1",
-   "name": "Chapter 3 review",
-   "tag": "9 questions · about 8 minutes",
+   "name": "The night it happened",
+   "tag": "6 questions · about 5 minutes",
    "blurb": "A quick check that the chapter landed — not a test.",
    "items": [
     {
      "type": "pick",
-     "art": "cobweb",
-     "p": "evidence",
-     "q": "There is water on a cobweb in the morning, but it did not rain. What makes this a science mystery rather than just a puzzle?",
+     "p": "locked",
+     "q": "Why did Helen and Julia always lock their bedroom doors at night?",
      "opts": [
-      "Nobody can ever solve it.",
-      "You can gather evidence by observing, and use it to support a claim.",
-      "It has nothing to do with matter.",
-      "The answer is written in the glossary."
+      "They were afraid of the wandering gypsies.",
+      "Dr. Roylott kept a cheetah and a baboon that roamed the grounds.",
+      "Their stepfather had threatened them directly.",
+      "The house had been broken into before."
      ],
      "a": 1,
-     "why": "The reader opens with mysteries on purpose. Clues in a story are evidence in science — information that helps answer a question or support a claim."
-    },
-    {
-     "type": "match",
-     "p": "air",
-     "q": "Match each word to the meaning the teacher's guide uses.",
-     "pairs": [
-      [
-       "evidence",
-       "information that helps answer a question or support a claim"
-      ],
-      [
-       "models",
-       "pictures, symbols, or physical examples that explain what we cannot directly observe"
-      ],
-      [
-       "particles",
-       "tiny pieces of matter that are too small to be seen"
-      ],
-      [
-       "expand",
-       "to grow bigger"
-      ],
-      [
-       "dissolve",
-       "to separate and spread out particles of matter into another substance"
-      ],
-      [
-       "evaporate",
-       "to change form from liquid to gas"
-      ]
-     ],
-     "why": "These six are the Core Vocabulary for this chapter. Every one of them names either a kind of proof or a way particles behave."
+     "why": "“We had no feeling of security unless our doors were locked.” It is an ordinary household fact — and later it becomes very important, because it rules out the door."
     },
     {
      "type": "pick",
-     "art": "globe",
-     "p": "air",
-     "q": "We use globes and maps to represent Earth. Why does the reader bring that up in a chapter about particles?",
+     "p": "whistle",
+     "q": "What had Julia been hearing for several nights before she died?",
      "opts": [
-      "Because Earth is made of particles too.",
-      "Because maps are more accurate than globes.",
-      "Because a model stands in for something we cannot observe directly — whether it is too big or too small.",
-      "Because geography and science are the same subject."
-     ],
-     "a": 2,
-     "why": "Earth is too big to see at once; particles are too small. Same problem, same fix. That is what a model is for, and it is the Big Question of the whole chapter."
-    },
-    {
-     "type": "pick",
-     "art": "balloon2",
-     "p": "air",
-     "q": "The claim is: IF matter is made of particles too small to be seen, THEN we should find evidence. How does the balloon support it?",
-     "opts": [
-      "The balloon changes colour as it fills.",
-      "The balloon expands, which only makes sense if the air inside has mass and takes up space.",
-      "The balloon gets lighter as it fills with air.",
-      "The balloon proves particles are visible after all."
+      "Footsteps in the corridor outside her room.",
+      "A low, clear whistle at about three in the morning.",
+      "The cheetah crying on the lawn.",
+      "Someone trying the handle of her door."
      ],
      "a": 1,
-     "why": "The reader spells out the logic: if air had no mass and took up no space, the balloon would not have expanded. The expanding is the evidence."
-    },
-    {
-     "type": "sort",
-     "p": "evidence",
-     "q": "Sort each statement into what it is doing in an argument.",
-     "bins": [
-      "A CLAIM",
-      "EVIDENCE for it"
-     ],
-     "chips": [
-      [
-       "Matter is made of particles too small to be seen",
-       0
-      ],
-      [
-       "There are particles of water in the air",
-       0
-      ],
-      [
-       "A balloon expands when you blow into it",
-       1
-      ],
-      [
-       "Drops form on a cold window when you breathe on it",
-       1
-      ],
-      [
-       "Salt is left behind when salt water dries up",
-       1
-      ]
-     ],
-     "why": "A claim is what you are trying to show. Evidence is what you observed that makes the claim believable. Getting these two straight is the whole skill this chapter teaches."
-    },
-    {
-     "type": "pick",
-     "art": "window",
-     "p": "water",
-     "q": "Ana breathes on a cold window and little drops appear. What claim does this support?",
-     "opts": [
-      "The window is made of water.",
-      "Her breath is dry.",
-      "There are particles of water in the air, even when we cannot see them.",
-      "Cold glass produces water on its own."
-     ],
-     "a": 2,
-     "why": "The drops did not come from nowhere. Water vapor was in her breath the whole time — invisible until the cold glass made it collect where she could see it."
-    },
-    {
-     "type": "pick",
-     "art": "lemonade",
-     "p": "dissolve",
-     "q": "Sugar is stirred into lemonade and seems to disappear. What actually happened?",
-     "opts": [
-      "It turned into water.",
-      "It separated and spread out through the liquid.",
-      "It was destroyed by the lemon juice.",
-      "It sank to the bottom in one lump."
-     ],
-     "a": 1,
-     "why": "That is the definition of dissolving — the matter separates and spreads out into another substance. Three kinds of matter are in the glass and you can only see one of them."
+     "why": "She describes it exactly: “about three in the morning, heard a low clear whistle. I am a light sleeper, and it has awakened me.”"
     },
     {
      "type": "selectall",
-     "p": "evaporate",
-     "q": "Which observations support the claim that matter is made of particles too small to be seen? Select every correct answer.",
+     "p": "storm",
+     "q": "On the night Julia died, what did Helen actually hear? Select every correct answer.",
      "opts": [
       [
-       "A balloon expands when you blow into it",
+       "A woman's scream, which she knew was her sister's",
        1
       ],
       [
-       "Salt is left behind when salt water evaporates",
+       "A low whistle, like the one Julia had described",
        1
       ],
       [
-       "Sugar seems to vanish but still tastes sweet",
+       "A clanging sound, as if a metal object had fallen",
        1
       ],
       [
-       "A rock is heavier than a cotton ball the same size",
+       "A door being forced open",
        0
       ],
       [
-       "Drops form on a cold window when you breathe on it",
+       "The cheetah snarling outside the window",
+       0
+      ]
+     ],
+     "why": "Three sounds, in that order: the scream, the whistle, the clang. Every one of them turns out to matter — but not in the way anyone guesses at the time."
+    },
+    {
+     "type": "pick",
+     "p": "storm",
+     "q": "What were Julia's last words to her sister?",
+     "opts": [
+      "“It was the band! The speckled band!”",
+      "“It was the doctor — he has killed me!”",
+      "“Lock your door, Helen!”",
+      "“The gypsies — they are on the lawn!”"
+     ],
+     "a": 0,
+     "why": "“It was the band! The speckled band!” Two words that send everyone — including Holmes, at first — off in the wrong direction."
+    },
+    {
+     "type": "sort",
+     "p": "whistle",
+     "q": "Sort each one by whether the story says it happened, or someone is only guessing.",
+     "bins": [
+      "Something that happened",
+      "Someone's guess about it"
+     ],
+     "chips": [
+      [
+       "Julia heard a low whistle around three in the morning",
+       0
+      ],
+      [
+       "A clanging sound came moments after the scream",
+       0
+      ],
+      [
+       "The whistling was the gypsies camped outside",
+       1
+      ],
+      [
+       "Julia died of a sudden fright",
        1
       ]
      ],
-     "why": "The rock and cotton ball is a true fact from Chapter 1, but it is about how much matter something has — not about matter being made of invisible particles. True does not mean relevant."
+     "why": "Helen answers “It must be those wretched gypsies” — that is a guess, offered to settle an odd fact quickly. Keeping the two apart is what Holmes does better than anyone."
     },
     {
-     "type": "mystery",
-     "p": "evaporate",
-     "q": "Match each piece of evidence to the claim it supports.",
-     "headers": [
-      "What you observe",
-      "What it hints at"
+     "type": "pick",
+     "p": "temper",
+     "q": "Helen quietly paid out all the money she could gather after Roylott threw the blacksmith off a bridge. What does that tell you about her life with him?",
+     "opts": [
+      "She was wealthy and could easily afford it.",
+      "She was used to covering up his violence to keep it quiet.",
+      "She was fond of the blacksmith and wanted to help him.",
+      "She was trying to buy her freedom from the house."
      ],
-     "rows": [
-      {
-       "key": "A",
-       "cells": [
-        "A balloon expands",
-        "Something invisible fills space"
-       ],
-       "answer": "Air is matter"
-      },
-      {
-       "key": "B",
-       "cells": [
-        "Drops on a cold window",
-        "Something invisible became visible"
-       ],
-       "answer": "Water vapor is in air"
-      },
-      {
-       "key": "C",
-       "cells": [
-        "Sugar vanishes but is still tasted",
-        "Something spread out too far to see"
-       ],
-       "answer": "Dissolved matter is still there"
-      },
-      {
-       "key": "D",
-       "cells": [
-        "White crust after the water dries",
-        "Something was hidden in the liquid"
-       ],
-       "answer": "Salt was dissolved in the water"
-      }
-     ],
-     "choices": [
-      "Air is matter",
-      "Water vapor is in air",
-      "Dissolved matter is still there",
-      "Salt was dissolved in the water"
-     ],
-     "why": "Four different observations, four different claims, all pointing the same way. That is how a scientific argument gets strong — not one perfect proof, but several independent clues that agree."
+     "a": 1,
+     "why": "The story does not say she was frightened — it shows it. She pays to “avert another public disclosure,” which is what someone does when the violence is a pattern, not a surprise."
     }
    ]
   }
@@ -1684,73 +1305,72 @@ const DATA = {
 };
 DATA.excerpts = {
  "m1-0": [
-  "To solve problems in science, we look for clues. We call those clues evidence. Evidence is information that supports our answers to scientific questions.",
-  "For example—what if you observe that there is water on a cobweb but it hasn't rained?"
+  "My evidence showed that the door had been fastened on the inside, and the windows were blocked by old-fashioned shutters with iron bars, which were secured every night. The walls were shown to be quite solid all around, and the flooring was also thoroughly examined, with the same result."
  ],
  "m1-1": [
-  "Scientists often use models of matter that is not visible, such as the air in our atmosphere, to help understand and explain how it behaves."
+  "“No, she was in her nightdress. In her hand was the charred stump of a match.”",
+  "“Showing that she had struck a light and looked about her. That is important."
  ],
  "m1-2": [
-  "For example, we cannot see Earth all at once because it is too big. But we use models of Earth, such as globes and maps, to represent our enormous planet. Similarly, we cannot see air or the particles that we breathe in."
+  "Two days ago some repairs were started in the west wing of the building, so that I have had to move into the room in which my sister died, and to sleep in the very bed in which she slept."
  ],
  "m1-3": [
-  "When you blow air—a combination of gases—into a balloon, the balloon expands, and its shape changes.",
-  "If air didn't have mass or take up space, then the balloon would not have expanded."
+  "“I see many objections to any such a theory.”",
+  "“And so do I. It is precisely for that reason that we are going to Stoke Moran this day.”"
  ],
  "m1-4": [
-  "Evidence is information that supports our answers to scientific questions.",
-  "You can use the evidence you observe either directly or indirectly to support a scientific claim."
+  "What, then, of these whistles in the night and the peculiar words of the dying woman?"
  ],
  "m1-5": [
-  "Little drops of water would form on the surface of the glass. This observation can be used as evidence that supports our claim. The particles of water found in the air are known as water vapor. Water vapor is in the air even when we cannot see it!"
+  "He stepped swiftly forward, seized the poker, and bent it into a curve with his huge brown hands.",
+  "As he spoke he picked up the steel poker, and with a sudden effort straightened it out again."
  ],
  "m1-6": [
-  "When you add it, the sugar seems to disappear. Did it go away? No, it dissolved.",
-  "When one type of matter dissolves into another type of matter, such as sugar or lemon juice in water, the matter separates and spreads out."
- ],
- "m1-7": [
-  "Consider this: IF we could separate the water from the sample, THEN salt should be left behind."
- ],
- "m1-8": [
-  "All the small particles of salt that were once dissolved in the water are now visible as a crust of whitish crystals."
+  "Each daughter can claim an income of £250 in case of marriage. If both girls had married, Dr. Roylott would have had a mere pittance. Even one marriage would cripple him to a serious extent."
  ]
 };
 DATA.vidFor = {
- "evidence": {
-  "id": "hIY0Ykt6-Js",
-  "t": "What Is Evidence?",
-  "s": "Crash Course Kids #16.2",
-  "d": "How a claim gets supported by what you can observe."
+ "inquest": {
+  "id": "Bl2ptiOdrxY",
+  "t": "Making Inferences",
+  "s": "Reading strategies",
+  "d": "Using clues plus what you know to reach what the author did not say."
  },
- "air": {
-  "id": "AIhU4gaAoyk",
-  "t": "Modeling and Prototypes",
-  "s": "Crash Course Kids #30.1",
-  "d": "Why scientists build models of what they cannot see."
+ "band": {
+  "id": "Bl2ptiOdrxY",
+  "t": "Making Inferences",
+  "s": "Reading strategies",
+  "d": "When a character's explanation may not be the right one."
  },
- "water": {
-  "id": "ELchwUIlWa8",
-  "t": "What's Matter?",
-  "s": "Crash Course Kids #3.1",
-  "d": "Air, water vapor, and the balloon test."
+ "helen": {
+  "id": "Bl2ptiOdrxY",
+  "t": "Making Inferences",
+  "s": "Reading strategies",
+  "d": "Noticing which details the author repeats."
  },
- "dissolve": {
-  "id": "ELchwUIlWa8",
-  "t": "What's Matter?",
-  "s": "Crash Course Kids #3.1",
-  "d": "What happens to matter when it seems to vanish."
+ "theory": {
+  "id": "Bl2ptiOdrxY",
+  "t": "Making Inferences",
+  "s": "Reading strategies",
+  "d": "Telling a fact apart from a guess about that fact."
  },
- "beaker": {
-  "id": "AIhU4gaAoyk",
-  "t": "Modeling and Prototypes",
-  "s": "Crash Course Kids #30.1",
-  "d": "Reading a diagram that models a process."
+ "roylott": {
+  "id": "6JZFN9Fu4Pw",
+  "t": "Character Traits",
+  "s": "Reading strategies",
+  "d": "Judging a character by what they do, not by being told."
  },
- "evaporate": {
-  "id": "hIY0Ykt6-Js",
-  "t": "What Is Evidence?",
-  "s": "Crash Course Kids #16.2",
-  "d": "Turning an IF–THEN idea into a real investigation."
+ "will": {
+  "id": "Bl2ptiOdrxY",
+  "t": "Making Inferences",
+  "s": "Reading strategies",
+  "d": "What a motive is, and how evidence establishes one."
+ },
+ "journey": {
+  "id": "6JZFN9Fu4Pw",
+  "t": "Character Traits",
+  "s": "Reading strategies",
+  "d": "What a character notices tells you how they think."
  }
 };
 
@@ -1790,8 +1410,8 @@ function home(){
       </span>
     </a>`).join("");
 
-  $("foot").innerHTML = "Based on an original work of the Core Knowledge Foundation (coreknowledge.org), used under CC BY-NC-SA 4.0. "+
-    "This does not imply that the Core Knowledge Foundation endorses this work.<br>Practice questions and artwork are not part of the original.";
+  $("foot").innerHTML = "Passages from Core Knowledge Core Classics, <i>Sherlock Holmes</i>, abridged for young readers, used under CC BY-NC-SA 4.0. "+
+    "Based on an original work of the Core Knowledge Foundation (coreknowledge.org). This does not imply that the Core Knowledge Foundation endorses this work.<br>Practice questions are not part of the original.";
   show("home");
 }
 function show(w){ ["home","play","done"].forEach(x=>$(x).classList.toggle("hide",x!==w)); window.scrollTo(0,0); }

@@ -147,6 +147,16 @@ def vtest(s):
     return Patcher(s, "vocabtest")
 
 
+def reads(name):
+    """The Speckled Band is one story cut into sections, each its own app
+    generated from the shell of the section that came before it. The generator
+    copies that app *after* its call sites were patched, so every hook is
+    already in the source — these need the config and nothing else, exactly
+    like hist2/hist3. Running mission_app over them would hunt for anchors the
+    first pass has already rewritten."""
+    return lambda s: Patcher(s, name)
+
+
 def read(s):
     """Sherlock, The Speckled Band — the same program as the science chapters,
     so the same hooks. Its one mission is also its last, so the chest asks for
@@ -239,6 +249,27 @@ APPS = {
     # Ch3's single mission is m1, the same shape as Ch1 and Ch2.
     "science/g5-matter-ch3":  (sci3,  dict(app="science3",   shake="#card",   lift=None,
                                            dragon=["m1"])),
+    # The Speckled Band, pages 1-44, cut into sections. Each is one mission, m1,
+    # which is also its last — so every section can summon the dragon on a
+    # flawless first run, the same as the section that came before it.
+    "reading/sherlock-speckled-1a": (reads("reading1a"),
+                                     dict(app="reading1a", shake="#card", lift=None,
+                                          dragon=["m1"])),
+    "reading/sherlock-speckled-1b": (reads("reading1b"),
+                                     dict(app="reading1b", shake="#card", lift=None,
+                                          dragon=["m1"])),
+    "reading/sherlock-speckled-2":  (reads("reading2"),
+                                     dict(app="reading2",  shake="#card", lift=None,
+                                          dragon=["m1"])),
+    "reading/sherlock-speckled-3":  (reads("reading3"),
+                                     dict(app="reading3",  shake="#card", lift=None,
+                                          dragon=["m1"])),
+    "reading/sherlock-speckled-4":  (reads("reading4"),
+                                     dict(app="reading4",  shake="#card", lift=None,
+                                          dragon=["m1"])),
+    "reading/sherlock-speckled-5":  (reads("reading5"),
+                                     dict(app="reading5",  shake="#card", lift=None,
+                                          dragon=["m1"])),
 }
 
 # ---------------------------------------------------------------- machinery

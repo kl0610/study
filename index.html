@@ -116,6 +116,31 @@ a.ch,span.ch{display:flex;align-items:center;gap:11px;padding:11px 2px;
   box-shadow:inset -2px -2px 0 rgba(0,0,0,.3), inset 2px 2px 0 rgba(255,255,255,.28)}
 .n.pages{width:auto;min-width:46px;padding:0 7px;border-radius:8px;
   font:700 10px var(--mono);letter-spacing:.02em}
+/* ---- progress report: a grown-up's view, deliberately plainer than the game ---- */
+.report{margin:22px 0 0;background:var(--panel-2);border:1px solid var(--line);border-radius:14px}
+.report>summary{list-style:none;cursor:pointer;padding:14px 16px;display:flex;
+  align-items:baseline;gap:10px;font:700 12px var(--mono);letter-spacing:.08em;
+  text-transform:uppercase;color:var(--paper)}
+.report>summary::-webkit-details-marker{display:none}
+.report>summary:focus-visible{outline:2px solid var(--grass);outline-offset:-3px;border-radius:14px}
+.rep-s{font-weight:600;letter-spacing:.04em;text-transform:none;color:var(--dim)}
+.rep-body{padding:0 16px 16px}
+.rep-empty{margin:0;color:var(--dim);font-size:13px;line-height:1.5}
+.rep-row{border-top:1px solid var(--line);padding:12px 0 10px}
+.rep-row:first-child{border-top:0}
+.rep-head{display:flex;align-items:baseline;gap:9px;flex-wrap:wrap}
+.rep-what{font-weight:700;font-size:14px}
+.rep-sub2{font:600 10px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--c)}
+.rep-flag{font:700 9px var(--mono);letter-spacing:.1em;text-transform:uppercase;
+  color:#2A1B10;background:var(--history);border-radius:999px;padding:2px 7px}
+.rep-tries{list-style:none;display:flex;flex-wrap:wrap;gap:7px;margin:9px 0 0;padding:0}
+.rep-tries li{background:var(--panel);border:1px solid var(--line);border-radius:9px;
+  padding:5px 9px;min-width:74px}
+.rep-tries b{display:block;font:800 13px var(--mono);color:var(--grass)}
+.rep-tries li.low b{color:var(--history)}
+.rep-tries li.part{border-style:dashed}
+.rep-tries small{display:block;font:600 9px var(--mono);letter-spacing:.03em;color:var(--dim);margin-top:1px}
+
 .ch .t{flex:1;min-width:0;font-size:14.5px;font-weight:600}
 .ch .t small{display:block;font:600 10px var(--mono);letter-spacing:.08em;
   text-transform:uppercase;color:var(--dim);margin-top:1px}
@@ -201,6 +226,11 @@ footer{margin:30px 0 0;padding-top:16px;border-top:2px solid var(--line);
   <div id="subjects"></div>
   <section class="again" id="again" hidden></section>
 
+  <details class="report" id="report">
+    <summary><span class="rep-t">Progress report</span><span class="rep-s" id="rep-sub"></span></summary>
+    <div class="rep-body" id="rep-body"></div>
+  </details>
+
   <footer>
     Reading passages are reproduced from Core Knowledge materials under CC BY-NC-SA 4.0.
     Based on an original work of the Core Knowledge Foundation (coreknowledge.org).
@@ -225,6 +255,7 @@ footer{margin:30px 0 0;padding-top:16px;border-top:2px solid var(--line);
      MC.clear(id, pct, {boss})              level finished — may award a tool
      MC.chest(el, pct, {id})                paint the results reveal into el
      MC.bests()                             {id: bestPct} for this app
+     MC.runs(id)                            every attempt at one activity
      MC.picker(el, items, cur, onPick)       a strip of level chips
      MC.state()                             read-only snapshot (used by the hub)
 
@@ -249,6 +280,13 @@ footer{margin:30px 0 0;padding-top:16px;border-top:2px solid var(--line);
   if (!S.ore || typeof S.ore !== "object") S.ore = {};
   if (!S.gem || typeof S.gem !== "object") S.gem = {};   // "app:id" -> diamond taken
   if (typeof S.dragon !== "number") S.dragon = 0;
+  /* Every attempt, not just the best one: "app:id" -> [{p:pct, t:when, x:partial}].
+     `cleared` keeps the high score because that is what the game rewards, but a
+     parent wants the shape of the practice — three tries drifting down is worth
+     knowing about even when the best of them was 90. Capped so a year of daily
+     practice cannot fill localStorage. */
+  if (!S.runs || typeof S.runs !== "object") S.runs = {};
+  var RUNS_KEPT = 25;
   function save() { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} }
 
   var TOOLS = ["wooden pickaxe", "stone pickaxe", "iron pickaxe", "diamond pickaxe",
@@ -520,6 +558,16 @@ footer{margin:30px 0 0;padding-top:16px;border-top:2px solid var(--line);
       var before = unlocked();
       var got = null;
 
+      /* Log the try itself before anything else, so it is recorded whether or
+         not it counted towards the game. A partial run is marked rather than
+         dropped: it is still practice a parent may want to see. */
+      if (!S.runs[key]) S.runs[key] = [];
+      var run = { p: pct, t: Date.now() };
+      if (partialRun) run.x = 1;
+      S.runs[key].push(run);
+      if (S.runs[key].length > RUNS_KEPT) S.runs[key] = S.runs[key].slice(-RUNS_KEPT);
+      save();
+
       if (!partialRun) {
         S.cleared[key] = Math.max(prev || 0, pct);
         if (key === "spelling:l7" && pct >= 75) S.tool9 = true;
@@ -741,12 +789,20 @@ footer{margin:30px 0 0;padding-top:16px;border-top:2px solid var(--line);
                   blocks: BEACON.map(function (k) { return blocks(k); }) },
         cleared: JSON.parse(JSON.stringify(S.cleared)),
         misses: JSON.parse(JSON.stringify(S.misses)),
+        runs: JSON.parse(JSON.stringify(S.runs)),
         url: url
       };
     },
 
+    /* Every attempt at one activity, oldest first. The hub's report reads this;
+       apps do not need it. */
+    runs: function (id) {
+      var key = cfg.app + ":" + id;
+      return (S.runs[key] || []).slice();
+    },
+
     reset: function () {
-      S = { cleared: {}, misses: {}, tool9: false, ore: {}, gem: {}, dragon: 0 };
+      S = { cleared: {}, misses: {}, tool9: false, ore: {}, gem: {}, dragon: 0, runs: {} };
       save(); drawBar();
     },
     _relift: lift
@@ -818,9 +874,27 @@ const SUBJECTS = [
     unit:"story",
     book:"Core Classics \u2014 Sherlock Holmes, abridged",
     chapters:[
-      { key:"speckled-14-23", story:"The Speckled Band", pages:"14\u201323",
+      { key:"speckled-1-6", story:"A Client at Baker Street", pages:"1\u20136",
+        note:"6 questions, about 5 minutes",
+        href:"reading/sherlock-speckled-1a/", app:"reading1a", ids:["m1"] },
+      { key:"speckled-7-13", story:"The Night Julia Died", pages:"7\u201313",
+        note:"6 questions, about 5 minutes",
+        href:"reading/sherlock-speckled-1b/", app:"reading1b", ids:["m1"] },
+      { key:"speckled-14-23", story:"What the Coroner Found", pages:"14\u201323",
         note:"7 questions, about 8 minutes",
         href:"reading/sherlock-speckled-1/", ids:["m1"] },
+      { key:"speckled-24-28", story:"At Stoke Moran", pages:"24\u201328",
+        note:"6 questions, about 5 minutes",
+        href:"reading/sherlock-speckled-2/", app:"reading2", ids:["m1"] },
+      { key:"speckled-29-33", story:"The Doctor\u2019s Room", pages:"29\u201333",
+        note:"6 questions, about 5 minutes",
+        href:"reading/sherlock-speckled-3/", app:"reading3", ids:["m1"] },
+      { key:"speckled-34-39", story:"The Night Watch", pages:"34\u201339",
+        note:"6 questions, about 5 minutes",
+        href:"reading/sherlock-speckled-4/", app:"reading4", ids:["m1"] },
+      { key:"speckled-40-44", story:"The Speckled Band", pages:"40\u201344",
+        note:"6 questions, about 5 minutes",
+        href:"reading/sherlock-speckled-5/", app:"reading5", ids:["m1"] },
       { key:"redheaded",   story:"The Red-Headed League" },
       { key:"engineer",    story:"The Adventure of the Engineer\u2019s Thumb" },
       { key:"carbuncle",   story:"The Adventure of the Blue Carbuncle" },
@@ -906,6 +980,62 @@ document.getElementById("subjects").innerHTML = SUBJECTS.map(s=>{
     </div>
   </details>`;
 }).join("");
+
+/* ---------- progress report ----------
+   For the grown-up, not the player. `cleared` keeps only the best score, which
+   is the right thing for the game and the wrong thing for spotting trouble: a
+   90 followed by two 60s reads as "90" everywhere else on this page. This lists
+   every attempt in order so the shape of the practice is visible, and marks an
+   activity for review when the most recent try came in under 75. */
+const REVIEW_AT = 75;
+const fmtDay = t => { const d = new Date(t);
+  return d.toLocaleDateString(undefined, {month:"short", day:"numeric"}); };
+
+function reportRows(){
+  const rows = [];
+  SUBJECTS.forEach(s=>s.chapters.filter(c=>c.href && c.ids).forEach(c=>{
+    const app = c.app || s.app;
+    c.ids.forEach(id=>{
+      const runs = (S.runs && S.runs[app+":"+id]) || [];
+      if(!runs.length) return;
+      const last = runs[runs.length-1];
+      rows.push({
+        subject: s.name, colour: s.c,
+        what: (s.unit==="story" ? c.story : c.t) + (c.ids.length>1 ? " · "+id : ""),
+        runs, last, review: last.p < REVIEW_AT
+      });
+    });
+  }));
+  return rows;
+}
+
+function drawReport(){
+  const rows = reportRows();
+  const host = document.getElementById("rep-body");
+  const sub  = document.getElementById("rep-sub");
+  if(!rows.length){
+    sub.textContent = "nothing yet";
+    host.innerHTML = `<p class="rep-empty">Once he finishes a round, every try shows up here with its score and the date.</p>`;
+    return;
+  }
+  const needing = rows.filter(r=>r.review).length;
+  sub.textContent = rows.length + (rows.length===1?" activity":" activities")
+                  + (needing ? " · " + needing + " to review" : "");
+  host.innerHTML = rows.map(r=>`
+    <div class="rep-row${r.review?" rev":""}" style="--c:${r.colour}">
+      <div class="rep-head">
+        <span class="rep-what">${esc(r.what)}</span>
+        <span class="rep-sub2">${esc(r.subject)}</span>
+        ${r.review?`<span class="rep-flag">review</span>`:""}
+      </div>
+      <ol class="rep-tries">${r.runs.map((run,i)=>`
+        <li class="${run.p>=REVIEW_AT?"good":"low"}${run.x?" part":""}">
+          <b>${run.p}%</b>
+          <small>try ${i+1} · ${fmtDay(run.t)}${run.x?" · partial":""}</small>
+        </li>`).join("")}</ol>
+    </div>`).join("");
+}
+drawReport();
 
 /* one subject open at a time — keeps the page short on a phone */
 document.querySelectorAll("details.subj").forEach(d=>d.addEventListener("toggle",()=>{

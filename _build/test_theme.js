@@ -357,6 +357,28 @@ ok("beacon progress is exposed", hubState.beacon.needs.length === 4);
 ok("reset clears the ore too", (MC.reset(), MC.state().ore.coal === undefined
    || MC.state().ore.coal === 0));
 
+/* Every attempt is kept, not just the best. `cleared` is what the game rewards;
+   this is what a parent reads to decide whether something needs another look. */
+console.log("\nevery try is recorded, for the parent");
+MC.reset();
+MC.begin("rr"); MC.clear("rr", 90);
+MC.begin("rr"); MC.clear("rr", 55);
+MC.begin("rr"); MC.clear("rr", 70);
+const runs = MC.runs("rr");
+ok("one entry per try, in order", runs.length === 3);
+ok("each try keeps its own percentage", runs.map(r => r.p).join(",") === "90,55,70");
+ok("a later worse try does not overwrite an earlier better one",
+   runs[0].p === 90 && runs[2].p === 70);
+ok("the best score is still the best", MC.bests()["rr"] === 90);
+ok("every try carries a date", runs.every(r => typeof r.t === "number" && r.t > 0));
+ok("the history reaches the hub", (MC.state().runs["spelling:rr"] || []).length === 3);
+ok("an untried activity has no history", MC.runs("never-touched").length === 0);
+MC.reset();
+ok("reset clears the history too", MC.runs("rr").length === 0);
+for (let i = 0; i < 40; i++) { MC.begin("cap"); MC.clear("cap", 80); }
+ok("history is capped so it cannot grow without bound", MC.runs("cap").length === 25);
+MC.reset();
+
 
 console.log(fails ? "\n" + fails + " FAILURES" : "\nall green");
 process.exit(fails ? 1 : 0);

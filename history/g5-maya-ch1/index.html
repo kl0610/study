@@ -564,6 +564,7 @@ window.__MC_HAS_BOSS__=true;</script>
      MC.clear(id, pct, {boss})              level finished — may award a tool
      MC.chest(el, pct, {id})                paint the results reveal into el
      MC.bests()                             {id: bestPct} for this app
+     MC.runs(id)                            every attempt at one activity
      MC.picker(el, items, cur, onPick)       a strip of level chips
      MC.state()                             read-only snapshot (used by the hub)
 
@@ -588,6 +589,13 @@ window.__MC_HAS_BOSS__=true;</script>
   if (!S.ore || typeof S.ore !== "object") S.ore = {};
   if (!S.gem || typeof S.gem !== "object") S.gem = {};   // "app:id" -> diamond taken
   if (typeof S.dragon !== "number") S.dragon = 0;
+  /* Every attempt, not just the best one: "app:id" -> [{p:pct, t:when, x:partial}].
+     `cleared` keeps the high score because that is what the game rewards, but a
+     parent wants the shape of the practice — three tries drifting down is worth
+     knowing about even when the best of them was 90. Capped so a year of daily
+     practice cannot fill localStorage. */
+  if (!S.runs || typeof S.runs !== "object") S.runs = {};
+  var RUNS_KEPT = 25;
   function save() { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} }
 
   var TOOLS = ["wooden pickaxe", "stone pickaxe", "iron pickaxe", "diamond pickaxe",
@@ -859,6 +867,16 @@ window.__MC_HAS_BOSS__=true;</script>
       var before = unlocked();
       var got = null;
 
+      /* Log the try itself before anything else, so it is recorded whether or
+         not it counted towards the game. A partial run is marked rather than
+         dropped: it is still practice a parent may want to see. */
+      if (!S.runs[key]) S.runs[key] = [];
+      var run = { p: pct, t: Date.now() };
+      if (partialRun) run.x = 1;
+      S.runs[key].push(run);
+      if (S.runs[key].length > RUNS_KEPT) S.runs[key] = S.runs[key].slice(-RUNS_KEPT);
+      save();
+
       if (!partialRun) {
         S.cleared[key] = Math.max(prev || 0, pct);
         if (key === "spelling:l7" && pct >= 75) S.tool9 = true;
@@ -1080,12 +1098,20 @@ window.__MC_HAS_BOSS__=true;</script>
                   blocks: BEACON.map(function (k) { return blocks(k); }) },
         cleared: JSON.parse(JSON.stringify(S.cleared)),
         misses: JSON.parse(JSON.stringify(S.misses)),
+        runs: JSON.parse(JSON.stringify(S.runs)),
         url: url
       };
     },
 
+    /* Every attempt at one activity, oldest first. The hub's report reads this;
+       apps do not need it. */
+    runs: function (id) {
+      var key = cfg.app + ":" + id;
+      return (S.runs[key] || []).slice();
+    },
+
     reset: function () {
-      S = { cleared: {}, misses: {}, tool9: false, ore: {}, gem: {}, dragon: 0 };
+      S = { cleared: {}, misses: {}, tool9: false, ore: {}, gem: {}, dragon: 0, runs: {} };
       save(); drawBar();
     },
     _relift: lift
