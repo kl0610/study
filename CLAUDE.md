@@ -69,8 +69,33 @@ or `mc.css` and re-run `build_theme.py`, or the copies drift.
 
 ## Curriculum sources
 
+**Local PDFs live in `_source/`, organised by subject.** Check here first — these
+are the books the apps are built from, so there is no need to ask for an upload
+or re-fetch anything already on this list.
+
+```
+_source/history/  CKHG_G5_U2_MayaAztecInca_Teacher-Guide.pdf      110 pp
+                  CKHG_G5_U2_MayaAztecInca_Student-Reader.pdf      76 pp
+_source/science/  CKSci_G5U1_Matter_TG.pdf                        173 pp
+                  CKSci_G5U1_Matter_SR.pdf                         50 pp
+_source/reading/  CC_SherlockHolmes_Reader_W1.pdf                 228 pp
+                  Core-Classics-Sherlock-Holmes-Teacher-Guide.pdf  92 pp
+```
+
+All six extract text with `pypdf` — quote the wording and cite the page from the
+PDF rather than from memory of the original work. Core Classics in particular is
+an abridgement: it cuts and rewords, so the original Doyle is not a safe source.
+Printed page numbers are offset from PDF page indices (in the Sherlock Reader,
+`printed = PDF − 13`); confirm the offset per book against a page you can match.
+
+**Vocabulary and Math have no local sources.** Wordly Wise Book 6 pages arrive
+week by week, so each list has to be supplied as it is set; Saxon Math Course 1
+material has not been added yet. Anything on this machine for Wordly Wise Book 5
+or Saxon Parts 8–9 is a fourth-grade leftover — ignore it.
+
 **CKHG and CKSci Teacher Guides and Student Readers are free PDFs on
-coreknowledge.org** and can be pulled with `web_fetch` — no upload needed. Example:
+coreknowledge.org** and can be pulled with `web_fetch` when a local copy is
+missing — no upload needed. Example:
 `coreknowledge.org/wp-content/uploads/2019/09/CKSci_G5U1_Matter_TG.pdf`
 
 **CKSci reader→lesson mapping is not a constant offset.** Confirmed:
