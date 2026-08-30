@@ -1,0 +1,3368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Word List 2 — Tests</title>
+<style>
+:root{
+  --bg:#0B1A18; --panel:#F4F1E9; --panel2:#E8E3D6; --ink:#1A211F; --dim:#6E7A76;
+  --gold:#E0A83C; --stone:#8A9490; --jade:#2F8F76; --red:#C4553F; --sky:#3D82B8;
+  --line:#D6CFBE;
+  --disp:"Trebuchet MS","Segoe UI",Verdana,system-ui,sans-serif;
+  --body:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --mono:ui-monospace,"SF Mono","Cascadia Mono",Consolas,monospace;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;background:var(--bg);color:var(--panel);font-family:var(--body);
+  line-height:1.55;padding:0 0 40px;
+  background-image:radial-gradient(circle at 12% -6%,#153029 0%,transparent 55%)}
+.wrap{max-width:680px;margin:0 auto;padding:0 16px}
+.hublink{display:inline-block;margin:16px 0 0;font:700 12px var(--mono);
+  letter-spacing:.07em;color:var(--gold);text-decoration:none}
+.eyebrow{font:700 11px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--stone)}
+h1{font-family:var(--disp);font-size:clamp(27px,7vw,40px);line-height:1.05;
+  margin:8px 0 10px;font-weight:800;letter-spacing:-.02em}
+h1 em{font-style:normal;color:var(--gold)}
+.bigq{background:#122A26;border-left:5px solid var(--gold);padding:12px 15px;
+  font-size:14.5px;margin:0 0 20px}
+.bigq b{display:block;font:700 11px var(--mono);letter-spacing:.12em;
+  text-transform:uppercase;color:var(--gold);margin-bottom:3px}
+
+.grid{display:grid;gap:11px;margin-bottom:22px}
+.set{position:relative;background:var(--panel);color:var(--ink);border:none;
+  border-left:6px solid var(--c);padding:15px 17px;text-align:left;cursor:pointer;
+  display:block;width:100%;font-family:inherit}
+.set .tag{font:700 10px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--dim)}
+.set h3{font-family:var(--disp);font-size:19px;margin:3px 0 4px;font-weight:750}
+.set p{margin:0;font-size:13.5px;color:#4A544F}
+.set .go{display:inline-block;margin-top:8px;font:800 11px var(--mono);
+  letter-spacing:.08em;color:var(--c)}
+.badge{position:absolute;right:14px;top:12px;font:700 11px var(--mono);
+  background:var(--jade);color:#fff;padding:3px 8px}
+
+/* ---- the test itself ---- */
+.tbar{position:sticky;top:0;z-index:5;background:var(--bg);padding:10px 0 8px;
+  display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.tbar .who{font:700 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--stone)}
+.clock{margin-left:auto;font:800 13px var(--mono);color:var(--stone);
+  background:#122A26;padding:5px 10px;letter-spacing:.05em}
+.nav{display:flex;flex-wrap:wrap;gap:4px;margin:0 0 12px}
+.nav button{width:29px;height:29px;border:2px solid #24403A;background:#122A26;
+  color:#7E8C88;font:800 11px var(--mono);cursor:pointer;position:relative;padding:0}
+.nav button.ans{background:#1E4A3E;border-color:#2F8F76;color:#CFEAE0}
+.nav button.now{border-color:var(--gold);color:var(--gold)}
+.nav button.flag::after{content:"";position:absolute;top:-3px;right:-3px;width:7px;height:7px;
+  background:var(--gold)}
+.dirs{background:#122A26;padding:10px 13px;font-size:13px;color:#B9C7C2;margin:0 0 12px;
+  border-left:4px solid var(--c)}
+.bank{background:var(--panel2);color:var(--ink);padding:10px 12px;margin:0 0 12px}
+.bank b{display:block;font:700 10px var(--mono);letter-spacing:.1em;text-transform:uppercase;
+  color:var(--dim);margin-bottom:5px}
+.bank span{display:inline-block;font:600 13px var(--mono);margin:2px 9px 2px 0}
+
+.card{background:var(--panel);color:var(--ink);padding:18px 17px 16px;margin-bottom:14px}
+.qnum{font:700 10.5px var(--mono);letter-spacing:.11em;text-transform:uppercase;color:var(--dim)}
+.q{font-family:var(--disp);font-size:19.5px;font-weight:750;line-height:1.35;margin:5px 0 14px}
+.q .def{display:block;font:600 15px var(--body);color:#3A4642;
+  font-family:var(--body);margin-top:6px}
+.q .pos{font:600 13px var(--mono);color:var(--dim);font-family:var(--mono)}
+.q u{text-decoration:none;border-bottom:2px solid var(--ink)}
+.opts{display:grid;gap:8px}
+.opt{background:var(--panel2);border:2px solid transparent;padding:12px 14px;
+  text-align:left;font-size:15px;font-family:inherit;color:var(--ink);cursor:pointer;
+  display:flex;gap:11px;align-items:flex-start;min-height:46px}
+.opt:hover{border-color:var(--stone)}
+.opt.sel{border-color:var(--sky);background:#DCEAF5}
+.opt .k{flex:none;width:22px;height:22px;background:#fff;color:var(--dim);
+  font:800 11px var(--mono);display:grid;place-items:center;margin-top:1px}
+.opt.sel .k{background:var(--sky);color:#fff}
+
+.act{display:grid;gap:8px;margin-top:14px}
+.pager{display:flex;gap:8px}
+.pager .btn{flex:1}
+.btn{padding:13px;font-weight:750;font-size:15px;text-align:center;border:none;
+  font-family:inherit;cursor:pointer}
+.btn.p{background:var(--jade);color:#fff}
+.btn.g{background:var(--gold);color:#20170A}
+.btn.o{background:transparent;border:2px solid var(--line);color:var(--ink)}
+.btn.f{background:transparent;border:2px solid var(--gold);color:var(--gold)}
+.btn.f.on{background:var(--gold);color:#20170A}
+.btn:disabled{opacity:.35;cursor:default}
+
+/* ---- results & review ---- */
+.score{background:var(--panel);color:var(--ink);padding:22px 18px;text-align:center}
+.ring{font:800 44px var(--disp);line-height:1}
+.band{font:700 12px var(--mono);letter-spacing:.1em;text-transform:uppercase;margin-top:3px}
+.stats{display:flex;gap:9px;margin:16px 0}
+.stat{flex:1;background:var(--panel2);padding:10px}
+.stat b{display:block;font:800 19px var(--mono)}
+.stat span{font:600 10px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--dim)}
+.rv{background:var(--panel);color:var(--ink);padding:14px 16px;margin-bottom:9px;
+  border-left:6px solid var(--jade)}
+.rv.no{border-left-color:var(--red)}
+.rv .n{font:700 10.5px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--dim)}
+.rv .qq{font-family:var(--disp);font-size:16px;font-weight:750;margin:3px 0 8px;line-height:1.35}
+.rv .ln{font-size:14px;margin:3px 0;display:flex;gap:8px}
+.rv .ln i{font-style:normal;font:700 10px var(--mono);letter-spacing:.06em;color:var(--dim);
+  flex:none;width:52px;padding-top:3px;text-transform:uppercase}
+.rv .yours{color:#8A3325}
+.rv .why{background:var(--panel2);padding:9px 11px;margin-top:9px;font-size:13.5px}
+.rv cite{display:block;font:600 10.5px var(--mono);color:var(--dim);margin-top:6px;font-style:normal}
+.filt{display:flex;gap:8px;margin:14px 0 12px}
+.cta{text-align:left;margin-top:18px;border-top:1px solid var(--line);padding-top:14px}
+.ctahead{font:700 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;
+  color:var(--dim);margin-bottom:9px}
+.cta .btn{width:100%;margin-bottom:8px;text-align:left;line-height:1.25}
+.cta .btn small{display:block;font:600 11.5px var(--body);opacity:.72;margin-top:2px;
+  font-weight:600}
+.note{background:var(--panel2);padding:9px 11px;font-size:13px;text-align:left;margin-bottom:4px}
+
+footer{margin:26px 0 0;padding-top:15px;border-top:1px solid #24403A;
+  color:#5F6D69;font-size:11.5px;line-height:1.6}
+.hide{display:none!important}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+<!-- MC-THEME-CSS: generated by build_theme.py, do not hand-edit -->
+<style>
+/* ===== Minecraft theme layer — shared source, injected into all apps =====
+   Everything is prefixed .mc- / #mc- so it cannot collide with app CSS.
+   z-index budget in the apps: content < 30, HUD 30, scrim 40, drawer 50.
+   Sprite bursts sit at 60 so they play over an auto-opening drawer.        */
+
+.mc-hud{
+  position:fixed; left:0; right:0; z-index:30;
+  bottom:var(--mc-lift, 0px);
+  display:flex; flex-direction:column; align-items:center; gap:3px;
+  padding:6px 8px calc(6px + env(safe-area-inset-bottom));
+  pointer-events:none;
+  background:linear-gradient(to top, rgba(0,0,0,.42), rgba(0,0,0,0));
+  transition:bottom .18s;
+}
+.mc-hud img{image-rendering:pixelated; display:block}
+
+.mc-hearts{
+  display:flex; gap:1px; align-self:center;
+  width:var(--mc-barw, 360px); box-sizing:border-box;
+}
+.mc-heart{width:var(--mc-hh,19px); height:auto}
+/* heart-empty is very faint on dark art — read the row as sockets waiting */
+.mc-heart[data-v="0"]{filter:drop-shadow(0 0 2px rgba(255,255,255,.5)) drop-shadow(0 0 5px rgba(0,0,0,.6)); opacity:.85}
+.mc-heart.mc-hit{animation:mc-hit .42s}
+@keyframes mc-hit{
+  0%{transform:scale(1.55)} 25%{transform:scale(1.1) rotate(-8deg)}
+  55%{transform:scale(1.25)} 100%{transform:none}
+}
+
+.mc-bar{display:flex; gap:0; width:var(--mc-barw,360px); box-sizing:border-box}
+.mc-slot{
+  position:relative; width:var(--mc-ss,38px); height:var(--mc-ss,38px);
+  flex:0 0 auto; background-size:100% 100%; background-repeat:no-repeat;
+}
+.mc-slot .mc-tool{
+  position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);
+  width:69%; height:69%; object-fit:contain;
+}
+/* tool-9 already has zero side margin in the source art — don't scale it up */
+.mc-slot[data-n="9"] .mc-tool{width:62%; height:62%}
+.mc-slot .mc-frame{position:absolute; inset:-2px; width:calc(100% + 4px); height:calc(100% + 4px); opacity:0}
+.mc-slot.mc-new .mc-frame{opacity:1; animation:mc-pulse 1.1s ease-in-out 3}
+.mc-slot.mc-new .mc-tool{animation:mc-drop .5s cubic-bezier(.2,1.5,.4,1)}
+@keyframes mc-pulse{0%,100%{opacity:.35}50%{opacity:1}}
+@keyframes mc-drop{from{transform:translate(-50%,-160%) scale(.4); opacity:0}}
+
+/* ---- sprite burst ---- */
+.mc-burst{
+  position:fixed; left:50%; top:44%; z-index:60; pointer-events:none;
+  width:var(--mc-burst,128px); height:var(--mc-burst,128px);
+  transform:translate(-50%,-50%);
+}
+.mc-burst img{width:100%; height:100%; object-fit:contain; image-rendering:pixelated}
+.mc-burst.mc-good{animation:mc-good 1.35s cubic-bezier(.18,1.3,.4,1) forwards}
+.mc-burst.mc-bad{animation:mc-bad 1.15s ease-out forwards}
+/* bad-2 creeper and bad-4 zombie carry ~30px of side margin; TNT and the
+   spider fill the frame. Nudge the narrow two up so misses land evenly. */
+.mc-burst.mc-bad[data-w="narrow"] img{transform:scale(1.17)}
+@keyframes mc-good{
+  0%{transform:translate(-50%,-50%) scale(.3) rotate(-12deg); opacity:0}
+  18%{transform:translate(-50%,-50%) scale(1.12) rotate(3deg); opacity:1}
+  30%{transform:translate(-50%,-50%) scale(1) rotate(0); opacity:1}
+  72%{transform:translate(-50%,-50%) scale(1) rotate(0); opacity:1}
+  100%{transform:translate(-50%,-80%) scale(1.05); opacity:0}
+}
+@keyframes mc-bad{
+  0%{transform:translate(-50%,-50%) scale(.55); opacity:0}
+  14%{transform:translate(-50%,-50%) scale(1.08); opacity:1}
+  26%{transform:translate(-50%,-50%) scale(1); opacity:1}
+  74%{transform:translate(-50%,-50%) scale(1); opacity:1}
+  100%{transform:translate(-50%,-44%) scale(.96); opacity:0}
+}
+
+.mc-shake{animation:mc-shake .34s}
+@keyframes mc-shake{
+  10%,90%{transform:translateX(-2px)} 20%,80%{transform:translateX(4px)}
+  30%,50%,70%{transform:translateX(-7px)} 40%,60%{transform:translateX(7px)}
+}
+
+/* ---- results chest ---- */
+.mc-chest{
+  display:flex; flex-direction:column; align-items:center; gap:8px;
+  padding:14px 10px 4px; margin:2px 0 6px;
+}
+.mc-chest .mc-lid{width:120px; height:120px; object-fit:contain; image-rendering:pixelated;
+  transition:transform .2s; cursor:pointer}
+.mc-chest .mc-lid.mc-shut{animation:mc-nudge 1.5s ease-in-out infinite}
+@keyframes mc-nudge{0%,88%,100%{transform:none}92%{transform:translateY(-4px) rotate(-2deg)}96%{transform:translateY(-2px) rotate(2deg)}}
+.mc-loot{display:flex; gap:6px; justify-content:center; min-height:4px; flex-wrap:wrap}
+.mc-loot img{width:52px; height:52px; object-fit:contain; image-rendering:pixelated;
+  animation:mc-pop .5s cubic-bezier(.2,1.6,.4,1) both}
+.mc-loot img:nth-child(2){animation-delay:.09s}
+.mc-loot img:nth-child(3){animation-delay:.18s}
+.mc-loot img:nth-child(4){animation-delay:.27s}
+.mc-loot img:nth-child(5){animation-delay:.36s}
+@keyframes mc-pop{from{transform:translateY(26px) scale(.3); opacity:0}}
+.mc-tier{
+  font:800 19px ui-monospace,SFMono-Regular,Menlo,monospace; letter-spacing:.1em;
+  text-align:center; margin-top:2px;
+  animation:mc-pop .5s cubic-bezier(.2,1.6,.4,1) .3s both;
+}
+.mc-tier[data-t="dragon"]{color:#A855C8}
+.mc-tier[data-t="netherite"]{color:#6B5A6E}
+.mc-tier[data-t="diamond"]{color:#2AA7B8}
+.mc-tier[data-t="iron"]{color:#8A8A8A}
+.mc-tier[data-t="stone"]{color:#7A7A7A}
+.mc-tier[data-t="wood"]{color:#9A6B3F}
+.mc-tier[data-t="corrections"]{color:#4A8230}
+.mc-badges{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-top:4px}
+.mc-badge{
+  font:800 10.5px ui-monospace,SFMono-Regular,Menlo,monospace; letter-spacing:.07em;
+  background:#F0E6CF; color:#5A4A2E; border:2px solid #C7B48C; padding:4px 8px;
+  box-shadow:inset -2px -2px 0 rgba(0,0,0,.12), inset 2px 2px 0 rgba(255,255,255,.5);
+  animation:mc-pop .45s cubic-bezier(.2,1.6,.4,1) both;
+}
+.mc-badge:nth-child(2){animation-delay:.1s}
+.mc-badge:nth-child(3){animation-delay:.2s}
+.mc-cap{
+  font:700 12px ui-monospace,SFMono-Regular,Menlo,monospace; letter-spacing:.06em;
+  text-transform:uppercase; opacity:.72; text-align:center;
+}
+.mc-earned{
+  display:flex; align-items:center; gap:9px; justify-content:center;
+  font:700 13px ui-monospace,SFMono-Regular,Menlo,monospace;
+  animation:mc-pop .5s cubic-bezier(.2,1.6,.4,1) .45s both;
+}
+.mc-earned img{width:38px; height:38px; object-fit:contain; image-rendering:pixelated}
+
+.mc-boss{width:100%; max-width:256px; height:auto; image-rendering:pixelated;
+  animation:mc-pop .6s cubic-bezier(.2,1.5,.4,1) .3s both}
+/* fallback while boss-defeated.png is still outstanding */
+.mc-bossfall{
+  width:100%; max-width:280px; border-radius:12px; padding:13px 14px; text-align:center;
+  background:linear-gradient(140deg,#1D1526,#3A1F2E); color:#FFD98A;
+  border:2px solid #6B4A2E; box-shadow:0 6px 0 rgba(0,0,0,.25);
+  font:800 15px ui-monospace,SFMono-Regular,Menlo,monospace; letter-spacing:.05em;
+  animation:mc-pop .6s cubic-bezier(.2,1.5,.4,1) .3s both;
+}
+.mc-bossfall small{display:block; font-size:11px; opacity:.7; margin-top:4px; letter-spacing:.03em}
+
+@media (prefers-reduced-motion:reduce){
+  .mc-burst.mc-good,.mc-burst.mc-bad{animation-duration:.8s}
+  .mc-shake{animation:none}
+  .mc-chest .mc-lid.mc-shut{animation:none}
+}
+
+/* ---- level-picker status ----
+   The apps' own .badge sat in the bottom-right corner of a tall card, so
+   checking seven levels meant scanning seven different corners. Moved to the
+   top-right, level with each card's eyebrow, which gives one straight vertical
+   line to run your eye down. These sit later in the cascade at equal
+   specificity, so they win without editing app CSS. */
+.mc-best{
+  top:11px !important; right:12px !important; bottom:auto !important;
+  background:#E8A93C !important; color:#3A2A08 !important;
+  font-weight:800 !important; letter-spacing:.04em; white-space:nowrap;
+  padding:4px 9px !important; border-radius:3px;
+  box-shadow:inset -2px -2px 0 rgba(0,0,0,.16), inset 2px 2px 0 rgba(255,255,255,.35);
+}
+.mc-best.mc-done{background:#63A93E !important; color:#0F2216 !important}
+/* and mark the card itself, so status is legible even mid-scroll */
+.mc-cleared{box-shadow:inset 0 0 0 3px #63A93E !important}
+.mc-tried{box-shadow:inset 0 0 0 3px #E8A93C !important}
+
+/* ---- level chips (MC.picker) ----
+   For apps whose levels are parallel and equally valid — history's five
+   practice sets — so you can see and choose, not just be dealt one. */
+.mc-picker{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 12px}
+.mc-chip{
+  flex:1 1 auto; min-width:56px; min-height:44px; padding:5px 8px;
+  border:2px solid #C7B48C; background:#F0E6CF; color:#5A4A2E; cursor:pointer;
+  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:1px;
+  box-shadow:inset -2px -2px 0 rgba(0,0,0,.14), inset 2px 2px 0 rgba(255,255,255,.5);
+}
+.mc-chip:hover{filter:brightness(1.05)}
+.mc-chip:focus-visible{outline:3px solid #63A93E;outline-offset:2px}
+.mc-chip-l{font:800 13px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.04em}
+.mc-chip-s{font:700 10px ui-monospace,SFMono-Regular,Menlo,monospace;opacity:.7}
+.mc-chip.mc-cleared{background:#63A93E;border-color:#3F7028;color:#0F2216}
+.mc-chip.mc-tried{background:#E8A93C;border-color:#B07E18;color:#3A2A08}
+.mc-chip.mc-now{box-shadow:inset -2px -2px 0 rgba(0,0,0,.14),
+  inset 2px 2px 0 rgba(255,255,255,.5), 0 0 0 3px #2B79C2}
+
+/* ---------- the mine ---------- */
+.mc-ore{display:inline-flex;align-items:center;gap:5px;margin:3px 5px 3px 0;
+  font:800 11px ui-monospace,"SF Mono",Consolas,monospace;color:#E8E3D6}
+.mc-ore img{width:22px;height:22px;image-rendering:pixelated;display:block}
+.mc-ore.mc-noart::before{content:"";width:20px;height:20px;background:var(--ore);
+  box-shadow:inset -3px -3px 0 rgba(0,0,0,.34), inset 3px 3px 0 rgba(255,255,255,.22);
+  border:2px solid rgba(0,0,0,.45)}
+.mc-ore b{font-weight:800}
+.mc-ore.mc-dim{opacity:.42}
+.mc-haul,.mc-beacon{margin-top:10px;padding:9px 11px;background:rgba(0,0,0,.26);
+  border:2px solid rgba(255,255,255,.10);text-align:left}
+.mc-haullab{display:block;font:800 9.5px ui-monospace,Consolas,monospace;
+  letter-spacing:.14em;color:#9FB0AA;margin-bottom:5px}
+.mc-beacon small,.mc-shutportal small{display:block;margin-top:6px;
+  font:600 11px system-ui,sans-serif;color:#9FB0AA;line-height:1.45}
+.mc-beacon.mc-lit{border-color:#40D5D1;
+  box-shadow:0 0 0 2px rgba(64,213,209,.22), 0 0 22px rgba(64,213,209,.28)}
+.mc-shutportal{margin-top:10px;padding:10px 12px;background:#160E22;
+  border:2px solid #4B2E73;color:#C9A6F0;text-align:left;
+  font:800 11.5px ui-monospace,Consolas,monospace;letter-spacing:.1em}
+
+.mc-blk{display:inline-flex;flex-direction:column;align-items:center;gap:2px;
+  margin:4px 9px 2px 0;font:800 10px ui-monospace,Consolas,monospace;color:#C4CFCB}
+.mc-blk img{width:34px;height:34px;image-rendering:pixelated;display:block}
+.mc-blk.mc-noart::before{content:"";width:30px;height:30px;background:var(--ore);
+  box-shadow:inset -4px -4px 0 rgba(0,0,0,.34),inset 4px 4px 0 rgba(255,255,255,.22);
+  border:2px solid rgba(0,0,0,.45)}
+.mc-blk.mc-dim img{filter:grayscale(.15) brightness(.8)}
+.mc-blk.mc-dim{opacity:.75;color:#7C8A85}
+.mc-portal{float:right;width:46px;height:46px;margin:-2px 0 0 10px;image-rendering:pixelated;
+  filter:grayscale(1) brightness(.6)}
+.mc-egg{margin-top:10px;padding:8px 11px;background:rgba(0,0,0,.26);
+  border:2px solid rgba(255,255,255,.10);display:flex;align-items:center;gap:9px;
+  font:800 10.5px ui-monospace,Consolas,monospace;letter-spacing:.1em;color:#C9A6F0}
+.mc-egg img{width:30px;height:30px;image-rendering:pixelated}
+</style>
+<!-- /MC-THEME-CSS -->
+</head>
+<body>
+<!-- MC-THEME-JS: generated by build_theme.py, do not hand-edit -->
+<script>window.__MC_PREFIX__="../../assets/";
+window.__MC_HAS_BOSS__=true;</script>
+<script>/* ===== Minecraft theme layer — shared source =====
+   Built once, injected into every app. Do not edit inside an app's
+   index.html; edit theme/mc.js and rebuild, or the four copies drift.
+
+   Contract:
+     MC.config({app, shake, lift, dragon})  once, before anything else
+     MC.begin(id)                           entering a level — refills hearts
+     MC.right()                             a correct answer
+     MC.wrong(missKey)                      a wrong answer — costs half a heart
+     MC.note(missKey)                       record a miss without spending one
+     MC.credit(missKey)                     count a fix without a burst
+     MC.clear(id, pct, {boss})              level finished — may award a tool
+     MC.chest(el, pct, {id})                paint the results reveal into el
+     MC.bests()                             {id: bestPct} for this app
+     MC.runs(id)                            every attempt at one activity
+     MC.picker(el, items, cur, onPick)       a strip of level chips
+     MC.state()                             read-only snapshot (used by the hub)
+
+   No death, no game over. Hearts only shrink the loot. A kid who is stuck
+   must never hit a wall — see HANDOFF.
+*/
+(function () {
+  "use strict";
+
+  var PREFIX = window.__MC_PREFIX__ || "../../assets/";
+  var INLINE = window.__MC_INLINE__ || null;
+  var HAS_BOSS = window.__MC_HAS_BOSS__ === true;
+  var url = function (n) { return INLINE ? (INLINE[n] || "") : PREFIX + n + ".png"; };
+
+  /* ---------- persistence (shared origin, so shared across all four apps) ---------- */
+  var KEY = "mc.study.v1";
+  var S;
+  try { S = JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) { S = {}; }
+  if (!S.cleared || typeof S.cleared !== "object") S.cleared = {};
+  if (!S.misses || typeof S.misses !== "object") S.misses = {};
+  if (typeof S.tool9 !== "boolean") S.tool9 = false;
+  if (!S.ore || typeof S.ore !== "object") S.ore = {};
+  if (!S.gem || typeof S.gem !== "object") S.gem = {};   // "app:id" -> diamond taken
+  if (typeof S.dragon !== "number") S.dragon = 0;
+  /* Every attempt, not just the best one: "app:id" -> [{p:pct, t:when, x:partial}].
+     `cleared` keeps the high score because that is what the game rewards, but a
+     parent wants the shape of the practice — three tries drifting down is worth
+     knowing about even when the best of them was 90. Capped so a year of daily
+     practice cannot fill localStorage. */
+  if (!S.runs || typeof S.runs !== "object") S.runs = {};
+  var RUNS_KEPT = 25;
+  function save() { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} }
+
+  var TOOLS = ["wooden pickaxe", "stone pickaxe", "iron pickaxe", "diamond pickaxe",
+               "sword", "torch", "shield", "bow", "elytra"];
+
+  /* Tools 1-8 come from how many activities have been cleared anywhere on the
+     site at 75%+. Tool 9, the elytra, only ever comes from spelling Challenge 2 —
+     the one level where he writes his own sentences. */
+  /* ---------- the mine ----------
+     The tool bar was the whole ladder, and with twenty-odd activities on the
+     site he fills it long before he runs out of work. So the tools are only
+     the first age. Once all nine are held the mine opens, and from then on
+     what a run is worth depends on how well it went rather than on whether it
+     was new. Coal through gold are repeatable, so there is always something to
+     dig; diamond is once per activity, so the only way to a pile of them is
+     breadth AND mastery; emerald comes from the dragon alone. */
+  var ORE = [
+    { k: "coal",     name: "coal",     hex: "#2C2C30" },
+    { k: "copper",   name: "copper",   hex: "#C1663F" },
+    { k: "iron",     name: "iron",     hex: "#C6C2BC" },
+    { k: "gold",     name: "gold",     hex: "#E4C04A" },
+    { k: "redstone", name: "redstone", hex: "#B4262A" },
+    { k: "lapis",    name: "lapis",    hex: "#2A5CB4" },
+    { k: "diamond",  name: "diamond",  hex: "#40D5D1" },
+    { k: "emerald",  name: "emerald",  hex: "#2FA84F" }
+  ];
+  var ORE_BY = {};
+  for (var _o = 0; _o < ORE.length; _o++) ORE_BY[ORE[_o].k] = ORE[_o];
+
+  /* A beacon is built from the four block types Minecraft actually accepts.
+     Nine of a mineral makes a block. */
+  var BEACON = ["iron", "gold", "diamond", "emerald"];
+
+  function oreCount(k) { return S.ore[k] || 0; }
+  function blocks(k) { return Math.floor(oreCount(k) / 9); }
+  function beaconLit() {
+    for (var i = 0; i < BEACON.length; i++) if (blocks(BEACON[i]) < 1) return false;
+    return true;
+  }
+
+  function clearedCount() {
+    var n = 0, k;
+    for (k in S.cleared) if (S.cleared[k] >= 75) n++;
+    return n;
+  }
+  function unlocked() {
+    var n = Math.min(8, clearedCount());
+    return { count: n, nine: !!S.tool9, all9: n >= 8 && !!S.tool9 };
+  }
+  function mineOpen() { return unlocked().all9; }
+  function has(slot) { var u = unlocked(); return slot === 9 ? u.nine : slot <= u.count; }
+
+  /* ---------- state ---------- */
+  var cfg = { app: "app", shake: null, lift: null, burst: 320, hud: true,
+              /* Which activities can summon the dragon. null = any level in this
+                 app. An array restricts it to those ids — spelling passes ["l7"]
+                 so only Challenge 2, the hardest level of whatever week's list
+                 is loaded, can wake it. */
+              dragon: null };
+  var halves = 20;          // 10 hearts, tracked in halves
+  var missedHere = {};      // keys missed during this level
+  var fixedHere = 0;        // ...and later got right — the comeback count
+  var partialRun = false;   // a correction round over just the missed items
+  var hud, heartsEl, barEl, lastNew = 0;
+  var goodN = 0, badN = 0;  // cycle the sprites so it isn't the same one every time
+
+  /* ---------- HUD ---------- */
+  function build() {
+    if (hud || cfg.hud === false) return;
+    hud = document.createElement("div");
+    hud.className = "mc-hud";
+    hud.id = "mc-hud";
+    hud.innerHTML = '<div class="mc-hearts" id="mc-hearts"></div>' +
+                    '<div class="mc-bar" id="mc-bar"></div>';
+    document.body.appendChild(hud);
+    heartsEl = hud.querySelector("#mc-hearts");
+    barEl = hud.querySelector("#mc-bar");
+    drawBar();
+    drawHearts();
+    fit();
+    window.addEventListener("resize", fit);
+    // the app's own bar can grow when feedback appears — ride above it
+    if (cfg.lift && window.ResizeObserver) {
+      var t = document.querySelector(cfg.lift);
+      if (t) new ResizeObserver(function () { lift(); }).observe(t);
+    }
+    // the HUD is appended before the rest of the page parses, so its height
+    // is not final yet; re-measure once the document is up
+    if (document.readyState === "loading")
+      document.addEventListener("DOMContentLoaded", fit);
+    else setTimeout(fit, 0);
+    window.addEventListener("orientationchange", function () { setTimeout(fit, 120); });
+  }
+
+  /* The hotbar must never wrap and must never overflow. Size the slot from the
+     viewport and let the hearts follow it. Checked 300-1024px. */
+  function fit() {
+    if (!hud) return;
+    var vw = Math.max(280, document.documentElement.clientWidth || window.innerWidth);
+    var vh = Math.max(320, document.documentElement.clientHeight || window.innerHeight);
+    var bsz = Math.max(150, Math.min(cfg.burst, Math.round(vw * 0.55), Math.round(vh * 0.42)));
+    var avail = Math.min(430, vw - 16);
+    var ss = Math.max(24, Math.min(46, Math.floor(avail / 9)));
+    var barw = ss * 9;
+    hud.style.setProperty("--mc-ss", ss + "px");
+    hud.style.setProperty("--mc-barw", barw + "px");
+    hud.style.setProperty("--mc-hh", Math.max(13, Math.round(ss * 0.5)) + "px");
+    hud.style.setProperty("--mc-burst", bsz + "px");
+    document.documentElement.style.setProperty("--mc-burst", bsz + "px");
+    lift();
+    // keep app content clear of the HUD
+    var h = hud.offsetHeight || 70;
+    document.body.style.paddingBottom = (h + (cfg._liftpx || 0) + 10) + "px";
+  }
+
+  /* Only the vocabulary app has a persistent fixed bar of its own, and it grows
+     when feedback appears. Ride above whatever height it currently is. */
+  function lift() {
+    if (!cfg.lift || !hud) return;
+    var t = document.querySelector(cfg.lift);
+    var px = (t && t.offsetParent !== null) ? t.offsetHeight : 0;
+    cfg._liftpx = px;
+    hud.style.setProperty("--mc-lift", px + "px");
+  }
+
+  function drawHearts() {
+    if (!heartsEl) return;
+    var out = "", i, v;
+    for (i = 0; i < 10; i++) {
+      v = Math.max(0, Math.min(2, halves - i * 2));
+      out += '<img class="mc-heart" data-v="' + v + '" alt="" src="' +
+             url(v === 2 ? "heart-full" : v === 1 ? "heart-half" : "heart-empty") + '">';
+    }
+    heartsEl.innerHTML = out;
+  }
+
+  /* Renders a mineral. The coloured block is CSS, so this works before any
+     ore art exists; if the sprite is there it loads on top, and if it is not
+     the broken image removes itself rather than showing a torn-page icon. */
+  function oreChip(k, label, on) {
+    var o = ORE_BY[k];
+    return '<span class="mc-ore' + (on === false ? " mc-dim" : "") + '" title="' + o.name +
+           '" style="--ore:' + o.hex + '">' +
+           '<img alt="" src="' + url("ore-" + k) +
+           '" onerror="this.parentNode.classList.add(\'mc-noart\');this.remove()">' +
+           (label ? '<b>' + label + "</b>" : "") + "</span>";
+  }
+
+  /* A beacon slot. Earned slots show their block; an unearned one shows the
+     plain stone stand-in, so the row reads as a pyramid under construction
+     rather than as four mystery squares. Either falls back to a CSS block. */
+  function blockChip(b) {
+    var got = b.blocks >= 1;
+    return '<span class="mc-blk' + (got ? "" : " mc-dim") + '" title="' + b.name +
+           '" style="--ore:' + b.hex + '">' +
+           '<img alt="" src="' + url(got ? "block-" + b.k : "block-locked") +
+           '" onerror="this.parentNode.classList.add(\'mc-noart\');this.remove()">' +
+           "<b>" + b.blocks + "/1</b></span>";
+  }
+
+  function drawBar() {
+    if (!barEl) return;
+    var out = "", i, on;
+    for (i = 1; i <= 9; i++) {
+      on = has(i);
+      out += '<div class="mc-slot' + (i === lastNew ? " mc-new" : "") + '" data-n="' + i +
+             '" style="background-image:url(' + url("slot") + ')" title="' +
+             (on ? TOOLS[i - 1] : "locked") + '">' +
+             '<img class="mc-frame" alt="" src="' + url("slot-frame") + '">' +
+             (on ? '<img class="mc-tool" alt="' + TOOLS[i - 1] + '" src="' + url("tool-" + i) + '">' : "") +
+             "</div>";
+    }
+    barEl.innerHTML = out;
+  }
+
+  /* ---------- sprite bursts ---------- */
+  function burst(name, cls, narrow) {
+    var old = document.querySelector(".mc-burst");
+    if (old && old.parentNode) old.parentNode.removeChild(old);
+    var d = document.createElement("div");
+    d.className = "mc-burst " + cls;
+    if (narrow) d.setAttribute("data-w", "narrow");
+    d.innerHTML = '<img alt="" src="' + url(name) + '">';
+    document.body.appendChild(d);
+    setTimeout(function () { if (d.parentNode) d.parentNode.removeChild(d); }, 1600);
+  }
+
+  function shake() {
+    if (!cfg.shake) return;                 // science already shakes its own card
+    var t = document.querySelector(cfg.shake);
+    if (!t) return;
+    t.classList.remove("mc-shake");
+    void t.offsetWidth;
+    t.classList.add("mc-shake");
+    setTimeout(function () { t.classList.remove("mc-shake"); }, 400);
+  }
+
+  /* ---------- public ---------- */
+  var MC = {
+    config: function (o) {
+      for (var k in o) if (o.hasOwnProperty(k)) cfg[k] = o[k];
+      if (document.body) build(); else
+        document.addEventListener("DOMContentLoaded", build);
+      return MC;
+    },
+
+    /* Entering a level. Pass {partial:true} for a correction round that
+       replays only the missed items — those must not overwrite a best score
+       or hand out the big rewards, since three words at 100% is not the same
+       achievement as twelve. */
+    begin: function (opts) {
+      halves = 20; lastNew = 0;
+      missedHere = {}; fixedHere = 0;
+      partialRun = !!(opts && opts.partial);
+      build(); drawHearts(); drawBar(); fit();
+    },
+
+    /* Credit a fix without any fanfare. The vocabulary sheet settles 26 words
+       on a single check — that is one burst, not twenty-six. */
+    credit: function (missKey) {
+      if (missKey && missedHere[missKey]) { fixedHere++; delete missedHere[missKey]; }
+    },
+
+    /* Pass the same key you passed to wrong()/note() and the correction is
+       counted — that is what earns the comeback badge. */
+    right: function (missKey) {
+      build();
+      MC.credit(missKey);
+      goodN = goodN % 4 + 1;
+      burst("win-" + goodN, "mc-good");
+    },
+
+    /* Record a miss without any cost. Used where one action covers several
+       items, or where the answer is revealed after the miss already landed. */
+    note: function (missKey) {
+      if (!missKey) return;
+      missedHere[missKey] = true;
+      var a = cfg.app;
+      if (!S.misses[a]) S.misses[a] = {};
+      S.misses[a][missKey] = (S.misses[a][missKey] || 0) + 1;
+      save();
+    },
+
+    wrong: function (missKey) {
+      build();
+      badN = badN % 4 + 1;
+      burst("bad-" + badN, "mc-bad", badN === 2 || badN === 4);
+      shake();
+      if (halves > 0) {
+        halves--;                            // floors at zero — never a game over
+        drawHearts();
+        var i = Math.floor(halves / 2);
+        var h = heartsEl && heartsEl.children[Math.min(9, i)];
+        if (h) h.classList.add("mc-hit");
+      }
+      MC.note(missKey);
+    },
+
+    /* Records the score, may award a tool. Returns what happened so the
+       results screen can talk about it. */
+    /* Records the score, may award a tool, and works out what he earned.
+       Every band is a real Minecraft tier, because every one of them is a
+       tool you are glad to have — there is no booby prize here. */
+    clear: function (id, pct, opts) {
+      opts = opts || {};
+      pct = Math.round(pct);
+      var key = cfg.app + ":" + id;
+      var prev = S.cleared[key];
+      var before = unlocked();
+      var got = null;
+
+      /* Log the try itself before anything else, so it is recorded whether or
+         not it counted towards the game. A partial run is marked rather than
+         dropped: it is still practice a parent may want to see. */
+      if (!S.runs[key]) S.runs[key] = [];
+      var run = { p: pct, t: Date.now() };
+      if (partialRun) run.x = 1;
+      S.runs[key].push(run);
+      if (S.runs[key].length > RUNS_KEPT) S.runs[key] = S.runs[key].slice(-RUNS_KEPT);
+      save();
+
+      if (!partialRun) {
+        S.cleared[key] = Math.max(prev || 0, pct);
+        if (key === "spelling:l7" && pct >= 75) S.tool9 = true;
+        save();
+        var after = unlocked();
+        if (after.nine && !before.nine) got = 9;
+        else if (after.count > before.count) got = after.count;
+        lastNew = got || 0;
+        drawBar();
+      }
+
+      var clean = pct >= 100 && halves === 20;
+      var isBossLevel = cfg.dragon === null || cfg.dragon.indexOf(id) !== -1;
+      /* The End portal stays shut until the whole tool set is his. A perfect
+         run before that is still a perfect run — it just does not summon a
+         dragon, and the chest says what is still missing rather than going
+         quiet about it. */
+      var ready = unlocked().all9;
+      var dragon = clean && !partialRun && isBossLevel && ready;
+      var portalShut = clean && !partialRun && isBossLevel && !ready;
+      if (dragon) { S.dragon++; save(); }
+
+      /* What the run was worth at the rock face. Coal through gold repeat, so
+         there is always something to dig; diamond is once per activity, so a
+         pile of them needs breadth AND mastery; emerald comes only from the
+         dragon. Nothing is mined at all until the tool set is complete. */
+      var mined = [];
+      function dig(k, n) {
+        S.ore[k] = (S.ore[k] || 0) + n;
+        mined.push({ k: k, n: n, name: ORE_BY[k].name, hex: ORE_BY[k].hex });
+      }
+      if (mineOpen()) {
+        if (partialRun) {
+          if (pct >= 100) dig("lapis", 1);            // every miss put right
+        } else {
+          if (pct >= 75) dig("coal", 1);
+          if (pct >= 85) dig("copper", 1);
+          if (pct >= 95) dig("iron", 1);
+          if (pct >= 100) dig("gold", 1);
+          if (pct >= 75 && halves === 20) dig("redstone", 1);
+          if (clean && !S.gem[key]) { S.gem[key] = true; dig("diamond", 1); }
+        }
+        if (dragon) dig("emerald", 1);
+        if (mined.length) save();
+      }
+
+      var tier;
+      if (partialRun)   tier = ["CORRECTIONS", "You went back and fixed them. That is the part that sticks."];
+      else if (dragon)  tier = ["DRAGON SLAIN", "Perfect. Not one miss, not one heart."];
+      else if (clean)   tier = ["NETHERITE", "Every single one right."];
+      else if (pct >= 90) tier = ["DIAMOND", "So close to flawless."];
+      else if (pct >= 75) tier = ["IRON", "Solid work \u2014 this one is holding."];
+      else if (pct >= 50) tier = ["STONE", "You got through it. Now you know where to dig."];
+      else                tier = ["WOOD", "You finished it, and that is where everyone starts."];
+
+      /* Badges stack. They reward things accuracy alone does not see. */
+      var badges = [];
+      if (fixedHere)
+        badges.push(fixedHere === 1 ? "TURNED ONE AROUND" : "TURNED " + fixedHere + " AROUND");
+      if (!partialRun && prev != null && pct > prev)
+        badges.push("NEW BEST \u2014 BEAT " + prev + "%");
+      if (!partialRun && (prev == null || prev < 75) && pct >= 75)
+        badges.push("FIRST CLEAR");
+      if (halves > 0 && halves <= 4 && pct >= 50)
+        badges.push("STUCK IT OUT");
+
+      var bea = null;
+      if (mineOpen()) {
+        bea = { lit: beaconLit(), need: [] };
+        for (var bi = 0; bi < BEACON.length; bi++)
+          bea.need.push({ k: BEACON[bi], have: oreCount(BEACON[bi]),
+                          blocks: blocks(BEACON[bi]), name: ORE_BY[BEACON[bi]].name,
+                          hex: ORE_BY[BEACON[bi]].hex });
+      }
+
+      return {
+        mined: mined, beacon: bea, portalShut: portalShut,
+        toolsLeft: (8 - unlocked().count) + (S.tool9 ? 0 : 1),
+        mineOpen: mineOpen(), dragons: S.dragon,
+        tool: got,
+        toolName: got ? TOOLS[got - 1] : null,
+        loot: halves >= 20 ? 4 : halves >= 15 ? 3 : halves >= 8 ? 2 : 1,
+        hearts: halves / 2,
+        fixed: fixedHere,
+        partial: partialRun,
+        tier: tier[0], blurb: tier[1], badges: badges,
+        boss: dragon
+      };
+    },
+
+    /* Paints chest-closed, then opens it on tap or after a beat. */
+    chest: function (host, pct, opts) {
+      if (!host) return null;
+      var r = MC.clear(opts.id, pct, opts);
+      var box = document.createElement("div");
+      box.className = "mc-chest";
+      box.innerHTML = '<img class="mc-lid mc-shut" alt="Closed chest" src="' + url("chest-closed") + '">' +
+                      '<div class="mc-loot"></div>' +
+                      '<div class="mc-tier"></div>' +
+                      '<div class="mc-cap">Tap the chest</div>';
+      host.insertBefore(box, host.firstChild);
+      var lid = box.querySelector(".mc-lid"),
+          loot = box.querySelector(".mc-loot"),
+          tierEl = box.querySelector(".mc-tier"),
+          cap = box.querySelector(".mc-cap"),
+          opened = false;
+
+      function open() {
+        if (opened) return;
+        opened = true;
+        lid.classList.remove("mc-shut");
+        lid.src = url("chest-open");
+        lid.alt = "Open chest";
+        lid.style.cursor = "default";
+        var html = "", i;
+        for (i = 1; i <= r.loot; i++) html += '<img alt="" src="' + url("win-" + i) + '">';
+        loot.innerHTML = html;
+        tierEl.textContent = r.tier;
+        tierEl.setAttribute("data-t", r.tier.split(" ")[0].toLowerCase());
+        cap.textContent = r.blurb;
+        if (r.badges.length) {
+          box.insertAdjacentHTML("beforeend", '<div class="mc-badges">' +
+            r.badges.map(function (b) { return '<span class="mc-badge">' + b + "</span>"; })
+              .join("") + "</div>");
+        }
+        if (r.tool) {
+          box.insertAdjacentHTML("beforeend",
+            '<div class="mc-earned"><img alt="" src="' + url("tool-" + r.tool) + '">' +
+            "<span>NEW &middot; " + r.toolName.toUpperCase() + "</span></div>");
+        }
+        if (r.mined && r.mined.length) {
+          box.insertAdjacentHTML("beforeend",
+            '<div class="mc-haul"><span class="mc-haullab">MINED</span>' +
+            r.mined.map(function (m) { return oreChip(m.k, "+" + m.n); }).join("") +
+            "</div>");
+        }
+        if (r.portalShut) {
+          box.insertAdjacentHTML("beforeend",
+            '<div class="mc-shutportal"><img class="mc-portal" alt="" src="' + url("portal") +
+            '" onerror="this.remove()">THE PORTAL WILL NOT OPEN<small>A perfect run \u2014 ' +
+            'but the End stays shut until all nine tools are yours. ' +
+            (r.toolsLeft === 1 ? "One to go." : r.toolsLeft + " to go.") + "</small></div>");
+        }
+        if (r.beacon) {
+          box.insertAdjacentHTML("beforeend",
+            '<div class="mc-beacon' + (r.beacon.lit ? " mc-lit" : "") + '">' +
+            '<span class="mc-haullab">' + (r.beacon.lit ? "BEACON LIT" : "BEACON") + "</span>" +
+            r.beacon.need.map(function (b) { return blockChip(b); }).join("") +
+            "<small>" + (r.beacon.lit
+              ? "Iron, gold, diamond and emerald, a block of each. That is the whole pyramid."
+              : "Nine of a mineral makes a block. Four blocks light the beacon.") +
+            "</small></div>");
+        }
+        if (!r.boss && r.dragons > 0 && r.mineOpen) {
+          box.insertAdjacentHTML("beforeend",
+            '<div class="mc-egg"><img alt="" src="' + url("dragon-egg") +
+            '" onerror="this.remove()"><span>' +
+            (r.dragons === 1 ? "One dragon down" : r.dragons + " dragons down") +
+            "</span></div>");
+        }
+        if (r.boss) {
+          box.insertAdjacentHTML("beforeend", HAS_BOSS
+            ? '<img class="mc-boss" alt="Ender dragon defeated" src="' + url("boss-defeated") + '">'
+            : '<div class="mc-bossfall">DRAGON SLAIN<small>Perfect run \u2014 no misses, no hearts lost</small></div>');
+        }
+      }
+      lid.addEventListener("click", open);
+      setTimeout(open, 2600);                // opens itself if he doesn't tap
+      return r;
+    },
+
+    /* Best score per activity for THIS app, keyed by bare id — lets an app's
+       level picker show scores that survive a reload. The apps each kept their
+       own in-memory `best` object, which forgot everything on refresh. */
+    bests: function () {
+      var out = {}, pre = cfg.app + ":", k;
+      for (k in S.cleared) if (k.indexOf(pre) === 0) out[k.slice(pre.length)] = S.cleared[k];
+      return out;
+    },
+
+    /* A strip of level chips, each showing whether it has been cleared.
+       Reusable: any app with several parallel levels calls this rather than
+       rolling its own, so history, and anything added later, look the same.
+
+         MC.picker(hostEl, [{id:"set0", label:"1"}, ...], currentId, onPick)
+
+       Chips colour themselves from MC.bests(): green cleared, amber attempted,
+       plain untouched. Re-call it to repaint after a score changes. */
+    picker: function (host, items, current, onPick) {
+      if (!host) return;
+      var best = MC.bests();
+      host.className = "mc-picker";
+      host.innerHTML = items.map(function (it) {
+        var b = best[it.id];
+        var cls = b == null ? "" : (b >= 75 ? " mc-cleared" : " mc-tried");
+        if (it.id === current) cls += " mc-now";
+        return '<button type="button" class="mc-chip' + cls + '" data-id="' + it.id +
+               '" aria-pressed="' + (it.id === current) + '"' +
+               ' title="' + (b == null ? "not tried yet" : "best " + b + "%") + '">' +
+               '<span class="mc-chip-l">' + it.label + "</span>" +
+               '<span class="mc-chip-s">' + (b == null ? "&mdash;" : b + "%") + "</span>" +
+               "</button>";
+      }).join("");
+      var bs = host.querySelectorAll(".mc-chip");
+      for (var i = 0; i < bs.length; i++) {
+        bs[i].addEventListener("click", function () {
+          onPick(this.getAttribute("data-id"));
+        });
+      }
+    },
+
+    state: function () {
+      var u = unlocked();
+      return {
+        tools: u, toolNames: TOOLS,
+        ore: JSON.parse(JSON.stringify(S.ore)), oreKinds: ORE,
+        mineOpen: mineOpen(), dragons: S.dragon,
+        beacon: { needs: BEACON, lit: beaconLit(),
+                  blocks: BEACON.map(function (k) { return blocks(k); }) },
+        cleared: JSON.parse(JSON.stringify(S.cleared)),
+        misses: JSON.parse(JSON.stringify(S.misses)),
+        runs: JSON.parse(JSON.stringify(S.runs)),
+        url: url
+      };
+    },
+
+    /* Every attempt at one activity, oldest first. The hub's report reads this;
+       apps do not need it. */
+    runs: function (id) {
+      var key = cfg.app + ":" + id;
+      return (S.runs[key] || []).slice();
+    },
+
+    reset: function () {
+      S = { cleared: {}, misses: {}, tool9: false, ore: {}, gem: {}, dragon: 0, runs: {} };
+      save(); drawBar();
+    },
+    _relift: lift
+  };
+
+  window.MC = MC;
+})();
+</script>
+<script>MC.config({"app": "vocabtest2", "shake": null, "lift": null, "hud": false, "dragon": ["final"]});</script>
+<!-- /MC-THEME-JS -->
+
+<div class="wrap">
+  <a class="hublink" href="../../index.html">&lsaquo; All subjects</a>
+
+  <div id="home">
+    <p class="eyebrow">Wordly Wise 3000 &middot; Book 6 &middot; Word List 1</p>
+    <h1>Word List 1 &mdash; <em>Unit Test</em></h1>
+    <div class="bigq"><b>How this one works</b>
+      This is a test, not a practice sheet. Nothing is marked right or wrong until
+      you press <b>Finish</b>. You can skip a question, flag it, and come back.
+      The clock runs so you can see your pace &mdash; it never stops you.</div>
+    <div class="grid" id="sets"></div>
+    <footer id="foot"></footer>
+  </div>
+
+  <div id="play" class="hide">
+    <div class="tbar">
+      <span class="who" id="who"></span>
+      <span class="clock" id="clock">0:00</span>
+    </div>
+    <div class="nav" id="nav"></div>
+    <div class="dirs" id="dirs"></div>
+    <div id="bankbox"></div>
+    <div class="card" id="card"></div>
+  </div>
+
+  <div id="done" class="hide">
+    <p class="eyebrow" id="dtag"></p>
+    <div class="score" id="scorebox"></div>
+    <div class="filt" id="filt"></div>
+    <div id="review"></div>
+  </div>
+</div>
+
+<script>
+/* Definitions are the book's, and in Parts 1 and 2 the distractors are other
+   definitions from the same list, so nothing in those parts is invented. The
+   antonym prompts and the fill-in sentences are written for this test; every
+   answer choice in both is still a word from the list. Each item says which
+   it is on the review screen. */
+const DATA = {
+ "book": "Wordly Wise 3000, Book 6",
+ "lesson": "Word List 2",
+ "bank": [
+  "arrogant",
+  "arrogance",
+  "boycott",
+  "campaign",
+  "ceremony",
+  "custody",
+  "degrade",
+  "degrading",
+  "detain",
+  "extend",
+  "integrate",
+  "integration",
+  "segregate",
+  "segregation",
+  "supreme",
+  "triumph",
+  "triumphant",
+  "vacate",
+  "verdict",
+  "violate",
+  "violation"
+ ],
+ "pool": [
+  {
+   "k": "arrogant:0",
+   "w": "arrogant",
+   "s": 0,
+   "type": "def",
+   "q": "<b>arrogant</b> <span class='pos'>(adj.)</span>",
+   "opts": [
+    "Joyful over a victory or success.",
+    "To bring shame or disgrace upon.",
+    "To break, as a law or a promise.",
+    "Showing too much pride in oneself."
+   ],
+   "a": 3,
+   "why": "<b>arrogant</b> (adj.) &mdash; Showing too much pride in oneself.",
+   "cite": "Wordly Wise 3000, Book 6, Word List 2",
+   "first": true,
+   "i": 0
+  },
+  {
+   "k": "arrogant:0",
+   "w": "arrogant",
+   "s": 0,
+   "type": "rev",
+   "q": "Which word means: <span class='def'>(adj.) Showing too much pride in oneself.</span>",
+   "opts": [
+    "supreme",
+    "arrogant",
+    "segregate",
+    "violate"
+   ],
+   "a": 1,
+   "why": "<b>arrogant</b> &mdash; (adj.) Showing too much pride in oneself.",
+   "cite": "Wordly Wise 3000, Book 6, Word List 2",
+   "first": true,
+   "i": 1
+  },
+  {
+   "k": "arrogant:0",
+   "w": "arrogant",
+   "s": 0,
+   "type": "blank",
+   "q": "He was far too <u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u> to admit that anyone else might have a better idea.",
+   "opts": [
+    "segregate",
+    "detain",
+    "arrogant",
+    "violate"
+   ],
+   "a": 2,
+   "why": "<b>arrogant</b> &mdash; (adj.) Showing too much pride in oneself.",
+   "cite": "Written for this test; the meaning it turns on is the book’s.",
+   "first": true,
+   "i": 2
+  },
+  {
+   "k": "arrogant:0",
+   "w": "arrogant",
+   "s": 0,
+   "type": "ant",
+   "q": "Which word is most nearly the <b>opposite</b> of <b>arrogant</b>?",
+   "opts": [
+    "generous",
+    "cheerful",
+    "careless",
+    "humble"
+   ],
+   "a": 3,
+   "why": "<b>arrogant</b> means showing too much pride in oneself. So its opposite is <b>humble</b>.",
+   "cite": "Written for this test; the meaning it turns on is the book’s.",
+   "first": true,
+   "i": 3
+  },
+  {
+   "k": "arrogant:0",
+   "w": "arrogance",
+   "s": 0,
+   "type": "def",
+   "q": "<b>arrogance</b> <span class='pos'>(n.)</span>",
+   "opts": [
+    "The decision reached at the end of a trial.",
+    "A feeling of too much pride in oneself.",
+    "In the keeping of the police; in jail.",
+    "Control over and responsibility for care."
+   ],
+   "a": 1,
+   "why": "<b>arrogance</b> (n.) &mdash; A feeling of too much pride in oneself.",
+   "cite": "Wordly Wise 3000, Book 6, Word List 2",
+   "first": false,
+   "i": 4
+  },
+  {
+   "k": "arrogant:0",
+   "w": "arrogance",
+   "s": 0,
+   "type": "rev",
+   "q": "Which word means: <span class='def'>(n.) A feeling of too much pride in oneself.</span>",
+   "opts": [
+    "arrogance",
+    "custody",
+    "integrate",
+    "degrade"
+   ],
+   "a": 0,
+   "why": "<b>arrogance</b> &mdash; (n.) A feeling of too much pride in oneself.",
+   "cite": "Wordly Wise 3000, Book 6, Word List 2",
+   "first": false,
+   "i": 5
+  },
+  {
+   "k": "arrogant:0",
+   "w": "arrogance",
+   "s": 0,
+   "type": "blank",
+   "q": "Her <u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u> made it hard for anyone on the team to enjoy working with her.",
+   "opts": [
+    "violate",
+    "verdict",
+    "arrogance",
+    "supreme"
+   ],
+   "a": 2,
+   "why": "<b>arrogance</b> &mdash; (n.) A feeling of too much pride in oneself.",
+   "cite": "Written for this test; the meaning it turns on is the book’s.",
+   "first": false,
+   "i": 6
+  },
+  {
+   "k": "boycott:0",
+   "w": "boycott",
+   "s": 0,
+   "type": "def",
+   "q": "<b>boycott</b> <span class='pos'>(v.)</span>",
+   "opts": [
+    "To stretch or spread outward from a certain point.",
+    "A series of military actions in a particular area.",
+    "To join others in refusing to support an organization.",
+    "A series of actions intended to accomplish a goal."
+   ],
+   "a": 2,
+   "why": "<b>boycott</b> (v.) &mdash; To join others in refusing to support an organization.",
+   "cite": "Wordly Wise 3000, Book 6, Word List 2",
+   "first": true,
+   "i": 7
+  },
+  {
+   "k": "boycott:0",
+   "w": "boycott",
+   "s": 0,
+   "type": "rev",
+   "q": "Which word means: <span class='def'>(v.) To join others in refusing to support an organization.</span>",
+   "opts": [
+    "boycott",
+    "violation",
+    "triumph",
+    "arrogance"
+   ],
+   "a": 0,
+   "why": "<b>boycott</b> &mdash; (v.) To join others in refusing to support an organization.",
+   "cite": "Wordly Wise 3000, Book 6, Word List 2",
+   "first": true,
+   "i": 8
+  },
+  {
+   "k": "boycott:0",
+   "w": "boycott",
+   "s": 0,
+   "type": "blank",
+   "q": "The neighbours agreed to <u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u> the shop until it stopped overcharging.",
+   "opts": [
+    "ceremony",
+    "campaign",
+    "boycott",
+    "integrate"
+   ],
+   "a": 2,
+   "why": "<b>boycott</b> &mdash; (v.) To join others in refusing to support an organization.",
+   "cite": "Written for this test; the meaning it turns on is the book’s.",
+   "first": true,
+   "i": 9
+  },
+  {
+   "k": "boycott:0",
+   "w": "boycott",
+   "s": 0,
+   "type": "ant",
+   "q": "Which word is most nearly the <b>opposite</b> of <b>boycott</b>?",
+   "opts": [
+    "support",
+    "postpone",
+    "announce",
+    "measure"
+   ],
+   "a": 0,
+   "why": "<b>boycott</b> means to join others in refusing to support an organization. So its opposite is <b>support</b>.",
+   "cite": "Written for this test; the meaning it turns on is the book’s.",
+   "first": true,
+   "i": 10
+  },
+  {
+   "k": "boycott:1",
+   "w": "boycott",
+   "s": 1,
+   "type": "def",
+   "q": "<b>boycott</b> <span class='pos'>(n.)</span>",
+   "opts": [
+    "The act of boycotting.",
+    "Causing shame or disgrace.",
+    "A noteworthy success.",
+    "Of the greatest importance."
+   ],
+   "a": 0,
+   "why": "<b>boycott</b> (n.) &mdash; The act of boycotting.",
+   "cite": "Wordly Wise 3000, Book 6, Word List 2",
+   "first": false,
+   "i": 11
+  },
+  {
+   "k": "boycott:1",
+   "w": "boycott",
+   "s": 1,
+   "type": "rev",
+   "q": "Which word means: <span class='def'>(n.) The act of boycotting.</span>",
+   "opts": [
+    "boycott",
+    "vacate",
+    "detain",
+    "integrate"
+   ],
+   "a": 0,
+   "why": "<b>boycott</b> &mdash; (n.) The act of boycotting.",
+   "cite": "Wordly Wise 3000, Book 6, Word List 2",
+   "first": false,
+   "i": 12
+  },
+  {
+   "k": "boycott:1",
+   "w": "boycott",
+   "s": 1,
+   "type": "blank",
+   "q": "The <u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u> lasted three weeks and cost the company a great deal of money.",
+   "opts": [
+    "degrade",
+    "boycott",
+    "ceremony",
+    "segregation"
+   ],
+   "a": 1,
+   "why": "<b>boycott</b> &mdash; (n.) The act of boycotting.",
+   "cite": "Written for this test; the meaning it turns on is the book’s.",
+   "first": false,
+   "i": 13
+  },
+  {
+   "k": "campaign:0",
+   "w": "campaign",
+   "s": 0,
+   "type": "def",
+   "q": "<b>campaign</b> <span class='pos'>(n.)</span>",
+   "opts": [
+    "A series of actions intended to accomplish a goal.",
+    "To treat in an improper or disrespectful way.",
+    "To stretch or spread outward from a certain point.",
+    "To join others in refusing to support an organization."
+   ],
+   "a": 0,
+   "why": "<b>campaign</b> (n.) &mdash; A series of actions intended to accomplish a goal.",
+   "cite": "Wordly Wise 3000, Book 6, Word List 2",
+   "first": true,
+   "i": 14
+  },
+  {
+   "k": "campaign:0",
+   "w": "campaign",
+   "s": 0,
+   "type": "rev",
+   "q": "Which word means: <span class='def'>(n.) A series of actions intended to accomplish a goal.</span>",
+   "opts": [
+    "campaign",
+    "integrate",
+    "degrading",
+    "custody"
+   ],
+   "a": 0,
+   "why": "<b>campaign</b> &mdash; (n.) A series of actions intended to accomplish a goal.",
+   "cite": "Wordly Wise 3000, Book 6, Word List 2",
+   "first": true,
+   "i": 15
+  },
+  {
+   "k": "campaign:0",
+   "w": "campaign",
+   "s": 0,
+   "type": "blank",
+   "q": "Their <u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u> to clean up the river began with a single Saturday morning.",
+   "opts": [
+    "boycott",
+    "integration",
+    "segregate",
+    "campaign"
+   ],
+   "a": 3,
+   "why": "<b>campaign</b> &mdash; (n.) A series of actions intended to accomplish a goal.",
+   "cite": "Written for this test; the meaning it turns on is the book’s.",
+   "first": true,
+   "i": 16
+  },
+  {
+   "k": "campaign:1",
+   "w": "campaign",
+   "s": 1,
+   "type": "def",
+   "q": "<b>campaign</b> <span class='pos'>(n.)</span>",
+   "opts": [
+    "To treat in an improper or disrespectful way.",
+    "A series of military actions in a particular area.",
+    "A formal event held in honor of a special occasion.",
+    "To join others in refusing to support an organization."
+   ],
+   "a": 1,
+   "why": "<b>campaign</b> (n.) &mdash; A series of military actions in a particular area.",
+   "cite": "Wordly Wise 3000, Book 6, Word List 2",
+   "first": false,
+   "i": 17
+  },
+  {
+   "k": "campaign:1",
+   "w": "campaign",
+   "s": 1,
+   "type": "rev",
+   "q": "Which word means: <span class='def'>(n.) A series of military actions in a particular area.</span>",
+   "opts": [
+    "violate",
+    "supreme",
+    "campaign",
+    "detain"
+   ],
+   "a": 2,
+   "why": "<b>campaign</b> &mdash; (n.) A series of military actions in a particular area.",
+   "cite": "Wordly Wise 3000, Book 6, Word List 2",
+   "first": false,
+   "i": 18
+  },
+  {
+   "k": "campaign:1",
+   "w": "campaign",
+   "s": 1,
+   "type": "blank",
+   "q": "The general's <u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u> through the mountains lasted the whole of that winter.",
+   "opts": [
+    "campaign",
+    "vacate",
+    "arrogant",
+    "triumph"
+   ],
+   "a": 0,
+   "why": "<b>campaign</b> &mdash; (n.) A series of military actions in a particular area.",
+   "cite": "Written for this test; the meaning it turns on is the book’s.",
+   "first": false,
+   "i": 19
+  },
+  {
+   "k": "campaign:2",
+   "w": "campaign",
+   "s": 2,
+   "type": "def",
+   "q": "<b>campaign</b> <span class='pos'>(v.)</span>",
+   "opts": [
+    "A breaking of, or failing to keep, something like a law or a promise.",
+    "To join others in refusing to support an organization.",
+    "The act of uniting or bringing together, especially people of different races.",
+    "To take part in actions planned to accomplish a particular goal."
+   ],
+   "a": 3,
+   "why": "<b>campaign</b> (v.) &mdash; To take part in actions planned to accomplish a particular goal.",
+   "cite": "Wordly Wise 3000, Book 6, Word List 2",
+   "first": false,
+   "i": 20
+  },
+  {
+   "k": "campaign:2",
+   "w": "campaign",
+   "s": 2,
+   "type": "rev",
+   "q": "Which word means: <span class='def'>(v.) To take part in actions planned to accomplish a particular goal.</span>",
+   "opts": [
+    "integrate",
+    "campaign",
+    "integration",
+    "extend"
+   ],
+   "a": 1,
+   "why": "<b>campaign</b> &mdash; (v.) To take part in actions planned to accomplish a particular goal.",
+   "cite": "Wordly Wise 3000, Book 6, Word List 2",
+   "first": false,
+   "i": 21
+  },
+  {
+   "k": "campaign:2",
+   "w": "campaign",
+   "s": 2,
+   "type": "blank",
+   "q": "She decided to <u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u> for a longer lunch break at her school.",
+   "opts": [
+    "arrogance",
+    "degrading",
+    "degrade",
+    "campaign"
+   ],
+   "a": 3,
+   "why": "<b>campaign</b> &mdash; (v.) To take part in actions planned to accomplish a particular goal.",
+   "cite": "Written for this test; the meaning it turns on is the book’s.",
+   "first": false,
+   "i": 22
+  },
+  {
+   "k": "ceremony:0",
+   "w": "ceremony",
+   "s": 0,
+   "type": "def",
+   "q": "<b>ceremony</b> <span class='pos'>(n.)</span>",
+   "opts": [
+    "A formal event held in honor of a special occasion.",
+    "To stretch or spread outward from a certain point.",
+    "To join others in refusing to support an organization.",
+    "A series of military actions in a particular area."
+   ],
+   "a": 0,
+   "why": "<b>ceremony</b> (n.) &mdash; A formal event held in honor of a special occasion.",
+   "cite": "Wordly Wise 3000, Book 6, Word List 2",
+   "first": true,
+   "i": 23
+  },
+  {
+   "k": "ceremony:0",
+   "w": "ceremony",
+   "s": 0,
+   "type": "rev",
+   "q": "Which word means: <span class='def'>(n.) A formal event held in honor of a special occasion.</span>",
+   "opts": [
+    "ceremony",
+    "vacate",
+    "extend",
+    "integrate"
+   ],
+   "a": 0,
+   "why": "<b>ceremony</b> &mdash; (n.) A formal event held in honor of a special occasion.",
+   "cite": "Wordly Wise 3000, Book 6, Word List 2",
+   "first": true,
+   "i": 24
+  },
+  {
+   "k": "ceremony:0",
+   "w": "ceremony",
+   "s": 0,
+   "type": "blank",
+   "q": "The whole family came to the <u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u> where his sister received her diploma.",
+   "opts": [
+    "triumph",
+    "verdict",
+    "ceremony",
+    "detain"
+   ],
+   "a": 2,
+   "why": "<b>ceremony</b> &mdash; (n.) A formal event held in honor of a special occasion.",
+   "cite": "Written for this test; the meaning it turns on is the book’s.",
+   "first": true,
+   "i": 25
+  },
+  {
+   "k": "custody:0",
+   "w": "custody",
+   "s": 0,
+   "type": "def",
+   "q": "<b>custody</b> <span class='pos'>(n.)</span>",
+   "opts": [
+    "To stop or hold; to keep from going on.",
+    "Control over and responsibility for care.",
+    "A feeling of too much pride in oneself.",
+    "To treat in an improper or disrespectful way."
+   ],
+   "a": 1,
+   "why": "<b>custody</b> (n.) &mdash; Control over and responsibility for care.",
+   "cite": "Wordly Wise 3000, Book 6, Word List 2",
+   "first": true,
+   "i": 26
+  },
+  {
+   "k": "custody:0",
+   "w": "custody",
+   "s": 0,
+   "type": "rev",
+   "q": "Which word means: <span class='def'>(n.) Control over and responsibility for care.</span>",
+   "opts": [
+    "vacate",
+    "violate",
+    "supreme",
+    "custody"
+   ],
+   "a": 3,
+   "why": "<b>custody</b> &mdash; (n.) Control over and responsibility for care.",
+   "cite": "Wordly Wise 3000, Book 6, Word List 2",
+   "first": true,
+   "i": 27
+  },
+  {
+   "k": "custody:0",
+   "w": "custody",
+   "s": 0,
+   "type": "blank",
+   "q": "The museum was given <u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u> of the painting until its owner could be found.",
+   "opts": [
+    "triumph",
+    "extend",
+    "custody",
+    "arrogant"
+   ],
+   "a": 2,
+   "why": "<b>custody</b> &mdash; (n.) Control over and responsibility for care.",
+   "cite": "Written for this test; the meaning it turns on is the book’s.",
+   "first": true,
+   "i": 28
+  },
+  {
+   "k": "custody:1",
+   "w": "custody",
+   "s": 1,
+   "type": "def",
+   "q": "<b>custody</b> <span class='pos'>(n.)</span>",
+   "opts": [
+    "In the keeping of the police; in jail.",
+    "To stop or hold; to keep from going on.",
+    "Joyful over a victory or success.",
+    "A feeling of too much pride in oneself."
+   ],
+   "a": 0,
+   "why": "<b>custody</b> (n.) &mdash; In the keeping of the police; in jail.",
+   "cite": "Wordly Wise 3000, Book 6, Word List 2",
+   "first": false,
+   "i": 29
+  },
+  {
+   "k": "custody:1",
+   "w": "custody",
+   "s": 1,
+   "type": "rev",
+   "q": "Which word means: <span class='def'>(n.) In the keeping of the police; in jail.</span>",
+   "opts": [
+    "arrogant",
+    "custody",
+    "supreme",
+    "ceremony"
+   ],
+   "a": 1,
+   "why": "<b>custody</b> &mdash; (n.) In the keeping of the police; in jail.",
+   "cite": "Wordly Wise 3000, Book 6, Word List 2",
+   "first": false,
+   "i": 30
+  },
+  {
+   "k": "custody:1",
+   "w": "custody",
+   "s": 1,
+   "type": "blank",
+   "q": "The suspect was taken into <u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u> within an hour of the robbery.",
+   "opts": [
+    "arrogance",
+    "custody",
+    "arrogant",
+    "triumphant"
+   ],
+   "a": 1,
+   "why": "<b>custody</b> &mdash; (n.) In the keeping of the police; in jail.",
+   "cite": "Written for this test; the meaning it turns on is the book’s.",
+   "first": false,
+   "i": 31
+  },
+  {
+   "k": "degrade:0",
+   "w": "degrade",
+   "s": 0,
+   "type": "def",
+   "q": "<b>degrade</b> <span class='pos'>(v.)</span>",
+   "opts": [
+    "Joyful over a victory or success.",
+    "Of the greatest importance.",
+    "To break, as a law or a promise.",
+    "To bring shame or disgrace upon."
+   ],
+   "a": 3,
+   "why": "<b>degrade</b> (v.) &mdash; To bring shame or disgrace upon.",
+   "cite": "Wordly Wise 3000, Book 6, Word List 2",
+   "first": true,
+   "i": 32
+  },
+  {
+   "k": "degrade:0",
+   "w": "degrade",
+   "s": 0,
+   "type": "rev",
+   "q": "Which word means: <span class='def'>(v.) To bring shame or disgrace upon.</span>",
+   "opts": [
+    "segregation",
+    "degrade",
+    "arrogant",
+    "vacate"
+   ],
+   "a": 1,
+   "why": "<b>degrade</b> &mdash; (v.) To bring shame or disgrace upon.",
+   "cite": "Wordly Wise 3000, Book 6, Word List 2",
+   "first": true,
+   "i": 33
+  },
+  {
+   "k": "degrade:0",
+   "w": "degrade",
+   "s": 0,
+   "type": "blank",
+   "q": "Cheating on the test would only <u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u> him in front of his classmates.",
+   "opts": [
+    "custody",
+    "supreme",
+    "degrade",
+    "segregate"
+   ],
+   "a": 2,
+   "why": "<b>degrade</b> &mdash; (v.) To bring shame or disgrace upon.",
+   "cite": "Written for this test; the meaning it turns on is the book’s.",
+   "first": true,
+   "i": 34
+  },
+  {
+   "k": "degrade:0",
+   "w": "degrade",
+   "s": 0,
+   "type": "ant",
+   "q": "Which word is most nearly the <b>opposite</b> of <b>degrade</b>?",
+   "opts": [
+    "interrupt",
+    "honor",
+    "measure",
+    "postpone"
+   ],
+   "a": 1,
+   "why": "<b>degrade</b> means to bring shame or disgrace upon. So its opposite is <b>honor</b>.",
+   "cite": "Written for this test; the meaning it turns on is the book’s.",
+   "first": true,
+   "i": 35
+  },
+  {
+   "k": "degrade:0",
+   "w": "degrading",
+   "s": 0,
+   "type": "def",
+   "q": "<b>degrading</b> <span class='pos'>(adj.)</span>",
+   "opts": [
+    "The act of boycotting.",
+    "To make empty, as by leaving.",
+    "To keep separate or apart.",
+    "Causing shame or disgrace."
+   ],
+   "a": 3,
+   "why": "<b>degrading</b> (adj.) &mdash; Causing shame or disgrace.",
+   "cite": "Wordly Wise 3000, Book 6, Word List 2",
+   "first": false,
+   "i": 36
+  },
+  {
+   "k": "degrade:0",
+   "w": "degrading",
+   "s": 0,
+   "type": "rev",
+   "q": "Which word means: <span class='def'>(adj.) Causing shame or disgrace.</span>",
+   "opts": [
+    "degrading",
+    "segregate",
+    "violation",
+    "verdict"
+   ],
+   "a": 0,
+   "why": "<b>degrading</b> &mdash; (adj.) Causing shame or disgrace.",
+   "cite": "Wordly Wise 3000, Book 6, Word List 2",
+   "first": false,
+   "i": 37
+  },
+  {
+   "k": "degrade:0",
+   "w": "degrading",
+   "s": 0,
+   "type": "blank",
+   "q": "Being laughed at in front of the whole class was a <u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u> experience.",
+   "opts": [
+    "segregate",
+    "degrading",
+    "vacate",
+    "triumphant"
+   ],
+   "a": 1,
+   "why": "<b>degrading</b> &mdash; (adj.) Causing shame or disgrace.",
+   "cite": "Written for this test; the meaning it turns on is the book’s.",
+   "first": false,
+   "i": 38
+  },
+  {
+   "k": "detain:0",
+   "w": "detain",
+   "s": 0,
+   "type": "def",
+   "q": "<b>detain</b> <span class='pos'>(v.)</span>",
+   "opts": [
+    "A feeling of too much pride in oneself.",
+    "To stop or hold; to keep from going on.",
+    "The act of keeping separate or apart.",
+    "In the keeping of the police; in jail."
+   ],
+   "a": 1,
+   "why": "<b>detain</b> (v.) &mdash; To stop or hold; to keep from going on.",
+   "cite": "Wordly Wise 3000, Book 6, Word List 2",
+   "first": true,
+   "i": 39
+  },
+  {
+   "k": "detain:0",
+   "w": "detain",
+   "s": 0,
+   "type": "rev",
+   "q": "Which word means: <span class='def'>(v.) To stop or hold; to keep from going on.</span>",
+   "opts": [
+    "segregation",
+    "vacate",
+    "detain",
+    "arrogance"
+   ],
+   "a": 2,
+   "why": "<b>detain</b> &mdash; (v.) To stop or hold; to keep from going on.",
+   "cite": "Wordly Wise 3000, Book 6, Word List 2",
+   "first": true,
+   "i": 40
+  },
+  {
+   "k": "detain:0",
+   "w": "detain",
+   "s": 0,
+   "type": "blank",
+   "q": "The guard had to <u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u> us at the gate until our names had been checked.",
+   "opts": [
+    "detain",
+    "boycott",
+    "vacate",
+    "violate"
+   ],
+   "a": 0,
+   "why": "<b>detain</b> &mdash; (v.) To stop or hold; to keep from going on.",
+   "cite": "Written for this test; the meaning it turns on is the book’s.",
+   "first": true,
+   "i": 41
+  },
+  {
+   "k": "detain:0",
+   "w": "detain",
+   "s": 0,
+   "type": "ant",
+   "q": "Which word is most nearly the <b>opposite</b> of <b>detain</b>?",
+   "opts": [
+    "measure",
+    "release",
+    "decorate",
+    "celebrate"
+   ],
+   "a": 1,
+   "why": "<b>detain</b> means to stop or hold; to keep from going on. So its opposite is <b>release</b>.",
+   "cite": "Written for this test; the meaning it turns on is the book’s.",
+   "first": true,
+   "i": 42
+  },
+  {
+   "k": "extend:0",
+   "w": "extend",
+   "s": 0,
+   "type": "def",
+   "q": "<b>extend</b> <span class='pos'>(v.)</span>",
+   "opts": [
+    "To win.",
+    "A noteworthy success.",
+    "To reach out.",
+    "The act of boycotting."
+   ],
+   "a": 2,
+   "why": "<b>extend</b> (v.) &mdash; To reach out.",
+   "cite": "Wordly Wise 3000, Book 6, Word List 2",
+   "first": true,
+   "i": 43
+  },
+  {
+   "k": "extend:0",
+   "w": "extend",
+   "s": 0,
+   "type": "rev",
+   "q": "Which word means: <span class='def'>(v.) To reach out.</span>",
+   "opts": [
+    "extend",
+    "supreme",
+    "campaign",
+    "segregation"
+   ],
+   "a": 0,
+   "why": "<b>extend</b> &mdash; (v.) To reach out.",
+   "cite": "Wordly Wise 3000, Book 6, Word List 2",
+   "first": true,
+   "i": 44
+  },
+  {
+   "k": "extend:0",
+   "w": "extend",
+   "s": 0,
+   "type": "blank",
+   "q": "She had to <u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u> her arm as far as it would go to reach the top shelf.",
+   "opts": [
+    "arrogance",
+    "triumphant",
+    "ceremony",
+    "extend"
+   ],
+   "a": 3,
+   "why": "<b>extend</b> &mdash; (v.) To reach out.",
+   "cite": "Written for this test; the meaning it turns on is the book’s.",
+   "first": true,
+   "i": 45
+  },
+  {
+   "k": "extend:0",
+   "w": "extend",
+   "s": 0,
+   "type": "ant",
+   "q": "Which word is most nearly the <b>opposite</b> of <b>extend</b>?",
+   "opts": [
+    "announce",
+    "celebrate",
+    "decorate",
+    "shorten"
+   ],
+   "a": 3,
+   "why": "<b>extend</b> means to reach out. So its opposite is <b>shorten</b>.",
+   "cite": "Written for this test; the meaning it turns on is the book’s.",
+   "first": true,
+   "i": 46
+  },
+  {
+   "k": "extend:1",
+   "w": "extend",
+   "s": 1,
+   "type": "def",
+   "q": "<b>extend</b> <span class='pos'>(v.)</span>",
+   "opts": [
+    "To offer.",
+    "To win.",
+    "A noteworthy success.",
+    "The act of boycotting."
+   ],
+   "a": 0,
+   "why": "<b>extend</b> (v.) &mdash; To offer.",
+   "cite": "Wordly Wise 3000, Book 6, Word List 2",
+   "first": false,
+   "i": 47
+  },
+  {
+   "k": "extend:1",
+   "w": "extend",
+   "s": 1,
+   "type": "rev",
+   "q": "Which word means: <span class='def'>(v.) To offer.</span>",
+   "opts": [
+    "arrogance",
+    "segregate",
+    "segregation",
+    "extend"
+   ],
+   "a": 3,
+   "why": "<b>extend</b> &mdash; (v.) To offer.",
+   "cite": "Wordly Wise 3000, Book 6, Word List 2",
+   "first": false,
+   "i": 48
+  },
+  {
+   "k": "extend:1",
+   "w": "extend",
+   "s": 1,
+   "type": "blank",
+   "q": "He wanted to <u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u> an apology for the way he had spoken to her.",
+   "opts": [
+    "detain",
+    "extend",
+    "arrogance",
+    "degrade"
+   ],
+   "a": 1,
+   "why": "<b>extend</b> &mdash; (v.) To offer.",
+   "cite": "Written for this test; the meaning it turns on is the book’s.",
+   "first": false,
+   "i": 49
+  },
+  {
+   "k": "extend:2",
+   "w": "extend",
+   "s": 2,
+   "type": "def",
+   "q": "<b>extend</b> <span class='pos'>(v.)</span>",
+   "opts": [
+    "To make longer.",
+    "The act of boycotting.",
+    "A judgment or opinion.",
+    "To keep separate or apart."
+   ],
+   "a": 0,
+   "why": "<b>extend</b> (v.) &mdash; To make longer.",
+   "cite": "Wordly Wise 3000, Book 6, Word List 2",
+   "first": false,
+   "i": 50
+  },
+  {
+   "k": "extend:2",
+   "w": "extend",
+   "s": 2,
+   "type": "rev",
+   "q": "Which word means: <span class='def'>(v.) To make longer.</span>",
+   "opts": [
+    "boycott",
+    "degrade",
+    "extend",
+    "integration"
+   ],
+   "a": 2,
+   "why": "<b>extend</b> &mdash; (v.) To make longer.",
+   "cite": "Wordly Wise 3000, Book 6, Word List 2",
+   "first": false,
+   "i": 51
+  },
+  {
+   "k": "extend:2",
+   "w": "extend",
+   "s": 2,
+   "type": "blank",
+   "q": "So many people came that the museum decided to <u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u> the show by a week.",
+   "opts": [
+    "extend",
+    "degrading",
+    "arrogant",
+    "campaign"
+   ],
+   "a": 0,
+   "why": "<b>extend</b> &mdash; (v.) To make longer.",
+   "cite": "Written for this test; the meaning it turns on is the book’s.",
+   "first": false,
+   "i": 52
+  },
+  {
+   "k": "extend:3",
+   "w": "extend",
+   "s": 3,
+   "type": "def",
+   "q": "<b>extend</b> <span class='pos'>(v.)</span>",
+   "opts": [
+    "A formal event held in honor of a special occasion.",
+    "To join others in refusing to support an organization.",
+    "To treat in an improper or disrespectful way.",
+    "To stretch or spread outward from a certain point."
+   ],
+   "a": 3,
+   "why": "<b>extend</b> (v.) &mdash; To stretch or spread outward from a certain point.",
+   "cite": "Wordly Wise 3000, Book 6, Word List 2",
+   "first": false,
+   "i": 53
+  },
+  {
+   "k": "extend:3",
+   "w": "extend",
+   "s": 3,
+   "type": "rev",
+   "q": "Which word means: <span class='def'>(v.) To stretch or spread outward from a certain point.</span>",
+   "opts": [
+    "degrade",
+    "triumphant",
+    "verdict",
+    "extend"
+   ],
+   "a": 3,
+   "why": "<b>extend</b> &mdash; (v.) To stretch or spread outward from a certain point.",
+   "cite": "Wordly Wise 3000, Book 6, Word List 2",
+   "first": false,
+   "i": 54
+  },
+  {
+   "k": "extend:3",
+   "w": "extend",
+   "s": 3,
+   "type": "blank",
+   "q": "The fields <u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u> for half a mile beyond the far side of the river.",
+   "opts": [
+    "ceremony",
+    "custody",
+    "violate",
+    "extend"
+   ],
+   "a": 3,
+   "why": "<b>extend</b> &mdash; (v.) To stretch or spread outward from a certain point.",
+   "cite": "Written for this test; the meaning it turns on is the book’s.",
+   "first": false,
+   "i": 55
+  },
+  {
+   "k": "integrate:0",
+   "w": "integrate",
+   "s": 0,
+   "type": "def",
+   "q": "<b>integrate</b> <span class='pos'>(v.)</span>",
+   "opts": [
+    "A breaking of, or failing to keep, something like a law or a promise.",
+    "A formal event held in honor of a special occasion.",
+    "To unite into a whole; especially to end the separation of people of different races.",
+    "To take part in actions planned to accomplish a particular goal."
+   ],
+   "a": 2,
+   "why": "<b>integrate</b> (v.) &mdash; To unite into a whole; especially to end the separation of people of different races.",
+   "cite": "Wordly Wise 3000, Book 6, Word List 2",
+   "first": true,
+   "i": 56
+  },
+  {
+   "k": "integrate:0",
+   "w": "integrate",
+   "s": 0,
+   "type": "rev",
+   "q": "Which word means: <span class='def'>(v.) To unite into a whole; especially to end the separation of people of different races.</span>",
+   "opts": [
+    "violate",
+    "supreme",
+    "integrate",
+    "segregation"
+   ],
+   "a": 2,
+   "why": "<b>integrate</b> &mdash; (v.) To unite into a whole; especially to end the separation of people of different races.",
+   "cite": "Wordly Wise 3000, Book 6, Word List 2",
+   "first": true,
+   "i": 57
+  },
+  {
+   "k": "integrate:0",
+   "w": "integrate",
+   "s": 0,
+   "type": "blank",
+   "q": "The town worked for years to <u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u> its schools so every child shared a classroom.",
+   "opts": [
+    "verdict",
+    "violate",
+    "arrogance",
+    "integrate"
+   ],
+   "a": 3,
+   "why": "<b>integrate</b> &mdash; (v.) To unite into a whole; especially to end the separation of people of different races.",
+   "cite": "Written for this test; the meaning it turns on is the book’s.",
+   "first": true,
+   "i": 58
+  },
+  {
+   "k": "integrate:0",
+   "w": "integrate",
+   "s": 0,
+   "type": "ant",
+   "q": "Which word is most nearly the <b>opposite</b> of <b>integrate</b>?",
+   "opts": [
+    "postpone",
+    "measure",
+    "celebrate",
+    "segregate"
+   ],
+   "a": 3,
+   "why": "<b>integrate</b> means to unite into a whole; especially to end the separation of people of different races. So its opposite is <b>segregate</b>.",
+   "cite": "Written for this test; the meaning it turns on is the book’s.",
+   "first": true,
+   "i": 59
+  },
+  {
+   "k": "integrate:0",
+   "w": "integration",
+   "s": 0,
+   "type": "def",
+   "q": "<b>integration</b> <span class='pos'>(n.)</span>",
+   "opts": [
+    "To stretch or spread outward from a certain point.",
+    "The act of uniting or bringing together, especially people of different races.",
+    "A breaking of, or failing to keep, something like a law or a promise.",
+    "To take part in actions planned to accomplish a particular goal."
+   ],
+   "a": 1,
+   "why": "<b>integration</b> (n.) &mdash; The act of uniting or bringing together, especially people of different races.",
+   "cite": "Wordly Wise 3000, Book 6, Word List 2",
+   "first": false,
+   "i": 60
+  },
+  {
+   "k": "integrate:0",
+   "w": "integration",
+   "s": 0,
+   "type": "rev",
+   "q": "Which word means: <span class='def'>(n.) The act of uniting or bringing together, especially people of different races.</span>",
+   "opts": [
+    "arrogant",
+    "vacate",
+    "integration",
+    "degrade"
+   ],
+   "a": 2,
+   "why": "<b>integration</b> &mdash; (n.) The act of uniting or bringing together, especially people of different races.",
+   "cite": "Wordly Wise 3000, Book 6, Word List 2",
+   "first": false,
+   "i": 61
+  },
+  {
+   "k": "integrate:0",
+   "w": "integration",
+   "s": 0,
+   "type": "blank",
+   "q": "The <u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u> of the two clubs meant everyone finally played on the same field.",
+   "opts": [
+    "detain",
+    "triumph",
+    "integrate",
+    "integration"
+   ],
+   "a": 3,
+   "why": "<b>integration</b> &mdash; (n.) The act of uniting or bringing together, especially people of different races.",
+   "cite": "Written for this test; the meaning it turns on is the book’s.",
+   "first": false,
+   "i": 62
+  },
+  {
+   "k": "segregate:0",
+   "w": "segregate",
+   "s": 0,
+   "type": "def",
+   "q": "<b>segregate</b> <span class='pos'>(v.)</span>",
+   "opts": [
+    "To keep separate or apart.",
+    "Causing shame or disgrace.",
+    "Of the greatest importance.",
+    "A judgment or opinion."
+   ],
+   "a": 0,
+   "why": "<b>segregate</b> (v.) &mdash; To keep separate or apart.",
+   "cite": "Wordly Wise 3000, Book 6, Word List 2",
+   "first": true,
+   "i": 63
+  },
+  {
+   "k": "segregate:0",
+   "w": "segregate",
+   "s": 0,
+   "type": "rev",
+   "q": "Which word means: <span class='def'>(v.) To keep separate or apart.</span>",
+   "opts": [
+    "violate",
+    "segregation",
+    "triumphant",
+    "segregate"
+   ],
+   "a": 3,
+   "why": "<b>segregate</b> &mdash; (v.) To keep separate or apart.",
+   "cite": "Wordly Wise 3000, Book 6, Word List 2",
+   "first": true,
+   "i": 64
+  },
+  {
+   "k": "segregate:0",
+   "w": "segregate",
+   "s": 0,
+   "type": "blank",
+   "q": "Ranchers <u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u> a sick animal so the rest of the herd stays healthy.",
+   "opts": [
+    "segregate",
+    "verdict",
+    "triumph",
+    "integration"
+   ],
+   "a": 0,
+   "why": "<b>segregate</b> &mdash; (v.) To keep separate or apart.",
+   "cite": "Written for this test; the meaning it turns on is the book’s.",
+   "first": true,
+   "i": 65
+  },
+  {
+   "k": "segregate:0",
+   "w": "segregate",
+   "s": 0,
+   "type": "ant",
+   "q": "Which word is most nearly the <b>opposite</b> of <b>segregate</b>?",
+   "opts": [
+    "measure",
+    "announce",
+    "decorate",
+    "integrate"
+   ],
+   "a": 3,
+   "why": "<b>segregate</b> means to keep separate or apart. So its opposite is <b>integrate</b>.",
+   "cite": "Written for this test; the meaning it turns on is the book’s.",
+   "first": true,
+   "i": 66
+  },
+  {
+   "k": "segregate:0",
+   "w": "segregation",
+   "s": 0,
+   "type": "def",
+   "q": "<b>segregation</b> <span class='pos'>(n.)</span>",
+   "opts": [
+    "To bring shame or disgrace upon.",
+    "The act of keeping separate or apart.",
+    "Joyful over a victory or success.",
+    "To stop or hold; to keep from going on."
+   ],
+   "a": 1,
+   "why": "<b>segregation</b> (n.) &mdash; The act of keeping separate or apart.",
+   "cite": "Wordly Wise 3000, Book 6, Word List 2",
+   "first": false,
+   "i": 67
+  },
+  {
+   "k": "segregate:0",
+   "w": "segregation",
+   "s": 0,
+   "type": "rev",
+   "q": "Which word means: <span class='def'>(n.) The act of keeping separate or apart.</span>",
+   "opts": [
+    "verdict",
+    "segregation",
+    "campaign",
+    "triumph"
+   ],
+   "a": 1,
+   "why": "<b>segregation</b> &mdash; (n.) The act of keeping separate or apart.",
+   "cite": "Wordly Wise 3000, Book 6, Word List 2",
+   "first": false,
+   "i": 68
+  },
+  {
+   "k": "segregate:0",
+   "w": "segregation",
+   "s": 0,
+   "type": "blank",
+   "q": "Ending <u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u> was one of the central goals of the Civil Rights Movement.",
+   "opts": [
+    "boycott",
+    "segregation",
+    "triumph",
+    "detain"
+   ],
+   "a": 1,
+   "why": "<b>segregation</b> &mdash; (n.) The act of keeping separate or apart.",
+   "cite": "Written for this test; the meaning it turns on is the book’s.",
+   "first": false,
+   "i": 69
+  },
+  {
+   "k": "supreme:0",
+   "w": "supreme",
+   "s": 0,
+   "type": "def",
+   "q": "<b>supreme</b> <span class='pos'>(adj.)</span>",
+   "opts": [
+    "The act of keeping separate or apart.",
+    "Joyful over a victory or success.",
+    "The joy that winning brings.",
+    "The highest in rank or position."
+   ],
+   "a": 3,
+   "why": "<b>supreme</b> (adj.) &mdash; The highest in rank or position.",
+   "cite": "Wordly Wise 3000, Book 6, Word List 2",
+   "first": true,
+   "i": 70
+  },
+  {
+   "k": "supreme:0",
+   "w": "supreme",
+   "s": 0,
+   "type": "rev",
+   "q": "Which word means: <span class='def'>(adj.) The highest in rank or position.</span>",
+   "opts": [
+    "triumph",
+    "violation",
+    "integration",
+    "supreme"
+   ],
+   "a": 3,
+   "why": "<b>supreme</b> &mdash; (adj.) The highest in rank or position.",
+   "cite": "Wordly Wise 3000, Book 6, Word List 2",
+   "first": true,
+   "i": 71
+  },
+  {
+   "k": "supreme:0",
+   "w": "supreme",
+   "s": 0,
+   "type": "blank",
+   "q": "The <u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u> commander was pleased to retire after so many years in charge.",
+   "opts": [
+    "detain",
+    "integration",
+    "custody",
+    "supreme"
+   ],
+   "a": 3,
+   "why": "<b>supreme</b> &mdash; (adj.) The highest in rank or position.",
+   "cite": "Written for this test; the meaning it turns on is the book’s.",
+   "first": true,
+   "i": 72
+  },
+  {
+   "k": "supreme:0",
+   "w": "supreme",
+   "s": 0,
+   "type": "ant",
+   "q": "Which word is most nearly the <b>opposite</b> of <b>supreme</b>?",
+   "opts": [
+    "cheerful",
+    "formal",
+    "lowest",
+    "separate"
+   ],
+   "a": 2,
+   "why": "<b>supreme</b> means the highest in rank or position. So its opposite is <b>lowest</b>.",
+   "cite": "Written for this test; the meaning it turns on is the book’s.",
+   "first": true,
+   "i": 73
+  },
+  {
+   "k": "supreme:1",
+   "w": "supreme",
+   "s": 1,
+   "type": "def",
+   "q": "<b>supreme</b> <span class='pos'>(adj.)</span>",
+   "opts": [
+    "Causing shame or disgrace.",
+    "The joy that winning brings.",
+    "To keep separate or apart.",
+    "Of the greatest importance."
+   ],
+   "a": 3,
+   "why": "<b>supreme</b> (adj.) &mdash; Of the greatest importance.",
+   "cite": "Wordly Wise 3000, Book 6, Word List 2",
+   "first": false,
+   "i": 74
+  },
+  {
+   "k": "supreme:1",
+   "w": "supreme",
+   "s": 1,
+   "type": "rev",
+   "q": "Which word means: <span class='def'>(adj.) Of the greatest importance.</span>",
+   "opts": [
+    "triumphant",
+    "verdict",
+    "segregation",
+    "supreme"
+   ],
+   "a": 3,
+   "why": "<b>supreme</b> &mdash; (adj.) Of the greatest importance.",
+   "cite": "Wordly Wise 3000, Book 6, Word List 2",
+   "first": false,
+   "i": 75
+  },
+  {
+   "k": "supreme:1",
+   "w": "supreme",
+   "s": 1,
+   "type": "blank",
+   "q": "Getting everyone off the boat safely was the captain's <u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u> concern.",
+   "opts": [
+    "supreme",
+    "ceremony",
+    "verdict",
+    "extend"
+   ],
+   "a": 0,
+   "why": "<b>supreme</b> &mdash; (adj.) Of the greatest importance.",
+   "cite": "Written for this test; the meaning it turns on is the book’s.",
+   "first": false,
+   "i": 76
+  },
+  {
+   "k": "triumph:0",
+   "w": "triumph",
+   "s": 0,
+   "type": "def",
+   "q": "<b>triumph</b> <span class='pos'>(n.)</span>",
+   "opts": [
+    "A noteworthy success.",
+    "To keep separate or apart.",
+    "A judgment or opinion.",
+    "The act of boycotting."
+   ],
+   "a": 0,
+   "why": "<b>triumph</b> (n.) &mdash; A noteworthy success.",
+   "cite": "Wordly Wise 3000, Book 6, Word List 2",
+   "first": true,
+   "i": 77
+  },
+  {
+   "k": "triumph:0",
+   "w": "triumph",
+   "s": 0,
+   "type": "rev",
+   "q": "Which word means: <span class='def'>(n.) A noteworthy success.</span>",
+   "opts": [
+    "campaign",
+    "triumph",
+    "degrading",
+    "triumphant"
+   ],
+   "a": 1,
+   "why": "<b>triumph</b> &mdash; (n.) A noteworthy success.",
+   "cite": "Wordly Wise 3000, Book 6, Word List 2",
+   "first": true,
+   "i": 78
+  },
+  {
+   "k": "triumph:0",
+   "w": "triumph",
+   "s": 0,
+   "type": "blank",
+   "q": "Finishing the race after breaking her ankle was a real <u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u>.",
+   "opts": [
+    "triumph",
+    "triumphant",
+    "boycott",
+    "arrogant"
+   ],
+   "a": 0,
+   "why": "<b>triumph</b> &mdash; (n.) A noteworthy success.",
+   "cite": "Written for this test; the meaning it turns on is the book’s.",
+   "first": true,
+   "i": 79
+  },
+  {
+   "k": "triumph:0",
+   "w": "triumph",
+   "s": 0,
+   "type": "ant",
+   "q": "Which word is most nearly the <b>opposite</b> of <b>triumph</b>?",
+   "opts": [
+    "journey",
+    "ceremony",
+    "promise",
+    "defeat"
+   ],
+   "a": 3,
+   "why": "<b>triumph</b> means a noteworthy success. So its opposite is <b>defeat</b>.",
+   "cite": "Written for this test; the meaning it turns on is the book’s.",
+   "first": true,
+   "i": 80
+  },
+  {
+   "k": "triumph:1",
+   "w": "triumph",
+   "s": 1,
+   "type": "def",
+   "q": "<b>triumph</b> <span class='pos'>(n.)</span>",
+   "opts": [
+    "To keep separate or apart.",
+    "Causing shame or disgrace.",
+    "To break, as a law or a promise.",
+    "The joy that winning brings."
+   ],
+   "a": 3,
+   "why": "<b>triumph</b> (n.) &mdash; The joy that winning brings.",
+   "cite": "Wordly Wise 3000, Book 6, Word List 2",
+   "first": false,
+   "i": 81
+  },
+  {
+   "k": "triumph:1",
+   "w": "triumph",
+   "s": 1,
+   "type": "rev",
+   "q": "Which word means: <span class='def'>(n.) The joy that winning brings.</span>",
+   "opts": [
+    "boycott",
+    "verdict",
+    "triumph",
+    "extend"
+   ],
+   "a": 2,
+   "why": "<b>triumph</b> &mdash; (n.) The joy that winning brings.",
+   "cite": "Wordly Wise 3000, Book 6, Word List 2",
+   "first": false,
+   "i": 82
+  },
+  {
+   "k": "triumph:1",
+   "w": "triumph",
+   "s": 1,
+   "type": "blank",
+   "q": "There was such <u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u> in his face that nobody needed to ask the score.",
+   "opts": [
+    "triumph",
+    "violation",
+    "supreme",
+    "verdict"
+   ],
+   "a": 0,
+   "why": "<b>triumph</b> &mdash; (n.) The joy that winning brings.",
+   "cite": "Written for this test; the meaning it turns on is the book’s.",
+   "first": false,
+   "i": 83
+  },
+  {
+   "k": "triumph:2",
+   "w": "triumph",
+   "s": 2,
+   "type": "def",
+   "q": "<b>triumph</b> <span class='pos'>(v.)</span>",
+   "opts": [
+    "To make longer.",
+    "To reach out.",
+    "To win.",
+    "To offer."
+   ],
+   "a": 2,
+   "why": "<b>triumph</b> (v.) &mdash; To win.",
+   "cite": "Wordly Wise 3000, Book 6, Word List 2",
+   "first": false,
+   "i": 84
+  },
+  {
+   "k": "triumph:2",
+   "w": "triumph",
+   "s": 2,
+   "type": "rev",
+   "q": "Which word means: <span class='def'>(v.) To win.</span>",
+   "opts": [
+    "triumph",
+    "ceremony",
+    "supreme",
+    "campaign"
+   ],
+   "a": 0,
+   "why": "<b>triumph</b> &mdash; (v.) To win.",
+   "cite": "Wordly Wise 3000, Book 6, Word List 2",
+   "first": false,
+   "i": 85
+  },
+  {
+   "k": "triumph:2",
+   "w": "triumph",
+   "s": 2,
+   "type": "blank",
+   "q": "She went on to <u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u> over forty-nine other spellers in the final round.",
+   "opts": [
+    "violate",
+    "arrogant",
+    "segregate",
+    "triumph"
+   ],
+   "a": 3,
+   "why": "<b>triumph</b> &mdash; (v.) To win.",
+   "cite": "Written for this test; the meaning it turns on is the book’s.",
+   "first": false,
+   "i": 86
+  },
+  {
+   "k": "triumph:0",
+   "w": "triumphant",
+   "s": 0,
+   "type": "def",
+   "q": "<b>triumphant</b> <span class='pos'>(adj.)</span>",
+   "opts": [
+    "The highest in rank or position.",
+    "The act of keeping separate or apart.",
+    "Joyful over a victory or success.",
+    "To break, as a law or a promise."
+   ],
+   "a": 2,
+   "why": "<b>triumphant</b> (adj.) &mdash; Joyful over a victory or success.",
+   "cite": "Wordly Wise 3000, Book 6, Word List 2",
+   "first": false,
+   "i": 87
+  },
+  {
+   "k": "triumph:0",
+   "w": "triumphant",
+   "s": 0,
+   "type": "rev",
+   "q": "Which word means: <span class='def'>(adj.) Joyful over a victory or success.</span>",
+   "opts": [
+    "segregate",
+    "ceremony",
+    "supreme",
+    "triumphant"
+   ],
+   "a": 3,
+   "why": "<b>triumphant</b> &mdash; (adj.) Joyful over a victory or success.",
+   "cite": "Wordly Wise 3000, Book 6, Word List 2",
+   "first": false,
+   "i": 88
+  },
+  {
+   "k": "triumph:0",
+   "w": "triumphant",
+   "s": 0,
+   "type": "blank",
+   "q": "The <u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u> team was met at the airport by half the town.",
+   "opts": [
+    "triumphant",
+    "degrading",
+    "custody",
+    "supreme"
+   ],
+   "a": 0,
+   "why": "<b>triumphant</b> &mdash; (adj.) Joyful over a victory or success.",
+   "cite": "Written for this test; the meaning it turns on is the book’s.",
+   "first": false,
+   "i": 89
+  },
+  {
+   "k": "vacate:0",
+   "w": "vacate",
+   "s": 0,
+   "type": "def",
+   "q": "<b>vacate</b> <span class='pos'>(v.)</span>",
+   "opts": [
+    "To bring shame or disgrace upon.",
+    "Joyful over a victory or success.",
+    "To make empty, as by leaving.",
+    "Causing shame or disgrace."
+   ],
+   "a": 2,
+   "why": "<b>vacate</b> (v.) &mdash; To make empty, as by leaving.",
+   "cite": "Wordly Wise 3000, Book 6, Word List 2",
+   "first": true,
+   "i": 90
+  },
+  {
+   "k": "vacate:0",
+   "w": "vacate",
+   "s": 0,
+   "type": "rev",
+   "q": "Which word means: <span class='def'>(v.) To make empty, as by leaving.</span>",
+   "opts": [
+    "custody",
+    "campaign",
+    "vacate",
+    "segregation"
+   ],
+   "a": 2,
+   "why": "<b>vacate</b> &mdash; (v.) To make empty, as by leaving.",
+   "cite": "Wordly Wise 3000, Book 6, Word List 2",
+   "first": true,
+   "i": 91
+  },
+  {
+   "k": "vacate:0",
+   "w": "vacate",
+   "s": 0,
+   "type": "blank",
+   "q": "They must <u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u> the house by the end of June so the new family can move in.",
+   "opts": [
+    "extend",
+    "vacate",
+    "arrogance",
+    "segregation"
+   ],
+   "a": 1,
+   "why": "<b>vacate</b> &mdash; (v.) To make empty, as by leaving.",
+   "cite": "Written for this test; the meaning it turns on is the book’s.",
+   "first": true,
+   "i": 92
+  },
+  {
+   "k": "vacate:0",
+   "w": "vacate",
+   "s": 0,
+   "type": "ant",
+   "q": "Which word is most nearly the <b>opposite</b> of <b>vacate</b>?",
+   "opts": [
+    "measure",
+    "decorate",
+    "occupy",
+    "announce"
+   ],
+   "a": 2,
+   "why": "<b>vacate</b> means to make empty, as by leaving. So its opposite is <b>occupy</b>.",
+   "cite": "Written for this test; the meaning it turns on is the book’s.",
+   "first": true,
+   "i": 93
+  },
+  {
+   "k": "verdict:0",
+   "w": "verdict",
+   "s": 0,
+   "type": "def",
+   "q": "<b>verdict</b> <span class='pos'>(n.)</span>",
+   "opts": [
+    "A feeling of too much pride in oneself.",
+    "Control over and responsibility for care.",
+    "The decision reached at the end of a trial.",
+    "In the keeping of the police; in jail."
+   ],
+   "a": 2,
+   "why": "<b>verdict</b> (n.) &mdash; The decision reached at the end of a trial.",
+   "cite": "Wordly Wise 3000, Book 6, Word List 2",
+   "first": true,
+   "i": 94
+  },
+  {
+   "k": "verdict:0",
+   "w": "verdict",
+   "s": 0,
+   "type": "rev",
+   "q": "Which word means: <span class='def'>(n.) The decision reached at the end of a trial.</span>",
+   "opts": [
+    "degrade",
+    "verdict",
+    "segregation",
+    "extend"
+   ],
+   "a": 1,
+   "why": "<b>verdict</b> &mdash; (n.) The decision reached at the end of a trial.",
+   "cite": "Wordly Wise 3000, Book 6, Word List 2",
+   "first": true,
+   "i": 95
+  },
+  {
+   "k": "verdict:0",
+   "w": "verdict",
+   "s": 0,
+   "type": "blank",
+   "q": "The courtroom went silent as the jury delivered its <u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u>.",
+   "opts": [
+    "detain",
+    "custody",
+    "verdict",
+    "triumph"
+   ],
+   "a": 2,
+   "why": "<b>verdict</b> &mdash; (n.) The decision reached at the end of a trial.",
+   "cite": "Written for this test; the meaning it turns on is the book’s.",
+   "first": true,
+   "i": 96
+  },
+  {
+   "k": "verdict:1",
+   "w": "verdict",
+   "s": 1,
+   "type": "def",
+   "q": "<b>verdict</b> <span class='pos'>(n.)</span>",
+   "opts": [
+    "A judgment or opinion.",
+    "Of the greatest importance.",
+    "To keep separate or apart.",
+    "Causing shame or disgrace."
+   ],
+   "a": 0,
+   "why": "<b>verdict</b> (n.) &mdash; A judgment or opinion.",
+   "cite": "Wordly Wise 3000, Book 6, Word List 2",
+   "first": false,
+   "i": 97
+  },
+  {
+   "k": "verdict:1",
+   "w": "verdict",
+   "s": 1,
+   "type": "rev",
+   "q": "Which word means: <span class='def'>(n.) A judgment or opinion.</span>",
+   "opts": [
+    "custody",
+    "verdict",
+    "detain",
+    "boycott"
+   ],
+   "a": 1,
+   "why": "<b>verdict</b> &mdash; (n.) A judgment or opinion.",
+   "cite": "Wordly Wise 3000, Book 6, Word List 2",
+   "first": false,
+   "i": 98
+  },
+  {
+   "k": "verdict:1",
+   "w": "verdict",
+   "s": 1,
+   "type": "blank",
+   "q": "The <u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u> on the new bike was that it was fast but far too heavy.",
+   "opts": [
+    "verdict",
+    "boycott",
+    "vacate",
+    "custody"
+   ],
+   "a": 0,
+   "why": "<b>verdict</b> &mdash; (n.) A judgment or opinion.",
+   "cite": "Written for this test; the meaning it turns on is the book’s.",
+   "first": false,
+   "i": 99
+  },
+  {
+   "k": "violate:0",
+   "w": "violate",
+   "s": 0,
+   "type": "def",
+   "q": "<b>violate</b> <span class='pos'>(v.)</span>",
+   "opts": [
+    "To make empty, as by leaving.",
+    "The highest in rank or position.",
+    "Of the greatest importance.",
+    "To break, as a law or a promise."
+   ],
+   "a": 3,
+   "why": "<b>violate</b> (v.) &mdash; To break, as a law or a promise.",
+   "cite": "Wordly Wise 3000, Book 6, Word List 2",
+   "first": true,
+   "i": 100
+  },
+  {
+   "k": "violate:0",
+   "w": "violate",
+   "s": 0,
+   "type": "rev",
+   "q": "Which word means: <span class='def'>(v.) To break, as a law or a promise.</span>",
+   "opts": [
+    "supreme",
+    "violate",
+    "vacate",
+    "triumph"
+   ],
+   "a": 1,
+   "why": "<b>violate</b> &mdash; (v.) To break, as a law or a promise.",
+   "cite": "Wordly Wise 3000, Book 6, Word List 2",
+   "first": true,
+   "i": 101
+  },
+  {
+   "k": "violate:0",
+   "w": "violate",
+   "s": 0,
+   "type": "blank",
+   "q": "Copying someone else's homework would <u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u> our teacher's trust.",
+   "opts": [
+    "integrate",
+    "segregate",
+    "arrogance",
+    "violate"
+   ],
+   "a": 3,
+   "why": "<b>violate</b> &mdash; (v.) To break, as a law or a promise.",
+   "cite": "Written for this test; the meaning it turns on is the book’s.",
+   "first": true,
+   "i": 102
+  },
+  {
+   "k": "violate:0",
+   "w": "violate",
+   "s": 0,
+   "type": "ant",
+   "q": "Which word is most nearly the <b>opposite</b> of <b>violate</b>?",
+   "opts": [
+    "obey",
+    "announce",
+    "measure",
+    "celebrate"
+   ],
+   "a": 0,
+   "why": "<b>violate</b> means to break, as a law or a promise. So its opposite is <b>obey</b>.",
+   "cite": "Written for this test; the meaning it turns on is the book’s.",
+   "first": true,
+   "i": 103
+  },
+  {
+   "k": "violate:1",
+   "w": "violate",
+   "s": 1,
+   "type": "def",
+   "q": "<b>violate</b> <span class='pos'>(v.)</span>",
+   "opts": [
+    "To stretch or spread outward from a certain point.",
+    "The decision reached at the end of a trial.",
+    "A series of military actions in a particular area.",
+    "To treat in an improper or disrespectful way."
+   ],
+   "a": 3,
+   "why": "<b>violate</b> (v.) &mdash; To treat in an improper or disrespectful way.",
+   "cite": "Wordly Wise 3000, Book 6, Word List 2",
+   "first": false,
+   "i": 104
+  },
+  {
+   "k": "violate:1",
+   "w": "violate",
+   "s": 1,
+   "type": "rev",
+   "q": "Which word means: <span class='def'>(v.) To treat in an improper or disrespectful way.</span>",
+   "opts": [
+    "segregate",
+    "violate",
+    "ceremony",
+    "detain"
+   ],
+   "a": 1,
+   "why": "<b>violate</b> &mdash; (v.) To treat in an improper or disrespectful way.",
+   "cite": "Wordly Wise 3000, Book 6, Word List 2",
+   "first": false,
+   "i": 105
+  },
+  {
+   "k": "violate:1",
+   "w": "violate",
+   "s": 1,
+   "type": "blank",
+   "q": "The vandals who <u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u> the old cemetery were made to repair every stone.",
+   "opts": [
+    "degrade",
+    "triumph",
+    "violate",
+    "segregation"
+   ],
+   "a": 2,
+   "why": "<b>violate</b> &mdash; (v.) To treat in an improper or disrespectful way.",
+   "cite": "Written for this test; the meaning it turns on is the book’s.",
+   "first": false,
+   "i": 106
+  },
+  {
+   "k": "violate:0",
+   "w": "violation",
+   "s": 0,
+   "type": "def",
+   "q": "<b>violation</b> <span class='pos'>(n.)</span>",
+   "opts": [
+    "The act of uniting or bringing together, especially people of different races.",
+    "A breaking of, or failing to keep, something like a law or a promise.",
+    "To take part in actions planned to accomplish a particular goal.",
+    "To unite into a whole; especially to end the separation of people of different races."
+   ],
+   "a": 1,
+   "why": "<b>violation</b> (n.) &mdash; A breaking of, or failing to keep, something like a law or a promise.",
+   "cite": "Wordly Wise 3000, Book 6, Word List 2",
+   "first": false,
+   "i": 107
+  },
+  {
+   "k": "violate:0",
+   "w": "violation",
+   "s": 0,
+   "type": "rev",
+   "q": "Which word means: <span class='def'>(n.) A breaking of, or failing to keep, something like a law or a promise.</span>",
+   "opts": [
+    "degrading",
+    "verdict",
+    "arrogant",
+    "violation"
+   ],
+   "a": 3,
+   "why": "<b>violation</b> &mdash; (n.) A breaking of, or failing to keep, something like a law or a promise.",
+   "cite": "Wordly Wise 3000, Book 6, Word List 2",
+   "first": false,
+   "i": 108
+  },
+  {
+   "k": "violate:0",
+   "w": "violation",
+   "s": 0,
+   "type": "blank",
+   "q": "Telling the secret was a <u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u> of everything she had promised her friend.",
+   "opts": [
+    "vacate",
+    "degrading",
+    "integration",
+    "violation"
+   ],
+   "a": 3,
+   "why": "<b>violation</b> &mdash; (n.) A breaking of, or failing to keep, something like a law or a promise.",
+   "cite": "Written for this test; the meaning it turns on is the book’s.",
+   "first": false,
+   "i": 109
+  }
+ ],
+ "forms": [
+  {
+   "id": "warm",
+   "n": "Warm-up",
+   "name": "Sunday warm-up",
+   "c": "var(--jade)",
+   "blurb": "One word at a time, meanings only. Nothing here counts against you — it is the first look.",
+   "items": [
+    23,
+    39,
+    43,
+    56,
+    7,
+    0,
+    100,
+    14,
+    32,
+    90,
+    77,
+    70,
+    26,
+    63,
+    94
+   ]
+  },
+  {
+   "id": "a",
+   "n": "Form A",
+   "name": "Form A",
+   "c": "var(--sky)",
+   "blurb": "Mixed practice — meanings, words, and sentences.",
+   "items": [
+    8,
+    72,
+    26,
+    89,
+    49,
+    18,
+    90,
+    34,
+    57,
+    30,
+    86,
+    15,
+    85,
+    95,
+    96,
+    70,
+    36,
+    66,
+    56,
+    61,
+    93,
+    84,
+    47,
+    67
+   ]
+  },
+  {
+   "id": "b",
+   "n": "Form B",
+   "name": "Form B",
+   "c": "var(--gold)",
+   "blurb": "Mixed practice — meanings, words, and sentences.",
+   "items": [
+    39,
+    87,
+    27,
+    69,
+    58,
+    23,
+    3,
+    53,
+    14,
+    109,
+    38,
+    80,
+    20,
+    54,
+    16,
+    64,
+    74,
+    51,
+    82,
+    76,
+    1,
+    91,
+    17,
+    68
+   ]
+  },
+  {
+   "id": "c",
+   "n": "Form C",
+   "name": "Form C",
+   "c": "var(--red)",
+   "blurb": "Mixed practice — meanings, words, and sentences.",
+   "items": [
+    41,
+    52,
+    102,
+    9,
+    107,
+    32,
+    97,
+    98,
+    6,
+    101,
+    29,
+    104,
+    77,
+    79,
+    103,
+    24,
+    108,
+    33,
+    4,
+    48,
+    75,
+    42,
+    5,
+    50
+   ]
+  },
+  {
+   "id": "final",
+   "n": "Final",
+   "name": "Comprehensive Final",
+   "c": "var(--jade)",
+   "blurb": "Every meaning on the list, once each. This is the Thursday run before Friday's test.",
+   "items": [
+    32,
+    94,
+    2,
+    55,
+    77,
+    17,
+    97,
+    104,
+    90,
+    63,
+    74,
+    100,
+    0,
+    20,
+    23,
+    70,
+    14,
+    53,
+    47,
+    50,
+    22,
+    56,
+    45,
+    84,
+    83,
+    39,
+    106,
+    35,
+    11,
+    7,
+    62,
+    29,
+    26,
+    81,
+    43
+   ]
+  }
+ ]
+};
+
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+const shuffle = a => { a=a.slice(); for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]];} return a; };
+
+let P=null, idx=0, sheet=[], t0=0, tick=null, only=false, partial=false, srcForm=null;
+const best = MC.bests();
+
+function home(){
+  if(tick){ clearInterval(tick); tick=null; }
+  $("sets").innerHTML = DATA.forms.map((p,i)=>{
+    const b = best[p.id], done = b!=null && b>=75;
+    return `<button class="set ${b==null?"":(done?"mc-cleared":"mc-tried")}" style="--c:${p.c}" data-s="${i}">
+      <span class="tag">${esc(p.n)}</span>
+      <h3>${esc(p.name)}</h3>
+      <p>${esc(p.blurb)}</p>
+      <span class="go">${p.items.length} questions &rsaquo;</span>
+      ${b!=null?`<span class="badge mc-best${done?" mc-done":""}">${done?"CLEARED &middot; ":""}best ${b}%</span>`:""}
+    </button>`;
+  }).join("");
+  [...document.querySelectorAll(".set")].forEach(b=>b.onclick=()=>start(+b.dataset.s));
+  $("foot").innerHTML = "Words and definitions from <i>Wordly Wise 3000</i>, Book 6, Word List 1, "+
+    "reproduced for personal study use. Antonym prompts and the fill-in-the-blank sentences were "+
+    "written for this test; the meanings they turn on are the book\u2019s.";
+  show("home");
+}
+function show(w){ ["home","play","done"].forEach(x=>$(x).classList.toggle("hide",x!==w));
+  window.scrollTo(0,0); }
+
+/* Where the right answer sits, A/B/C/D, must not be guessable. Shuffling each
+   item on its own is not enough — chance alone will hand him a run of five Cs
+   and he will notice. So the positions are dealt from a balanced deck: as close
+   to a quarter each as the count allows, reshuffled until no three in a row
+   match, then each item's options are rotated so its answer lands on the slot
+   it drew. Every sitting deals a fresh hand. */
+function positions(n){
+  /* When the count is not a multiple of four, some letter has to appear one
+     time fewer. Rotating the deal each sitting means it is a different letter
+     every time, instead of D always being the short straw. */
+  const off = Math.random()*4|0, deck = [];
+  for(let i=0;i<n;i++) deck.push((i+off)%4);
+  for(let tries=0;tries<200;tries++){
+    const d = shuffle(deck);
+    let run=1, worst=1;
+    for(let i=1;i<d.length;i++){ run = d[i]===d[i-1] ? run+1 : 1; if(run>worst) worst=run; }
+    if(worst<3) return d;
+  }
+  return shuffle(deck);
+}
+
+function lay(items){
+  const slots = positions(items.length);
+  return shuffle(items).map((it,n)=>{
+    const opts = shuffle(it.opts.map((t,k)=>({t, ok:k===0})));
+    const at = opts.findIndex(o=>o.ok), want = slots[n];
+    [opts[at], opts[want]] = [opts[want], opts[at]];
+    return { it, opts, pick:null, flag:false };
+  });
+}
+
+function start(i, opts){
+  opts = opts || {};
+  P = DATA.forms[i]; idx = 0; only = false;
+  partial = !!opts.retry;
+  srcForm = i;
+  MC.begin(partial ? {partial:true} : undefined);
+  const items = (opts.items || P.items).map(k=>DATA.pool[k]);
+  sheet = lay(items);
+  sheet.forEach((r,n)=>r.n=n);   /* number after laying out, so review matches the paper */
+  $("who").textContent = (partial ? "PUTTING RIGHT \u00b7 " : "") + P.name.toUpperCase();
+  $("dirs").textContent = partial
+    ? "Only the ones you missed, asked a different way this time. This does not "
+      + "overwrite your score for " + P.name + "."
+    : "Read each question and choose the best answer. Nothing is marked until you "
+      + "press Finish, and you can flag anything you want to come back to.";
+  $("dirs").style.setProperty("--c", P.c);
+  $("bankbox").innerHTML =
+    `<div class="bank"><b>Word bank</b>${DATA.bank.map(w=>`<span>${esc(w)}</span>`).join("")}</div>`;
+  t0 = Date.now();
+  if(tick) clearInterval(tick);
+  tick = setInterval(clock, 1000); clock();
+  show("play"); render();
+}
+function clock(){
+  const s = Math.floor((Date.now()-t0)/1000);
+  $("clock").textContent = Math.floor(s/60) + ":" + String(s%60).padStart(2,"0");
+}
+
+function drawNav(){
+  $("nav").innerHTML = sheet.map((r,i)=>
+    `<button data-g="${i}" class="${r.pick!=null?"ans":""}${i===idx?" now":""}${r.flag?" flag":""}"
+      aria-label="Question ${i+1}">${i+1}</button>`).join("");
+  [...$("nav").querySelectorAll("button")].forEach(b=>b.onclick=()=>{
+    idx=+b.dataset.g; render(); });
+}
+
+function render(){
+  drawNav();
+  const r = sheet[idx], last = idx===sheet.length-1;
+  const answered = sheet.filter(x=>x.pick!=null).length;
+  $("card").innerHTML = `
+    <div class="qnum">Question ${idx+1} of ${sheet.length} &middot; ${answered} answered</div>
+    <div class="q">${r.it.q}</div>
+    <div class="opts" id="opts"></div>
+    <div class="act">
+      <div class="pager">
+        <button class="btn o" id="prev" ${idx===0?"disabled":""}>&lsaquo; Back</button>
+        <button class="btn o" id="next" ${last?"disabled":""}>Next &rsaquo;</button>
+      </div>
+      <button class="btn f ${r.flag?"on":""}" id="flag">${r.flag?"Flagged for review":"Flag for review"}</button>
+      <button class="btn p" id="fin">Finish and check</button>
+    </div>`;
+  $("opts").innerHTML = r.opts.map((o,i)=>
+    `<button class="opt ${r.pick===i?"sel":""}" data-i="${i}">
+       <span class="k">${"ABCD"[i]}</span><span>${esc(o.t)}</span></button>`).join("");
+  [...document.querySelectorAll(".opt")].forEach(b=>b.onclick=()=>{
+    r.pick = +b.dataset.i;
+    [...document.querySelectorAll(".opt")].forEach(x=>x.classList.remove("sel"));
+    b.classList.add("sel");
+    drawNav();
+    $("card").querySelector(".qnum").textContent =
+      `Question ${idx+1} of ${sheet.length} \u00b7 ${sheet.filter(x=>x.pick!=null).length} answered`;
+  });
+  $("prev").onclick = ()=>{ if(idx>0){ idx--; render(); window.scrollTo(0,0); } };
+  $("next").onclick = ()=>{ if(idx<sheet.length-1){ idx++; render(); window.scrollTo(0,0); } };
+  $("flag").onclick = ()=>{ r.flag=!r.flag; render(); };
+  $("fin").onclick = finish;
+}
+
+function finish(){
+  const blank = sheet.filter(r=>r.pick==null).length;
+  const flagged = sheet.filter(r=>r.flag).length;
+  if(blank || flagged){
+    const bits = [];
+    if(blank) bits.push(blank===1?"1 question is still blank":blank+" questions are still blank");
+    if(flagged) bits.push(flagged===1?"1 is flagged for review":flagged+" are flagged for review");
+    if(!confirm(bits.join(", and ") + ".\n\nFinish anyway?")) {
+      const go = sheet.findIndex(r=>r.pick==null) >= 0
+               ? sheet.findIndex(r=>r.pick==null) : sheet.findIndex(r=>r.flag);
+      idx = go; render(); window.scrollTo(0,0); return;
+    }
+  }
+  if(tick){ clearInterval(tick); tick=null; }
+  const secs = Math.floor((Date.now()-t0)/1000);
+
+  let right = 0;
+  sheet.forEach(r=>{
+    const ok = r.pick!=null && r.opts[r.pick].ok;
+    r.ok = ok;
+    if(ok) right++; else MC.note(P.id + "-" + r.it.opts[0].slice(0,24));
+  });
+  const pct = Math.round(right/sheet.length*100);
+  const band = pct>=90?["Test-ready","#2F8F76"]:pct>=75?["Solid","#3D82B8"]
+             :pct>=50?["Halfway there","#E0A83C"]:["Back to the list","#C4553F"];
+
+  const missed = sheet.filter(r=>!r.ok);
+  /* Ask the missed ones a different way next time. Every item in the pool
+     carries the indices of the other ways of asking about the same meaning. */
+  const retry = missed.map(r=>{
+    const alts = r.it.alt || [];
+    return alts.length ? alts[Math.random()*alts.length|0] : r.it.i;
+  });
+
+  $("dtag").textContent = (partial ? "PUTTING RIGHT \u00b7 " : "") + P.name.toUpperCase();
+  $("scorebox").innerHTML = `
+    <div class="ring" style="color:${band[1]}">${pct}%</div>
+    <div class="band" style="color:${band[1]}">${band[0]}</div>
+    <div class="stats">
+      <div class="stat"><b>${right} / ${sheet.length}</b><span>Correct</span></div>
+      <div class="stat"><b>${Math.floor(secs/60)}:${String(secs%60).padStart(2,"0")}</b><span>Time taken</span></div>
+      <div class="stat"><b>${blank}</b><span>Left blank</span></div>
+    </div>
+    ${partial?`<div class="note">This was a correction round, so it has not changed
+      your best score for ${esc(P.name)}.</div>`:""}
+    <div class="cta">
+      <div class="ctahead">What now?</div>
+      ${missed.length?`<button class="btn p" id="retry">Put right the ${missed.length} I missed
+        <small>Same meanings, asked a different way</small></button>`:""}
+      <button class="btn o" id="scroll">Go through all ${sheet.length} answers
+        <small>Every question, with the meaning it turns on</small></button>
+      <button class="btn o" id="other">Try a different form
+        <small>${esc(otherName(srcForm))}</small></button>
+      <button class="btn o" id="again">Take ${esc(P.name)} again
+        <small>New order, new answer positions</small></button>
+      <button class="btn o" id="pick">Back to all the tests</button>
+    </div>`;
+  MC.chest($("scorebox"), pct, {id:P.id});
+  if(missed.length) $("retry").onclick = ()=>start(srcForm, {retry:true, items:retry});
+  $("scroll").onclick = ()=>{ only=false; drawReview();
+    $("review").scrollIntoView({behavior:"smooth",block:"start"}); };
+  $("other").onclick  = ()=>start(nextForm(srcForm));
+  $("again").onclick  = ()=>start(srcForm);
+  $("pick").onclick   = ()=>{ Object.assign(best, MC.bests()); home(); };
+  only = missed.length>0; drawReview();
+  show("done");
+}
+
+/* which form to offer next -- the one after this, wrapping, skipping the final
+   unless he has just done a form, so the suggestion is always a step sideways */
+function nextForm(i){ return (i+1) % DATA.forms.length; }
+function otherName(i){ return DATA.forms[nextForm(i)].name; }
+
+function drawReview(){
+  const wrong = sheet.filter(r=>!r.ok).length;
+  $("filt").innerHTML = `
+    <button class="btn o" id="fall" ${!only?"disabled":""}>All ${sheet.length}</button>
+    <button class="btn o" id="fbad" ${only||!wrong?"disabled":""}>Only the ${wrong} missed</button>`;
+  $("fall").onclick = ()=>{ only=false; drawReview(); };
+  $("fbad").onclick = ()=>{ only=true;  drawReview(); };
+  $("review").innerHTML = sheet.filter(r=>!only||!r.ok).map(r=>{
+    const yours = r.pick==null ? "left blank" : r.opts[r.pick].t;
+    const corr  = r.opts.find(o=>o.ok).t;
+    return `<div class="rv ${r.ok?"":"no"}">
+      <div class="n">Question ${r.n+1} &middot; ${r.ok?"correct":"missed"}</div>
+      <div class="qq">${r.it.q}</div>
+      ${r.ok?"":`<div class="ln"><i>You put</i><span class="yours">${esc(yours)}</span></div>`}
+      <div class="ln"><i>Answer</i><span>${esc(corr)}</span></div>
+      <div class="why">${r.it.why}<cite>${esc(r.it.cite)}</cite></div>
+    </div>`;
+  }).join("") || `<div class="rv"><div class="qq">Nothing missed.</div></div>`;
+}
+
+home();
+</script>
+</body>
+</html>

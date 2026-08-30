@@ -138,6 +138,12 @@ def sci3(s):
     return mission_app(s, "science3")
 
 
+def sci4(s):
+    """CKSci Chapter 4 — generated from Ch3's shell, so its call sites came
+    across already patched. Config only, like hist2/hist3."""
+    return Patcher(s, "science4")
+
+
 def vtest(s):
     """Wordly Wise List 1 unit test — theme-aware; config only. It runs with
     hud:false, because a test should not have hearts draining while it is being
@@ -145,6 +151,19 @@ def vtest(s):
     they still land in the shared miss log, and a clean sheet still leaves
     halves at 20 — which is exactly the condition the dragon wants."""
     return Patcher(s, "vocabtest")
+
+
+def vocab2(s):
+    """Word List 2 sheet — generated from the List 1 sheet's shell, so its call
+    sites came across already patched. Config only."""
+    return Patcher(s, "vocabulary2")
+
+
+def vtest2(s):
+    """Wordly Wise List 2 unit test — generated from the List 1 test's shell, so
+    its call sites came across already patched. Config only, and hud:false for
+    the same reason as List 1."""
+    return Patcher(s, "vocabtest2")
 
 
 def reads(name):
@@ -238,6 +257,14 @@ APPS = {
     # the capstone, so the dragon belongs there.
     "vocabulary/ww6-lesson1-test": (vtest, dict(app="vocabtest", shake=None, lift=None,
                                            hud=False, dragon=["final"])),
+    # The List 2 sheet: every word matched to every meaning it carries. The
+    # study tool, so the dragon sits on it the same way it does for List 1.
+    "vocabulary/ww6-lesson2":      (vocab2, dict(app="vocabulary2", shake="#sheet",
+                                           lift=".bar", dragon=["sheet"])),
+    # List 2 runs across the week: a Sunday warm-up, forms A-C, then Thursday's
+    # final before the Friday test. The dragon sits on the final, as in List 1.
+    "vocabulary/ww6-lesson2-test": (vtest2, dict(app="vocabtest2", shake=None, lift=None,
+                                           hud=False, dragon=["final"])),
     # The passage is one mission, m1 — the old "s3" target predates that shape.
     "reading/sherlock-speckled-1": (read, dict(app="reading", shake="#card", lift=None,
                                            dragon=["m1"])),
@@ -248,6 +275,8 @@ APPS = {
                                            dragon=["s3"])),
     # Ch3's single mission is m1, the same shape as Ch1 and Ch2.
     "science/g5-matter-ch3":  (sci3,  dict(app="science3",   shake="#card",   lift=None,
+                                           dragon=["m1"])),
+    "science/g5-matter-ch4":  (sci4,  dict(app="science4",   shake="#card",   lift=None,
                                            dragon=["m1"])),
     # The Speckled Band, pages 1-44, cut into sections. Each is one mission, m1,
     # which is also its last — so every section can summon the dragon on a
