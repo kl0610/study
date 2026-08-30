@@ -76,6 +76,9 @@ or re-fetch anything already on this list.
 ```
 _source/history/  CKHG_G5_U2_MayaAztecInca_Teacher-Guide.pdf      110 pp
                   CKHG_G5_U2_MayaAztecInca_Student-Reader.pdf      76 pp
+                  CKHG_G5_U2_MayaAztecInca_Timeline.pdf            11 pp
+                    — carries each chapter's Big Question; useful for
+                      sequencing and for the hub's chapter titles
 _source/science/  CKSci_G5U1_Matter_TG.pdf                        173 pp
                   CKSci_G5U1_Matter_SR.pdf                         50 pp
 _source/reading/  CC_SherlockHolmes_Reader_W1.pdf                 228 pp
