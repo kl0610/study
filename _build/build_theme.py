@@ -153,6 +153,12 @@ def vtest(s):
     return Patcher(s, "vocabtest")
 
 
+def spell3(s):
+    """Spelling List 3 — generated from List 2's shell, so its call sites came
+    across already patched. Config only."""
+    return Patcher(s, "spelling3")
+
+
 def vocab2(s):
     """Word List 2 sheet — generated from the List 1 sheet's shell, so its call
     sites came across already patched. Config only."""
@@ -245,6 +251,10 @@ APPS = {
                                            dragon=["m1"])),
     "spelling/list2":         (spell, dict(app="spelling",   shake="#card",   lift=None,
                                                    dragon=["l7"])),
+    # A new list each week, same seven-level ladder. l7 is where he writes his
+    # own sentence, so that is where the dragon sits.
+    "spelling/list3":         (spell3, dict(app="spelling3",  shake="#card",   lift=None,
+                                           dragon=["l7"])),
     "vocabulary/ww6-lesson1": (vocab, dict(app="vocabulary", shake="#sheet",  lift=".bar",
                                            dragon=["sheet"])),
     "history/g5-maya-ch1":    (hist,  dict(app="history",    shake="#stela",  lift=None,

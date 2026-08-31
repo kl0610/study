@@ -9,3 +9,9 @@ Thumbs.db
 # practice questions it produces, which look like any other content.
 _returned/*
 !_returned/README.md
+
+# Wordly Wise and the weekly spelling lists are personal study use only — the
+# CC BY-NC-SA books in _source/ may be redistributed, these may not. They live
+# here so a later session can read them; they must not reach a public repo.
+_source/spelling/
+_source/vocabulary/
