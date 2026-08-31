@@ -12,6 +12,7 @@
      MC.clear(id, pct, {boss})              level finished — may award a tool
      MC.chest(el, pct, {id})                paint the results reveal into el
      MC.bests()                             {id: bestPct} for this app
+     MC.mute(on)                            sound off/on, remembered across apps
      MC.runs(id)                            every attempt at one activity
      MC.picker(el, items, cur, onPick)       a strip of level chips
      MC.state()                             read-only snapshot (used by the hub)
@@ -44,6 +45,77 @@
      practice cannot fill localStorage. */
   if (!S.runs || typeof S.runs !== "object") S.runs = {};
   var RUNS_KEPT = 25;
+  if (typeof S.mute !== "boolean") S.mute = false;
+
+  /* ---------- sound ----------
+     Every answer is heard: a coin when he is right, a soft glass note when he
+     is not, and an unlock when a tool is earned. The wrong note is deliberately
+     the gentlest of the three — it marks the moment without scolding, which is
+     the same reason hearts shrink the loot instead of ending the run.
+
+     All three arrive base64-inlined from the injector, like the sprites under
+     --inline, so an app is still one file you can open from anywhere. They are
+     small enough (about 18 KB of base64 between them) to inline on every build
+     rather than only when asked. */
+  var SFX = window.__MC_SFX__ || null;
+  var VOL = 0.32;                       // quiet by default; this is a study aid
+  /* The wrong note fires more often than either of the others, so it sits
+     lower — audible, but never the loudest thing in the room. */
+  var VOLS = { correct: 0.32, tool: 0.38, wrong: 0.20 };
+  var clips = null, primed = false;
+
+  function vol(k) { return VOLS[k] === undefined ? VOL : VOLS[k]; }
+
+  function build_clips() {
+    if (clips || !SFX) return;
+    clips = {};
+    for (var k in SFX) {
+      try {
+        var a = new Audio(SFX[k]);
+        a.preload = "auto";
+        a.volume = vol(k);
+        clips[k] = a;
+      } catch (e) { /* no Audio in this environment — stay silent */ }
+    }
+  }
+
+  /* Browsers refuse to play audio until the user has interacted with the page,
+     and the refusal is a rejected promise, not an error we would otherwise see.
+     So on the first touch or key we start each clip muted and immediately stop
+     it, which satisfies the policy and leaves them ready to fire instantly. */
+  function unlock() {
+    if (primed) return;
+    primed = true;
+    build_clips();
+    for (var k in clips) prime_one(clips[k], vol(k));
+    document.removeEventListener("pointerdown", unlock, true);
+    document.removeEventListener("keydown", unlock, true);
+  }
+  function prime_one(a, v) {
+    try {
+      a.volume = 0;
+      var p = a.play();
+      var settle = function () { try { a.pause(); a.currentTime = 0; } catch (e) {} a.volume = v; };
+      if (p && p.then) p.then(settle, settle); else settle();
+    } catch (e) { a.volume = v; }
+  }
+  if (typeof document !== "undefined" && document.addEventListener) {
+    document.addEventListener("pointerdown", unlock, true);
+    document.addEventListener("keydown", unlock, true);
+  }
+
+  function play(name) {
+    if (S.mute || !SFX) return;
+    build_clips();
+    var a = clips && clips[name];
+    if (!a) return;
+    try {
+      a.currentTime = 0;
+      a.volume = vol(name);
+      var p = a.play();
+      if (p && p.catch) p.catch(function () { /* still locked; next one will land */ });
+    } catch (e) { /* never let a missing speaker break a question */ }
+  }
   function save() { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} }
 
   var TOOLS = ["wooden pickaxe", "stone pickaxe", "iron pickaxe", "diamond pickaxe",
@@ -107,8 +179,16 @@
   var missedHere = {};      // keys missed during this level
   var fixedHere = 0;        // ...and later got right — the comeback count
   var partialRun = false;   // a correction round over just the missed items
-  var hud, heartsEl, barEl, lastNew = 0;
+  var hud, heartsEl, barEl, muteEl, lastNew = 0;
   var goodN = 0, badN = 0;  // cycle the sprites so it isn't the same one every time
+
+  function drawMute() {
+    if (!muteEl) return;
+    muteEl.textContent = S.mute ? "♪̸" : "♪";
+    muteEl.setAttribute("aria-label", S.mute ? "Sound off — tap for sound" : "Sound on — tap to mute");
+    muteEl.setAttribute("aria-pressed", S.mute ? "true" : "false");
+    muteEl.className = "mc-mute" + (S.mute ? " off" : "");
+  }
 
   /* ---------- HUD ---------- */
   function build() {
@@ -117,8 +197,14 @@
     hud.className = "mc-hud";
     hud.id = "mc-hud";
     hud.innerHTML = '<div class="mc-hearts" id="mc-hearts"></div>' +
-                    '<div class="mc-bar" id="mc-bar"></div>';
+                    '<div class="mc-bar" id="mc-bar"></div>' +
+                    (SFX ? '<button class="mc-mute" id="mc-mute" type="button"></button>' : "");
     document.body.appendChild(hud);
+    muteEl = hud.querySelector("#mc-mute");
+    if (muteEl) {
+      muteEl.addEventListener("click", function () { MC.mute(!S.mute); });
+      drawMute();
+    }
     heartsEl = hud.querySelector("#mc-hearts");
     barEl = hud.querySelector("#mc-bar");
     drawBar();
@@ -274,6 +360,7 @@
       MC.credit(missKey);
       goodN = goodN % 4 + 1;
       burst("win-" + goodN, "mc-good");
+      play("correct");
     },
 
     /* Record a miss without any cost. Used where one action covers several
@@ -292,6 +379,7 @@
       badN = badN % 4 + 1;
       burst("bad-" + badN, "mc-bad", badN === 2 || badN === 4);
       shake();
+      play("wrong");
       if (halves > 0) {
         halves--;                            // floors at zero — never a game over
         drawHearts();
@@ -333,6 +421,7 @@
         if (after.nine && !before.nine) got = 9;
         else if (after.count > before.count) got = after.count;
         lastNew = got || 0;
+        if (got) play("tool");             // a new tool is the one thing worth a fanfare
         drawBar();
       }
 
@@ -558,8 +647,20 @@
       return (S.runs[key] || []).slice();
     },
 
+    /* Sound off/on. Kept in the same saved state as everything else, so the
+       choice holds across every app and survives a reload. Call with no
+       argument to read it. */
+    mute: function (on) {
+      if (on === undefined) return !!S.mute;
+      S.mute = !!on;
+      save();
+      drawMute();
+      return S.mute;
+    },
+
     reset: function () {
-      S = { cleared: {}, misses: {}, tool9: false, ore: {}, gem: {}, dragon: 0, runs: {} };
+      S = { cleared: {}, misses: {}, tool9: false, ore: {}, gem: {}, dragon: 0,
+            runs: {}, mute: S.mute };   // muting is a preference, not progress
       save(); drawBar();
     },
     _relift: lift

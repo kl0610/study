@@ -379,6 +379,26 @@ for (let i = 0; i < 40; i++) { MC.begin("cap"); MC.clear("cap", 80); }
 ok("history is capped so it cannot grow without bound", MC.runs("cap").length === 25);
 MC.reset();
 
+/* Sound. There is no Audio in this stub, so what is checked here is the part
+   that must hold regardless of the speaker: the preference is saved with the
+   rest of the state, it survives a reset, and asking for a sound never throws
+   in an environment that cannot make one. */
+console.log("\nsound");
+ok("sound is on to begin with", MC.mute() === false);
+ok("muting reports back", MC.mute(true) === true && MC.mute() === true);
+ok("a right answer is silent when muted, and still does not throw",
+   (() => { try { MC.begin("q"); MC.right("k"); return true; } catch (e) { return false; } })());
+ok("unmuting reports back", MC.mute(false) === false);
+ok("a right answer with no Audio available does not throw",
+   (() => { try { MC.right("k2"); return true; } catch (e) { return false; } })());
+ok("earning a tool does not throw either",
+   (() => { try { MC.begin("t"); MC.clear("t", 100); return true; } catch (e) { return false; } })());
+MC.mute(true);
+MC.reset();
+ok("reset clears progress but keeps the sound preference", MC.mute() === true);
+MC.mute(false);
+MC.reset();
+
 
 console.log(fails ? "\n" + fails + " FAILURES" : "\nall green");
 process.exit(fails ? 1 : 0);

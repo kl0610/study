@@ -324,6 +324,26 @@ class Patcher:
         self.out = self.out.replace(anchor, rep, 1)
 
 
+def sounds_map():
+    """The three effects, base64 as data URIs.
+
+    Sprites are inlined only under --inline, because there are forty of them and
+    they are large. These three come to about 18 KB of base64 together, so they
+    go in on every build: an app that has to fetch a sound is not one file any
+    more.
+
+    Every answer makes a noise, right or wrong. The wrong note is the quietest
+    and softest of the three on purpose — it should mark the moment, not scold.
+    """
+    out = {}
+    for stem, name in (("tool", "sfx-tool"), ("correct", "sfx-correct"),
+                       ("wrong", "sfx-wrong")):
+        p = ASSETS / (name + ".mp3")
+        if p.exists():
+            out[stem] = "data:audio/mpeg;base64," + base64.b64encode(p.read_bytes()).decode()
+    return out
+
+
 def assets_map():
     out = {}
     for f in sorted(ASSETS.glob("*.png")):
@@ -378,6 +398,7 @@ def inject(html, cfg):
     else:
         head = 'window.__MC_PREFIX__="../../assets/";'
     head += "\nwindow.__MC_HAS_BOSS__=%s;" % ("true" if has_boss else "false")
+    head += "\nwindow.__MC_SFX__=" + json.dumps(sounds_map()) + ";"
 
     block = (
         "\n" + JS_OPEN + "\n"

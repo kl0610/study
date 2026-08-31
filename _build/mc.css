@@ -216,3 +216,18 @@
   border:2px solid rgba(255,255,255,.10);display:flex;align-items:center;gap:9px;
   font:800 10.5px ui-monospace,Consolas,monospace;letter-spacing:.1em;color:#C9A6F0}
 .mc-egg img{width:30px;height:30px;image-rendering:pixelated}
+
+/* The sound toggle. Absolutely placed so it cannot disturb the hotbar sizing
+   that fit() works out, and pointer-events:auto because the HUD itself is
+   click-through. */
+.mc-mute{
+  position:absolute; right:8px; bottom:calc(8px + env(safe-area-inset-bottom));
+  pointer-events:auto; width:26px; height:26px; padding:0;
+  border:2px solid #0D0D0F; background:#26262A; color:#E9E6DE;
+  font:700 13px/1 ui-monospace,"Cascadia Mono",Consolas,monospace;
+  cursor:pointer; opacity:.72;
+  box-shadow:inset -2px -2px 0 rgba(0,0,0,.35), inset 2px 2px 0 rgba(255,255,255,.06);
+}
+.mc-mute:hover{opacity:1}
+.mc-mute:focus-visible{opacity:1; outline:2px solid #FCFC54; outline-offset:2px}
+.mc-mute.off{color:#7C7870}
