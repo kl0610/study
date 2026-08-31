@@ -182,11 +182,53 @@
   var hud, heartsEl, barEl, muteEl, lastNew = 0;
   var goodN = 0, badN = 0;  // cycle the sprites so it isn't the same one every time
 
+  /* The sound toggle sits at the top of every page, on its own rather than
+     inside the HUD. Two reasons: the HUD lives at the bottom and only appears
+     once a level starts, and the two Wordly Wise tests run with hud:false — so
+     a toggle parented to the HUD left no way at all to mute a test. This mounts
+     on the hub as well, wherever the engine is present and there is sound. */
+  function mountMute() {
+    if (muteEl || !SFX || typeof document === "undefined" || !document.body) return;
+    muteEl = document.createElement("button");
+    muteEl.type = "button";
+    muteEl.id = "mc-mute";
+    muteEl.addEventListener("click", function () { MC.mute(!S.mute); });
+    document.body.appendChild(muteEl);
+    drawMute();
+  }
+  if (typeof document !== "undefined" && document.addEventListener) {
+    if (document.readyState === "loading")
+      document.addEventListener("DOMContentLoaded", mountMute);
+    else mountMute();
+  }
+
+  /* A speaker, drawn rather than set in type: a musical note said "sound" but
+     not "sound is on", and the note-with-a-stroke was too small a mark to read
+     at a glance. A crossed-out speaker is the sign everyone already knows. */
+  function speaker(off) {
+    var cone = '<path d="M3 9.5v5h3.2L11 18.5v-13L6.2 9.5H3z"/>';
+    var waves = off ? ""
+      : '<path d="M13.6 8.4a4.6 4.6 0 010 7.2" fill="none" stroke="currentColor"' +
+        ' stroke-width="1.9" stroke-linecap="round"/>' +
+        '<path d="M15.9 6a7.8 7.8 0 010 12" fill="none" stroke="currentColor"' +
+        ' stroke-width="1.9" stroke-linecap="round"/>';
+    var slash = off
+      ? '<path d="M13.2 8.6l6.4 6.8" fill="none" stroke="currentColor"' +
+        ' stroke-width="2.2" stroke-linecap="round"/>'
+      : "";
+    return '<svg class="mc-spk" viewBox="0 0 24 24" aria-hidden="true" focusable="false"' +
+           ' fill="currentColor">' + cone + waves + slash + '</svg>';
+  }
+
   function drawMute() {
     if (!muteEl) return;
-    muteEl.textContent = S.mute ? "♪̸" : "♪";
-    muteEl.setAttribute("aria-label", S.mute ? "Sound off — tap for sound" : "Sound on — tap to mute");
+    muteEl.innerHTML =
+      '<span class="mc-sw"><span class="mc-knob">' + speaker(S.mute) + '</span></span>' +
+      '<span class="mc-lbl">' + (S.mute ? "OFF" : "ON") + '</span>';
+    muteEl.setAttribute("aria-label",
+      S.mute ? "Sound off — tap to turn sound on" : "Sound on — tap to mute");
     muteEl.setAttribute("aria-pressed", S.mute ? "true" : "false");
+    muteEl.setAttribute("title", S.mute ? "Sound off" : "Sound on");
     muteEl.className = "mc-mute" + (S.mute ? " off" : "");
   }
 
@@ -197,14 +239,8 @@
     hud.className = "mc-hud";
     hud.id = "mc-hud";
     hud.innerHTML = '<div class="mc-hearts" id="mc-hearts"></div>' +
-                    '<div class="mc-bar" id="mc-bar"></div>' +
-                    (SFX ? '<button class="mc-mute" id="mc-mute" type="button"></button>' : "");
+                    '<div class="mc-bar" id="mc-bar"></div>';
     document.body.appendChild(hud);
-    muteEl = hud.querySelector("#mc-mute");
-    if (muteEl) {
-      muteEl.addEventListener("click", function () { MC.mute(!S.mute); });
-      drawMute();
-    }
     heartsEl = hud.querySelector("#mc-hearts");
     barEl = hud.querySelector("#mc-bar");
     drawBar();
