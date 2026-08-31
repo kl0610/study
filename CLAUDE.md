@@ -67,6 +67,40 @@ or `mc.css` and re-run `build_theme.py`, or the copies drift.
 
 ---
 
+## Returned tests → next week's practice
+
+Graded work goes in `_returned/<subject>/`. **It is gitignored and must stay
+that way** — this repo is public and serves GitHub Pages, so a scan carrying a
+name, handwriting and a teacher's marks cannot be pushed. The analysis derived
+from it stays local too. What gets committed is the questions it produces.
+
+The loop, per returned test:
+
+1. **Read it against the source**, not from memory. Every miss is checked
+   against the book in `_source/`.
+2. **Classify each miss by cause**, because the causes need opposite responses:
+   didn't know it · confused two specific things · misread the question · knew
+   it and slipped · ran out of time. The last two mean *do not drill this* —
+   practising something already known is how a kid learns to hate practising,
+   and "wrong on a page" is not "does not know".
+3. **Write `_returned/<subject>/analysis/<date>.md`** — each miss, its cause,
+   and the page the call turns on.
+4. **Update `_returned/<subject>/focus.json`** — `weight` over-samples a
+   concept, `retire` drops one that has been solid several sittings running.
+5. **Re-run the generator.** `_build/generators/gen_vocab.py` reads focus.json
+   and tilts the forms; the comprehensive final still covers every meaning, so
+   retiring something narrows practice without creating a hole in the test.
+
+No focus.json means an even spread, which is right for the first week of a
+unit. `_returned/README.md` has the file format and the naming convention;
+`focus.example.json` shows the shape.
+
+The generators live in `_build/generators/`. They are the only way these apps
+get rebuilt, so a change to question content belongs there, not in an app's
+HTML.
+
+---
+
 ## Curriculum sources
 
 **Local PDFs live in `_source/`, organised by subject.** Check here first — these

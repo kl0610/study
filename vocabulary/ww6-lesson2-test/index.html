@@ -344,6 +344,19 @@ footer{margin:26px 0 0;padding-top:15px;border-top:1px solid #24403A;
   font:800 10.5px ui-monospace,Consolas,monospace;letter-spacing:.1em;color:#C9A6F0}
 .mc-egg img{width:30px;height:30px;image-rendering:pixelated}
 
+/* The purse, top-left of the HUD, opposite the sound switch. */
+.mc-purse{position:absolute;left:calc(8px + env(safe-area-inset-left));
+  bottom:calc(8px + env(safe-area-inset-bottom));
+  display:flex;align-items:center;gap:5px;pointer-events:none;
+  padding:3px 8px 3px 5px;border:2px solid #0D0D0F;background:rgba(20,20,22,.82);
+  font:800 13px/1 ui-monospace,"Cascadia Mono",Consolas,monospace;color:#FCFC54}
+.mc-coin{width:17px;height:17px;display:block;image-rendering:pixelated}
+/* stands in until the coin sprite exists, so this works before the art lands */
+.mc-coin-fb{border-radius:50%;background:radial-gradient(circle at 34% 30%,#FFE27A,#E0A83C 62%,#9C6F1E);
+  border:2px solid #6E4B10;box-shadow:inset -2px -2px 0 rgba(0,0,0,.28)}
+@media (max-width:400px){.mc-purse{font-size:12px;padding:2px 6px 2px 4px}
+  .mc-coin{width:15px;height:15px}}
+
 /* MC-TOGGLE-CSS-START — the hub borrows everything between these two
    markers, because it has its own stylesheet and needs only this control. */
 /* The sound toggle: a real switch rather than a lettered button, so its state
@@ -424,6 +437,7 @@ window.__MC_SFX__={"tool": "data:audio/mpeg;base64,//OAxAAAAAAAAAAAAFhpbmcAAAAPA
      MC.chest(el, pct, {id})                paint the results reveal into el
      MC.bests()                             {id: bestPct} for this app
      MC.mute(on)                            sound off/on, remembered across apps
+     MC.ask(item)                           the wording to ask it in this run
      MC.runs(id)                            every attempt at one activity
      MC.picker(el, items, cur, onPick)       a strip of level chips
      MC.state()                             read-only snapshot (used by the hub)
@@ -457,6 +471,11 @@ window.__MC_SFX__={"tool": "data:audio/mpeg;base64,//OAxAAAAAAAAAAAAFhpbmcAAAAPA
   if (!S.runs || typeof S.runs !== "object") S.runs = {};
   var RUNS_KEPT = 25;
   if (typeof S.mute !== "boolean") S.mute = false;
+  /* Coins. The tools run out and the mine takes a while to open, so there was a
+     long middle stretch where a good run paid nothing. Coins pay on every run,
+     from the first one, scaled to how it went — a floor that never disappears
+     and a ceiling that never arrives. */
+  if (typeof S.coins !== "number" || !isFinite(S.coins)) S.coins = 0;
 
   /* ---------- sound ----------
      Every answer is heard: a coin when he is right, a soft glass note when he
@@ -567,15 +586,43 @@ window.__MC_SFX__={"tool": "data:audio/mpeg;base64,//OAxAAAAAAAAAAAAFhpbmcAAAAPA
     return true;
   }
 
+  /* How many cleared activities each of the first eight tools costs.
+     It used to be one apiece, which was written when the site had about a dozen
+     activities. There are forty now, so the whole hotbar filled inside a
+     fortnight and the next thirty-odd runs paid nothing at all. Spread over a
+     term instead, steeply enough at the start that the first two still arrive
+     the same evening. */
+  var TOOL_GATE = [1, 2, 3, 5, 7, 10, 14, 18];
+
   function clearedCount() {
     var n = 0, k;
     for (k in S.cleared) if (S.cleared[k] >= 75) n++;
     return n;
   }
-  function unlocked() {
-    var n = Math.min(8, clearedCount());
-    return { count: n, nine: !!S.tool9, all9: n >= 8 && !!S.tool9 };
+  /* The ninth tool used to hang on one specific level, spelling:l7. If that
+     level was never set as homework the mine could not open at all — he could
+     clear all forty activities and still be locked out. It now asks for breadth:
+     something cleared in every subject he has work in. That cannot strand him,
+     and it rewards the thing worth rewarding. */
+  function subjectsCleared() {
+    var seen = {}, k;
+    for (k in S.cleared) if (S.cleared[k] >= 75) seen[k.split(":")[0]] = 1;
+    var n = 0, a;
+    for (a in seen) n++;
+    return n;
   }
+  function toolsFrom(n) {
+    var got = 0;
+    for (var i = 0; i < TOOL_GATE.length; i++) if (n >= TOOL_GATE[i]) got = i + 1;
+    return got;
+  }
+  function unlocked() {
+    var n = toolsFrom(clearedCount());
+    var nine = !!S.tool9 || subjectsCleared() >= ELYTRA_SUBJECTS;
+    return { count: n, nine: nine, all9: n >= 8 && nine,
+             cleared: clearedCount(), next: TOOL_GATE[n] || null };
+  }
+  var ELYTRA_SUBJECTS = 5;   // history, science, reading, spelling, vocabulary
   function mineOpen() { return unlocked().all9; }
   function has(slot) { var u = unlocked(); return slot === 9 ? u.nine : slot <= u.count; }
 
@@ -590,8 +637,9 @@ window.__MC_SFX__={"tool": "data:audio/mpeg;base64,//OAxAAAAAAAAAAAAFhpbmcAAAAPA
   var missedHere = {};      // keys missed during this level
   var fixedHere = 0;        // ...and later got right — the comeback count
   var partialRun = false;   // a correction round over just the missed items
-  var hud, heartsEl, barEl, muteEl, lastNew = 0;
+  var hud, heartsEl, barEl, muteEl, purseEl, lastNew = 0;
   var goodN = 0, badN = 0;  // cycle the sprites so it isn't the same one every time
+  var askSeq = 0, askPick = {};   // which wording each question is using this run
 
   /* The sound toggle sits at the top of every page, on its own rather than
      inside the HUD. Two reasons: the HUD lives at the bottom and only appears
@@ -631,6 +679,17 @@ window.__MC_SFX__={"tool": "data:audio/mpeg;base64,//OAxAAAAAAAAAAAAFhpbmcAAAAPA
            ' fill="currentColor">' + cone + waves + slash + '</svg>';
   }
 
+  /* The purse. Deliberately on screen the whole time he is working, because the
+     point of a currency is that it is visibly going up. Falls back to a drawn
+     coin if the sprite is not there yet, so this works before the art lands. */
+  function drawCoins() {
+    if (!purseEl) return;
+    var src = url("coin");
+    purseEl.innerHTML = (src ? '<img class="mc-coin" alt="" src="' + src + '">'
+                             : '<i class="mc-coin mc-coin-fb"></i>') +
+                        '<b>' + S.coins + '</b>';
+  }
+
   function drawMute() {
     if (!muteEl) return;
     muteEl.innerHTML =
@@ -649,9 +708,12 @@ window.__MC_SFX__={"tool": "data:audio/mpeg;base64,//OAxAAAAAAAAAAAAFhpbmcAAAAPA
     hud = document.createElement("div");
     hud.className = "mc-hud";
     hud.id = "mc-hud";
-    hud.innerHTML = '<div class="mc-hearts" id="mc-hearts"></div>' +
+    hud.innerHTML = '<div class="mc-purse" id="mc-purse"></div>' +
+                    '<div class="mc-hearts" id="mc-hearts"></div>' +
                     '<div class="mc-bar" id="mc-bar"></div>';
     document.body.appendChild(hud);
+    purseEl = hud.querySelector("#mc-purse");
+    drawCoins();
     heartsEl = hud.querySelector("#mc-hearts");
     barEl = hud.querySelector("#mc-bar");
     drawBar();
@@ -791,6 +853,7 @@ window.__MC_SFX__={"tool": "data:audio/mpeg;base64,//OAxAAAAAAAAAAAAFhpbmcAAAAPA
       halves = 20; lastNew = 0;
       missedHere = {}; fixedHere = 0;
       partialRun = !!(opts && opts.partial);
+      askPick = {};              // a new run gets new wordings
       build(); drawHearts(); drawBar(); fit();
     },
 
@@ -882,6 +945,23 @@ window.__MC_SFX__={"tool": "data:audio/mpeg;base64,//OAxAAAAAAAAAAAAFhpbmcAAAAPA
       var dragon = clean && !partialRun && isBossLevel && ready;
       var portalShut = clean && !partialRun && isBossLevel && !ready;
       if (dragon) { S.dragon++; save(); }
+
+      /* Coins, every run, from the very first one. Finishing at all is worth
+         something — that is the floor, and it is deliberate: a child who had a
+         bad round should still walk away holding more than he arrived with.
+         Everything above the floor is earned. */
+      var coins = 3;
+      if (pct >= 75) coins += 3;
+      if (pct >= 85) coins += 3;
+      if (pct >= 95) coins += 4;
+      if (pct >= 100) coins += 5;
+      if (halves === 20) coins += 5;          // not a heart lost
+      if (fixedHere) coins += 2 * fixedHere;  // fixing a miss pays, and it should
+      if (dragon) coins += 40;
+      if (partialRun) coins = Math.max(2, Math.round(coins / 2));
+      S.coins += coins;
+      save();
+      drawCoins();
 
       /* What the run was worth at the rock face. Coal through gold repeat, so
          there is always something to dig; diamond is once per activity, so a
@@ -1078,6 +1158,10 @@ window.__MC_SFX__={"tool": "data:audio/mpeg;base64,//OAxAAAAAAAAAAAAFhpbmcAAAAPA
         tools: u, toolNames: TOOLS,
         ore: JSON.parse(JSON.stringify(S.ore)), oreKinds: ORE,
         mineOpen: mineOpen(), dragons: S.dragon,
+        coins: S.coins,
+        gate: TOOL_GATE, elytraNeeds: ELYTRA_SUBJECTS,
+        subjectsCleared: subjectsCleared(),
+        gems: JSON.parse(JSON.stringify(S.gem)),
         beacon: { needs: BEACON, lit: beaconLit(),
                   blocks: BEACON.map(function (k) { return blocks(k); }) },
         cleared: JSON.parse(JSON.stringify(S.cleared)),
@@ -1094,6 +1178,26 @@ window.__MC_SFX__={"tool": "data:audio/mpeg;base64,//OAxAAAAAAAAAAAAFhpbmcAAAAPA
       return (S.runs[key] || []).slice();
     },
 
+    /* The wording to ask a question in.
+
+       An item may carry `qv`, a few phrasings of the same question. One is
+       chosen per run, so a second attempt at the same set does not read like a
+       memory test of the first — but it is fixed for the length of that run, so
+       the review screen shows the wording he was actually asked rather than a
+       third one. Items without `qv` just return `q`.
+
+       Options are already re-shuffled on every render; this is the same idea
+       applied to the stem. */
+    ask: function (it) {
+      if (!it) return "";
+      var v = it.qv;
+      if (!v || !v.length) return it.q;
+      if (it.__mcq === undefined) it.__mcq = ++askSeq;
+      if (askPick[it.__mcq] === undefined)
+        askPick[it.__mcq] = (Math.random() * v.length) | 0;
+      return v[askPick[it.__mcq]];
+    },
+
     /* Sound off/on. Kept in the same saved state as everything else, so the
        choice holds across every app and survives a reload. Call with no
        argument to read it. */
@@ -1107,8 +1211,8 @@ window.__MC_SFX__={"tool": "data:audio/mpeg;base64,//OAxAAAAAAAAAAAAFhpbmcAAAAPA
 
     reset: function () {
       S = { cleared: {}, misses: {}, tool9: false, ore: {}, gem: {}, dragon: 0,
-            runs: {}, mute: S.mute };   // muting is a preference, not progress
-      save(); drawBar();
+            runs: {}, coins: 0, mute: S.mute };  // muting is a preference, not progress
+      save(); drawBar(); drawCoins();
     },
     _relift: lift
   };
@@ -1191,6 +1295,11 @@ const DATA = {
    "s": 0,
    "type": "def",
    "q": "<b>arrogant</b> <span class='pos'>(adj.)</span>",
+   "qv": [
+    "<b>arrogant</b> <span class='pos'>(adj.)</span>",
+    "What does <b>arrogant</b> mean here? <span class='pos'>(adj.)</span>",
+    "Choose the meaning of <b>arrogant</b>. <span class='pos'>(adj.)</span>"
+   ],
    "opts": [
     "Joyful over a victory or success.",
     "To bring shame or disgrace upon.",
@@ -1209,6 +1318,11 @@ const DATA = {
    "s": 0,
    "type": "rev",
    "q": "Which word means: <span class='def'>(adj.) Showing too much pride in oneself.</span>",
+   "qv": [
+    "Which word means: <span class='def'>(adj.) Showing too much pride in oneself.</span>",
+    "Which word fits this meaning? <span class='def'>(adj.) Showing too much pride in oneself.</span>",
+    "Find the word for: <span class='def'>(adj.) Showing too much pride in oneself.</span>"
+   ],
    "opts": [
     "supreme",
     "arrogant",
@@ -1245,6 +1359,11 @@ const DATA = {
    "s": 0,
    "type": "ant",
    "q": "Which word is most nearly the <b>opposite</b> of <b>arrogant</b>?",
+   "qv": [
+    "Which word is most nearly the <b>opposite</b> of <b>arrogant</b>?",
+    "Which word means the <b>opposite</b> of <b>arrogant</b>?",
+    "<b>arrogant</b> is closest to the opposite of which word?"
+   ],
    "opts": [
     "generous",
     "cheerful",
@@ -1263,6 +1382,11 @@ const DATA = {
    "s": 0,
    "type": "def",
    "q": "<b>arrogance</b> <span class='pos'>(n.)</span>",
+   "qv": [
+    "<b>arrogance</b> <span class='pos'>(n.)</span>",
+    "What does <b>arrogance</b> mean here? <span class='pos'>(n.)</span>",
+    "Choose the meaning of <b>arrogance</b>. <span class='pos'>(n.)</span>"
+   ],
    "opts": [
     "The decision reached at the end of a trial.",
     "A feeling of too much pride in oneself.",
@@ -1281,6 +1405,11 @@ const DATA = {
    "s": 0,
    "type": "rev",
    "q": "Which word means: <span class='def'>(n.) A feeling of too much pride in oneself.</span>",
+   "qv": [
+    "Which word means: <span class='def'>(n.) A feeling of too much pride in oneself.</span>",
+    "Which word fits this meaning? <span class='def'>(n.) A feeling of too much pride in oneself.</span>",
+    "Find the word for: <span class='def'>(n.) A feeling of too much pride in oneself.</span>"
+   ],
    "opts": [
     "arrogance",
     "custody",
@@ -1317,6 +1446,11 @@ const DATA = {
    "s": 0,
    "type": "def",
    "q": "<b>boycott</b> <span class='pos'>(v.)</span>",
+   "qv": [
+    "<b>boycott</b> <span class='pos'>(v.)</span>",
+    "What does <b>boycott</b> mean here? <span class='pos'>(v.)</span>",
+    "Choose the meaning of <b>boycott</b>. <span class='pos'>(v.)</span>"
+   ],
    "opts": [
     "To stretch or spread outward from a certain point.",
     "A series of military actions in a particular area.",
@@ -1335,6 +1469,11 @@ const DATA = {
    "s": 0,
    "type": "rev",
    "q": "Which word means: <span class='def'>(v.) To join others in refusing to support an organization.</span>",
+   "qv": [
+    "Which word means: <span class='def'>(v.) To join others in refusing to support an organization.</span>",
+    "Which word fits this meaning? <span class='def'>(v.) To join others in refusing to support an organization.</span>",
+    "Find the word for: <span class='def'>(v.) To join others in refusing to support an organization.</span>"
+   ],
    "opts": [
     "boycott",
     "violation",
@@ -1371,6 +1510,11 @@ const DATA = {
    "s": 0,
    "type": "ant",
    "q": "Which word is most nearly the <b>opposite</b> of <b>boycott</b>?",
+   "qv": [
+    "Which word is most nearly the <b>opposite</b> of <b>boycott</b>?",
+    "Which word means the <b>opposite</b> of <b>boycott</b>?",
+    "<b>boycott</b> is closest to the opposite of which word?"
+   ],
    "opts": [
     "support",
     "postpone",
@@ -1389,6 +1533,11 @@ const DATA = {
    "s": 1,
    "type": "def",
    "q": "<b>boycott</b> <span class='pos'>(n.)</span>",
+   "qv": [
+    "<b>boycott</b> <span class='pos'>(n.)</span>",
+    "What does <b>boycott</b> mean here? <span class='pos'>(n.)</span>",
+    "Choose the meaning of <b>boycott</b>. <span class='pos'>(n.)</span>"
+   ],
    "opts": [
     "The act of boycotting.",
     "Causing shame or disgrace.",
@@ -1407,6 +1556,11 @@ const DATA = {
    "s": 1,
    "type": "rev",
    "q": "Which word means: <span class='def'>(n.) The act of boycotting.</span>",
+   "qv": [
+    "Which word means: <span class='def'>(n.) The act of boycotting.</span>",
+    "Which word fits this meaning? <span class='def'>(n.) The act of boycotting.</span>",
+    "Find the word for: <span class='def'>(n.) The act of boycotting.</span>"
+   ],
    "opts": [
     "boycott",
     "vacate",
@@ -1443,6 +1597,11 @@ const DATA = {
    "s": 0,
    "type": "def",
    "q": "<b>campaign</b> <span class='pos'>(n.)</span>",
+   "qv": [
+    "<b>campaign</b> <span class='pos'>(n.)</span>",
+    "What does <b>campaign</b> mean here? <span class='pos'>(n.)</span>",
+    "Choose the meaning of <b>campaign</b>. <span class='pos'>(n.)</span>"
+   ],
    "opts": [
     "A series of actions intended to accomplish a goal.",
     "To treat in an improper or disrespectful way.",
@@ -1461,6 +1620,11 @@ const DATA = {
    "s": 0,
    "type": "rev",
    "q": "Which word means: <span class='def'>(n.) A series of actions intended to accomplish a goal.</span>",
+   "qv": [
+    "Which word means: <span class='def'>(n.) A series of actions intended to accomplish a goal.</span>",
+    "Which word fits this meaning? <span class='def'>(n.) A series of actions intended to accomplish a goal.</span>",
+    "Find the word for: <span class='def'>(n.) A series of actions intended to accomplish a goal.</span>"
+   ],
    "opts": [
     "campaign",
     "integrate",
@@ -1497,6 +1661,11 @@ const DATA = {
    "s": 1,
    "type": "def",
    "q": "<b>campaign</b> <span class='pos'>(n.)</span>",
+   "qv": [
+    "<b>campaign</b> <span class='pos'>(n.)</span>",
+    "What does <b>campaign</b> mean here? <span class='pos'>(n.)</span>",
+    "Choose the meaning of <b>campaign</b>. <span class='pos'>(n.)</span>"
+   ],
    "opts": [
     "To treat in an improper or disrespectful way.",
     "A series of military actions in a particular area.",
@@ -1515,6 +1684,11 @@ const DATA = {
    "s": 1,
    "type": "rev",
    "q": "Which word means: <span class='def'>(n.) A series of military actions in a particular area.</span>",
+   "qv": [
+    "Which word means: <span class='def'>(n.) A series of military actions in a particular area.</span>",
+    "Which word fits this meaning? <span class='def'>(n.) A series of military actions in a particular area.</span>",
+    "Find the word for: <span class='def'>(n.) A series of military actions in a particular area.</span>"
+   ],
    "opts": [
     "violate",
     "supreme",
@@ -1551,6 +1725,11 @@ const DATA = {
    "s": 2,
    "type": "def",
    "q": "<b>campaign</b> <span class='pos'>(v.)</span>",
+   "qv": [
+    "<b>campaign</b> <span class='pos'>(v.)</span>",
+    "What does <b>campaign</b> mean here? <span class='pos'>(v.)</span>",
+    "Choose the meaning of <b>campaign</b>. <span class='pos'>(v.)</span>"
+   ],
    "opts": [
     "A breaking of, or failing to keep, something like a law or a promise.",
     "To join others in refusing to support an organization.",
@@ -1569,6 +1748,11 @@ const DATA = {
    "s": 2,
    "type": "rev",
    "q": "Which word means: <span class='def'>(v.) To take part in actions planned to accomplish a particular goal.</span>",
+   "qv": [
+    "Which word means: <span class='def'>(v.) To take part in actions planned to accomplish a particular goal.</span>",
+    "Which word fits this meaning? <span class='def'>(v.) To take part in actions planned to accomplish a particular goal.</span>",
+    "Find the word for: <span class='def'>(v.) To take part in actions planned to accomplish a particular goal.</span>"
+   ],
    "opts": [
     "integrate",
     "campaign",
@@ -1605,6 +1789,11 @@ const DATA = {
    "s": 0,
    "type": "def",
    "q": "<b>ceremony</b> <span class='pos'>(n.)</span>",
+   "qv": [
+    "<b>ceremony</b> <span class='pos'>(n.)</span>",
+    "What does <b>ceremony</b> mean here? <span class='pos'>(n.)</span>",
+    "Choose the meaning of <b>ceremony</b>. <span class='pos'>(n.)</span>"
+   ],
    "opts": [
     "A formal event held in honor of a special occasion.",
     "To stretch or spread outward from a certain point.",
@@ -1623,6 +1812,11 @@ const DATA = {
    "s": 0,
    "type": "rev",
    "q": "Which word means: <span class='def'>(n.) A formal event held in honor of a special occasion.</span>",
+   "qv": [
+    "Which word means: <span class='def'>(n.) A formal event held in honor of a special occasion.</span>",
+    "Which word fits this meaning? <span class='def'>(n.) A formal event held in honor of a special occasion.</span>",
+    "Find the word for: <span class='def'>(n.) A formal event held in honor of a special occasion.</span>"
+   ],
    "opts": [
     "ceremony",
     "vacate",
@@ -1659,6 +1853,11 @@ const DATA = {
    "s": 0,
    "type": "def",
    "q": "<b>custody</b> <span class='pos'>(n.)</span>",
+   "qv": [
+    "<b>custody</b> <span class='pos'>(n.)</span>",
+    "What does <b>custody</b> mean here? <span class='pos'>(n.)</span>",
+    "Choose the meaning of <b>custody</b>. <span class='pos'>(n.)</span>"
+   ],
    "opts": [
     "To stop or hold; to keep from going on.",
     "Control over and responsibility for care.",
@@ -1677,6 +1876,11 @@ const DATA = {
    "s": 0,
    "type": "rev",
    "q": "Which word means: <span class='def'>(n.) Control over and responsibility for care.</span>",
+   "qv": [
+    "Which word means: <span class='def'>(n.) Control over and responsibility for care.</span>",
+    "Which word fits this meaning? <span class='def'>(n.) Control over and responsibility for care.</span>",
+    "Find the word for: <span class='def'>(n.) Control over and responsibility for care.</span>"
+   ],
    "opts": [
     "vacate",
     "violate",
@@ -1713,6 +1917,11 @@ const DATA = {
    "s": 1,
    "type": "def",
    "q": "<b>custody</b> <span class='pos'>(n.)</span>",
+   "qv": [
+    "<b>custody</b> <span class='pos'>(n.)</span>",
+    "What does <b>custody</b> mean here? <span class='pos'>(n.)</span>",
+    "Choose the meaning of <b>custody</b>. <span class='pos'>(n.)</span>"
+   ],
    "opts": [
     "In the keeping of the police; in jail.",
     "To stop or hold; to keep from going on.",
@@ -1731,6 +1940,11 @@ const DATA = {
    "s": 1,
    "type": "rev",
    "q": "Which word means: <span class='def'>(n.) In the keeping of the police; in jail.</span>",
+   "qv": [
+    "Which word means: <span class='def'>(n.) In the keeping of the police; in jail.</span>",
+    "Which word fits this meaning? <span class='def'>(n.) In the keeping of the police; in jail.</span>",
+    "Find the word for: <span class='def'>(n.) In the keeping of the police; in jail.</span>"
+   ],
    "opts": [
     "arrogant",
     "custody",
@@ -1767,6 +1981,11 @@ const DATA = {
    "s": 0,
    "type": "def",
    "q": "<b>degrade</b> <span class='pos'>(v.)</span>",
+   "qv": [
+    "<b>degrade</b> <span class='pos'>(v.)</span>",
+    "What does <b>degrade</b> mean here? <span class='pos'>(v.)</span>",
+    "Choose the meaning of <b>degrade</b>. <span class='pos'>(v.)</span>"
+   ],
    "opts": [
     "Joyful over a victory or success.",
     "Of the greatest importance.",
@@ -1785,6 +2004,11 @@ const DATA = {
    "s": 0,
    "type": "rev",
    "q": "Which word means: <span class='def'>(v.) To bring shame or disgrace upon.</span>",
+   "qv": [
+    "Which word means: <span class='def'>(v.) To bring shame or disgrace upon.</span>",
+    "Which word fits this meaning? <span class='def'>(v.) To bring shame or disgrace upon.</span>",
+    "Find the word for: <span class='def'>(v.) To bring shame or disgrace upon.</span>"
+   ],
    "opts": [
     "segregation",
     "degrade",
@@ -1821,6 +2045,11 @@ const DATA = {
    "s": 0,
    "type": "ant",
    "q": "Which word is most nearly the <b>opposite</b> of <b>degrade</b>?",
+   "qv": [
+    "Which word is most nearly the <b>opposite</b> of <b>degrade</b>?",
+    "Which word means the <b>opposite</b> of <b>degrade</b>?",
+    "<b>degrade</b> is closest to the opposite of which word?"
+   ],
    "opts": [
     "interrupt",
     "honor",
@@ -1839,6 +2068,11 @@ const DATA = {
    "s": 0,
    "type": "def",
    "q": "<b>degrading</b> <span class='pos'>(adj.)</span>",
+   "qv": [
+    "<b>degrading</b> <span class='pos'>(adj.)</span>",
+    "What does <b>degrading</b> mean here? <span class='pos'>(adj.)</span>",
+    "Choose the meaning of <b>degrading</b>. <span class='pos'>(adj.)</span>"
+   ],
    "opts": [
     "The act of boycotting.",
     "To make empty, as by leaving.",
@@ -1857,6 +2091,11 @@ const DATA = {
    "s": 0,
    "type": "rev",
    "q": "Which word means: <span class='def'>(adj.) Causing shame or disgrace.</span>",
+   "qv": [
+    "Which word means: <span class='def'>(adj.) Causing shame or disgrace.</span>",
+    "Which word fits this meaning? <span class='def'>(adj.) Causing shame or disgrace.</span>",
+    "Find the word for: <span class='def'>(adj.) Causing shame or disgrace.</span>"
+   ],
    "opts": [
     "degrading",
     "segregate",
@@ -1893,6 +2132,11 @@ const DATA = {
    "s": 0,
    "type": "def",
    "q": "<b>detain</b> <span class='pos'>(v.)</span>",
+   "qv": [
+    "<b>detain</b> <span class='pos'>(v.)</span>",
+    "What does <b>detain</b> mean here? <span class='pos'>(v.)</span>",
+    "Choose the meaning of <b>detain</b>. <span class='pos'>(v.)</span>"
+   ],
    "opts": [
     "A feeling of too much pride in oneself.",
     "To stop or hold; to keep from going on.",
@@ -1911,6 +2155,11 @@ const DATA = {
    "s": 0,
    "type": "rev",
    "q": "Which word means: <span class='def'>(v.) To stop or hold; to keep from going on.</span>",
+   "qv": [
+    "Which word means: <span class='def'>(v.) To stop or hold; to keep from going on.</span>",
+    "Which word fits this meaning? <span class='def'>(v.) To stop or hold; to keep from going on.</span>",
+    "Find the word for: <span class='def'>(v.) To stop or hold; to keep from going on.</span>"
+   ],
    "opts": [
     "segregation",
     "vacate",
@@ -1947,6 +2196,11 @@ const DATA = {
    "s": 0,
    "type": "ant",
    "q": "Which word is most nearly the <b>opposite</b> of <b>detain</b>?",
+   "qv": [
+    "Which word is most nearly the <b>opposite</b> of <b>detain</b>?",
+    "Which word means the <b>opposite</b> of <b>detain</b>?",
+    "<b>detain</b> is closest to the opposite of which word?"
+   ],
    "opts": [
     "measure",
     "release",
@@ -1965,6 +2219,11 @@ const DATA = {
    "s": 0,
    "type": "def",
    "q": "<b>extend</b> <span class='pos'>(v.)</span>",
+   "qv": [
+    "<b>extend</b> <span class='pos'>(v.)</span>",
+    "What does <b>extend</b> mean here? <span class='pos'>(v.)</span>",
+    "Choose the meaning of <b>extend</b>. <span class='pos'>(v.)</span>"
+   ],
    "opts": [
     "To win.",
     "A noteworthy success.",
@@ -1983,6 +2242,11 @@ const DATA = {
    "s": 0,
    "type": "rev",
    "q": "Which word means: <span class='def'>(v.) To reach out.</span>",
+   "qv": [
+    "Which word means: <span class='def'>(v.) To reach out.</span>",
+    "Which word fits this meaning? <span class='def'>(v.) To reach out.</span>",
+    "Find the word for: <span class='def'>(v.) To reach out.</span>"
+   ],
    "opts": [
     "extend",
     "supreme",
@@ -2019,6 +2283,11 @@ const DATA = {
    "s": 0,
    "type": "ant",
    "q": "Which word is most nearly the <b>opposite</b> of <b>extend</b>?",
+   "qv": [
+    "Which word is most nearly the <b>opposite</b> of <b>extend</b>?",
+    "Which word means the <b>opposite</b> of <b>extend</b>?",
+    "<b>extend</b> is closest to the opposite of which word?"
+   ],
    "opts": [
     "announce",
     "celebrate",
@@ -2037,6 +2306,11 @@ const DATA = {
    "s": 1,
    "type": "def",
    "q": "<b>extend</b> <span class='pos'>(v.)</span>",
+   "qv": [
+    "<b>extend</b> <span class='pos'>(v.)</span>",
+    "What does <b>extend</b> mean here? <span class='pos'>(v.)</span>",
+    "Choose the meaning of <b>extend</b>. <span class='pos'>(v.)</span>"
+   ],
    "opts": [
     "To offer.",
     "To win.",
@@ -2055,6 +2329,11 @@ const DATA = {
    "s": 1,
    "type": "rev",
    "q": "Which word means: <span class='def'>(v.) To offer.</span>",
+   "qv": [
+    "Which word means: <span class='def'>(v.) To offer.</span>",
+    "Which word fits this meaning? <span class='def'>(v.) To offer.</span>",
+    "Find the word for: <span class='def'>(v.) To offer.</span>"
+   ],
    "opts": [
     "arrogance",
     "segregate",
@@ -2091,6 +2370,11 @@ const DATA = {
    "s": 2,
    "type": "def",
    "q": "<b>extend</b> <span class='pos'>(v.)</span>",
+   "qv": [
+    "<b>extend</b> <span class='pos'>(v.)</span>",
+    "What does <b>extend</b> mean here? <span class='pos'>(v.)</span>",
+    "Choose the meaning of <b>extend</b>. <span class='pos'>(v.)</span>"
+   ],
    "opts": [
     "To make longer.",
     "The act of boycotting.",
@@ -2109,6 +2393,11 @@ const DATA = {
    "s": 2,
    "type": "rev",
    "q": "Which word means: <span class='def'>(v.) To make longer.</span>",
+   "qv": [
+    "Which word means: <span class='def'>(v.) To make longer.</span>",
+    "Which word fits this meaning? <span class='def'>(v.) To make longer.</span>",
+    "Find the word for: <span class='def'>(v.) To make longer.</span>"
+   ],
    "opts": [
     "boycott",
     "degrade",
@@ -2145,6 +2434,11 @@ const DATA = {
    "s": 3,
    "type": "def",
    "q": "<b>extend</b> <span class='pos'>(v.)</span>",
+   "qv": [
+    "<b>extend</b> <span class='pos'>(v.)</span>",
+    "What does <b>extend</b> mean here? <span class='pos'>(v.)</span>",
+    "Choose the meaning of <b>extend</b>. <span class='pos'>(v.)</span>"
+   ],
    "opts": [
     "A formal event held in honor of a special occasion.",
     "To join others in refusing to support an organization.",
@@ -2163,6 +2457,11 @@ const DATA = {
    "s": 3,
    "type": "rev",
    "q": "Which word means: <span class='def'>(v.) To stretch or spread outward from a certain point.</span>",
+   "qv": [
+    "Which word means: <span class='def'>(v.) To stretch or spread outward from a certain point.</span>",
+    "Which word fits this meaning? <span class='def'>(v.) To stretch or spread outward from a certain point.</span>",
+    "Find the word for: <span class='def'>(v.) To stretch or spread outward from a certain point.</span>"
+   ],
    "opts": [
     "degrade",
     "triumphant",
@@ -2199,6 +2498,11 @@ const DATA = {
    "s": 0,
    "type": "def",
    "q": "<b>integrate</b> <span class='pos'>(v.)</span>",
+   "qv": [
+    "<b>integrate</b> <span class='pos'>(v.)</span>",
+    "What does <b>integrate</b> mean here? <span class='pos'>(v.)</span>",
+    "Choose the meaning of <b>integrate</b>. <span class='pos'>(v.)</span>"
+   ],
    "opts": [
     "A breaking of, or failing to keep, something like a law or a promise.",
     "A formal event held in honor of a special occasion.",
@@ -2217,6 +2521,11 @@ const DATA = {
    "s": 0,
    "type": "rev",
    "q": "Which word means: <span class='def'>(v.) To unite into a whole; especially to end the separation of people of different races.</span>",
+   "qv": [
+    "Which word means: <span class='def'>(v.) To unite into a whole; especially to end the separation of people of different races.</span>",
+    "Which word fits this meaning? <span class='def'>(v.) To unite into a whole; especially to end the separation of people of different races.</span>",
+    "Find the word for: <span class='def'>(v.) To unite into a whole; especially to end the separation of people of different races.</span>"
+   ],
    "opts": [
     "violate",
     "supreme",
@@ -2253,6 +2562,11 @@ const DATA = {
    "s": 0,
    "type": "ant",
    "q": "Which word is most nearly the <b>opposite</b> of <b>integrate</b>?",
+   "qv": [
+    "Which word is most nearly the <b>opposite</b> of <b>integrate</b>?",
+    "Which word means the <b>opposite</b> of <b>integrate</b>?",
+    "<b>integrate</b> is closest to the opposite of which word?"
+   ],
    "opts": [
     "postpone",
     "measure",
@@ -2271,6 +2585,11 @@ const DATA = {
    "s": 0,
    "type": "def",
    "q": "<b>integration</b> <span class='pos'>(n.)</span>",
+   "qv": [
+    "<b>integration</b> <span class='pos'>(n.)</span>",
+    "What does <b>integration</b> mean here? <span class='pos'>(n.)</span>",
+    "Choose the meaning of <b>integration</b>. <span class='pos'>(n.)</span>"
+   ],
    "opts": [
     "To stretch or spread outward from a certain point.",
     "The act of uniting or bringing together, especially people of different races.",
@@ -2289,6 +2608,11 @@ const DATA = {
    "s": 0,
    "type": "rev",
    "q": "Which word means: <span class='def'>(n.) The act of uniting or bringing together, especially people of different races.</span>",
+   "qv": [
+    "Which word means: <span class='def'>(n.) The act of uniting or bringing together, especially people of different races.</span>",
+    "Which word fits this meaning? <span class='def'>(n.) The act of uniting or bringing together, especially people of different races.</span>",
+    "Find the word for: <span class='def'>(n.) The act of uniting or bringing together, especially people of different races.</span>"
+   ],
    "opts": [
     "arrogant",
     "vacate",
@@ -2325,6 +2649,11 @@ const DATA = {
    "s": 0,
    "type": "def",
    "q": "<b>segregate</b> <span class='pos'>(v.)</span>",
+   "qv": [
+    "<b>segregate</b> <span class='pos'>(v.)</span>",
+    "What does <b>segregate</b> mean here? <span class='pos'>(v.)</span>",
+    "Choose the meaning of <b>segregate</b>. <span class='pos'>(v.)</span>"
+   ],
    "opts": [
     "To keep separate or apart.",
     "Causing shame or disgrace.",
@@ -2343,6 +2672,11 @@ const DATA = {
    "s": 0,
    "type": "rev",
    "q": "Which word means: <span class='def'>(v.) To keep separate or apart.</span>",
+   "qv": [
+    "Which word means: <span class='def'>(v.) To keep separate or apart.</span>",
+    "Which word fits this meaning? <span class='def'>(v.) To keep separate or apart.</span>",
+    "Find the word for: <span class='def'>(v.) To keep separate or apart.</span>"
+   ],
    "opts": [
     "violate",
     "segregation",
@@ -2379,6 +2713,11 @@ const DATA = {
    "s": 0,
    "type": "ant",
    "q": "Which word is most nearly the <b>opposite</b> of <b>segregate</b>?",
+   "qv": [
+    "Which word is most nearly the <b>opposite</b> of <b>segregate</b>?",
+    "Which word means the <b>opposite</b> of <b>segregate</b>?",
+    "<b>segregate</b> is closest to the opposite of which word?"
+   ],
    "opts": [
     "measure",
     "announce",
@@ -2397,6 +2736,11 @@ const DATA = {
    "s": 0,
    "type": "def",
    "q": "<b>segregation</b> <span class='pos'>(n.)</span>",
+   "qv": [
+    "<b>segregation</b> <span class='pos'>(n.)</span>",
+    "What does <b>segregation</b> mean here? <span class='pos'>(n.)</span>",
+    "Choose the meaning of <b>segregation</b>. <span class='pos'>(n.)</span>"
+   ],
    "opts": [
     "To bring shame or disgrace upon.",
     "The act of keeping separate or apart.",
@@ -2415,6 +2759,11 @@ const DATA = {
    "s": 0,
    "type": "rev",
    "q": "Which word means: <span class='def'>(n.) The act of keeping separate or apart.</span>",
+   "qv": [
+    "Which word means: <span class='def'>(n.) The act of keeping separate or apart.</span>",
+    "Which word fits this meaning? <span class='def'>(n.) The act of keeping separate or apart.</span>",
+    "Find the word for: <span class='def'>(n.) The act of keeping separate or apart.</span>"
+   ],
    "opts": [
     "verdict",
     "segregation",
@@ -2451,6 +2800,11 @@ const DATA = {
    "s": 0,
    "type": "def",
    "q": "<b>supreme</b> <span class='pos'>(adj.)</span>",
+   "qv": [
+    "<b>supreme</b> <span class='pos'>(adj.)</span>",
+    "What does <b>supreme</b> mean here? <span class='pos'>(adj.)</span>",
+    "Choose the meaning of <b>supreme</b>. <span class='pos'>(adj.)</span>"
+   ],
    "opts": [
     "The act of keeping separate or apart.",
     "Joyful over a victory or success.",
@@ -2469,6 +2823,11 @@ const DATA = {
    "s": 0,
    "type": "rev",
    "q": "Which word means: <span class='def'>(adj.) The highest in rank or position.</span>",
+   "qv": [
+    "Which word means: <span class='def'>(adj.) The highest in rank or position.</span>",
+    "Which word fits this meaning? <span class='def'>(adj.) The highest in rank or position.</span>",
+    "Find the word for: <span class='def'>(adj.) The highest in rank or position.</span>"
+   ],
    "opts": [
     "triumph",
     "violation",
@@ -2505,6 +2864,11 @@ const DATA = {
    "s": 0,
    "type": "ant",
    "q": "Which word is most nearly the <b>opposite</b> of <b>supreme</b>?",
+   "qv": [
+    "Which word is most nearly the <b>opposite</b> of <b>supreme</b>?",
+    "Which word means the <b>opposite</b> of <b>supreme</b>?",
+    "<b>supreme</b> is closest to the opposite of which word?"
+   ],
    "opts": [
     "cheerful",
     "formal",
@@ -2523,6 +2887,11 @@ const DATA = {
    "s": 1,
    "type": "def",
    "q": "<b>supreme</b> <span class='pos'>(adj.)</span>",
+   "qv": [
+    "<b>supreme</b> <span class='pos'>(adj.)</span>",
+    "What does <b>supreme</b> mean here? <span class='pos'>(adj.)</span>",
+    "Choose the meaning of <b>supreme</b>. <span class='pos'>(adj.)</span>"
+   ],
    "opts": [
     "Causing shame or disgrace.",
     "The joy that winning brings.",
@@ -2541,6 +2910,11 @@ const DATA = {
    "s": 1,
    "type": "rev",
    "q": "Which word means: <span class='def'>(adj.) Of the greatest importance.</span>",
+   "qv": [
+    "Which word means: <span class='def'>(adj.) Of the greatest importance.</span>",
+    "Which word fits this meaning? <span class='def'>(adj.) Of the greatest importance.</span>",
+    "Find the word for: <span class='def'>(adj.) Of the greatest importance.</span>"
+   ],
    "opts": [
     "triumphant",
     "verdict",
@@ -2577,6 +2951,11 @@ const DATA = {
    "s": 0,
    "type": "def",
    "q": "<b>triumph</b> <span class='pos'>(n.)</span>",
+   "qv": [
+    "<b>triumph</b> <span class='pos'>(n.)</span>",
+    "What does <b>triumph</b> mean here? <span class='pos'>(n.)</span>",
+    "Choose the meaning of <b>triumph</b>. <span class='pos'>(n.)</span>"
+   ],
    "opts": [
     "A noteworthy success.",
     "To keep separate or apart.",
@@ -2595,6 +2974,11 @@ const DATA = {
    "s": 0,
    "type": "rev",
    "q": "Which word means: <span class='def'>(n.) A noteworthy success.</span>",
+   "qv": [
+    "Which word means: <span class='def'>(n.) A noteworthy success.</span>",
+    "Which word fits this meaning? <span class='def'>(n.) A noteworthy success.</span>",
+    "Find the word for: <span class='def'>(n.) A noteworthy success.</span>"
+   ],
    "opts": [
     "campaign",
     "triumph",
@@ -2631,6 +3015,11 @@ const DATA = {
    "s": 0,
    "type": "ant",
    "q": "Which word is most nearly the <b>opposite</b> of <b>triumph</b>?",
+   "qv": [
+    "Which word is most nearly the <b>opposite</b> of <b>triumph</b>?",
+    "Which word means the <b>opposite</b> of <b>triumph</b>?",
+    "<b>triumph</b> is closest to the opposite of which word?"
+   ],
    "opts": [
     "journey",
     "ceremony",
@@ -2649,6 +3038,11 @@ const DATA = {
    "s": 1,
    "type": "def",
    "q": "<b>triumph</b> <span class='pos'>(n.)</span>",
+   "qv": [
+    "<b>triumph</b> <span class='pos'>(n.)</span>",
+    "What does <b>triumph</b> mean here? <span class='pos'>(n.)</span>",
+    "Choose the meaning of <b>triumph</b>. <span class='pos'>(n.)</span>"
+   ],
    "opts": [
     "To keep separate or apart.",
     "Causing shame or disgrace.",
@@ -2667,6 +3061,11 @@ const DATA = {
    "s": 1,
    "type": "rev",
    "q": "Which word means: <span class='def'>(n.) The joy that winning brings.</span>",
+   "qv": [
+    "Which word means: <span class='def'>(n.) The joy that winning brings.</span>",
+    "Which word fits this meaning? <span class='def'>(n.) The joy that winning brings.</span>",
+    "Find the word for: <span class='def'>(n.) The joy that winning brings.</span>"
+   ],
    "opts": [
     "boycott",
     "verdict",
@@ -2703,6 +3102,11 @@ const DATA = {
    "s": 2,
    "type": "def",
    "q": "<b>triumph</b> <span class='pos'>(v.)</span>",
+   "qv": [
+    "<b>triumph</b> <span class='pos'>(v.)</span>",
+    "What does <b>triumph</b> mean here? <span class='pos'>(v.)</span>",
+    "Choose the meaning of <b>triumph</b>. <span class='pos'>(v.)</span>"
+   ],
    "opts": [
     "To make longer.",
     "To reach out.",
@@ -2721,6 +3125,11 @@ const DATA = {
    "s": 2,
    "type": "rev",
    "q": "Which word means: <span class='def'>(v.) To win.</span>",
+   "qv": [
+    "Which word means: <span class='def'>(v.) To win.</span>",
+    "Which word fits this meaning? <span class='def'>(v.) To win.</span>",
+    "Find the word for: <span class='def'>(v.) To win.</span>"
+   ],
    "opts": [
     "triumph",
     "ceremony",
@@ -2757,6 +3166,11 @@ const DATA = {
    "s": 0,
    "type": "def",
    "q": "<b>triumphant</b> <span class='pos'>(adj.)</span>",
+   "qv": [
+    "<b>triumphant</b> <span class='pos'>(adj.)</span>",
+    "What does <b>triumphant</b> mean here? <span class='pos'>(adj.)</span>",
+    "Choose the meaning of <b>triumphant</b>. <span class='pos'>(adj.)</span>"
+   ],
    "opts": [
     "The highest in rank or position.",
     "The act of keeping separate or apart.",
@@ -2775,6 +3189,11 @@ const DATA = {
    "s": 0,
    "type": "rev",
    "q": "Which word means: <span class='def'>(adj.) Joyful over a victory or success.</span>",
+   "qv": [
+    "Which word means: <span class='def'>(adj.) Joyful over a victory or success.</span>",
+    "Which word fits this meaning? <span class='def'>(adj.) Joyful over a victory or success.</span>",
+    "Find the word for: <span class='def'>(adj.) Joyful over a victory or success.</span>"
+   ],
    "opts": [
     "segregate",
     "ceremony",
@@ -2811,6 +3230,11 @@ const DATA = {
    "s": 0,
    "type": "def",
    "q": "<b>vacate</b> <span class='pos'>(v.)</span>",
+   "qv": [
+    "<b>vacate</b> <span class='pos'>(v.)</span>",
+    "What does <b>vacate</b> mean here? <span class='pos'>(v.)</span>",
+    "Choose the meaning of <b>vacate</b>. <span class='pos'>(v.)</span>"
+   ],
    "opts": [
     "To bring shame or disgrace upon.",
     "Joyful over a victory or success.",
@@ -2829,6 +3253,11 @@ const DATA = {
    "s": 0,
    "type": "rev",
    "q": "Which word means: <span class='def'>(v.) To make empty, as by leaving.</span>",
+   "qv": [
+    "Which word means: <span class='def'>(v.) To make empty, as by leaving.</span>",
+    "Which word fits this meaning? <span class='def'>(v.) To make empty, as by leaving.</span>",
+    "Find the word for: <span class='def'>(v.) To make empty, as by leaving.</span>"
+   ],
    "opts": [
     "custody",
     "campaign",
@@ -2865,6 +3294,11 @@ const DATA = {
    "s": 0,
    "type": "ant",
    "q": "Which word is most nearly the <b>opposite</b> of <b>vacate</b>?",
+   "qv": [
+    "Which word is most nearly the <b>opposite</b> of <b>vacate</b>?",
+    "Which word means the <b>opposite</b> of <b>vacate</b>?",
+    "<b>vacate</b> is closest to the opposite of which word?"
+   ],
    "opts": [
     "measure",
     "decorate",
@@ -2883,6 +3317,11 @@ const DATA = {
    "s": 0,
    "type": "def",
    "q": "<b>verdict</b> <span class='pos'>(n.)</span>",
+   "qv": [
+    "<b>verdict</b> <span class='pos'>(n.)</span>",
+    "What does <b>verdict</b> mean here? <span class='pos'>(n.)</span>",
+    "Choose the meaning of <b>verdict</b>. <span class='pos'>(n.)</span>"
+   ],
    "opts": [
     "A feeling of too much pride in oneself.",
     "Control over and responsibility for care.",
@@ -2901,6 +3340,11 @@ const DATA = {
    "s": 0,
    "type": "rev",
    "q": "Which word means: <span class='def'>(n.) The decision reached at the end of a trial.</span>",
+   "qv": [
+    "Which word means: <span class='def'>(n.) The decision reached at the end of a trial.</span>",
+    "Which word fits this meaning? <span class='def'>(n.) The decision reached at the end of a trial.</span>",
+    "Find the word for: <span class='def'>(n.) The decision reached at the end of a trial.</span>"
+   ],
    "opts": [
     "degrade",
     "verdict",
@@ -2937,6 +3381,11 @@ const DATA = {
    "s": 1,
    "type": "def",
    "q": "<b>verdict</b> <span class='pos'>(n.)</span>",
+   "qv": [
+    "<b>verdict</b> <span class='pos'>(n.)</span>",
+    "What does <b>verdict</b> mean here? <span class='pos'>(n.)</span>",
+    "Choose the meaning of <b>verdict</b>. <span class='pos'>(n.)</span>"
+   ],
    "opts": [
     "A judgment or opinion.",
     "Of the greatest importance.",
@@ -2955,6 +3404,11 @@ const DATA = {
    "s": 1,
    "type": "rev",
    "q": "Which word means: <span class='def'>(n.) A judgment or opinion.</span>",
+   "qv": [
+    "Which word means: <span class='def'>(n.) A judgment or opinion.</span>",
+    "Which word fits this meaning? <span class='def'>(n.) A judgment or opinion.</span>",
+    "Find the word for: <span class='def'>(n.) A judgment or opinion.</span>"
+   ],
    "opts": [
     "custody",
     "verdict",
@@ -2991,6 +3445,11 @@ const DATA = {
    "s": 0,
    "type": "def",
    "q": "<b>violate</b> <span class='pos'>(v.)</span>",
+   "qv": [
+    "<b>violate</b> <span class='pos'>(v.)</span>",
+    "What does <b>violate</b> mean here? <span class='pos'>(v.)</span>",
+    "Choose the meaning of <b>violate</b>. <span class='pos'>(v.)</span>"
+   ],
    "opts": [
     "To make empty, as by leaving.",
     "The highest in rank or position.",
@@ -3009,6 +3468,11 @@ const DATA = {
    "s": 0,
    "type": "rev",
    "q": "Which word means: <span class='def'>(v.) To break, as a law or a promise.</span>",
+   "qv": [
+    "Which word means: <span class='def'>(v.) To break, as a law or a promise.</span>",
+    "Which word fits this meaning? <span class='def'>(v.) To break, as a law or a promise.</span>",
+    "Find the word for: <span class='def'>(v.) To break, as a law or a promise.</span>"
+   ],
    "opts": [
     "supreme",
     "violate",
@@ -3045,6 +3509,11 @@ const DATA = {
    "s": 0,
    "type": "ant",
    "q": "Which word is most nearly the <b>opposite</b> of <b>violate</b>?",
+   "qv": [
+    "Which word is most nearly the <b>opposite</b> of <b>violate</b>?",
+    "Which word means the <b>opposite</b> of <b>violate</b>?",
+    "<b>violate</b> is closest to the opposite of which word?"
+   ],
    "opts": [
     "obey",
     "announce",
@@ -3063,6 +3532,11 @@ const DATA = {
    "s": 1,
    "type": "def",
    "q": "<b>violate</b> <span class='pos'>(v.)</span>",
+   "qv": [
+    "<b>violate</b> <span class='pos'>(v.)</span>",
+    "What does <b>violate</b> mean here? <span class='pos'>(v.)</span>",
+    "Choose the meaning of <b>violate</b>. <span class='pos'>(v.)</span>"
+   ],
    "opts": [
     "To stretch or spread outward from a certain point.",
     "The decision reached at the end of a trial.",
@@ -3081,6 +3555,11 @@ const DATA = {
    "s": 1,
    "type": "rev",
    "q": "Which word means: <span class='def'>(v.) To treat in an improper or disrespectful way.</span>",
+   "qv": [
+    "Which word means: <span class='def'>(v.) To treat in an improper or disrespectful way.</span>",
+    "Which word fits this meaning? <span class='def'>(v.) To treat in an improper or disrespectful way.</span>",
+    "Find the word for: <span class='def'>(v.) To treat in an improper or disrespectful way.</span>"
+   ],
    "opts": [
     "segregate",
     "violate",
@@ -3117,6 +3596,11 @@ const DATA = {
    "s": 0,
    "type": "def",
    "q": "<b>violation</b> <span class='pos'>(n.)</span>",
+   "qv": [
+    "<b>violation</b> <span class='pos'>(n.)</span>",
+    "What does <b>violation</b> mean here? <span class='pos'>(n.)</span>",
+    "Choose the meaning of <b>violation</b>. <span class='pos'>(n.)</span>"
+   ],
    "opts": [
     "The act of uniting or bringing together, especially people of different races.",
     "A breaking of, or failing to keep, something like a law or a promise.",
@@ -3135,6 +3619,11 @@ const DATA = {
    "s": 0,
    "type": "rev",
    "q": "Which word means: <span class='def'>(n.) A breaking of, or failing to keep, something like a law or a promise.</span>",
+   "qv": [
+    "Which word means: <span class='def'>(n.) A breaking of, or failing to keep, something like a law or a promise.</span>",
+    "Which word fits this meaning? <span class='def'>(n.) A breaking of, or failing to keep, something like a law or a promise.</span>",
+    "Find the word for: <span class='def'>(n.) A breaking of, or failing to keep, something like a law or a promise.</span>"
+   ],
    "opts": [
     "degrading",
     "verdict",
@@ -3438,7 +3927,7 @@ function render(){
   const answered = sheet.filter(x=>x.pick!=null).length;
   $("card").innerHTML = `
     <div class="qnum">Question ${idx+1} of ${sheet.length} &middot; ${answered} answered</div>
-    <div class="q">${r.it.q}</div>
+    <div class="q">${MC.ask(r.it)}</div>
     <div class="opts" id="opts"></div>
     <div class="act">
       <div class="pager">
@@ -3550,7 +4039,7 @@ function drawReview(){
     const corr  = r.opts.find(o=>o.ok).t;
     return `<div class="rv ${r.ok?"":"no"}">
       <div class="n">Question ${r.n+1} &middot; ${r.ok?"correct":"missed"}</div>
-      <div class="qq">${r.it.q}</div>
+      <div class="qq">${MC.ask(r.it)}</div>
       ${r.ok?"":`<div class="ln"><i>You put</i><span class="yours">${esc(yours)}</span></div>`}
       <div class="ln"><i>Answer</i><span>${esc(corr)}</span></div>
       <div class="why">${r.it.why}<cite>${esc(r.it.cite)}</cite></div>

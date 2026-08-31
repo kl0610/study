@@ -124,13 +124,19 @@ ok("...and it says so, rather than going quiet",
 ok("...and it counts what is still missing",
    MC.clear("l7", 100, {}).toolsLeft > 0);
 
-/* Hand him the full bar without touching any id another test measures: eight
-   clears in a namespace of their own, and the elytra flag set directly. */
+/* Hand him the full bar without touching any id another test measures.
+   The eighth tool now costs 18 cleared activities rather than 8, and the elytra
+   asks for a clear in five different subjects instead of one specific level, so
+   the fixture has to clear both gates: 25 activities across 5 namespaces. */
+function armed(){
+  const cleared = {};
+  for (const a of ["armoury","armoury2","armoury3","armoury4","armoury5"])
+    for (let i = 0; i < 5; i++) cleared[a + ":" + i] = 80;
+  return cleared;
+}
 function arm(){
   localStorage.setItem("mc.study.v1", JSON.stringify({
-    cleared: {"armoury:a":80,"armoury:b":80,"armoury:c":80,"armoury:d":80,
-              "armoury:e":80,"armoury:f":80,"armoury:g":80,"armoury:h":80},
-    misses: {}, tool9: true, ore: {}, gem: {}, dragon: 0
+    cleared: armed(), misses: {}, tool9: true, ore: {}, gem: {}, dragon: 0
   }));
   return load();
 }
@@ -398,6 +404,75 @@ MC.reset();
 ok("reset clears progress but keeps the sound preference", MC.mute() === true);
 MC.mute(false);
 MC.reset();
+
+/* Wording. Options already re-shuffle on every render; this is the same idea
+   applied to the question stem, and it has to hold in both directions: steady
+   while a run is in progress, so the review screen shows what he was asked,
+   and re-rolled when a new run starts. */
+console.log("\nquestion wording");
+const item = { q: "one", qv: ["one", "two", "three"] };
+MC.begin("w");
+const firstAsk = MC.ask(item);
+let steady = true;
+for (let i = 0; i < 40; i++) if (MC.ask(item) !== firstAsk) steady = false;
+ok("the wording holds for the whole run", steady);
+ok("it is one of the wordings offered", item.qv.indexOf(firstAsk) >= 0);
+const seenWordings = new Set();
+for (let r = 0; r < 400; r++) { MC.begin("w"); seenWordings.add(MC.ask(item)); }
+ok("a fresh run can produce any of them (" + [...seenWordings].sort().join("/") + ")",
+   seenWordings.size === 3);
+ok("an item with no alternates just uses its own wording",
+   MC.ask({ q: "only one" }) === "only one");
+ok("an item with an empty list falls back too", MC.ask({ q: "plain", qv: [] }) === "plain");
+ok("asking for nothing is harmless", MC.ask(null) === "");
+MC.reset();
+
+/* The ladder. The first eight tools used to cost one cleared activity each,
+   which emptied the whole bar in eight runs out of the forty on the site. */
+console.log("\nthe ladder paces to the site");
+MC.reset();
+MC.config({ app: "ladder", shake: null, dragon: null });
+const toolsAfter = n => {
+  MC.reset();
+  for (let i = 0; i < n; i++) { MC.begin("x" + i); MC.clear("x" + i, 80); }
+  return MC.state().tools.count;
+};
+ok("one clear still pays a tool the same evening", toolsAfter(1) === 1);
+ok("three clears is three tools", toolsAfter(3) === 3);
+ok("eight clears no longer empties the bar", toolsAfter(8) === 5);
+ok("the eighth tool costs eighteen", toolsAfter(18) === 8);
+ok("and it stops there", toolsAfter(30) === 8);
+
+/* The elytra used to hang on spelling:l7 alone — miss that one level and the
+   mine could never open, however much else was cleared. */
+console.log("\nthe elytra cannot strand him");
+MC.reset();
+for (let i = 0; i < 30; i++) { MC.config({app:"one", shake:null}); MC.begin("a"+i); MC.clear("a"+i, 90); }
+ok("thirty clears in one subject is still not the elytra", MC.state().tools.nine === false);
+["s1","s2","s3","s4","s5"].forEach((s,i)=>{
+  MC.config({ app: s, shake: null }); MC.begin("go"); MC.clear("go", 90);
+});
+ok("a clear in five subjects earns it", MC.state().tools.nine === true);
+ok("...and that is what opens the mine", MC.state().mineOpen === true);
+MC.reset();
+
+/* Coins. The tools run out and the mine takes a while; coins pay from the first
+   run and keep paying, which is the point of them. */
+console.log("\ncoins");
+MC.reset();
+MC.config({ app: "purse", shake: null, dragon: null });
+ok("a fresh start has none", MC.state().coins === 0);
+MC.begin("c1"); MC.clear("c1", 40);
+const poor = MC.state().coins;
+ok("even a bad round pays something (" + poor + ")", poor > 0);
+MC.begin("c2"); MC.clear("c2", 100);
+const rich = MC.state().coins - poor;
+ok("a perfect round pays more (" + rich + " vs " + poor + ")", rich > poor);
+const before = MC.state().coins;
+MC.begin("c3"); MC.clear("c3", 90);
+ok("they keep accruing after the tool bar is full", MC.state().coins > before);
+MC.reset();
+ok("reset clears the purse", MC.state().coins === 0);
 
 
 console.log(fails ? "\n" + fails + " FAILURES" : "\nall green");

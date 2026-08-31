@@ -3,498 +3,78 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>At Stoke Moran — The Speckled Band</title>
+<title>Trophy Room — Study Craft</title>
+<meta name="theme-color" content="#1A1A1D">
 <style>
 :root{
-  --bench:#1C2733; --deep:#121A23; --panel:#26333F; --line:#3A4A58;
-  --paper:#FBF6EC; --paper2:#F1E9D8; --ink:#16292E; --muted:#8FA9AF;
-  --copper:#C89B5A; --cyan:#7FA8C4; --amber:#EFB04A; --red:#E0685A; --green:#59B27C; --violet:#7C5BA6;
-  --r:16px;
-  --disp:"Avenir Next","Segoe UI Variable Display","Trebuchet MS",system-ui,sans-serif;
+  --dirt:#7B5432; --stone:#7D7D7D; --grass:#63A93E; --grass-d:#4A8230;
+  --panel:#26262A; --panel-2:#1A1A1D; --line:#3A3A40;
+  --paper:#E9E6DE; --dim:#9A968D; --gold:#FCFC54; --end:#A855C8;
+  --disp:"Trebuchet MS","Segoe UI",Verdana,system-ui,sans-serif;
   --body:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
   --mono:ui-monospace,"SF Mono","Cascadia Mono",Consolas,monospace;
 }
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html,body{margin:0;padding:0}
-body{
-  background:var(--bench);
-  background-image:radial-gradient(circle at 18% 0%,#2E3D4C 0%,transparent 55%),
-                   radial-gradient(circle at 92% 12%,#243240 0%,transparent 45%);
-  background-attachment:fixed;
-  color:var(--paper); font-family:var(--body); line-height:1.55;
-  padding:0 0 96px; overflow-x:hidden;
-}
-.wrap{max-width:760px;margin:0 auto;padding:0 18px}
-button{font:inherit;color:inherit;cursor:pointer;border:none;background:none}
-.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--cyan)}
-.hublink{display:inline-flex;align-items:center;gap:6px;margin:22px 0 0;padding:7px 13px;
-  border:1px solid var(--line);border-radius:20px;background:var(--panel);
-  font:700 11px var(--mono);letter-spacing:.11em;text-transform:uppercase;
-  color:var(--muted);text-decoration:none;transition:color .15s,border-color .15s}
-.hublink:hover{color:var(--paper);border-color:var(--cyan)}
+img{image-rendering:pixelated}
+body{margin:0;background:var(--panel-2);color:var(--paper);font-family:var(--body);
+  line-height:1.55;padding:0 0 calc(70px + env(safe-area-inset-bottom))}
+.wrap{max-width:660px;margin:0 auto;padding:0 16px}
 
-/* ---------- header ---------- */
-header{padding:34px 0 22px;text-align:center}
-h1{font-family:var(--disp);font-size:clamp(30px,7.5vw,46px);line-height:1.03;margin:10px 0 6px;letter-spacing:-.02em;font-weight:800}
-h1 em{font-style:normal;color:var(--amber)}
-.sub{color:var(--muted);font-size:15px;max-width:44ch;margin:0 auto}
-.bq{margin:20px auto 0;max-width:520px;background:var(--panel);border:1px solid var(--line);
-    border-radius:var(--r);padding:14px 18px}
-.bq .eyebrow{color:var(--amber)}
-.bq p{margin:4px 0 0;font-family:var(--disp);font-size:19px;font-weight:600}
+.top{padding:18px 0 16px;border-bottom:5px solid var(--grass-d);margin-bottom:20px}
+.back{display:inline-flex;align-items:center;gap:6px;text-decoration:none;
+  font:700 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
+.back:hover{color:var(--paper)}
+h1{font-family:var(--disp);font-size:clamp(26px,7vw,38px);margin:12px 0 4px;font-weight:800;
+  letter-spacing:-.02em}
+.sub{margin:0;color:var(--dim);font-size:14px}
 
-/* ---------- mission cards ---------- */
-.grid{display:grid;gap:14px;margin:26px 0 0}
-.mission{display:block;width:100%;text-align:left;background:var(--paper);color:var(--ink);
-  border-radius:var(--r);padding:16px 18px;position:relative;overflow:hidden;
-  box-shadow:0 10px 26px rgba(0,0,0,.28);transition:transform .16s ease,box-shadow .16s ease}
-.mission:hover{transform:translateY(-3px);box-shadow:0 16px 34px rgba(0,0,0,.34)}
-.mission:active{transform:translateY(0)}
-.mission::before{content:"";position:absolute;left:0;top:0;bottom:0;width:6px;background:var(--c)}
-.mission .top{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
-.mission h3{font-family:var(--disp);font-size:20px;margin:2px 0 3px;font-weight:750}
-.mission .tag{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#7A8C85}
-.mission p{margin:0;font-size:14px;color:#4A5A5E}
-.mission .go{margin-top:10px;display:inline-flex;align-items:center;gap:7px;font-weight:700;font-size:14px;color:var(--c)}
-.chev{width:16px;height:16px;flex:none}
-.badge{position:absolute;right:14px;bottom:14px;font-family:var(--mono);font-size:11px;
-  background:var(--green);color:#fff;padding:3px 9px;border-radius:20px;letter-spacing:.06em}
+/* the purse, the headline number — it is the thing that always goes up */
+.purse{display:flex;align-items:center;gap:13px;padding:16px 18px;margin-bottom:20px;
+  background:var(--panel);border:3px solid var(--line);
+  box-shadow:inset -3px -3px 0 rgba(0,0,0,.3), inset 3px 3px 0 rgba(255,255,255,.045)}
+.purse .coin{width:44px;height:44px;flex:none}
+.coin-fb{border-radius:50%;background:radial-gradient(circle at 34% 30%,#FFE27A,#E0A83C 62%,#9C6F1E);
+  border:3px solid #6E4B10;box-shadow:inset -3px -3px 0 rgba(0,0,0,.28)}
+.purse b{font:800 34px/1 var(--mono);color:var(--gold)}
+.purse span{font:700 11px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
 
-/* ---------- videos ---------- */
-.shelf{margin:38px 0 0}
-.shelf h2,.pagehead h2{font-family:var(--disp);font-size:22px;margin:6px 0 4px;font-weight:750}
-.shelf .note{color:var(--muted);font-size:14px;margin:0 0 14px}
-.vid{display:flex;gap:14px;align-items:flex-start;background:var(--panel);border:1px solid var(--line);
-  border-radius:14px;padding:13px 14px;margin-bottom:10px;text-decoration:none;color:var(--paper);
-  transition:border-color .16s ease,transform .16s ease}
-.vid:hover{border-color:var(--cyan);transform:translateX(3px)}
-.play{flex:none;width:46px;height:34px;border-radius:8px;background:var(--red);display:grid;place-items:center}
-.play svg{width:14px;height:14px;fill:#fff}
-.vid h4{margin:0 0 2px;font-size:15px;font-weight:700}
-.vid .src{font-family:var(--mono);font-size:10.5px;color:var(--cyan);letter-spacing:.08em;text-transform:uppercase}
-.vid p{margin:5px 0 0;font-size:13px;color:#B9CDD2}
-.vid .when{margin-top:5px;font-size:12px;color:var(--amber);font-weight:600}
+h2{margin:26px 0 10px;font:800 11px var(--mono);letter-spacing:.16em;
+  text-transform:uppercase;color:var(--dim)}
+.note{margin:10px 0 0;font:600 12px var(--mono);color:var(--dim);line-height:1.55}
 
-/* ---------- play screen ---------- */
-.pagehead{display:flex;align-items:center;gap:12px;padding:20px 0 12px}
-.back{width:38px;height:38px;border-radius:11px;background:var(--panel);border:1px solid var(--line);
-  display:grid;place-items:center;flex:none}
-.back svg{width:16px;height:16px}
-.pagehead .t{flex:1;min-width:0}
-.pagehead .t strong{display:block;font-family:var(--disp);font-size:17px;font-weight:750;
-  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.pagehead .t span{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase}
-.dots{display:flex;gap:5px;margin:0 0 16px}
-.dot{height:5px;flex:1;border-radius:3px;background:var(--line)}
-.dot.done{background:var(--green)}
-.dot.now{background:var(--amber)}
+.tools{display:grid;grid-template-columns:repeat(auto-fit,minmax(66px,1fr));gap:8px}
+.slot{position:relative;aspect-ratio:1;display:grid;place-items:center;background:#2A2A2E;
+  border:3px solid #0D0D0F;
+  box-shadow:inset -3px -3px 0 rgba(0,0,0,.35), inset 3px 3px 0 rgba(255,255,255,.06)}
+.slot img{width:64%;height:64%;object-fit:contain}
+.slot.locked{opacity:.26}
+.cap{position:absolute;bottom:3px;left:0;right:0;text-align:center;font:700 7.5px var(--mono);
+  color:var(--dim);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding:0 3px}
 
-.card{background:var(--paper);color:var(--ink);border-radius:20px;padding:18px;
-  box-shadow:0 14px 40px rgba(0,0,0,.3)}
-.qnum{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#8A9B94}
-.q{font-family:var(--disp);font-size:18.5px;line-height:1.35;font-weight:650;margin:6px 0 14px}
-.artbox{background:var(--paper2);border-radius:14px;padding:8px;margin:0 0 14px}
-svg.art{display:block;width:100%;height:auto;max-height:210px}
-.cap{font:600 9px var(--mono);fill:#6E7F79;text-anchor:middle;letter-spacing:.04em}
-.cap2{font:400 8px var(--mono);fill:#8A9B94;text-anchor:middle}
-.cap3{font:700 9px var(--mono);fill:#FBF6EC;text-anchor:middle}
-.cap4{font:700 11px var(--mono);fill:#16292E;text-anchor:middle}
+.ores{display:grid;grid-template-columns:repeat(auto-fit,minmax(88px,1fr));gap:8px}
+.ore{display:flex;align-items:center;gap:8px;padding:9px 10px;background:var(--panel);
+  border:2px solid var(--line)}
+.ore i{width:18px;height:18px;flex:none;background:var(--o);border:2px solid rgba(0,0,0,.5)}
+.ore b{font:800 15px var(--mono)}
+.ore span{font:600 9px var(--mono);letter-spacing:.07em;text-transform:uppercase;color:var(--dim)}
+.ore.none{opacity:.32}
 
-/* options */
-.opts{display:grid;gap:8px}
-.opt{display:flex;gap:11px;align-items:flex-start;text-align:left;width:100%;
-  background:#fff;border:2px solid #E4DBC8;border-radius:13px;padding:12px 13px;font-size:15px;
-  transition:border-color .14s,background .14s,transform .1s}
-.opt:hover:not(:disabled){border-color:var(--copper)}
-.opt:active:not(:disabled){transform:scale(.99)}
-.opt .k{flex:none;width:24px;height:24px;border-radius:7px;background:#F0E8D6;color:#6E7F79;
-  font:700 12px var(--mono);display:grid;place-items:center}
-.opt.out{opacity:.4}
-.opt.out .k{background:#E0D6C2}
-.opt:disabled{cursor:default}
-.opt.good{border-color:var(--green);background:#EFF8F2}
-.opt.good .k{background:var(--green);color:#fff}
-.opt.bad{border-color:var(--red);background:#FDF0EE}
-.opt.bad .k{background:var(--red);color:#fff}
-/* select-all */
-.opt.multi .k{border-radius:50%}
-.opt.on{border-color:var(--violet);background:#F4EFFA}
-.opt.on .k{background:var(--violet);color:#fff}
-.counter{font:600 12px var(--mono);color:#8A9B94;margin:10px 0 0;text-align:center;letter-spacing:.06em}
+.blks{display:grid;grid-template-columns:repeat(auto-fit,minmax(88px,1fr));gap:8px}
+.blk{padding:11px;background:var(--panel);border:2px solid var(--line);text-align:center}
+.blk b{display:block;font:800 20px var(--mono);color:var(--gold)}
+.blk span{font:600 9px var(--mono);letter-spacing:.07em;text-transform:uppercase;color:var(--dim)}
+.blk.none{opacity:.32}.blk.none b{color:var(--dim)}
 
-/* tools */
-.tools{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.tool{background:#fff;border:2px solid #E4DBC8;border-radius:14px;padding:10px 8px 8px;text-align:center;
-  transition:border-color .14s,transform .1s}
-.tool:hover:not(:disabled){border-color:var(--copper)}
-.tool:active:not(:disabled){transform:scale(.98)}
-.tool svg{height:78px;width:100%}
-.tool span{display:block;font-size:12.5px;font-weight:650;margin-top:4px;line-height:1.25}
-.tool.out{opacity:.38}
-.tool.good{border-color:var(--green);background:#EFF8F2}
-.tool.bad{border-color:var(--red);background:#FDF0EE}
+.big{display:flex;align-items:center;gap:14px;padding:15px 17px;background:var(--panel);
+  border:3px solid var(--line)}
+.big img{width:52px;height:52px;flex:none;object-fit:contain}
+.big b{font:800 28px/1 var(--mono);color:var(--end)}
+.big span{font:700 10px var(--mono);letter-spacing:.13em;text-transform:uppercase;color:var(--dim)}
+.big.none{opacity:.4}.big.none b{color:var(--dim)}
 
-/* chips + slots */
-.instr{font-size:13.5px;color:#5C6C6F;margin:0 0 10px;font-style:italic}
-.chips{display:flex;flex-wrap:wrap;gap:7px;margin:0 0 14px;min-height:8px}
-.chip{background:#fff;border:2px solid #E4DBC8;border-radius:10px;padding:8px 11px;font-size:14px;font-weight:600;
-  transition:transform .1s,border-color .14s}
-.chip:active{transform:scale(.97)}
-.chip.sel{border-color:var(--violet);background:#F4EFFA;box-shadow:0 0 0 3px rgba(124,91,166,.16)}
-.chip.used{display:none}
-.slots{display:grid;gap:8px}
-.slots.bins{grid-template-columns:1fr 1fr}
-.slot{background:#F6F0E2;border:2px dashed #D6C9AF;border-radius:13px;padding:10px 12px;text-align:left;width:100%;
-  transition:border-color .14s,background .14s}
-.slot:hover{border-color:var(--copper)}
-.slot .lab{font-size:13.5px;font-weight:650;color:#3E4E52;line-height:1.3}
-.slot.bins .lab{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#6E7F79}
-.slot .held{display:flex;flex-wrap:wrap;gap:6px;margin-top:7px}
-.held span{background:var(--violet);color:#fff;border-radius:8px;padding:5px 9px;font-size:13px;font-weight:600}
-.slot.filled{border-style:solid;border-color:#C9BCA0;background:#fff}
-.slot.hot{border-color:var(--violet);background:#F8F4FE}
-.held span.wrongmark{background:var(--red);box-shadow:0 0 0 3px rgba(224,104,90,.2)}
-.slot.wrongmark{border-color:var(--red);border-style:solid}
-.hintnote{font:600 12px var(--mono);color:var(--red);letter-spacing:.05em;margin:10px 0 0;text-align:center}
-
-/* mystery table */
-.mtable{display:grid;gap:8px}
-.mrow{background:#fff;border:2px solid #E4DBC8;border-radius:13px;padding:10px 12px}
-.mrow.hot{border-color:var(--violet);background:#F8F4FE}
-.mrow.wrongmark{border-color:var(--red);background:#FDF0EE}
-.mrow .named.wrongmark{background:var(--red)}
-.mrow .rh{display:flex;align-items:center;gap:9px;margin-bottom:7px}
-.mrow .key{width:26px;height:26px;border-radius:8px;background:var(--bench);color:var(--paper);
-  font:700 13px var(--mono);display:grid;place-items:center;flex:none}
-.mrow .named{background:var(--violet);color:#fff;border-radius:8px;padding:4px 10px;font-size:13px;font-weight:700}
-.cells{display:grid;grid-template-columns:repeat(2,1fr);gap:5px}
-.cell{background:#F6F0E2;border-radius:8px;padding:5px 8px}
-.cell b{display:block;font:600 9px var(--mono);letter-spacing:.09em;text-transform:uppercase;color:#8A9B94}
-.cell span{font-size:12.5px;font-weight:600;color:#3E4E52}
-
-/* actions + feedback */
-.act{margin:14px 0 0;display:grid;gap:8px}
-.btn{border-radius:13px;padding:13px;font-weight:750;font-size:15px;text-align:center;
-  transition:transform .1s,filter .14s}
-.btn:active{transform:scale(.99)}
-.btn:disabled{opacity:.4;cursor:default}
-.btn.p{background:var(--bench);color:var(--paper)}
-.btn.g{background:var(--green);color:#fff}
-.btn.o{background:#fff;border:2px solid var(--bench);color:var(--bench)}
-.btn.h{background:#fff;border:2px solid var(--red);color:#A93F33}
-.fb{border-radius:14px;padding:13px 15px;margin:14px 0 0;font-size:14.5px;animation:pop .28s ease}
-.fb.no{background:#FDF0EE;border-left:5px solid var(--red);color:#7A2E26}
-.fb.yes{background:#EFF8F2;border-left:5px solid var(--green);color:#1E5637}
-.fb strong{display:block;font-family:var(--disp);font-size:16px;margin-bottom:3px}
-@keyframes pop{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}
-.shake{animation:sh .38s}
-@keyframes sh{0%,100%{transform:none}22%{transform:translateX(-7px)}44%{transform:translateX(7px)}70%{transform:translateX(-3px)}}
-
-/* ---------- reader drawer ---------- */
-.scrim{position:fixed;inset:0;background:rgba(6,20,24,.62);opacity:0;pointer-events:none;
-  transition:opacity .26s;z-index:40;backdrop-filter:blur(2px)}
-.scrim.on{opacity:1;pointer-events:auto}
-.drawer{position:fixed;left:0;right:0;bottom:0;z-index:50;max-height:88vh;
-  background:var(--paper);color:var(--ink);border-radius:22px 22px 0 0;
-  transform:translateY(101%);transition:transform .32s cubic-bezier(.22,.9,.3,1);
-  display:flex;flex-direction:column;box-shadow:0 -14px 44px rgba(0,0,0,.4)}
-.drawer.on{transform:none}
-.dhead{background:#5A4632;color:#fff;border-radius:22px 22px 0 0;padding:16px 20px 15px;flex:none;position:relative}
-.dhead .eyebrow{color:#F0C4F2}
-.dhead h3{font-family:var(--disp);font-size:19px;margin:3px 0 0;font-weight:750;padding-right:44px}
-.dhead .pg{font-family:var(--mono);font-size:11px;color:#EBC0EE;margin-top:4px;letter-spacing:.05em}
-.x{position:absolute;right:14px;top:14px;width:34px;height:34px;border-radius:10px;
-  background:rgba(255,255,255,.18);display:grid;place-items:center}
-.x svg{width:15px;height:15px;stroke:#fff;stroke-width:2.4}
-.dbody{overflow-y:auto;padding:18px 20px 26px;-webkit-overflow-scrolling:touch}
-.dbody p{margin:0 0 13px;font-size:15.5px;line-height:1.66}
-.dbody p:last-of-type{margin-bottom:0}
-.vbox{background:#EADCF0;border-radius:12px;padding:12px 14px;margin:0 0 15px}
-.vbox .vh{background:#7B2C7E;color:#fff;display:inline-block;font:700 11px var(--mono);
-  letter-spacing:.12em;text-transform:uppercase;padding:3px 10px;border-radius:7px;margin-bottom:8px}
-.vbox dt{color:#7B2C7E;font-weight:800;display:inline}
-.vbox dd{display:inline;margin:0}
-.dfoot{flex:none;padding:12px 20px calc(14px + env(safe-area-inset-bottom));
-  border-top:1px solid #E7DECB;background:var(--paper);border-radius:0 0 22px 22px}
-.dfoot .btn{width:100%}
-.leadin{font-size:13.5px;color:#5C6C6F;margin:0 0 4px}
-.morepg{margin:22px 0 0;border-top:2px dashed #D6C9AF;padding-top:16px}
-.morepg .eyebrow{color:#8A9B94}
-.hint{margin:16px 0 0;padding:12px 14px;background:#F6F0E2;border-radius:12px;font-size:13.5px;color:#5C6C6F}
-.exwrap{margin:22px 0 0;border-top:2px dashed #D6C9AF;padding-top:18px}
-.exwrap .eyebrow{color:#B07A1E}
-.ex{background:#FDF4DD;border-left:5px solid var(--amber);border-radius:0 12px 12px 0;
-  padding:13px 15px;margin:9px 0 0}
-.ex p{margin:0 0 10px;font-size:15.5px;line-height:1.6;font-weight:500}
-.ex p:last-child{margin:0}
-.exsrc{font:600 11px var(--mono);color:#8A7343;letter-spacing:.08em;margin-top:9px}
-.vidbtn{display:flex;gap:13px;align-items:center;margin:16px 0 0;background:var(--bench);color:var(--paper);
-  border-radius:14px;padding:13px 15px;text-decoration:none}
-.vidbtn .play{flex:none;width:44px;height:32px;border-radius:8px;background:var(--red);display:grid;place-items:center}
-.vidbtn .play svg{width:13px;height:13px;fill:#fff}
-.vidbtn .src{font:600 10px var(--mono);color:var(--cyan);letter-spacing:.09em;text-transform:uppercase}
-.vidbtn h4{margin:1px 0 2px;font-size:15px;font-weight:750}
-.vidbtn p{margin:0;font-size:12.5px;color:#B9CDD2;line-height:1.4}
-.hint b{color:var(--ink)}
-
-/* ---------- results ---------- */
-.score{background:var(--paper);color:var(--ink);border-radius:20px;padding:24px 20px;text-align:center;
-  box-shadow:0 14px 40px rgba(0,0,0,.3)}
-.ring{font-family:var(--disp);font-size:58px;font-weight:800;line-height:1;letter-spacing:-.03em}
-.band{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;margin-top:6px}
-.stats{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:20px 0 0;text-align:left}
-.stat{background:#F6F0E2;border-radius:12px;padding:11px 13px}
-.stat b{display:block;font-family:var(--disp);font-size:22px;font-weight:750}
-.stat span{font:600 10px var(--mono);letter-spacing:.09em;text-transform:uppercase;color:#8A9B94}
-.review{margin:16px 0 0;text-align:left;background:#FDF6E6;border-radius:13px;padding:13px 15px;font-size:14px}
-.review b{display:block;margin-bottom:6px;font-family:var(--disp);font-size:15px}
-.review li{margin:0 0 5px}
-.aloud{margin:16px 0 0;background:var(--bench);color:var(--paper);border-radius:14px;padding:15px 17px;text-align:left}
-.aloud .eyebrow{color:var(--amber)}
-.aloud p{margin:5px 0 0;font-size:15px}
-
-footer{margin:42px 0 0;padding:18px 0 0;border-top:1px solid var(--line);
-  color:#7C979E;font-size:11.5px;line-height:1.6;text-align:center}
-.hide{display:none!important}
-@media(max-width:400px){.tools{grid-template-columns:1fr}.slots.bins{grid-template-columns:1fr}.cells{grid-template-columns:1fr}}
-@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
-</style>
-<!-- MC-THEME-CSS: generated by build_theme.py, do not hand-edit -->
-<style>
-/* ===== Minecraft theme layer — shared source, injected into all apps =====
-   Everything is prefixed .mc- / #mc- so it cannot collide with app CSS.
-   z-index budget in the apps: content < 30, HUD 30, scrim 40, drawer 50.
-   Sprite bursts sit at 60 so they play over an auto-opening drawer.        */
-
-.mc-hud{
-  position:fixed; left:0; right:0; z-index:30;
-  bottom:var(--mc-lift, 0px);
-  display:flex; flex-direction:column; align-items:center; gap:3px;
-  padding:6px 8px calc(6px + env(safe-area-inset-bottom));
-  pointer-events:none;
-  background:linear-gradient(to top, rgba(0,0,0,.42), rgba(0,0,0,0));
-  transition:bottom .18s;
-}
-.mc-hud img{image-rendering:pixelated; display:block}
-
-.mc-hearts{
-  display:flex; gap:1px; align-self:center;
-  width:var(--mc-barw, 360px); box-sizing:border-box;
-}
-.mc-heart{width:var(--mc-hh,19px); height:auto}
-/* heart-empty is very faint on dark art — read the row as sockets waiting */
-.mc-heart[data-v="0"]{filter:drop-shadow(0 0 2px rgba(255,255,255,.5)) drop-shadow(0 0 5px rgba(0,0,0,.6)); opacity:.85}
-.mc-heart.mc-hit{animation:mc-hit .42s}
-@keyframes mc-hit{
-  0%{transform:scale(1.55)} 25%{transform:scale(1.1) rotate(-8deg)}
-  55%{transform:scale(1.25)} 100%{transform:none}
-}
-
-.mc-bar{display:flex; gap:0; width:var(--mc-barw,360px); box-sizing:border-box}
-.mc-slot{
-  position:relative; width:var(--mc-ss,38px); height:var(--mc-ss,38px);
-  flex:0 0 auto; background-size:100% 100%; background-repeat:no-repeat;
-}
-.mc-slot .mc-tool{
-  position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);
-  width:69%; height:69%; object-fit:contain;
-}
-/* tool-9 already has zero side margin in the source art — don't scale it up */
-.mc-slot[data-n="9"] .mc-tool{width:62%; height:62%}
-.mc-slot .mc-frame{position:absolute; inset:-2px; width:calc(100% + 4px); height:calc(100% + 4px); opacity:0}
-.mc-slot.mc-new .mc-frame{opacity:1; animation:mc-pulse 1.1s ease-in-out 3}
-.mc-slot.mc-new .mc-tool{animation:mc-drop .5s cubic-bezier(.2,1.5,.4,1)}
-@keyframes mc-pulse{0%,100%{opacity:.35}50%{opacity:1}}
-@keyframes mc-drop{from{transform:translate(-50%,-160%) scale(.4); opacity:0}}
-
-/* ---- sprite burst ---- */
-.mc-burst{
-  position:fixed; left:50%; top:44%; z-index:60; pointer-events:none;
-  width:var(--mc-burst,128px); height:var(--mc-burst,128px);
-  transform:translate(-50%,-50%);
-}
-.mc-burst img{width:100%; height:100%; object-fit:contain; image-rendering:pixelated}
-.mc-burst.mc-good{animation:mc-good 1.35s cubic-bezier(.18,1.3,.4,1) forwards}
-.mc-burst.mc-bad{animation:mc-bad 1.15s ease-out forwards}
-/* bad-2 creeper and bad-4 zombie carry ~30px of side margin; TNT and the
-   spider fill the frame. Nudge the narrow two up so misses land evenly. */
-.mc-burst.mc-bad[data-w="narrow"] img{transform:scale(1.17)}
-@keyframes mc-good{
-  0%{transform:translate(-50%,-50%) scale(.3) rotate(-12deg); opacity:0}
-  18%{transform:translate(-50%,-50%) scale(1.12) rotate(3deg); opacity:1}
-  30%{transform:translate(-50%,-50%) scale(1) rotate(0); opacity:1}
-  72%{transform:translate(-50%,-50%) scale(1) rotate(0); opacity:1}
-  100%{transform:translate(-50%,-80%) scale(1.05); opacity:0}
-}
-@keyframes mc-bad{
-  0%{transform:translate(-50%,-50%) scale(.55); opacity:0}
-  14%{transform:translate(-50%,-50%) scale(1.08); opacity:1}
-  26%{transform:translate(-50%,-50%) scale(1); opacity:1}
-  74%{transform:translate(-50%,-50%) scale(1); opacity:1}
-  100%{transform:translate(-50%,-44%) scale(.96); opacity:0}
-}
-
-.mc-shake{animation:mc-shake .34s}
-@keyframes mc-shake{
-  10%,90%{transform:translateX(-2px)} 20%,80%{transform:translateX(4px)}
-  30%,50%,70%{transform:translateX(-7px)} 40%,60%{transform:translateX(7px)}
-}
-
-/* ---- results chest ---- */
-.mc-chest{
-  display:flex; flex-direction:column; align-items:center; gap:8px;
-  padding:14px 10px 4px; margin:2px 0 6px;
-}
-.mc-chest .mc-lid{width:120px; height:120px; object-fit:contain; image-rendering:pixelated;
-  transition:transform .2s; cursor:pointer}
-.mc-chest .mc-lid.mc-shut{animation:mc-nudge 1.5s ease-in-out infinite}
-@keyframes mc-nudge{0%,88%,100%{transform:none}92%{transform:translateY(-4px) rotate(-2deg)}96%{transform:translateY(-2px) rotate(2deg)}}
-.mc-loot{display:flex; gap:6px; justify-content:center; min-height:4px; flex-wrap:wrap}
-.mc-loot img{width:52px; height:52px; object-fit:contain; image-rendering:pixelated;
-  animation:mc-pop .5s cubic-bezier(.2,1.6,.4,1) both}
-.mc-loot img:nth-child(2){animation-delay:.09s}
-.mc-loot img:nth-child(3){animation-delay:.18s}
-.mc-loot img:nth-child(4){animation-delay:.27s}
-.mc-loot img:nth-child(5){animation-delay:.36s}
-@keyframes mc-pop{from{transform:translateY(26px) scale(.3); opacity:0}}
-.mc-tier{
-  font:800 19px ui-monospace,SFMono-Regular,Menlo,monospace; letter-spacing:.1em;
-  text-align:center; margin-top:2px;
-  animation:mc-pop .5s cubic-bezier(.2,1.6,.4,1) .3s both;
-}
-.mc-tier[data-t="dragon"]{color:#A855C8}
-.mc-tier[data-t="netherite"]{color:#6B5A6E}
-.mc-tier[data-t="diamond"]{color:#2AA7B8}
-.mc-tier[data-t="iron"]{color:#8A8A8A}
-.mc-tier[data-t="stone"]{color:#7A7A7A}
-.mc-tier[data-t="wood"]{color:#9A6B3F}
-.mc-tier[data-t="corrections"]{color:#4A8230}
-.mc-badges{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-top:4px}
-.mc-badge{
-  font:800 10.5px ui-monospace,SFMono-Regular,Menlo,monospace; letter-spacing:.07em;
-  background:#F0E6CF; color:#5A4A2E; border:2px solid #C7B48C; padding:4px 8px;
-  box-shadow:inset -2px -2px 0 rgba(0,0,0,.12), inset 2px 2px 0 rgba(255,255,255,.5);
-  animation:mc-pop .45s cubic-bezier(.2,1.6,.4,1) both;
-}
-.mc-badge:nth-child(2){animation-delay:.1s}
-.mc-badge:nth-child(3){animation-delay:.2s}
-.mc-cap{
-  font:700 12px ui-monospace,SFMono-Regular,Menlo,monospace; letter-spacing:.06em;
-  text-transform:uppercase; opacity:.72; text-align:center;
-}
-.mc-earned{
-  display:flex; align-items:center; gap:9px; justify-content:center;
-  font:700 13px ui-monospace,SFMono-Regular,Menlo,monospace;
-  animation:mc-pop .5s cubic-bezier(.2,1.6,.4,1) .45s both;
-}
-.mc-earned img{width:38px; height:38px; object-fit:contain; image-rendering:pixelated}
-
-.mc-boss{width:100%; max-width:256px; height:auto; image-rendering:pixelated;
-  animation:mc-pop .6s cubic-bezier(.2,1.5,.4,1) .3s both}
-/* fallback while boss-defeated.png is still outstanding */
-.mc-bossfall{
-  width:100%; max-width:280px; border-radius:12px; padding:13px 14px; text-align:center;
-  background:linear-gradient(140deg,#1D1526,#3A1F2E); color:#FFD98A;
-  border:2px solid #6B4A2E; box-shadow:0 6px 0 rgba(0,0,0,.25);
-  font:800 15px ui-monospace,SFMono-Regular,Menlo,monospace; letter-spacing:.05em;
-  animation:mc-pop .6s cubic-bezier(.2,1.5,.4,1) .3s both;
-}
-.mc-bossfall small{display:block; font-size:11px; opacity:.7; margin-top:4px; letter-spacing:.03em}
-
-@media (prefers-reduced-motion:reduce){
-  .mc-burst.mc-good,.mc-burst.mc-bad{animation-duration:.8s}
-  .mc-shake{animation:none}
-  .mc-chest .mc-lid.mc-shut{animation:none}
-}
-
-/* ---- level-picker status ----
-   The apps' own .badge sat in the bottom-right corner of a tall card, so
-   checking seven levels meant scanning seven different corners. Moved to the
-   top-right, level with each card's eyebrow, which gives one straight vertical
-   line to run your eye down. These sit later in the cascade at equal
-   specificity, so they win without editing app CSS. */
-.mc-best{
-  top:11px !important; right:12px !important; bottom:auto !important;
-  background:#E8A93C !important; color:#3A2A08 !important;
-  font-weight:800 !important; letter-spacing:.04em; white-space:nowrap;
-  padding:4px 9px !important; border-radius:3px;
-  box-shadow:inset -2px -2px 0 rgba(0,0,0,.16), inset 2px 2px 0 rgba(255,255,255,.35);
-}
-.mc-best.mc-done{background:#63A93E !important; color:#0F2216 !important}
-/* and mark the card itself, so status is legible even mid-scroll */
-.mc-cleared{box-shadow:inset 0 0 0 3px #63A93E !important}
-.mc-tried{box-shadow:inset 0 0 0 3px #E8A93C !important}
-
-/* ---- level chips (MC.picker) ----
-   For apps whose levels are parallel and equally valid — history's five
-   practice sets — so you can see and choose, not just be dealt one. */
-.mc-picker{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 12px}
-.mc-chip{
-  flex:1 1 auto; min-width:56px; min-height:44px; padding:5px 8px;
-  border:2px solid #C7B48C; background:#F0E6CF; color:#5A4A2E; cursor:pointer;
-  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:1px;
-  box-shadow:inset -2px -2px 0 rgba(0,0,0,.14), inset 2px 2px 0 rgba(255,255,255,.5);
-}
-.mc-chip:hover{filter:brightness(1.05)}
-.mc-chip:focus-visible{outline:3px solid #63A93E;outline-offset:2px}
-.mc-chip-l{font:800 13px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.04em}
-.mc-chip-s{font:700 10px ui-monospace,SFMono-Regular,Menlo,monospace;opacity:.7}
-.mc-chip.mc-cleared{background:#63A93E;border-color:#3F7028;color:#0F2216}
-.mc-chip.mc-tried{background:#E8A93C;border-color:#B07E18;color:#3A2A08}
-.mc-chip.mc-now{box-shadow:inset -2px -2px 0 rgba(0,0,0,.14),
-  inset 2px 2px 0 rgba(255,255,255,.5), 0 0 0 3px #2B79C2}
-
-/* ---------- the mine ---------- */
-.mc-ore{display:inline-flex;align-items:center;gap:5px;margin:3px 5px 3px 0;
-  font:800 11px ui-monospace,"SF Mono",Consolas,monospace;color:#E8E3D6}
-.mc-ore img{width:22px;height:22px;image-rendering:pixelated;display:block}
-.mc-ore.mc-noart::before{content:"";width:20px;height:20px;background:var(--ore);
-  box-shadow:inset -3px -3px 0 rgba(0,0,0,.34), inset 3px 3px 0 rgba(255,255,255,.22);
-  border:2px solid rgba(0,0,0,.45)}
-.mc-ore b{font-weight:800}
-.mc-ore.mc-dim{opacity:.42}
-.mc-haul,.mc-beacon{margin-top:10px;padding:9px 11px;background:rgba(0,0,0,.26);
-  border:2px solid rgba(255,255,255,.10);text-align:left}
-.mc-haullab{display:block;font:800 9.5px ui-monospace,Consolas,monospace;
-  letter-spacing:.14em;color:#9FB0AA;margin-bottom:5px}
-.mc-beacon small,.mc-shutportal small{display:block;margin-top:6px;
-  font:600 11px system-ui,sans-serif;color:#9FB0AA;line-height:1.45}
-.mc-beacon.mc-lit{border-color:#40D5D1;
-  box-shadow:0 0 0 2px rgba(64,213,209,.22), 0 0 22px rgba(64,213,209,.28)}
-.mc-shutportal{margin-top:10px;padding:10px 12px;background:#160E22;
-  border:2px solid #4B2E73;color:#C9A6F0;text-align:left;
-  font:800 11.5px ui-monospace,Consolas,monospace;letter-spacing:.1em}
-
-.mc-blk{display:inline-flex;flex-direction:column;align-items:center;gap:2px;
-  margin:4px 9px 2px 0;font:800 10px ui-monospace,Consolas,monospace;color:#C4CFCB}
-.mc-blk img{width:34px;height:34px;image-rendering:pixelated;display:block}
-.mc-blk.mc-noart::before{content:"";width:30px;height:30px;background:var(--ore);
-  box-shadow:inset -4px -4px 0 rgba(0,0,0,.34),inset 4px 4px 0 rgba(255,255,255,.22);
-  border:2px solid rgba(0,0,0,.45)}
-.mc-blk.mc-dim img{filter:grayscale(.15) brightness(.8)}
-.mc-blk.mc-dim{opacity:.75;color:#7C8A85}
-.mc-portal{float:right;width:46px;height:46px;margin:-2px 0 0 10px;image-rendering:pixelated;
-  filter:grayscale(1) brightness(.6)}
-.mc-egg{margin-top:10px;padding:8px 11px;background:rgba(0,0,0,.26);
-  border:2px solid rgba(255,255,255,.10);display:flex;align-items:center;gap:9px;
-  font:800 10.5px ui-monospace,Consolas,monospace;letter-spacing:.1em;color:#C9A6F0}
-.mc-egg img{width:30px;height:30px;image-rendering:pixelated}
-
-/* The purse, top-left of the HUD, opposite the sound switch. */
-.mc-purse{position:absolute;left:calc(8px + env(safe-area-inset-left));
-  bottom:calc(8px + env(safe-area-inset-bottom));
-  display:flex;align-items:center;gap:5px;pointer-events:none;
-  padding:3px 8px 3px 5px;border:2px solid #0D0D0F;background:rgba(20,20,22,.82);
-  font:800 13px/1 ui-monospace,"Cascadia Mono",Consolas,monospace;color:#FCFC54}
-.mc-coin{width:17px;height:17px;display:block;image-rendering:pixelated}
-/* stands in until the coin sprite exists, so this works before the art lands */
-.mc-coin-fb{border-radius:50%;background:radial-gradient(circle at 34% 30%,#FFE27A,#E0A83C 62%,#9C6F1E);
-  border:2px solid #6E4B10;box-shadow:inset -2px -2px 0 rgba(0,0,0,.28)}
-@media (max-width:400px){.mc-purse{font-size:12px;padding:2px 6px 2px 4px}
-  .mc-coin{width:15px;height:15px}}
-
-/* MC-TOGGLE-CSS-START — the hub borrows everything between these two
-   markers, because it has its own stylesheet and needs only this control. */
+footer{margin-top:34px;padding-top:16px;border-top:2px solid var(--line);
+  font-size:11.5px;color:var(--dim);line-height:1.6}
+/* MC-MUTE-CSS: generated by build_theme.py, do not hand-edit */
 /* The sound toggle: a real switch rather than a lettered button, so its state
    reads without being learned. Blocky border, hard inner bevel and the grass
    green of the banner, so it belongs to the same world as the hotbar. */
@@ -549,13 +129,11 @@ footer{margin:42px 0 0;padding:18px 0 0;border-top:1px solid var(--line);
 @media (prefers-reduced-motion:reduce){
   .mc-sw,.mc-knob{transition:none}
 }
-/* MC-TOGGLE-CSS-END */
+/* /MC-MUTE-CSS */
 </style>
-<!-- /MC-THEME-CSS -->
 </head>
 <body>
-<!-- MC-THEME-JS: generated by build_theme.py, do not hand-edit -->
-<script>window.__MC_PREFIX__="../../assets/";
+<script>window.__MC_PREFIX__="../assets/";
 window.__MC_HAS_BOSS__=true;
 window.__MC_SFX__={"tool": "data:audio/mpeg;base64,//OAxAAAAAAAAAAAAFhpbmcAAAAPAAAAGAAAEHcAFxcXFy4uLi46Ojo6QkJCQk5OTk5YWFhYY2NjY2NtbW1teXl5eYODg4ONjY2NlZWVlaGhoaGhq6urq7W1tbW9vb29ycnJydPT09Pd3d3d3ejo6Oj5+fn5/Pz8/P7+/v7/////AAAAPExBTUUzLjEwMARuAAAAAAAAAAAVCCQCqCEAAcwAABB35nfThAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP/zsMQAHTg+nD9DAAEQbcm27u7u57oVDgYs/oeH4AAeHjw9J//wPDw///AAAA8PDw8MAAAAEB4eHh4YAAAj04eHh4YAAAAY/////9B4e/8AAAAAAPDw//8AABCcPDw9IAAAAIDw8PfrgjxAeHh//wAM/44fmsAAAAIDw8PD8AAAABAGAAAACaADbkAoOhDo3FrrhCEWuBYbmLQMZLuoQFjODfFhwZ6wg1FjA4IOKgEOABu8NJAtUMqF6MdgCEghJpbAz2EouiDfzKcUy7yVKkSy4gAQwAASCS4osBeFGMBMJC5boBwGGwadAVCYygAwHBkAQAZiDgCUHRvYmuiPNfDB0R7bsNA+0isYAAADgY7Up6eVIjEwi3uWZY+pYBsrBqV/ucit4wABIMCB3f7ScsLJCA6MEAHiERzpLspakYHASUAdbwsYVlD2ZtOvxqzjNwCnVEt1UhU05PIfzrN4IQWRNl+XUZAwD16Wc8dQ//OwxOtVFBJaXZzoAFFlMrdytKaZ4msS/Oly7NU85H6lqVaxpnOcTef6yfXc9cvc3dbLAjDeds7jrhSyB5fTa+dr1qaVbsym5NSq7VlNamlV2rKbcokL8Z54dvTXLv8/ePa3PwdCvI4rfvY34cl81az392QyjOqUAAEAcUUAFzt37KceTUejUubkgmNBFlezVrLXa1HDIgDzOlc+UuLLL+pTIolVFo5IjgiA4UEzWpykNUIaDIJOkIbKWeWqo9/ojXBugPsWSTJYMjh4/M3LhmebbUOgW8cZw//0f6lk+ZqZv//OHyokm///2OGTov/9erKBRMzRaGhR1stqqCRSPHjUpmR9n/b+m5op2L51Lfq260C+i55BFLW2ADABQcYkx3uxSySkvROvUvSyuYIO8tak3fvVa0RWCM52BwpltNvVnLe7kpZnhn3D//8Nl11BPGKcKF2XcB5//+SeAUAUOCD0bx6oOiOqwkOAgmP/83DE9ihb/oL/25ABf//w844pf//oKmZV/b9uLAAFB1nb/++zlXqdPbda0DgdESKKtT9/yMiXG//+OJT3arpQRgBQUlTtJeJrzjF/TIB2MAUoDKaJMQDCTJuU46LM0mN+3XPJ5tWw2vQi8w/LN1+f/3AKJNRGHlkQilJT/+uyhUhfmiyoAcbf/5UCMKURb/7dj1Y6oX4DY1v85mJ/USEyGiDHN//cIGDl3V/1nFEa7OLOj7aKlf/zUMT9IRvukv7SC0k7/nKpGW//rU5RNRIh2//uhzLqqo6oSszmZJhQVZgCdj71EIAhQGgk5naYe3Dtyns05eNOGOKhlruKO2HaAZNxdR5RUCxQ5zKse4d5l+yUiEHCgxBEEWf6j5iM5/JgVAZf+jqZAfQpS4PZ/f+o4gnprLw7EPz/83DE7SYz7o7u0otN6Zukr+aqSPUkzZAp/6qp0cazBBdyXvVXY7oxxQJymyc5BB0d/q7IJMlDs+/nwbuoc5N/5vVjrySq6om0jooRTIApOezDVfUCAIQAoBJdNIFdrnY28tXDGmZG7xlisXwuyQcDANTht7ptzuSTihFvtOjWLSAORgqS9yYJ0XgaodnEsEWGaTt1V10GOi6IsBgSOTOHBcOFXLDjFFFBc49BqAWEYZt9RJYb///zYMT9JkwWlvbTRThCo+xsfGhdEf/rHQWESLGLNeczmPFBEeKGlzSL0/VR89W7Z6s5OpxrHf9XKD5M1i7t/1acyOzLW2iHvRh1yxyye9aHStMQoGKwHAY5u90qhv94buA48WpC9gw5YyXtZQwBFXI8svaQAfDwManTNnQdgrxJCMoufwMMGVsfhjmn6n9U6CvhKhxHumh1qXURDf/zcMTyKZvWjt7MTvFqq6Dn/Qh3/xcxTYiYOtr+h5wHY4kKjXz2yugkypEnOxm30I7DP0yKhWKZU/VXKpmAwsQWs+yelkqQxG1I1SkZq7uyjxMpiYwjuucAAGHA0ryQKZ0yQGIdd+OUDWEgJVSA0bcf0wZUzY0RoDuJlVoBhTsmDdmBBwNhz/07D8eLoT01/uXCVGHdcc4QhqaKrbTf6Aww+DINa6CDMunTMRjidmqBqmJmxKmK//NgxPQlJAai/sNK9XS8yd6H1qTVqHkbLSt0F6aSiaVD1MFpLH9jGnqQjJEcfvXdxzf7dt2T/zUEhgmGObpTzpyKVy5fJdZ0V50F2E2NIPFDVcMAAA+Sl6tLvxTv6uoHiEK8kwWUtUI4nMiWHIh5iLjNvOUIUUg4VhdvZ0FuDJIoWst/oIhURYcrc0/omR7zg+mhRbUYkcxrqqlM//NwxO4ozA6entNLHNim1A2FQg366hxIV2KpNQBhloIhSqm/tYhgYd3/Iu8DsShWt21ZykX9Tu6u1/2r8pRJ0JX9qqtXIi7oDd0u5U10UF1cUyqHAAAqcvdf88O1Mg4SYQY7crGgdJWFB5mAo5Sd14FxctoTUK4OyvZiF1Dhcij8fr+keEyAeWxnGWQP1RyGnlQwh4oNyYj6+JDJwog39QosIrkXpOm6hDtZdflRgY9EqqXeSoL/82DE8yPbqqaW00T5kIdQ7WahSoEgjqjfMVnHJei5e21TAAQHe5dF7mZZKnerGSVJdQvc7+2yhK32ABDGDqMu5MDALt7/ei9yEb/WFIWLTdGkCnQLAXcnHhWAhAVbpPnByS0sjQRct0/1Cnk9yygWvqUPxECRvlI2Jon2vSWZN8wMrasif7mLs/hzO1TM1v/oCcxuuruiECi06Rv/82DE8iOr0qaO00T178ij2/sSx2l06V9g4TS5Q03K4gYYU6FmzO6aEirgABBByBMxubpCweBgG7kMSAkBl2Z2bL5y6ZYcoqKVjNB1ByYPnMCMIrqfpLe/mmZ54QyHBnnzlvO/+vkKtLb3fRMDL/Yzlarj5oIl1fCBKKWS+vhdWvltrt//QHhYpUk8z9751+iFDP3+z1OLDsyNahT/81DE8h/LNrLWzETY+1WVGVlO2rtK7mf/Kz2Nq3+ZnVwocUp+RBVFDVgcIi8Viy14KlDqlIqQAAASNNy+G/kP4ontoIAgNEQ0kqY040HSL5FSEOY7od0U8sboNQtpnlfzo3ENRwK8tTT+uJmapZMHie6rTIlVP4kpOEW7gXVm6Ajk//NwxOcmo0ay/tLFUI0UGCJ7+gcOYYZ7IyiDs8YGoKHWlU9mKHBgeRjN2nV8iMzGfM1UKqbKT8ik0W331+xiHk8ntbPlVMxSEfKelnah6C4R0YAAADB3Jd73K+q6OrvsHKgGWVjPJYHuEAEsgOpAOGbi817oBnDgGvnR2D2o4KwnNP0CKDS5YI7zjZoZr+VyIEj541L0yOqes1SVompWQS19e4HUf/0iPmCUCCMnIWWWTjKxHS7/82DE9SQ79q6200rwn1il2CCXOxt7/cxxS5kXnMy+yN//8hltjmHfPiMsOfJPILuUdiREHIhqSuAADpS/KzTcyEAJxkUQYAh3I2ML7TDB8SSmg0+0mXZUAyEd3t/mYBNCFKgGi9/4g5KtlRa/SM3juSS86LpWGeJIerPxY9MOGCLL8apGVm9HKzqoqwj3VfvGlEKmvJrs6CKM1FP/82DE8yOrRra21EbcTfVSh5zfzat1/RP0jYx8y17859avBrn++Wb4/Ve+3YAAACDVK7c3y3EN1BGBFE5kD443E1O5bbJHCuhMo4TorJpdMhU9jl+rzOAnaSx3AD8MMsdn1nh2h77lg362P4oMXxoqHxHwsUFZGXxPmFQcy/KUBRcVOPI6kec8dUXyiruh/qxVIdj37y0OhyFdjnf/81DE8yCrQq3u00rxL/QxJ2+rP+9v0es6oO4f/wPm8xo6rIeL7r3+8miY4/TAAABgWSk+Nal1VFQKzSEaJIIJZEBZSvoZFXhgxJCMDOL9ymXRMEJxYHUucyeJmU6IAgr/SWeGOC3NnRBiE+mzTcyV7DtMj+ICokhhgtqHCPco0Qb3//NwxOUj+z6u9stK7XVQ8YRR39RVlfqVhCisjepBMJMZrF5auVyJKzW/pK+7/c7THVUb/8bFSYf+v4/V9m9CiPPHBUKqZHeys1WgAAACQ6dv9LFHf1XR5nwQADlzbRQkPtW2MmgOCFRgGHyiRUtM3hEevVu50ThUyAl43JpP1LkAkeiP7c6enNOSv8VPa58B5roPJ/Q8rjUcUf9/MDSHopUX/TuOBWoq3X+uOmGEK3WsT1Y9Lob/82DE/iRLMqI200rxh+hwjbVUX7Drt7iuP/67qar2iL7mruYgc5jKNRetghi6aWnDxsugr77+KKV/pJXAAADAIbc27TGwq2bycKHjBAN5F1IkXWb99BkgN7RHGTILZM/qqhYQHjqtS/8B9ISjEVEeW//plYmueB9fUaogbzZrf+WKtv81OnenV7lWX6mbHncfNNphmlru42Gzvtz/82DE+yaTSqLW01Dt+ezu3/773HixCpqKY53MR5bOjLNvUfUOiDVk1P+xHrvimba54vr4dOkqh17XI1JabtpUDxzELXNugAvdqmOAAAAAG7baHAY8oA6I6J7qCEDBcwwATDBOMDjkxqkjGYOAAnMIh4w6ezp73MToEwQOhgJmASYehMUn13HGTnKQpdoqGZMFAZqgQlUWTua+WtT/83DE7ycLPpbXWVgBqjAgi1yV0vMIHMucQA2QuOMwPUGpGysCKoQMfIzMhLXOBDkrQCg4K98ZmZTGNPqwaal0uuRV0ksoacaKzuMZx5Kn2qx21Hmn1pVAsm5K5t/oVViTzUdblBGY1auWtbqR6I6gbdz7UVvV5iNOS9D4ya9TWoDjVvuePNd//5V5r/uQ7u3Zubz59/HDHuMprW62dgTQUhSJf2h0aKtLIUhuFL2+upS6C7sOOP/zkMT7PSKyYl2c0AAKAgKAQFQoCBGqk0ZoBAQEKEp0qCoKgqdBU6DT/yrhF/+WPJy1TEFNRTMuMTBMQU1FMy4xMDBVVVVVTEFNRTMuMTAwVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVf/zIMT+CqheWlnDAABVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVX/8xDE8gAAA0gAAAAAVVVVVVVVVVVVVVVVVf/zEMTyAAADSAAAAABVVVVVVVVVVVVVVVVV", "correct": "data:audio/mpeg;base64,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", "wrong": "data:audio/mpeg;base64,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"};</script>
 <script>/* ===== Minecraft theme layer — shared source =====
@@ -1356,627 +934,82 @@ window.__MC_SFX__={"tool": "data:audio/mpeg;base64,//OAxAAAAAAAAAAAAFhpbmcAAAAPA
   window.MC = MC;
 })();
 </script>
-<script>MC.config({"app": "reading2", "shake": "#card", "lift": null, "dragon": ["m1"]});</script>
-<!-- /MC-THEME-JS -->
 
-<!-- HOME -->
-<div id="home" class="wrap">
-  <header>
-    <a class="hublink" href="../../index.html">&lsaquo; All subjects</a>
-    <div class="eyebrow">Core Classics &middot; Sherlock Holmes</div>
-    <h1>The <em>Speckled</em> Band</h1>
-    <p class="sub">A short check on tonight’s pages. Run it as many times as you like — the questions shuffle.</p>
-    <div class="bq">
-      <div class="eyebrow">Keep asking</div>
-      <p>What properties can I use to describe matter?</p>
-    </div>
-  </header>
-  <div class="grid" id="missions"></div>
-  <div class="shelf">
-    <div class="eyebrow">Watch first, or watch after</div>
-    <h2>Two short videos</h2>
-    <p class="note">Each is about five minutes. They open on YouTube.</p>
-    <div id="vids"></div>
+<div class="wrap">
+  <div class="top">
+    <a class="back" href="../index.html">&lsaquo; Back to subjects</a>
+    <h1>Trophy Room</h1>
+    <p class="sub">Everything earned so far — and what the next thing costs.</p>
   </div>
-  <footer id="foot"></footer>
-</div>
-
-<!-- PLAY -->
-<div id="play" class="wrap hide">
-  <div class="pagehead">
-    <button class="back" id="quit" aria-label="Back to missions">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
-    </button>
-    <div class="t"><strong id="mname"></strong><span id="mtag"></span></div>
-  </div>
-  <div class="dots" id="dots"></div>
-  <div class="card" id="card"></div>
-</div>
-
-<!-- RESULTS -->
-<div id="done" class="wrap hide">
-  <div class="pagehead">
-    <button class="back" id="quit2" aria-label="Back to missions">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
-    </button>
-    <div class="t"><strong>Mission complete</strong><span id="dtag"></span></div>
-  </div>
-  <div class="score" id="scorebox"></div>
-</div>
-
-<div class="scrim" id="scrim"></div>
-<div class="drawer" id="drawer" role="dialog" aria-modal="true" aria-label="Student Reader">
-  <div class="dhead">
-    <div class="eyebrow">From your Student Reader</div>
-    <h3 id="dtitle"></h3>
-    <div class="pg" id="dcite"></div>
-    <button class="x" id="dclose" aria-label="Close">
-      <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
-    </button>
-  </div>
-  <div class="dbody" id="dbody"></div>
-  <div class="dfoot" id="dfoot"></div>
+  <div id="room"></div>
+  <footer>
+    Progress is kept in this browser, so the room fills up on whichever device
+    the practice happens on.
+  </footer>
 </div>
 
 <script>
-const ART={};
-const DATA = {
- "chapter": "At Stoke Moran — pages 24–28",
- "bigQuestion": "What is wrong with the room Helen has been moved into?",
- "passages": {
-  "arrival": {
-   "title": "He followed her",
-   "cite": "Reader, pages 24–25",
-   "vocab": [],
-   "text": [
-    "Our client hurried forward to meet us with a face that spoke her joy. “All has turned out splendidly. Dr. Roylott has gone to town, and it is unlikely that he will be back before evening.”",
-    "Holmes in a few words sketched out what had occurred. Miss Stoner turned white as she listened.",
-    "“Heavens!” she cried, “he followed me?”",
-    "“So it appears.”",
-    "“He is so cunning that I never know when I am safe from him. What will he say when he returns?”",
-    "“He must watch himself, for he may find that there is someone more cunning than himself on his track. Lock yourself from him tonight.”"
-   ]
-  },
-  "rooms": {
-   "title": "Three rooms and a bolted shutter",
-   "cite": "Reader, pages 25–26",
-   "vocab": [],
-   "text": [
-    "“This, I take it, belongs to the room in which you used to sleep, the center one to your sister's, and the one next to the main building to Dr. Roylott's chamber?”",
-    "“Exactly so. But I am now sleeping in the middle one.”",
-    "“Pending the alterations, as I understand. By the way, there does not seem to be any very pressing need for repairs at that end wall.”",
-    "“There were none. I believe that it was an excuse to move me from my room.”",
-    "Miss Stoner barred her shutters, and Holmes tried in every way to force them open, but without success. “Hum!” said he, “my theory certainly presents some difficulties. No one could pass these shutters if they were bolted.”"
-   ]
-  },
-  "bellrope": {
-   "title": "A bell-rope that rings nothing",
-   "cite": "Reader, pages 27–28",
-   "vocab": [],
-   "text": [
-    "“Where does that bell communicate with?” he asked at last, pointing to a thick bell-rope that hung down beside the bed.",
-    "“It goes to the housekeeper's room.”",
-    "“It looks newer than the other things. Your sister asked for it, I suppose?”",
-    "“No, I never heard of her using it.”",
-    "Then he took the bell-rope and gave it a brisk tug. “Why, it's a dummy,” said he. “It is not even attached to a wire. This is very interesting. It is fastened to a hook just above where the little opening of the ventilator is.”",
-    "“Very strange!” muttered Holmes. “What a fool a builder must be to open a vent into another room, when, with the same trouble, he might have the outside air! They have a most interesting character — dummy bell-ropes, and ventilators that do not ventilate.”"
-   ]
-  }
- },
- "videos": [
-  {
-   "id": "Bl2ptiOdrxY",
-   "t": "Making Inferences",
-   "s": "Reading strategies",
-   "d": "5 min. How to use clues in a text plus what you already know to work out what the author has not said.",
-   "when": "Start here — this is the whole skill."
-  },
-  {
-   "id": "6JZFN9Fu4Pw",
-   "t": "Character Traits",
-   "s": "Reading strategies",
-   "d": "5 min. Judging what a character is like from how they act and speak, not from being told.",
-   "when": "Watch before the Roylott questions."
-  }
- ],
- "missions": [
-  {
-   "id": "m1",
-   "name": "The room itself",
-   "tag": "6 questions · about 5 minutes",
-   "blurb": "A quick check that the chapter landed — not a test.",
-   "items": [
-    {
-     "type": "pick",
-     "p": "rooms",
-     "q": "Miss Stoner says the repairs to her wall were “an excuse to move me from my room.” What makes Holmes think she is right?",
-     "opts": [
-      "Dr. Roylott admitted the repairs were unnecessary.",
-      "He looked at the end wall himself and saw no pressing need for repairs.",
-      "The builders had never arrived to start the work.",
-      "Her old room had been locked since the move."
-     ],
-     "a": 1,
-     "why": "Holmes says “there does not seem to be any very pressing need for repairs at that end wall” before she agrees. He checks first, then she confirms — not the other way round."
-    },
-    {
-     "type": "pick",
-     "p": "bellrope",
-     "q": "Holmes gives the bell-rope a brisk tug. What does he find?",
-     "opts": [
-      "It rings in the housekeeper's room.",
-      "It is a dummy — not attached to a wire at all.",
-      "It has been cut through recently.",
-      "It is older than everything else in the room."
-     ],
-     "a": 1,
-     "why": "“Why, it's a dummy,” said he. “It is not even attached to a wire.” A rope that rings nothing is not a rope. It is something else pretending to be one."
-    },
-    {
-     "type": "selectall",
-     "p": "bellrope",
-     "q": "Which things about the room does Holmes call unusual? Select every correct answer.",
-     "opts": [
-      [
-       "A bell-rope that rings nothing",
-       1
-      ],
-      [
-       "A ventilator that opens into another room instead of outside",
-       1
-      ],
-      [
-       "The rope is fastened to a hook right above the ventilator",
-       1
-      ],
-      [
-       "The fireplace has been bricked up",
-       0
-      ],
-      [
-       "The window shutters are newly painted",
-       0
-      ]
-     ],
-     "why": "“Dummy bell-ropes, and ventilators that do not ventilate.” Each one alone might be careless building. Together, and positioned like that, they are a design."
-    },
-    {
-     "type": "sort",
-     "p": "bellrope",
-     "q": "Sort each statement by what it actually is.",
-     "bins": [
-      "Something Holmes observed",
-      "Something Holmes concluded"
-     ],
-     "chips": [
-      [
-       "The bell-rope is not attached to any wire",
-       0
-      ],
-      [
-       "The vent opens into the next room, not the outside air",
-       0
-      ],
-      [
-       "These changes were made on purpose, not by accident",
-       1
-      ],
-      [
-       "Someone wanted her sleeping in that particular room",
-       1
-      ]
-     ],
-     "why": "Holmes never says the second pair out loud here. He lets the objects say it — which is why the scene feels quiet and alarming at the same time."
-    },
-    {
-     "type": "pick",
-     "p": "rooms",
-     "q": "Holmes tries hard to force the barred shutters and cannot move them. What does that tell him?",
-     "opts": [
-      "No one could have got in through the window.",
-      "The shutters had been fitted recently.",
-      "Julia must have opened them herself that night.",
-      "Roylott kept a key to the shutters."
-     ],
-     "a": 0,
-     "why": "He admits it works against him: “my theory certainly presents some difficulties.” A good detective lets the evidence break his own idea instead of ignoring it."
-    },
-    {
-     "type": "pick",
-     "p": "arrival",
-     "q": "Holmes says Roylott “may find that there is someone more cunning than himself on his track.” What does he mean?",
-     "opts": [
-      "He intends to outthink Roylott.",
-      "He plans to have Roylott arrested that night.",
-      "He thinks Miss Stoner is cleverer than her stepfather.",
-      "He is warning Watson to be careful."
-     ],
-     "a": 0,
-     "why": "It is a quiet promise, not a boast. Roylott has spent the story frightening people by force; Holmes answers with the one thing force cannot beat."
-    }
-   ]
-  }
- ]
-};
-DATA.excerpts = {
- "m1-0": [
-  "My evidence showed that the door had been fastened on the inside, and the windows were blocked by old-fashioned shutters with iron bars, which were secured every night. The walls were shown to be quite solid all around, and the flooring was also thoroughly examined, with the same result."
- ],
- "m1-1": [
-  "“No, she was in her nightdress. In her hand was the charred stump of a match.”",
-  "“Showing that she had struck a light and looked about her. That is important."
- ],
- "m1-2": [
-  "Two days ago some repairs were started in the west wing of the building, so that I have had to move into the room in which my sister died, and to sleep in the very bed in which she slept."
- ],
- "m1-3": [
-  "“I see many objections to any such a theory.”",
-  "“And so do I. It is precisely for that reason that we are going to Stoke Moran this day.”"
- ],
- "m1-4": [
-  "What, then, of these whistles in the night and the peculiar words of the dying woman?"
- ],
- "m1-5": [
-  "He stepped swiftly forward, seized the poker, and bent it into a curve with his huge brown hands.",
-  "As he spoke he picked up the steel poker, and with a sudden effort straightened it out again."
- ],
- "m1-6": [
-  "Each daughter can claim an income of £250 in case of marriage. If both girls had married, Dr. Roylott would have had a mere pittance. Even one marriage would cripple him to a serious extent."
- ]
-};
-DATA.vidFor = {
- "inquest": {
-  "id": "Bl2ptiOdrxY",
-  "t": "Making Inferences",
-  "s": "Reading strategies",
-  "d": "Using clues plus what you know to reach what the author did not say."
- },
- "band": {
-  "id": "Bl2ptiOdrxY",
-  "t": "Making Inferences",
-  "s": "Reading strategies",
-  "d": "When a character's explanation may not be the right one."
- },
- "helen": {
-  "id": "Bl2ptiOdrxY",
-  "t": "Making Inferences",
-  "s": "Reading strategies",
-  "d": "Noticing which details the author repeats."
- },
- "theory": {
-  "id": "Bl2ptiOdrxY",
-  "t": "Making Inferences",
-  "s": "Reading strategies",
-  "d": "Telling a fact apart from a guess about that fact."
- },
- "roylott": {
-  "id": "6JZFN9Fu4Pw",
-  "t": "Character Traits",
-  "s": "Reading strategies",
-  "d": "Judging a character by what they do, not by being told."
- },
- "will": {
-  "id": "Bl2ptiOdrxY",
-  "t": "Making Inferences",
-  "s": "Reading strategies",
-  "d": "What a motive is, and how evidence establishes one."
- },
- "journey": {
-  "id": "6JZFN9Fu4Pw",
-  "t": "Character Traits",
-  "s": "Reading strategies",
-  "d": "What a character notices tells you how they think."
- }
-};
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 
+/* Everything here is read from the engine rather than from localStorage
+   directly, so the room cannot drift from what the apps actually award. */
+function draw(){
+  const st = MC.state();
+  const tools = st.tools.count + (st.tools.nine ? 1 : 0);
+  const oreTotal = st.oreKinds.reduce((n,o) => n + (st.ore[o.k]||0), 0);
 
-const COLORS = ["#D07A45","#3FB4CE","#59B27C","#7C5BA6"];
-const KEYS = ["A","B","C","D","E","F"];
-const $ = id => document.getElementById(id);
-const esc = s => String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
-const shuffle = a => { a=a.slice(); for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]];} return a; };
+  let next;
+  if (tools >= 9) next = "Every tool is yours. The mine is open.";
+  else if (st.tools.count < 8 && st.tools.next != null)
+    next = `Next tool at ${st.tools.next} cleared activities — ${st.tools.cleared} so far.`;
+  else
+    next = `The elytra needs a clear in all ${st.elytraNeeds} subjects — ${st.subjectsCleared} so far.`;
 
-let M=null, idx=0, tries=0, log=[], sel=null, place={}, chosen=new Set();
-let hintFn=null, hintMarks=new Set(), hinted=false;
-const best = MC.bests();
-
-/* ---------- home ---------- */
-function home(){
-  $("missions").innerHTML = DATA.missions.map((m,i)=>`
-    <button class="mission ${best[m.id]==null?'':(best[m.id]>=75?'mc-cleared':'mc-tried')}" style="--c:${COLORS[i]}" data-m="${i}">
-      <div class="top"><span class="tag">${esc(m.tag)}</span></div>
-      <h3>${esc(m.name)}</h3>
-      <p>${esc(m.blurb)}</p>
-      <span class="go">${m.items.length} questions
-        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
-      </span>
-      ${best[m.id]!=null?`<span class="badge mc-best${best[m.id]>=75?" mc-done":""}">${best[m.id]>=75?"CLEARED &middot; ":""}best ${best[m.id]}%</span>`:""}
-    </button>`).join("");
-  [...document.querySelectorAll(".mission")].forEach(b=>b.onclick=()=>start(+b.dataset.m));
-
-  $("vids").innerHTML = DATA.videos.map(v=>`
-    <a class="vid" href="https://www.youtube.com/watch?v=${v.id}" target="_blank" rel="noopener">
-      <span class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
-      <span>
-        <span class="src">${esc(v.s)}</span>
-        <h4>${esc(v.t)}</h4>
-        <p>${esc(v.d)}</p>
-        <div class="when">${esc(v.when)}</div>
-      </span>
-    </a>`).join("");
-
-  $("foot").innerHTML = "Passages from Core Knowledge Core Classics, <i>Sherlock Holmes</i>, abridged for young readers, used under CC BY-NC-SA 4.0. "+
-    "Based on an original work of the Core Knowledge Foundation (coreknowledge.org). This does not imply that the Core Knowledge Foundation endorses this work.<br>Practice questions are not part of the original.";
-  show("home");
-}
-function show(w){ ["home","play","done"].forEach(x=>$(x).classList.toggle("hide",x!==w)); window.scrollTo(0,0); }
-
-/* ---------- mission ---------- */
-function start(i){
-  M = DATA.missions[i]; idx=0; log=[];
-  MC.begin();
-  $("mname").textContent = M.name; $("mtag").textContent = M.tag;
-  show("play"); render();
-}
-function render(){
-  tries=0; sel=null; place={}; chosen=new Set();
-  hintFn=null; hintMarks=new Set(); hinted=false;
-  $("dots").innerHTML = M.items.map((_,i)=>
-    `<span class="dot ${i<idx?"done":i===idx?"now":""}"></span>`).join("");
-  const it = M.items[idx];
-  const head = `<div class="qnum">Question ${idx+1} of ${M.items.length}</div><div class="q">${esc(MC.ask(it))}</div>`;
-  const art  = it.art && ART[it.art] ? `<div class="artbox">${ART[it.art]}</div>` : "";
-  $("card").innerHTML = head + art + `<div id="body"></div><div class="act" id="act"></div><div id="fb"></div>`;
-  ({pick:rPick, selectall:rMulti, tool:rTool, sort:rPlace, match:rPlace, mystery:rMystery})[it.type](it);
-}
-
-/* ---------- pick ---------- */
-function rPick(it){
-  const order = shuffle(it.opts.map((t,i)=>({t,ok:i===it.a})));
-  $("body").innerHTML = `<div class="opts">` + order.map((o,i)=>
-    `<button class="opt" data-i="${i}"><span class="k">${KEYS[i]}</span><span>${esc(o.t)}</span></button>`).join("") + `</div>`;
-  [...document.querySelectorAll(".opt")].forEach(b=>b.onclick=()=>{
-    if(b.classList.contains("out")) return;
-    tries++;
-    if(order[+b.dataset.i].ok){ b.classList.add("good"); lockAll(".opt"); win(it); }
-    else{ b.classList.add("out"); b.disabled=true; miss(it,"That's not it."); }
-  });
-}
-function lockAll(s){ [...document.querySelectorAll(s)].forEach(b=>b.disabled=true); }
-
-/* ---------- select all ---------- */
-function rMulti(it){
-  const order = shuffle(it.opts.map(([t,ok],i)=>({t,ok:!!ok})));
-  $("body").innerHTML = `<p class="instr">Tap every answer that belongs. Then check.</p><div class="opts">` +
-    order.map((o,i)=>`<button class="opt multi" data-i="${i}"><span class="k">${KEYS[i]}</span><span>${esc(o.t)}</span></button>`).join("") +
-    `</div><div class="counter" id="cnt"></div>`;
-  const cnt = ()=> $("cnt").textContent = chosen.size===0 ? "nothing selected yet"
-      : chosen.size+" selected of "+order.length+" choices";
-  cnt();
-  [...document.querySelectorAll(".opt")].forEach(b=>b.onclick=()=>{
-    const i=+b.dataset.i;
-    if(chosen.has(i)) chosen.delete(i); else chosen.add(i);
-    b.classList.toggle("on"); cnt();
-    $("go").disabled = chosen.size===0;
-  });
-  $("act").innerHTML = `<button class="btn p" id="go" disabled>Check my answers</button>`;
-  $("go").onclick = ()=>{
-    tries++;
-    let wrong=0; order.forEach((o,i)=>{ if(o.ok!==chosen.has(i)) wrong++; });
-    if(!wrong){
-      order.forEach((o,i)=>{ if(o.ok) document.querySelector(`.opt[data-i="${i}"]`).classList.add("good"); });
-      lockAll(".opt"); $("go").remove(); win(it);
-    } else {
-      const n = wrong===1 ? "One choice is judged wrong" : wrong+" choices are judged wrong";
-      miss(it, n + " — either picked when it shouldn't be, or left out when it should be in.");
-    }
-  };
-}
-
-/* ---------- tools ---------- */
-function rTool(it){
-  const order = shuffle(it.tools.map((k,i)=>({k,lab:it.labels[i],ok:i===it.a})));
-  $("body").innerHTML = `<div class="tools">` + order.map((o,i)=>
-    `<button class="tool" data-i="${i}">${ART[o.k]||""}<span>${esc(o.lab)}</span></button>`).join("") + `</div>`;
-  [...document.querySelectorAll(".tool")].forEach(b=>b.onclick=()=>{
-    if(b.classList.contains("out")) return;
-    tries++;
-    if(order[+b.dataset.i].ok){ b.classList.add("good"); lockAll(".tool"); win(it); }
-    else{ b.classList.add("out"); b.disabled=true; miss(it,"That tool won't answer this question."); }
-  });
-}
-
-/* ---------- sort + match (chips into slots) ---------- */
-function rPlace(it){
-  const bins = it.type==="sort";
-  const chips = bins ? shuffle(it.chips.map(([t,b],i)=>({id:"c"+i,t,s:"s"+b})))
-                     : shuffle(it.pairs.map(([w],i)=>({id:"c"+i,t:w,s:"s"+i})));
-  const slots = bins ? it.bins.map((b,i)=>({id:"s"+i,t:b}))
-                     : shuffle(it.pairs.map(([,d],i)=>({id:"s"+i,t:d})));
-  const want = {}; chips.forEach(c=>want[c.id]=c.s);
-
-  $("body").innerHTML =
-    `<p class="instr">${bins?"Tap a card, then tap the box it belongs in.":"Tap a word, then tap its meaning."}</p>
-     <div class="chips" id="chips"></div>
-     <div class="slots ${bins?"bins":""}" id="slots"></div>`;
-
-  const draw = ()=>{
-    $("chips").innerHTML = chips.map(c=>
-      `<button class="chip ${place[c.id]?"used":""} ${sel===c.id?"sel":""}" data-c="${c.id}">${esc(c.t)}</button>`).join("");
-    $("slots").innerHTML = slots.map(s=>{
-      const held = chips.filter(c=>place[c.id]===s.id);
-      const anyBad = held.some(h=>hintMarks.has(h.id));
-      return `<button class="slot ${bins?"bins":""} ${held.length?"filled":""} ${sel?"hot":""} ${anyBad?"wrongmark":""}" data-s="${s.id}">
-        <span class="lab">${esc(s.t)}</span>
-        ${held.length?`<span class="held">${held.map(h=>`<span class="${hintMarks.has(h.id)?"wrongmark":""}">${esc(h.t)}</span>`).join("")}</span>`:""}
-      </button>`;}).join("");
-    [...document.querySelectorAll(".chip")].forEach(b=>b.onclick=()=>{ sel = sel===b.dataset.c?null:b.dataset.c; draw(); });
-    [...document.querySelectorAll(".slot")].forEach(b=>b.onclick=()=>{
-      const s=b.dataset.s;
-      if(sel){ if(!bins) for(const k in place) if(place[k]===s){ hintMarks.delete(k); delete place[k]; }
-               place[sel]=s; hintMarks.delete(sel); sel=null; }
-      else { const inside = chips.filter(c=>place[c.id]===s);
-             if(inside.length){ const last=inside[inside.length-1].id; hintMarks.delete(last); delete place[last]; } }
-      draw();
-    });
-    const all = chips.every(c=>place[c.id]);
-    if($("go")) $("go").disabled = !all;
-  };
-  hintFn = ()=>{ hintMarks = new Set(chips.filter(c=>place[c.id]!==want[c.id]).map(c=>c.id)); draw(); };
-  $("act").innerHTML = `<button class="btn p" id="go" disabled>Check my answers</button>`;
-  draw();
-  $("go").onclick = ()=>{
-    tries++;
-    const wrong = chips.filter(c=>place[c.id]!==want[c.id]).length;
-    if(!wrong){ $("go").remove(); document.querySelectorAll(".slot").forEach(s=>s.style.borderColor="var(--green)"); win(it); }
-    else miss(it, wrong===1 ? "One card is not where it belongs." : wrong+" cards are not where they belong.");
-  };
-}
-
-/* ---------- mystery capstone ---------- */
-function rMystery(it){
-  const choices = shuffle(it.choices);
-  const rows = it.rows;
-  $("body").innerHTML =
-    `<p class="instr">Tap a material name, then tap the sample it matches.</p>
-     <div class="chips" id="chips"></div><div class="mtable" id="rows"></div>`;
-  const draw = ()=>{
-    $("chips").innerHTML = choices.map(c=>{
-      const used = Object.values(place).includes(c);
-      return `<button class="chip ${used?"used":""} ${sel===c?"sel":""}" data-c="${esc(c)}">${esc(c)}</button>`;}).join("");
-    $("rows").innerHTML = rows.map(r=>`
-      <div class="mrow ${sel?"hot":""} ${hintMarks.has(r.key)?"wrongmark":""}" data-r="${r.key}">
-        <div class="rh"><span class="key">${r.key}</span>
-          ${place[r.key]?`<span class="named ${hintMarks.has(r.key)?"wrongmark":""}">${esc(place[r.key])}</span>`:`<span class="tag" style="font:600 11px var(--mono);color:#8A9B94;letter-spacing:.09em">UNKNOWN SAMPLE</span>`}</div>
-        <div class="cells">${r.cells.map((c,i)=>
-          `<div class="cell"><b>${esc(it.headers[i])}</b><span>${esc(c)}</span></div>`).join("")}</div>
-      </div>`).join("");
-    [...document.querySelectorAll(".chip")].forEach(b=>b.onclick=()=>{ sel = sel===b.dataset.c?null:b.dataset.c; draw(); });
-    [...document.querySelectorAll(".mrow")].forEach(b=>b.onclick=()=>{
-      const k=b.dataset.r;
-      if(sel){ for(const j in place) if(place[j]===sel){ hintMarks.delete(j); delete place[j]; }
-               place[k]=sel; hintMarks.delete(k); sel=null; }
-      else { hintMarks.delete(k); delete place[k]; }
-      draw();
-    });
-    if($("go")) $("go").disabled = rows.some(r=>!place[r.key]);
-  };
-  hintFn = ()=>{ hintMarks = new Set(rows.filter(r=>place[r.key]!==r.answer).map(r=>r.key)); draw(); };
-  $("act").innerHTML = `<button class="btn p" id="go" disabled>Name all four</button>`;
-  draw();
-  $("go").onclick = ()=>{
-    tries++;
-    const wrong = rows.filter(r=>place[r.key]!==r.answer).length;
-    if(!wrong){ $("go").remove(); document.querySelectorAll(".mrow").forEach(r=>{r.style.borderColor="var(--green)";r.style.background="#EFF8F2";}); win(it); }
-    else miss(it, wrong===1 ? "One sample is named wrong." : wrong+" samples are named wrong.");
-  };
-}
-
-/* ---------- feedback ---------- */
-function miss(it,msg){
-  MC.wrong(M.id+"-"+idx);
-  $("card").classList.remove("shake"); void $("card").offsetWidth; $("card").classList.add("shake");
-  $("fb").innerHTML = `<div class="fb no"><strong>Not yet.</strong>${esc(msg)}</div>`;
-  if(!$("read")) $("act").insertAdjacentHTML("afterbegin", `<button class="btn o" id="read">Open the book again</button>`);
-  $("read").onclick=()=>drawer(it.p, M.id+"-"+idx, "retry");
-  if(tries===1) setTimeout(()=>drawer(it.p, M.id+"-"+idx, "retry"), 420);
-  if(hintFn && !hinted && !$("hint"))
-    $("act").insertAdjacentHTML("afterbegin",
-      `<button class="btn h" id="hint">Show me which ones are wrong</button>`);
-  if($("hint")) $("hint").onclick=()=>{
-    hinted = true; hintFn(); $("hint").remove();
-    $("fb").insertAdjacentHTML("beforeend",
-      `<p class="hintnote">Hint used \u2014 the ones outlined in red are in the wrong place. This question now scores 25%.</p>`);
-  };
-  $("fb").scrollIntoView({behavior:"smooth",block:"nearest"});
-}
-function win(it){
-  MC.right(M.id+"-"+idx);
-  const pts = hinted ? 25 : (tries===1?100:tries===2?75:tries===3?50:25);
-  log.push({q:idx+1,tries,pts,p:it.p,hinted});
-  const head = hinted ? "Got it \u2014 with a hint." : (tries===1?"Got it, first try.":"Got it.");
-  $("fb").innerHTML = `<div class="fb yes"><strong>${head}</strong>${esc(it.why)}</div>`;
-  const last = idx===M.items.length-1;
-  $("act").innerHTML = `<button class="btn o" id="read">See the book page or watch the video</button>
-                        <button class="btn g" id="next">${last?"See how I did":"Next question"}</button>`;
-  $("read").onclick=()=>drawer(it.p, M.id+"-"+idx, "review");
-  $("next").onclick=()=>{ if(last) finish(); else { idx++; render(); window.scrollTo({top:0,behavior:"smooth"}); } };
-  $("fb").scrollIntoView({behavior:"smooth",block:"nearest"});
-}
-
-/* ---------- drawer ---------- */
-const closeD = ()=>{ $("drawer").classList.remove("on"); $("scrim").classList.remove("on"); };
-function drawer(key, exKey, mode){
-  const p  = DATA.passages[key];
-  const ex = DATA.excerpts[exKey];
-  const v  = DATA.vidFor[key];
-  $("dtitle").textContent = p.title;
-  $("dcite").textContent  = p.cite;
-  $("dbody").innerHTML =
-    (ex?`<p class="leadin">Here is what the book says about this question.</p>
-       <div class="ex">${ex.map(t=>`<p>${esc(t)}</p>`).join("")}</div>
-       <div class="exsrc">${esc(p.cite)}, word for word</div>`:"") +
-    (v?`<div class="exwrap" style="border-top:none;padding-top:14px">
-       <div class="eyebrow">Still fuzzy? Watch it explained</div>
-       <a class="vidbtn" href="https://www.youtube.com/watch?v=${v.id}" target="_blank" rel="noopener">
-         <span class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
-         <span><span class="src">${esc(v.s)}</span><h4>${esc(v.t)}</h4><p>${esc(v.d)}</p></span>
-       </a>
-     </div>`:"") +
-    `<div class="morepg">
-       <div class="eyebrow">The whole page, for context</div>
-       ${p.vocab.length?`<div class="vbox" style="margin-top:10px"><span class="vh">Vocabulary</span>`+
-         p.vocab.map(([w,d])=>`<div><dt>${esc(w)}</dt> <dd>${esc(d)}</dd></div>`).join("")+`</div>`:""}
-       ${p.text.map(t=>`<p>${esc(t)}</p>`).join("")}
-     </div>`;
-  $("dfoot").innerHTML = mode==="retry"
-    ? `<button class="btn g" id="dgo">Got it \u2014 let me try again</button>`
-    : `<button class="btn p" id="dgo">Close</button>`;
-  $("dgo").onclick = closeD;
-  $("dbody").scrollTop=0;
-  $("drawer").classList.add("on"); $("scrim").classList.add("on");
-}
-$("dclose").onclick=closeD; $("scrim").onclick=closeD;
-document.addEventListener("keydown",e=>{ if(e.key==="Escape") closeD(); });
-
-/* ---------- results ---------- */
-function finish(){
-  const pct = Math.round(log.reduce((s,l)=>s+l.pts,0)/log.length);
-  const first = log.filter(l=>l.tries===1).length;
-  const att = log.reduce((s,l)=>s+l.tries,0);
-  const band = pct>=90?["Sharp work","#59B27C"]:pct>=75?["Solid","#3FB4CE"]:pct>=60?["Getting there","#EFB04A"]:["Worth another run","#E0685A"];
-  const rough = log.filter(l=>l.tries>1);
-  const hints = log.filter(l=>l.hinted).length;
-  const pages = [...new Set(rough.map(l=>DATA.passages[l.p].cite))];
-  best[M.id] = Math.max(best[M.id]||0, pct);
-  $("dtag").textContent = M.name;
-  $("scorebox").innerHTML = `
-    <div class="ring" style="color:${band[1]}">${pct}%</div>
-    <div class="band" style="color:${band[1]}">${band[0]}</div>
-    <div class="stats">
-      <div class="stat"><b>${first} / ${log.length}</b><span>First try</span></div>
-      <div class="stat"><b>${att}</b><span>Total tries</span></div>
-      ${hints?`<div class="stat" style="grid-column:1/-1"><b>${hints}</b><span>Hint${hints>1?"s":""} used \u2014 worth rerunning without</span></div>`:""}
+  const coinImg = st.url("coin");
+  document.getElementById("room").innerHTML = `
+    <div class="purse">
+      ${coinImg ? `<img class="coin" src="${coinImg}" alt="">` : `<i class="coin coin-fb"></i>`}
+      <div><b>${st.coins}</b><br><span>coins earned</span></div>
     </div>
-    ${rough.length?`<div class="review"><b>Pages worth rereading</b><ul>${pages.map(p=>`<li>${esc(p)}</li>`).join("")}</ul></div>`
-                  :`<div class="review"><b>Nothing to reread.</b>Every question went in on the first try.</div>`}
-    <div class="aloud">
-      <div class="eyebrow">Now say it out loud</div>
-      <p>${esc(DATA.bigQuestion)}</p>
-    </div>
-    <div class="act">
-      <button class="btn p" id="again">Run this mission again</button>
-      <button class="btn o" id="pick">Pick another mission</button>
-    </div>`;
-  $("again").onclick=()=>{ idx=0; log=[]; show("play"); render(); };
-  MC.chest($("scorebox"), pct, {id:M.id,
-    boss: DATA.missions.indexOf(M)===DATA.missions.length-1});
-  $("pick").onclick=home;
-  show("done");
-}
 
-$("quit").onclick=home; $("quit2").onclick=home;
-home();
+    <h2>Tools &middot; ${tools} of 9</h2>
+    <div class="tools">${st.toolNames.map((n,i)=>{
+      const on = i < st.tools.count || (i === 8 && st.tools.nine);
+      return `<div class="slot${on?"":" locked"}" title="${esc(n)}">
+        ${on ? `<img src="${st.url("tool-"+(i+1))}" alt="">` : ""}
+        <span class="cap">${esc(n)}</span></div>`;
+    }).join("")}</div>
+    <p class="note">${esc(next)}</p>
+
+    <h2>Ore &middot; ${oreTotal} dug</h2>
+    <div class="ores">${st.oreKinds.map(o=>{
+      const n = st.ore[o.k]||0;
+      return `<div class="ore${n?"":" none"}" style="--o:${o.hex}">
+        <i></i><div><b>${n}</b><br><span>${esc(o.name)}</span></div></div>`;
+    }).join("")}</div>
+    <p class="note">${st.mineOpen
+      ? "The mine is open. Every run pays by how well it went."
+      : "The mine stays shut until all nine tools are yours."}</p>
+
+    <h2>Blocks toward the beacon</h2>
+    <div class="blks">${st.beacon.needs.map((k,i)=>{
+      const have = st.beacon.blocks[i];
+      return `<div class="blk${have?"":" none"}"><b>${have}</b><span>${esc(k)}</span></div>`;
+    }).join("")}</div>
+    <p class="note">${st.beacon.lit
+      ? "The beacon is lit. Iron, gold, diamond and emerald — a block of each."
+      : "Nine of a mineral makes a block. Four blocks light the beacon."}</p>
+
+    <h2>The dragon</h2>
+    <div class="big${st.dragons?"":" none"}">
+      ${st.dragons ? `<img src="${st.url("dragon-egg")}" alt="">` : ""}
+      <div><b>${st.dragons}</b><br><span>${st.dragons===1?"dragon slain":"dragons slain"}</span></div>
+    </div>
+    <p class="note">${st.dragons
+      ? "An egg for each one."
+      : "A flawless first-try run on a chapter's last section calls one — once the mine is open."}</p>`;
+}
+draw();
 </script>
 </body>
 </html>

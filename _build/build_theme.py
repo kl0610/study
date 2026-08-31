@@ -462,16 +462,37 @@ def inject(html, cfg):
     # double-clicking it. Naming the file works in both.
     html = html.replace('href="../../"', 'href="../../index.html"')
 
+    # Route the question stem through MC.ask(), so an item carrying `qv` is
+    # re-worded on a fresh attempt instead of reading back word for word. Items
+    # without `qv` are unaffected. Done here rather than in a patcher because
+    # every app is already themed, and this has to reach all of them.
+    html = html.replace("${esc(it.q)}", "${esc(MC.ask(it))}")
+    html = html.replace('<div class="q">${r.it.q}</div>',
+                        '<div class="q">${MC.ask(r.it)}</div>')
+    html = html.replace('<div class="qq">${r.it.q}</div>',
+                        '<div class="qq">${MC.ask(r.it)}</div>')
+
     html = html.replace("</head>", style + "</head>", 1)
     return re.sub(r"(<body[^>]*>)", lambda m: m.group(1) + block, html, count=1)
 
 
+def trophy():
+    """The trophy room is a site page like the hub: engine inlined, state read
+    only, no HUD. Same handling, one directory down."""
+    return page(STUDY / "trophy" / "index.html",
+                '<script src="../_build/mc.js"></script>', "trophy")
+
+
 def hub():
+    return page(STUDY / "index.html", '<script src="_build/mc.js"></script>', "hub")
+
+
+def page(path, tag, label):
     """The hub gets the engine inlined too, so it doesn't fetch from _build/
     at runtime — and it reads state only, with no HUD of its own."""
-    path = STUDY / "index.html"
+    if not path.exists():
+        return "%-24s missing" % label
     src = path.read_text(encoding="utf-8")
-    tag = '<script src="_build/mc.js"></script>'
     js = (THEME / "mc.js").read_text(encoding="utf-8")
     if tag not in src:
         # No script tag can mean two very different things: the engine is already
@@ -480,10 +501,9 @@ def hub():
         # its absence is a real failure rather than a no-op.
         inlined = "<script>/* ===== Minecraft theme layer" in src
         if not inlined:
-            return ("hub                      FAILED — never themed "
-                    "(no mc.js tag and no inlined engine)")
+            return "%-24s FAILED — never themed" % label
         if not RETHEME:
-            return "hub                      already inlined — skipped"
+            return "%-24s already inlined — skipped" % label
         # swap the inlined engine for the current one: it is the single <script>
         # block that opens the IIFE, bounded by the marker the engine starts with
         i = src.find("<script>/* ===== Minecraft theme layer")
@@ -495,10 +515,10 @@ def hub():
         src = sfx_line(src)
         src = mute_css(src)
         path.write_text(src, encoding="utf-8")
-        return "hub                      re-themed  %6.1f KB -> %6.1f KB" % (before/1024, len(src)/1024)
+        return "%-24s re-themed  %6.1f KB -> %6.1f KB" % (label, before/1024, len(src)/1024)
     if INLINE:
         head = "window.__MC_INLINE__=" + json.dumps(assets_map()) + ";"
-        src = src.replace('window.__MC_PREFIX__="assets/";', head)
+        src = re.sub(r'window\.__MC_PREFIX__="[^"]*";', head, src, count=1)
     src = src.replace(tag, "<script>%s</script>" % js)
     src = src.replace('window.__MC_HAS_BOSS__=true;',
                       'window.__MC_HAS_BOSS__=%s;'
@@ -508,7 +528,7 @@ def hub():
     src = sfx_line(src)
     src = mute_css(src)
     path.write_text(src, encoding="utf-8")
-    return "hub                      %6.1f KB -> %6.1f KB" % (len(path.read_text(encoding="utf-8"))/1024, len(src)/1024)
+    return "%-24s %6.1f KB -> %6.1f KB" % (label, len(path.read_text(encoding="utf-8"))/1024, len(src)/1024)
 
 
 def main():
@@ -553,6 +573,7 @@ def main():
         print("  %-24s %6.1f KB -> %6.1f KB" % (rel, len(src)/1024, len(p.out)/1024))
 
     print("  " + hub())
+    print("  " + trophy())
 
     if bad:
         sys.exit("\n%d anchor(s) missed \u2014 nothing written for those apps." % bad)

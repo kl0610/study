@@ -1,0 +1,615 @@
+[
+{
+  "slug": "sherlock-speckled-1a",
+  "app": "reading1a",
+  "title": "A Client at Baker Street",
+  "pages": "1–6",
+  "bigQuestion": "How does Holmes learn so much about Helen Stoner before she says a word?",
+  "passages": {
+    "woken": {
+      "title": "Woken at a quarter past seven",
+      "cite": "Reader, pages 1–2",
+      "vocab": [],
+      "text": [
+        "I woke one morning to find Sherlock Holmes standing, fully dressed, by the side of my bed. He was a late riser as a rule, and, as the clock on the mantelpiece showed me that it was only a quarter past seven, I blinked up at him in some surprise.",
+        "“Sorry to wake you up, Watson,” said he. “Mrs. Hudson has been woken up, she woke me, and I you.”",
+        "“What is it, then? A fire?”",
+        "“No, a client. It seems that a young lady has arrived in a state of excitement who insists upon seeing me. Now, when young ladies wander about the city at this hour of the morning and rouse sleepy people up out of their beds, I presume they have something very pressing to communicate.”"
+      ]
+    },
+    "veiled": {
+      "title": "Not cold — fear",
+      "cite": "Reader, pages 2–3",
+      "vocab": [],
+      "text": [
+        "A lady, dressed in black and heavily veiled, rose as we entered.",
+        "“I shall order you a cup of hot coffee, for I observe that you are shivering.”",
+        "“It is not cold that makes me shiver,” said the woman.",
+        "“What, then?”",
+        "“It is fear, Mr. Holmes. It is terror.” She raised her veil as she spoke, and we could see that she was indeed in a state of agitation, her face all drawn and grey. Her features and figure were those of a woman of thirty, but her hair was grey, and her expression was weary."
+      ]
+    },
+    "dogcart": {
+      "title": "What the mud told him",
+      "cite": "Reader, page 4",
+      "vocab": [],
+      "text": [
+        "“You have come in by train this morning, I see.”",
+        "“You know me, then?”",
+        "“No, but I observe half of a return ticket in your glove. You must have started early, and yet you had a good drive in a dogcart, along heavy roads, before you reached the station.”",
+        "The lady stared in bewilderment at my companion.",
+        "“There is no mystery, my dear madam,” said he, smiling. “The left arm of your jacket is spattered with mud in seven places. The marks are perfectly fresh. No vehicle except a dogcart throws up mud in that way, and then only when you sit on the left side of the driver.”"
+      ]
+    },
+    "family": {
+      "title": "The Roylotts of Stoke Moran",
+      "cite": "Reader, pages 5–6",
+      "vocab": [],
+      "text": [
+        "“My name is Helen Stoner. I live with my stepfather, who is the last survivor of one of the oldest Saxon families in England, the Roylotts of Stoke Moran.”",
+        "“The family was once among the richest in England. In the last century, however, four successive heirs were of a wasteful nature.” His only son, my stepfather, obtained a medical degree and went to India, where he established a large practice. In a fit of anger, however, he beat his native butler to death and narrowly escaped a death sentence. As it was, he suffered a long imprisonment and later returned to England a disappointed man.",
+        "“When Dr. Roylott was in India he married my mother, Mrs. Stoner. My sister Julia and I were twins, and we were only two years old at the time of my mother’s re-marriage. She had a considerable sum of money, and this she left to Dr. Roylott entirely while we resided with him, with a provision that a certain annual sum should be given to each of us in the event of our marriage.”"
+      ]
+    }
+  },
+  "mission": {
+    "name": "The client arrives",
+    "tag": "6 questions · about 5 minutes",
+    "blurb": "A quick check that the opening landed — not a test."
+  },
+  "items": [
+    { "type":"pick", "p":"woken",
+      "q":"Why is Watson surprised to find Holmes standing by his bed?",
+      "opts":["Holmes almost never comes into Watson's room.",
+              "Holmes is usually a late riser, and it is only a quarter past seven.",
+              "Holmes is already dressed for a journey.",
+              "Holmes had said he would be away all week."],
+      "a":1,
+      "why":"Watson says it plainly: “He was a late riser as a rule, and… it was only a quarter past seven.” The surprise is the hour, not the visit." },
+    { "type":"pick", "p":"veiled",
+      "q":"Holmes offers Helen Stoner hot coffee because she is shivering. What does she tell him is really wrong?",
+      "opts":["She has been out in the rain all night.",
+              "She is shivering from fear, not from cold.",
+              "She is ill and has come for a doctor.",
+              "She has not eaten since the day before."],
+      "a":1,
+      "why":"“It is not cold that makes me shiver… It is fear, Mr. Holmes. It is terror.” Holmes guesses the body; she corrects him with the cause." },
+    { "type":"pick", "p":"dogcart",
+      "q":"How does Holmes know Helen rode in a dogcart before catching her train?",
+      "opts":["She still holds the driver's receipt.",
+              "Her left sleeve is freshly spattered with mud in seven places, which only a dogcart does.",
+              "He recognised the driver waiting outside.",
+              "Her boots are muddy from the country road."],
+      "a":1,
+      "why":"“No vehicle except a dogcart throws up mud in that way, and then only when you sit on the left side of the driver.” One small detail, read carefully." },
+    { "type":"selectall", "p":"family",
+      "q":"Which of these are true of Dr. Roylott before the story begins? Select every correct answer.",
+      "opts":[["He earned a medical degree and built a large practice in India", 1],
+              ["He beat his native butler to death in a fit of anger", 1],
+              ["He served a long imprisonment for it", 1],
+              ["He restored the Roylott family fortune", 0],
+              ["He inherited great riches from his father", 0]],
+      "why":"The family money was gone before he was born — four wasteful heirs saw to that. Everything he has came from the marriage, not from an inheritance." },
+    { "type":"sort", "p":"dogcart",
+      "q":"Sort each statement by what it actually is.",
+      "bins":["Something Holmes observed","Something Holmes worked out"],
+      "chips":[["Half a return ticket tucked in her glove", 0],
+               ["Fresh mud on the left arm of her jacket, in seven places", 0],
+               ["She travelled up by train this morning", 1],
+               ["She sat on the left of the driver on the way to the station", 1]],
+      "why":"This is the whole method in miniature: he sees very ordinary things, then reasons from them. The observations are on her clothes; the conclusions are in his head." },
+    { "type":"pick", "p":"family",
+      "q":"Helen's mother left her money to Dr. Roylott, but with one condition: each daughter is to be paid a yearly sum if she marries. Why might that matter later in the story?",
+      "opts":["It means Roylott would lose money each time a daughter married.",
+              "It means the daughters cannot marry without his permission.",
+              "It means the money returns to the mother's family.",
+              "It means Roylott must sell Stoke Moran."],
+      "a":0,
+      "why":"Nothing has happened yet — but a man who loses income when a stepdaughter marries has a reason to prefer that she doesn't. Hold on to this one." }
+  ]
+},
+{
+  "slug": "sherlock-speckled-1b",
+  "app": "reading1b",
+  "title": "The Night Julia Died",
+  "pages": "7–13",
+  "bigQuestion": "What exactly did Helen hear that night, and what did she only assume?",
+  "passages": {
+    "temper": {
+      "title": "The terror of the village",
+      "cite": "Reader, page 7",
+      "vocab": [],
+      "text": [
+        "“Instead of making friends and exchanging visits with our neighbors, he shut himself up in his house. He seldom came out except to quarrel ferociously with whoever might cross his path. A series of disgraceful brawls took place, two of which ended in the police court. He became the terror of the village. Folks would fly at his approach, for he is a man of immense strength and absolutely uncontrollable anger.",
+        "“Last week he hurled the local blacksmith off a bridge into a stream, and it was only by paying all the money that I could gather that I was able to avert another public disclosure. He had no friends at all except the wandering gypsies, and he would allow them to camp on the few acres of bramble-covered land that represent the family estate.”"
+      ]
+    },
+    "whistle": {
+      "title": "Julia's question at the door",
+      "cite": "Reader, pages 10–11",
+      "vocab": [],
+      "text": [
+        "“At eleven o'clock she rose to leave me, but she paused at the door and looked back.",
+        "“ ‘Tell me, Helen,’ said she, ‘have you ever heard anyone whistle in the dead of the night?’",
+        "“ ‘Never,’ said I.",
+        "“ ‘Because during the last few nights I have, about three in the morning, heard a low clear whistle. I am a light sleeper, and it has awakened me. I cannot tell where it came from — perhaps from the next room, perhaps from the lawn.’",
+        "“ ‘No. It must be those wretched gypsies.’",
+        "“ ‘Very likely. And yet if it were on the lawn, I wonder why you did not hear it also.’”"
+      ]
+    },
+    "locked": {
+      "title": "Why the doors were locked",
+      "cite": "Reader, page 11",
+      "vocab": [],
+      "text": [
+        "“Was it your custom always to lock yourselves in at night?”",
+        "“Always.”",
+        "“And why?”",
+        "“I think I mentioned that the Doctor kept a cheetah and a baboon. We had no feeling of security unless our doors were locked.”"
+      ]
+    },
+    "storm": {
+      "title": "The scream in the storm",
+      "cite": "Reader, pages 12–13",
+      "vocab": [],
+      "text": [
+        "“It was a wild night. The wind was howling outside, and the rain was beating and splashing against the windows. Suddenly, there burst forth the scream of a terrified woman. I knew that it was my sister's voice. I sprang from my bed and rushed into the corridor. As I opened my door I seemed to hear a low whistle, such as my sister described, and a few moments later a clanging sound, as if a metal object had fallen.",
+        "“By the light of the corridor lamp I saw my sister appear at the opening, her face blanched with terror, her hands groping for help, her whole figure swaying to and fro like that of a drunkard. At that moment her knees seemed to give way and she fell to the ground.",
+        "“As I bent over her she suddenly shrieked out in a voice I shall never forget, ‘O, my God! Helen! It was the band! The speckled band!’”"
+      ]
+    }
+  },
+  "mission": {
+    "name": "The night it happened",
+    "tag": "6 questions · about 5 minutes",
+    "blurb": "A quick check that the chapter landed — not a test."
+  },
+  "items": [
+    { "type":"pick", "p":"locked",
+      "q":"Why did Helen and Julia always lock their bedroom doors at night?",
+      "opts":["They were afraid of the wandering gypsies.",
+              "Dr. Roylott kept a cheetah and a baboon that roamed the grounds.",
+              "Their stepfather had threatened them directly.",
+              "The house had been broken into before."],
+      "a":1,
+      "why":"“We had no feeling of security unless our doors were locked.” It is an ordinary household fact — and later it becomes very important, because it rules out the door." },
+    { "type":"pick", "p":"whistle",
+      "q":"What had Julia been hearing for several nights before she died?",
+      "opts":["Footsteps in the corridor outside her room.",
+              "A low, clear whistle at about three in the morning.",
+              "The cheetah crying on the lawn.",
+              "Someone trying the handle of her door."],
+      "a":1,
+      "why":"She describes it exactly: “about three in the morning, heard a low clear whistle. I am a light sleeper, and it has awakened me.”" },
+    { "type":"selectall", "p":"storm",
+      "q":"On the night Julia died, what did Helen actually hear? Select every correct answer.",
+      "opts":[["A woman's scream, which she knew was her sister's", 1],
+              ["A low whistle, like the one Julia had described", 1],
+              ["A clanging sound, as if a metal object had fallen", 1],
+              ["A door being forced open", 0],
+              ["The cheetah snarling outside the window", 0]],
+      "why":"Three sounds, in that order: the scream, the whistle, the clang. Every one of them turns out to matter — but not in the way anyone guesses at the time." },
+    { "type":"pick", "p":"storm",
+      "q":"What were Julia's last words to her sister?",
+      "opts":["“It was the band! The speckled band!”",
+              "“It was the doctor — he has killed me!”",
+              "“Lock your door, Helen!”",
+              "“The gypsies — they are on the lawn!”"],
+      "a":0,
+      "why":"“It was the band! The speckled band!” Two words that send everyone — including Holmes, at first — off in the wrong direction." },
+    { "type":"sort", "p":"whistle",
+      "q":"Sort each one by whether the story says it happened, or someone is only guessing.",
+      "bins":["Something that happened","Someone's guess about it"],
+      "chips":[["Julia heard a low whistle around three in the morning", 0],
+               ["A clanging sound came moments after the scream", 0],
+               ["The whistling was the gypsies camped outside", 1],
+               ["Julia died of a sudden fright", 1]],
+      "why":"Helen answers “It must be those wretched gypsies” — that is a guess, offered to settle an odd fact quickly. Keeping the two apart is what Holmes does better than anyone." },
+    { "type":"pick", "p":"temper",
+      "q":"Helen quietly paid out all the money she could gather after Roylott threw the blacksmith off a bridge. What does that tell you about her life with him?",
+      "opts":["She was wealthy and could easily afford it.",
+              "She was used to covering up his violence to keep it quiet.",
+              "She was fond of the blacksmith and wanted to help him.",
+              "She was trying to buy her freedom from the house."],
+      "a":1,
+      "why":"The story does not say she was frightened — it shows it. She pays to “avert another public disclosure,” which is what someone does when the violence is a pattern, not a surprise." }
+  ]
+},
+{
+  "slug": "sherlock-speckled-2",
+  "app": "reading2",
+  "title": "At Stoke Moran",
+  "pages": "24–28",
+  "bigQuestion": "What is wrong with the room Helen has been moved into?",
+  "passages": {
+    "arrival": {
+      "title": "He followed her",
+      "cite": "Reader, pages 24–25",
+      "vocab": [],
+      "text": [
+        "Our client hurried forward to meet us with a face that spoke her joy. “All has turned out splendidly. Dr. Roylott has gone to town, and it is unlikely that he will be back before evening.”",
+        "Holmes in a few words sketched out what had occurred. Miss Stoner turned white as she listened.",
+        "“Heavens!” she cried, “he followed me?”",
+        "“So it appears.”",
+        "“He is so cunning that I never know when I am safe from him. What will he say when he returns?”",
+        "“He must watch himself, for he may find that there is someone more cunning than himself on his track. Lock yourself from him tonight.”"
+      ]
+    },
+    "rooms": {
+      "title": "Three rooms and a bolted shutter",
+      "cite": "Reader, pages 25–26",
+      "vocab": [],
+      "text": [
+        "“This, I take it, belongs to the room in which you used to sleep, the center one to your sister's, and the one next to the main building to Dr. Roylott's chamber?”",
+        "“Exactly so. But I am now sleeping in the middle one.”",
+        "“Pending the alterations, as I understand. By the way, there does not seem to be any very pressing need for repairs at that end wall.”",
+        "“There were none. I believe that it was an excuse to move me from my room.”",
+        "Miss Stoner barred her shutters, and Holmes tried in every way to force them open, but without success. “Hum!” said he, “my theory certainly presents some difficulties. No one could pass these shutters if they were bolted.”"
+      ]
+    },
+    "bellrope": {
+      "title": "A bell-rope that rings nothing",
+      "cite": "Reader, pages 27–28",
+      "vocab": [],
+      "text": [
+        "“Where does that bell communicate with?” he asked at last, pointing to a thick bell-rope that hung down beside the bed.",
+        "“It goes to the housekeeper's room.”",
+        "“It looks newer than the other things. Your sister asked for it, I suppose?”",
+        "“No, I never heard of her using it.”",
+        "Then he took the bell-rope and gave it a brisk tug. “Why, it's a dummy,” said he. “It is not even attached to a wire. This is very interesting. It is fastened to a hook just above where the little opening of the ventilator is.”",
+        "“Very strange!” muttered Holmes. “What a fool a builder must be to open a vent into another room, when, with the same trouble, he might have the outside air! They have a most interesting character — dummy bell-ropes, and ventilators that do not ventilate.”"
+      ]
+    }
+  },
+  "mission": {
+    "name": "The room itself",
+    "tag": "6 questions · about 5 minutes",
+    "blurb": "A quick check that the chapter landed — not a test."
+  },
+  "items": [
+    { "type":"pick", "p":"rooms",
+      "q":"Miss Stoner says the repairs to her wall were “an excuse to move me from my room.” What makes Holmes think she is right?",
+      "opts":["Dr. Roylott admitted the repairs were unnecessary.",
+              "He looked at the end wall himself and saw no pressing need for repairs.",
+              "The builders had never arrived to start the work.",
+              "Her old room had been locked since the move."],
+      "a":1,
+      "why":"Holmes says “there does not seem to be any very pressing need for repairs at that end wall” before she agrees. He checks first, then she confirms — not the other way round." },
+    { "type":"pick", "p":"bellrope",
+      "q":"Holmes gives the bell-rope a brisk tug. What does he find?",
+      "opts":["It rings in the housekeeper's room.",
+              "It is a dummy — not attached to a wire at all.",
+              "It has been cut through recently.",
+              "It is older than everything else in the room."],
+      "a":1,
+      "why":"“Why, it's a dummy,” said he. “It is not even attached to a wire.” A rope that rings nothing is not a rope. It is something else pretending to be one." },
+    { "type":"selectall", "p":"bellrope",
+      "q":"Which things about the room does Holmes call unusual? Select every correct answer.",
+      "opts":[["A bell-rope that rings nothing", 1],
+              ["A ventilator that opens into another room instead of outside", 1],
+              ["The rope is fastened to a hook right above the ventilator", 1],
+              ["The fireplace has been bricked up", 0],
+              ["The window shutters are newly painted", 0]],
+      "why":"“Dummy bell-ropes, and ventilators that do not ventilate.” Each one alone might be careless building. Together, and positioned like that, they are a design." },
+    { "type":"sort", "p":"bellrope",
+      "q":"Sort each statement by what it actually is.",
+      "bins":["Something Holmes observed","Something Holmes concluded"],
+      "chips":[["The bell-rope is not attached to any wire", 0],
+               ["The vent opens into the next room, not the outside air", 0],
+               ["These changes were made on purpose, not by accident", 1],
+               ["Someone wanted her sleeping in that particular room", 1]],
+      "why":"Holmes never says the second pair out loud here. He lets the objects say it — which is why the scene feels quiet and alarming at the same time." },
+    { "type":"pick", "p":"rooms",
+      "q":"Holmes tries hard to force the barred shutters and cannot move them. What does that tell him?",
+      "opts":["No one could have got in through the window.",
+              "The shutters had been fitted recently.",
+              "Julia must have opened them herself that night.",
+              "Roylott kept a key to the shutters."],
+      "a":0,
+      "why":"He admits it works against him: “my theory certainly presents some difficulties.” A good detective lets the evidence break his own idea instead of ignoring it." },
+    { "type":"pick", "p":"arrival",
+      "q":"Holmes says Roylott “may find that there is someone more cunning than himself on his track.” What does he mean?",
+      "opts":["He intends to outthink Roylott.",
+              "He plans to have Roylott arrested that night.",
+              "He thinks Miss Stoner is cleverer than her stepfather.",
+              "He is warning Watson to be careful."],
+      "a":0,
+      "why":"It is a quiet promise, not a boast. Roylott has spent the story frightening people by force; Holmes answers with the one thing force cannot beat." }
+  ]
+},
+{
+  "slug": "sherlock-speckled-3",
+  "app": "reading3",
+  "title": "The Doctor's Room",
+  "pages": "29–33",
+  "bigQuestion": "Why does an ordinary saucer of milk make Holmes look so grim?",
+  "passages": {
+    "safe": {
+      "title": "The iron safe",
+      "cite": "Reader, page 29",
+      "vocab": [],
+      "text": [
+        "A small wooden shelf full of books, an armchair beside the bed, a plain wooden chair against the wall, a round table, and a large iron safe were the principal things. Holmes slowly examined each of them with keen interest.",
+        "“What's in here?” he asked, tapping the safe.",
+        "“My stepfather's business papers.”",
+        "“Oh! you have seen inside, then?”",
+        "“Only once, some years ago. I remember that it was full of papers.”"
+      ]
+    },
+    "milk": {
+      "title": "A saucer of milk, and a leash",
+      "cite": "Reader, page 30",
+      "vocab": [],
+      "text": [
+        "“There isn't a cat in it, for example?”",
+        "“No. What a strange idea!”",
+        "“Well, look at this!” He took up a small saucer of milk that stood on the top of it.",
+        "“No, we don't keep a cat. But there is a cheetah and a baboon.”",
+        "“Ah, yes, of course! Well, a cheetah is just a big cat. Yet a saucer of milk would not go very far in satisfying, I dare say.”",
+        "He squatted down in front of the wooden chair and examined the seat of it with great attention. “Thank you. That is quite settled,” said he, rising. “Hullo! here is something interesting!”",
+        "The object that caught his eye was a small dog leash hung on one corner of the bed. It was curled upon itself and tied so as to make a loop."
+      ]
+    },
+    "plan": {
+      "title": "The plan for the night",
+      "cite": "Reader, pages 31–32",
+      "vocab": [],
+      "text": [
+        "I had never seen my friend's face so grim, or his brow so dark, as it was when we turned from the scene of this investigation.",
+        "“It is very essential, Miss Stoner, that you absolutely follow my advice. The matter is too serious for any hesitation. Your life may depend upon your compliance.”",
+        "“You must confine yourself to your room, on pretense of a headache, when your stepfather comes back. Then when you hear him retire for the night, you must open the shutters of your window, put your lamp there as a signal to us, and then withdraw to the room that you used to occupy.”",
+        "“Then for pity's sake tell me what was the cause of my sister's death.”",
+        "“I prefer clearer proofs before I speak.”"
+      ]
+    }
+  },
+  "mission": {
+    "name": "Inside the doctor's room",
+    "tag": "6 questions · about 5 minutes",
+    "blurb": "A quick check that the chapter landed — not a test."
+  },
+  "items": [
+    { "type":"pick", "p":"milk",
+      "q":"What does Holmes find standing on top of the iron safe?",
+      "opts":["A bunch of keys.","A small saucer of milk.","A lantern.","A coil of wire."],
+      "a":1,
+      "why":"A saucer of milk on a safe is the sort of detail most people would walk straight past. Holmes stops at it because it means an animal is being fed there." },
+    { "type":"pick", "p":"milk",
+      "q":"Holmes asks whether there is a cat in the safe. Why is Miss Stoner's answer not the end of it?",
+      "opts":["She keeps a cat but had forgotten it.",
+              "There is no cat — but there is a cheetah, and a saucer would not satisfy one.",
+              "She has never looked inside the safe.",
+              "The milk belonged to the housekeeper."],
+      "a":1,
+      "why":"“A cheetah is just a big cat. Yet a saucer of milk would not go very far in satisfying, I dare say.” He rules out the easy answer, which leaves a much stranger one." },
+    { "type":"pick", "p":"milk",
+      "q":"What is odd about the dog leash Holmes notices on the bed?",
+      "opts":["It has been chewed through.",
+              "It is curled on itself and tied so as to make a loop.",
+              "It is far too short for a dog.",
+              "It is wet, as if recently used."],
+      "a":1,
+      "why":"Watson sees a common leash. Holmes sees that someone tied it into a loop on purpose — “That is not quite so common, is it?”" },
+    { "type":"selectall", "p":"safe",
+      "q":"Which things does Holmes examine closely in Dr. Roylott's room? Select every correct answer.",
+      "opts":[["The large iron safe", 1],
+              ["The seat of the plain wooden chair", 1],
+              ["The dog leash tied into a loop", 1],
+              ["The titles of the books on the shelf", 0],
+              ["The ashes in the fireplace", 0]],
+      "why":"Safe, chair, leash. Every one turns out to be part of the same answer — and he says almost nothing about any of them at the time." },
+    { "type":"pick", "p":"plan",
+      "q":"What is Miss Stoner told to do that night?",
+      "opts":["Stay in her room, signal with her lamp, then move to her old room.",
+              "Leave the house at once and go to her aunt's.",
+              "Lock her door and stay where she is until morning.",
+              "Wait at the Crown Inn with Holmes and Watson."],
+      "a":0,
+      "why":"Plead a headache, signal with the lamp when Roylott goes to bed, then withdraw to her old room. The signal is what tells Holmes it is safe to cross the lawn." },
+    { "type":"pick", "p":"plan",
+      "q":"Miss Stoner begs Holmes to tell her what killed her sister, and he refuses. Why?",
+      "opts":["He does not yet know.",
+              "He wants clearer proof before he will say it aloud.",
+              "He is afraid she would warn her stepfather.",
+              "He thinks she would not believe him."],
+      "a":1,
+      "why":"“I prefer clearer proofs before I speak.” He has already made up his mind — he admits “perhaps I have” — but he will not say a thing he cannot yet prove." }
+  ]
+},
+{
+  "slug": "sherlock-speckled-4",
+  "app": "reading4",
+  "title": "The Night Watch",
+  "pages": "34–39",
+  "bigQuestion": "How had Holmes worked out so much before he ever entered the house?",
+  "passages": {
+    "ventilator": {
+      "title": "The ventilator he expected",
+      "cite": "Reader, page 35",
+      "vocab": [],
+      "text": [
+        "“You saw the ventilator, too?”",
+        "“Yes, but I do not think it is such an unusual thing to have a small opening between rooms. It was so small a rat could hardly pass through.”",
+        "“I knew that we should find a ventilator before ever we came to Stoke Moran.”",
+        "“My dear Holmes!”",
+        "“O, yes, I did. You remember Miss Stoner said that her sister could smell Dr. Roylott's cigar. Now, of course that suggests at once that there must be an opening between the two rooms.”",
+        "“Did you observe anything very peculiar about that bed?”",
+        "“No.”",
+        "“It was clamped to the floor. The lady could not move her bed. It must always be in the same relative position to the ventilator and to the rope.”"
+      ]
+    },
+    "signal": {
+      "title": "Across the dark lawn",
+      "cite": "Reader, pages 36–37",
+      "vocab": [],
+      "text": [
+        "“Subtle enough and horrible enough. When a doctor goes wrong he is the first of criminals. He has nerve and he has knowledge.”",
+        "Two hours passed slowly away, and then, suddenly, a single bright light shone out right in front of us. “Our signal,” said Holmes, springing up.",
+        "Making our way among the trees, we reached the lawn, and were about to enter through the window, when out from a clump of laurel bushes there darted what seemed to be a hideous and distorted child, who threw itself on the grass with writhing limbs and then ran swiftly across the lawn into the darkness.",
+        "“My God!” I whispered, “did you see it?” Holmes was for the moment as startled as I. Then he broke into a low laugh. “That is the baboon,” he murmured."
+      ]
+    },
+    "vigil": {
+      "title": "The vigil in the dark",
+      "cite": "Reader, pages 37–38",
+      "vocab": [],
+      "text": [
+        "“We must sit without a light. He would see it through the ventilator. Do not go to sleep; your very life may depend upon it. Have your pistol ready.”",
+        "Holmes had brought a thin cane, and this he placed upon the bed. By it he laid the box of matches and the stump of a candle. Then he turned down the lamp and we were in darkness.",
+        "Suddenly there was the momentary gleam of a light in the direction of the ventilator, which was succeeded by a strong smell of burning oil and heated metal. Someone in the next room had lit a lantern.",
+        "Then suddenly another sound became audible — a gentle, soothing sound, like steam escaping from a kettle. The instant we heard it, Holmes sprang from the bed, struck a match, and lashed furiously with his cane at the bell-pull."
+      ]
+    }
+  },
+  "mission": {
+    "name": "Waiting in the dark",
+    "tag": "6 questions · about 5 minutes",
+    "blurb": "A quick check that the chapter landed — not a test."
+  },
+  "items": [
+    { "type":"pick", "p":"ventilator",
+      "q":"Holmes says he knew there would be a ventilator before he ever reached Stoke Moran. How?",
+      "opts":["Miss Stoner had described the room to him.",
+              "Julia could smell Roylott's cigar, so there had to be an opening between the rooms.",
+              "He had seen the builder's plans.",
+              "Every house of that age has one."],
+      "a":1,
+      "why":"A smell has to travel through something. That is the whole deduction — an ordinary complaint about cigar smoke, turned into the shape of the room." },
+    { "type":"pick", "p":"ventilator",
+      "q":"What was peculiar about the bed in that room?",
+      "opts":["It was clamped to the floor and could not be moved.",
+              "It was much newer than the other furniture.",
+              "It had been pushed against the window.",
+              "It was too short for a grown woman."],
+      "a":0,
+      "why":"“The lady could not move her bed. It must always be in the same relative position to the ventilator and to the rope.” Three things fixed in line with each other — that is not furniture, that is an arrangement." },
+    { "type":"pick", "p":"signal",
+      "q":"What was the “hideous and distorted child” that darted across the lawn?",
+      "opts":["The cheetah.","The baboon.","A village boy.","Dr. Roylott himself."],
+      "a":1,
+      "why":"“That is the baboon,” he murmured — and even Holmes was startled for a moment. The strange pets are played for fright here, but they matter later too." },
+    { "type":"selectall", "p":"vigil",
+      "q":"During the vigil, what does Watson notice in the darkness? Select every correct answer.",
+      "opts":[["A gleam of light at the ventilator", 1],
+              ["A strong smell of burning oil and heated metal", 1],
+              ["A gentle sound like steam escaping from a kettle", 1],
+              ["Footsteps coming down the corridor", 0],
+              ["The safe door slamming shut", 0]],
+      "why":"Light, then smell, then sound — each one a little worse than the last. The reader works out what is coming through the wall at about the same speed Watson does." },
+    { "type":"sort", "p":"vigil",
+      "q":"Sort each one by what it is in the story.",
+      "bins":["Something the men sense in the dark","Something they do about it"],
+      "chips":[["A light gleams at the ventilator", 0],
+               ["A soft hiss, like a kettle", 0],
+               ["Holmes strikes a match", 1],
+               ["Holmes lashes at the bell-pull with his cane", 1]],
+      "why":"They sit still through everything until the hiss. The moment Holmes hears it he stops waiting — because that sound is the one he was listening for." },
+    { "type":"pick", "p":"signal",
+      "q":"Holmes says: “When a doctor goes wrong he is the first of criminals. He has nerve and he has knowledge.” What does he mean?",
+      "opts":["Doctors commit more crimes than other people.",
+              "A doctor's steadiness and knowledge make him unusually dangerous if he turns bad.",
+              "Doctors are rarely suspected by the police.",
+              "Roylott was a poor doctor and that is why he turned to crime."],
+      "a":1,
+      "why":"Nerve and knowledge are exactly what make a good doctor. Turned the other way, they are what make a criminal very hard to catch." }
+  ]
+},
+{
+  "slug": "sherlock-speckled-5",
+  "app": "reading5",
+  "title": "The Speckled Band",
+  "pages": "40–44",
+  "bigQuestion": "How do all the strange details finally fit together?",
+  "passages": {
+    "cry": {
+      "title": "The cry in the night",
+      "cite": "Reader, page 40",
+      "vocab": [],
+      "text": [
+        "There broke from the silence of the night the most horrible cry to which I have ever listened. It swelled up louder and louder, a yell of pain and fear and anger all mingled in the one dreadful shriek.",
+        "“What can it mean?” I gasped.",
+        "“It means that it is all over,” Holmes answered. “And perhaps for the best. Take your pistol, and we shall enter Dr. Roylott's room.”",
+        "On the table stood a lantern with the shutter half open, throwing a brilliant beam of light upon the iron safe, the door of which was ajar. On the wooden chair sat Dr. Grimesby Roylott. Across his lap lay the long leash we had noticed during the day."
+      ]
+    },
+    "band": {
+      "title": "The band itself",
+      "cite": "Reader, pages 41–42",
+      "vocab": [],
+      "text": [
+        "Round his brow he had a peculiar yellow band, with brownish speckles, which seemed to be bound tightly round his head. He made neither sound nor motion.",
+        "“The speckled band!” whispered Holmes.",
+        "I took a step forward. In an instant his strange headgear began to move, and there reared from his hair the squat diamond-shaped head and puffed neck of a loathsome serpent.",
+        "“It is a swamp adder!” cried Holmes — “the deadliest snake in India. He died within seconds of being bitten.”"
+      ]
+    },
+    "explain": {
+      "title": "How Holmes worked it out",
+      "cite": "Reader, pages 42–44",
+      "vocab": [],
+      "text": [
+        "“I had come to an entirely incorrect conclusion, which shows how dangerous it is to reason from insufficient data. The presence of the gypsies, and the use of the word ‘band,’ put me on an entirely wrong scent.",
+        "“The discovery that this was a dummy, and that the bed was clamped to the floor, gave rise to the suspicion that the rope was a bridge for something passing through the hole and coming to the bed. The idea of a snake instantly occurred to me.",
+        "“Then I thought of the whistle. Of course, he must recall the snake before the morning light revealed it to the victim. He trained it, probably by the use of the milk that we saw, to return to him when summoned.",
+        "“An inspection of his chair showed me that he had been in the habit of standing on it to reach the ventilator. The clang heard by Miss Stoner was caused by her stepfather hastily closing the door of his safe.",
+        "“The blows of my cane roused its temper, so that it flew upon the first person it saw. In this way I am indirectly responsible for Dr. Grimesby Roylott's death.”"
+      ]
+    }
+  },
+  "mission": {
+    "name": "The whole answer",
+    "tag": "6 questions · about 5 minutes",
+    "blurb": "A quick check that the ending landed — not a test."
+  },
+  "items": [
+    { "type":"pick", "p":"band",
+      "q":"What was the speckled band?",
+      "opts":["A scarf Roylott wore.",
+              "A swamp adder — a deadly Indian snake.",
+              "A rope tied round his head.",
+              "A band of gypsies camped on the estate."],
+      "a":1,
+      "why":"“It is a swamp adder!” The dying words everyone treated as raving were a plain description of what Julia actually saw." },
+    { "type":"pick", "p":"explain",
+      "q":"Holmes admits he first reached “an entirely incorrect conclusion.” What had misled him?",
+      "opts":["The gypsies on the land, and the word “band.”",
+              "The barred shutters on the windows.",
+              "Miss Stoner's account of the whistle.",
+              "The coroner's report."],
+      "a":0,
+      "why":"A band of gypsies, a speckled band — the same word pointing two ways. He says it shows “how dangerous it is to reason from insufficient data,” which is a rare thing for a detective to admit." },
+    { "type":"selectall", "p":"explain",
+      "q":"Which clues led Holmes to the idea of a snake? Select every correct answer.",
+      "opts":[["The bell-rope was a dummy, hanging from the ventilator to the bed", 1],
+              ["The bed was clamped to the floor and could not be moved", 1],
+              ["A saucer of milk in the doctor's room", 1],
+              ["The gypsies camped on the estate", 0],
+              ["The broken windows in the ruined wing", 0]],
+      "why":"A bridge, a target that cannot be moved, and a way to train the animal. Each was strange alone; together they only fit one answer." },
+    { "type":"pick", "p":"explain",
+      "q":"Why did Dr. Roylott whistle in the night?",
+      "opts":["To frighten his stepdaughters.",
+              "To call the snake back before daylight could reveal it.",
+              "To cover the sound of the safe door.",
+              "To signal to the gypsies outside."],
+      "a":1,
+      "why":"“He must recall the snake before the morning light revealed it to the victim.” The whistle Julia heard at three in the morning was the snake being called home." },
+    { "type":"pick", "p":"explain",
+      "q":"Helen heard a clanging sound just after her sister screamed. What was it?",
+      "opts":["The shutters blowing open in the storm.",
+              "Roylott hastily closing the door of his iron safe.",
+              "The bell-rope's hook tearing loose.",
+              "A lantern falling from the table."],
+      "a":1,
+      "why":"The safe was where the snake was kept. Every sound Helen reported that night had an ordinary cause — once you know what was really in the room." },
+    { "type":"pick", "p":"explain",
+      "q":"Why does Holmes say he is “indirectly responsible” for Roylott's death?",
+      "opts":["He left the safe door open.",
+              "His cane blows angered the snake, which then turned on the first person it saw.",
+              "He warned Roylott that he was being watched.",
+              "He told Miss Stoner to signal with her lamp."],
+      "a":1,
+      "why":"He drove it back through the ventilator, and it struck whoever was on the other side. He adds that it is not likely “to weigh heavily upon my conscience.”" }
+  ]
+}
+]

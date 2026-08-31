@@ -2,3 +2,10 @@ __pycache__/
 *.pyc
 desktop.ini
 Thumbs.db
+
+# Returned schoolwork. The repo is public and serves GitHub Pages, so scans of
+# graded tests — a child's name, handwriting and marks — must never be pushed.
+# The analysis derived from them stays local too: what gets committed is the
+# practice questions it produces, which look like any other content.
+_returned/*
+!_returned/README.md

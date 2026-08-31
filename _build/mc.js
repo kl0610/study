@@ -13,6 +13,7 @@
      MC.chest(el, pct, {id})                paint the results reveal into el
      MC.bests()                             {id: bestPct} for this app
      MC.mute(on)                            sound off/on, remembered across apps
+     MC.ask(item)                           the wording to ask it in this run
      MC.runs(id)                            every attempt at one activity
      MC.picker(el, items, cur, onPick)       a strip of level chips
      MC.state()                             read-only snapshot (used by the hub)
@@ -46,6 +47,11 @@
   if (!S.runs || typeof S.runs !== "object") S.runs = {};
   var RUNS_KEPT = 25;
   if (typeof S.mute !== "boolean") S.mute = false;
+  /* Coins. The tools run out and the mine takes a while to open, so there was a
+     long middle stretch where a good run paid nothing. Coins pay on every run,
+     from the first one, scaled to how it went — a floor that never disappears
+     and a ceiling that never arrives. */
+  if (typeof S.coins !== "number" || !isFinite(S.coins)) S.coins = 0;
 
   /* ---------- sound ----------
      Every answer is heard: a coin when he is right, a soft glass note when he
@@ -156,15 +162,43 @@
     return true;
   }
 
+  /* How many cleared activities each of the first eight tools costs.
+     It used to be one apiece, which was written when the site had about a dozen
+     activities. There are forty now, so the whole hotbar filled inside a
+     fortnight and the next thirty-odd runs paid nothing at all. Spread over a
+     term instead, steeply enough at the start that the first two still arrive
+     the same evening. */
+  var TOOL_GATE = [1, 2, 3, 5, 7, 10, 14, 18];
+
   function clearedCount() {
     var n = 0, k;
     for (k in S.cleared) if (S.cleared[k] >= 75) n++;
     return n;
   }
-  function unlocked() {
-    var n = Math.min(8, clearedCount());
-    return { count: n, nine: !!S.tool9, all9: n >= 8 && !!S.tool9 };
+  /* The ninth tool used to hang on one specific level, spelling:l7. If that
+     level was never set as homework the mine could not open at all — he could
+     clear all forty activities and still be locked out. It now asks for breadth:
+     something cleared in every subject he has work in. That cannot strand him,
+     and it rewards the thing worth rewarding. */
+  function subjectsCleared() {
+    var seen = {}, k;
+    for (k in S.cleared) if (S.cleared[k] >= 75) seen[k.split(":")[0]] = 1;
+    var n = 0, a;
+    for (a in seen) n++;
+    return n;
   }
+  function toolsFrom(n) {
+    var got = 0;
+    for (var i = 0; i < TOOL_GATE.length; i++) if (n >= TOOL_GATE[i]) got = i + 1;
+    return got;
+  }
+  function unlocked() {
+    var n = toolsFrom(clearedCount());
+    var nine = !!S.tool9 || subjectsCleared() >= ELYTRA_SUBJECTS;
+    return { count: n, nine: nine, all9: n >= 8 && nine,
+             cleared: clearedCount(), next: TOOL_GATE[n] || null };
+  }
+  var ELYTRA_SUBJECTS = 5;   // history, science, reading, spelling, vocabulary
   function mineOpen() { return unlocked().all9; }
   function has(slot) { var u = unlocked(); return slot === 9 ? u.nine : slot <= u.count; }
 
@@ -179,8 +213,9 @@
   var missedHere = {};      // keys missed during this level
   var fixedHere = 0;        // ...and later got right — the comeback count
   var partialRun = false;   // a correction round over just the missed items
-  var hud, heartsEl, barEl, muteEl, lastNew = 0;
+  var hud, heartsEl, barEl, muteEl, purseEl, lastNew = 0;
   var goodN = 0, badN = 0;  // cycle the sprites so it isn't the same one every time
+  var askSeq = 0, askPick = {};   // which wording each question is using this run
 
   /* The sound toggle sits at the top of every page, on its own rather than
      inside the HUD. Two reasons: the HUD lives at the bottom and only appears
@@ -220,6 +255,17 @@
            ' fill="currentColor">' + cone + waves + slash + '</svg>';
   }
 
+  /* The purse. Deliberately on screen the whole time he is working, because the
+     point of a currency is that it is visibly going up. Falls back to a drawn
+     coin if the sprite is not there yet, so this works before the art lands. */
+  function drawCoins() {
+    if (!purseEl) return;
+    var src = url("coin");
+    purseEl.innerHTML = (src ? '<img class="mc-coin" alt="" src="' + src + '">'
+                             : '<i class="mc-coin mc-coin-fb"></i>') +
+                        '<b>' + S.coins + '</b>';
+  }
+
   function drawMute() {
     if (!muteEl) return;
     muteEl.innerHTML =
@@ -238,9 +284,12 @@
     hud = document.createElement("div");
     hud.className = "mc-hud";
     hud.id = "mc-hud";
-    hud.innerHTML = '<div class="mc-hearts" id="mc-hearts"></div>' +
+    hud.innerHTML = '<div class="mc-purse" id="mc-purse"></div>' +
+                    '<div class="mc-hearts" id="mc-hearts"></div>' +
                     '<div class="mc-bar" id="mc-bar"></div>';
     document.body.appendChild(hud);
+    purseEl = hud.querySelector("#mc-purse");
+    drawCoins();
     heartsEl = hud.querySelector("#mc-hearts");
     barEl = hud.querySelector("#mc-bar");
     drawBar();
@@ -380,6 +429,7 @@
       halves = 20; lastNew = 0;
       missedHere = {}; fixedHere = 0;
       partialRun = !!(opts && opts.partial);
+      askPick = {};              // a new run gets new wordings
       build(); drawHearts(); drawBar(); fit();
     },
 
@@ -471,6 +521,23 @@
       var dragon = clean && !partialRun && isBossLevel && ready;
       var portalShut = clean && !partialRun && isBossLevel && !ready;
       if (dragon) { S.dragon++; save(); }
+
+      /* Coins, every run, from the very first one. Finishing at all is worth
+         something — that is the floor, and it is deliberate: a child who had a
+         bad round should still walk away holding more than he arrived with.
+         Everything above the floor is earned. */
+      var coins = 3;
+      if (pct >= 75) coins += 3;
+      if (pct >= 85) coins += 3;
+      if (pct >= 95) coins += 4;
+      if (pct >= 100) coins += 5;
+      if (halves === 20) coins += 5;          // not a heart lost
+      if (fixedHere) coins += 2 * fixedHere;  // fixing a miss pays, and it should
+      if (dragon) coins += 40;
+      if (partialRun) coins = Math.max(2, Math.round(coins / 2));
+      S.coins += coins;
+      save();
+      drawCoins();
 
       /* What the run was worth at the rock face. Coal through gold repeat, so
          there is always something to dig; diamond is once per activity, so a
@@ -667,6 +734,10 @@
         tools: u, toolNames: TOOLS,
         ore: JSON.parse(JSON.stringify(S.ore)), oreKinds: ORE,
         mineOpen: mineOpen(), dragons: S.dragon,
+        coins: S.coins,
+        gate: TOOL_GATE, elytraNeeds: ELYTRA_SUBJECTS,
+        subjectsCleared: subjectsCleared(),
+        gems: JSON.parse(JSON.stringify(S.gem)),
         beacon: { needs: BEACON, lit: beaconLit(),
                   blocks: BEACON.map(function (k) { return blocks(k); }) },
         cleared: JSON.parse(JSON.stringify(S.cleared)),
@@ -683,6 +754,26 @@
       return (S.runs[key] || []).slice();
     },
 
+    /* The wording to ask a question in.
+
+       An item may carry `qv`, a few phrasings of the same question. One is
+       chosen per run, so a second attempt at the same set does not read like a
+       memory test of the first — but it is fixed for the length of that run, so
+       the review screen shows the wording he was actually asked rather than a
+       third one. Items without `qv` just return `q`.
+
+       Options are already re-shuffled on every render; this is the same idea
+       applied to the stem. */
+    ask: function (it) {
+      if (!it) return "";
+      var v = it.qv;
+      if (!v || !v.length) return it.q;
+      if (it.__mcq === undefined) it.__mcq = ++askSeq;
+      if (askPick[it.__mcq] === undefined)
+        askPick[it.__mcq] = (Math.random() * v.length) | 0;
+      return v[askPick[it.__mcq]];
+    },
+
     /* Sound off/on. Kept in the same saved state as everything else, so the
        choice holds across every app and survives a reload. Call with no
        argument to read it. */
@@ -696,8 +787,8 @@
 
     reset: function () {
       S = { cleared: {}, misses: {}, tool9: false, ore: {}, gem: {}, dragon: 0,
-            runs: {}, mute: S.mute };   // muting is a preference, not progress
-      save(); drawBar();
+            runs: {}, coins: 0, mute: S.mute };  // muting is a preference, not progress
+      save(); drawBar(); drawCoins();
     },
     _relift: lift
   };

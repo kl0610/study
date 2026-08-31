@@ -1,211 +1,438 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
+
 <meta charset="utf-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
 <title>Study Craft — fifth grade</title>
+
 <meta name="theme-color" content="#1A1A1D">
+
 <style>
+
 :root{
+
   /* palette pulled from Minecraft's own blocks and ores, not a generic scheme */
+
   --dirt:#7B5432; --dirt-2:#6A4728; --dirt-3:#8A6039;
+
   --stone:#7D7D7D; --stone-d:#4A4A4A;
+
   --grass:#63A93E; --grass-d:#4A8230;
+
   --panel:#26262A; --panel-2:#1A1A1D; --line:#3A3A40;
+
   --paper:#E9E6DE; --dim:#9A968D;
+
   --gold:#FCFC54;          /* splash text */
+
   --heart:#D2423B;
+
   --end:#A855C8;           /* end portal — the boss accent */
+
   /* one ore per subject */
+
   --history:#F2B233; --science:#4AEDD9; --reading:#42D18C;
+
   --spelling:#E0574F; --vocab:#B57CE0; --math:#E08A4B;
+
   --disp:"Trebuchet MS","Segoe UI",Verdana,system-ui,sans-serif;
+
   --body:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+
   --mono:ui-monospace,"SF Mono","Cascadia Mono",Consolas,monospace;
+
 }
+
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+
 img{image-rendering:pixelated}
+
 body{margin:0;background:var(--panel-2);color:var(--paper);font-family:var(--body);
+
   line-height:1.55;padding:0 0 calc(60px + env(safe-area-inset-bottom))}
+
 .wrap{max-width:660px;margin:0 auto;padding:0 16px}
 
+
+
 /* ---------- the title screen ---------- */
+
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
+
   clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
 .title{margin:0 0 22px;padding:18px 0 0;border-bottom:5px solid var(--grass-d)}
+
 .title h1{margin:0;font-size:0}
+
 /* Capped to the content column and centred, so it stays the same size on a
+
    1024px laptop and a 2560px monitor instead of ballooning to 764px tall.
+
    No object-fit/max-height crop — that was cutting the "fifth grade" sign off
+
    the bottom on wide screens. */
+
 .banner{display:block;width:100%;height:auto;
+
   /* dirt sits behind the JPEG, so a failed load still reads as a title block
+
      with its alt text rather than an empty gap */
+
   background-color:var(--dirt);
+
   background-image:
+
     repeating-linear-gradient(90deg, rgba(0,0,0,.16) 0 8px, rgba(0,0,0,0) 8px 16px),
+
     repeating-linear-gradient(0deg,  rgba(0,0,0,.16) 0 8px, rgba(0,0,0,0) 8px 16px);
+
   min-height:70px;
+
   font:800 20px var(--disp);color:#F0E6D2;text-align:center;line-height:70px;
+
   border:3px solid #101012;
+
   box-shadow:inset -3px -3px 0 rgba(0,0,0,.3), 0 6px 0 rgba(0,0,0,.28)}
+
 .titlebar{padding:16px 16px 18px;text-align:center}
+
 #splash{
+
   display:inline-block;margin:0;padding:2px 6px;border:0;background:none;cursor:pointer;
+
   font:800 15px var(--disp);color:var(--gold);text-shadow:2px 2px 0 #3E3E10;
+
   transform:rotate(-3deg);animation:bob 1.1s ease-in-out infinite;
+
 }
+
 #splash:focus-visible{outline:3px solid #fff;outline-offset:2px}
+
 @keyframes bob{0%,100%{transform:rotate(-3deg) scale(1)}50%{transform:rotate(-3deg) scale(1.06)}}
+
 .rule{margin:12px auto 0;max-width:40ch;font-size:12.5px;line-height:1.5;color:var(--dim)}
 
+
+
 /* ---------- your gear: the real hotbar ---------- */
+
 .gear{background:var(--panel);border:3px solid var(--line);
+
   padding:14px 14px 12px;margin-bottom:20px;
+
   box-shadow:inset -3px -3px 0 rgba(0,0,0,.35), inset 3px 3px 0 rgba(255,255,255,.05)}
+
 .gear h2{margin:0 0 10px;font:700 11px var(--mono);letter-spacing:.18em;
+
   text-transform:uppercase;color:var(--dim)}
+
 .hotbar{display:flex;justify-content:center;margin-bottom:10px}
+
 .slot{position:relative;flex:0 0 auto;width:var(--ss,40px);height:var(--ss,40px);
+
   background-size:100% 100%;background-repeat:no-repeat;background-color:transparent;
+
   border:0;padding:0;cursor:default}
+
 .slot[data-on="1"]{cursor:pointer}
+
 .slot img.tool{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+
   width:69%;height:69%;object-fit:contain;transition:transform .14s}
+
 .slot[data-n="9"] img.tool{width:62%;height:62%}
+
 .slot[data-on="1"]:hover img.tool,
+
 .slot[data-on="1"]:focus-visible img.tool{transform:translate(-50%,-60%)}
+
 .slot:focus-visible{outline:2px solid var(--gold);outline-offset:-2px}
+
 .gearline{margin:0;text-align:center;font:700 12.5px var(--mono);color:var(--dim);min-height:1.5em}
+
 .gearline b{color:var(--gold)}
+
 .xp{height:9px;margin:11px 2px 0;background:#141416;border:2px solid #0D0D0F;overflow:hidden}
+
 .xp i{display:block;height:100%;background:var(--grass);
+
   box-shadow:inset 0 -3px 0 rgba(0,0,0,.25);transition:width .7s cubic-bezier(.2,.9,.3,1)}
 
+
+
 /* ---------- subjects ---------- */
+
 .subj{background:var(--panel);border:3px solid var(--line);
+
   margin-bottom:11px;position:relative;overflow:hidden;
+
   box-shadow:inset -3px -3px 0 rgba(0,0,0,.3), inset 3px 3px 0 rgba(255,255,255,.045)}
+
 .subj::before{content:"";position:absolute;left:0;top:0;bottom:0;width:6px;background:var(--c);z-index:1}
+
 .subj[open]{border-color:var(--c)}
+
 summary{list-style:none;cursor:pointer;padding:15px 16px;display:flex;align-items:center;gap:12px}
+
 summary::-webkit-details-marker{display:none}
+
 summary:focus-visible{outline:2px solid var(--c);outline-offset:-3px}
+
 /* The subject badge. It used to be .ore, which the mine's own .ore chips
+
    redefine further down this sheet — so the letter was rendering at the chip's
+
    12px instead of its own size. Renamed, and sized to be read at a glance:
+
    this is how a ten-year-old finds his subject. */
+
 .sbadge{flex:none;width:38px;height:38px;background:var(--c);color:#141416;
+
   display:grid;place-items:center;font:800 21px/1 var(--mono);letter-spacing:-.01em;
+
   box-shadow:inset -3px -3px 0 rgba(0,0,0,.32), inset 3px 3px 0 rgba(255,255,255,.3)}
+
 .sbadge.two{font-size:16px;letter-spacing:-.03em}
+
 .stext{flex:1;min-width:0}
+
 .subj h2{font-family:var(--disp);font-size:18.5px;margin:0;font-weight:750;line-height:1.2}
+
 .book{font-size:12px;color:var(--dim);margin:2px 0 0;
+
   white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
 .tally{font:700 10px var(--mono);letter-spacing:.09em;text-transform:uppercase;
+
   color:var(--c);white-space:nowrap;flex:none;text-align:right}
+
 .tally small{display:block;color:var(--dim);letter-spacing:.06em}
+
 .caret{flex:none;width:15px;height:15px;color:var(--dim);transition:transform .22s ease}
+
 .subj[open] .caret{transform:rotate(90deg)}
+
 .subj[open] .book{white-space:normal;overflow:visible}
+
 .inner{padding:0 16px 6px;animation:drop .22s ease}
+
 @keyframes drop{from{opacity:0;transform:translateY(-5px)}to{opacity:1;transform:none}}
+
 ol{list-style:none;margin:0;padding:0}
+
 li{border-top:2px solid #303036}
+
 li:first-child{border-top:none}
+
 a.ch,span.ch{display:flex;align-items:center;gap:11px;padding:11px 2px;
+
   text-decoration:none;color:var(--paper)}
+
 .n{flex:none;width:26px;height:26px;background:var(--c);color:#141416;
+
   font:800 11px var(--mono);display:grid;place-items:center;
+
   box-shadow:inset -2px -2px 0 rgba(0,0,0,.3), inset 2px 2px 0 rgba(255,255,255,.28)}
+
 .n.pages{width:auto;min-width:46px;padding:0 7px;border-radius:8px;
+
   font:700 10px var(--mono);letter-spacing:.02em}
+
+/* ---- gear header: the purse, and the way through to the trophy room ---- */
+.gearhead{display:flex;align-items:center;justify-content:space-between;gap:12px;
+  flex-wrap:wrap;margin-bottom:10px}
+.gearhead h2{margin:0}
+.purselink{display:inline-flex;align-items:center;gap:7px;text-decoration:none;
+  padding:5px 10px 5px 7px;background:var(--panel-2);border:2px solid var(--line);
+  box-shadow:inset -2px -2px 0 rgba(0,0,0,.3)}
+.purselink:hover{border-color:var(--gold)}
+.purselink:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.hubcoin{width:19px;height:19px;flex:none;border-radius:50%;
+  background:radial-gradient(circle at 34% 30%,#FFE27A,#E0A83C 62%,#9C6F1E);
+  border:2px solid #6E4B10;box-shadow:inset -2px -2px 0 rgba(0,0,0,.28)}
+.hubcoin.art{border:0;border-radius:0;box-shadow:none;background-size:contain;
+  background-repeat:no-repeat;background-position:center;image-rendering:pixelated}
+.purselink b{font:800 15px var(--mono);color:var(--gold)}
+.purselink span{font:700 10px var(--mono);letter-spacing:.1em;text-transform:uppercase;
+  color:var(--dim);white-space:nowrap}
+.purselink:hover span{color:var(--paper)}
+
 /* ---- progress report: a grown-up's view, deliberately plainer than the game ---- */
+
 .report{margin:22px 0 0;background:var(--panel-2);border:1px solid var(--line);border-radius:14px}
+
 .report>summary{list-style:none;cursor:pointer;padding:14px 16px;display:flex;
+
   align-items:baseline;gap:10px;font:700 12px var(--mono);letter-spacing:.08em;
+
   text-transform:uppercase;color:var(--paper)}
+
 .report>summary::-webkit-details-marker{display:none}
+
 .report>summary:focus-visible{outline:2px solid var(--grass);outline-offset:-3px;border-radius:14px}
+
 .rep-s{font-weight:600;letter-spacing:.04em;text-transform:none;color:var(--dim)}
+
 .rep-body{padding:0 16px 16px}
+
 .rep-empty{margin:0;color:var(--dim);font-size:13px;line-height:1.5}
+
 .rep-row{border-top:1px solid var(--line);padding:12px 0 10px}
+
 .rep-row:first-child{border-top:0}
+
 .rep-head{display:flex;align-items:baseline;gap:9px;flex-wrap:wrap}
+
 .rep-what{font-weight:700;font-size:14px}
+
 .rep-sub2{font:600 10px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--c)}
+
 .rep-flag{font:700 9px var(--mono);letter-spacing:.1em;text-transform:uppercase;
+
   color:#2A1B10;background:var(--history);border-radius:999px;padding:2px 7px}
+
 .rep-tries{list-style:none;display:flex;flex-wrap:wrap;gap:7px;margin:9px 0 0;padding:0}
+
 .rep-tries li{background:var(--panel);border:1px solid var(--line);border-radius:9px;
+
   padding:5px 9px;min-width:74px}
+
 .rep-tries b{display:block;font:800 13px var(--mono);color:var(--grass)}
+
 .rep-tries li.low b{color:var(--history)}
+
 .rep-tries li.part{border-style:dashed}
+
 .rep-tries small{display:block;font:600 9px var(--mono);letter-spacing:.03em;color:var(--dim);margin-top:1px}
 
+
+
 .ch .t{flex:1;min-width:0;font-size:14.5px;font-weight:600}
+
 .ch .t small{display:block;font:600 10px var(--mono);letter-spacing:.08em;
+
   text-transform:uppercase;color:var(--dim);margin-top:1px}
+
 a.ch .go{flex:none;font:800 11px var(--mono);letter-spacing:.09em;color:var(--c)}
+
 a.ch:hover .t{text-decoration:underline;text-underline-offset:3px}
+
 span.ch{opacity:.42}
+
 span.ch .n{background:transparent;box-shadow:inset 0 0 0 2px var(--line);color:var(--dim)}
+
 span.ch .go{font:600 10px var(--mono);letter-spacing:.09em;color:var(--dim)}
+
 /* a real column, so scores line up down the list as chapters are added */
+
 .stat{flex:none;width:88px;text-align:right;line-height:1.25}
+
 .stat b{display:block;font:800 11px var(--mono);letter-spacing:.05em;color:var(--dim)}
+
 .stat small{display:block;font:600 10px var(--mono);letter-spacing:.03em;color:#6E6A63}
+
 .stat.part b{color:var(--history)}
+
 .stat.all b{color:var(--grass)}
+
 .stat.all small,.stat.part small{color:#8A867E}
+
 @media(max-width:430px){
+
   .stat{width:68px}
+
   a.ch .go,span.ch .go{display:none}
+
 }
 
+
+
 /* ---------- worth another look ---------- */
+
 .again{background:var(--panel);border:3px solid var(--line);border-left:6px solid var(--end);
+
   padding:14px 16px;margin:20px 0 0}
+
 .again h2{margin:0 0 4px;font:700 11px var(--mono);letter-spacing:.18em;
+
   text-transform:uppercase;color:var(--end)}
+
 .again p{margin:0 0 10px;font-size:13px;color:var(--dim)}
+
 .tags{display:flex;flex-wrap:wrap;gap:6px}
+
 .tag{background:#141416;border:2px solid #34343A;padding:4px 9px;
+
   font:700 12.5px var(--mono);color:var(--paper)}
+
 .tag i{font-style:normal;color:var(--heart);margin-left:5px}
 
+
+
 .mine{margin-top:12px;padding-top:11px;border-top:1px solid rgba(255,255,255,.12)}
+
 .minehead{margin:0 0 7px;font:800 10.5px var(--mono);letter-spacing:.13em;
+
   text-transform:uppercase;color:var(--gold)}
+
 .minehead small{display:block;font:600 11px var(--body);letter-spacing:0;
+
   text-transform:none;color:#8C9A95;margin-top:2px}
+
 .ores{display:flex;flex-wrap:wrap;gap:9px}
+
 .ore{display:inline-flex;align-items:center;gap:5px;font:800 12px var(--mono);color:#E8E3D6}
+
 .ore i{width:17px;height:17px;background:var(--ore);border:2px solid rgba(0,0,0,.5);
+
   box-shadow:inset -3px -3px 0 rgba(0,0,0,.32),inset 3px 3px 0 rgba(255,255,255,.2)}
+
 .ore.off{opacity:.3}
+
 .beacon{margin-top:10px;font:600 11.5px var(--body);color:#9FB0AA;line-height:1.5}
+
 .beacon b{font:800 10.5px var(--mono);letter-spacing:.1em;text-transform:uppercase;
+
   color:#C4CFCB}
+
 .beacon small{display:block;color:#7C8A85;margin-top:2px}
+
 .beacon.lit b{color:#40D5D1}
+
 .blocks{display:flex;gap:11px;margin:7px 0 4px}
+
 .blk{display:flex;flex-direction:column;align-items:center;gap:1px}
+
 .blk img{width:34px;height:34px;image-rendering:pixelated;display:block}
+
 .blk.noart::before{content:"";width:30px;height:30px;background:#555;border:2px solid #000}
+
 .blk i{font:800 9.5px var(--mono);font-style:normal;color:#C4CFCB}
+
 .blk.off{opacity:.7} .blk.off i{color:#7C8A85}
+
 .egg{display:flex;align-items:center;gap:9px;margin-top:9px;
+
   font:800 10.5px var(--mono);letter-spacing:.1em;color:#C9A6F0}
+
 .egg img{width:30px;height:30px;image-rendering:pixelated}
+
 footer{margin:30px 0 0;padding-top:16px;border-top:2px solid var(--line);
+
   color:#7C7870;font-size:11.5px;line-height:1.65}
+
 .reset{background:none;border:0;color:#7C7870;font:inherit;text-decoration:underline;
+
   cursor:pointer;padding:0}
+
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
 /* MC-MUTE-CSS: generated by build_theme.py, do not hand-edit */
 /* The sound toggle: a real switch rather than a lettered button, so its state
    reads without being learned. Blocky border, hard inner bevel and the grass
@@ -262,47 +489,95 @@ footer{margin:30px 0 0;padding-top:16px;border-top:2px solid var(--line);
   .mc-sw,.mc-knob{transition:none}
 }
 /* /MC-MUTE-CSS */
+
 </style>
+
 </head>
+
 <body>
 
+
+
 <header class="title">
+
   <div class="wrap"><h1><img class="banner" src="assets/banner.jpg"
+
        alt="STUDY CRAFT &mdash; fifth grade" width="1400" height="418"></h1></div>
+
   <div class="titlebar">
+
     <button id="splash" type="button" aria-label="New splash message"></button>
+
     <p class="rule">Ace a subject's hardest level without losing a heart &mdash; slay the ender dragon</p>
+
   </div>
+
 </header>
 
+
+
 <div class="wrap">
+
   <section class="gear" id="gear" hidden>
-    <h2>Your gear</h2>
+
+    <div class="gearhead">
+      <h2>Your gear</h2>
+      <a class="purselink" href="trophy/index.html">
+        <i class="hubcoin" id="hubcoin"></i><b id="hubcoins">0</b>
+        <span>Trophy room &rsaquo;</span>
+      </a>
+    </div>
+
     <div class="hotbar" id="hotbar"></div>
+
       <div class="mine" id="mine" hidden></div>
+
     <p class="gearline" id="gearline"></p>
+
     <div class="xp"><i id="xpbar" style="width:0%"></i></div>
+
   </section>
 
+
+
   <div id="subjects"></div>
+
   <section class="again" id="again" hidden></section>
 
+
+
   <details class="report" id="report">
+
     <summary><span class="rep-t">Progress report</span><span class="rep-s" id="rep-sub"></span></summary>
+
     <div class="rep-body" id="rep-body"></div>
+
   </details>
 
+
+
   <footer>
+
     Reading passages are reproduced from Core Knowledge materials under CC BY-NC-SA 4.0.
+
     Based on an original work of the Core Knowledge Foundation (coreknowledge.org).
+
     This does not imply that the Core Knowledge Foundation endorses this work.
+
     <br><br>
+
     <button class="reset" id="reset" type="button">Start my gear over</button>
+
   </footer>
+
 </div>
 
+
+
 <script>window.__MC_PREFIX__="assets/";window.__MC_HAS_BOSS__=true;
+
 window.__MC_SFX__={"tool": "data:audio/mpeg;base64,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", "correct": "data:audio/mpeg;base64,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", "wrong": "data:audio/mpeg;base64,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"};</script>
+
 <script>/* ===== Minecraft theme layer — shared source =====
    Built once, injected into every app. Do not edit inside an app's
    index.html; edit theme/mc.js and rebuild, or the four copies drift.
@@ -318,6 +593,7 @@ window.__MC_SFX__={"tool": "data:audio/mpeg;base64,//OAxAAAAAAAAAAAAFhpbmcAAAAPA
      MC.chest(el, pct, {id})                paint the results reveal into el
      MC.bests()                             {id: bestPct} for this app
      MC.mute(on)                            sound off/on, remembered across apps
+     MC.ask(item)                           the wording to ask it in this run
      MC.runs(id)                            every attempt at one activity
      MC.picker(el, items, cur, onPick)       a strip of level chips
      MC.state()                             read-only snapshot (used by the hub)
@@ -351,6 +627,11 @@ window.__MC_SFX__={"tool": "data:audio/mpeg;base64,//OAxAAAAAAAAAAAAFhpbmcAAAAPA
   if (!S.runs || typeof S.runs !== "object") S.runs = {};
   var RUNS_KEPT = 25;
   if (typeof S.mute !== "boolean") S.mute = false;
+  /* Coins. The tools run out and the mine takes a while to open, so there was a
+     long middle stretch where a good run paid nothing. Coins pay on every run,
+     from the first one, scaled to how it went — a floor that never disappears
+     and a ceiling that never arrives. */
+  if (typeof S.coins !== "number" || !isFinite(S.coins)) S.coins = 0;
 
   /* ---------- sound ----------
      Every answer is heard: a coin when he is right, a soft glass note when he
@@ -461,15 +742,43 @@ window.__MC_SFX__={"tool": "data:audio/mpeg;base64,//OAxAAAAAAAAAAAAFhpbmcAAAAPA
     return true;
   }
 
+  /* How many cleared activities each of the first eight tools costs.
+     It used to be one apiece, which was written when the site had about a dozen
+     activities. There are forty now, so the whole hotbar filled inside a
+     fortnight and the next thirty-odd runs paid nothing at all. Spread over a
+     term instead, steeply enough at the start that the first two still arrive
+     the same evening. */
+  var TOOL_GATE = [1, 2, 3, 5, 7, 10, 14, 18];
+
   function clearedCount() {
     var n = 0, k;
     for (k in S.cleared) if (S.cleared[k] >= 75) n++;
     return n;
   }
-  function unlocked() {
-    var n = Math.min(8, clearedCount());
-    return { count: n, nine: !!S.tool9, all9: n >= 8 && !!S.tool9 };
+  /* The ninth tool used to hang on one specific level, spelling:l7. If that
+     level was never set as homework the mine could not open at all — he could
+     clear all forty activities and still be locked out. It now asks for breadth:
+     something cleared in every subject he has work in. That cannot strand him,
+     and it rewards the thing worth rewarding. */
+  function subjectsCleared() {
+    var seen = {}, k;
+    for (k in S.cleared) if (S.cleared[k] >= 75) seen[k.split(":")[0]] = 1;
+    var n = 0, a;
+    for (a in seen) n++;
+    return n;
   }
+  function toolsFrom(n) {
+    var got = 0;
+    for (var i = 0; i < TOOL_GATE.length; i++) if (n >= TOOL_GATE[i]) got = i + 1;
+    return got;
+  }
+  function unlocked() {
+    var n = toolsFrom(clearedCount());
+    var nine = !!S.tool9 || subjectsCleared() >= ELYTRA_SUBJECTS;
+    return { count: n, nine: nine, all9: n >= 8 && nine,
+             cleared: clearedCount(), next: TOOL_GATE[n] || null };
+  }
+  var ELYTRA_SUBJECTS = 5;   // history, science, reading, spelling, vocabulary
   function mineOpen() { return unlocked().all9; }
   function has(slot) { var u = unlocked(); return slot === 9 ? u.nine : slot <= u.count; }
 
@@ -484,8 +793,9 @@ window.__MC_SFX__={"tool": "data:audio/mpeg;base64,//OAxAAAAAAAAAAAAFhpbmcAAAAPA
   var missedHere = {};      // keys missed during this level
   var fixedHere = 0;        // ...and later got right — the comeback count
   var partialRun = false;   // a correction round over just the missed items
-  var hud, heartsEl, barEl, muteEl, lastNew = 0;
+  var hud, heartsEl, barEl, muteEl, purseEl, lastNew = 0;
   var goodN = 0, badN = 0;  // cycle the sprites so it isn't the same one every time
+  var askSeq = 0, askPick = {};   // which wording each question is using this run
 
   /* The sound toggle sits at the top of every page, on its own rather than
      inside the HUD. Two reasons: the HUD lives at the bottom and only appears
@@ -525,6 +835,17 @@ window.__MC_SFX__={"tool": "data:audio/mpeg;base64,//OAxAAAAAAAAAAAAFhpbmcAAAAPA
            ' fill="currentColor">' + cone + waves + slash + '</svg>';
   }
 
+  /* The purse. Deliberately on screen the whole time he is working, because the
+     point of a currency is that it is visibly going up. Falls back to a drawn
+     coin if the sprite is not there yet, so this works before the art lands. */
+  function drawCoins() {
+    if (!purseEl) return;
+    var src = url("coin");
+    purseEl.innerHTML = (src ? '<img class="mc-coin" alt="" src="' + src + '">'
+                             : '<i class="mc-coin mc-coin-fb"></i>') +
+                        '<b>' + S.coins + '</b>';
+  }
+
   function drawMute() {
     if (!muteEl) return;
     muteEl.innerHTML =
@@ -543,9 +864,12 @@ window.__MC_SFX__={"tool": "data:audio/mpeg;base64,//OAxAAAAAAAAAAAAFhpbmcAAAAPA
     hud = document.createElement("div");
     hud.className = "mc-hud";
     hud.id = "mc-hud";
-    hud.innerHTML = '<div class="mc-hearts" id="mc-hearts"></div>' +
+    hud.innerHTML = '<div class="mc-purse" id="mc-purse"></div>' +
+                    '<div class="mc-hearts" id="mc-hearts"></div>' +
                     '<div class="mc-bar" id="mc-bar"></div>';
     document.body.appendChild(hud);
+    purseEl = hud.querySelector("#mc-purse");
+    drawCoins();
     heartsEl = hud.querySelector("#mc-hearts");
     barEl = hud.querySelector("#mc-bar");
     drawBar();
@@ -685,6 +1009,7 @@ window.__MC_SFX__={"tool": "data:audio/mpeg;base64,//OAxAAAAAAAAAAAAFhpbmcAAAAPA
       halves = 20; lastNew = 0;
       missedHere = {}; fixedHere = 0;
       partialRun = !!(opts && opts.partial);
+      askPick = {};              // a new run gets new wordings
       build(); drawHearts(); drawBar(); fit();
     },
 
@@ -776,6 +1101,23 @@ window.__MC_SFX__={"tool": "data:audio/mpeg;base64,//OAxAAAAAAAAAAAAFhpbmcAAAAPA
       var dragon = clean && !partialRun && isBossLevel && ready;
       var portalShut = clean && !partialRun && isBossLevel && !ready;
       if (dragon) { S.dragon++; save(); }
+
+      /* Coins, every run, from the very first one. Finishing at all is worth
+         something — that is the floor, and it is deliberate: a child who had a
+         bad round should still walk away holding more than he arrived with.
+         Everything above the floor is earned. */
+      var coins = 3;
+      if (pct >= 75) coins += 3;
+      if (pct >= 85) coins += 3;
+      if (pct >= 95) coins += 4;
+      if (pct >= 100) coins += 5;
+      if (halves === 20) coins += 5;          // not a heart lost
+      if (fixedHere) coins += 2 * fixedHere;  // fixing a miss pays, and it should
+      if (dragon) coins += 40;
+      if (partialRun) coins = Math.max(2, Math.round(coins / 2));
+      S.coins += coins;
+      save();
+      drawCoins();
 
       /* What the run was worth at the rock face. Coal through gold repeat, so
          there is always something to dig; diamond is once per activity, so a
@@ -972,6 +1314,10 @@ window.__MC_SFX__={"tool": "data:audio/mpeg;base64,//OAxAAAAAAAAAAAAFhpbmcAAAAPA
         tools: u, toolNames: TOOLS,
         ore: JSON.parse(JSON.stringify(S.ore)), oreKinds: ORE,
         mineOpen: mineOpen(), dragons: S.dragon,
+        coins: S.coins,
+        gate: TOOL_GATE, elytraNeeds: ELYTRA_SUBJECTS,
+        subjectsCleared: subjectsCleared(),
+        gems: JSON.parse(JSON.stringify(S.gem)),
         beacon: { needs: BEACON, lit: beaconLit(),
                   blocks: BEACON.map(function (k) { return blocks(k); }) },
         cleared: JSON.parse(JSON.stringify(S.cleared)),
@@ -988,6 +1334,26 @@ window.__MC_SFX__={"tool": "data:audio/mpeg;base64,//OAxAAAAAAAAAAAAFhpbmcAAAAPA
       return (S.runs[key] || []).slice();
     },
 
+    /* The wording to ask a question in.
+
+       An item may carry `qv`, a few phrasings of the same question. One is
+       chosen per run, so a second attempt at the same set does not read like a
+       memory test of the first — but it is fixed for the length of that run, so
+       the review screen shows the wording he was actually asked rather than a
+       third one. Items without `qv` just return `q`.
+
+       Options are already re-shuffled on every render; this is the same idea
+       applied to the stem. */
+    ask: function (it) {
+      if (!it) return "";
+      var v = it.qv;
+      if (!v || !v.length) return it.q;
+      if (it.__mcq === undefined) it.__mcq = ++askSeq;
+      if (askPick[it.__mcq] === undefined)
+        askPick[it.__mcq] = (Math.random() * v.length) | 0;
+      return v[askPick[it.__mcq]];
+    },
+
     /* Sound off/on. Kept in the same saved state as everything else, so the
        choice holds across every app and survives a reload. Call with no
        argument to read it. */
@@ -1001,8 +1367,8 @@ window.__MC_SFX__={"tool": "data:audio/mpeg;base64,//OAxAAAAAAAAAAAAFhpbmcAAAAPA
 
     reset: function () {
       S = { cleared: {}, misses: {}, tool9: false, ore: {}, gem: {}, dragon: 0,
-            runs: {}, mute: S.mute };   // muting is a preference, not progress
-      save(); drawBar();
+            runs: {}, coins: 0, mute: S.mute };  // muting is a preference, not progress
+      save(); drawBar(); drawCoins();
     },
     _relift: lift
   };
@@ -1010,359 +1376,730 @@ window.__MC_SFX__={"tool": "data:audio/mpeg;base64,//OAxAAAAAAAAAAAAFhpbmcAAAAPA
   window.MC = MC;
 })();
 </script>
+
 <script>
+
 MC.config({app:"hub", hud:false});
 
+
+
 /* ---------- splash text ---------- */
+
 const SPLASH = [
+
   "Perfect runs only!","The dragon is watching!","No misses, no lost hearts!",
+
   "The dragon guards the hardest level!","Netherite is still netherite!",
+
   "Wood is where everyone starts!","Fix a miss, earn a badge!",
+
   "Also try Wordly Wise!","100% obsidian!","Diamonds are just rocks that studied!",
+
   "Don't dig straight down!","Watch out for creepers!","The elytra is earnable!",
+
   "No mobs were harmed!","Crafted, not mined!","Every answer is retryable!",
+
   "Hearts refill. Always.","Zero fall damage!","Nine slots to fill!"
+
 ];
+
 const splash = document.getElementById("splash");
+
 let last = -1;
+
 function newSplash(){
+
   let i; do { i = Math.random()*SPLASH.length|0; } while(i===last && SPLASH.length>1);
+
   last = i; splash.textContent = SPLASH[i];
+
 }
+
 splash.addEventListener("click", newSplash);
+
 newSplash();
 
+
+
 /* ---------- subjects ----------
+
    Each chapter lists the activity ids its app records, so the hub shows real
+
    progress. Ids match MC.state().cleared keys, which are "<app>:<id>".
+
    To add a chapter: set its href and its ids. No href shows it as "soon". */
+
 const SUBJECTS = [
+
   { name:"History", ore:"gold", c:"var(--history)", app:"history",
+
     /* chapters may record under different app keys — `app` on a chapter wins */
+
     book:"CKHG Grade 5, Unit 2 — Maya, Aztec, and Inca Civilizations",
+
     chapters:[
+
       { n:1, t:"The Maya: Rainforest Civilization", note:"Hieroglyphic Stairway",
+
         href:"history/g5-maya-ch1/", ids:["set0","set1","set2","set3","set4"] },
+
       { n:2, t:"Maya Science and Daily Life", note:"Wisdom in the Sky",
+
         href:"history/g5-maya-ch2/", app:"history2", ids:["s1","s2","s3"] },
+
       { n:3, t:"The Aztec: Empire Builders", note:"Empire and the Five Suns",
+
         href:"history/g5-maya-ch3/", app:"history3", ids:["s1","s2","s3"] },
+
       { n:4, t:"Tenochtitl\u00e1n: City of Wonder" },
+
       { n:5, t:"The Inca: Lords of the Mountains" },
+
       { n:6, t:"Inca Engineering" },
+
       { n:7, t:"The End of Two Empires" }
+
     ]},
+
   { name:"Science", ore:"diamond", c:"var(--science)", app:"science",
+
     book:"CKSci Grade 5 — Investigating Matter",
+
     chapters:[
+
       { n:1, t:"Properties of Matter", note:"10 questions, about 9 minutes",
+
         href:"science/g5-matter-ch1/", ids:["m1"] },
+
       { n:2, t:"Applying Properties of Matter", note:"7 questions, about 6 minutes",
+
         href:"science/g5-matter-ch2/", app:"science2", ids:["m1"] },
+
       { n:3, t:"Too Small to Be Seen", note:"9 questions, about 8 minutes",
+
         href:"science/g5-matter-ch3/", app:"science3", ids:["m1"] },
+
       { n:4, t:"How Matter Changes", note:"9 questions, about 8 minutes",
+
         href:"science/g5-matter-ch4/", app:"science4", ids:["m1"] },
+
       { n:5, t:"Matter Can Change Chemically" },
+
       { n:6, t:"The Language of Chemistry" }
+
     ]},
+
   /* Reading is a set of stories, not numbered chapters: passages are picked out
+
      of sequence and their page ranges may overlap. Entries are therefore keyed
+
      by `key` — stable and order-independent — and labelled by story and pages.
+
      Array order is display order only; nothing derives identity from it. */
+
   { name:"Reading", ore:"emerald", c:"var(--reading)", app:"reading",
+
     unit:"story",
+
     book:"Core Classics \u2014 Sherlock Holmes, abridged",
+
     chapters:[
+
       { key:"speckled-1-6", story:"A Client at Baker Street", pages:"1\u20136",
+
         note:"6 questions, about 5 minutes",
+
         href:"reading/sherlock-speckled-1a/", app:"reading1a", ids:["m1"] },
+
       { key:"speckled-7-13", story:"The Night Julia Died", pages:"7\u201313",
+
         note:"6 questions, about 5 minutes",
+
         href:"reading/sherlock-speckled-1b/", app:"reading1b", ids:["m1"] },
+
       { key:"speckled-14-23", story:"What the Coroner Found", pages:"14\u201323",
+
         note:"7 questions, about 8 minutes",
+
         href:"reading/sherlock-speckled-1/", ids:["m1"] },
+
       { key:"speckled-24-28", story:"At Stoke Moran", pages:"24\u201328",
+
         note:"6 questions, about 5 minutes",
+
         href:"reading/sherlock-speckled-2/", app:"reading2", ids:["m1"] },
+
       { key:"speckled-29-33", story:"The Doctor\u2019s Room", pages:"29\u201333",
+
         note:"6 questions, about 5 minutes",
+
         href:"reading/sherlock-speckled-3/", app:"reading3", ids:["m1"] },
+
       { key:"speckled-34-39", story:"The Night Watch", pages:"34\u201339",
+
         note:"6 questions, about 5 minutes",
+
         href:"reading/sherlock-speckled-4/", app:"reading4", ids:["m1"] },
+
       { key:"speckled-40-44", story:"The Speckled Band", pages:"40\u201344",
+
         note:"6 questions, about 5 minutes",
+
         href:"reading/sherlock-speckled-5/", app:"reading5", ids:["m1"] },
+
       { key:"redheaded",   story:"The Red-Headed League" },
+
       { key:"engineer",    story:"The Adventure of the Engineer\u2019s Thumb" },
+
       { key:"carbuncle",   story:"The Adventure of the Blue Carbuncle" },
+
       { key:"copperbeech", story:"The Adventure of the Copper Beeches" }
+
     ]},
+
   { name:"Spelling", ore:"redstone", c:"var(--spelling)", app:"spelling",
+
     book:"Weekly spelling lists",
+
     chapters:[
+
       { n:2, t:"List 2 \u2014 Double Consonants", note:"Seven levels",
+
         href:"spelling/list2/", ids:["l1","l2","l3","l4","l5","l6","l7"] },
+
       { n:3, t:"List 3" }, { n:4, t:"List 4" }
+
     ]},
+
   { name:"Vocabulary", ore:"lapis", c:"var(--vocab)", app:"vocabulary",
+
     book:"Wordly Wise 3000, Book 6",
+
     chapters:[
+
       { n:1, t:"Word List 1", note:"All 26 meanings on one sheet",
+
         href:"vocabulary/ww6-lesson1/", ids:["sheet"] },
+
       { n:1, t:"Word List 1 \u2014 Tests", note:"Three forms, then the final",
+
         app:"vocabtest", href:"vocabulary/ww6-lesson1-test/",
+
         ids:["a","b","c","final"] },
+
       { n:2, t:"Word List 2", note:"All 33 meanings on one sheet",
+
         app:"vocabulary2", href:"vocabulary/ww6-lesson2/", ids:["sheet"] },
+
       { n:2, t:"Word List 2 — This week", note:"Warm-up Sunday, then a form a day",
+
         app:"vocabtest2", href:"vocabulary/ww6-lesson2-test/",
+
         ids:["warm","a","b","c","final"] },
+
       { n:2, t:"Word List 2" }, { n:3, t:"Word List 3" }, { n:4, t:"Word List 4" }
+
     ]},
+
   { name:"Math", ore:"copper", c:"var(--math)", app:"math",
+
     book:"Saxon Math, Course 1",
+
     chapters:[ { n:1, t:"Practice sets" } ]}
+
 ];
 
+
+
 const esc = s => String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+
 const S = MC.state();
 
+
+
 /* how many of a chapter's activities are cleared at 75%+, and the best score */
+
 function progress(app, ids){
+
   if(!ids) return null;
+
   let done = 0, best = 0;
+
   ids.forEach(id=>{
+
     const v = S.cleared[app+":"+id];
+
     if(v!=null){ best = Math.max(best,v); if(v>=75) done++; }
+
   });
+
   return {done, of:ids.length, best};
+
 }
+
+
 
 /* One letter where it is unambiguous, two where it is not: Science and Spelling
+
    both begin with S, so they become Sc and Sp. Worked out from the list rather
+
    than hard-coded, so a subject added later cannot collide silently. */
+
 const initial = (() => {
+
   const first = {};
+
   SUBJECTS.forEach(s => { const c = s.name[0].toUpperCase();
+
                           first[c] = (first[c] || 0) + 1; });
+
   const out = {};
+
   SUBJECTS.forEach(s => {
+
     const c = s.name[0].toUpperCase();
+
     out[s.name] = first[c] > 1 ? c + s.name.slice(1, 2).toLowerCase() : c;
+
   });
+
   return n => out[n] || n[0].toUpperCase();
+
 })();
 
+
+
 document.getElementById("subjects").innerHTML = SUBJECTS.map(s=>{
+
   const live = s.chapters.filter(c=>c.href);
+
   return `<details class="subj" style="--c:${s.c}">
+
     <summary>
+
       <span class="sbadge${initial(s.name).length>1?" two":""}">${esc(initial(s.name))}</span>
+
       <span class="stext">
+
         <h2>${esc(s.name)}</h2>
+
         <p class="book">${esc(s.book)}</p>
+
       </span>
+
       <span class="tally">${live.length} of ${s.chapters.length}<small>${esc(s.ore)}</small></span>
+
       <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"
+
            stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+
     </summary>
+
     <div class="inner">
+
     <ol>${s.chapters.map(c=>{
+
       /* A story-unit subject has no chapter number: the badge carries the page
+
          range instead, and the title is the story's name. */
+
       const badge = s.unit==="story"
+
         ? `<span class="n pages">${esc(c.pages||"—")}</span>`
+
         : `<span class="n">${c.n}</span>`;
+
       const label = s.unit==="story" ? esc(c.story) : esc(c.t);
+
       if(!c.href) return `<li><span class="ch">
+
            ${badge}
+
            <span class="t">${label}</span>
+
            <span class="stat"><b>&mdash;</b><small>not built</small></span>
+
            <span class="go">SOON</span></span></li>`;
+
       const p = progress(c.app || s.app, c.ids);
+
       const all = p && p.done===p.of;
+
       const stat = `<span class="stat${all?" all":(p&&p.done?" part":"")}">
+
            <b>${all?"CLEARED":(p?`${p.done} / ${p.of}`:"&mdash;")}</b>
+
            <small>${p&&p.best?`best ${p.best}%`:"not started"}</small></span>`;
+
       /* Name the file rather than the folder. A web server turns a directory
+
          href into its index.html; a file:// browser shows a directory listing
+
          instead, which is what opening the hub by double-click would hit. */
+
       const go = c.href.endsWith("/") ? c.href + "index.html" : c.href;
+
       return `<li><a class="ch" href="${go}">
+
            ${badge}
+
            <span class="t">${label}${c.note?`<small>${esc(c.note)}</small>`:""}</span>
+
            ${stat}
+
            <span class="go">${p&&p.best?"AGAIN &rsaquo;":"START &rsaquo;"}</span></a></li>`;
+
     }).join("")}</ol>
+
     </div>
+
   </details>`;
+
 }).join("");
 
+
+
 /* ---------- progress report ----------
+
    For the grown-up, not the player. `cleared` keeps only the best score, which
+
    is the right thing for the game and the wrong thing for spotting trouble: a
+
    90 followed by two 60s reads as "90" everywhere else on this page. This lists
+
    every attempt in order so the shape of the practice is visible, and marks an
+
    activity for review when the most recent try came in under 75. */
+
 const REVIEW_AT = 75;
+
 const fmtDay = t => { const d = new Date(t);
+
   return d.toLocaleDateString(undefined, {month:"short", day:"numeric"}); };
 
+
+
 function reportRows(){
+
   const rows = [];
+
   SUBJECTS.forEach(s=>s.chapters.filter(c=>c.href && c.ids).forEach(c=>{
+
     const app = c.app || s.app;
+
     c.ids.forEach(id=>{
+
       const runs = (S.runs && S.runs[app+":"+id]) || [];
+
       if(!runs.length) return;
+
       const last = runs[runs.length-1];
+
       rows.push({
+
         subject: s.name, colour: s.c,
+
         what: (s.unit==="story" ? c.story : c.t) + (c.ids.length>1 ? " · "+id : ""),
+
         runs, last, review: last.p < REVIEW_AT
+
       });
+
     });
+
   }));
+
   return rows;
+
 }
+
+
 
 function drawReport(){
+
   const rows = reportRows();
+
   const host = document.getElementById("rep-body");
+
   const sub  = document.getElementById("rep-sub");
+
   if(!rows.length){
+
     sub.textContent = "nothing yet";
+
     host.innerHTML = `<p class="rep-empty">Once he finishes a round, every try shows up here with its score and the date.</p>`;
+
     return;
+
   }
+
   const needing = rows.filter(r=>r.review).length;
+
   sub.textContent = rows.length + (rows.length===1?" activity":" activities")
+
                   + (needing ? " · " + needing + " to review" : "");
+
   host.innerHTML = rows.map(r=>`
+
     <div class="rep-row${r.review?" rev":""}" style="--c:${r.colour}">
+
       <div class="rep-head">
+
         <span class="rep-what">${esc(r.what)}</span>
+
         <span class="rep-sub2">${esc(r.subject)}</span>
+
         ${r.review?`<span class="rep-flag">review</span>`:""}
+
       </div>
+
       <ol class="rep-tries">${r.runs.map((run,i)=>`
+
         <li class="${run.p>=REVIEW_AT?"good":"low"}${run.x?" part":""}">
+
           <b>${run.p}%</b>
+
           <small>try ${i+1} · ${fmtDay(run.t)}${run.x?" · partial":""}</small>
+
         </li>`).join("")}</ol>
+
     </div>`).join("");
+
 }
+
 drawReport();
 
+/* The purse on the hub. The HUD carries one during a level, but the hub has no
+   HUD — so without this the number he is actually collecting was invisible
+   everywhere except mid-question. */
+(function(){
+  const st = MC.state();
+  const el = document.getElementById("hubcoins");
+  if (el) el.textContent = st.coins;
+  const img = st.url("coin"), i = document.getElementById("hubcoin");
+  if (i && img) { i.style.backgroundImage = `url(${img})`; i.classList.add("art"); }
+})();
+
+
+
+
+
+
 /* one subject open at a time — keeps the page short on a phone */
+
 document.querySelectorAll("details.subj").forEach(d=>d.addEventListener("toggle",()=>{
+
   if(d.open) document.querySelectorAll("details.subj").forEach(o=>{ if(o!==d) o.open=false; });
+
 }));
 
+
+
 /* ---------- gear ---------- */
+
 const TOTAL = SUBJECTS.reduce((n,s)=>
+
   n + s.chapters.reduce((m,c)=>m+(c.ids?c.ids.length:0), 0), 0);
 
+
+
 function paintGear(){
+
   const st = MC.state(), u = st.tools;
+
   const cleared = Object.keys(st.cleared).filter(k=>st.cleared[k]>=75).length;
+
   const owned = u.count + (u.nine?1:0);
+
   document.getElementById("gear").hidden = false;
 
+
+
   /* chrome to subtract: .wrap padding 16*2, .gear padding 14*2, border 3*2 = 66.
+
      The old figure was 52, which overflowed the panel at every phone width. */
+
   const room = Math.min(430, innerWidth - 70);
+
   const ss = Math.max(22, Math.min(44, Math.floor(room / 9)));
+
   document.getElementById("hotbar").innerHTML = Array.from({length:9},(_,i)=>{
+
     const n = i+1, on = n===9 ? u.nine : n<=u.count;
+
     return `<button class="slot" data-n="${n}" data-on="${on?1:0}"
+
       style="--ss:${ss}px;background-image:url(${st.url("slot")})"
+
       ${on?`data-name="${esc(st.toolNames[i])}"`:"disabled"}
+
       aria-label="${on?esc(st.toolNames[i]):"empty slot "+n}">
+
       ${on?`<img class="tool" alt="" src="${st.url("tool-"+n)}">`:""}</button>`;
+
   }).join("");
 
+
+
   /* ---- the mine, once the bar is full ---- */
+
   const mineEl = document.getElementById("mine");
+
   if(st.mineOpen){
+
     mineEl.hidden = false;
+
     mineEl.innerHTML =
+
       `<p class="minehead">The mine <small>Tools done. From here it is what you dig.</small></p>
+
        <div class="ores">${st.oreKinds.map(o=>{
+
          const n = st.ore[o.k] || 0;
+
          return `<span class="ore${n?"":" off"}" style="--ore:${o.hex}" title="${esc(o.name)}">
+
            <i></i><b>${n}</b></span>`;
+
        }).join("")}</div>
+
        <div class="beacon${st.beacon.lit?" lit":""}">
+
          <b>${st.beacon.lit?"Beacon lit":"Beacon"}</b>
+
          <span class="blocks">${st.beacon.needs.map((k,i)=>{
+
            const got = st.beacon.blocks[i] >= 1;
+
            return `<span class="blk${got?"":" off"}" title="${esc(k)}">
+
              <img alt="" src="${st.url(got?"block-"+k:"block-locked")}"
+
                   onerror="this.parentNode.classList.add('noart');this.remove()">
+
              <i>${st.beacon.blocks[i]}/1</i></span>`;
+
          }).join("")}</span>
+
          <small>${st.beacon.lit
+
            ? "Iron, gold, diamond and emerald — a block of each."
+
            : "Nine of a mineral makes a block."}</small>
+
        </div>
+
        ${st.dragons>0?`<div class="egg"><img alt="" src="${st.url("dragon-egg")}"
+
           onerror="this.remove()"><span>${st.dragons===1?"One dragon down"
+
           :st.dragons+" dragons down"}</span></div>`:""}`;
+
   } else {
+
     mineEl.hidden = true;
+
   }
+
+
 
   const line = document.getElementById("gearline");
+
   const left = 9 - owned;
+
   const base = owned
+
     ? (st.mineOpen
+
         ? `<b>All 9 tools</b> &middot; <b>${cleared}</b> of ${TOTAL} levels cleared &middot; the mine is open`
+
         : `<b>${owned}</b> of 9 tools &middot; <b>${cleared}</b> of ${TOTAL} levels cleared &middot; `
+
           + `${left === 1 ? "one more tool" : left + " more tools"} and the End opens`)
+
     : `Clear a level to earn your first tool.`;
+
   line.innerHTML = base;
+
   document.getElementById("xpbar").style.width = Math.round(cleared/TOTAL*100)+"%";
 
+
+
   document.querySelectorAll(".slot[data-on='1']").forEach(b=>{
+
     const say = ()=>{ line.innerHTML = `<b>${esc(b.dataset.name)}</b>`; };
+
     const back = ()=>{ line.innerHTML = base; };
+
     b.addEventListener("click", say);
+
     b.addEventListener("mouseenter", say); b.addEventListener("mouseleave", back);
+
     b.addEventListener("focus", say);      b.addEventListener("blur", back);
+
   });
+
 }
+
 paintGear();
+
 addEventListener("resize", paintGear);
 
+
+
 /* ---------- worth another look ---------- */
+
 const missed = [];
+
 Object.keys(S.misses).forEach(app=>{
+
   Object.keys(S.misses[app]).forEach(k=>{
+
     /* show word-shaped keys only — the quiz apps store "m1-3" style item ids */
+
     if(/^[a-zA-Z][a-zA-Z'-]{2,}$/.test(k)) missed.push({k, n:S.misses[app][k]});
+
   });
+
 });
+
 missed.sort((a,b)=>b.n-a.n);
+
 if(missed.length){
+
   const box = document.getElementById("again");
+
   box.hidden = false;
+
   box.innerHTML =
+
     `<h2>Worth another look</h2>
+
      <p>The ones that tripped you up most. Not a punishment \u2014 just where the
+
         next run pays off fastest.</p>
+
      <div class="tags">${missed.slice(0,12).map(m=>
+
         `<span class="tag">${esc(m.k)}${m.n>1?`<i>&times;${m.n}</i>`:""}</span>`).join("")}</div>`;
+
 }
 
+
+
 document.getElementById("reset").addEventListener("click", ()=>{
+
   if(confirm("Clear every tool, score and missed word, and start over from nothing?")){
+
     MC.reset(); location.reload();
+
   }
+
 });
+
 </script>
+
 </body>
+
 </html>
+
