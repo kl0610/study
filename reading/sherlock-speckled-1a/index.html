@@ -690,6 +690,30 @@ html[data-mc-purse="netherite"] .mc-purse b{color:#D8CBE4}
 .mc-heropurse b{font:800 14px var(--mono,monospace);color:var(--gold,#E0A83C)}
 .mc-heropurse .mc-coin{width:15px;height:15px}
 @media (min-width:520px){ .mc-hero{font-size:11px} }
+
+/* ---------- what he has earned, on the figure ----------
+   The armour steps up as the tool set fills: plain cloth, then iron, then gold,
+   then diamond at all nine. Nothing here can be bought. */
+.mc-hero[data-kit="iron"]    .mc-body,.mc-hero[data-kit="iron"]    .mc-arm{background:#B6BBC2}
+.mc-hero[data-kit="iron"]    .mc-leg{background:#8B9099}
+.mc-hero[data-kit="gold"]    .mc-body,.mc-hero[data-kit="gold"]    .mc-arm{background:#DEB244}
+.mc-hero[data-kit="gold"]    .mc-leg{background:#A9822C}
+.mc-hero[data-kit="diamond"] .mc-body,.mc-hero[data-kit="diamond"] .mc-arm{background:#4FC3C7}
+.mc-hero[data-kit="diamond"] .mc-leg{background:#2E8E96}
+/* the hands stay skin whatever the armour is */
+.mc-hero .mc-arm::after{background:#B5825C}
+
+/* the newest tool, held at his side */
+.mc-held{position:absolute;left:7.4em;top:8.4em;width:4.4em;height:4.4em;
+  transform:rotate(18deg);filter:drop-shadow(0 1px 2px rgba(0,0,0,.5))}
+
+/* one mark per dragon, and there is rarely more than one */
+.mc-dragonmark{left:0;top:0.4em;width:2.2em;height:2.2em;border-radius:50%;
+  background:radial-gradient(circle at 35% 32%,#C9A6FF,#5B3A9E 62%,#2A1750);
+  box-shadow:0 0 0 0.25em rgba(0,0,0,.35), 0 0 10px rgba(160,110,255,.7)}
+
+.mc-herokit{font:700 10px var(--mono,monospace);letter-spacing:.06em;
+  color:var(--stone,#8A9490);text-align:center}
 /* MC-SKIN-CSS-END */
 </style>
 <!-- /MC-THEME-CSS -->
@@ -1010,17 +1034,44 @@ window.__MC_SFX__={"tool": "data:audio/mpeg;base64,//OAxAAAAAAAAAAAAFhpbmcAAAAPA
      the shop redraws it there without the page having to ask. */
   var heroHosts = [];
 
+  /* Which armour the figure is wearing is earned, not bought: it steps up as
+     the tool set fills. Nothing is ever taken away, so it only ever improves. */
+  function armourTier() {
+    var u = unlocked();
+    var n = u.count + (u.nine ? 1 : 0);
+    return n >= 9 ? "diamond" : n >= 6 ? "gold" : n >= 3 ? "iron" : "none";
+  }
+
   function heroHTML(title) {
+    var u = unlocked();
+    var tools = u.count + (u.nine ? 1 : 0);
     var cape = S.equip.cape || "none";
-    return '<div class="mc-hero" data-cape="' + cape + '">' +
+    /* Tools come in order, and the ninth is separate — it is the one that
+       wants breadth rather than depth. has() knows the rule; this asks it. */
+    var newest = 0;
+    for (var t = 1; t <= 9; t++) if (has(t)) newest = t;
+    var held = newest ? url("tool-" + newest) : "";
+    var oreTotal = 0;
+    for (var k in S.ore) oreTotal += S.ore[k] || 0;
+
+    var line = tools >= 9
+      ? (S.dragon ? "Every tool, and the dragon" : "Every tool is yours")
+      : tools + " of 9 tools";
+    if (oreTotal) line += " \u00b7 " + oreTotal + " ore";
+
+    return '<div class="mc-hero" data-cape="' + cape + '" data-kit="' + armourTier() + '">' +
              '<div class="mc-heroart">' +
                '<i class="mc-cape"></i>' +
                '<i class="mc-head"><i class="mc-face"></i></i>' +
                '<i class="mc-arm l"></i><i class="mc-arm r"></i>' +
                '<i class="mc-body"></i>' +
                '<i class="mc-leg l"></i><i class="mc-leg r"></i>' +
+               (held ? '<img class="mc-held" alt="" src="' + held +
+                       '" onerror="this.remove()">' : "") +
+               (S.dragon ? '<i class="mc-dragonmark" title="Dragon slain"></i>' : "") +
              '</div>' +
              (title ? '<div class="mc-heroname">' + title + '</div>' : "") +
+             '<div class="mc-herokit mc-hero-kit">' + line + '</div>' +
              '<div class="mc-heropurse">' +
                (url("coin") ? '<img class="mc-coin" alt="" src="' + url("coin") + '">'
                             : '<i class="mc-coin mc-coin-fb"></i>') +
@@ -1286,6 +1337,7 @@ window.__MC_SFX__={"tool": "data:audio/mpeg;base64,//OAxAAAAAAAAAAAAFhpbmcAAAAPA
         lastNew = got || 0;
         if (got) play("tool");             // a new tool is the one thing worth a fanfare
         drawBar();
+        drawHeroes();
       }
 
       var clean = pct >= 100 && halves === 20;

@@ -309,17 +309,44 @@
      the shop redraws it there without the page having to ask. */
   var heroHosts = [];
 
+  /* Which armour the figure is wearing is earned, not bought: it steps up as
+     the tool set fills. Nothing is ever taken away, so it only ever improves. */
+  function armourTier() {
+    var u = unlocked();
+    var n = u.count + (u.nine ? 1 : 0);
+    return n >= 9 ? "diamond" : n >= 6 ? "gold" : n >= 3 ? "iron" : "none";
+  }
+
   function heroHTML(title) {
+    var u = unlocked();
+    var tools = u.count + (u.nine ? 1 : 0);
     var cape = S.equip.cape || "none";
-    return '<div class="mc-hero" data-cape="' + cape + '">' +
+    /* Tools come in order, and the ninth is separate — it is the one that
+       wants breadth rather than depth. has() knows the rule; this asks it. */
+    var newest = 0;
+    for (var t = 1; t <= 9; t++) if (has(t)) newest = t;
+    var held = newest ? url("tool-" + newest) : "";
+    var oreTotal = 0;
+    for (var k in S.ore) oreTotal += S.ore[k] || 0;
+
+    var line = tools >= 9
+      ? (S.dragon ? "Every tool, and the dragon" : "Every tool is yours")
+      : tools + " of 9 tools";
+    if (oreTotal) line += " \u00b7 " + oreTotal + " ore";
+
+    return '<div class="mc-hero" data-cape="' + cape + '" data-kit="' + armourTier() + '">' +
              '<div class="mc-heroart">' +
                '<i class="mc-cape"></i>' +
                '<i class="mc-head"><i class="mc-face"></i></i>' +
                '<i class="mc-arm l"></i><i class="mc-arm r"></i>' +
                '<i class="mc-body"></i>' +
                '<i class="mc-leg l"></i><i class="mc-leg r"></i>' +
+               (held ? '<img class="mc-held" alt="" src="' + held +
+                       '" onerror="this.remove()">' : "") +
+               (S.dragon ? '<i class="mc-dragonmark" title="Dragon slain"></i>' : "") +
              '</div>' +
              (title ? '<div class="mc-heroname">' + title + '</div>' : "") +
+             '<div class="mc-herokit mc-hero-kit">' + line + '</div>' +
              '<div class="mc-heropurse">' +
                (url("coin") ? '<img class="mc-coin" alt="" src="' + url("coin") + '">'
                             : '<i class="mc-coin mc-coin-fb"></i>') +
@@ -585,6 +612,7 @@
         lastNew = got || 0;
         if (got) play("tool");             // a new tool is the one thing worth a fanfare
         drawBar();
+        drawHeroes();
       }
 
       var clean = pct >= 100 && halves === 20;

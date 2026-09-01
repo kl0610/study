@@ -227,6 +227,46 @@ group("the character");
   ok("taking it off redraws it bare", /data-cape="none"/.test(host.innerHTML));
 }
 
+group("the character shows what was earned, not only what was bought");
+{
+  /* The figure first shipped showing purchases alone, so a save with nothing
+     bought was a plain figure holding nothing — which reads as broken rather
+     than as empty. Everything below comes from playing. */
+  const cleared = n => { const c = {}; for (let i = 0; i < n; i++) c["app" + i + ":s"] = 100; return c; };
+  const draw = seed => {
+    const { MC } = fresh(Object.assign({ coins: 0, earned: 0, owned: {}, equip: {},
+                                         ore: {}, gem: {}, dragon: 0, runs: {} }, seed));
+    const host = { innerHTML: "", parentNode: {} };
+    MC.hero(host, "");
+    return host.innerHTML;
+  };
+  const kit = h => (h.match(/data-kit="(\w+)"/) || [])[1];
+
+  ok("a brand new save says so rather than looking unfinished",
+     /0 of 9 tools/.test(draw({})));
+  ok("no armour at the start", kit(draw({})) === "none");
+  ok("iron once three tools are in", kit(draw({ cleared: cleared(3) })) === "iron");
+  ok("gold further along", kit(draw({ cleared: cleared(7) })) === "gold");
+  ok("diamond with the whole set",
+     kit(draw({ cleared: cleared(18), tool9: true })) === "diamond");
+  ok("the newest tool is in his hand", /tool-1/.test(draw({ cleared: cleared(1) })));
+  ok("...and it changes as more are earned", /tool-3/.test(draw({ cleared: cleared(3) })));
+  ok("nothing is held before the first one is earned", !/mc-held/.test(draw({})));
+  ok("ore is counted once there is any",
+     /12 ore/.test(draw({ cleared: cleared(3), ore: { coal: 12 } })));
+  ok("a slain dragon leaves a mark",
+     /mc-dragonmark/.test(draw({ cleared: cleared(18), tool9: true, dragon: 1 })));
+  ok("...and none before that", !/mc-dragonmark/.test(draw({ cleared: cleared(3) })));
+  /* The first version of this looked for an item id containing "gold" and
+     tripped over the gold purse, which is a perfectly legitimate thing to sell.
+     The real rule is that no aisle sells armour and the tier is derived from
+     the tools rather than from anything worn. */
+  ok("no aisle sells armour", !AISLES.some(a => a.slot === "armour"));
+  ok("the tier is worked out from the tool set, not from what is equipped",
+     /function armourTier\(\)[\s\S]{0,220}unlocked\(\)/.test(engine) &&
+     !/function armourTier\(\)[\s\S]{0,220}S\.equip/.test(engine));
+}
+
 group("the three pages that show him");
 {
   for (const [name, rel] of [["the hub", "index.html"],

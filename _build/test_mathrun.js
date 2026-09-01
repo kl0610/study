@@ -67,7 +67,9 @@ function Node(tag, attr) {
       n.kids = pos === "beforeend" ? n.kids.concat(made) : made.concat(n.kids);
       n._html = pos === "beforeend" ? n._html + h : h + n._html;
     },
-    focus() {}, scrollIntoView() {}, click() {
+    focus() {}, scrollIntoView() {}, blur() {},
+    addEventListener() {}, removeEventListener() {},
+    click() {
       if (n.onclick) n.onclick({ preventDefault() {}, stopPropagation() {}, target: n });
     },
     querySelector(s) { return find(n, s)[0] || null; },
