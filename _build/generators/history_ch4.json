@@ -19,7 +19,9 @@
           ],
           "a": 0,
           "why": "Causeway: a raised road built over water to connect islands to a mainland. Three of them joined Tenochtitlán to the shore.",
-          "cite": "Core Vocabulary, Student Reader page 28"
+          "cite": "Core Vocabulary, Student Reader page 28",
+          "p": "island",
+          "hi": "a raised road built over water to connect islands to a mainland"
         },
         {
           "type": "pick",
@@ -32,7 +34,9 @@
           ],
           "a": 1,
           "why": "Canal: a channel dug by people, used by boats or for irrigation. A network of them linked the parts of the city.",
-          "cite": "Core Vocabulary, Student Reader page 28"
+          "cite": "Core Vocabulary, Student Reader page 28",
+          "p": "island",
+          "hi": "a channel dug by people, used by boats or for irrigation"
         },
         {
           "type": "pick",
@@ -45,7 +49,9 @@
           ],
           "a": 1,
           "why": "\"The city was built on an island in the middle of a lake.\" That single fact explains the causeways, the canals and the canoes.",
-          "cite": "Student Reader pages 28–29"
+          "cite": "Student Reader pages 28–29",
+          "p": "island",
+          "hi": "The city was built on an island in the middle of a lake."
         },
         {
           "type": "pick",
@@ -58,7 +64,9 @@
           ],
           "a": 2,
           "why": "\"A population of perhaps two hundred thousand.\" Bigger than almost any European city of the time, which is why the Spanish were so astonished.",
-          "cite": "Student Reader page 28"
+          "cite": "Student Reader page 28",
+          "p": "island",
+          "hi": "its population of perhaps two hundred thousand"
         },
         {
           "type": "pick",
@@ -71,7 +79,9 @@
           ],
           "a": 1,
           "why": "\"The Aztec created these gardens by digging up mud from the bottom of the lake and piling it up in shallow areas.\" They looked like they floated, but they stood on the lake bed.",
-          "cite": "Student Reader page 30"
+          "cite": "Student Reader page 30",
+          "p": "gardens",
+          "hi": "The Aztec created these gardens by digging up mud from the bottom of the lake and piling it up in shallow areas."
         },
         {
           "type": "pick",
@@ -84,7 +94,9 @@
           ],
           "a": 0,
           "why": "\"The Aztec also kept the soil fertile by scooping new mud onto the gardens every year.\" Corn, squash and beans grew in it.",
-          "cite": "Student Reader page 30"
+          "cite": "Student Reader page 30",
+          "p": "gardens",
+          "hi": "The Aztec also kept the soil fertile by scooping new mud onto the gardens every year."
         },
         {
           "type": "pick",
@@ -97,10 +109,20 @@
           ],
           "a": 1,
           "why": "Causeways to cross the water, canals to move through the city, gardens built up out of lake mud — every one is a practical problem solved by building.",
-          "cite": "Student Reader pages 28–30"
+          "cite": "Student Reader pages 28–30",
+          "p": "island",
+          "hi": [
+            "Three wide causeways connected the city to the mainland.",
+            "A network of canals linked different parts of the city."
+          ]
         },
         {
-          "type": "build"
+          "type": "build",
+          "p": "island",
+          "hi": [
+            "The city was built on an island in the middle of a lake.",
+            "Three wide causeways connected the city to the mainland."
+          ]
         }
       ]
     },
@@ -122,7 +144,9 @@
           ],
           "a": 1,
           "why": "Scribe: a person whose job is copying written information. Boys at the nobles' school were trained to become priests and scribes.",
-          "cite": "Core Vocabulary, Student Reader page 31"
+          "cite": "Core Vocabulary, Student Reader page 31",
+          "p": "school",
+          "hi": "a person whose job is copying written information"
         },
         {
           "type": "pick",
@@ -135,7 +159,9 @@
           ],
           "a": 0,
           "why": "Codex: an ancient book with handwritten pages. The Aztec kind was a long strip of tree bark folded like an accordion. More than one is codices.",
-          "cite": "Core Vocabulary, Student Reader page 32"
+          "cite": "Core Vocabulary, Student Reader page 32",
+          "p": "codex",
+          "hi": "an ancient book with handwritten pages or parts"
         },
         {
           "type": "pick",
@@ -148,7 +174,9 @@
           ],
           "a": 0,
           "why": "Pictogram: a picture or drawing that stands for a word or phrase. Codex pages were covered with pictures and pictograms.",
-          "cite": "Core Vocabulary, Student Reader page 32"
+          "cite": "Core Vocabulary, Student Reader page 32",
+          "p": "codex",
+          "hi": "a picture or drawing that stands for a word or phrase"
         },
         {
           "type": "pick",
@@ -161,7 +189,9 @@
           ],
           "a": 1,
           "why": "The priest explains that codices \"are used to keep lists of rulers, to record payments made by conquered people, and to keep track of religious holidays.\"",
-          "cite": "Student Reader page 32"
+          "cite": "Student Reader page 32",
+          "p": "codex",
+          "hi": "are used to keep lists of rulers, to record payments made by conquered people, and to keep track of religious holidays"
         },
         {
           "type": "pick",
@@ -174,7 +204,9 @@
           ],
           "a": 2,
           "why": "\"The teachers in this school are Aztec priests\" — who painted their faces black and performed human sacrifices. They trained boys to become priests and scribes.",
-          "cite": "Student Reader page 31"
+          "cite": "Student Reader page 31",
+          "p": "school",
+          "hi": "You quickly realize that the teachers in this school are Aztec priests."
         },
         {
           "type": "pick",
@@ -187,7 +219,9 @@
           ],
           "a": 1,
           "why": "\"Here, people trade cacao (chocolate) beans and cotton blankets for other items.\" Goods, not coins — the market ran on barter with agreed standards.",
-          "cite": "Student Reader page 32"
+          "cite": "Student Reader page 32",
+          "p": "market",
+          "hi": "Here, people trade cacao (chocolate) beans and cotton blankets for other items."
         },
         {
           "type": "pick",
@@ -200,7 +234,12 @@
           ],
           "a": 1,
           "why": "The reader puts wonder and cruelty side by side on purpose. A city can be a marvel of organisation and still be built on things we would call terrible.",
-          "cite": "Student Reader pages 32–33"
+          "cite": "Student Reader pages 32–33",
+          "p": "market",
+          "hi": [
+            "The sound of thousands of Aztec people trading creates a ruckus that can be heard a mile away.",
+            "One section of the market is set aside for trading enslaved people."
+          ]
         },
         {
           "type": "order",
@@ -213,10 +252,14 @@
             "The ceremonial centre and the Great Temple"
           ],
           "why": "The chapter is written as a tour that moves inward — from the farms on the water, through the houses and schools, to the market, and finally to the temple at the heart of the city.",
-          "cite": "Student Reader pages 30–33"
+          "cite": "Student Reader pages 30–33",
+          "p": "gardens",
+          "hi": "Imagine that you have hopped into a canoe to tour Tenochtitlán as it was in the early 1500s."
         },
         {
-          "type": "build"
+          "type": "build",
+          "p": "market",
+          "hi": "The sound of thousands of Aztec people trading creates a ruckus that can be heard a mile away."
         }
       ]
     },
@@ -238,7 +281,9 @@
           ],
           "a": 0,
           "why": "Litter: a chair attached to two beams and carried on the shoulders of several people. Moctezuma was carried in a fancy one.",
-          "cite": "Core Vocabulary, Student Reader page 34"
+          "cite": "Core Vocabulary, Student Reader page 34",
+          "p": "moctezuma",
+          "hi": "a chair attached to two beams and carried on the shoulders of several people"
         },
         {
           "type": "pick",
@@ -251,7 +296,9 @@
           ],
           "a": 1,
           "why": "Reign: a period of time in which a king or queen rules. The strange events happened during the reign of Moctezuma II.",
-          "cite": "Core Vocabulary, Student Reader page 34"
+          "cite": "Core Vocabulary, Student Reader page 34",
+          "p": "moctezuma",
+          "hi": "a period of time in which a king or queen rules"
         },
         {
           "type": "pick",
@@ -264,7 +311,9 @@
           ],
           "a": 1,
           "why": "\"Almost one hundred yards wide at its base. That's roughly the length of a football field! It rises almost ninety feet in the air.\"",
-          "cite": "Student Reader pages 33–34"
+          "cite": "Student Reader pages 33–34",
+          "p": "temple",
+          "hi": "This massive pyramid is almost one hundred yards wide at its base."
         },
         {
           "type": "pick",
@@ -277,7 +326,9 @@
           ],
           "a": 1,
           "why": "\"Commoners are not allowed to enter.\" The palace had hundreds of rooms and more than a thousand servants.",
-          "cite": "Student Reader page 34"
+          "cite": "Student Reader page 34",
+          "p": "temple",
+          "hi": "You will have to admire the palace from the outside: commoners are not allowed to enter."
         },
         {
           "type": "pick",
@@ -290,7 +341,9 @@
           ],
           "a": 0,
           "why": "\"No one was allowed to look the emperor in the eye. When he entered the room, even the nobles threw themselves face down on the ground.\"",
-          "cite": "Student Reader page 34"
+          "cite": "Student Reader page 34",
+          "p": "moctezuma",
+          "hi": "When he entered the room, even the nobles threw themselves face down on the ground."
         },
         {
           "type": "pick",
@@ -303,7 +356,9 @@
           ],
           "a": 3,
           "why": "The chapter lists a drought, a comet, lightning striking a temple, and rumours of a wailing woman in the streets. No earthquake.",
-          "cite": "Student Reader page 34"
+          "cite": "Student Reader page 34",
+          "p": "omens",
+          "hi": "There was a drought. A comet appeared in the sky. Lightning struck one of the temples in Tenochtitlán."
         },
         {
           "type": "pick",
@@ -316,10 +371,14 @@
           ],
           "a": 1,
           "why": "\"It was coming from across the Atlantic Ocean. Spanish soldiers were sailing from Europe in search of riches and glory.\" That is Chapter 7.",
-          "cite": "Student Reader page 35"
+          "cite": "Student Reader page 35",
+          "p": "omens",
+          "hi": "It was coming from across the Atlantic Ocean."
         },
         {
-          "type": "build"
+          "type": "build",
+          "p": "temple",
+          "hi": "This massive pyramid is almost one hundred yards wide at its base."
         }
       ]
     }
@@ -353,6 +412,133 @@
       }
     ],
     "answer": "Tenochtitlán was an enormous city with many features that let it serve and support its large population — causeways and canals to move through, gardens built out of lake mud to feed it, a market drawing goods from across the empire. It demonstrates the great success and ingenuity of the Aztec, and their skill at building, organising and solving practical problems. The other four tiles are all true, and all from this chapter, but they describe the Aztec rather than answering what the city itself reveals.",
-    "cite": "Teacher Guide, Chapter 4 — key points for the Big Question"
-  }
+    "cite": "Student Reader, pages 28–35",
+    "p": "island"
+  },
+  "passages": {
+    "island": {
+      "title": "A Lakeside Paradise",
+      "cite": "Student Reader, pages 28–29",
+      "text": [
+        "The first Europeans who came to America did not expect to find a great civilization. Imagine how surprised they must have been when they came upon the city of Tenochtitlán, with its towering pyramids and its population of perhaps two hundred thousand.",
+        "Tenochtitlán was more than the heart of a great civilization. It was unlike anything the Europeans had ever seen. The city was built on an island in the middle of a lake. Three wide causeways connected the city to the mainland. A network of canals linked different parts of the city. The Aztec traveled around their capital in canoes.",
+        "Tenochtitlán was built on an island on the waters of Lake Texcoco. It was connected to the mainland by causeways."
+      ],
+      "vocab": [
+        [
+          "causeway",
+          "n.",
+          "a raised road built over water to connect islands to a mainland"
+        ],
+        [
+          "canal",
+          "n.",
+          "a channel dug by people, used by boats or for irrigation"
+        ]
+      ]
+    },
+    "gardens": {
+      "title": "City Tour — the floating gardens",
+      "cite": "Student Reader, page 30",
+      "text": [
+        "Imagine that you have hopped into a canoe to tour Tenochtitlán as it was in the early 1500s. First, you see the “gardens” on raised beds built on Lake Texcoco.",
+        "The Aztec created these gardens by digging up mud from the bottom of the lake and piling it up in shallow areas. Then they shaped the piles into long narrow gardens. The gardens were surrounded by water, so they stayed moist. The Aztec also kept the soil fertile by scooping new mud onto the gardens every year. The rich soil was perfect for growing corn, squash, and beans.",
+        "The gardens that surrounded Tenochtitlán appeared to be floating, but they were really built on the bottom of the shallow waters of Lake Texcoco."
+      ]
+    },
+    "home": {
+      "title": "Aztec Home Life",
+      "cite": "Student Reader, page 30",
+      "text": [
+        "As you glide toward the center of Tenochtitlán, you see Aztec men dressed in loincloths and cloaks. Women wear long skirts, blouses, and ponchos. You also see hundreds of one-room houses with thatched roofs and mud walls.",
+        "Inside one, you meet a girl who is learning to weave from her mother. A few houses away, mothers and daughters are preparing for a wedding feast. During the wedding ceremony, the bride’s blouse will be tied to the groom’s cloak. This tying together is a symbol of the connection between a husband and wife."
+      ]
+    },
+    "school": {
+      "title": "Suburbs and Schools",
+      "cite": "Student Reader, page 31",
+      "text": [
+        "You also visit an Aztec school. There, boys receive moral instruction—rules about the right and wrong way to behave. They also learn military drills. The boys practice with miniature weapons. They throw spears and carry special wooden clubs studded with sharp pieces of a natural glass-like rock.",
+        "A visit to a school for the sons of Aztec nobles turns out to be a hair-raising experience. You quickly realize that the teachers in this school are Aztec priests. You’ve had some tough teachers over the years. But you’ve never had one who painted his face black, did not wash his hair for religious reasons, and performed human sacrifices!",
+        "The priests train their students to become priests and scribes. Students study Aztec religion and astronomy and learn how to read and write Aztec hieroglyphs."
+      ],
+      "vocab": [
+        [
+          "scribe",
+          "n.",
+          "a person whose job is copying written information"
+        ]
+      ]
+    },
+    "codex": {
+      "title": "Keeping records — the codex",
+      "cite": "Student Reader, page 32",
+      "text": [
+        "They also learn how to record information in a special kind of book called a codex. This is a long strip of tree bark that folds up like an accordion. The pages of the codex are covered with pictures and pictograms.",
+        "The priest explains that the codices (/koh*duh*seez/) are used to keep lists of rulers, to record payments made by conquered people, and to keep track of religious holidays."
+      ],
+      "vocab": [
+        [
+          "codex",
+          "n.",
+          "an ancient book with handwritten pages or parts"
+        ],
+        [
+          "pictogram",
+          "n.",
+          "a picture or drawing that stands for a word or phrase"
+        ]
+      ]
+    },
+    "market": {
+      "title": "The Market",
+      "cite": "Student Reader, pages 32–33",
+      "text": [
+        "The next stop on your tour is the central market. Here, people trade cacao (chocolate) beans and cotton blankets for other items. The sound of thousands of Aztec people trading creates a ruckus that can be heard a mile away.",
+        "In one corner of the market, a man is trading rabbits, deer, and small dogs that are bred for food. Across the way a woman displays pottery. You notice all sorts of other goods, including sandals, feathers, seashells, turkeys, wood, corn, bananas, pineapples, honeycombs, and fabrics.",
+        "One section of the market is set aside for trading enslaved people. Here you see human beings with wooden collars around their necks. Noblemen mill around, inspecting them."
+      ]
+    },
+    "temple": {
+      "title": "The Ceremonial Center",
+      "cite": "Student Reader, pages 33–34",
+      "text": [
+        "In the heart of the city is the ceremonial center. Here you find the largest temple in the city, the Great Temple. This massive pyramid is almost one hundred yards wide at its base. That’s roughly the length of a football field! It rises almost ninety feet in the air. The top steps are stained with the blood of human sacrifices.",
+        "Surrounding the Great Temple are several smaller temples. Each of these is dedicated to a different god. Not far from these religious buildings stands the palace of the Aztec emperor. You will have to admire the palace from the outside: commoners are not allowed to enter. The palace has hundreds of rooms and more than a thousand servants."
+      ]
+    },
+    "moctezuma": {
+      "title": "Moctezuma II",
+      "cite": "Student Reader, page 34",
+      "text": [
+        "Moctezuma II (/mawk*te*soo*mah/) (sometimes written as Montezuma) was the Aztec emperor in the early 1500s. In the court of Moctezuma II, no one was allowed to look the emperor in the eye. When he entered the room, even the nobles threw themselves face down on the ground.",
+        "When he left the palace, he was carried in a fancy litter. When Moctezuma wanted to walk, nobles laid mats on the ground so he would not dirty his golden sandals."
+      ],
+      "vocab": [
+        [
+          "litter",
+          "n.",
+          "a chair attached to two beams and carried on the shoulders of several people"
+        ],
+        [
+          "reign",
+          "n.",
+          "a period of time in which a king or queen rules"
+        ]
+      ]
+    },
+    "omens": {
+      "title": "Warnings from the gods?",
+      "cite": "Student Reader, pages 34–35",
+      "text": [
+        "Moctezuma was a powerful leader. But during his reign, some disturbing things were happening. There was a drought. A comet appeared in the sky. Lightning struck one of the temples in Tenochtitlán. Fantastic rumors began to spread. Some people said that a ghostly woman was walking the streets of the capital at night. She wailed, “My children, we must flee far away from this city!”",
+        "The Aztec believed the world might end at any moment. Moctezuma and his priests worried that the strange events might be a warning from the gods. They feared that the end of the world might be near.",
+        "As it turned out, a form of doomsday was coming, but it was not coming from the gods. It was coming from across the Atlantic Ocean. Spanish soldiers were sailing from Europe in search of riches and glory."
+      ]
+    }
+  },
+  "chapter": 4,
+  "note": "/* Every question, answer and excerpt below comes from the CKHG Grade 5 Unit 2\n   Student Reader, Chapter 4 (pp. 28–35). Core Vocabulary for this chapter is\n   causeway, canal, scribe, codex, pictogram, litter and reign — each is tested,\n   and each question about one points at the sidebar box that defines it rather\n   than at a sentence that merely uses the word. The sets follow the chapter's\n   three reading segments, not equal page counts. */",
+  "eyebrow": "CKHG Grade 5 · Unit 2 · Chapter 4 · Student Reader pp. 28–35",
+  "h1": "Tenochtitlán: <em>City of Wonder</em>"
 }

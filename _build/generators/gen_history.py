@@ -98,13 +98,53 @@ def main():
     shell = B.strip_theme(src)
     if shell is None:
         raise SystemExit("could not strip the theme off Chapter 3")
+    # The shell is a previously *patched* chapter, so strip the review layer too
+    # and let build_theme put today's version back on. Otherwise a new chapter
+    # inherits whatever the patch looked like when its predecessor was built.
+    import review
+    shell = review.unpatch(shell)
 
     b, e = data_span(shell)
-    data = {"bigQuestion": spec["bigQuestion"], "sets": spec["sets"], "build": spec["build"]}
+    data = {"bigQuestion": spec["bigQuestion"], "sets": spec["sets"],
+            "build": spec["build"]}
+    # The reading panel needs these; dropping them silently gave a chapter
+    # tagged questions and nothing for the tags to point at.
+    if spec.get("passages"):
+        data["passages"] = spec["passages"]
     out = shell[:b] + json.dumps(data, ensure_ascii=False, indent=1) + shell[e:]
     out = re.sub(r"<title>.*?</title>",
                  "<title>%s</title>" % spec.get("title", "Tenochtitl\u00e1n: City of Wonder"),
                  out, count=1)
+
+    # The shell is the previous chapter's file, so its source comment and its
+    # footer still name that chapter. The title was the only thing being
+    # rewritten, which left Chapter 4 telling the reader it came from Chapter 3.
+    if spec.get("note"):
+        out = re.sub(r"/\* Every question.*?\*/", lambda m: spec["note"], out,
+                     count=1, flags=re.S)
+    # The home page's own heading, which lives in the markup rather than in
+    # DATA. Chapter 4 shipped introducing itself as Chapter 3, under Chapter 3's
+    # Big Question, because <title> was the only heading being rewritten.
+    for field, rx in (("eyebrow", r'<p class="eyebrow">[^<]*</p>'),
+                      ("h1", r"<h1>.*?</h1>")):
+        if spec.get(field):
+            tag = "p class=\"eyebrow\"" if field == "eyebrow" else "h1"
+            shut = "p" if field == "eyebrow" else "h1"
+            out, n = re.subn(rx, "<%s>%s</%s>" % (tag, spec[field], shut),
+                             out, count=1, flags=re.S)
+            if not n:
+                raise SystemExit("the %s is not where it was" % field)
+    # the Big Question is printed under the heading as literal text
+    out, n = re.subn(r'(<div class="bigq"><b>The Big Question</b>\s*\n\s*)[^<]*</div>',
+                     lambda m: m.group(1) + spec["bigQuestion"] + "</div>", out, count=1)
+    if not n:
+        raise SystemExit("the Big Question block is not where it was")
+
+    if spec.get("chapter"):
+        out, n = re.subn(r"(Student Reader(?: and Teacher Guide)?, )Chapter \d+\.",
+                         lambda m: m.group(1) + "Chapter %d." % spec["chapter"], out)
+        if not n:
+            raise SystemExit("the footer no longer names a chapter \u2014 check the shell")
 
     d = os.path.join(ROOT, "history", out_dir)
     os.makedirs(d, exist_ok=True)

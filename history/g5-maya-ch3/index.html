@@ -118,6 +118,145 @@ footer{margin:26px 0 0;padding-top:15px;border-top:1px solid #24403A;
   color:#5F6D69;font-size:11.5px;line-height:1.6}
 .hide{display:none!important}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+/* the reading panel */
+.readbox{position:fixed;inset:0;z-index:80;background:rgba(10,14,13,.72);
+  display:flex;align-items:flex-end;justify-content:center;padding:0}
+.readbox[hidden]{display:none}
+.readinner{background:var(--panel,#F4F1E9);color:var(--ink,#1A211F);
+  width:100%;max-width:660px;max-height:86vh;overflow:auto;
+  padding:18px 18px calc(18px + env(safe-area-inset-bottom));
+  border-top:5px solid var(--jade,#2F8F76);
+  animation:readup .22s ease}
+@keyframes readup{from{transform:translateY(18px);opacity:.4}to{transform:none;opacity:1}}
+@media (min-width:640px){
+  .readbox{align-items:center}
+  .readinner{border:4px solid var(--jade,#2F8F76);max-height:80vh}
+}
+.readhead{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;
+  padding-bottom:10px;border-bottom:2px solid rgba(0,0,0,.12)}
+.readtitle{font:800 17px var(--disp,system-ui);line-height:1.25}
+.readcite{font:600 11px var(--mono,monospace);letter-spacing:.05em;
+  color:var(--stone,#8A9490);margin-top:3px}
+.readx{background:none;border:0;font-size:26px;line-height:1;cursor:pointer;
+  color:var(--stone,#8A9490);padding:0 4px}
+.readx:hover{color:var(--ink,#1A211F)}
+.readbody p{font-size:15.5px;line-height:1.65;margin:12px 0}
+.readbox .btn{width:100%;margin-top:6px}
+
+/* the reading panel */
+.readbox{position:fixed;inset:0;z-index:80;background:rgba(10,14,13,.72);
+  display:flex;align-items:flex-end;justify-content:center;padding:0}
+.readbox[hidden]{display:none}
+.readinner{background:var(--panel,#F4F1E9);color:var(--ink,#1A211F);
+  width:100%;max-width:660px;max-height:86vh;overflow:auto;
+  padding:18px 18px calc(18px + env(safe-area-inset-bottom));
+  border-top:5px solid var(--jade,#2F8F76);
+  animation:readup .22s ease}
+@keyframes readup{from{transform:translateY(18px);opacity:.4}to{transform:none;opacity:1}}
+@media (min-width:640px){
+  .readbox{align-items:center}
+  .readinner{border:4px solid var(--jade,#2F8F76);max-height:80vh}
+}
+.readhead{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;
+  padding-bottom:10px;border-bottom:2px solid rgba(0,0,0,.12)}
+.readtitle{font:800 17px var(--disp,system-ui);line-height:1.25}
+.readcite{font:600 11px var(--mono,monospace);letter-spacing:.05em;
+  color:var(--stone,#8A9490);margin-top:3px}
+.readx{background:none;border:0;font-size:26px;line-height:1;cursor:pointer;
+  color:var(--stone,#8A9490);padding:0 4px}
+.readx:hover{color:var(--ink,#1A211F)}
+.readbody p{font-size:15.5px;line-height:1.65;margin:12px 0}
+.readbox .btn{width:100%;margin-top:6px}
+
+/* the reading panel */
+.readbox{position:fixed;inset:0;z-index:80;background:rgba(10,14,13,.72);
+  display:flex;align-items:flex-end;justify-content:center;padding:0}
+.readbox[hidden]{display:none}
+.readinner{background:var(--panel,#F4F1E9);color:var(--ink,#1A211F);
+  width:100%;max-width:660px;max-height:86vh;overflow:auto;
+  padding:18px 18px calc(18px + env(safe-area-inset-bottom));
+  border-top:5px solid var(--jade,#2F8F76);
+  animation:readup .22s ease}
+@keyframes readup{from{transform:translateY(18px);opacity:.4}to{transform:none;opacity:1}}
+@media (min-width:640px){
+  .readbox{align-items:center}
+  .readinner{border:4px solid var(--jade,#2F8F76);max-height:80vh}
+}
+.readhead{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;
+  padding-bottom:10px;border-bottom:2px solid rgba(0,0,0,.12)}
+.readtitle{font:800 17px var(--disp,system-ui);line-height:1.25}
+.readcite{font:600 11px var(--mono,monospace);letter-spacing:.05em;
+  color:var(--stone,#8A9490);margin-top:3px}
+.readx{background:none;border:0;font-size:26px;line-height:1;cursor:pointer;
+  color:var(--stone,#8A9490);padding:0 4px}
+.readx:hover{color:var(--ink,#1A211F)}
+.readbody p{font-size:15.5px;line-height:1.65;margin:12px 0}
+/* the sentence the question turns on */
+/* the Core Vocabulary sidebar, kept visually apart from the prose the way the
+   Reader keeps it apart on the page */
+.readvocab{margin-top:16px;padding:12px 14px;background:rgba(47,143,118,.09);
+  border-left:4px solid var(--jade,#2F8F76)}
+.vlab{font:800 10px var(--mono,monospace);letter-spacing:.16em;text-transform:uppercase;
+  color:var(--jade,#2F8F76);margin-bottom:6px}
+.readvocab p{margin:6px 0;font-size:14.5px;line-height:1.55}
+.readvocab i{color:var(--stone,#8A9490);font-size:13px}
+.readbody mark.hl,.readvocab mark.hl{background:#FFE9A8;color:inherit;font-weight:600;
+  box-shadow:0 0 0 3px #FFE9A8;border-radius:1px}
+.readbox .btn{width:100%;margin-top:6px}
+
+/* the back / skip row, and the notice that stops a half-finished set */
+.nav{display:flex;align-items:center;justify-content:space-between;gap:10px;
+  margin-top:14px;padding-top:12px;border-top:2px solid rgba(0,0,0,.1)}
+.navb{font:700 12px var(--mono);letter-spacing:.06em;text-transform:uppercase;
+  background:none;border:2px solid currentColor;color:var(--stone);
+  padding:7px 12px;cursor:pointer;border-radius:2px}
+.navb:hover:not([disabled]){color:var(--ink)}
+.navb[disabled]{opacity:.3;cursor:default}
+.navb:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.navpos{font:700 11px var(--mono);letter-spacing:.1em;color:var(--stone)}
+.skipnote{margin:10px 0 0;font-size:14px;line-height:1.6;color:var(--stone)}
+
+/* the reading panel */
+.readbox{position:fixed;inset:0;z-index:80;background:rgba(10,14,13,.72);
+  display:flex;align-items:flex-end;justify-content:center;padding:0}
+.readbox[hidden]{display:none}
+.readinner{background:var(--panel,#F4F1E9);color:var(--ink,#1A211F);
+  width:100%;max-width:660px;max-height:86vh;overflow:auto;
+  padding:18px 18px calc(18px + env(safe-area-inset-bottom));
+  border-top:5px solid var(--jade,#2F8F76);
+  animation:readup .22s ease}
+@keyframes readup{from{transform:translateY(18px);opacity:.4}to{transform:none;opacity:1}}
+@media (min-width:640px){
+  .readbox{align-items:center}
+  .readinner{border:4px solid var(--jade,#2F8F76);max-height:80vh}
+}
+.readhead{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;
+  padding-bottom:10px;border-bottom:2px solid rgba(0,0,0,.12)}
+.readtitle{font:800 17px var(--disp,system-ui);line-height:1.25}
+.readcite{font:600 11px var(--mono,monospace);letter-spacing:.05em;
+  color:var(--stone,#8A9490);margin-top:3px}
+.readx{background:none;border:0;font-size:26px;line-height:1;cursor:pointer;
+  color:var(--stone,#8A9490);padding:0 4px}
+.readx:hover{color:var(--ink,#1A211F)}
+.readbody p{font-size:15.5px;line-height:1.65;margin:12px 0}
+/* the sentence the question turns on */
+/* the Core Vocabulary sidebar, kept visually apart from the prose the way the
+   Reader keeps it apart on the page */
+.readvocab{margin-top:16px;padding:12px 14px;background:rgba(47,143,118,.09);
+  border-left:4px solid var(--jade,#2F8F76)}
+.vlab{font:800 10px var(--mono,monospace);letter-spacing:.16em;text-transform:uppercase;
+  color:var(--jade,#2F8F76);margin-bottom:6px}
+.readvocab p{margin:6px 0;font-size:14.5px;line-height:1.55}
+.readvocab i{color:var(--stone,#8A9490);font-size:13px}
+.readbody mark.hl,.readvocab mark.hl{background:#FFE9A8;color:inherit;font-weight:600;
+  box-shadow:0 0 0 3px #FFE9A8;border-radius:1px}
+.readbook{margin:14px 0 0;padding:10px 12px;border-left:3px solid var(--gold);
+  background:rgba(224,168,60,.09);font-size:13.5px;line-height:1.55;color:var(--stone)}
+.readbox .btn{width:100%;margin-top:6px}
+
+.hublink.back{margin-left:14px;color:var(--stone)}
+.hublink.back[hidden]{display:none}
 </style>
 <!-- MC-THEME-CSS: generated by build_theme.py, do not hand-edit -->
 <style>
@@ -1221,6 +1360,7 @@ window.__MC_SFX__={"tool": "data:audio/mpeg;base64,//OAxAAAAAAAAAAAAFhpbmcAAAAPA
 
 <div class="wrap">
   <a class="hublink" href="../../index.html">&lsaquo; All subjects</a>
+  <a class="hublink back" id="tohome" href="#" hidden></a>
 
   <div id="home">
     <p class="eyebrow">CKHG Grade 5 · Unit 2 · Chapter 3 · Student Reader pp. 20–27</p>
@@ -1297,14 +1437,14 @@ const DATA = {
                 "Guatemala City, in Central America",
                 "Havana, on the island of Cuba"], a:0,
           why:"The Aztec lived in what is today central Mexico, and Tenochtitlán stood where Mexico City stands now. Even today the eagle and serpent from the legend are shown on the flag of Mexico.",
-          cite:"Student Reader, pages 20–22 · Teacher Guide, Chapter 3" },
+          cite:"Student Reader, pages 20–22" },
         { type:"pick", q:"The legend says the Aztec wandered, set up temporary homes, fought off attackers, and survived on snakes and lizards. What does that suggest about their life before Tenochtitlán?",
           opts:["Life as nomads was difficult",
                 "They were already the most powerful people in Mexico",
                 "They had no interest in ever settling down",
                 "They were farmers who moved only between planting seasons"], a:0,
           why:"The legend suggests that the Aztec lived difficult lives as nomads. Wandering, temporary shelter, fighting off attackers and eating whatever could be caught all point the same way.",
-          cite:"Student Reader, page 20 · Teacher Guide, Chapter 3 (inferential)" },
+          cite:"Student Reader, page 20" },
         { type:"build" }
       ]},
 
@@ -1394,7 +1534,7 @@ const DATA = {
                 "Because only the priests were allowed to say what the gods had done",
                 "Because the rain arrived later than the priests had promised"], a:0,
           why:"The word suggests that what were actually natural events or even coincidences could mistakenly be viewed as the results of the sacrifices. Rain falling after a drought is not caused by what happened the day before — but to the Aztec, it looked like proof, and so the offerings were regular and generous.",
-          cite:"Student Reader, page 26 · Teacher Guide, Chapter 3 (inferential)" },
+          cite:"Student Reader, page 26" },
         { type:"pick", q:"Most Aztec people were born into a social class and had little chance to leave it. What was the one real way for a brave man to rise?",
           opts:["Success in battle, which was rewarded with advancement and honour",
                 "Becoming a farmer on the raised gardens of the lake",
@@ -1413,7 +1553,7 @@ const DATA = {
                 "Their emperor was chosen by combat, and their priests forbade trade",
                 "They were under attack from the Spanish, and their crops had failed"], a:0,
           why:"Aztec religion required a steady supply of victims for sacrifice, and war provided one of the few ways for a person to advance socially. These two factors helped encourage warfare. Priests used human sacrifice to please the gods; Aztec soldiers held the empire together and provided the victims for the sacrifices.",
-          cite:"Student Reader, pages 25–26 · Teacher Guide, Chapter 3 (evaluative)" },
+          cite:"Student Reader, pages 25–26" },
         { type:"build" }
       ]}
   ],
@@ -1436,7 +1576,7 @@ const DATA = {
       { t:"Tenochtitlán had between 150,000 and 200,000 residents.", a:false }
     ],
     answer: "The Aztec were strongly affected by their religious beliefs about the influence of the gods in their world. They believed human sacrifices could delay the violent end of the world by giving the sun god the strength to continue. The other four facts are all true — but the first two are about who was sacrificed and why the Aztec fought, and the last two are about the empire, not about why the sacrifices were made at all.",
-    cite: "Student Reader, pages 24–26 · Teacher Guide, Chapter 3 Check for Understanding"
+    cite: "Student Reader, pages 24–26"
   }
 };
 
@@ -1445,6 +1585,7 @@ const esc = s => String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>
 const shuffle = a => { a=a.slice(); for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]];} return a; };
 
 let S=null, idx=0, log=[], tries=0, picked=null, order=[], chosen=new Set();
+let shown=false;
 const best = MC.bests();
 
 function home(){
@@ -1461,29 +1602,43 @@ function home(){
   }).join("");
   [...document.querySelectorAll(".set")].forEach(b=>b.onclick=()=>start(+b.dataset.s));
   $("foot").innerHTML = "Questions, wording and vocabulary are drawn from the CKHG Grade 5 Unit 2 "+
-    "Student Reader and Teacher Guide, Chapter 3.<br>Based on an original work of the Core Knowledge "+
+    "Student Reader, Chapter 3.<br>Based on an original work of the Core Knowledge "+
     "Foundation (coreknowledge.org), used under CC BY-NC-SA 4.0. This does not imply that the Core "+
     "Knowledge Foundation endorses this work.";
   show("home");
 }
-function show(w){ ["home","play","done"].forEach(x=>$(x).classList.toggle("hide",x!==w)); window.scrollTo(0,0); }
+function show(w){
+  ["home","play","done"].forEach(x=>$(x).classList.toggle("hide",x!==w));
+  /* Only offered when there is somewhere to go back to. Wired here rather than
+     once at load, because the label comes from the data and the link has to be
+     hidden again the moment we are home. */
+  const b = $("tohome");
+  if(b){
+    b.textContent = "\u2039 " + (DATA.backLabel || "Back to the sets");
+    b.hidden = (w === "home");
+    b.onclick = e=>{ e.preventDefault(); Object.assign(best, MC.bests()); home(); };
+  }
+  window.scrollTo(0,0);
+}
 
 function start(i){
-  S = DATA.sets[i]; idx=0; log=[];
+  S = DATA.sets[i]; idx=0; log=[]; forceFinish=false; saved=[]; forceFinish=false; forceFinish=false; forceFinish=false;
   MC.begin();
   $("sname").textContent = S.name.toUpperCase() + " · " + S.tag;
   show("play"); render();
 }
 
 function render(){
-  tries=0; picked=null; chosen=new Set();
+  tries=0; picked=null; chosen=new Set(); shown=false;
   $("dots").innerHTML = S.items.map((_,i)=>
     `<span class="dot ${i<idx?"done":i===idx?"now":""}"></span>`).join("");
   const it = S.items[idx];
   const head = `<div class="qnum">Question ${idx+1} of ${S.items.length}</div>`;
-  if(it.type==="pick")  return rPick(it, head);
-  if(it.type==="order") return rOrder(it, head);
-  return rBuild(head);
+  if(it.type==="pick")  rPick(it, head);
+  else if(it.type==="order") rOrder(it, head);
+  else rBuild(head);
+  navBar();
+  restoreState();
 }
 
 /* ---------- multiple choice ---------- */
@@ -1519,8 +1674,13 @@ function rOrder(it, head){
       r.classList.add(ok?"right":"wrong"); if(!ok) wrong++;
     });
     if(!wrong){ $("go").remove(); win(it); }
-    else { setTimeout(()=>document.querySelectorAll(".row").forEach(r=>r.classList.remove("right","wrong")),900);
-           miss(it, wrong===1?"One step is out of place.":wrong+" steps are out of place."); }
+    else {
+      /* First miss flashes the marks and clears them. From the second they stay
+         up, so he can see which rows are already right instead of permuting
+         blindly. */
+      if(tries >= 1) markOrder();
+      else setTimeout(()=>document.querySelectorAll(".row").forEach(r=>r.classList.remove("right","wrong")),900);
+      miss(it, wrong===1?"One step is out of place.":wrong+" steps are out of place."); }
   };
 }
 function drawRows(){
@@ -1552,8 +1712,9 @@ function rBuild(head){
     $("go").textContent = chosen.size===N ? "Build the answer" : `Pick ${N-chosen.size} more`; };
   [...document.querySelectorAll(".tile")].forEach(b=>b.onclick=()=>{
     const i=+b.dataset.i;
-    if(chosen.has(i)){ chosen.delete(i); b.classList.remove("sel"); }
-    else if(chosen.size<N){ chosen.add(i); b.classList.add("sel"); }
+    if(chosen.has(i)){ chosen.delete(i); b.classList.remove("sel","right","wrong"); }
+    else if(chosen.size<N){ chosen.add(i); b.classList.add("sel");
+                            b.classList.remove("right","wrong"); }
     sync();
   });
   sync();
@@ -1568,7 +1729,8 @@ function rBuild(head){
       document.querySelectorAll(".tile").forEach(t=>{ if(!t.classList.contains("right")) t.style.opacity=".35"; });
       $("go").remove(); win({why:B.answer, cite:B.cite}, true);
     } else {
-      setTimeout(()=>document.querySelectorAll(".tile").forEach(t=>{
+      if(tries >= 1) markBuild(tiles);
+      else setTimeout(()=>document.querySelectorAll(".tile").forEach(t=>{
         t.classList.remove("right","wrong"); }),1000);
       miss({why:"Those facts are all true — but only "+word(N)+" of them answer the Big Question.",
             cite:B.cite},
@@ -1578,39 +1740,418 @@ function rBuild(head){
   };
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ---------- review marks ----------
+   Green on what is already right, red on what is not, left on screen from the
+   second miss so a wrong answer says what to change. */
+function markOrder(){
+  document.querySelectorAll(".row").forEach((r,n)=>{
+    r.classList.remove("right","wrong");
+    r.classList.add(order[n].i===n ? "right" : "wrong");
+  });
+}
+function markBuild(tiles){
+  document.querySelectorAll(".tile").forEach(el=>{
+    const i = +el.dataset.i;
+    el.classList.remove("right","wrong");
+    if(chosen.has(i)) el.classList.add(tiles[i].a ? "right" : "wrong");
+  });
+}
+/* Shows the answer outright. Offered only after a third miss, and it scores the
+   question at the floor rather than zero — he still finished it. */
+function revealHistory(it){
+  const cur = S.items[idx];
+  if(cur.type === "order"){
+    order.sort((a,b)=>a.i-b.i); drawRows(); markOrder();
+  } else if(cur.type === "build"){
+    const B = DATA.build;
+    document.querySelectorAll(".tile").forEach(el=>{
+      const t = B.tiles.find(x=>x.t === el.textContent);
+      el.classList.remove("right","wrong","sel");
+      if(t && t.a) el.classList.add("right"); else el.style.opacity=".35";
+    });
+  } else {
+    document.querySelectorAll(".opt").forEach(el=>{
+      if(el.textContent.trim().slice(1).trim() === (cur.opts||[])[cur.a]) el.classList.add("right");
+    });
+  }
+  shown = true;
+}
+
+/* Clears the marks and hands the question back. Offered as soon as a check
+   fails on anything with several parts — the marks show what was wrong, this
+   is how you act on it. */
+function retryHere(){
+  document.querySelectorAll(".tile").forEach(el=>{
+    el.classList.remove("right","wrong","sel"); el.style.opacity="";
+  });
+  document.querySelectorAll(".row").forEach(el=>el.classList.remove("right","wrong"));
+  chosen.clear();
+  const go = $("go");
+  if(go){
+    go.disabled = S.items[idx].type === "build";
+    if(S.items[idx].type === "build"){
+      const N = DATA.build.tiles.filter(t=>t.a).length;
+      go.textContent = "Pick " + N + " more";
+    }
+  }
+  const b = $("retry"); if(b) b.remove();
+  $("fb").innerHTML = "";
+}
+function offerRetry(){
+  const t = S.items[idx].type;
+  if(t !== "order" && t !== "build") return;
+  if($("retry") || shown) return;
+  $("act").insertAdjacentHTML("afterbegin",
+    `<button class="btn o" id="retry">Clear these and try again</button>`);
+  $("retry").onclick = retryHere;
+}
+
+/* ---------- remembering each question ----------
+   render() rebuilds a question from scratch, which was fine when the only way
+   through was forward. With a Back button it meant leaving an answered question
+   and finding it blank on return, as though the work had not happened.
+
+   What is stored is what he did, not which button it was: options are reshuffled
+   on every render, so a saved index would restore the wrong answer. Selections
+   are kept by their text and found again after the shuffle. */
+let saved = [];
+function saveState(fbHTML, won){
+  const it = S.items[idx];
+  const st = { tries, shown, won, fb: fbHTML, type: it.type };
+  if(it.type === "pick"){
+    const sel = document.querySelector(".opt.sel, .opt.right, .opt.wrong");
+    st.pick = sel ? sel.textContent.trim().slice(1).trim() : null;
+  } else if(it.type === "order"){
+    st.order = order.map(o=>o.i);
+  } else {
+    st.tiles = [...chosen].map(i=>{
+      const el = document.querySelector(`.tile[data-i="${i}"]`);
+      return el ? el.textContent : null;
+    }).filter(Boolean);
+  }
+  saved[idx] = st;
+}
+function restoreState(){
+  const st = saved[idx];
+  if(!st) return;                       /* never checked — leave it blank */
+  tries = st.tries; shown = st.shown;
+
+  if(st.type === "pick" && st.pick){
+    document.querySelectorAll(".opt").forEach(el=>{
+      if(el.textContent.trim().slice(1).trim() !== st.pick) return;
+      el.classList.add(st.won ? "right" : "wrong");
+    });
+  } else if(st.type === "order" && st.order){
+    const by = {}; order.forEach(o=>{ by[o.i] = o; });
+    const back = st.order.map(i=>by[i]).filter(Boolean);
+    if(back.length === order.length){ order = back; drawRows(); }
+    if(st.tries >= 1 || st.won) markOrder();
+  } else if(st.type === "build" && st.tiles){
+    document.querySelectorAll(".tile").forEach(el=>{
+      if(st.tiles.indexOf(el.textContent) === -1) return;
+      chosen.add(+el.dataset.i);
+      el.classList.add("sel");
+    });
+    const B = DATA.build, need = B.tiles.filter(t=>t.a).length;
+    if(st.tries >= 1 || st.won){
+      document.querySelectorAll(".tile").forEach(el=>{
+        if(!chosen.has(+el.dataset.i)) return;
+        const t = B.tiles.find(x=>x.t === el.textContent);
+        el.classList.remove("sel");
+        el.classList.add(t && t.a ? "right" : "wrong");
+      });
+    }
+    const g = $("go");
+    if(g){
+      g.disabled = chosen.size !== need;
+      g.textContent = chosen.size === need ? "Build the answer" : `Pick ${need - chosen.size} more`;
+    }
+  }
+
+  if(st.fb) $("fb").innerHTML = st.fb;
+  if(st.won){
+    /* already answered — offer the way onward rather than another check */
+    const last = idx === S.items.length - 1;
+    $("act").innerHTML =
+      `<button class="btn g" id="next">${last ? "See how I did" : "Next question"}</button>`;
+    $("next").onclick = ()=>{
+      if(last) finish(); else { idx++; render(); window.scrollTo(0,0); }
+    };
+  }
+  navBar();
+}
+
+/* ---------- getting about ----------
+   Back and Skip on every question. Until now there was no way past a question
+   except to answer it correctly, which is a wall — and the whole design says a
+   child who is stuck must never hit one. Skipping is not free: an unanswered
+   question scores zero, and finishing stops to say so. */
+let forceFinish = false;
+function navBar(){
+  const card = $("card"); if(!card || !S) return;
+  let nav = document.getElementById("nav");
+  if(!nav){
+    nav = document.createElement("div");
+    nav.id = "nav"; nav.className = "nav";
+    card.appendChild(nav);
+  }
+  const last = idx === S.items.length - 1;
+  const done = !!log[idx];
+  nav.innerHTML =
+    `<button class="navb" id="navback"${idx === 0 ? " disabled" : ""}>&lsaquo; Back</button>` +
+    `<span class="navpos">${idx + 1} of ${S.items.length}</span>` +
+    `<button class="navb" id="navnext">` +
+      (last ? "Finish &rsaquo;" : (done ? "Next &rsaquo;" : "Skip &rsaquo;")) + `</button>`;
+  $("navback").onclick = ()=>{ if(idx > 0){ idx--; render(); window.scrollTo(0,0); } };
+  $("navnext").onclick = ()=>{
+    if(last) finish();
+    else { idx++; render(); window.scrollTo(0,0); }
+  };
+}
+/* Nothing unanswered slips past without being noticed. The button goes to the
+   first gap rather than just naming it, because a child told "question 4" still
+   has to find question 4. */
+function unanswered(){
+  const out = [];
+  for(let i = 0; i < S.items.length; i++) if(!log[i]) out.push(i);
+  return out;
+}
+function skippedNotice(missing){
+  const n = missing.length;
+  $("card").innerHTML =
+    `<div class="qnum">Before you finish</div>
+     <div class="q">${n === 1 ? "One question is still unanswered." :
+                                n + " questions are still unanswered."}</div>
+     <p class="skipnote">Unanswered questions count as zero, so it is worth going back.
+        You can still finish now if you would rather.</p>
+     <div class="act" id="act">
+       <button class="btn p" id="goback">Go to question ${missing[0] + 1}</button>
+       <button class="btn o" id="anyway">Finish anyway</button>
+     </div>`;
+  $("goback").onclick = ()=>{ idx = missing[0]; render(); window.scrollTo(0,0); };
+  $("anyway").onclick = ()=>{ forceFinish = true; finish(); };
+}
+
+/* The reading, in a panel over the question. Offered on the first miss, because
+   the point is to go and read rather than to guess again. Closing it puts the
+   question back exactly as it was. */
+/* Highlights the sentence the question turns on. Opening the passage without
+   pointing at anything just moves the problem: a child who could not answer the
+   question is not obviously better placed to find the answer in four paragraphs
+   of prose. The text is escaped first and the needle escaped the same way, so
+   the match happens on the escaped string and no markup can be injected. */
+function markUp(text, hi){
+  let out = esc(text);
+  const list = Array.isArray(hi) ? hi : (hi ? [hi] : []);
+  list.forEach(h=>{
+    const n = esc(h);
+    if(n && out.indexOf(n) !== -1) out = out.split(n).join('<mark class="hl">' + n + '</mark>');
+  });
+  return out;
+}
+function openReading(key, hi){
+  const P = (DATA.passages || {})[key];
+  if(!P) return;
+  let box = document.getElementById("readbox");
+  if(!box){
+    box = document.createElement("div");
+    box.id = "readbox"; box.className = "readbox";
+    document.body.appendChild(box);
+  }
+  box.innerHTML =
+    `<div class="readinner" role="dialog" aria-modal="true" aria-label="${esc(DATA.readLabel || 'The reading')}">
+       <div class="readhead">
+         <div><div class="readtitle">${esc(P.title)}</div>
+              <div class="readcite">${esc(P.cite)}</div></div>
+         <button class="readx" id="readx" aria-label="Close the reading">&times;</button>
+       </div>
+       <div class="readbody">${P.text.map(t=>`<p>${markUp(t, hi)}</p>`).join("")}</div>
+       ${(P.vocab && P.vocab.length) ? `<div class="readvocab">
+         <div class="vlab">${esc(DATA.vocabLabel || "Vocabulary")}</div>
+         ${P.vocab.map(v=>`<p><b>${esc(v[0])}</b> <i>${esc(v[1])}</i> ${markUp(v[2], hi)}</p>`).join("")}
+       </div>` : ""}
+       ${P.book ? `<p class="readbook">${esc(P.book)}</p>` : ""}
+       <button class="btn p" id="readdone">Got it — back to the question</button>
+     </div>`;
+  box.hidden = false;
+  document.body.style.overflow = "hidden";
+  const shut = ()=>{ box.hidden = true; document.body.style.overflow = ""; };
+  $("readx").onclick = shut;
+  $("readdone").onclick = shut;
+  box.onclick = e=>{ if(e.target === box) shut(); };
+  document.addEventListener("keydown", function esc2(e){
+    if(e.key === "Escape"){ shut(); document.removeEventListener("keydown", esc2); }
+  });
+  const first = box.querySelector("mark.hl");
+  if(first) first.scrollIntoView({block:"center"});
+  $("readdone").focus();
+}
+function offerReading(it){
+  const key = it && it.p;
+  if(!key || !(DATA.passages || {})[key]) return;
+  if($("readbtn")) return;
+  $("act").insertAdjacentHTML("afterbegin",
+    `<button class="btn o" id="readbtn">${esc(DATA.readCta || "Show me the reading")}</button>`);
+  $("readbtn").onclick = ()=>openReading(key, it.hi);
+}
+
 /* ---------- feedback ---------- */
 function miss(it,msg){
   tries++;
   MC.wrong(S.id+"-"+idx);
   $("fb").innerHTML = `<div class="fb no"><strong>Not yet.</strong>${esc(msg)}</div>`;
-  if(tries>=2 && !$("hint")){
-    $("act").insertAdjacentHTML("afterbegin",`<button class="btn o" id="hint">Show me the page</button>`);
-    $("hint").onclick=()=>{
-      $("fb").innerHTML = `<div class="fb no"><strong>From the reader</strong>${esc(it.why)}
-        <cite>${esc(it.cite)}</cite></div>`;
-      $("hint").remove();
+  if(tries >= 3 && !shown && !$("reveal")){
+    $("act").insertAdjacentHTML("afterbegin",
+      `<button class="btn h" id="reveal">Show me the answer</button>`);
+    $("reveal").onclick = ()=>{
+      revealHistory(it); $("reveal").remove();
+      const go = $("go"); if(go) go.remove();
+      $("fb").innerHTML = `<div class="fb no"><strong>Here it is.</strong>${esc(it.why||"")}
+        <cite>${esc(it.cite||"")}</cite>
+        <p class="hintnote">Answer shown \u2014 this question scores 25%. Read it through, then carry on.</p></div>`;
+    };
+  }
+  offerRetry();
+  offerReading(it);
+  saveState($("fb").innerHTML, false);
+  if(tries >= 3 && !shown && !$("reveal")){
+    $("act").insertAdjacentHTML("afterbegin",
+      `<button class="btn h" id="reveal">Show me the answer</button>`);
+    $("reveal").onclick = ()=>{
+      revealHistory(it); $("reveal").remove();
+      const go = $("go"); if(go) go.remove();
+      $("fb").innerHTML = `<div class="fb no"><strong>Here it is.</strong>${esc(it.why||"")}
+        <cite>${esc(it.cite||"")}</cite>
+        <p class="hintnote">Answer shown \u2014 this question scores 25%. Read it through, then carry on.</p></div>`;
+    };
+  }
+  offerRetry();
+  offerReading(it);
+  offerReading(it);
+  offerRetry();
+  if(tries >= 3 && !shown && !$("reveal")){
+    $("act").insertAdjacentHTML("afterbegin",
+      `<button class="btn h" id="reveal">Show me the answer</button>`);
+    $("reveal").onclick = ()=>{
+      revealHistory(it); $("reveal").remove();
+      const go = $("go"); if(go) go.remove();
+      $("fb").innerHTML = `<div class="fb no"><strong>Here it is.</strong>${esc(it.why||"")}
+        <cite>${esc(it.cite||"")}</cite>
+        <p class="hintnote">Answer shown \u2014 this question scores 25%. Read it through, then carry on.</p></div>`;
+    };
+  }
+  offerRetry();
+  if(tries >= 3 && !shown && !$("reveal")){
+    $("act").insertAdjacentHTML("afterbegin",
+      `<button class="btn h" id="reveal">Show me the answer</button>`);
+    $("reveal").onclick = ()=>{
+      revealHistory(it); $("reveal").remove();
+      const go = $("go"); if(go) go.remove();
+      $("fb").innerHTML = `<div class="fb no"><strong>Here it is.</strong>${esc(it.why||"")}
+        <cite>${esc(it.cite||"")}</cite>
+        <p class="hintnote">Answer shown \u2014 this question scores 25%. Read it through, then carry on.</p></div>`;
+    };
+  }
+  offerRetry();
+  if(tries >= 3 && !shown && !$("reveal")){
+    $("act").insertAdjacentHTML("afterbegin",
+      `<button class="btn h" id="reveal">Show me the answer</button>`);
+    $("reveal").onclick = ()=>{
+      revealHistory(it); $("reveal").remove();
+      const go = $("go"); if(go) go.remove();
+      $("fb").innerHTML = `<div class="fb no"><strong>Here it is.</strong>${esc(it.why||"")}
+        <cite>${esc(it.cite||"")}</cite>
+        <p class="hintnote">Answer shown \u2014 this question scores 25%. Read it through, then carry on.</p></div>`;
+    };
+  }
+  offerRetry();
+  if(tries >= 3 && !shown && !$("reveal")){
+    $("act").insertAdjacentHTML("afterbegin",
+      `<button class="btn h" id="reveal">Show me the answer</button>`);
+    $("reveal").onclick = ()=>{
+      revealHistory(it); $("reveal").remove();
+      const go = $("go"); if(go) go.remove();
+      $("fb").innerHTML = `<div class="fb no"><strong>Here it is.</strong>${esc(it.why||"")}
+        <cite>${esc(it.cite||"")}</cite>
+        <p class="hintnote">Answer shown \u2014 this question scores 25%. Read it through, then carry on.</p></div>`;
+    };
+  }
+  if(tries >= 3 && !shown && !$("reveal")){
+    $("act").insertAdjacentHTML("afterbegin",
+      `<button class="btn h" id="reveal">Show me the answer</button>`);
+    $("reveal").onclick = ()=>{
+      revealHistory(it); $("reveal").remove();
+      const go = $("go"); if(go) go.remove();
+      $("fb").innerHTML = `<div class="fb no"><strong>Here it is.</strong>${esc(it.why||"")}
+        <cite>${esc(it.cite||"")}</cite>
+        <p class="hintnote">Answer shown \u2014 this question scores 25%. Read it through, then carry on.</p></div>`;
+    };
+  }
+  if(tries >= 3 && !shown && !$("reveal")){
+    $("act").insertAdjacentHTML("afterbegin",
+      `<button class="btn h" id="reveal">Show me the answer</button>`);
+    $("reveal").onclick = ()=>{
+      revealHistory(it); $("reveal").remove();
+      const go = $("go"); if(go) go.remove();
+      $("fb").innerHTML = `<div class="fb no"><strong>Here it is.</strong>${esc(it.why||"")}
+        <cite>${esc(it.cite||"")}</cite>
+        <p class="hintnote">Answer shown \u2014 this question scores 25%. Read it through, then carry on.</p></div>`;
+    };
+  }
+  if(tries >= 3 && !shown && !$("reveal")){
+    $("act").insertAdjacentHTML("afterbegin",
+      `<button class="btn h" id="reveal">Show me the answer</button>`);
+    $("reveal").onclick = ()=>{
+      revealHistory(it); $("reveal").remove();
+      const go = $("go"); if(go) go.remove();
+      $("fb").innerHTML = `<div class="fb no"><strong>Here it is.</strong>${esc(it.why||"")}
+        <cite>${esc(it.cite||"")}</cite>
+        <p class="hintnote">Answer shown \u2014 this question scores 25%. Read it through, then carry on.</p></div>`;
     };
   }
 }
 function win(it, isBuild){
   MC.right(S.id+"-"+idx);
   const pts = tries===0?100:tries===1?75:tries===2?50:25;
-  log.push({pts,tries});
+  log[idx] = {pts,tries};
   const last = idx===S.items.length-1;
   if(isBuild){
+    const _n = DATA.build.tiles.filter(t=>t.a).length;
+    const _w = ["no","one","two","three","four","five","six","seven","eight"][_n] || String(_n);
+    const _f = DATA.build.figures;
+    const _lead = DATA.build.lead || "The Big Question, answered";
+    const _hit = DATA.build.hit ||
+      `The ${_w} you picked are exactly the ${_w} the Big Question needs.`;
     $("fb").innerHTML = `<div class="fb yes"><strong>That is the answer.</strong>
-      The three you picked are exactly the three the Big Question needs.</div>
+      ${esc(_hit)}</div>
       <div class="reveal">
-        <div class="lead">The Big Question, answered</div>
+        <div class="lead">${esc(_lead)}</div>
         <p>${esc(it.why)}</p>
-        <div class="nums">
-          <div class="num"><b>365.2420</b><span>Maya, by eye</span></div>
-          <div class="num"><b>365.2422</b><span>Modern, by machine</span></div>
-          <div class="num"><b>17 seconds</b><span>Apart, per year</span></div>
-        </div>
-        <p style="margin-top:10px">Seventeen seconds a year. At that rate the Maya calendar would not
-        slip a single day for about <b>five thousand years</b>.</p>
-        <cite style="display:block;font:600 11px var(--mono);color:var(--stone);margin-top:8px">${esc(it.cite)}</cite>
+        ${_f ? `<div class="nums">${_f.nums.map(n=>
+            `<div class="num"><b>${esc(n[0])}</b><span>${esc(n[1])}</span></div>`).join("")}</div>
+          <p style="margin-top:10px">${_f.note}</p>` : ""}
+        ${it.cite ? `<cite style="display:block;font:600 11px var(--mono);color:var(--stone);margin-top:8px">${esc(it.cite)}</cite>` : ""}
       </div>`;
   } else {
     $("fb").innerHTML = `<div class="fb yes"><strong>${tries===0?"Right, first try.":"Got it."}</strong>
@@ -1618,14 +2159,25 @@ function win(it, isBuild){
   }
   $("act").innerHTML = `<button class="btn g" id="next">${last?"See how I did":"Next question"}</button>`;
   $("next").onclick=()=>{ if(last) finish(); else { idx++; render(); window.scrollTo(0,0); } };
+  navBar();
+  saveState($("fb").innerHTML, true);
+  navBar();
+  navBar();
+  navBar();
   $("fb").scrollIntoView({behavior:"smooth",block:"nearest"});
 }
 
 /* ---------- results ---------- */
 function finish(){
-  const pct = Math.round(log.reduce((s,l)=>s+l.pts,0)/log.length);
-  const first = log.filter(l=>l.tries===0).length;
-  const att = log.reduce((s,l)=>s+l.tries,0)+log.length;
+  const missing = unanswered();
+  if(missing.length && !forceFinish){ skippedNotice(missing); return; }
+  forceFinish = false;
+  /* Scored over every question, not only the answered ones — otherwise
+     skipping everything but one easy question would read as 100%. */
+  const done = S.items.map((_,i)=>log[i]).filter(Boolean);
+  const pct = Math.round(done.reduce((s,l)=>s+l.pts,0)/S.items.length);
+  const first = done.filter(l=>l.tries===0).length;
+  const att = done.reduce((s,l)=>s+l.tries,0)+done.length;
   const band = pct>=90?["Sharp work","#2F8F76"]:pct>=75?["Solid","#3D82B8"]
              :pct>=50?["Getting there","#E0A83C"]:["Worth another climb","#C4553F"];
   $("dtag").textContent = S.name.toUpperCase();

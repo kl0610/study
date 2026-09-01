@@ -118,6 +118,145 @@ footer{margin:26px 0 0;padding-top:15px;border-top:1px solid #24403A;
   color:#5F6D69;font-size:11.5px;line-height:1.6}
 .hide{display:none!important}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+/* the reading panel */
+.readbox{position:fixed;inset:0;z-index:80;background:rgba(10,14,13,.72);
+  display:flex;align-items:flex-end;justify-content:center;padding:0}
+.readbox[hidden]{display:none}
+.readinner{background:var(--panel,#F4F1E9);color:var(--ink,#1A211F);
+  width:100%;max-width:660px;max-height:86vh;overflow:auto;
+  padding:18px 18px calc(18px + env(safe-area-inset-bottom));
+  border-top:5px solid var(--jade,#2F8F76);
+  animation:readup .22s ease}
+@keyframes readup{from{transform:translateY(18px);opacity:.4}to{transform:none;opacity:1}}
+@media (min-width:640px){
+  .readbox{align-items:center}
+  .readinner{border:4px solid var(--jade,#2F8F76);max-height:80vh}
+}
+.readhead{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;
+  padding-bottom:10px;border-bottom:2px solid rgba(0,0,0,.12)}
+.readtitle{font:800 17px var(--disp,system-ui);line-height:1.25}
+.readcite{font:600 11px var(--mono,monospace);letter-spacing:.05em;
+  color:var(--stone,#8A9490);margin-top:3px}
+.readx{background:none;border:0;font-size:26px;line-height:1;cursor:pointer;
+  color:var(--stone,#8A9490);padding:0 4px}
+.readx:hover{color:var(--ink,#1A211F)}
+.readbody p{font-size:15.5px;line-height:1.65;margin:12px 0}
+.readbox .btn{width:100%;margin-top:6px}
+
+/* the reading panel */
+.readbox{position:fixed;inset:0;z-index:80;background:rgba(10,14,13,.72);
+  display:flex;align-items:flex-end;justify-content:center;padding:0}
+.readbox[hidden]{display:none}
+.readinner{background:var(--panel,#F4F1E9);color:var(--ink,#1A211F);
+  width:100%;max-width:660px;max-height:86vh;overflow:auto;
+  padding:18px 18px calc(18px + env(safe-area-inset-bottom));
+  border-top:5px solid var(--jade,#2F8F76);
+  animation:readup .22s ease}
+@keyframes readup{from{transform:translateY(18px);opacity:.4}to{transform:none;opacity:1}}
+@media (min-width:640px){
+  .readbox{align-items:center}
+  .readinner{border:4px solid var(--jade,#2F8F76);max-height:80vh}
+}
+.readhead{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;
+  padding-bottom:10px;border-bottom:2px solid rgba(0,0,0,.12)}
+.readtitle{font:800 17px var(--disp,system-ui);line-height:1.25}
+.readcite{font:600 11px var(--mono,monospace);letter-spacing:.05em;
+  color:var(--stone,#8A9490);margin-top:3px}
+.readx{background:none;border:0;font-size:26px;line-height:1;cursor:pointer;
+  color:var(--stone,#8A9490);padding:0 4px}
+.readx:hover{color:var(--ink,#1A211F)}
+.readbody p{font-size:15.5px;line-height:1.65;margin:12px 0}
+.readbox .btn{width:100%;margin-top:6px}
+
+/* the reading panel */
+.readbox{position:fixed;inset:0;z-index:80;background:rgba(10,14,13,.72);
+  display:flex;align-items:flex-end;justify-content:center;padding:0}
+.readbox[hidden]{display:none}
+.readinner{background:var(--panel,#F4F1E9);color:var(--ink,#1A211F);
+  width:100%;max-width:660px;max-height:86vh;overflow:auto;
+  padding:18px 18px calc(18px + env(safe-area-inset-bottom));
+  border-top:5px solid var(--jade,#2F8F76);
+  animation:readup .22s ease}
+@keyframes readup{from{transform:translateY(18px);opacity:.4}to{transform:none;opacity:1}}
+@media (min-width:640px){
+  .readbox{align-items:center}
+  .readinner{border:4px solid var(--jade,#2F8F76);max-height:80vh}
+}
+.readhead{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;
+  padding-bottom:10px;border-bottom:2px solid rgba(0,0,0,.12)}
+.readtitle{font:800 17px var(--disp,system-ui);line-height:1.25}
+.readcite{font:600 11px var(--mono,monospace);letter-spacing:.05em;
+  color:var(--stone,#8A9490);margin-top:3px}
+.readx{background:none;border:0;font-size:26px;line-height:1;cursor:pointer;
+  color:var(--stone,#8A9490);padding:0 4px}
+.readx:hover{color:var(--ink,#1A211F)}
+.readbody p{font-size:15.5px;line-height:1.65;margin:12px 0}
+/* the sentence the question turns on */
+/* the Core Vocabulary sidebar, kept visually apart from the prose the way the
+   Reader keeps it apart on the page */
+.readvocab{margin-top:16px;padding:12px 14px;background:rgba(47,143,118,.09);
+  border-left:4px solid var(--jade,#2F8F76)}
+.vlab{font:800 10px var(--mono,monospace);letter-spacing:.16em;text-transform:uppercase;
+  color:var(--jade,#2F8F76);margin-bottom:6px}
+.readvocab p{margin:6px 0;font-size:14.5px;line-height:1.55}
+.readvocab i{color:var(--stone,#8A9490);font-size:13px}
+.readbody mark.hl,.readvocab mark.hl{background:#FFE9A8;color:inherit;font-weight:600;
+  box-shadow:0 0 0 3px #FFE9A8;border-radius:1px}
+.readbox .btn{width:100%;margin-top:6px}
+
+/* the back / skip row, and the notice that stops a half-finished set */
+.nav{display:flex;align-items:center;justify-content:space-between;gap:10px;
+  margin-top:14px;padding-top:12px;border-top:2px solid rgba(0,0,0,.1)}
+.navb{font:700 12px var(--mono);letter-spacing:.06em;text-transform:uppercase;
+  background:none;border:2px solid currentColor;color:var(--stone);
+  padding:7px 12px;cursor:pointer;border-radius:2px}
+.navb:hover:not([disabled]){color:var(--ink)}
+.navb[disabled]{opacity:.3;cursor:default}
+.navb:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.navpos{font:700 11px var(--mono);letter-spacing:.1em;color:var(--stone)}
+.skipnote{margin:10px 0 0;font-size:14px;line-height:1.6;color:var(--stone)}
+
+/* the reading panel */
+.readbox{position:fixed;inset:0;z-index:80;background:rgba(10,14,13,.72);
+  display:flex;align-items:flex-end;justify-content:center;padding:0}
+.readbox[hidden]{display:none}
+.readinner{background:var(--panel,#F4F1E9);color:var(--ink,#1A211F);
+  width:100%;max-width:660px;max-height:86vh;overflow:auto;
+  padding:18px 18px calc(18px + env(safe-area-inset-bottom));
+  border-top:5px solid var(--jade,#2F8F76);
+  animation:readup .22s ease}
+@keyframes readup{from{transform:translateY(18px);opacity:.4}to{transform:none;opacity:1}}
+@media (min-width:640px){
+  .readbox{align-items:center}
+  .readinner{border:4px solid var(--jade,#2F8F76);max-height:80vh}
+}
+.readhead{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;
+  padding-bottom:10px;border-bottom:2px solid rgba(0,0,0,.12)}
+.readtitle{font:800 17px var(--disp,system-ui);line-height:1.25}
+.readcite{font:600 11px var(--mono,monospace);letter-spacing:.05em;
+  color:var(--stone,#8A9490);margin-top:3px}
+.readx{background:none;border:0;font-size:26px;line-height:1;cursor:pointer;
+  color:var(--stone,#8A9490);padding:0 4px}
+.readx:hover{color:var(--ink,#1A211F)}
+.readbody p{font-size:15.5px;line-height:1.65;margin:12px 0}
+/* the sentence the question turns on */
+/* the Core Vocabulary sidebar, kept visually apart from the prose the way the
+   Reader keeps it apart on the page */
+.readvocab{margin-top:16px;padding:12px 14px;background:rgba(47,143,118,.09);
+  border-left:4px solid var(--jade,#2F8F76)}
+.vlab{font:800 10px var(--mono,monospace);letter-spacing:.16em;text-transform:uppercase;
+  color:var(--jade,#2F8F76);margin-bottom:6px}
+.readvocab p{margin:6px 0;font-size:14.5px;line-height:1.55}
+.readvocab i{color:var(--stone,#8A9490);font-size:13px}
+.readbody mark.hl,.readvocab mark.hl{background:#FFE9A8;color:inherit;font-weight:600;
+  box-shadow:0 0 0 3px #FFE9A8;border-radius:1px}
+.readbook{margin:14px 0 0;padding:10px 12px;border-left:3px solid var(--gold);
+  background:rgba(224,168,60,.09);font-size:13.5px;line-height:1.55;color:var(--stone)}
+.readbox .btn{width:100%;margin-top:6px}
+
+.hublink.back{margin-left:14px;color:var(--stone)}
+.hublink.back[hidden]{display:none}
 </style>
 <!-- MC-THEME-CSS: generated by build_theme.py, do not hand-edit -->
 <style>
@@ -1221,12 +1360,13 @@ window.__MC_SFX__={"tool": "data:audio/mpeg;base64,//OAxAAAAAAAAAAAAFhpbmcAAAAPA
 
 <div class="wrap">
   <a class="hublink" href="../../index.html">&lsaquo; All subjects</a>
+  <a class="hublink back" id="tohome" href="#" hidden></a>
 
   <div id="home">
-    <p class="eyebrow">CKHG Grade 5 · Unit 2 · Chapter 3 · Student Reader pp. 20–27</p>
-    <h1>The Aztec: <em>Empire Builders</em></h1>
+    <p class="eyebrow">CKHG Grade 5 · Unit 2 · Chapter 4 · Student Reader pp. 28–35</p>
+    <h1>Tenochtitlán: <em>City of Wonder</em></h1>
     <div class="bigq"><b>The Big Question</b>
-      Why did the Aztec make human sacrifices?</div>
+      What does the description of Tenochtitlán reveal about the Aztec civilization?</div>
     <div class="grid" id="sets"></div>
     <footer id="foot"></footer>
   </div>
@@ -1245,11 +1385,11 @@ window.__MC_SFX__={"tool": "data:audio/mpeg;base64,//OAxAAAAAAAAAAAAFhpbmcAAAAPA
 
 <script>
 /* Every question, answer and excerpt below comes from the CKHG Grade 5 Unit 2
-   Student Reader, Chapter 3 (pp. 20–27) and the matching Teacher Guide.
-   Core Vocabulary for this chapter is exactly four: Aztec, nomadic, empire,
-   emperor — all four are tested, worded from the Teacher Guide's own
-   definitions. The sets follow the Teacher Guide's own three reading segments,
-   not equal page counts. */
+   Student Reader, Chapter 4 (pp. 28–35). Core Vocabulary for this chapter is
+   causeway, canal, scribe, codex, pictogram, litter and reign — each is tested,
+   and each question about one points at the sidebar box that defines it rather
+   than at a sentence that merely uses the word. The sets follow the chapter's
+   three reading segments, not equal page counts. */
 const DATA = {
  "bigQuestion": "What does the description of Tenochtitlán reveal about the Aztec civilization?",
  "sets": [
@@ -1271,7 +1411,9 @@ const DATA = {
      ],
      "a": 2,
      "why": "Causeway: a raised road built over water to connect islands to a mainland. Three of them joined Tenochtitlán to the shore.",
-     "cite": "Core Vocabulary, Student Reader page 28"
+     "cite": "Core Vocabulary, Student Reader page 28",
+     "p": "island",
+     "hi": "a raised road built over water to connect islands to a mainland"
     },
     {
      "type": "pick",
@@ -1284,7 +1426,9 @@ const DATA = {
      ],
      "a": 1,
      "why": "Canal: a channel dug by people, used by boats or for irrigation. A network of them linked the parts of the city.",
-     "cite": "Core Vocabulary, Student Reader page 28"
+     "cite": "Core Vocabulary, Student Reader page 28",
+     "p": "island",
+     "hi": "a channel dug by people, used by boats or for irrigation"
     },
     {
      "type": "pick",
@@ -1297,7 +1441,9 @@ const DATA = {
      ],
      "a": 3,
      "why": "\"The city was built on an island in the middle of a lake.\" That single fact explains the causeways, the canals and the canoes.",
-     "cite": "Student Reader pages 28–29"
+     "cite": "Student Reader pages 28–29",
+     "p": "island",
+     "hi": "The city was built on an island in the middle of a lake."
     },
     {
      "type": "pick",
@@ -1310,7 +1456,9 @@ const DATA = {
      ],
      "a": 3,
      "why": "\"A population of perhaps two hundred thousand.\" Bigger than almost any European city of the time, which is why the Spanish were so astonished.",
-     "cite": "Student Reader page 28"
+     "cite": "Student Reader page 28",
+     "p": "island",
+     "hi": "its population of perhaps two hundred thousand"
     },
     {
      "type": "pick",
@@ -1323,7 +1471,9 @@ const DATA = {
      ],
      "a": 2,
      "why": "\"The Aztec created these gardens by digging up mud from the bottom of the lake and piling it up in shallow areas.\" They looked like they floated, but they stood on the lake bed.",
-     "cite": "Student Reader page 30"
+     "cite": "Student Reader page 30",
+     "p": "gardens",
+     "hi": "The Aztec created these gardens by digging up mud from the bottom of the lake and piling it up in shallow areas."
     },
     {
      "type": "pick",
@@ -1336,7 +1486,9 @@ const DATA = {
      ],
      "a": 1,
      "why": "\"The Aztec also kept the soil fertile by scooping new mud onto the gardens every year.\" Corn, squash and beans grew in it.",
-     "cite": "Student Reader page 30"
+     "cite": "Student Reader page 30",
+     "p": "gardens",
+     "hi": "The Aztec also kept the soil fertile by scooping new mud onto the gardens every year."
     },
     {
      "type": "pick",
@@ -1349,10 +1501,20 @@ const DATA = {
      ],
      "a": 1,
      "why": "Causeways to cross the water, canals to move through the city, gardens built up out of lake mud — every one is a practical problem solved by building.",
-     "cite": "Student Reader pages 28–30"
+     "cite": "Student Reader pages 28–30",
+     "p": "island",
+     "hi": [
+      "Three wide causeways connected the city to the mainland.",
+      "A network of canals linked different parts of the city."
+     ]
     },
     {
-     "type": "build"
+     "type": "build",
+     "p": "island",
+     "hi": [
+      "The city was built on an island in the middle of a lake.",
+      "Three wide causeways connected the city to the mainland."
+     ]
     }
    ]
   },
@@ -1374,7 +1536,9 @@ const DATA = {
      ],
      "a": 0,
      "why": "Scribe: a person whose job is copying written information. Boys at the nobles' school were trained to become priests and scribes.",
-     "cite": "Core Vocabulary, Student Reader page 31"
+     "cite": "Core Vocabulary, Student Reader page 31",
+     "p": "school",
+     "hi": "a person whose job is copying written information"
     },
     {
      "type": "pick",
@@ -1387,7 +1551,9 @@ const DATA = {
      ],
      "a": 1,
      "why": "Codex: an ancient book with handwritten pages. The Aztec kind was a long strip of tree bark folded like an accordion. More than one is codices.",
-     "cite": "Core Vocabulary, Student Reader page 32"
+     "cite": "Core Vocabulary, Student Reader page 32",
+     "p": "codex",
+     "hi": "an ancient book with handwritten pages or parts"
     },
     {
      "type": "pick",
@@ -1400,7 +1566,9 @@ const DATA = {
      ],
      "a": 3,
      "why": "Pictogram: a picture or drawing that stands for a word or phrase. Codex pages were covered with pictures and pictograms.",
-     "cite": "Core Vocabulary, Student Reader page 32"
+     "cite": "Core Vocabulary, Student Reader page 32",
+     "p": "codex",
+     "hi": "a picture or drawing that stands for a word or phrase"
     },
     {
      "type": "pick",
@@ -1413,7 +1581,9 @@ const DATA = {
      ],
      "a": 1,
      "why": "The priest explains that codices \"are used to keep lists of rulers, to record payments made by conquered people, and to keep track of religious holidays.\"",
-     "cite": "Student Reader page 32"
+     "cite": "Student Reader page 32",
+     "p": "codex",
+     "hi": "are used to keep lists of rulers, to record payments made by conquered people, and to keep track of religious holidays"
     },
     {
      "type": "pick",
@@ -1426,7 +1596,9 @@ const DATA = {
      ],
      "a": 1,
      "why": "\"The teachers in this school are Aztec priests\" — who painted their faces black and performed human sacrifices. They trained boys to become priests and scribes.",
-     "cite": "Student Reader page 31"
+     "cite": "Student Reader page 31",
+     "p": "school",
+     "hi": "You quickly realize that the teachers in this school are Aztec priests."
     },
     {
      "type": "pick",
@@ -1439,7 +1611,9 @@ const DATA = {
      ],
      "a": 1,
      "why": "\"Here, people trade cacao (chocolate) beans and cotton blankets for other items.\" Goods, not coins — the market ran on barter with agreed standards.",
-     "cite": "Student Reader page 32"
+     "cite": "Student Reader page 32",
+     "p": "market",
+     "hi": "Here, people trade cacao (chocolate) beans and cotton blankets for other items."
     },
     {
      "type": "pick",
@@ -1452,7 +1626,12 @@ const DATA = {
      ],
      "a": 3,
      "why": "The reader puts wonder and cruelty side by side on purpose. A city can be a marvel of organisation and still be built on things we would call terrible.",
-     "cite": "Student Reader pages 32–33"
+     "cite": "Student Reader pages 32–33",
+     "p": "market",
+     "hi": [
+      "The sound of thousands of Aztec people trading creates a ruckus that can be heard a mile away.",
+      "One section of the market is set aside for trading enslaved people."
+     ]
     },
     {
      "type": "order",
@@ -1465,10 +1644,14 @@ const DATA = {
       "The ceremonial centre and the Great Temple"
      ],
      "why": "The chapter is written as a tour that moves inward — from the farms on the water, through the houses and schools, to the market, and finally to the temple at the heart of the city.",
-     "cite": "Student Reader pages 30–33"
+     "cite": "Student Reader pages 30–33",
+     "p": "gardens",
+     "hi": "Imagine that you have hopped into a canoe to tour Tenochtitlán as it was in the early 1500s."
     },
     {
-     "type": "build"
+     "type": "build",
+     "p": "market",
+     "hi": "The sound of thousands of Aztec people trading creates a ruckus that can be heard a mile away."
     }
    ]
   },
@@ -1490,7 +1673,9 @@ const DATA = {
      ],
      "a": 2,
      "why": "Litter: a chair attached to two beams and carried on the shoulders of several people. Moctezuma was carried in a fancy one.",
-     "cite": "Core Vocabulary, Student Reader page 34"
+     "cite": "Core Vocabulary, Student Reader page 34",
+     "p": "moctezuma",
+     "hi": "a chair attached to two beams and carried on the shoulders of several people"
     },
     {
      "type": "pick",
@@ -1503,7 +1688,9 @@ const DATA = {
      ],
      "a": 2,
      "why": "Reign: a period of time in which a king or queen rules. The strange events happened during the reign of Moctezuma II.",
-     "cite": "Core Vocabulary, Student Reader page 34"
+     "cite": "Core Vocabulary, Student Reader page 34",
+     "p": "moctezuma",
+     "hi": "a period of time in which a king or queen rules"
     },
     {
      "type": "pick",
@@ -1516,7 +1703,9 @@ const DATA = {
      ],
      "a": 2,
      "why": "\"Almost one hundred yards wide at its base. That's roughly the length of a football field! It rises almost ninety feet in the air.\"",
-     "cite": "Student Reader pages 33–34"
+     "cite": "Student Reader pages 33–34",
+     "p": "temple",
+     "hi": "This massive pyramid is almost one hundred yards wide at its base."
     },
     {
      "type": "pick",
@@ -1529,7 +1718,9 @@ const DATA = {
      ],
      "a": 1,
      "why": "\"Commoners are not allowed to enter.\" The palace had hundreds of rooms and more than a thousand servants.",
-     "cite": "Student Reader page 34"
+     "cite": "Student Reader page 34",
+     "p": "temple",
+     "hi": "You will have to admire the palace from the outside: commoners are not allowed to enter."
     },
     {
      "type": "pick",
@@ -1542,7 +1733,9 @@ const DATA = {
      ],
      "a": 0,
      "why": "\"No one was allowed to look the emperor in the eye. When he entered the room, even the nobles threw themselves face down on the ground.\"",
-     "cite": "Student Reader page 34"
+     "cite": "Student Reader page 34",
+     "p": "moctezuma",
+     "hi": "When he entered the room, even the nobles threw themselves face down on the ground."
     },
     {
      "type": "pick",
@@ -1555,7 +1748,9 @@ const DATA = {
      ],
      "a": 2,
      "why": "The chapter lists a drought, a comet, lightning striking a temple, and rumours of a wailing woman in the streets. No earthquake.",
-     "cite": "Student Reader page 34"
+     "cite": "Student Reader page 34",
+     "p": "omens",
+     "hi": "There was a drought. A comet appeared in the sky. Lightning struck one of the temples in Tenochtitlán."
     },
     {
      "type": "pick",
@@ -1568,10 +1763,14 @@ const DATA = {
      ],
      "a": 3,
      "why": "\"It was coming from across the Atlantic Ocean. Spanish soldiers were sailing from Europe in search of riches and glory.\" That is Chapter 7.",
-     "cite": "Student Reader page 35"
+     "cite": "Student Reader page 35",
+     "p": "omens",
+     "hi": "It was coming from across the Atlantic Ocean."
     },
     {
-     "type": "build"
+     "type": "build",
+     "p": "temple",
+     "hi": "This massive pyramid is almost one hundred yards wide at its base."
     }
    ]
   }
@@ -1605,7 +1804,130 @@ const DATA = {
    }
   ],
   "answer": "Tenochtitlán was an enormous city with many features that let it serve and support its large population — causeways and canals to move through, gardens built out of lake mud to feed it, a market drawing goods from across the empire. It demonstrates the great success and ingenuity of the Aztec, and their skill at building, organising and solving practical problems. The other four tiles are all true, and all from this chapter, but they describe the Aztec rather than answering what the city itself reveals.",
-  "cite": "Teacher Guide, Chapter 4 — key points for the Big Question"
+  "cite": "Student Reader, pages 28–35",
+  "p": "island"
+ },
+ "passages": {
+  "island": {
+   "title": "A Lakeside Paradise",
+   "cite": "Student Reader, pages 28–29",
+   "text": [
+    "The first Europeans who came to America did not expect to find a great civilization. Imagine how surprised they must have been when they came upon the city of Tenochtitlán, with its towering pyramids and its population of perhaps two hundred thousand.",
+    "Tenochtitlán was more than the heart of a great civilization. It was unlike anything the Europeans had ever seen. The city was built on an island in the middle of a lake. Three wide causeways connected the city to the mainland. A network of canals linked different parts of the city. The Aztec traveled around their capital in canoes.",
+    "Tenochtitlán was built on an island on the waters of Lake Texcoco. It was connected to the mainland by causeways."
+   ],
+   "vocab": [
+    [
+     "causeway",
+     "n.",
+     "a raised road built over water to connect islands to a mainland"
+    ],
+    [
+     "canal",
+     "n.",
+     "a channel dug by people, used by boats or for irrigation"
+    ]
+   ]
+  },
+  "gardens": {
+   "title": "City Tour — the floating gardens",
+   "cite": "Student Reader, page 30",
+   "text": [
+    "Imagine that you have hopped into a canoe to tour Tenochtitlán as it was in the early 1500s. First, you see the “gardens” on raised beds built on Lake Texcoco.",
+    "The Aztec created these gardens by digging up mud from the bottom of the lake and piling it up in shallow areas. Then they shaped the piles into long narrow gardens. The gardens were surrounded by water, so they stayed moist. The Aztec also kept the soil fertile by scooping new mud onto the gardens every year. The rich soil was perfect for growing corn, squash, and beans.",
+    "The gardens that surrounded Tenochtitlán appeared to be floating, but they were really built on the bottom of the shallow waters of Lake Texcoco."
+   ]
+  },
+  "home": {
+   "title": "Aztec Home Life",
+   "cite": "Student Reader, page 30",
+   "text": [
+    "As you glide toward the center of Tenochtitlán, you see Aztec men dressed in loincloths and cloaks. Women wear long skirts, blouses, and ponchos. You also see hundreds of one-room houses with thatched roofs and mud walls.",
+    "Inside one, you meet a girl who is learning to weave from her mother. A few houses away, mothers and daughters are preparing for a wedding feast. During the wedding ceremony, the bride’s blouse will be tied to the groom’s cloak. This tying together is a symbol of the connection between a husband and wife."
+   ]
+  },
+  "school": {
+   "title": "Suburbs and Schools",
+   "cite": "Student Reader, page 31",
+   "text": [
+    "You also visit an Aztec school. There, boys receive moral instruction—rules about the right and wrong way to behave. They also learn military drills. The boys practice with miniature weapons. They throw spears and carry special wooden clubs studded with sharp pieces of a natural glass-like rock.",
+    "A visit to a school for the sons of Aztec nobles turns out to be a hair-raising experience. You quickly realize that the teachers in this school are Aztec priests. You’ve had some tough teachers over the years. But you’ve never had one who painted his face black, did not wash his hair for religious reasons, and performed human sacrifices!",
+    "The priests train their students to become priests and scribes. Students study Aztec religion and astronomy and learn how to read and write Aztec hieroglyphs."
+   ],
+   "vocab": [
+    [
+     "scribe",
+     "n.",
+     "a person whose job is copying written information"
+    ]
+   ]
+  },
+  "codex": {
+   "title": "Keeping records — the codex",
+   "cite": "Student Reader, page 32",
+   "text": [
+    "They also learn how to record information in a special kind of book called a codex. This is a long strip of tree bark that folds up like an accordion. The pages of the codex are covered with pictures and pictograms.",
+    "The priest explains that the codices (/koh*duh*seez/) are used to keep lists of rulers, to record payments made by conquered people, and to keep track of religious holidays."
+   ],
+   "vocab": [
+    [
+     "codex",
+     "n.",
+     "an ancient book with handwritten pages or parts"
+    ],
+    [
+     "pictogram",
+     "n.",
+     "a picture or drawing that stands for a word or phrase"
+    ]
+   ]
+  },
+  "market": {
+   "title": "The Market",
+   "cite": "Student Reader, pages 32–33",
+   "text": [
+    "The next stop on your tour is the central market. Here, people trade cacao (chocolate) beans and cotton blankets for other items. The sound of thousands of Aztec people trading creates a ruckus that can be heard a mile away.",
+    "In one corner of the market, a man is trading rabbits, deer, and small dogs that are bred for food. Across the way a woman displays pottery. You notice all sorts of other goods, including sandals, feathers, seashells, turkeys, wood, corn, bananas, pineapples, honeycombs, and fabrics.",
+    "One section of the market is set aside for trading enslaved people. Here you see human beings with wooden collars around their necks. Noblemen mill around, inspecting them."
+   ]
+  },
+  "temple": {
+   "title": "The Ceremonial Center",
+   "cite": "Student Reader, pages 33–34",
+   "text": [
+    "In the heart of the city is the ceremonial center. Here you find the largest temple in the city, the Great Temple. This massive pyramid is almost one hundred yards wide at its base. That’s roughly the length of a football field! It rises almost ninety feet in the air. The top steps are stained with the blood of human sacrifices.",
+    "Surrounding the Great Temple are several smaller temples. Each of these is dedicated to a different god. Not far from these religious buildings stands the palace of the Aztec emperor. You will have to admire the palace from the outside: commoners are not allowed to enter. The palace has hundreds of rooms and more than a thousand servants."
+   ]
+  },
+  "moctezuma": {
+   "title": "Moctezuma II",
+   "cite": "Student Reader, page 34",
+   "text": [
+    "Moctezuma II (/mawk*te*soo*mah/) (sometimes written as Montezuma) was the Aztec emperor in the early 1500s. In the court of Moctezuma II, no one was allowed to look the emperor in the eye. When he entered the room, even the nobles threw themselves face down on the ground.",
+    "When he left the palace, he was carried in a fancy litter. When Moctezuma wanted to walk, nobles laid mats on the ground so he would not dirty his golden sandals."
+   ],
+   "vocab": [
+    [
+     "litter",
+     "n.",
+     "a chair attached to two beams and carried on the shoulders of several people"
+    ],
+    [
+     "reign",
+     "n.",
+     "a period of time in which a king or queen rules"
+    ]
+   ]
+  },
+  "omens": {
+   "title": "Warnings from the gods?",
+   "cite": "Student Reader, pages 34–35",
+   "text": [
+    "Moctezuma was a powerful leader. But during his reign, some disturbing things were happening. There was a drought. A comet appeared in the sky. Lightning struck one of the temples in Tenochtitlán. Fantastic rumors began to spread. Some people said that a ghostly woman was walking the streets of the capital at night. She wailed, “My children, we must flee far away from this city!”",
+    "The Aztec believed the world might end at any moment. Moctezuma and his priests worried that the strange events might be a warning from the gods. They feared that the end of the world might be near.",
+    "As it turned out, a form of doomsday was coming, but it was not coming from the gods. It was coming from across the Atlantic Ocean. Spanish soldiers were sailing from Europe in search of riches and glory."
+   ]
+  }
  }
 };
 
@@ -1614,6 +1936,7 @@ const esc = s => String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>
 const shuffle = a => { a=a.slice(); for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]];} return a; };
 
 let S=null, idx=0, log=[], tries=0, picked=null, order=[], chosen=new Set();
+let shown=false;
 const best = MC.bests();
 
 function home(){
@@ -1630,29 +1953,43 @@ function home(){
   }).join("");
   [...document.querySelectorAll(".set")].forEach(b=>b.onclick=()=>start(+b.dataset.s));
   $("foot").innerHTML = "Questions, wording and vocabulary are drawn from the CKHG Grade 5 Unit 2 "+
-    "Student Reader and Teacher Guide, Chapter 3.<br>Based on an original work of the Core Knowledge "+
+    "Student Reader, Chapter 4.<br>Based on an original work of the Core Knowledge "+
     "Foundation (coreknowledge.org), used under CC BY-NC-SA 4.0. This does not imply that the Core "+
     "Knowledge Foundation endorses this work.";
   show("home");
 }
-function show(w){ ["home","play","done"].forEach(x=>$(x).classList.toggle("hide",x!==w)); window.scrollTo(0,0); }
+function show(w){
+  ["home","play","done"].forEach(x=>$(x).classList.toggle("hide",x!==w));
+  /* Only offered when there is somewhere to go back to. Wired here rather than
+     once at load, because the label comes from the data and the link has to be
+     hidden again the moment we are home. */
+  const b = $("tohome");
+  if(b){
+    b.textContent = "\u2039 " + (DATA.backLabel || "Back to the sets");
+    b.hidden = (w === "home");
+    b.onclick = e=>{ e.preventDefault(); Object.assign(best, MC.bests()); home(); };
+  }
+  window.scrollTo(0,0);
+}
 
 function start(i){
-  S = DATA.sets[i]; idx=0; log=[];
+  S = DATA.sets[i]; idx=0; log=[]; forceFinish=false; saved=[]; forceFinish=false; forceFinish=false; forceFinish=false;
   MC.begin();
   $("sname").textContent = S.name.toUpperCase() + " · " + S.tag;
   show("play"); render();
 }
 
 function render(){
-  tries=0; picked=null; chosen=new Set();
+  tries=0; picked=null; chosen=new Set(); shown=false;
   $("dots").innerHTML = S.items.map((_,i)=>
     `<span class="dot ${i<idx?"done":i===idx?"now":""}"></span>`).join("");
   const it = S.items[idx];
   const head = `<div class="qnum">Question ${idx+1} of ${S.items.length}</div>`;
-  if(it.type==="pick")  return rPick(it, head);
-  if(it.type==="order") return rOrder(it, head);
-  return rBuild(head);
+  if(it.type==="pick")  rPick(it, head);
+  else if(it.type==="order") rOrder(it, head);
+  else rBuild(head);
+  navBar();
+  restoreState();
 }
 
 /* ---------- multiple choice ---------- */
@@ -1688,8 +2025,13 @@ function rOrder(it, head){
       r.classList.add(ok?"right":"wrong"); if(!ok) wrong++;
     });
     if(!wrong){ $("go").remove(); win(it); }
-    else { setTimeout(()=>document.querySelectorAll(".row").forEach(r=>r.classList.remove("right","wrong")),900);
-           miss(it, wrong===1?"One step is out of place.":wrong+" steps are out of place."); }
+    else {
+      /* First miss flashes the marks and clears them. From the second they stay
+         up, so he can see which rows are already right instead of permuting
+         blindly. */
+      if(tries >= 1) markOrder();
+      else setTimeout(()=>document.querySelectorAll(".row").forEach(r=>r.classList.remove("right","wrong")),900);
+      miss(it, wrong===1?"One step is out of place.":wrong+" steps are out of place."); }
   };
 }
 function drawRows(){
@@ -1721,8 +2063,9 @@ function rBuild(head){
     $("go").textContent = chosen.size===N ? "Build the answer" : `Pick ${N-chosen.size} more`; };
   [...document.querySelectorAll(".tile")].forEach(b=>b.onclick=()=>{
     const i=+b.dataset.i;
-    if(chosen.has(i)){ chosen.delete(i); b.classList.remove("sel"); }
-    else if(chosen.size<N){ chosen.add(i); b.classList.add("sel"); }
+    if(chosen.has(i)){ chosen.delete(i); b.classList.remove("sel","right","wrong"); }
+    else if(chosen.size<N){ chosen.add(i); b.classList.add("sel");
+                            b.classList.remove("right","wrong"); }
     sync();
   });
   sync();
@@ -1737,7 +2080,8 @@ function rBuild(head){
       document.querySelectorAll(".tile").forEach(t=>{ if(!t.classList.contains("right")) t.style.opacity=".35"; });
       $("go").remove(); win({why:B.answer, cite:B.cite}, true);
     } else {
-      setTimeout(()=>document.querySelectorAll(".tile").forEach(t=>{
+      if(tries >= 1) markBuild(tiles);
+      else setTimeout(()=>document.querySelectorAll(".tile").forEach(t=>{
         t.classList.remove("right","wrong"); }),1000);
       miss({why:"Those facts are all true — but only "+word(N)+" of them answer the Big Question.",
             cite:B.cite},
@@ -1747,39 +2091,418 @@ function rBuild(head){
   };
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ---------- review marks ----------
+   Green on what is already right, red on what is not, left on screen from the
+   second miss so a wrong answer says what to change. */
+function markOrder(){
+  document.querySelectorAll(".row").forEach((r,n)=>{
+    r.classList.remove("right","wrong");
+    r.classList.add(order[n].i===n ? "right" : "wrong");
+  });
+}
+function markBuild(tiles){
+  document.querySelectorAll(".tile").forEach(el=>{
+    const i = +el.dataset.i;
+    el.classList.remove("right","wrong");
+    if(chosen.has(i)) el.classList.add(tiles[i].a ? "right" : "wrong");
+  });
+}
+/* Shows the answer outright. Offered only after a third miss, and it scores the
+   question at the floor rather than zero — he still finished it. */
+function revealHistory(it){
+  const cur = S.items[idx];
+  if(cur.type === "order"){
+    order.sort((a,b)=>a.i-b.i); drawRows(); markOrder();
+  } else if(cur.type === "build"){
+    const B = DATA.build;
+    document.querySelectorAll(".tile").forEach(el=>{
+      const t = B.tiles.find(x=>x.t === el.textContent);
+      el.classList.remove("right","wrong","sel");
+      if(t && t.a) el.classList.add("right"); else el.style.opacity=".35";
+    });
+  } else {
+    document.querySelectorAll(".opt").forEach(el=>{
+      if(el.textContent.trim().slice(1).trim() === (cur.opts||[])[cur.a]) el.classList.add("right");
+    });
+  }
+  shown = true;
+}
+
+/* Clears the marks and hands the question back. Offered as soon as a check
+   fails on anything with several parts — the marks show what was wrong, this
+   is how you act on it. */
+function retryHere(){
+  document.querySelectorAll(".tile").forEach(el=>{
+    el.classList.remove("right","wrong","sel"); el.style.opacity="";
+  });
+  document.querySelectorAll(".row").forEach(el=>el.classList.remove("right","wrong"));
+  chosen.clear();
+  const go = $("go");
+  if(go){
+    go.disabled = S.items[idx].type === "build";
+    if(S.items[idx].type === "build"){
+      const N = DATA.build.tiles.filter(t=>t.a).length;
+      go.textContent = "Pick " + N + " more";
+    }
+  }
+  const b = $("retry"); if(b) b.remove();
+  $("fb").innerHTML = "";
+}
+function offerRetry(){
+  const t = S.items[idx].type;
+  if(t !== "order" && t !== "build") return;
+  if($("retry") || shown) return;
+  $("act").insertAdjacentHTML("afterbegin",
+    `<button class="btn o" id="retry">Clear these and try again</button>`);
+  $("retry").onclick = retryHere;
+}
+
+/* ---------- remembering each question ----------
+   render() rebuilds a question from scratch, which was fine when the only way
+   through was forward. With a Back button it meant leaving an answered question
+   and finding it blank on return, as though the work had not happened.
+
+   What is stored is what he did, not which button it was: options are reshuffled
+   on every render, so a saved index would restore the wrong answer. Selections
+   are kept by their text and found again after the shuffle. */
+let saved = [];
+function saveState(fbHTML, won){
+  const it = S.items[idx];
+  const st = { tries, shown, won, fb: fbHTML, type: it.type };
+  if(it.type === "pick"){
+    const sel = document.querySelector(".opt.sel, .opt.right, .opt.wrong");
+    st.pick = sel ? sel.textContent.trim().slice(1).trim() : null;
+  } else if(it.type === "order"){
+    st.order = order.map(o=>o.i);
+  } else {
+    st.tiles = [...chosen].map(i=>{
+      const el = document.querySelector(`.tile[data-i="${i}"]`);
+      return el ? el.textContent : null;
+    }).filter(Boolean);
+  }
+  saved[idx] = st;
+}
+function restoreState(){
+  const st = saved[idx];
+  if(!st) return;                       /* never checked — leave it blank */
+  tries = st.tries; shown = st.shown;
+
+  if(st.type === "pick" && st.pick){
+    document.querySelectorAll(".opt").forEach(el=>{
+      if(el.textContent.trim().slice(1).trim() !== st.pick) return;
+      el.classList.add(st.won ? "right" : "wrong");
+    });
+  } else if(st.type === "order" && st.order){
+    const by = {}; order.forEach(o=>{ by[o.i] = o; });
+    const back = st.order.map(i=>by[i]).filter(Boolean);
+    if(back.length === order.length){ order = back; drawRows(); }
+    if(st.tries >= 1 || st.won) markOrder();
+  } else if(st.type === "build" && st.tiles){
+    document.querySelectorAll(".tile").forEach(el=>{
+      if(st.tiles.indexOf(el.textContent) === -1) return;
+      chosen.add(+el.dataset.i);
+      el.classList.add("sel");
+    });
+    const B = DATA.build, need = B.tiles.filter(t=>t.a).length;
+    if(st.tries >= 1 || st.won){
+      document.querySelectorAll(".tile").forEach(el=>{
+        if(!chosen.has(+el.dataset.i)) return;
+        const t = B.tiles.find(x=>x.t === el.textContent);
+        el.classList.remove("sel");
+        el.classList.add(t && t.a ? "right" : "wrong");
+      });
+    }
+    const g = $("go");
+    if(g){
+      g.disabled = chosen.size !== need;
+      g.textContent = chosen.size === need ? "Build the answer" : `Pick ${need - chosen.size} more`;
+    }
+  }
+
+  if(st.fb) $("fb").innerHTML = st.fb;
+  if(st.won){
+    /* already answered — offer the way onward rather than another check */
+    const last = idx === S.items.length - 1;
+    $("act").innerHTML =
+      `<button class="btn g" id="next">${last ? "See how I did" : "Next question"}</button>`;
+    $("next").onclick = ()=>{
+      if(last) finish(); else { idx++; render(); window.scrollTo(0,0); }
+    };
+  }
+  navBar();
+}
+
+/* ---------- getting about ----------
+   Back and Skip on every question. Until now there was no way past a question
+   except to answer it correctly, which is a wall — and the whole design says a
+   child who is stuck must never hit one. Skipping is not free: an unanswered
+   question scores zero, and finishing stops to say so. */
+let forceFinish = false;
+function navBar(){
+  const card = $("card"); if(!card || !S) return;
+  let nav = document.getElementById("nav");
+  if(!nav){
+    nav = document.createElement("div");
+    nav.id = "nav"; nav.className = "nav";
+    card.appendChild(nav);
+  }
+  const last = idx === S.items.length - 1;
+  const done = !!log[idx];
+  nav.innerHTML =
+    `<button class="navb" id="navback"${idx === 0 ? " disabled" : ""}>&lsaquo; Back</button>` +
+    `<span class="navpos">${idx + 1} of ${S.items.length}</span>` +
+    `<button class="navb" id="navnext">` +
+      (last ? "Finish &rsaquo;" : (done ? "Next &rsaquo;" : "Skip &rsaquo;")) + `</button>`;
+  $("navback").onclick = ()=>{ if(idx > 0){ idx--; render(); window.scrollTo(0,0); } };
+  $("navnext").onclick = ()=>{
+    if(last) finish();
+    else { idx++; render(); window.scrollTo(0,0); }
+  };
+}
+/* Nothing unanswered slips past without being noticed. The button goes to the
+   first gap rather than just naming it, because a child told "question 4" still
+   has to find question 4. */
+function unanswered(){
+  const out = [];
+  for(let i = 0; i < S.items.length; i++) if(!log[i]) out.push(i);
+  return out;
+}
+function skippedNotice(missing){
+  const n = missing.length;
+  $("card").innerHTML =
+    `<div class="qnum">Before you finish</div>
+     <div class="q">${n === 1 ? "One question is still unanswered." :
+                                n + " questions are still unanswered."}</div>
+     <p class="skipnote">Unanswered questions count as zero, so it is worth going back.
+        You can still finish now if you would rather.</p>
+     <div class="act" id="act">
+       <button class="btn p" id="goback">Go to question ${missing[0] + 1}</button>
+       <button class="btn o" id="anyway">Finish anyway</button>
+     </div>`;
+  $("goback").onclick = ()=>{ idx = missing[0]; render(); window.scrollTo(0,0); };
+  $("anyway").onclick = ()=>{ forceFinish = true; finish(); };
+}
+
+/* The reading, in a panel over the question. Offered on the first miss, because
+   the point is to go and read rather than to guess again. Closing it puts the
+   question back exactly as it was. */
+/* Highlights the sentence the question turns on. Opening the passage without
+   pointing at anything just moves the problem: a child who could not answer the
+   question is not obviously better placed to find the answer in four paragraphs
+   of prose. The text is escaped first and the needle escaped the same way, so
+   the match happens on the escaped string and no markup can be injected. */
+function markUp(text, hi){
+  let out = esc(text);
+  const list = Array.isArray(hi) ? hi : (hi ? [hi] : []);
+  list.forEach(h=>{
+    const n = esc(h);
+    if(n && out.indexOf(n) !== -1) out = out.split(n).join('<mark class="hl">' + n + '</mark>');
+  });
+  return out;
+}
+function openReading(key, hi){
+  const P = (DATA.passages || {})[key];
+  if(!P) return;
+  let box = document.getElementById("readbox");
+  if(!box){
+    box = document.createElement("div");
+    box.id = "readbox"; box.className = "readbox";
+    document.body.appendChild(box);
+  }
+  box.innerHTML =
+    `<div class="readinner" role="dialog" aria-modal="true" aria-label="${esc(DATA.readLabel || 'The reading')}">
+       <div class="readhead">
+         <div><div class="readtitle">${esc(P.title)}</div>
+              <div class="readcite">${esc(P.cite)}</div></div>
+         <button class="readx" id="readx" aria-label="Close the reading">&times;</button>
+       </div>
+       <div class="readbody">${P.text.map(t=>`<p>${markUp(t, hi)}</p>`).join("")}</div>
+       ${(P.vocab && P.vocab.length) ? `<div class="readvocab">
+         <div class="vlab">${esc(DATA.vocabLabel || "Vocabulary")}</div>
+         ${P.vocab.map(v=>`<p><b>${esc(v[0])}</b> <i>${esc(v[1])}</i> ${markUp(v[2], hi)}</p>`).join("")}
+       </div>` : ""}
+       ${P.book ? `<p class="readbook">${esc(P.book)}</p>` : ""}
+       <button class="btn p" id="readdone">Got it — back to the question</button>
+     </div>`;
+  box.hidden = false;
+  document.body.style.overflow = "hidden";
+  const shut = ()=>{ box.hidden = true; document.body.style.overflow = ""; };
+  $("readx").onclick = shut;
+  $("readdone").onclick = shut;
+  box.onclick = e=>{ if(e.target === box) shut(); };
+  document.addEventListener("keydown", function esc2(e){
+    if(e.key === "Escape"){ shut(); document.removeEventListener("keydown", esc2); }
+  });
+  const first = box.querySelector("mark.hl");
+  if(first) first.scrollIntoView({block:"center"});
+  $("readdone").focus();
+}
+function offerReading(it){
+  const key = it && it.p;
+  if(!key || !(DATA.passages || {})[key]) return;
+  if($("readbtn")) return;
+  $("act").insertAdjacentHTML("afterbegin",
+    `<button class="btn o" id="readbtn">${esc(DATA.readCta || "Show me the reading")}</button>`);
+  $("readbtn").onclick = ()=>openReading(key, it.hi);
+}
+
 /* ---------- feedback ---------- */
 function miss(it,msg){
   tries++;
   MC.wrong(S.id+"-"+idx);
   $("fb").innerHTML = `<div class="fb no"><strong>Not yet.</strong>${esc(msg)}</div>`;
-  if(tries>=2 && !$("hint")){
-    $("act").insertAdjacentHTML("afterbegin",`<button class="btn o" id="hint">Show me the page</button>`);
-    $("hint").onclick=()=>{
-      $("fb").innerHTML = `<div class="fb no"><strong>From the reader</strong>${esc(it.why)}
-        <cite>${esc(it.cite)}</cite></div>`;
-      $("hint").remove();
+  if(tries >= 3 && !shown && !$("reveal")){
+    $("act").insertAdjacentHTML("afterbegin",
+      `<button class="btn h" id="reveal">Show me the answer</button>`);
+    $("reveal").onclick = ()=>{
+      revealHistory(it); $("reveal").remove();
+      const go = $("go"); if(go) go.remove();
+      $("fb").innerHTML = `<div class="fb no"><strong>Here it is.</strong>${esc(it.why||"")}
+        <cite>${esc(it.cite||"")}</cite>
+        <p class="hintnote">Answer shown \u2014 this question scores 25%. Read it through, then carry on.</p></div>`;
+    };
+  }
+  offerRetry();
+  offerReading(it);
+  saveState($("fb").innerHTML, false);
+  if(tries >= 3 && !shown && !$("reveal")){
+    $("act").insertAdjacentHTML("afterbegin",
+      `<button class="btn h" id="reveal">Show me the answer</button>`);
+    $("reveal").onclick = ()=>{
+      revealHistory(it); $("reveal").remove();
+      const go = $("go"); if(go) go.remove();
+      $("fb").innerHTML = `<div class="fb no"><strong>Here it is.</strong>${esc(it.why||"")}
+        <cite>${esc(it.cite||"")}</cite>
+        <p class="hintnote">Answer shown \u2014 this question scores 25%. Read it through, then carry on.</p></div>`;
+    };
+  }
+  offerRetry();
+  offerReading(it);
+  offerReading(it);
+  offerRetry();
+  if(tries >= 3 && !shown && !$("reveal")){
+    $("act").insertAdjacentHTML("afterbegin",
+      `<button class="btn h" id="reveal">Show me the answer</button>`);
+    $("reveal").onclick = ()=>{
+      revealHistory(it); $("reveal").remove();
+      const go = $("go"); if(go) go.remove();
+      $("fb").innerHTML = `<div class="fb no"><strong>Here it is.</strong>${esc(it.why||"")}
+        <cite>${esc(it.cite||"")}</cite>
+        <p class="hintnote">Answer shown \u2014 this question scores 25%. Read it through, then carry on.</p></div>`;
+    };
+  }
+  offerRetry();
+  if(tries >= 3 && !shown && !$("reveal")){
+    $("act").insertAdjacentHTML("afterbegin",
+      `<button class="btn h" id="reveal">Show me the answer</button>`);
+    $("reveal").onclick = ()=>{
+      revealHistory(it); $("reveal").remove();
+      const go = $("go"); if(go) go.remove();
+      $("fb").innerHTML = `<div class="fb no"><strong>Here it is.</strong>${esc(it.why||"")}
+        <cite>${esc(it.cite||"")}</cite>
+        <p class="hintnote">Answer shown \u2014 this question scores 25%. Read it through, then carry on.</p></div>`;
+    };
+  }
+  offerRetry();
+  if(tries >= 3 && !shown && !$("reveal")){
+    $("act").insertAdjacentHTML("afterbegin",
+      `<button class="btn h" id="reveal">Show me the answer</button>`);
+    $("reveal").onclick = ()=>{
+      revealHistory(it); $("reveal").remove();
+      const go = $("go"); if(go) go.remove();
+      $("fb").innerHTML = `<div class="fb no"><strong>Here it is.</strong>${esc(it.why||"")}
+        <cite>${esc(it.cite||"")}</cite>
+        <p class="hintnote">Answer shown \u2014 this question scores 25%. Read it through, then carry on.</p></div>`;
+    };
+  }
+  offerRetry();
+  if(tries >= 3 && !shown && !$("reveal")){
+    $("act").insertAdjacentHTML("afterbegin",
+      `<button class="btn h" id="reveal">Show me the answer</button>`);
+    $("reveal").onclick = ()=>{
+      revealHistory(it); $("reveal").remove();
+      const go = $("go"); if(go) go.remove();
+      $("fb").innerHTML = `<div class="fb no"><strong>Here it is.</strong>${esc(it.why||"")}
+        <cite>${esc(it.cite||"")}</cite>
+        <p class="hintnote">Answer shown \u2014 this question scores 25%. Read it through, then carry on.</p></div>`;
+    };
+  }
+  if(tries >= 3 && !shown && !$("reveal")){
+    $("act").insertAdjacentHTML("afterbegin",
+      `<button class="btn h" id="reveal">Show me the answer</button>`);
+    $("reveal").onclick = ()=>{
+      revealHistory(it); $("reveal").remove();
+      const go = $("go"); if(go) go.remove();
+      $("fb").innerHTML = `<div class="fb no"><strong>Here it is.</strong>${esc(it.why||"")}
+        <cite>${esc(it.cite||"")}</cite>
+        <p class="hintnote">Answer shown \u2014 this question scores 25%. Read it through, then carry on.</p></div>`;
+    };
+  }
+  if(tries >= 3 && !shown && !$("reveal")){
+    $("act").insertAdjacentHTML("afterbegin",
+      `<button class="btn h" id="reveal">Show me the answer</button>`);
+    $("reveal").onclick = ()=>{
+      revealHistory(it); $("reveal").remove();
+      const go = $("go"); if(go) go.remove();
+      $("fb").innerHTML = `<div class="fb no"><strong>Here it is.</strong>${esc(it.why||"")}
+        <cite>${esc(it.cite||"")}</cite>
+        <p class="hintnote">Answer shown \u2014 this question scores 25%. Read it through, then carry on.</p></div>`;
+    };
+  }
+  if(tries >= 3 && !shown && !$("reveal")){
+    $("act").insertAdjacentHTML("afterbegin",
+      `<button class="btn h" id="reveal">Show me the answer</button>`);
+    $("reveal").onclick = ()=>{
+      revealHistory(it); $("reveal").remove();
+      const go = $("go"); if(go) go.remove();
+      $("fb").innerHTML = `<div class="fb no"><strong>Here it is.</strong>${esc(it.why||"")}
+        <cite>${esc(it.cite||"")}</cite>
+        <p class="hintnote">Answer shown \u2014 this question scores 25%. Read it through, then carry on.</p></div>`;
     };
   }
 }
 function win(it, isBuild){
   MC.right(S.id+"-"+idx);
   const pts = tries===0?100:tries===1?75:tries===2?50:25;
-  log.push({pts,tries});
+  log[idx] = {pts,tries};
   const last = idx===S.items.length-1;
   if(isBuild){
+    const _n = DATA.build.tiles.filter(t=>t.a).length;
+    const _w = ["no","one","two","three","four","five","six","seven","eight"][_n] || String(_n);
+    const _f = DATA.build.figures;
+    const _lead = DATA.build.lead || "The Big Question, answered";
+    const _hit = DATA.build.hit ||
+      `The ${_w} you picked are exactly the ${_w} the Big Question needs.`;
     $("fb").innerHTML = `<div class="fb yes"><strong>That is the answer.</strong>
-      The three you picked are exactly the three the Big Question needs.</div>
+      ${esc(_hit)}</div>
       <div class="reveal">
-        <div class="lead">The Big Question, answered</div>
+        <div class="lead">${esc(_lead)}</div>
         <p>${esc(it.why)}</p>
-        <div class="nums">
-          <div class="num"><b>365.2420</b><span>Maya, by eye</span></div>
-          <div class="num"><b>365.2422</b><span>Modern, by machine</span></div>
-          <div class="num"><b>17 seconds</b><span>Apart, per year</span></div>
-        </div>
-        <p style="margin-top:10px">Seventeen seconds a year. At that rate the Maya calendar would not
-        slip a single day for about <b>five thousand years</b>.</p>
-        <cite style="display:block;font:600 11px var(--mono);color:var(--stone);margin-top:8px">${esc(it.cite)}</cite>
+        ${_f ? `<div class="nums">${_f.nums.map(n=>
+            `<div class="num"><b>${esc(n[0])}</b><span>${esc(n[1])}</span></div>`).join("")}</div>
+          <p style="margin-top:10px">${_f.note}</p>` : ""}
+        ${it.cite ? `<cite style="display:block;font:600 11px var(--mono);color:var(--stone);margin-top:8px">${esc(it.cite)}</cite>` : ""}
       </div>`;
   } else {
     $("fb").innerHTML = `<div class="fb yes"><strong>${tries===0?"Right, first try.":"Got it."}</strong>
@@ -1787,14 +2510,24 @@ function win(it, isBuild){
   }
   $("act").innerHTML = `<button class="btn g" id="next">${last?"See how I did":"Next question"}</button>`;
   $("next").onclick=()=>{ if(last) finish(); else { idx++; render(); window.scrollTo(0,0); } };
+  navBar();
+  saveState($("fb").innerHTML, true);
+  navBar();
+  navBar();
   $("fb").scrollIntoView({behavior:"smooth",block:"nearest"});
 }
 
 /* ---------- results ---------- */
 function finish(){
-  const pct = Math.round(log.reduce((s,l)=>s+l.pts,0)/log.length);
-  const first = log.filter(l=>l.tries===0).length;
-  const att = log.reduce((s,l)=>s+l.tries,0)+log.length;
+  const missing = unanswered();
+  if(missing.length && !forceFinish){ skippedNotice(missing); return; }
+  forceFinish = false;
+  /* Scored over every question, not only the answered ones — otherwise
+     skipping everything but one easy question would read as 100%. */
+  const done = S.items.map((_,i)=>log[i]).filter(Boolean);
+  const pct = Math.round(done.reduce((s,l)=>s+l.pts,0)/S.items.length);
+  const first = done.filter(l=>l.tries===0).length;
+  const att = done.reduce((s,l)=>s+l.tries,0)+done.length;
   const band = pct>=90?["Sharp work","#2F8F76"]:pct>=75?["Solid","#3D82B8"]
              :pct>=50?["Getting there","#E0A83C"]:["Worth another climb","#C4553F"];
   $("dtag").textContent = S.name.toUpperCase();
