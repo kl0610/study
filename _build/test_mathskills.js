@@ -311,6 +311,34 @@ group("lesson 10 — mixed and improper");
   ok("every one of them is right", !wrong.length, wrong.slice(0, 3).join(" | "));
 }
 
+group("the worked example is pointed at a line, not just opened");
+{
+  const EX = require("./mathex.js");
+  const missing = new Set(), unmatched = new Set();
+  for (const L of M.built) {
+    for (let i = 0; i < 3000; i++) {
+      const q = M.gen(L);
+      if (!q.hi) { missing.add("L" + L); continue; }
+      const P = EX[q.ex];
+      const body = (P.text || []).join(" ") + " " +
+                   (P.vocab || []).map(v => v.join(" ")).join(" ");
+      if (!body.includes(q.hi)) unmatched.add(q.ex + " :: " + q.hi.slice(0, 50));
+    }
+  }
+  ok("every question names the line that helps", !missing.size, [...missing].join(", "));
+  /* A highlight that matches nothing is worse than none at all: it sends him
+     looking through the example for something that is not in it. */
+  ok("every highlight is findable in the example it points at",
+     !unmatched.size, [...unmatched].slice(0, 3).join(" | "));
+  ok("the highlights are phrases, not whole paragraphs", (() => {
+    for (const L of M.built) for (let i = 0; i < 300; i++) {
+      const h = M.gen(L).hi;
+      if (h.length > 90) return false;
+    }
+    return true;
+  })());
+}
+
 group("building a set for a problem");
 {
   const set = M.forProblem([3], 4);

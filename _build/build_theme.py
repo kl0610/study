@@ -162,6 +162,13 @@ def hist4(s):
     return Patcher(s, "history4")
 
 
+def mathp(s):
+    """Saxon practice — config only. It builds its own questions, so there are no
+    call sites to patch; what it needs from the build is the stylesheet and an
+    app name."""
+    return Patcher(s, "math")
+
+
 def math7(s):
     """Saxon Course 2 Lesson 7 — built on the history shell by gen_math.py, so
     its call sites came across already patched. Config only."""
@@ -305,6 +312,13 @@ APPS = {
                                            dragon=["m1"])),
     "science/g5-matter-ch4":  (sci4,  dict(app="science4",   shake="#card",   lift=None,
                                            dragon=["m1"])),
+    # Practice is generated, and the child chooses how long a set is — so a
+    # perfect run on a set of four would be trivial to arrange. Math therefore
+    # earns coins, hearts and ore but is not a boss level: `dragon: []` means no
+    # id qualifies, which also keeps the "portal will not open" note off a page
+    # where it could never open anyway.
+    "math/practice":          (mathp, dict(app="math",       shake="#card",   lift=None,
+                                           dragon=[])),
     # Math is not a chapter to cover but the misses from one night's homework.
     # The dragon sits on s2, "Which Move?", because that is the set built from
     # the two misses that were the right idea with the wrong operation.
@@ -564,21 +578,25 @@ def inline_module(src, name, path):
     return src.replace(tag, block, 1)
 
 
-def mathapp():
-    """Saxon practice — the book's problem index, the generators and the worked
-    examples inlined, then the engine on top."""
+def math_modules():
+    """Inline the book's problem index, the generators and the worked examples.
+
+    Runs before the app loop, because the theme injection that follows expects a
+    finished page. Idempotent by marker, so a rebuild replaces the blocks it
+    wrote last time rather than stacking new ones.
+    """
     p = STUDY / "math" / "practice" / "index.html"
     if not p.exists():
-        return "%-24s missing" % "math/practice"
+        return "math/practice missing"
     src = p.read_text(encoding="utf-8")
     for name in ("MAP", "SKILLS", "EX"):
         f = THEME / ("math" + name.lower() + ".js")
         out = inline_module(src, name, f)
         if out is None:
-            return "%-24s FAILED \u2014 no place to put %s" % ("math/practice", f.name)
+            return "math/practice: nowhere to put %s" % f.name
         src = out
     p.write_text(src, encoding="utf-8")
-    return page(p, '<script src="../../_build/mc.js"></script>', "math/practice")
+    return None
 
 
 def store():
@@ -644,6 +662,9 @@ def main():
         sys.exit("theme/mc.js missing")
     print("sprites: %s\n" % ("base64-inlined" if INLINE else "linked ../../assets/"))
     bad = 0
+    trouble = math_modules()
+    if trouble:
+        sys.exit(trouble)
     for rel, (patch, cfg) in APPS.items():
         path = STUDY / rel / "index.html"
         src  = path.read_text(encoding="utf-8")
@@ -683,7 +704,6 @@ def main():
     print("  " + hub())
     print("  " + trophy())
     print("  " + store())
-    print("  " + mathapp())
 
     if bad:
         sys.exit("\n%d anchor(s) missed \u2014 nothing written for those apps." % bad)

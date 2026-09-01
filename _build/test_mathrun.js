@@ -265,13 +265,42 @@ group("answering");
      /Change which problems/.test(R.$("scorebox").innerHTML));
 }
 
+group("the worked example, opened on a miss");
+{
+  /* Answer wrongly on purpose, open the example, and check the line that helps
+     is marked. Reading and History have done this from the start; math opened
+     the panel and highlighted nothing until now. */
+  R.$("same").click();
+  const wrongFirst = R.q(".opt").findIndex((_, i) => i === 0);
+  R.q(".opt")[wrongFirst].click();
+  R.$("go").click();
+  const btn = R.$("readbtn");
+  ok("a worked example is offered after the miss", !!btn);
+  if (btn) {
+    btn.click();
+    const box = R.$("readbox");
+    ok("the example opens", box.hidden === false);
+    ok("it has a title and a citation",
+       /class="readtitle"/.test(box.innerHTML) && /class="readcite"/.test(box.innerHTML));
+    ok("something in it is highlighted", /<mark class="hl">/.test(box.innerHTML));
+    ok("it points into the book for more", /class="readbook"/.test(box.innerHTML));
+    ok("it carries the lesson's own words", /class="readvocab"/.test(box.innerHTML));
+    R.$("readdone").click();
+    ok("and it closes again", box.hidden === true);
+  }
+}
+
 group("a second set from the same ticks is not the same sheet");
 {
   const first = R.$("card").innerHTML;
   const same = R.$("same");
   ok("the button is there", !!same);
+  /* Counted relative to wherever we are, because the group above starts a run
+     of its own to open the worked example. An absolute count made this fail the
+     moment anything was inserted before it. */
+  const before = R.calls.begin;
   same.click();
-  ok("a fresh run started", R.calls.begin === 2);
+  ok("a fresh run started", R.calls.begin === before + 1);
   ok("twelve questions again",
      (R.$("dots").innerHTML.match(/class="dot/g) || []).length === 12);
   ok("and it is not the sheet just answered", R.$("card").innerHTML !== first);

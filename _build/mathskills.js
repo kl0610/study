@@ -83,7 +83,7 @@
         if (!o) return null;
         return { q: "Add: <b>" + commas(a) + " + " + commas(b) + "</b>", opts: o.opts, a: o.a,
                  why: commas(a) + " + " + commas(b) + " = " + commas(r) + ". Line the numbers up by place value and carry where a column goes past nine.",
-                 cite: CITE(1, "whole numbers"), ex: "column", skill: 1 };
+                 cite: CITE(1, "whole numbers"), hi: "Line the numbers up by place value", ex: "column", skill: 1 };
       }
       if (kind === "sub") {
         var big = between(20, 99) + between(0, 99) / 100;
@@ -96,7 +96,7 @@
         if (!o2) return null;
         return { q: "Subtract: <b>" + money(big) + " − " + money(small) + "</b>", opts: o2.opts, a: o2.a,
                  why: money(big) + " − " + money(small) + " = " + money(d) + ". Keep the decimal points in a line and borrow across the point the same way you would across any other column.",
-                 cite: CITE(1, "money"), ex: "column", skill: 1 };
+                 cite: CITE(1, "money"), hi: "so borrow across", ex: "column", skill: 1 };
       }
       if (kind === "mul") {
         var m = between(120, 899), n = between(12, 49), p = m * n;
@@ -104,7 +104,7 @@
         if (!o3) return null;
         return { q: "Multiply: <b>" + m + " × " + n + "</b>", opts: o3.opts, a: o3.a,
                  why: m + " × " + n + " = " + commas(p) + ". Multiply by the ones digit, then by the tens digit shifted one place left, then add the two rows.",
-                 cite: CITE(1, "whole numbers"), ex: "column", skill: 1 };
+                 cite: CITE(1, "whole numbers"), hi: "Multiplying by a two-digit number takes two rows", ex: "column", skill: 1 };
       }
       if (kind === "div") {
         var q1 = between(3, 40), dv = pick([4, 5, 8, 20, 25, 40]), tot = q1 * dv;
@@ -112,7 +112,7 @@
         if (!o4) return null;
         return { q: "Divide: <b>" + money(tot) + " ÷ " + dv + "</b>", opts: o4.opts, a: o4.a,
                  why: money(tot) + " ÷ " + dv + " = " + money(q1) + ". Check by multiplying back: " + money(q1) + " × " + dv + " = " + money(tot) + ".",
-                 cite: CITE(1, "money"), ex: "column", skill: 1 };
+                 cite: CITE(1, "money"), hi: "Every one of these can be checked by working backwards", ex: "column", skill: 1 };
       }
       if (kind === "eval") {
         var A = pick([100, 200, 300, 400, 600]), B = A * pick([2, 3, 4]);
@@ -125,7 +125,7 @@
         return { q: "Evaluate <b>" + label + "</b> when a = " + A + " and b = " + B + ".",
                  opts: o5.opts, a: o5.a,
                  why: "A variable stands for a number, so put the numbers in and work it out: " + label.replace("a", A).replace("b", B) + " = " + commas(val) + ". Two letters written together, like ab, means multiply.",
-                 cite: CITE(1, "variables and evaluation"), ex: "evaluate", skill: 1 };
+                 cite: CITE(1, "variables and evaluation"), hi: "Two letters written together means multiply", ex: "evaluate", skill: 1 };
       }
       // wordsum
       var f1 = between(2, 9), f2 = between(2, 9);
@@ -136,7 +136,7 @@
       return { q: "The product of two one-digit whole numbers is <b>" + prod + "</b>. What is the sum of the same two numbers?",
                opts: o6.opts, a: o6.a,
                why: "The two numbers are " + f1 + " and " + f2 + ", because " + f1 + " × " + f2 + " = " + prod + ". Their sum is " + f1 + " + " + f2 + " = " + sum + ". Product means multiply; sum means add.",
-               cite: CITE(1, "whole numbers"), ex: "evaluate", skill: 1 };
+               cite: CITE(1, "whole numbers"), hi: "The sentence then tells you which one it wants.", ex: "evaluate", skill: 1 };
     });
   }
 
@@ -170,7 +170,7 @@
         if (!o) return null;
         return { q: "Name the property shown by this equation:<br><b>" + p.show() + "</b>",
                  opts: o.opts, a: o.a, why: p.why,
-                 cite: CITE(2, "properties of operations"), ex: "grouping", skill: 2 };
+                 cite: CITE(2, "properties of operations"), hi: "this is the associative property", ex: "grouping", skill: 2 };
       }
 
       if (kind === "unequal") {
@@ -190,7 +190,7 @@
         if (!o2) return null;
         return { q: "Which pair is <b>not</b> equal?", opts: o2.opts, a: o2.a,
                  why: "Division is not associative: " + big + " ÷ (" + (b * c) + " ÷ " + c + ") = " + big + " ÷ " + b + " = " + (big / b) + ", but (" + big + " ÷ " + (b * c) + ") ÷ " + c + " = " + (big / (b * c)) + " ÷ " + c + " = " + (big / (b * c) / c) + ". Addition and multiplication are associative, so the other three pairs match.",
-                 cite: CITE(2, "properties of operations"), ex: "grouping", skill: 2 };
+                 cite: CITE(2, "properties of operations"), hi: "In division the parentheses change the answer", ex: "grouping", skill: 2 };
       }
 
       // mental: reorder to make it easy
@@ -205,7 +205,7 @@
       return { q: "<b>" + f[0] + " · " + f[1] + " · " + f[2] + "</b> — which order makes this easiest to do in your head?",
                opts: o3.opts, a: o3.a,
                why: f[0] + " × " + f[2] + " = " + (f[0] * f[2]) + ", which is an easy number to multiply by. " + (f[0] * f[2]) + " × " + f[1] + " = " + commas(prod) + ". The commutative and associative properties let you reorder and regroup factors freely, and the answer is the same whichever way round you do it.",
-               cite: CITE(2, "properties of operations"), ex: "grouping", skill: 2 };
+               cite: CITE(2, "properties of operations"), hi: "With addition and multiplication that turns out not to matter", ex: "grouping", skill: 2 };
     });
   }
 
@@ -216,16 +216,16 @@
      rather than what the answer is. */
   var MOVES = [
     { form: function (v, n, r) { return v + " − " + n + " = " + r; }, val: function (n, r) { return r + n; },
-      move: "Add", ex: "minus",
+      move: "Add", ex: "minus", hi: "Something was subtracted from the variable, so add it back",
       why: function (v, n, r) { return n + " was subtracted from " + v + ", so adding " + n + " undoes it: " + v + " = " + r + " + " + n + " = " + (r + n) + ". Check: " + (r + n) + " − " + n + " = " + r + ". ✓"; } },
     { form: function (v, n, r) { return v + " + " + n + " = " + r; }, val: function (n, r) { return r - n; },
-      move: "Subtract", ex: "plus",
+      move: "Subtract", ex: "plus", hi: "Something was added to the variable, so subtract it.",
       why: function (v, n, r) { return n + " was added to " + v + ", so subtracting " + n + " undoes it: " + v + " = " + r + " − " + n + " = " + (r - n) + ". Check: " + (r - n) + " + " + n + " = " + r + ". ✓"; } },
     { form: function (v, n, r) { return n + v + " = " + r; }, val: function (n, r) { return r / n; },
-      move: "Divide by", ex: "times",
+      move: "Divide by", ex: "times", hi: "The variable was multiplied, so divide to undo it.",
       why: function (v, n, r) { return n + v + " means " + n + " × " + v + ", so dividing by " + n + " undoes it: " + v + " = " + r + " ÷ " + n + " = " + (r / n) + ". Check: " + n + " × " + (r / n) + " = " + r + ". ✓"; } },
     { form: function (v, n, r) { return v + " ÷ " + n + " = " + r; }, val: function (n, r) { return r * n; },
-      move: "Multiply by", ex: "divide",
+      move: "Multiply by", ex: "divide", hi: "The variable was divided, so multiply to undo it.",
       why: function (v, n, r) { return v + " was divided by " + n + ", so multiplying by " + n + " undoes it: " + v + " = " + r + " × " + n + " = " + (r * n) + ". Check: " + (r * n) + " ÷ " + n + " = " + r + ". ✓"; } },
   ];
 
@@ -250,14 +250,14 @@
           if (!o) return null;
           return { q: "<b>" + f.form(v, n, r) + ".</b> What should you do to both sides to find " + v + "?",
                    opts: o.opts, a: o.a, why: f.why(v, n, r),
-                   cite: CITE(3, "unknown numbers"), ex: f.ex, skill: 3 };
+                   cite: CITE(3, "unknown numbers"), hi: f.hi, ex: f.ex, skill: 3 };
         }
         var o2 = opts(commas(val), [commas(f.move === "Add" ? r - n : r + n),
                                     commas(r * n), commas(Math.round(r / n))]
                                      .filter(function (x) { return x !== commas(val); }));
         if (!o2) return null;
         return { q: "Find " + v + ": <b>" + f.form(v, n, r) + "</b>", opts: o2.opts, a: o2.a,
-                 why: f.why(v, n, r), cite: CITE(3, "unknown numbers"), ex: f.ex, skill: 3 };
+                 why: f.why(v, n, r), cite: CITE(3, "unknown numbers"), hi: f.hi, ex: f.ex, skill: 3 };
       }
 
       // backwards: the variable is the subtrahend, or the divisor
@@ -270,7 +270,7 @@
         return { q: "<b>" + top + " − " + v + " = " + left + ".</b> Which of these finds " + v + "?",
                  opts: o3.opts, a: o3.a,
                  why: "Read it as a story: " + top + ", take away " + v + ", leaves " + left + ". So " + v + " is the part taken away — the difference between them. " + v + " = " + top + " − " + left + " = " + taken + ". Check: " + top + " − " + taken + " = " + left + ". ✓",
-                 cite: CITE(3, "unknown numbers"), ex: "backwards", skill: 3 };
+                 cite: CITE(3, "unknown numbers"), hi: "When the variable is the part being taken away, the answer is the difference", ex: "backwards", skill: 3 };
       }
       var qq = between(3, 15), dd = between(3, 20), nn = qq * dd;
       var o4 = opts(v + " = " + nn + " ÷ " + qq,
@@ -280,7 +280,7 @@
       return { q: "<b>" + nn + " ÷ " + v + " = " + qq + ".</b> Which of these finds " + v + "?",
                opts: o4.opts, a: o4.a,
                why: nn + " shared into " + v + " groups puts " + qq + " in each group, so " + v + " is how many " + qq + "s fit into " + nn + ": " + v + " = " + nn + " ÷ " + qq + " = " + dd + ". Check: " + nn + " ÷ " + dd + " = " + qq + ". ✓ The move is division even though the variable is underneath.",
-               cite: CITE(3, "unknown numbers"), ex: "backwards", skill: 3 };
+               cite: CITE(3, "unknown numbers"), hi: "When the variable is underneath, ask how many of the answer fit into the top", ex: "backwards", skill: 3 };
     });
   }
 
@@ -304,7 +304,7 @@
         return { q: "Describe this sequence and give the next three numbers:<br><b>…, " + seen.join(", ") + ", …</b>",
                  opts: o.opts, a: o.a,
                  why: "These are " + s + " × " + s + ", " + (s + 1) + " × " + (s + 1) + ", " + (s + 2) + " × " + (s + 2) + " and " + (s + 3) + " × " + (s + 3) + " — perfect squares. The next three are " + (s + 4) + " × " + (s + 4) + " = " + next[0] + ", " + (s + 5) + " × " + (s + 5) + " = " + next[1] + " and " + (s + 6) + " × " + (s + 6) + " = " + next[2] + ". The gaps grow each time, so nothing is being added over and over.",
-                 cite: CITE(4, "sequences"), ex: "squares", skill: 4 };
+                 cite: CITE(4, "sequences"), hi: "A perfect square is a whole number multiplied by itself", ex: "squares", skill: 4 };
       }
 
       if (kind === "arith") {
@@ -319,7 +319,7 @@
         return { q: "What are the next three numbers?<br><b>" + terms.join(", ") + ", …</b>",
                  opts: o2.opts, a: o2.a,
                  why: "The same number is added each time: " + terms[1] + " − " + terms[0] + " = " + step + ". Keep adding " + step + " and the next three are " + nxt.join(", ") + ".",
-                 cite: CITE(4, "sequences"), ex: "squares", skill: 4 };
+                 cite: CITE(4, "sequences"), hi: "Find the step by subtracting one term from the next", ex: "squares", skill: 4 };
       }
 
       if (kind === "name") {
@@ -330,7 +330,7 @@
         return { q: "What are the numbers <b>" + sq.join(", ") + "</b> called?",
                  opts: o3.opts, a: o3.a,
                  why: "A perfect square is a whole number multiplied by itself: " + base + " × " + base + " = " + sq[0] + ", " + (base + 1) + " × " + (base + 1) + " = " + sq[1] + ", and so on. They are called squares because that many tiles will make a square.",
-                 cite: CITE(4, "sequences"), ex: "squares", skill: 4 };
+                 cite: CITE(4, "sequences"), hi: "A perfect square is a whole number multiplied by itself", ex: "squares", skill: 4 };
       }
 
       // missing term
@@ -344,7 +344,7 @@
       return { q: "What number belongs where the <b>?</b> is?<br><b>" + shown.join(", ") + "</b>",
                opts: o4.opts, a: o4.a,
                why: "The sequence counts up by " + sp + " each time, so the missing term is " + run[hole - 1] + " + " + sp + " = " + run[hole] + ". Check it from the other side too: " + run[hole + 1] + " − " + sp + " = " + run[hole] + ".",
-               cite: CITE(4, "sequences"), ex: "squares", skill: 4 };
+               cite: CITE(4, "sequences"), hi: "Find the step by subtracting one term from the next", ex: "squares", skill: 4 };
     });
   }
 
@@ -367,7 +367,7 @@
         return { q: "Use digits and commas to write <b>" + n + " " + sc[0] + "</b>.",
                  opts: o.opts, a: o.a,
                  why: n + " " + sc[0] + " is " + commas(val) + ". Each comma marks off three places, so " + sc[0] + " sits " + (String(sc[1]).length - 1) + " zeros up from the ones place.",
-                 cite: CITE(5, "place value"), ex: "place", skill: 5 };
+                 cite: CITE(5, "place value"), hi: "The commas are the shortcut.", ex: "place", skill: 5 };
       }
 
       if (kind === "place") {
@@ -385,7 +385,7 @@
                     (num.split(d).length > 2 ? " (the one " + (at === 0 ? "furthest left" : at === digits - 1 ? "furthest right" : "in position " + (at + 1) + " from the left") + ")" : ""),
                  opts: o2.opts, a: o2.a,
                  why: "Counting from the ones place on the right, that digit is " + placeIdx + " place" + (placeIdx === 1 ? "" : "s") + " along, which is the " + right + " place. So it is worth " + commas(Number(d) * Math.pow(10, placeIdx)) + ".",
-                 cite: CITE(5, "place value"), ex: "place", skill: 5 };
+                 cite: CITE(5, "place value"), hi: "Counting from the right: ones, tens, hundreds", ex: "place", skill: 5 };
       }
 
       // compare
@@ -398,7 +398,7 @@
       return { q: "Which is greater, <b>" + commas(a) + "</b> or <b>" + commas(b) + "</b>?",
                opts: o3.opts, a: o3.a,
                why: "Both have the same number of digits, so compare place by place from the left. The first place where they differ decides it: " + commas(Math.max(a, b)) + " is the greater.",
-               cite: CITE(5, "place value"), ex: "place", skill: 5 };
+               cite: CITE(5, "place value"), hi: "go left to right and stop at the first place where they differ", ex: "place", skill: 5 };
     });
   }
 
@@ -421,7 +421,7 @@
         if (!o) return null;
         return { q: "List the <b>single-digit</b> factors of " + n + ".", opts: o.opts, a: o.a,
                  why: "The factors of " + n + " are " + all.join(", ") + ". Only " + sd.length + " of those are single digits: " + sd.join(", ") + ". The rest are still factors — they were just not what was asked for.",
-                 cite: CITE(6, "factors"), ex: "single", skill: 6 };
+                 cite: CITE(6, "factors"), hi: "The question asks for the single-digit factors, so the list stops at 9", ex: "single", skill: 6 };
       }
 
       if (kind === "common" || kind === "gcf") {
@@ -440,7 +440,7 @@
           return { q: "What is the <b>greatest common factor</b> of " + x + " and " + y + "?",
                    opts: o2.opts, a: o2.a,
                    why: "Factors of " + x + ": " + factors(x).join(", ") + ". Factors of " + y + ": " + factors(y).join(", ") + ". They share " + com.join(", ") + ", and the greatest of those is " + g + ".",
-                   cite: CITE(6, "greatest common factor"), ex: "common", skill: 6 };
+                   cite: CITE(6, "greatest common factor"), hi: "The greatest common factor is the largest of those", ex: "common", skill: 6 };
         }
         var o3 = opts(com.join(", "),
                       [com.concat([onlyX]).sort(function (p, q) { return p - q; }).join(", "),
@@ -449,7 +449,7 @@
         if (!o3) return null;
         return { q: "List the <b>common factors</b> of " + x + " and " + y + ".", opts: o3.opts, a: o3.a,
                  why: "Factors of " + x + ": " + factors(x).join(", ") + ". Factors of " + y + ": " + factors(y).join(", ") + ". The common factors are the ones on both lists: " + com.join(", ") + ". " + onlyX + " divides " + x + " but not " + y + ", and " + onlyY + " divides " + y + " but not " + x + ". The greatest common factor is " + g + ".",
-                 cite: CITE(6, "common factors"), ex: "common", skill: 6 };
+                 cite: CITE(6, "common factors"), hi: "The common factors are the ones that appear on both lists", ex: "common", skill: 6 };
       }
 
       // divisibility
@@ -467,7 +467,7 @@
       var sum = String(num).split("").reduce(function (t, c) { return t + Number(c); }, 0);
       return { q: "Is <b>" + commas(num) + "</b> divisible by <b>" + d + "</b>?", opts: o4.opts, a: o4.a,
                why: "A number divides by " + d + " if " + TEST[d] + ". Here the digits add to " + sum + " and the number ends in " + String(num).slice(-1) + ", so the answer is " + (yes ? "yes" : "no") + ": " + commas(num) + " ÷ " + d + (yes ? " = " + commas(num / d) : " leaves a remainder of " + (num % d)) + ".",
-               cite: CITE(6, "divisibility"), ex: "single", skill: 6 };
+               cite: CITE(6, "divisibility"), hi: "test 1 through 9 with the divisibility tests below", ex: "single", skill: 6 };
     });
   }
 
@@ -493,7 +493,7 @@
         return { q: "An angle measures <b>" + deg + "°</b>. What kind of angle is it?",
                  opts: o.opts, a: o.a,
                  why: deg + "° is " + right.desc + ", so it is " + right.name.toLowerCase() + ". A right angle is exactly 90°, a straight angle exactly 180°; anything below 90° is acute and anything between 90° and 180° is obtuse.",
-                 cite: CITE(7, "angles"), ex: "angles", skill: 7 };
+                 cite: CITE(7, "angles"), hi: "a right angle is exactly 90", ex: "angles", skill: 7 };
       }
 
       if (kind === "segment") {
@@ -507,28 +507,28 @@
         return { q: "Point B is between A and C on a line. " + known + ". Find <b>" + ask + "</b>.",
                  opts: o2.opts, a: o2.a,
                  why: "When B is between A and C, the two short segments make the long one: AB + BC = AC, so " + ab + " + " + bc + " = " + ac + ". That gives " + ask + " = " + val + " cm.",
-                 cite: CITE(7, "segments"), ex: "angles", skill: 7 };
+                 cite: CITE(7, "segments"), hi: "the two short segments make the long one: AB + BC = AC", ex: "angles", skill: 7 };
       }
 
       if (kind === "lines") {
         var which = pick([
           { q: "Two lines in the same plane cross and make square corners. What are they called?",
-            a: "Perpendicular", w: ["Parallel", "Oblique", "Skew"],
+            a: "Perpendicular", hi: "If they cross and make square corners they are perpendicular", w: ["Parallel", "Oblique", "Skew"],
             why: "Lines that intersect and form square corners are perpendicular, written with the ⊥ symbol. Four right angles are made where they cross." },
           { q: "Two lines in the same plane never meet, however far they are extended. What are they called?",
-            a: "Parallel", w: ["Perpendicular", "Oblique", "Intersecting"],
+            a: "Parallel", hi: "If they never cross they stay the same distance apart and are parallel", w: ["Perpendicular", "Oblique", "Intersecting"],
             why: "Lines in the same plane that never intersect stay the same distance apart and are parallel, written with the ∥ symbol." },
           { q: "Two lines in the same plane cross but do not make square corners. What are they called?",
-            a: "Oblique", w: ["Parallel", "Perpendicular", "Skew"],
+            a: "Oblique", hi: "If they cross at any other angle they are oblique", w: ["Parallel", "Perpendicular", "Skew"],
             why: "Lines in a plane that are neither parallel nor perpendicular are oblique. They do cross — just not at a right angle." },
           { q: "Two lines are in different planes and never meet. What are they called?",
-            a: "Skew", w: ["Parallel", "Perpendicular", "Oblique"],
+            a: "Skew", hi: "Lines in different planes that never meet are skew", w: ["Parallel", "Perpendicular", "Oblique"],
             why: "Parallel lines are in the same plane. Lines in different planes that never meet are skew — the ceiling edge and a floor edge running the other way, for instance." },
         ]);
         var o3 = opts(which.a, which.w);
         if (!o3) return null;
         return { q: which.q, opts: o3.opts, a: o3.a, why: which.why,
-                 cite: CITE(7, "lines and planes"), ex: "angles", skill: 7 };
+                 cite: CITE(7, "lines and planes"), hi: which.hi, ex: "angles", skill: 7 };
       }
 
       var o4 = opts("Four", ["Two", "One", "Eight"]);
@@ -536,7 +536,7 @@
       return { q: "How many <b>right angles</b> are made where two perpendicular lines cross?",
                opts: o4.opts, a: o4.a,
                why: "Two crossing lines make four angles. If one of them is a right angle then all four are, because the angles on a straight line add to 180°. So perpendicular lines make four right angles.",
-               cite: CITE(7, "angles"), ex: "angles", skill: 7 };
+               cite: CITE(7, "angles"), hi: "that makes four right angles, not one", ex: "angles", skill: 7 };
     });
   }
 
@@ -557,7 +557,7 @@
         if (!o) return null;
         return { q: "Write <b>" + frac(n, d) + "</b> as a percent.", opts: o.opts, a: o.a,
                  why: "Percent means out of a hundred, so scale the fraction to have 100 underneath: " + frac(n, d) + " = " + frac(n * (100 / d), 100) + " = " + p + "%. Or divide: " + n + " ÷ " + d + " = " + (n / d) + ", and " + (n / d) + " × 100 = " + p + ".",
-                 cite: CITE(8, "fractions and percents"), ex: "percent", skill: 8 };
+                 cite: CITE(8, "fractions and percents"), hi: "To turn a fraction into a percent, scale it so 100 is underneath.", ex: "percent", skill: 8 };
       }
 
       if (kind === "tofrac") {
@@ -567,7 +567,7 @@
         if (!o2) return null;
         return { q: "Write <b>" + p + "%</b> as a fraction in lowest terms.", opts: o2.opts, a: o2.a,
                  why: p + "% means " + p + " out of 100, so it starts as " + frac(p, 100) + ". Both parts divide by " + g + ", which gives " + right + ".",
-                 cite: CITE(8, "fractions and percents"), ex: "percent", skill: 8 };
+                 cite: CITE(8, "fractions and percents"), hi: "To turn a percent into a fraction, put it over 100 and reduce.", ex: "percent", skill: 8 };
       }
 
       // ruler: eighths of an inch
@@ -582,7 +582,7 @@
       return { q: "A ruler is marked in eighths of an inch. A line ends <b>" + eighths + " marks</b> past the start. How long is it, in lowest terms?",
                opts: o3.opts, a: o3.a,
                why: eighths + " eighths is " + frac(eighths, 8) + ". In lowest terms that is " + right2 + " inches. On an inch ruler the longest marks are halves, then quarters, then eighths.",
-               cite: CITE(8, "the inch ruler"), ex: "percent", skill: 8 };
+               cite: CITE(8, "the inch ruler"), hi: "The longest marks are halves, then quarters, then eighths", ex: "percent", skill: 8 };
     });
   }
 
@@ -600,14 +600,14 @@
         var g = gcd(num, d);
         var right = num > d ? (Math.floor(num / d) + " " + frac((num % d) / gcd(num % d, d), d / gcd(num % d, d)))
                             : (num === d ? "1" : frac(num / g, d / g));
-        var hi = Math.max(a, b), lo = Math.min(a, b);
-        var o = opts(right, [frac(num, d * 2), frac(kind === "add" ? a + b : hi - lo, d) + " (not reduced)",
+        var top = Math.max(a, b), lo = Math.min(a, b);
+        var o = opts(right, [frac(num, d * 2), frac(kind === "add" ? a + b : top - lo, d) + " (not reduced)",
                              frac(a * b, d)]);
         if (!o) return null;
-        return { q: (kind === "add" ? "Add" : "Subtract") + ": <b>" + frac(hi, d) + (kind === "add" ? " + " : " − ") + frac(lo, d) + "</b>",
+        return { q: (kind === "add" ? "Add" : "Subtract") + ": <b>" + frac(top, d) + (kind === "add" ? " + " : " − ") + frac(lo, d) + "</b>",
                  opts: o.opts, a: o.a,
-                 why: "The denominators already match, so " + (kind === "add" ? "add" : "subtract") + " the numerators and leave the denominator alone: " + frac(hi, d) + (kind === "add" ? " + " : " − ") + frac(lo, d) + " = " + frac(num, d) + (right !== frac(num, d) ? ", which reduces to " + right : "") + ".",
-                 cite: CITE(9, "adding and subtracting fractions"), ex: "fractions", skill: 9 };
+                 why: "The denominators already match, so " + (kind === "add" ? "add" : "subtract") + " the numerators and leave the denominator alone: " + frac(top, d) + (kind === "add" ? " + " : " − ") + frac(lo, d) + " = " + frac(num, d) + (right !== frac(num, d) ? ", which reduces to " + right : "") + ".",
+                 cite: CITE(9, "adding and subtracting fractions"), hi: "add the numerators and leave the denominator alone", ex: "fractions", skill: 9 };
       }
 
       if (kind === "mul") {
@@ -619,7 +619,7 @@
         if (!o2) return null;
         return { q: "Multiply: <b>" + frac(n1, d1) + " × " + frac(n2, d2) + "</b>", opts: o2.opts, a: o2.a,
                  why: "Multiply the numerators together and the denominators together: " + (n1 + " × " + n2) + " = " + pn + " over " + (d1 + " × " + d2) + " = " + pd + ", so " + frac(pn, pd) + (g2 > 1 ? ", which reduces to " + frac(pn / g2, pd / g2) : "") + ". No common denominator is needed to multiply — that is only for adding and subtracting.",
-                 cite: CITE(9, "multiplying fractions"), ex: "fractions", skill: 9 };
+                 cite: CITE(9, "multiplying fractions"), hi: "multiply the numerators together and the denominators together", ex: "fractions", skill: 9 };
       }
 
       // reciprocal
@@ -629,7 +629,7 @@
       if (!o3) return null;
       return { q: "What is the <b>reciprocal</b> of " + frac(rn, rd) + "?", opts: o3.opts, a: o3.a,
                why: "The reciprocal of a fraction is that fraction turned upside down, so the reciprocal of " + frac(rn, rd) + " is " + frac(rd, rn) + ". A number times its reciprocal is always 1: " + frac(rn, rd) + " × " + frac(rd, rn) + " = " + frac(rn * rd, rd * rn) + " = 1.",
-               cite: CITE(9, "reciprocals"), ex: "fractions", skill: 9 };
+               cite: CITE(9, "reciprocals"), hi: "The reciprocal of a fraction is that fraction turned upside down.", ex: "fractions", skill: 9 };
     });
   }
 
@@ -649,7 +649,7 @@
         return { q: "Divide and write the answer as a <b>mixed number</b>: <b>" + n + " ÷ " + d + "</b>",
                  opts: o.opts, a: o.a,
                  why: n + " ÷ " + d + " is " + w + " with " + r + " left over. The remainder becomes the numerator over the divisor, so the answer is " + right + ". Check: " + w + " × " + d + " + " + r + " = " + n + ".",
-                 cite: CITE(10, "mixed numbers"), ex: "mixed", skill: 10 };
+                 cite: CITE(10, "mixed numbers"), hi: "the remainder goes over the divisor", ex: "mixed", skill: 10 };
       }
 
       if (kind === "toMixed") {
@@ -661,7 +661,7 @@
         if (!o2) return null;
         return { q: "Write <b>" + frac(imp, dd) + "</b> as a mixed number.", opts: o2.opts, a: o2.a,
                  why: "An improper fraction is a division waiting to happen: " + imp + " ÷ " + dd + " = " + ww + " remainder " + rr + ", so " + frac(imp, dd) + " = " + right2 + ".",
-                 cite: CITE(10, "improper fractions"), ex: "mixed", skill: 10 };
+                 cite: CITE(10, "improper fractions"), hi: "An improper fraction is a division waiting to happen.", ex: "mixed", skill: 10 };
       }
 
       var d3 = between(3, 9), w3 = between(2, 12), r3 = between(1, d3 - 1);
@@ -671,7 +671,7 @@
       return { q: "Write <b>" + w3 + " " + frac(r3, d3) + "</b> as an improper fraction.",
                opts: o3.opts, a: o3.a,
                why: "Multiply the whole number by the denominator and add the numerator: " + w3 + " × " + d3 + " = " + (w3 * d3) + ", plus " + r3 + " is " + imp3 + ". Keep the same denominator, so " + w3 + " " + frac(r3, d3) + " = " + frac(imp3, d3) + ".",
-               cite: CITE(10, "improper fractions"), ex: "mixed", skill: 10 };
+               cite: CITE(10, "improper fractions"), hi: "multiply the whole number by the denominator and add the numerator", ex: "mixed", skill: 10 };
     });
   }
 

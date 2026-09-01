@@ -510,6 +510,7 @@
         "A perfect square is a whole number multiplied by itself. They are called squares because that many tiles will make a square: nine tiles make a three-by-three square, sixteen make a four-by-four.",
         "The first fifteen are 1, 4, 9, 16, 25, 36, 49, 64, 81, 100, 121, 144, 169, 196 and 225 — that is 1 × 1 up to 15 × 15. Worth knowing by sight, because they turn up constantly.",
         "The gaps between them grow: 3, 5, 7, 9, 11. So a run of perfect squares is never a sequence where the same number is added each time, which is one way to recognise one.",
+        "Not every sequence is squares. Plenty count up by the same amount every time — 4, 11, 18, 25 adds seven at each step. Find the step by subtracting one term from the next, then keep adding it. If the gaps are all equal it is that kind; if the gaps grow, look for squares.",
         "A number that is not on the list is not a perfect square. 50 is not, because it sits between 49 and 64 — you would need something between 7 and 8 to make it, and that is not a whole number."
       ],
       "vocab": [
