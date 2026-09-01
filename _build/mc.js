@@ -280,6 +280,7 @@
     if (!r || !r.setAttribute) return;
     r.setAttribute("data-mc-theme", S.equip.theme || "overworld");
     r.setAttribute("data-mc-purse", S.equip.purse || "leather");
+    r.setAttribute("data-mc-cape", S.equip.cape || "none");
   }
 
   /* The flourish over the chest at the end of a set. Sparkle is the one
@@ -299,6 +300,38 @@
     }
     host.appendChild(box);
     setTimeout(function () { if (box.parentNode) box.parentNode.removeChild(box); }, 2600);
+  }
+
+
+  /* ---------- the character ----------
+     Drawn from blocks so it always renders and always matches whatever is on.
+     `heroHosts` remembers where it has been drawn, so equipping something in
+     the shop redraws it there without the page having to ask. */
+  var heroHosts = [];
+
+  function heroHTML(title) {
+    var cape = S.equip.cape || "none";
+    return '<div class="mc-hero" data-cape="' + cape + '">' +
+             '<div class="mc-heroart">' +
+               '<i class="mc-cape"></i>' +
+               '<i class="mc-head"><i class="mc-face"></i></i>' +
+               '<i class="mc-arm l"></i><i class="mc-arm r"></i>' +
+               '<i class="mc-body"></i>' +
+               '<i class="mc-leg l"></i><i class="mc-leg r"></i>' +
+             '</div>' +
+             (title ? '<div class="mc-heroname">' + title + '</div>' : "") +
+             '<div class="mc-heropurse">' +
+               (url("coin") ? '<img class="mc-coin" alt="" src="' + url("coin") + '">'
+                            : '<i class="mc-coin mc-coin-fb"></i>') +
+               "<b>" + S.coins + "</b></div>" +
+           "</div>";
+  }
+
+  function drawHeroes() {
+    for (var i = 0; i < heroHosts.length; i++) {
+      var h = heroHosts[i];
+      if (h.node && h.node.parentNode) h.node.innerHTML = heroHTML(h.title);
+    }
   }
 
   function drawCoins() {
@@ -837,6 +870,14 @@
        content and this is the engine. All the engine owns is the money and the
        fact of ownership. */
 
+    /* Draws the character into `host` and keeps it up to date. `title` is
+       whatever the page wants written under it — the rank, usually. */
+    hero: function (host, title) {
+      if (!host) return;
+      heroHosts.push({ node: host, title: title || "" });
+      host.innerHTML = heroHTML(title || "");
+    },
+
     earned: function () { return S.earned; },
 
     owns: function (id) { return !!S.owned[id]; },
@@ -852,6 +893,7 @@
       S.owned[id] = true;
       save();
       drawCoins();
+      drawHeroes();
       return true;
     },
 
@@ -864,6 +906,7 @@
       if (id) S.equip[slot] = id; else delete S.equip[slot];
       save();
       skin();
+      drawHeroes();
       return true;
     },
 
@@ -873,7 +916,7 @@
       S = { cleared: {}, misses: {}, tool9: false, ore: {}, gem: {}, dragon: 0,
             runs: {}, coins: 0, earned: 0, owned: {}, equip: {},
             mute: S.mute };  // muting is a preference, not progress
-      save(); drawBar(); drawCoins(); skin();
+      save(); drawBar(); drawCoins(); skin(); drawHeroes();
     },
     _relift: lift
   };

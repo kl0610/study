@@ -631,6 +631,61 @@ html[data-mc-purse="netherite"] .mc-purse b{color:#D8CBE4}
   border:1px solid var(--gold); color:var(--gold);
   font:800 10.5px var(--mono,monospace); letter-spacing:.14em; text-transform:uppercase;
   background:rgba(255,255,255,.05)}
+
+/* ---------- the character ----------
+   Blocks, not a sprite: it always renders, costs no download, and recolours
+   with whatever cape is on. Sizes are in em so the whole figure scales from one
+   font-size on .mc-hero. */
+.mc-hero{display:flex;flex-direction:column;align-items:center;gap:9px;
+  font-size:9px;padding:14px 10px 12px;position:relative}
+.mc-heroart{position:relative;width:9em;height:20em;flex:none}
+.mc-heroart i{position:absolute;display:block;image-rendering:pixelated}
+
+/* head, face, body, limbs — Steve's proportions, near enough */
+.mc-head{left:2em;top:0;width:5em;height:5em;background:#B5825C;
+  box-shadow:inset 0 -0.6em 0 rgba(0,0,0,.16)}
+.mc-face{position:absolute;left:0.6em;top:1.8em;width:3.8em;height:1.2em;
+  background:
+    linear-gradient(90deg,#3A2E24 0 0.8em,transparent 0.8em),
+    linear-gradient(90deg,transparent 0 2.4em,#3A2E24 2.4em 3.2em,transparent 3.2em);
+  background-repeat:no-repeat}
+.mc-head::before{content:"";position:absolute;left:0;top:0;width:5em;height:1.6em;
+  background:#3A2A1C}                       /* hair */
+.mc-body{left:2.5em;top:5em;width:4em;height:6em;background:#2F8F76;
+  box-shadow:inset -0.5em 0 0 rgba(0,0,0,.14)}
+.mc-arm{top:5em;width:1.6em;height:6em;background:#2F8F76}
+.mc-arm.l{left:0.9em}
+.mc-arm.r{left:6.5em;box-shadow:inset -0.4em 0 0 rgba(0,0,0,.14)}
+.mc-arm::after{content:"";position:absolute;left:0;bottom:0;width:1.6em;height:1.6em;
+  background:#B5825C}                       /* hands */
+.mc-leg{top:11em;width:2em;height:6em;background:#3B5A9B}
+.mc-leg.l{left:2.5em}
+.mc-leg.r{left:4.5em;box-shadow:inset -0.4em 0 0 rgba(0,0,0,.16)}
+
+/* the cape, behind the shoulders. `none` is the plain figure. */
+.mc-cape{left:1.9em;top:4.6em;width:5.2em;height:8.4em;border-radius:0 0 0.4em 0.4em;
+  background:transparent;transition:background .18s}
+.mc-hero[data-cape="none"] .mc-cape{display:none}
+.mc-hero[data-cape="ender"]   .mc-cape{background:#4B2E83;box-shadow:inset -0.6em 0 0 rgba(0,0,0,.22)}
+.mc-hero[data-cape="scarlet"] .mc-cape{background:#9E2B25;box-shadow:inset -0.6em 0 0 rgba(0,0,0,.22)}
+.mc-hero[data-cape="forest"]  .mc-cape{background:#215E3C;box-shadow:inset -0.6em 0 0 rgba(0,0,0,.22)}
+.mc-hero[data-cape="frost"]   .mc-cape{background:#5E93B8;box-shadow:inset -0.6em 0 0 rgba(0,0,0,.22)}
+.mc-hero[data-cape="gilded"]  .mc-cape{background:#C89A34;
+  box-shadow:inset -0.6em 0 0 rgba(0,0,0,.2), inset 0 0 0 0.4em #F0D585}
+.mc-hero[data-cape="elytra"]  .mc-cape{background:#6E6A78;width:8em;left:0.5em;
+  border-radius:0.4em 0.4em 2.6em 2.6em;
+  box-shadow:inset -0.6em 0 0 rgba(0,0,0,.2), inset 0 0 0 0.35em #9B96A8}
+
+/* a real sprite, if one is ever dropped in, sits on exactly this markup */
+.mc-hero img.mc-skin{position:absolute;inset:0;width:100%;height:100%}
+
+.mc-heroname{font:800 10px var(--mono,monospace);letter-spacing:.14em;
+  text-transform:uppercase;color:var(--gold,#E0A83C);text-align:center}
+.mc-heropurse{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;
+  border:2px solid rgba(255,255,255,.18)}
+.mc-heropurse b{font:800 14px var(--mono,monospace);color:var(--gold,#E0A83C)}
+.mc-heropurse .mc-coin{width:15px;height:15px}
+@media (min-width:520px){ .mc-hero{font-size:11px} }
 /* MC-SKIN-CSS-END */
 </style>
 <!-- /MC-THEME-CSS -->
@@ -922,6 +977,7 @@ window.__MC_SFX__={"tool": "data:audio/mpeg;base64,//OAxAAAAAAAAAAAAFhpbmcAAAAPA
     if (!r || !r.setAttribute) return;
     r.setAttribute("data-mc-theme", S.equip.theme || "overworld");
     r.setAttribute("data-mc-purse", S.equip.purse || "leather");
+    r.setAttribute("data-mc-cape", S.equip.cape || "none");
   }
 
   /* The flourish over the chest at the end of a set. Sparkle is the one
@@ -941,6 +997,38 @@ window.__MC_SFX__={"tool": "data:audio/mpeg;base64,//OAxAAAAAAAAAAAAFhpbmcAAAAPA
     }
     host.appendChild(box);
     setTimeout(function () { if (box.parentNode) box.parentNode.removeChild(box); }, 2600);
+  }
+
+
+  /* ---------- the character ----------
+     Drawn from blocks so it always renders and always matches whatever is on.
+     `heroHosts` remembers where it has been drawn, so equipping something in
+     the shop redraws it there without the page having to ask. */
+  var heroHosts = [];
+
+  function heroHTML(title) {
+    var cape = S.equip.cape || "none";
+    return '<div class="mc-hero" data-cape="' + cape + '">' +
+             '<div class="mc-heroart">' +
+               '<i class="mc-cape"></i>' +
+               '<i class="mc-head"><i class="mc-face"></i></i>' +
+               '<i class="mc-arm l"></i><i class="mc-arm r"></i>' +
+               '<i class="mc-body"></i>' +
+               '<i class="mc-leg l"></i><i class="mc-leg r"></i>' +
+             '</div>' +
+             (title ? '<div class="mc-heroname">' + title + '</div>' : "") +
+             '<div class="mc-heropurse">' +
+               (url("coin") ? '<img class="mc-coin" alt="" src="' + url("coin") + '">'
+                            : '<i class="mc-coin mc-coin-fb"></i>') +
+               "<b>" + S.coins + "</b></div>" +
+           "</div>";
+  }
+
+  function drawHeroes() {
+    for (var i = 0; i < heroHosts.length; i++) {
+      var h = heroHosts[i];
+      if (h.node && h.node.parentNode) h.node.innerHTML = heroHTML(h.title);
+    }
   }
 
   function drawCoins() {
@@ -1479,6 +1567,14 @@ window.__MC_SFX__={"tool": "data:audio/mpeg;base64,//OAxAAAAAAAAAAAAFhpbmcAAAAPA
        content and this is the engine. All the engine owns is the money and the
        fact of ownership. */
 
+    /* Draws the character into `host` and keeps it up to date. `title` is
+       whatever the page wants written under it — the rank, usually. */
+    hero: function (host, title) {
+      if (!host) return;
+      heroHosts.push({ node: host, title: title || "" });
+      host.innerHTML = heroHTML(title || "");
+    },
+
     earned: function () { return S.earned; },
 
     owns: function (id) { return !!S.owned[id]; },
@@ -1494,6 +1590,7 @@ window.__MC_SFX__={"tool": "data:audio/mpeg;base64,//OAxAAAAAAAAAAAAFhpbmcAAAAPA
       S.owned[id] = true;
       save();
       drawCoins();
+      drawHeroes();
       return true;
     },
 
@@ -1506,6 +1603,7 @@ window.__MC_SFX__={"tool": "data:audio/mpeg;base64,//OAxAAAAAAAAAAAAFhpbmcAAAAPA
       if (id) S.equip[slot] = id; else delete S.equip[slot];
       save();
       skin();
+      drawHeroes();
       return true;
     },
 
@@ -1515,7 +1613,7 @@ window.__MC_SFX__={"tool": "data:audio/mpeg;base64,//OAxAAAAAAAAAAAAFhpbmcAAAAPA
       S = { cleared: {}, misses: {}, tool9: false, ore: {}, gem: {}, dragon: 0,
             runs: {}, coins: 0, earned: 0, owned: {}, equip: {},
             mute: S.mute };  // muting is a preference, not progress
-      save(); drawBar(); drawCoins(); skin();
+      save(); drawBar(); drawCoins(); skin(); drawHeroes();
     },
     _relift: lift
   };
@@ -2260,6 +2358,8 @@ function rBuild(head){
     }
   };
 }
+
+
 
 
 

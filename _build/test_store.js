@@ -74,7 +74,7 @@ const ITEMS = AISLES.flatMap(a => a.items.map(it => ({ ...it, slot: a.slot })));
 const PAID = ITEMS.filter(i => !i.free);
 
 group("the catalogue");
-ok("four aisles", AISLES.length === 4);
+ok("five aisles", AISLES.length === 5);
 ok("every aisle has a slot and at least three things",
    AISLES.every(a => a.slot && a.items.length >= 3));
 ok("every item has a unique id", new Set(ITEMS.map(i => i.id)).size === ITEMS.length);
@@ -83,8 +83,10 @@ ok("every item has a name and a description",
 ok("everything not free has a whole-number price above zero",
    PAID.every(i => Number.isInteger(i.cost) && i.cost > 0));
 ok("nothing free has a price", ITEMS.filter(i => i.free).every(i => i.cost === undefined));
-ok("three aisles start you with something free, ranks start empty",
+ok("three aisles start you with something free; ranks and capes start empty",
    AISLES.filter(a => a.items.some(i => i.free)).length === 3);
+ok("capes are the aisle you can see on the character",
+   AISLES.some(a => a.slot === "cape" && a.items.length >= 5));
 ok("a fallback names a real free item in that aisle",
    AISLES.every(a => !a.fallback || a.items.some(i => i.id === a.fallback && i.free)));
 
@@ -159,10 +161,12 @@ group("wearing");
 group("requirements — the two that coins alone cannot buy");
 {
   const gated = ITEMS.filter(i => i.needs);
-  ok("two things are gated", gated.length === 2);
-  ok("both are the expensive ones", gated.every(i => i.cost >= 900));
+  ok("three things cannot be bought on coins alone", gated.length === 3);
+  ok("all of them are at the expensive end", gated.every(i => i.cost >= 900));
   ok("each names a requirement the page knows how to test",
-     gated.every(i => /dragon|beacon/.test(i.needs)));
+     gated.every(i => /dragon|beacon|elytra/.test(i.needs)));
+  ok("the elytra still wants breadth across the subjects, as it always has",
+     /subjectsCleared >= S\.elytraNeeds/.test(html));
   const { MC } = fresh({ coins: 5000, earned: 5000, dragon: 0 });
   const S = MC.state();
   ok("a fresh save has slain no dragon and lit no beacon",
@@ -202,6 +206,37 @@ group("the hub's copy of the rank names");
      /MC\.equipped\("title"\)/.test(hub));
   ok("the hub sends you to the shop as well as the trophy room",
      /href="store\/index\.html"/.test(hub) && /href="trophy\/index\.html"/.test(hub));
+}
+
+group("the character");
+{
+  const { MC, root } = fresh({ coins: 4000, earned: 4000 });
+  ok("the engine can draw one", typeof MC.hero === "function");
+  const host = { innerHTML: "", parentNode: {} };
+  MC.hero(host, "Prospector");
+  ok("it draws a figure", /class="mc-hero"/.test(host.innerHTML));
+  ok("...wearing no cape to begin with", /data-cape="none"/.test(host.innerHTML));
+  ok("...with the rank under it", /Prospector/.test(host.innerHTML));
+  ok("...and the purse on it", /mc-heropurse/.test(host.innerHTML));
+  MC.buy("scarlet", 95);
+  MC.equip("cape", "scarlet");
+  ok("putting a cape on redraws it where it already was",
+     /data-cape="scarlet"/.test(host.innerHTML));
+  ok("...and the root element says so too", root.attrs["data-mc-cape"] === "scarlet");
+  MC.equip("cape", null);
+  ok("taking it off redraws it bare", /data-cape="none"/.test(host.innerHTML));
+}
+
+group("the three pages that show him");
+{
+  for (const [name, rel] of [["the hub", "index.html"],
+                             ["the trophy room", "trophy/index.html"],
+                             ["the shop", "store/index.html"]]) {
+    const h = fs.readFileSync(path.join(ROOT, rel), "utf8");
+    ok(name + " has somewhere to put the character and asks for one",
+       /id="hero"/.test(h) && /MC\.hero\(document/.test(h));
+    ok(name + " carries the styles that draw it", /\.mc-hero\{/.test(h));
+  }
 }
 
 group("the page itself");
