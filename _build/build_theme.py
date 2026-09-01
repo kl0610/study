@@ -153,6 +153,12 @@ def vtest(s):
     return Patcher(s, "vocabtest")
 
 
+def hist4(s):
+    """CKHG Chapter 4 — generated from Ch3's shell, so its call sites came
+    across already patched. Config only, like hist2/hist3."""
+    return Patcher(s, "history4")
+
+
 def spell3(s):
     """Spelling List 3 — generated from List 2's shell, so its call sites came
     across already patched. Config only."""
@@ -282,6 +288,8 @@ APPS = {
     "science/g5-matter-ch2":  (sci2,  dict(app="science2",   shake="#card",   lift=None,
                                            dragon=["m1"])),
     "history/g5-maya-ch3":    (hist3, dict(app="history3",   shake="#card",   lift=None,
+                                           dragon=["s3"])),
+    "history/g5-maya-ch4":    (hist4, dict(app="history4",   shake="#card",   lift=None,
                                            dragon=["s3"])),
     # Ch3's single mission is m1, the same shape as Ch1 and Ch2.
     "science/g5-matter-ch3":  (sci3,  dict(app="science3",   shake="#card",   lift=None,

@@ -1,0 +1,358 @@
+{
+  "bigQuestion": "What does the description of Tenochtitlán reveal about the Aztec civilization?",
+  "sets": [
+    {
+      "id": "s1",
+      "c": "var(--sky)",
+      "tag": "Pages 28–30",
+      "name": "A Lakeside Paradise",
+      "blurb": "An island city of two hundred thousand, reached by causeway and travelled by canoe.",
+      "items": [
+        {
+          "type": "pick",
+          "q": "What is a <b>causeway</b>?",
+          "opts": [
+            "A raised road built over water, joining an island to the mainland",
+            "A channel dug by people, used by boats or for irrigation water",
+            "A raised garden bed built out in the shallows of a lake",
+            "A wide stone stairway climbing the side of a temple pyramid"
+          ],
+          "a": 0,
+          "why": "Causeway: a raised road built over water to connect islands to a mainland. Three of them joined Tenochtitlán to the shore.",
+          "cite": "Core Vocabulary, Student Reader page 28"
+        },
+        {
+          "type": "pick",
+          "q": "What is a <b>canal</b>?",
+          "opts": [
+            "A road raised above the water on packed earth",
+            "A channel dug by people, used by boats or for irrigation",
+            "A natural river running through the middle of a city",
+            "A stone aqueduct carrying fresh water from the hills"
+          ],
+          "a": 1,
+          "why": "Canal: a channel dug by people, used by boats or for irrigation. A network of them linked the parts of the city.",
+          "cite": "Core Vocabulary, Student Reader page 28"
+        },
+        {
+          "type": "pick",
+          "q": "Where was Tenochtitlán built?",
+          "opts": [
+            "On a high ridge overlooking a valley",
+            "On an island in the middle of Lake Texcoco",
+            "Along the banks of a wide river",
+            "In a clearing cut out of dense rainforest"
+          ],
+          "a": 1,
+          "why": "\"The city was built on an island in the middle of a lake.\" That single fact explains the causeways, the canals and the canoes.",
+          "cite": "Student Reader pages 28–29"
+        },
+        {
+          "type": "pick",
+          "q": "Roughly how many people lived in Tenochtitlán?",
+          "opts": [
+            "About two thousand",
+            "About twenty thousand",
+            "About two hundred thousand",
+            "About two million"
+          ],
+          "a": 2,
+          "why": "\"A population of perhaps two hundred thousand.\" Bigger than almost any European city of the time, which is why the Spanish were so astonished.",
+          "cite": "Student Reader page 28"
+        },
+        {
+          "type": "pick",
+          "q": "How did the Aztec make the raised gardens around the city?",
+          "opts": [
+            "They floated rafts of woven reeds and planted straight onto them",
+            "They piled mud from the lake bottom into long narrow beds",
+            "They cut terraces into the hillsides that rose above the lake",
+            "They drained parts of the lake and farmed the dry bed"
+          ],
+          "a": 1,
+          "why": "\"The Aztec created these gardens by digging up mud from the bottom of the lake and piling it up in shallow areas.\" They looked like they floated, but they stood on the lake bed.",
+          "cite": "Student Reader page 30"
+        },
+        {
+          "type": "pick",
+          "q": "Why did those gardens stay fertile year after year?",
+          "opts": [
+            "Fresh mud was scooped onto them every year",
+            "They were left unplanted every second season",
+            "Rainwater washed nutrients down from the mountains",
+            "The Aztec burned the old crops and dug in the ash"
+          ],
+          "a": 0,
+          "why": "\"The Aztec also kept the soil fertile by scooping new mud onto the gardens every year.\" Corn, squash and beans grew in it.",
+          "cite": "Student Reader page 30"
+        },
+        {
+          "type": "pick",
+          "q": "The Aztec built a huge city on a swampy island rather than on dry land. What does the way they solved that problem show about them?",
+          "opts": [
+            "They could not find any better farmland anywhere nearby",
+            "They were skilled at engineering their way round a hard site",
+            "They preferred to keep well apart from other peoples",
+            "They had been driven out onto the lake by a stronger enemy"
+          ],
+          "a": 1,
+          "why": "Causeways to cross the water, canals to move through the city, gardens built up out of lake mud — every one is a practical problem solved by building.",
+          "cite": "Student Reader pages 28–30"
+        },
+        {
+          "type": "build"
+        }
+      ]
+    },
+    {
+      "id": "s2",
+      "c": "var(--gold)",
+      "tag": "Pages 30–33",
+      "name": "Home, School and Market",
+      "blurb": "One-room houses, priests who taught, and a market you could hear a mile off.",
+      "items": [
+        {
+          "type": "pick",
+          "q": "What is a <b>scribe</b>?",
+          "opts": [
+            "A priest who performed sacrifices at the Great Temple",
+            "A person whose job is copying written information",
+            "A merchant licensed to trade in the central market",
+            "A soldier who carried messages between Aztec armies"
+          ],
+          "a": 1,
+          "why": "Scribe: a person whose job is copying written information. Boys at the nobles' school were trained to become priests and scribes.",
+          "cite": "Core Vocabulary, Student Reader page 31"
+        },
+        {
+          "type": "pick",
+          "q": "What is a <b>codex</b>?",
+          "opts": [
+            "An ancient book with handwritten pages or parts",
+            "A drawing that stands in for a whole word or phrase",
+            "A stone tablet carved with the names of rulers",
+            "A woven cloth recording payments from conquered towns"
+          ],
+          "a": 0,
+          "why": "Codex: an ancient book with handwritten pages. The Aztec kind was a long strip of tree bark folded like an accordion. More than one is codices.",
+          "cite": "Core Vocabulary, Student Reader page 32"
+        },
+        {
+          "type": "pick",
+          "q": "What is a <b>pictogram</b>?",
+          "opts": [
+            "A picture or drawing that stands for a word or phrase",
+            "A book of folded tree bark used for keeping records",
+            "A raised garden built out into the shallows of the lake",
+            "A symbol carved into the stone steps of a temple"
+          ],
+          "a": 0,
+          "why": "Pictogram: a picture or drawing that stands for a word or phrase. Codex pages were covered with pictures and pictograms.",
+          "cite": "Core Vocabulary, Student Reader page 32"
+        },
+        {
+          "type": "pick",
+          "q": "What were codices used to keep track of?",
+          "opts": [
+            "Only the dates of religious holidays through the year",
+            "Rulers, tribute payments, and religious holidays",
+            "The rules of the ball game and the results of each match",
+            "Maps of the canals and causeways that crossed the city"
+          ],
+          "a": 1,
+          "why": "The priest explains that codices \"are used to keep lists of rulers, to record payments made by conquered people, and to keep track of religious holidays.\"",
+          "cite": "Student Reader page 32"
+        },
+        {
+          "type": "pick",
+          "q": "Who taught in the school for the sons of Aztec nobles?",
+          "opts": [
+            "Retired warriors",
+            "Scribes",
+            "Priests",
+            "Merchants of the great market"
+          ],
+          "a": 2,
+          "why": "\"The teachers in this school are Aztec priests\" — who painted their faces black and performed human sacrifices. They trained boys to become priests and scribes.",
+          "cite": "Student Reader page 31"
+        },
+        {
+          "type": "pick",
+          "q": "What did people use as money in the central market?",
+          "opts": [
+            "Silver coins stamped by the emperor",
+            "Cacao beans and cotton blankets",
+            "Small pieces of jade",
+            "Written notes recorded in a codex"
+          ],
+          "a": 1,
+          "why": "\"Here, people trade cacao (chocolate) beans and cotton blankets for other items.\" Goods, not coins — the market ran on barter with agreed standards.",
+          "cite": "Student Reader page 32"
+        },
+        {
+          "type": "pick",
+          "q": "The market's noise \"can be heard a mile away\", and one corner of it traded enslaved people. What do those two details together tell you?",
+          "opts": [
+            "The market was small but unusually noisy for its size",
+            "Trade was huge, and people themselves were traded in it",
+            "Most goods sold there came from outside the empire",
+            "The market opened only on the great religious holidays"
+          ],
+          "a": 1,
+          "why": "The reader puts wonder and cruelty side by side on purpose. A city can be a marvel of organisation and still be built on things we would call terrible.",
+          "cite": "Student Reader pages 32–33"
+        },
+        {
+          "type": "order",
+          "q": "You are touring Tenochtitlán by canoe. Put the stops in the order the chapter takes you through them.",
+          "steps": [
+            "The raised gardens built out on the lake",
+            "The one-room houses where families lived and wove",
+            "The schools where boys learned drills, and nobles' sons learned to write",
+            "The central market, loud enough to hear a mile off",
+            "The ceremonial centre and the Great Temple"
+          ],
+          "why": "The chapter is written as a tour that moves inward — from the farms on the water, through the houses and schools, to the market, and finally to the temple at the heart of the city.",
+          "cite": "Student Reader pages 30–33"
+        },
+        {
+          "type": "build"
+        }
+      ]
+    },
+    {
+      "id": "s3",
+      "c": "var(--red)",
+      "tag": "Pages 33–35",
+      "name": "The Great Temple and Moctezuma",
+      "blurb": "A pyramid the length of a football field, an emperor no one could look at, and omens in the sky.",
+      "items": [
+        {
+          "type": "pick",
+          "q": "What is a <b>litter</b>?",
+          "opts": [
+            "A chair on two beams, carried on people's shoulders",
+            "A period of time in which a king or queen rules",
+            "A mat laid down so a ruler's sandals stay clean",
+            "A raised road built out across open water"
+          ],
+          "a": 0,
+          "why": "Litter: a chair attached to two beams and carried on the shoulders of several people. Moctezuma was carried in a fancy one.",
+          "cite": "Core Vocabulary, Student Reader page 34"
+        },
+        {
+          "type": "pick",
+          "q": "What is a <b>reign</b>?",
+          "opts": [
+            "The palace where an emperor lives",
+            "A period of time in which a king or queen rules",
+            "A ceremony marking the crowning of a ruler",
+            "The area of land an empire controls"
+          ],
+          "a": 1,
+          "why": "Reign: a period of time in which a king or queen rules. The strange events happened during the reign of Moctezuma II.",
+          "cite": "Core Vocabulary, Student Reader page 34"
+        },
+        {
+          "type": "pick",
+          "q": "How big was the Great Temple?",
+          "opts": [
+            "About ten yards wide and twenty feet high at the top",
+            "Nearly a hundred yards wide and ninety feet high",
+            "Roughly the size of an ordinary Aztec family house",
+            "Wider than the whole of the ceremonial centre"
+          ],
+          "a": 1,
+          "why": "\"Almost one hundred yards wide at its base. That's roughly the length of a football field! It rises almost ninety feet in the air.\"",
+          "cite": "Student Reader pages 33–34"
+        },
+        {
+          "type": "pick",
+          "q": "Why can you only admire Moctezuma's palace from the outside?",
+          "opts": [
+            "It was still being built",
+            "Commoners were not allowed to enter",
+            "It had been damaged by lightning",
+            "The emperor was away on campaign"
+          ],
+          "a": 1,
+          "why": "\"Commoners are not allowed to enter.\" The palace had hundreds of rooms and more than a thousand servants.",
+          "cite": "Student Reader page 34"
+        },
+        {
+          "type": "pick",
+          "q": "What happened when Moctezuma II entered a room?",
+          "opts": [
+            "Nobles threw themselves face down on the ground",
+            "Everyone stood and bowed their heads",
+            "Priests sounded a drum from the temple steps",
+            "Servants scattered flowers before him"
+          ],
+          "a": 0,
+          "why": "\"No one was allowed to look the emperor in the eye. When he entered the room, even the nobles threw themselves face down on the ground.\"",
+          "cite": "Student Reader page 34"
+        },
+        {
+          "type": "pick",
+          "q": "Which of these strange events did <b>not</b> happen during Moctezuma's reign, according to the chapter?",
+          "opts": [
+            "A drought that dried the land",
+            "A comet crossing the night sky",
+            "Lightning striking one of the temples",
+            "An earthquake shaking the causeways"
+          ],
+          "a": 3,
+          "why": "The chapter lists a drought, a comet, lightning striking a temple, and rumours of a wailing woman in the streets. No earthquake.",
+          "cite": "Student Reader page 34"
+        },
+        {
+          "type": "pick",
+          "q": "Moctezuma and his priests feared the omens meant the world was ending. The chapter says a kind of doomsday really was coming. Where from?",
+          "opts": [
+            "From the gods themselves, exactly as the priests believed",
+            "From Spanish soldiers sailing across the Atlantic Ocean",
+            "From a rival Aztec city on the far shore of the lake",
+            "From the famine that the long drought was causing"
+          ],
+          "a": 1,
+          "why": "\"It was coming from across the Atlantic Ocean. Spanish soldiers were sailing from Europe in search of riches and glory.\" That is Chapter 7.",
+          "cite": "Student Reader page 35"
+        },
+        {
+          "type": "build"
+        }
+      ]
+    }
+  ],
+  "build": {
+    "q": "Build the answer to the Big Question. Pick the <b>two</b> statements that actually say what the description of Tenochtitlán reveals about the Aztec.",
+    "tiles": [
+      {
+        "t": "It was an enormous city with the features it needed to feed, move and support a huge population.",
+        "a": true
+      },
+      {
+        "t": "It shows Aztec skill at building, organising, and solving practical problems.",
+        "a": true
+      },
+      {
+        "t": "The top steps of the Great Temple were stained with the blood of sacrifices.",
+        "a": false
+      },
+      {
+        "t": "No one was permitted to look the emperor Moctezuma II in the eye.",
+        "a": false
+      },
+      {
+        "t": "A comet appeared in the sky and lightning struck one of the temples.",
+        "a": false
+      },
+      {
+        "t": "Aztec men wore loincloths and cloaks, and women wore long skirts and ponchos.",
+        "a": false
+      }
+    ],
+    "answer": "Tenochtitlán was an enormous city with many features that let it serve and support its large population — causeways and canals to move through, gardens built out of lake mud to feed it, a market drawing goods from across the empire. It demonstrates the great success and ingenuity of the Aztec, and their skill at building, organising and solving practical problems. The other four tiles are all true, and all from this chapter, but they describe the Aztec rather than answering what the city itself reveals.",
+    "cite": "Teacher Guide, Chapter 4 — key points for the Big Question"
+  }
+}
