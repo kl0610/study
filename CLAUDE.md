@@ -101,11 +101,81 @@ HTML.
 
 ---
 
+## Math — the nightly loop
+
+Math is not a chapter to cover. It is last night's written practice and the
+handful of problems that came back wrong, so it goes lesson by lesson, on the
+days there is something to review.
+
+Per night:
+
+1. **Read the problems he missed** out of `_private/math/` — the lesson number
+   he was assigned locates them (`printed = PDF - 21`, confirmed at both ends).
+2. **Classify the miss**, the same way returned tests are classified. Math
+   misses split cleanly, and the kinds want opposite responses: *read the
+   question wrong* (asked for single-digit factors, gave all of them), *did not
+   know the term* (perfect square), *knew the idea but stopped early* (listed
+   both factor lists and never compared them), *right idea, inverse operation*
+   (subtracted where he needed to add). The last is worth the most practice and
+   is the easiest to miss, because the work looks right all the way down.
+3. **Write `_build/generators/math_l<N>.json` and run `gen_math.py`.** Different
+   numbers throughout — the point is practice on the skill, not a second run at
+   the same questions, and it keeps the book out of the repo.
+4. **Twelve questions is the ceiling, two to four per set, two variations per
+   kind.** A review that takes longer than the homework did is not a review. All
+   three are enforced by `gen_math.py`. The practical effect is that every
+   question has to be aimed at a miss: twelve buys two variations on six of
+   them, and nothing else fits. A question that is merely good — a harder form
+   he did not get wrong, a format worth practising — stays in the spec unused
+   and waits for a night that has room.
+5. **Tag each set with the homework problems it came from**, never with the
+   lesson a skill was first taught in. Saxon numbers every written-practice
+   problem with the lesson it reviews, which is how the misses get located — but
+   a set tagged "Lesson 6" on a page headed "Lesson 7" reads as a claim about
+   what the page covers. The teaching lesson belongs in each answer's citation,
+   where it reads as a reference. Both are checked.
+6. **Two variations per kind of question is the standard.** One "do it" and one
+   "spot the slip" covers a skill; six of the same thing is padding, and it is
+   what a review is not for. More only when Keith asks for it on a particular
+   miss. `gen_math.py` counts the `kind` on each item and refuses to build past
+   the cap, so a spec cannot drift back.
+7. **Check the numbers against the lesson's own examples before using them.**
+   Lesson 6 works the greatest common factor of 18 and 30 as Example 3 — a
+   question on that pair is practice on the example, not on the skill.
+8. **Give each worked example the lesson's own method underneath it**, in the
+   lesson's own words (minuend, subtrahend, addend, divisor, quotient, and the
+   rule for each), plus a `book` line saying where the same kind is worked. That
+   is somewhere further to go than what we wrote, without reproducing it.
+9. Where the miss was the operation rather than the arithmetic, **ask which move
+   is needed, not what the answer is**: "add 47 / subtract 47 / multiply by 47 /
+   divide by 47". That is the thing being practised, and it takes ten seconds a
+   question instead of two minutes.
+
+The app is built on the history shell, which is the one carrying the full review
+layer — back and skip, remembered answers, reveal after three misses, retry,
+marks that stay up. `gen_math.py` reskins the history-specific parts, all of
+which now read from the data: the Big Question becomes the idea being practised,
+the reading panel becomes a worked example, the footer becomes Saxon.
+
+**Every number is verified twice, by two programs sharing no code.**
+`gen_math.py` refuses to build unless it can recompute each claim from scratch,
+and `test_math.js` recomputes them again from the shipped file. A math app that
+is confidently wrong is worse than no app — it teaches the mistake.
+
+**Nothing from `_private/` is committed.** What ships is questions with
+different numbers, citing the lesson a skill was taught in.
+
+---
+
 ## Curriculum sources
 
-**Local PDFs live in `_source/`, organised by subject.** Check here first — these
-are the books the apps are built from, so there is no need to ask for an upload
-or re-fetch anything already on this list.
+Source books live in two places, and the difference is a licensing one, not a
+filing one.
+
+### `_source/` — committed
+
+Core Knowledge material under CC BY-NC-SA 4.0. It may be redistributed with
+attribution, so it is in the repo and a fresh clone has it.
 
 ```
 _source/history/  CKHG_G5_U2_MayaAztecInca_Teacher-Guide.pdf      110 pp
@@ -119,16 +189,40 @@ _source/reading/  CC_SherlockHolmes_Reader_W1.pdf                 228 pp
                   Core-Classics-Sherlock-Holmes-Teacher-Guide.pdf  92 pp
 ```
 
-All six extract text with `pypdf` — quote the wording and cite the page from the
+`_source/spelling/` and `_source/vocabulary/` also exist and are **gitignored** —
+weekly worksheets are personal study use only.
+
+### `_private/` — never committed
+
+**Purchased books. Nothing under `_private/` may be committed, ever.** They are
+not Creative Commons and not ours to redistribute, and this repo is public and
+serves GitHub Pages, so a commit would publish them. `.gitignore` covers the
+whole directory; check `git status` shows nothing under it before committing.
+
+```
+_private/math/        Student+eBook+Course+2.pdf      Saxon Course 2
+_private/vocabulary/  Wordly Wise Book 6 pages, arriving week by week
+```
+
+Read them freely, quote sparingly, cite the page — the same as any other source.
+What gets committed is the questions built from them.
+
+### Reading the PDFs
+
+They extract text with `pypdf` — quote the wording and cite the page from the
 PDF rather than from memory of the original work. Core Classics in particular is
 an abridgement: it cuts and rewords, so the original Doyle is not a safe source.
 Printed page numbers are offset from PDF page indices (in the Sherlock Reader,
 `printed = PDF − 13`); confirm the offset per book against a page you can match.
 
-**Vocabulary and Math have no local sources.** Wordly Wise Book 6 pages arrive
-week by week, so each list has to be supplied as it is set; Saxon Math Course 1
-material has not been added yet. Anything on this machine for Wordly Wise Book 5
-or Saxon Parts 8–9 is a fourth-grade leftover — ignore it.
+**Math is Saxon Course 2, not Course 1.** Course 2 is normally a sixth-grade
+text — this is an accelerated placement, so pitch questions to **the book, not to
+a generic grade-5 level**. Do not simplify a problem because it looks hard for
+fifth grade; if it is in Course 2 it is what he is being taught. Nothing has been
+built for Math yet.
+
+Anything on this machine for Wordly Wise Book 5, or Saxon Parts 8–9, is a
+fourth-grade leftover — ignore it.
 
 **CKHG and CKSci Teacher Guides and Student Readers are free PDFs on
 coreknowledge.org** and can be pulled with `web_fetch` when a local copy is
@@ -154,9 +248,15 @@ Required footer, on every app:
 
 ```bash
 cd study/_build
-python3 build_theme.py      # idempotent; fails loudly if an anchor moved
-node test_theme.js          # engine logic
+python3 build_theme.py --retheme   # --retheme is required for engine changes
+for t in test_*.js; do node $t; done   # theme, history, reading, vocab, math
 ```
+
+`build_theme.py` exits 0 whether or not a patch found its anchor, and a
+silently skipped patch has shipped three times. After a change to `review.py`
+or a generator, **assert each patched piece is present in the output** and
+parse-check the generated scripts (`node --check`) rather than trusting the
+exit code.
 
 And for any new content:
 
