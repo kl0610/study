@@ -81,6 +81,7 @@
 .mc-chest{
   display:flex; flex-direction:column; align-items:center; gap:8px;
   padding:14px 10px 4px; margin:2px 0 6px;
+  position:relative;   /* the victory flourish anchors to the chest */
 }
 .mc-chest .mc-lid{width:120px; height:120px; object-fit:contain; image-rendering:pixelated;
   transition:transform .2s; cursor:pointer}
@@ -287,3 +288,85 @@
   .mc-sw,.mc-knob{transition:none}
 }
 /* MC-TOGGLE-CSS-END */
+
+/* MC-SKIN-CSS-START */
+/* ===== what he is wearing ===================================================
+   The engine stamps these on <html> as it loads, before first paint.
+   The attribute selector outranks an app's own :root whichever order the
+   stylesheets landed in. Overworld is the default and needs no rule. */
+
+html[data-mc-theme="deepslate"]{
+  --bg:#14171A; --gold:#93A7BC;
+  --mc-glow:#23272E;
+}
+html[data-mc-theme="cherry"]{
+  --bg:#2A1622; --gold:#F0A2BE;
+  --mc-glow:#46203A;
+}
+html[data-mc-theme="nether"]{
+  --bg:#1E0C0B; --gold:#FF9247;
+  --mc-glow:#3F1512;
+}
+html[data-mc-theme="end"]{
+  --bg:#0E0A18; --gold:#CFBAFF;
+  --mc-glow:#241A3A;
+}
+/* The apps paint their own radial wash from a hard-coded colour, so a themed
+   page re-paints it from the token. Bare :root keeps the original. */
+html[data-mc-theme]:not([data-mc-theme="overworld"]) body{
+  background-color:var(--bg);
+  background-image:radial-gradient(circle at 12% -6%, var(--mc-glow) 0%, transparent 55%);
+}
+
+/* ---------- the purse he carries ---------- */
+.mc-purse{transition:box-shadow .2s, border-color .2s}
+/* The hub runs with the HUD off and paints its own coin badge, so each skin
+   names both. Without this, a bought purse is invisible on the one page he
+   looks at most. */
+html[data-mc-purse="gold"] .purselink,
+html[data-mc-purse="gold"] .mc-purse{
+  border-color:#E0A83C; box-shadow:0 0 0 1px #E0A83C inset, 0 0 12px rgba(224,168,60,.5)}
+html[data-mc-purse="emerald"] .purselink,
+html[data-mc-purse="emerald"] .mc-purse{
+  border-color:#3FBF7F; box-shadow:0 0 0 1px #3FBF7F inset, 0 0 12px rgba(63,191,127,.5)}
+html[data-mc-purse="netherite"] .purselink,
+html[data-mc-purse="netherite"] .mc-purse{
+  border-color:#6B5F6B; background:#1B171B;
+  box-shadow:0 0 0 1px #8C7A96 inset, 0 0 14px rgba(140,122,150,.55)}
+html[data-mc-purse="netherite"] .purselink b,
+html[data-mc-purse="netherite"] .mc-purse b{color:#D8CBE4}
+
+/* ---------- the flourish over the chest ----------
+   Decorative only: it is added after the chest opens and removed a couple of
+   seconds later. `pointer-events:none` so it can never swallow a tap on the
+   buttons underneath, and it is skipped entirely for anyone who has asked their
+   machine for less movement. */
+.mc-fx{position:absolute; inset:0; overflow:hidden; pointer-events:none; z-index:2}
+.mc-fx i{position:absolute; top:44%; width:8px; height:8px; opacity:0;
+  animation:mc-fx-fall 1.5s ease-out forwards}
+.mc-fx-sparkle i{width:5px; height:5px; border-radius:50%; background:#FFE9A8;
+  box-shadow:0 0 6px #FFD166}
+.mc-fx-confetti i:nth-child(3n){background:#E0A83C}
+.mc-fx-confetti i:nth-child(3n+1){background:#3FBF7F}
+.mc-fx-confetti i:nth-child(3n+2){background:#5AA9E6}
+.mc-fx-firework i{width:6px; height:6px; border-radius:50%;
+  background:#FFF; box-shadow:0 0 10px 2px #FF9247}
+.mc-fx-firework i:nth-child(2n){box-shadow:0 0 10px 2px #CFBAFF}
+.mc-fx-ore i{width:9px; height:9px; border-radius:2px; background:#5AA9E6}
+.mc-fx-ore i:nth-child(4n){background:#3FBF7F}
+.mc-fx-ore i:nth-child(4n+1){background:#E0A83C}
+.mc-fx-ore i:nth-child(4n+2){background:#C4553F}
+@keyframes mc-fx-fall{
+  0%{opacity:0; transform:translate(0,0) scale(.4)}
+  12%{opacity:1}
+  100%{opacity:0; transform:translate(var(--mc-dx,0), -150px) scale(1) rotate(220deg)}
+}
+@media (prefers-reduced-motion: reduce){ .mc-fx{display:none} }
+
+/* ---------- the rank he is wearing ---------- */
+.mc-title{
+  display:inline-block; margin:0; padding:3px 10px; border-radius:999px;
+  border:1px solid var(--gold); color:var(--gold);
+  font:800 10.5px var(--mono,monospace); letter-spacing:.14em; text-transform:uppercase;
+  background:rgba(255,255,255,.05)}
+/* MC-SKIN-CSS-END */

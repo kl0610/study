@@ -53,7 +53,10 @@ global.localStorage = {
 global.window = { addEventListener(){}, __MC_PREFIX__:"../../assets/", __MC_HAS_BOSS__:false };
 global.document = {
   body: mkEl("body"),
-  documentElement: { clientWidth: 380, style:{ setProperty(){} } },
+  /* The engine stamps what he is wearing onto <html> as it loads, so the fake
+     root has to accept attributes as well as report a width. */
+  documentElement: { clientWidth: 380, style:{ setProperty(){} },
+                     attrs:{}, setAttribute(k,v){ this.attrs[k]=v; } },
   createElement: mkEl,
   querySelector: () => null,
   addEventListener(){},

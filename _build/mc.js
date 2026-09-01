@@ -53,6 +53,18 @@
      and a ceiling that never arrives. */
   if (typeof S.coins !== "number" || !isFinite(S.coins)) S.coins = 0;
 
+  /* Two numbers, not one. `coins` is the spendable balance; `earned` is every
+     coin ever paid out and never goes down, so buying something does not shrink
+     the year's total — it moves it into things owned. Without this a shop would
+     break the one rule the whole design rests on: nothing earned is taken away.
+
+     Anyone who was here before the shop existed has earned at least what they
+     are holding, so that is where their total starts. */
+  if (typeof S.earned !== "number" || !isFinite(S.earned)) S.earned = S.coins;
+  if (S.earned < S.coins) S.earned = S.coins;
+  if (!S.owned || typeof S.owned !== "object") S.owned = {};
+  if (!S.equip || typeof S.equip !== "object") S.equip = {};
+
   /* ---------- sound ----------
      Every answer is heard: a coin when he is right, a soft glass note when he
      is not, and an unlock when a tool is earned. The wrong note is deliberately
@@ -258,6 +270,37 @@
   /* The purse. Deliberately on screen the whole time he is working, because the
      point of a currency is that it is visibly going up. Falls back to a drawn
      coin if the sprite is not there yet, so this works before the art lands. */
+  /* What he is wearing, stamped on the root element as the engine loads so a
+     plain CSS rule can pick it
+     up. `html[data-mc-theme=...]` outranks an app's own `:root`, so a theme
+     repaints every page whichever order the stylesheets landed in. */
+  function skin() {
+    var r = document.documentElement;
+    /* Cosmetic, so it must never be the reason the engine fails to load. */
+    if (!r || !r.setAttribute) return;
+    r.setAttribute("data-mc-theme", S.equip.theme || "overworld");
+    r.setAttribute("data-mc-purse", S.equip.purse || "leather");
+  }
+
+  /* The flourish over the chest at the end of a set. Sparkle is the one
+     everybody starts with; the rest are bought. Purely decorative, and it
+     cleans up after itself so nothing accumulates in the DOM. */
+  function burst(host) {
+    var kind = S.equip.effect || "sparkle";
+    var n = kind === "ore" ? 22 : kind === "firework" ? 18 : kind === "confetti" ? 16 : 10;
+    var box = document.createElement("div");
+    box.className = "mc-fx mc-fx-" + kind;
+    for (var i = 0; i < n; i++) {
+      var b = document.createElement("i");
+      b.style.left = (6 + Math.random() * 88).toFixed(2) + "%";
+      b.style.animationDelay = (Math.random() * 0.45).toFixed(2) + "s";
+      b.style.setProperty("--mc-dx", (Math.random() * 60 - 30).toFixed(1) + "px");
+      box.appendChild(b);
+    }
+    host.appendChild(box);
+    setTimeout(function () { if (box.parentNode) box.parentNode.removeChild(box); }, 2600);
+  }
+
   function drawCoins() {
     if (!purseEl) return;
     var src = url("coin");
@@ -536,6 +579,7 @@
       if (dragon) coins += 40;
       if (partialRun) coins = Math.max(2, Math.round(coins / 2));
       S.coins += coins;
+      S.earned += coins;
       save();
       drawCoins();
 
@@ -629,6 +673,7 @@
         opened = true;
         lid.classList.remove("mc-shut");
         lid.src = url("chest-open");
+        burst(box);   /* whatever he has on: sparkle by default, bought if bought */
         lid.alt = "Open chest";
         lid.style.cursor = "default";
         var html = "", i;
@@ -734,7 +779,9 @@
         tools: u, toolNames: TOOLS,
         ore: JSON.parse(JSON.stringify(S.ore)), oreKinds: ORE,
         mineOpen: mineOpen(), dragons: S.dragon,
-        coins: S.coins,
+        coins: S.coins, earned: S.earned,
+        owned: JSON.parse(JSON.stringify(S.owned)),
+        equip: JSON.parse(JSON.stringify(S.equip)),
         gate: TOOL_GATE, elytraNeeds: ELYTRA_SUBJECTS,
         subjectsCleared: subjectsCleared(),
         gems: JSON.parse(JSON.stringify(S.gem)),
@@ -785,13 +832,53 @@
       return S.mute;
     },
 
+    /* ---------- the shop ----------
+       The catalogue lives in store/index.html, because what is for sale is
+       content and this is the engine. All the engine owns is the money and the
+       fact of ownership. */
+
+    earned: function () { return S.earned; },
+
+    owns: function (id) { return !!S.owned[id]; },
+
+    /* Buys once and keeps it. Refuses rather than going overdrawn, and refuses
+       a second purchase of something already owned, so a double tap on a slow
+       connection cannot charge twice. */
+    buy: function (id, cost) {
+      cost = Math.max(0, Math.round(Number(cost) || 0));
+      if (!id || S.owned[id]) return false;
+      if (S.coins < cost) return false;
+      S.coins -= cost;
+      S.owned[id] = true;
+      save();
+      drawCoins();
+      return true;
+    },
+
+    /* Wearing costs nothing and can be undone. Passing null takes the slot back
+       to its default, so nothing bought can ever strand him in a look he has
+       gone off. Refuses to equip something not owned. */
+    equip: function (slot, id) {
+      if (!slot) return false;
+      if (id && !S.owned[id]) return false;
+      if (id) S.equip[slot] = id; else delete S.equip[slot];
+      save();
+      skin();
+      return true;
+    },
+
+    equipped: function (slot) { return S.equip[slot] || null; },
+
     reset: function () {
       S = { cleared: {}, misses: {}, tool9: false, ore: {}, gem: {}, dragon: 0,
-            runs: {}, coins: 0, mute: S.mute };  // muting is a preference, not progress
-      save(); drawBar(); drawCoins();
+            runs: {}, coins: 0, earned: 0, owned: {}, equip: {},
+            mute: S.mute };  // muting is a preference, not progress
+      save(); drawBar(); drawCoins(); skin();
     },
     _relift: lift
   };
+
+  skin();
 
   window.MC = MC;
 })();
