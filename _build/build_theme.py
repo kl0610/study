@@ -611,12 +611,32 @@ def hub():
     return page(STUDY / "index.html", '<script src="_build/mc.js"></script>', "hub")
 
 
+def sprite_prefix(path, src):
+    """Make sure a site page says where assets/ is.
+
+    The engine defaults to "../../assets/", which is right for an app two
+    directories down and wrong for everything else. The hub and the trophy room
+    carry the line by hand; the shop did not, so every sprite on it resolved
+    outside the repo — no coin, and no tool in the character's hand. Working it
+    out from the page's own depth means the next site page cannot repeat it.
+    """
+    # The engine's own fallback line reads `window.__MC_PREFIX__ || "..."`, so a
+    # plain search for the name matches every themed page and this did nothing
+    # at all the first time. Look for the assignment.
+    if 'window.__MC_PREFIX__="' in src:
+        return src
+    depth = len(path.relative_to(STUDY).parts) - 1        # index.html is depth 0
+    rel = "assets/" if depth == 0 else ("../" * depth) + "assets/"
+    line = '<script>window.__MC_PREFIX__="%s";</script>\n' % rel
+    return src.replace("<body>\n", "<body>\n" + line, 1)
+
+
 def page(path, tag, label):
     """The hub gets the engine inlined too, so it doesn't fetch from _build/
     at runtime — and it reads state only, with no HUD of its own."""
     if not path.exists():
         return "%-24s missing" % label
-    src = path.read_text(encoding="utf-8")
+    src = sprite_prefix(path, path.read_text(encoding="utf-8"))
     js = (THEME / "mc.js").read_text(encoding="utf-8")
     if tag not in src:
         # No script tag can mean two very different things: the engine is already

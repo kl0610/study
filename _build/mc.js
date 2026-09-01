@@ -348,7 +348,8 @@
              (title ? '<div class="mc-heroname">' + title + '</div>' : "") +
              '<div class="mc-herokit mc-hero-kit">' + line + '</div>' +
              '<div class="mc-heropurse">' +
-               (url("coin") ? '<img class="mc-coin" alt="" src="' + url("coin") + '">'
+               (url("coin") ? '<img class="mc-coin" alt="" src="' + url("coin") +
+                              '" onerror="this.remove()">'
                             : '<i class="mc-coin mc-coin-fb"></i>') +
                "<b>" + S.coins + "</b></div>" +
            "</div>";

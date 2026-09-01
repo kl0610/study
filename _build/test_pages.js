@@ -109,6 +109,26 @@ group("nothing is fetched at run time");
   ok("no page loads a stylesheet from disk", !link.length, link.map(f => f.rel).join(", "));
 }
 
+group("every page knows where the sprites are");
+{
+  /* The engine falls back to "../../assets/", which is right for an app two
+     directories down and wrong for everything else. The shop shipped without a
+     prefix, so every sprite on it resolved outside the repo: no coin, and no
+     tool in the character's hand. Nothing failed loudly — the images were just
+     never there. */
+  const noPrefix = [], broken = [];
+  for (const f of FILES) {
+    const m = f.html.match(/window\.__MC_PREFIX__="([^"]*)"/);
+    if (!m) { noPrefix.push(f.rel); continue; }
+    const from = path.dirname(path.join(ROOT, f.rel));
+    if (!fs.existsSync(path.resolve(from, m[1], "tool-3.png"))) {
+      broken.push(f.rel + " -> " + m[1]);
+    }
+  }
+  ok("every page declares one", !noPrefix.length, noPrefix.join(", "));
+  ok("and every one of them actually finds the sprites", !broken.length, broken.join(", "));
+}
+
 group("app names");
 {
   const named = {};
