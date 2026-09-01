@@ -1808,9 +1808,16 @@ const SUBJECTS = [
        These are not chapters to work through in order — each is built from
        the problems that came back wrong, so a lesson only appears here if
        something on it was missed. */
+    /* Math is not a set of chapters to work through. Practice is built from
+       the problems that came back wrong on a given night, so the front door is
+       the lesson list and the picker behind it, not a fixed page per lesson.
+       The Lesson 7 review stays as the one that was hand-written first. */
     unit:"lesson",
     chapters:[
-      { n:7, t:"Finding the Value of a Variable",
+      { n:"✦", t:"Pick your lesson and your problems",
+        note:"Tick what you missed — questions are built fresh each time",
+        href:"math/practice/", app:"math", ids:[] },
+      { n:7, t:"Lesson 7 review — written by hand",
         note:"12 questions in three short sets, a few minutes each",
         href:"math/saxon-c2-l7/", app:"math7", ids:["s1","s2","s3"] }
     ]}

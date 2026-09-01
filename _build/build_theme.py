@@ -543,6 +543,44 @@ def trophy():
                 '<script src="../_build/mc.js"></script>', "trophy")
 
 
+def inline_module(src, name, path):
+    """Put a _build module into a page, replacing whatever is there from last time.
+
+    Idempotent by marker: the first build swaps out the <script src=...> tag,
+    every build after that replaces the block between the markers. Matching the
+    tag alone would work exactly once.
+    """
+    code = path.read_text(encoding="utf-8")
+    open_m = "/* MATH-%s: inlined by build_theme.py, do not hand-edit */" % name
+    shut_m = "/* /MATH-%s */" % name
+    block = "<script>%s\n%s\n%s</script>" % (open_m, code.rstrip(), shut_m)
+    old = re.search(r"<script>" + re.escape(open_m) + r".*?" + re.escape(shut_m) + r"</script>",
+                    src, re.S)
+    if old:
+        return src[:old.start()] + block + src[old.end():]
+    tag = '<script src="../../_build/%s"></script>' % path.name
+    if tag not in src:
+        return None
+    return src.replace(tag, block, 1)
+
+
+def mathapp():
+    """Saxon practice — the book's problem index, the generators and the worked
+    examples inlined, then the engine on top."""
+    p = STUDY / "math" / "practice" / "index.html"
+    if not p.exists():
+        return "%-24s missing" % "math/practice"
+    src = p.read_text(encoding="utf-8")
+    for name in ("MAP", "SKILLS", "EX"):
+        f = THEME / ("math" + name.lower() + ".js")
+        out = inline_module(src, name, f)
+        if out is None:
+            return "%-24s FAILED \u2014 no place to put %s" % ("math/practice", f.name)
+        src = out
+    p.write_text(src, encoding="utf-8")
+    return page(p, '<script src="../../_build/mc.js"></script>', "math/practice")
+
+
 def store():
     """The Trading Post. Same handling as the trophy room — engine inlined, no
     HUD of its own, one directory down. It is the only page that spends coins,
@@ -645,6 +683,7 @@ def main():
     print("  " + hub())
     print("  " + trophy())
     print("  " + store())
+    print("  " + mathapp())
 
     if bad:
         sys.exit("\n%d anchor(s) missed \u2014 nothing written for those apps." % bad)

@@ -1,0 +1,2922 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Saxon Course 2 practice</title>
+<style>
+:root{
+  --bg:#0B1A18; --panel:#F4F1E9; --panel-2:#E8E3D6; --ink:#1A211F; --dim:#6E7A76;
+  --gold:#E0A83C; --stone:#8A9490; --jade:#2F8F76; --red:#C4553F; --sky:#3D82B8;
+  --line:#D6CFBE; --paper:#F4F1E9;
+  --disp:"Trebuchet MS","Segoe UI",Verdana,system-ui,sans-serif;
+  --body:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --mono:ui-monospace,"SF Mono","Cascadia Mono",Consolas,monospace;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;background:var(--bg);color:var(--paper);font-family:var(--body);
+  line-height:1.55;padding:0 0 96px;
+  background-image:radial-gradient(circle at 12% -6%,#153029 0%,transparent 55%)}
+.wrap{max-width:680px;margin:0 auto;padding:0 16px}
+.hide{display:none !important}
+
+.hublink{display:inline-block;margin:16px 14px 0 0;font:700 12px var(--mono);
+  letter-spacing:.07em;color:var(--gold);text-decoration:none}
+.hublink:hover{text-decoration:underline}
+.hublink.quiet{color:var(--stone)}
+
+.eyebrow{font:700 11px var(--mono);letter-spacing:.16em;text-transform:uppercase;
+  color:var(--stone);margin:22px 0 6px}
+h1{font-family:var(--disp);font-size:clamp(26px,7vw,38px);line-height:1.05;
+  margin:0 0 8px;letter-spacing:-.01em}
+h1 em{font-style:normal;color:var(--gold)}
+.lede{margin:0 0 6px;color:#C9D2CE;font-size:15px;max-width:54ch}
+
+/* ---------- decades ---------- */
+.decade{margin:12px 0 0;border:2px solid rgba(255,255,255,.14);background:rgba(255,255,255,.03)}
+.decade > summary{list-style:none;cursor:pointer;padding:13px 15px;display:flex;
+  align-items:center;gap:12px}
+.decade > summary::-webkit-details-marker{display:none}
+.decade h2{margin:0;font-family:var(--disp);font-size:17px;flex:1}
+.decade .tally{font:700 10.5px var(--mono);letter-spacing:.1em;text-transform:uppercase;
+  color:var(--stone);white-space:nowrap}
+.decade .caret{width:18px;height:18px;flex:none;color:var(--stone);transition:transform .15s}
+.decade[open] .caret{transform:rotate(90deg)}
+.decade[open] > summary{border-bottom:1px solid rgba(255,255,255,.12)}
+.lessons{list-style:none;margin:0;padding:6px}
+.lessons li{margin:0}
+.lrow{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:12px;
+  width:100%;text-align:left;padding:10px 10px;background:none;border:0;color:inherit;
+  font:inherit;cursor:pointer;border-radius:2px}
+.lrow:hover{background:rgba(255,255,255,.06)}
+.lrow[disabled]{cursor:default;opacity:.42}
+.lrow[disabled]:hover{background:none}
+.lnum{width:34px;height:34px;flex:none;display:grid;place-items:center;
+  background:var(--panel-2);color:var(--ink);font:800 14px var(--mono);
+  box-shadow:inset -2px -2px 0 rgba(0,0,0,.25)}
+.lrow.saved .lnum{background:var(--gold)}
+.lwhat{min-width:0}
+.lwhat b{display:block;font:600 15px var(--body)}
+.lwhat small{display:block;font-size:12.5px;color:var(--stone)}
+.lgo{font:700 10.5px var(--mono);letter-spacing:.08em;text-transform:uppercase;
+  color:var(--gold);white-space:nowrap}
+.lrow[disabled] .lgo{color:var(--stone)}
+
+/* ---------- the picker ---------- */
+.scrim{position:fixed;inset:0;z-index:50;background:rgba(6,12,11,.86);
+  display:flex;align-items:flex-start;justify-content:center;overflow:auto;padding:18px 12px}
+.sheet{width:100%;max-width:620px;background:var(--panel);color:var(--ink);
+  border:2px solid var(--line);box-shadow:0 20px 50px rgba(0,0,0,.55)}
+.shead{display:flex;align-items:flex-start;gap:12px;padding:14px 16px;
+  border-bottom:1px solid var(--line)}
+.shead h2{margin:0;font-family:var(--disp);font-size:19px}
+.shead p{margin:3px 0 0;font-size:13px;color:var(--dim)}
+.sx{margin-left:auto;background:none;border:0;font-size:24px;line-height:1;
+  color:var(--dim);cursor:pointer;padding:0 2px}
+.sx:hover{color:var(--ink)}
+.stools{display:flex;flex-wrap:wrap;gap:8px;padding:10px 16px;border-bottom:1px solid var(--line);
+  background:var(--panel-2)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(132px,1fr));gap:6px;
+  padding:12px 16px;max-height:46vh;overflow:auto}
+.pk{display:flex;align-items:center;gap:8px;padding:7px 8px;border:1px solid var(--line);
+  background:#fff;cursor:pointer;user-select:none}
+.pk.on{border-color:var(--jade);background:#EAF6F1}
+.pk.off{opacity:.45;cursor:default;background:var(--panel-2)}
+.pk input{margin:0;width:16px;height:16px;flex:none;accent-color:var(--jade)}
+.pk .n{font:800 13px var(--mono);min-width:20px}
+.pk .s{font-size:11px;color:var(--dim);line-height:1.25;min-width:0;flex:1;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pk .howmany{display:flex;gap:2px}
+.pk .howmany button{width:20px;height:20px;padding:0;border:1px solid var(--line);
+  background:#fff;font:700 11px var(--mono);color:var(--dim);cursor:pointer}
+.pk .howmany button.sel{background:var(--jade);border-color:var(--jade);color:#fff}
+.pk.off .howmany{visibility:hidden}
+.sfoot{display:flex;align-items:center;gap:12px;padding:12px 16px;border-top:1px solid var(--line);
+  background:var(--panel-2);flex-wrap:wrap}
+.sfoot .count{font:700 12px var(--mono);color:var(--dim);flex:1;min-width:120px}
+
+/* ---------- the run ---------- */
+.dots{display:flex;gap:4px;margin:16px 0 10px;flex-wrap:wrap}
+.dot{width:9px;height:9px;background:rgba(255,255,255,.2)}
+.dot.done{background:var(--jade)}
+.dot.now{background:var(--gold)}
+.card{background:var(--panel);color:var(--ink);border:2px solid var(--line);
+  box-shadow:inset -3px -3px 0 rgba(0,0,0,.22);padding:16px}
+.qnum{font:700 10.5px var(--mono);letter-spacing:.13em;text-transform:uppercase;
+  color:var(--dim);margin-bottom:6px}
+.qsrc{font:700 10.5px var(--mono);letter-spacing:.06em;color:var(--jade);margin-bottom:8px}
+.q{font-size:17px;line-height:1.45;margin:0 0 14px}
+.opts{display:grid;gap:8px}
+.opt{display:flex;align-items:flex-start;gap:10px;width:100%;text-align:left;
+  padding:11px 12px;background:#fff;border:2px solid var(--line);cursor:pointer;
+  font:inherit;font-size:15px;color:var(--ink)}
+.opt:hover{border-color:var(--stone)}
+.opt.sel{border-color:var(--sky);background:#EAF2F8}
+.opt.right{border-color:var(--jade);background:#EAF6F1}
+.opt.wrong{border-color:var(--red);background:#F8ECEA}
+.opt .k{font:800 12px var(--mono);color:var(--dim);flex:none;width:15px;padding-top:2px}
+.act{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.btn{font:800 12px var(--mono);letter-spacing:.06em;text-transform:uppercase;
+  padding:9px 15px;border:2px solid var(--ink);background:var(--gold);color:#26210F;
+  box-shadow:inset -2px -2px 0 rgba(0,0,0,.3);cursor:pointer}
+.btn:hover:not([disabled]){filter:brightness(1.07)}
+.btn[disabled]{opacity:.45;cursor:default}
+.btn.o{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn.o:hover{border-color:var(--ink)}
+.btn.dark{background:transparent;color:var(--gold);border-color:var(--gold)}
+.fb{margin-top:14px;padding:12px 13px;font-size:14.5px;line-height:1.55}
+.fb.yes{background:#EAF6F1;border-left:4px solid var(--jade)}
+.fb.no{background:#F8ECEA;border-left:4px solid var(--red)}
+.fb cite{display:block;font:600 11px var(--mono);color:var(--stone);margin-top:8px;font-style:normal}
+.nav{display:flex;align-items:center;gap:10px;margin-top:16px}
+.navb{font:700 11px var(--mono);letter-spacing:.08em;text-transform:uppercase;
+  padding:8px 13px;background:transparent;border:2px solid rgba(255,255,255,.2);
+  color:var(--paper);cursor:pointer}
+.navb:hover:not([disabled]){border-color:var(--gold);color:var(--gold)}
+.navb[disabled]{opacity:.35;cursor:default}
+.navpos{flex:1;text-align:center;font:700 11px var(--mono);letter-spacing:.1em;color:var(--stone)}
+.skipnote{margin:12px 0 0;padding:12px 13px;background:rgba(224,168,60,.12);
+  border-left:4px solid var(--gold);font-size:14px;line-height:1.55}
+
+/* ---------- the worked example ---------- */
+.readbox{position:fixed;inset:0;z-index:55;background:rgba(6,12,11,.86);
+  display:flex;align-items:flex-start;justify-content:center;overflow:auto;padding:18px 12px}
+.readbox[hidden]{display:none}
+.readinner{width:100%;max-width:620px;background:var(--panel);color:var(--ink);
+  border:2px solid var(--line);padding:16px;box-shadow:0 20px 50px rgba(0,0,0,.55)}
+.readhead{display:flex;align-items:flex-start;gap:12px;border-bottom:1px solid var(--line);
+  padding-bottom:10px;margin-bottom:12px}
+.readtitle{font-family:var(--disp);font-size:18px}
+.readcite{font:600 11px var(--mono);color:var(--stone);margin-top:2px}
+.readx{margin-left:auto;background:none;border:0;font-size:24px;line-height:1;
+  color:var(--dim);cursor:pointer}
+.readbody p{margin:0 0 10px;font-size:14.5px;line-height:1.62}
+.readvocab{margin-top:12px;padding:11px 12px;background:var(--panel-2);border:1px solid var(--line)}
+.vlab{font:800 10px var(--mono);letter-spacing:.16em;text-transform:uppercase;
+  color:var(--dim);margin-bottom:6px}
+.readvocab p{margin:0 0 6px;font-size:13.5px;line-height:1.5}
+.readvocab i{color:var(--dim)}
+.readbook{margin:14px 0 0;padding:10px 12px;border-left:3px solid var(--gold);
+  background:rgba(224,168,60,.1);font-size:13.5px;line-height:1.55;color:var(--dim)}
+
+/* ---------- the end ---------- */
+.score{background:var(--panel);color:var(--ink);border:2px solid var(--line);padding:18px;
+  box-shadow:inset -3px -3px 0 rgba(0,0,0,.22)}
+.ring{font:800 42px var(--mono);line-height:1}
+.band{font:800 13px var(--mono);letter-spacing:.1em;text-transform:uppercase;margin-top:2px}
+.stats{display:flex;gap:22px;margin:14px 0 4px;flex-wrap:wrap}
+.stat b{display:block;font:800 19px var(--mono)}
+.stat span{font:700 10px var(--mono);letter-spacing:.09em;text-transform:uppercase;color:var(--dim)}
+.missed{margin:14px 0 0;padding:12px 13px;background:var(--panel-2);border:1px solid var(--line);
+  font-size:14px;line-height:1.6}
+footer{margin:38px 0 0;padding-top:16px;border-top:1px solid rgba(255,255,255,.12);
+  font-size:12.5px;color:var(--stone);line-height:1.6}
+/* MC-MUTE-CSS: generated by build_theme.py, do not hand-edit */
+/* The sound toggle: a real switch rather than a lettered button, so its state
+   reads without being learned. Blocky border, hard inner bevel and the grass
+   green of the banner, so it belongs to the same world as the hotbar. */
+.mc-mute{
+  position:fixed; z-index:60;
+  top:calc(10px + env(safe-area-inset-top));
+  right:calc(10px + env(safe-area-inset-right));
+  display:flex; align-items:center; gap:7px;
+  padding:5px 9px 5px 6px; border:3px solid #0D0D0F; background:#1F1F23;
+  cursor:pointer; opacity:.94;
+  box-shadow:inset -3px -3px 0 rgba(0,0,0,.4), inset 3px 3px 0 rgba(255,255,255,.06),
+             0 3px 0 rgba(0,0,0,.35);
+}
+.mc-mute:hover{opacity:1}
+.mc-mute:active{transform:translateY(2px); box-shadow:inset -3px -3px 0 rgba(0,0,0,.4),
+             inset 3px 3px 0 rgba(255,255,255,.06)}
+.mc-mute:focus-visible{opacity:1; outline:3px solid #FCFC54; outline-offset:2px}
+
+/* the track */
+.mc-sw{
+  position:relative; flex:none; width:50px; height:26px;
+  background:#63A93E; border:3px solid #0D0D0F;
+  box-shadow:inset 2px 2px 0 rgba(0,0,0,.28);
+  transition:background .16s steps(2);
+}
+.mc-mute.off .mc-sw{background:#5A5A60}
+
+/* the knob, carrying the speaker */
+.mc-knob{
+  position:absolute; top:-1px; left:22px; width:22px; height:22px;
+  display:grid; place-items:center;
+  background:#E9E6DE; color:#141416; border:2px solid #0D0D0F;
+  box-shadow:inset -2px -2px 0 rgba(0,0,0,.22);
+  transition:left .16s steps(3);
+}
+.mc-mute.off .mc-knob{left:-1px; background:#B9B5AC; color:#2A2A2E}
+.mc-spk{width:15px; height:15px; display:block}
+
+.mc-lbl{
+  font:800 11px/1 ui-monospace,"Cascadia Mono",Consolas,monospace;
+  letter-spacing:.1em; color:#63A93E; min-width:2.2em; text-align:left;
+}
+.mc-mute.off .mc-lbl{color:#8E8A82}
+
+@media (max-width:420px){
+  .mc-mute{gap:5px; padding:4px 7px 4px 5px}
+  .mc-sw{width:42px; height:23px}
+  .mc-knob{width:19px; height:19px; left:18px}
+  .mc-spk{width:13px; height:13px}
+  .mc-lbl{font-size:10px}
+}
+@media (prefers-reduced-motion:reduce){
+  .mc-sw,.mc-knob{transition:none}
+}
+/* /MC-MUTE-CSS */
+/* MC-SKIN-CSS: generated by build_theme.py, do not hand-edit */
+/* ===== what he is wearing ===================================================
+   The engine stamps these on <html> as it loads, before first paint.
+   The attribute selector outranks an app's own :root whichever order the
+   stylesheets landed in. Overworld is the default and needs no rule. */
+
+html[data-mc-theme="deepslate"]{
+  --bg:#14171A; --gold:#93A7BC;
+  --mc-glow:#23272E;
+}
+html[data-mc-theme="cherry"]{
+  --bg:#2A1622; --gold:#F0A2BE;
+  --mc-glow:#46203A;
+}
+html[data-mc-theme="nether"]{
+  --bg:#1E0C0B; --gold:#FF9247;
+  --mc-glow:#3F1512;
+}
+html[data-mc-theme="end"]{
+  --bg:#0E0A18; --gold:#CFBAFF;
+  --mc-glow:#241A3A;
+}
+/* The apps paint their own radial wash from a hard-coded colour, so a themed
+   page re-paints it from the token. Bare :root keeps the original. */
+html[data-mc-theme]:not([data-mc-theme="overworld"]) body{
+  background-color:var(--bg);
+  background-image:radial-gradient(circle at 12% -6%, var(--mc-glow) 0%, transparent 55%);
+}
+
+/* ---------- the purse he carries ---------- */
+.mc-purse{transition:box-shadow .2s, border-color .2s}
+/* The hub runs with the HUD off and paints its own coin badge, so each skin
+   names both. Without this, a bought purse is invisible on the one page he
+   looks at most. */
+html[data-mc-purse="gold"] .purselink,
+html[data-mc-purse="gold"] .mc-purse{
+  border-color:#E0A83C; box-shadow:0 0 0 1px #E0A83C inset, 0 0 12px rgba(224,168,60,.5)}
+html[data-mc-purse="emerald"] .purselink,
+html[data-mc-purse="emerald"] .mc-purse{
+  border-color:#3FBF7F; box-shadow:0 0 0 1px #3FBF7F inset, 0 0 12px rgba(63,191,127,.5)}
+html[data-mc-purse="netherite"] .purselink,
+html[data-mc-purse="netherite"] .mc-purse{
+  border-color:#6B5F6B; background:#1B171B;
+  box-shadow:0 0 0 1px #8C7A96 inset, 0 0 14px rgba(140,122,150,.55)}
+html[data-mc-purse="netherite"] .purselink b,
+html[data-mc-purse="netherite"] .mc-purse b{color:#D8CBE4}
+
+/* ---------- the flourish over the chest ----------
+   Decorative only: it is added after the chest opens and removed a couple of
+   seconds later. `pointer-events:none` so it can never swallow a tap on the
+   buttons underneath, and it is skipped entirely for anyone who has asked their
+   machine for less movement. */
+.mc-fx{position:absolute; inset:0; overflow:hidden; pointer-events:none; z-index:2}
+.mc-fx i{position:absolute; top:44%; width:8px; height:8px; opacity:0;
+  animation:mc-fx-fall 1.5s ease-out forwards}
+.mc-fx-sparkle i{width:5px; height:5px; border-radius:50%; background:#FFE9A8;
+  box-shadow:0 0 6px #FFD166}
+.mc-fx-confetti i:nth-child(3n){background:#E0A83C}
+.mc-fx-confetti i:nth-child(3n+1){background:#3FBF7F}
+.mc-fx-confetti i:nth-child(3n+2){background:#5AA9E6}
+.mc-fx-firework i{width:6px; height:6px; border-radius:50%;
+  background:#FFF; box-shadow:0 0 10px 2px #FF9247}
+.mc-fx-firework i:nth-child(2n){box-shadow:0 0 10px 2px #CFBAFF}
+.mc-fx-ore i{width:9px; height:9px; border-radius:2px; background:#5AA9E6}
+.mc-fx-ore i:nth-child(4n){background:#3FBF7F}
+.mc-fx-ore i:nth-child(4n+1){background:#E0A83C}
+.mc-fx-ore i:nth-child(4n+2){background:#C4553F}
+@keyframes mc-fx-fall{
+  0%{opacity:0; transform:translate(0,0) scale(.4)}
+  12%{opacity:1}
+  100%{opacity:0; transform:translate(var(--mc-dx,0), -150px) scale(1) rotate(220deg)}
+}
+@media (prefers-reduced-motion: reduce){ .mc-fx{display:none} }
+
+/* ---------- the rank he is wearing ---------- */
+.mc-title{
+  display:inline-block; margin:0; padding:3px 10px; border-radius:999px;
+  border:1px solid var(--gold); color:var(--gold);
+  font:800 10.5px var(--mono,monospace); letter-spacing:.14em; text-transform:uppercase;
+  background:rgba(255,255,255,.05)}
+/* /MC-SKIN-CSS */
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <a class="hublink" href="../../index.html">&lsaquo; All subjects</a>
+  <a class="hublink quiet hide" id="tolessons" href="#">&lsaquo; All lessons</a>
+
+  <!-- ============================ pick a lesson ============================ -->
+  <div id="home">
+    <p class="eyebrow">Saxon Math Course 2</p>
+    <h1>Practice from <em>your homework</em></h1>
+    <p class="lede">Open the lesson you were set, tick the problems you got wrong,
+      and say how many of each you want. The questions are built fresh every
+      time, with different numbers from the ones on the page.</p>
+    <div id="decades"></div>
+    <footer id="foot"></footer>
+  </div>
+
+  <!-- ============================ the run ============================ -->
+  <div id="play" class="hide">
+    <p class="eyebrow" id="pname"></p>
+    <div class="dots" id="dots"></div>
+    <div class="card" id="card"></div>
+    <div class="nav" id="nav"></div>
+    <div id="skipnote"></div>
+  </div>
+
+  <!-- ============================ the end ============================ -->
+  <div id="done" class="hide">
+    <p class="eyebrow" id="dtag"></p>
+    <div class="score" id="scorebox"></div>
+  </div>
+</div>
+
+<div id="picker"></div>
+<div class="readbox" id="readbox" hidden></div>
+
+<script>/* MATH-MAP: inlined by build_theme.py, do not hand-edit */
+/* Which lesson each written-practice problem reviews, for all 120 lessons.
+ *
+ * Saxon numbers every problem with the lesson it draws on — "* 14. (3)" means
+ * problem 14 practises Lesson 3 — and that tag is what turns "I missed number
+ * 14" into something a program can act on. Extracted from the book with pypdf
+ * by scratchpad/map.py: 3,573 of 3,598 problems carry a tag, and the handful
+ * that do not are shown as such rather than guessed at.
+ *
+ * Shape: lessons[n] = { p: printed page, t: "3 2 6 4 ..." }, one entry per
+ * problem in order, several lessons joined by hyphens where a problem reviews
+ * more than one, and empty where the tag could not be read.
+ *
+ * This is a page index, not content: no problem text, no answers, nothing of
+ * the book itself.
+ */
+(function (root) {
+  "use strict";
+  var MAP = {"lessons":{"1":{"p":6,"t":"1 1 1 1 1 1 1 1 1 1 1 1 1 1  1  1  1  1  1  1 1 1 1 1"},"10":{"p":66,"t":"2-9 7 1 8 10 4-9 8 10 6 3 3 3 3 3 3 8 10 9 10 2 10 1 1 10 9 7 9 4-8 4 4-9"},"100":{"p":693,"t":"28 21-8 28-86 53 72 66 92 60-74 77 46 96 9 9-98 98 36 48 83 100 65-82 99 95 95 40 57-93 98 52 43 43 85 100"},"101":{"p":704,"t":"4 53 72 72 81 92 96 88 36-71 100 9 75 101 83 48 56-9 95 65-82 9 101 44 99 98 94 90 93 52 96 43 85"},"102":{"p":710,"t":"36-8 101 89 66 72 81 81 101 101 71 91 99 32 46 83 102 60-92 8 70 65-82 56-9 40 78 100 57-102 102 102 84-87 43 85"},"103":{"p":717,"t":"4 4 46 46 72 54 92 92 50-98 98 60 99 8 17 10 56-9 101 40 97-98 96 66-82 100 88-95 95 102 90-93 26-57 43  103"},"104":{"p":724,"t":"60 94 55 46 72 74 54 60-77 65-82 104 104 9 48 9 91 83 104 104 67-70 96 40 97-98 99 90-93 102 20 102-103 43 43 85-103"},"105":{"p":731,"t":"51 4 52 53 72 92 66 92 102 102 77 60 101 99 103 94 105 83 104 56-9 67-70 95 105 40 97-98 102 98 43 96-103 57-85"},"106":{"p":739,"t":"46 8 46 55 99 72 66 92 106 60 100 77 77 48 9 42 83 91 104 88-105 95 40 106 102 93 101 63 103 57 103-105"},"107":{"p":745,"t":"92 51 4 72 66 92 99 40 77 77 101 14-94 48  83 100-106 9-107 104 105 95 105 40 107 106 98 102 63 103 43 85"},"108":{"p":754,"t":"46 57 4 94 72 66 92 60 60 77 101 107 98 101 83 108 9 104 105 95 40 97-98 99 105 102 96-103 103 63 26 103-106"},"109":{"p":759,"t":"45 102 101 36 92 92 72 88 77 71 9 8 75 95 105 46 48 92 83 9-107 66 101 99 109 102 20 96 43 43 57-91-106"},"11":{"p":75,"t":"11 11 11 8-10 4-8 10 4 5 6 11 7 3 3 3 3 2-4 10 10 1 1 1 1 9 9 10 8 4-8 7 8 9"},"110":{"p":765,"t":"46 110 80 72 72 104 55 77 77 109 99 92 98 100 9-107 93 83 96-106 110 97-98 95 105 40 109 109 63 103 43 26 103"},"111":{"p":778,"t":"12 28 36-54 80 21 89 92 94 101 101 106 102 108 5 9-107 104 105 95 109 99 110 97-99 111 40 102 98 103 96-103 85 43-45"},"112":{"p":784,"t":"110 20-28 4 46 72 92 92 110 36 99 88 77 8 110 48 111 112 106 9 104 97-98 21 105 98 93 57-63 43 43 85 105"},"113":{"p":791,"t":"110 51 4 46 72 60 94 77 77 110 92 98 37-62 112 113 83 112 108 9-107 113 113 40 97 98 93 63 30 26 85"},"114":{"p":799,"t":"46-92 55 8 46 110 5 66 113 60 77 75-99 100 48 111 83 88 108 94 104 105-113 95 40 70 93 93 57 32 43 43 85"},"115":{"p":804,"t":"110 8 55 46 72 66 74 92 110 99 114 48 54-72 83-111 88 108 9-107 104 95-105  40 97 113 93 98 20 56 43 57 85"},"116":{"p":809,"t":"8 20 92 48 80 89 92 114 50 101 101 106 104 105 95 108 107 109 111 83 116 113 40 97 102 102 96 103 103-105 7-35"},"117":{"p":817,"t":"110 8 55 48 80 89 92 114 88 101 93 106 8 112 113 106 116 116 115 83 88 97 7-30 101 102 96 57-103-105 85 111 103"},"118":{"p":825,"t":"92 97 112 50 98 8 99 114 101 102 116 101 113 101 97 105 116 116  104 111 117 93 109 57 48 91 103 96 100"},"119":{"p":832,"t":"94 92 78 89 48 17 111 115 70 105 108 66 112 116 107 110 88 118 101 97 113  93 102 102 109 20 96 103 48"},"12":{"p":82,"t":"11 11 12 12 12 2-9 5-12 4-8 7 10 8 6 3 3 3 3 3 3 1 1 9 10 10 1 10 2 4-8 9 10 7-8"},"120":{"p":837,"t":"8 92 77 58 48 111 115 113 105 99 106 54 116 107 110 112 70-88 118 120 97 105 114 102 93 109 98  103 91 43-45"},"13":{"p":88,"t":"12 10 12 13 13 13 1-12 8 4 7 6 8 3 3 3 3 3 3 3 1 2 10 9 1 1 2-4 11 9 7 7"},"14":{"p":93,"t":"11 14 12 13 14 10 5 2 6 7 8 3 3 3 3 3 3 10 10 1 9 9 1 1 1 2 4 7 9 14"},"15":{"p":100,"t":"12 14 15 13 8 4 6 15 15 15 7 10 4 3 3 3 3 15 9 2-9 10 15 9 15 10 15 15 1-9 15 15"},"16":{"p":107,"t":"14 13 16 14 10-15 8 15 15 8 16 6 10 2-9 3 3 3 3 15 10-16 15 10 1 10-5 10 1 4-8 7 7 15 9"},"17":{"p":114,"t":"11 14 13 12 10-15 7-17 15 16 15 17 6 7-8 1-9 3 3 3 3 15 15 1 1 1-16 15-16 15-16 10 1 2-9 14 9-10 15"},"18":{"p":120,"t":"13 16 14 5-12 4-10 7 4 15 15 18 7-18 14-15 2-9-15 9 9-15 9-15 9 15 15 1 1 1 2-9 16 17 17 18 15 9-10 8-18"},"19":{"p":128,"t":"14 11 13 16-19 5 4 16 19 15 15 18 18 17 4-9 3 3 3 3 10 15 15 15 1 1 9 7-8 9-10 15 8-16 19"},"2":{"p":13,"t":"1 1 1 2 1 2 2 1 1 1 1 2 1 1 1 2 2 1 2 2 1 1 1 1 2 1 2 1 2 1"},"20":{"p":134,"t":"13 11 16-20 19-20 4-20 4-8 8 7 20 15 6 16-18 20 14 3 3 20 3 10-15 10 1 1 9 10 1-9 15 10-15 2-9-15 19-20 19"},"21":{"p":149,"t":"14 13 19-20 20 15 21 21 4 15 9 20 8-19 19 14 9 9 3 9-15 10 3 9 20 21 15 17 9-10 2 16 2 18"},"22":{"p":157,"t":"11 13 11 19-20 22 22 15 9 2 9 19-20 21 15 10 4-10 14-15 9-15 3 10 20 15 10 20 20 2-9 10-15 16 17 4-9 4"},"23":{"p":163,"t":"13 16 19-20 13 22 22 16 9 9-10 15 10-15 15 21 7 15 3 3-20 9-15 9-15 23 23 9-15 9-15 19 17 19 9-15 18 20 2"},"24":{"p":169,"t":"12 13 22 16-2 22 9 9 24 17 15 21 7 20 2 7 13 9-15 9-15 20 20 23 23 20 24 18 1-4 19 15 18 4-9"},"25":{"p":175,"t":"13 17-19 11-13-22 16-2 21 22 25 8-14 24 9-10 15 21 10-24 8-15 17 23 9-15 3 9-20 10 24 25 25 25 10 26 20 19 19 4-21"},"26":{"p":182,"t":"11 13 12 11 13 22 16 8-9 24 9-10 15 18 8 4-10 10-15 3 3 23 20 23 24 20-26 26 26 26 2-9 14-15 1-9 2 2"},"27":{"p":188,"t":"11 13-16 27 5-20 22 19-20 27 4 15-24 16 2-15 21 26 7 8 19-20 3 3-20 23 10 23 26 26 9-15 24 9-15 2 27 19-20 2"},"28":{"p":194,"t":"28 28 28 12 22 19-20 27 27 24 16 15 21 28 8-20 4-10 3 3-20 3 9-15 10-15 23 26 20-26 26 1 25 1-20 16 18 17"},"29":{"p":200,"t":"16-28 13 28 14-21 22 27 19-20 29 29 26-29 15 20-21 8 19-20 18 3-20 23 10-15 23 26 26 1 29 20 2 19-2 7 15 16 29"},"3":{"p":20,"t":"1 1-3 2 3 2 2 3 3 3 3 3 3 3 3 1 2 2 2 2 2 2 2 2 1 1 1 1 1 2 2"},"30":{"p":208,"t":"28 28 29 14-24 22 16-19 30 29 29 15-24 30 20 19 21 28 28 3-20 3 3-13 16 30 30 30 26 26 26 30 23-30 2 2"},"31":{"p":221,"t":"28 28 13 12 19 22 29 29 31 31 31 3 15 21 18 14 2-9 3 3 30 9-24 30 26 26 26 30 23-30 1-30 4-20 17"},"32":{"p":228,"t":"28 28 14-24 18-19 29 29 22 31 31 31 27 5-21 13 14 20 19 3 3 30 30 30 26 23-30 30 25 24 26  3 2"},"33":{"p":235,"t":"28 28 11 16 19 22 3 33 31 31 33 32 17 2 27 3 3 30 30 30 26 26 26 23-30 25 14 2 29 29 17"},"34":{"p":241,"t":"28 11 11 12 19 22 29 33 31 31 33 34 34 3 34 3 3 30 30 23-30 26 26 26 30 9-24 34 20 33 1-4 14"},"35":{"p":247,"t":"28 23-30 28 28 19 22 20 31 3 31 34 33 34 35 35 3 3-35 3-35 3-35 35 30 26 23-30 23-30 35 35 9-15 16-35 33-35 17"},"36":{"p":255,"t":"36 28 13 35 22-36 34 19-20 29 33 31 36 34 34 24 29 7 20 35 35 35 30 26 30 23-30 26 23-35 35 16 35 3"},"37":{"p":264,"t":"36 28 31-35 28 22 19 37 15 31 33 31 24 8 7 37 33-35 36 3 35 35 35 26 30 30 30 1-26 20 35 3"},"38":{"p":273,"t":"36 28 28 12-38 28-38 12-38 22 19-37 15 33 14-36 34 32-34 34 7 37 35 35 35 35 35 35 26 30 26 30 20 32 33 3"},"39":{"p":280,"t":"38 38 36 28 16 22 37 19 31 33 33 31 7 4-35 39 39 39 35 35 35 35 35 35 30 23-30 26 26 37 14-21 30"},"4":{"p":26,"t":"1 1-3 4 1 4 4 3 4 3 3 3 3 3 3 3 2-3 4 1 1 1 1 1 2 1 1 1 1 1 2 4"},"40":{"p":285,"t":"14-36 28 13 12-35 19-20 22 34 33 31 3-37 34 40 40 1-2 15 39 39 39 35 34 35 35 35 35 35 26 26 30 23-30 29-33"},"41":{"p":296,"t":"36 28 28 2-41 35 36 4 4 19-37 34 21 37 31 41 30 29-35 39 39 35 35 35 35 35 35 30 23-30 26 26 41 40"},"42":{"p":302,"t":"36 13-28 13 22 42 38 3-37 19-37 42 31-35 21-36 20-21 17 27 39 39 35 35 41 41 9-41 27 33 2 35 30 23-30 26 26 40"},"43":{"p":309,"t":"36 28 11-35 5-12 22-36 4 4 19 43 43 42 42 31-35 8 14-43 20-21 32 43 32 27 41 39 35 35 23-30 30 26 3 40 2"},"44":{"p":317,"t":"36 28 38 28 31-35 22-28 19 43 14-43 41 2 42-44 21 33-43 26 34-35 33-41 34-35 3-37 39 39 35 35 35 35 30 23-30 26 26 40"},"45":{"p":323,"t":"36 28 31-35 38 22-36 9-41 20 19-20 43 42 32 35 42-44 14-43 34 19-37 39 39-45 35 35 35 35 35 45 30 30 26 26 45 40"},"46":{"p":329,"t":"46 46 36 28 31-35 26 22-36 43 16 43 46 3-37 36 21-28 41 19-37 2 39 39 35 3-20 30 30 26 26 35 45 29 18 40"},"47":{"p":336,"t":"38 36-38 38 28-35 47 22 44 8 43 16-46 42 47 34 19 2 39 39 35 35 30 23-30 20 47 26 26 35 19-37 47 30 40"},"48":{"p":342,"t":"46 24 12 36-43 46 28 22 9 38 42 32 20-47 18-19 48 46 39 39 35 30 20 20 30 23-30 26 26 41-45 3-37 36-38 38 40"},"49":{"p":347,"t":"35-45 44 46 18 28-36 22-36 42 42 48 48 13 14-43 37 19 37 39 39 30 35 20 47 23-30 26 49 49 45 29-33 36 41 40"},"5":{"p":34,"t":"5 4-5 5 5 5 4 4 4 4 3 3 3 3 3 3 5 1 1 1 1 2 2 1 1 2 1 2 4 1-4 1-4"},"50":{"p":352,"t":"35 14-43 46 46 28 50 22 8 43 47 48 48 21 37 2 39 39 35 30 2-41 47 3 44 4 50 49 26-30 26-30 40 41"},"51":{"p":363,"t":"38 28-38 19 46 14-36 51 51 43 50 48 5 16-46 14-36 18 29 29 39 39 35 35 20 50 49 49 23-30 26 41 17 37 32"},"52":{"p":369,"t":"21 50 31-35 46 28-46 22 51 51 43 42 48 44 34 32 37 39 39 35 35 20 52 35-45 49 26-30 26-30 35 47 52 50 14-43"},"53":{"p":375,"t":"38 38 38 28 22 51 51 50 27 50 48 48 32 19-37 53 39 39 35 35 20 52 49 26-30 26-30 35-47 29-33 52 44 14-43 40"},"54":{"p":380,"t":"12-28 28 53 54 6-27 22 51 47 50 33 46-54 5 20 19 37 2-9-41 34-35 4 35 35 39 35 20 52 35 49 23-30 26 3 18"},"55":{"p":386,"t":"53 55 46 8 22 51 47 50 31 55 48 7 37 28 54 41 39 45 30 23-20 50 49 20 52 26 26 35 45  40"},"56":{"p":393,"t":"36-43 53 28 55 55 36-48 40 51 45-50 43-48 51 51 27 29 29 32-54 39 35 20 52 49 49 9 23-30 26 26 2 17 2-32 3-56"},"57":{"p":400,"t":"53 55 28 16 22 51-57 51-57 57 50 21-43 46 5 57 19 37 41 33 41-56 20 52 49 49 50 26 30 30 57 35 35 45"},"58":{"p":406,"t":"28-35 28 41 36 55 23 2 51-57 16-50 33-45 2 48 56 40 3-58 58 46-54 39 35 20-57 52 49 49 50 23-30 26-30 26 52 43 27"},"59":{"p":413,"t":"28 38 28-38 59 53 22 59 51 57 50 48 59 56 19 37 35 39 30 35 57 21-57 49 49 50 26 23-30 26-30 52 55 14-43"},"6":{"p":40,"t":"1 6 4 5 6 4 6 4 5 3 3 3 3 3 3 3 1 1 1 1 1 1 1 1 2 1 1 1 2 2"},"60":{"p":420,"t":"31-35 28 56 36 55 51-57 22-48 59 60 60 43-59 48 59 21 5 18 37 37 30 35 20-52 41 36 30 26 35 45 50 27-45 3-58"},"61":{"p":432,"t":"16-46 54 55 46 51 36-48 51-57 24 50 6 37-61 7 4 6-61 40-61 50 3 3 59 52 57 34 50 23-30 26 26 35 35 47 45"},"62":{"p":440,"t":"28 12 46 41 54 22-48 60 46 51 32 59 48 52 47-57 62 19-37 37-62 35 39 20-52 52 49 32 50 30 26 23-26 58-62 52-59 3-32"},"63":{"p":447,"t":"28 28-53 54 55 59 51 22-48 57 50 45 59 48 56 14-36 62 40 36 30 45 63 52 49 50 30 26 26-30 52 58-62 61 3"},"64":{"p":453,"t":"51 28 44 21 28 22-48 60 51-57 57 44 64 64 2-62 52 19 37 36 3 15 44 63 26 57-63 49 26-30 35 56 43 14 61"},"65":{"p":459,"t":"46 41 65 44-46 28 51 22-36 6 37 28-34 60 46 64 3 50 52 13 40 29-33 58-62 4 62 32-34 47 49 45 52 26 52 63"},"66":{"p":466,"t":"38-60 28 35 66 51 22-48 14-48 65 37-61 51 60 60 48 64 50 40-61 29 3 39 30 57 49 50 45 63 26 63 13 3 2-62"},"67":{"p":472,"t":"14 30 12-23 28-55 66 22-48 67 58-62 28-34 57 60 60 64 48 50 64 56 33 65 40 41 39 63 49 35 52 30 26-59 26 52-57"},"68":{"p":480,"t":"12 54 25-30 46 46 32-53 4 28-34 67 66 58-62 51 60 68 67 48 52 52 67 40-61 13 39 35 56 45 63 30-52 26 52 63"},"69":{"p":485,"t":"4 66 54 69 14-60 65 67 58-62 68 65 37 60 60 48 40 52-57 56 44 41 67 30 39 26 26-30 49 50 35 45 24 43"},"7":{"p":45,"t":"3 2 6 4 5 6 4 4 7 6 4 3 3 3 3 3 3 6 1 1 1 1 2 2-4 1 7 7 7 7 7"},"70":{"p":490,"t":"53 37-58 66 46 35 22-48 8 70 65 69 28-34 50 47-57 60 48 68 52 42 29-33 67 67 35 39 49 53 26 30 45 35-43 36"},"71":{"p":502,"t":"32-53 28-34 55 51 21 66 71 67 70 65 69 48 60 56 67 37-62 46 4 3 52 7 7 6 63 56 50 26 30 68 30-43"},"72":{"p":507,"t":"12 55 50 30 54 72 60 65 71 70 67 69 28-34 48 21 37-61 67 67 65 43 52-57 7 7 63 56 50 26 30 68 35-43"},"73":{"p":513,"t":"72 55 35-45 50 66 69 71 60 73 21-36 58-62 73 70 65 48 37-62 37-62 37-62 67 60 52 7 7 7 49 50 26 26 68 26-43"},"74":{"p":518,"t":"55 46 50 66 72 22-36 74 74 74 60 60 67-70 65 48 58 51 6-62 40-61 33 52 7 7 7 7 63 49 68 73 30-43 17"},"75":{"p":523,"t":"55 46 32 30 54 57-69 72 22 74 60 74 74 73 70 65   48 46 52 7 7 7 63 49 50 26 30 68 47-57"},"76":{"p":529,"t":"46 28 66 50 76 12-28 60 41-57 73 65 67 60 60 74 74 62 48 75 6 12-28 7 7 7 7 20 16 26-43 35-43 68 76"},"77":{"p":534,"t":"65 38-60 28-38 38-5 67 72 36-71 74 60 77 77 73 48 46 76 75 67-70 51 65 7 7 7 56 63 49 50 26 30 43 68"},"78":{"p":540,"t":"72 55 30 54 65 78 50 65 74 77 60 77 57-69 73 48 76 75 70 70 56 60 7 7 7 63 59 50 26 30 68"},"79":{"p":545,"t":"55 46 66 69 79 78 72 71 77 77 77 77 73 48 60 76 75 67-70 65 62 58 7 7 63 49 50 26 30 35-43 68"},"8":{"p":53,"t":"4-8 8 1 6 8 2-4 5 8 8 8 3 3 3 3 3 3 2-3 1 1 1 1 1 1 1 1 4 2-4 7 7 7"},"80":{"p":550,"t":"55 52 36 65 32-66 50 78 72 71 74 77 60 77 73 60 48 69 75 67-70 14 7 7 7 52 43 56 50 26 30-57 80"},"81":{"p":562,"t":"80 66 4 4 56 72 78 36-71 8 41 8 48 60 77 76 81 81 40 24 58-75 56 69 7 7 63 52 43 26-43 73 68"},"82":{"p":569,"t":"70 28 54 50 78 72 36-71 52 1 8 65 82 82 60 69 81 81 75 80 24 2 51 7 7 52 52 43-45 43 73 68"},"83":{"p":575,"t":"46 67-70 55 53 50 78 72 41 22 8 65 82 66 48 46 81 81 24 75 40 56 83 7 7 52-57 43 73 30 68 80"},"84":{"p":580,"t":"32 84 4 4 66 80 72 71 52 10 65-82 50 67 48 60 76 81 81 19-75 14-5 4 83 47-83 7 7 52 32 43 73 68"},"85":{"p":586,"t":"4 66 54 72 50 78 71 66-82 1 8 70 67 48 60 21 76 81 81 6-61 40 56 51-83 7 7 63 49 43-57 85 84 80"},"86":{"p":592,"t":"46 66 4 50 46 86 72 22 52 8 66-82 47-57 67 48 17 81 81 77 6-75 17 56 83 7 7 52 49 43-45 85 84 21"},"87":{"p":598,"t":"53 50 54 28 46 86 72 61 41 65-82 3-61 70 48 60 81 81 77 75 40 76 56 83 7 7 52 32 43 85 87 84"},"88":{"p":604,"t":"53 55 88 54 86 72 71 63 8 66-82 1 67-70 84 84 48 76 81 81 77 6-75 56 83 7 7 80 20-52 43 63 85 87"},"89":{"p":610,"t":"72 54 70 44-8 88 86 71 40 65-82 76 52 20-35 48 17 81 81 77 58-75 89 56 83 62 7 7 84 63 43-57 43 85 87"},"9":{"p":60,"t":"1 1 4-9 5 8 8 7 8 6 1-9 3 3 3 3 3 3 9 9 9 1 1 1 9 9 2 9 7 7 4-8 9"},"90":{"p":618,"t":"31-35 4 46 89 84 81 81 77 88 71 41 36 20 48 46 83 67-70 65-82 86 80 60 78 7 90 90 57 87 30 85 52"},"91":{"p":631,"t":"55 4 46 66 72 60 81 77 88 71 91 9 6-75 2-41 62 83 67 65-82 9 40 84-87 86 32 7 90 90 50 43 43-45 85-91"},"92":{"p":636,"t":"21 55 46 66 72 92 92 77 88 71 91 60 58-75 46-92 83 48 36 60 67 66 56-9 66 84-87 6 90 7 90-91 52 43 85-91"},"93":{"p":642,"t":"46 4 36-66 72 92 87 36 88 22 33-48 91 46 9-75 48 92 83 67-70 65-82 84 56-9 74 93 40 34 93 93 93 90 57-63 85-91"},"94":{"p":648,"t":"         71 36 91 16-20 46-60 48 60-92 83 70 82 42-45 56-9 93 40 8 93 90 84-87 85-91 91 94"},"95":{"p":653,"t":"55 4 80 53 36-75 72 92 92 88 71 9 91 36 95 95 46 94 84-87 83 56-9 40 78 34 93 93 93 57 63 23-26 85-91"},"96":{"p":660,"t":"55 20 28 28 72 92 92 77 88-9 18-40 9 91 16-20 8 95 46 48 60-92 83 65-82 96 89 80 93 93 93 96 85 28 94"},"97":{"p":668,"t":"46 51 4 72 72 80 16-60 54 77 77 60 92 28-34 48 9 83 62-82 75 95 40 97 97 29 93 93 84 96 43 85 94"},"98":{"p":677,"t":"94 92 72 92 84-87 55 46 74 3-80 36-86 20-41 92 77 77 8-85 78 48 56-9 66-82 96 97 98 83 93 93 52 49 43 43 85"},"99":{"p":686,"t":"46 57 4 46 72 66 16-60 77 62 92 92 37 98 48 84-87 83 20-52 99 95 40 97-98 29 93 93 98 20-52 52-57 43 85-91 96"}},"offset":21};
+  var API = {
+    offset: MAP.offset,
+    lessons: Object.keys(MAP.lessons).map(Number).sort(function (a, b) { return a - b; }),
+    page: function (n) { var L = MAP.lessons[n]; return L ? L.p : null; },
+    /* [] for a problem whose tag could not be read; the app treats that as
+       "practises this lesson" rather than pretending it knows better. */
+    tags: function (n) {
+      var L = MAP.lessons[n];
+      if (!L) return [];
+      return L.t.split(" ").map(function (t) {
+        return t ? t.split("-").map(Number) : [];
+      });
+    },
+    count: function (n) { var L = MAP.lessons[n]; return L ? L.t.split(" ").length : 0; },
+  };
+  if (typeof module === "object" && module.exports) module.exports = API;
+  else root.MATHMAP = API;
+})(typeof window !== "undefined" ? window : this);
+/* /MATH-MAP */</script>
+<script>/* MATH-SKILLS: inlined by build_theme.py, do not hand-edit */
+/* Saxon Course 2 — practice generators, one per lesson skill.
+ *
+ * The book numbers every written-practice problem with the lesson it reviews:
+ * "* 14. (3) w - 98 = 432" means problem 14 practises Lesson 3. That tag is the
+ * hinge of the whole thing — it turns "I missed number 14" into "he needs the
+ * Lesson 3 skill", which is something a program can act on.
+ *
+ * So a generator here is keyed by the lesson that TEACHES a skill, not by the
+ * lesson whose homework it turned up in. gen(3) makes unknown-number questions
+ * whether they were missed on Lesson 7's homework or Lesson 40's.
+ *
+ * Every generator returns a question with fresh numbers each call. Nothing is
+ * ever a repeat of the homework, which is the point: it is practice on the
+ * skill, not a second attempt at the same problem. It also keeps the book out
+ * of the repo, since none of its problems are reproduced anywhere.
+ *
+ * Each returns { q, opts, a, why, cite, ex, skill } where `ex` names a worked
+ * example the app can open, and `a` indexes the correct option AFTER shuffling.
+ *
+ * Lessons 1-10 are built. Everything past that returns null, and the app says
+ * so out loud rather than quietly producing nothing.
+ */
+(function (root) {
+  "use strict";
+
+  /* ---------- dice ---------- */
+  function rnd(n) { return Math.floor(Math.random() * n); }
+  function between(lo, hi) { return lo + rnd(hi - lo + 1); }
+  function pick(a) { return a[rnd(a.length)]; }
+  function shuffle(a) {
+    a = a.slice();
+    for (var i = a.length - 1; i > 0; i--) { var j = rnd(i + 1); var t = a[i]; a[i] = a[j]; a[j] = t; }
+    return a;
+  }
+
+  /* Four options from one right answer and a list of wrong ones, shuffled, with
+     the correct index reported back. Duplicates are dropped before the count is
+     checked, because a distractor that happens to equal the answer is the one
+     bug in a generated question that a child cannot argue with. */
+  function opts(right, wrongs) {
+    var seen = {}, out = [];
+    seen[String(right)] = true;
+    for (var i = 0; i < wrongs.length && out.length < 3; i++) {
+      var w = String(wrongs[i]);
+      if (!seen[w]) { seen[w] = true; out.push(wrongs[i]); }
+    }
+    if (out.length < 3) return null;          // caller retries with new numbers
+    var all = shuffle([right].concat(out)).map(String);
+    return { opts: all, a: all.indexOf(String(right)) };
+  }
+
+  /* Wraps a generator body that may fail to find three distinct distractors.
+     Retrying with new numbers is cheaper and clearer than contorting the
+     distractor rules to guarantee distinctness for every input. */
+  function tries(fn) {
+    for (var i = 0; i < 40; i++) { var q = fn(); if (q) return q; }
+    return null;
+  }
+
+  function money(n) { return "$" + n.toFixed(2); }
+  function commas(n) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ","); }
+  function gcd(a, b) { while (b) { var t = b; b = a % b; a = t; } return a; }
+  function factors(n) {
+    var out = [];
+    for (var i = 1; i <= n; i++) if (n % i === 0) out.push(i);
+    return out;
+  }
+  function frac(n, d) { return n + "/" + d; }
+
+  var CITE = function (n, what) { return "Saxon Math Course 2, Lesson " + n + " — " + what; };
+
+  /* ================================================================== L1
+     Arithmetic with whole numbers and money, variables and evaluation.
+     The most-drawn-on skill in the first ten lessons by a distance: 108 of the
+     problems point here. */
+  function L1() {
+    return tries(function () {
+      var kind = pick(["add", "sub", "mul", "div", "eval", "wordsum"]);
+
+      if (kind === "add") {
+        var a = between(10000, 89999), b = between(10000, 89999), r = a + b;
+        var o = opts(commas(r), [commas(r + 1000), commas(r - 900), commas(r + 10)]);
+        if (!o) return null;
+        return { q: "Add: <b>" + commas(a) + " + " + commas(b) + "</b>", opts: o.opts, a: o.a,
+                 why: commas(a) + " + " + commas(b) + " = " + commas(r) + ". Line the numbers up by place value and carry where a column goes past nine.",
+                 cite: CITE(1, "whole numbers"), ex: "column", skill: 1 };
+      }
+      if (kind === "sub") {
+        var big = between(20, 99) + between(0, 99) / 100;
+        var small = between(1, Math.floor(big) - 1) + between(0, 99) / 100;
+        big = Math.round(big * 100) / 100; small = Math.round(small * 100) / 100;
+        var d = Math.round((big - small) * 100) / 100;
+        var o2 = opts(money(d), [money(Math.round((big - small + 1) * 100) / 100),
+                                 money(Math.round((big - small - 0.1) * 100) / 100),
+                                 money(Math.round((big + small) * 100) / 100)]);
+        if (!o2) return null;
+        return { q: "Subtract: <b>" + money(big) + " − " + money(small) + "</b>", opts: o2.opts, a: o2.a,
+                 why: money(big) + " − " + money(small) + " = " + money(d) + ". Keep the decimal points in a line and borrow across the point the same way you would across any other column.",
+                 cite: CITE(1, "money"), ex: "column", skill: 1 };
+      }
+      if (kind === "mul") {
+        var m = between(120, 899), n = between(12, 49), p = m * n;
+        var o3 = opts(commas(p), [commas(p + m), commas(p - n), commas(m * (n % 10) * 10)]);
+        if (!o3) return null;
+        return { q: "Multiply: <b>" + m + " × " + n + "</b>", opts: o3.opts, a: o3.a,
+                 why: m + " × " + n + " = " + commas(p) + ". Multiply by the ones digit, then by the tens digit shifted one place left, then add the two rows.",
+                 cite: CITE(1, "whole numbers"), ex: "column", skill: 1 };
+      }
+      if (kind === "div") {
+        var q1 = between(3, 40), dv = pick([4, 5, 8, 20, 25, 40]), tot = q1 * dv;
+        var o4 = opts(money(q1), [money(q1 * 10), money(q1 / 2), money(q1 + dv)]);
+        if (!o4) return null;
+        return { q: "Divide: <b>" + money(tot) + " ÷ " + dv + "</b>", opts: o4.opts, a: o4.a,
+                 why: money(tot) + " ÷ " + dv + " = " + money(q1) + ". Check by multiplying back: " + money(q1) + " × " + dv + " = " + money(tot) + ".",
+                 cite: CITE(1, "money"), ex: "column", skill: 1 };
+      }
+      if (kind === "eval") {
+        var A = pick([100, 200, 300, 400, 600]), B = A * pick([2, 3, 4]);
+        var which = pick(["ab", "b-a", "b/a", "a+b"]);
+        var val = which === "ab" ? A * B : which === "b-a" ? B - A : which === "b/a" ? B / A : A + B;
+        var label = which === "ab" ? "ab" : which === "b-a" ? "b − a" : which === "b/a" ? "b ÷ a" : "a + b";
+        var o5 = opts(commas(val), [commas(A + B), commas(B - A), commas(A * B), commas(B / A)]
+                                     .filter(function (x) { return x !== commas(val); }));
+        if (!o5) return null;
+        return { q: "Evaluate <b>" + label + "</b> when a = " + A + " and b = " + B + ".",
+                 opts: o5.opts, a: o5.a,
+                 why: "A variable stands for a number, so put the numbers in and work it out: " + label.replace("a", A).replace("b", B) + " = " + commas(val) + ". Two letters written together, like ab, means multiply.",
+                 cite: CITE(1, "variables and evaluation"), ex: "evaluate", skill: 1 };
+      }
+      // wordsum
+      var f1 = between(2, 9), f2 = between(2, 9);
+      if (f1 * f2 < 12) return null;
+      var prod = f1 * f2, sum = f1 + f2;
+      var o6 = opts(sum, [prod, Math.abs(f1 - f2), sum + 2, f1 * 2]);
+      if (!o6) return null;
+      return { q: "The product of two one-digit whole numbers is <b>" + prod + "</b>. What is the sum of the same two numbers?",
+               opts: o6.opts, a: o6.a,
+               why: "The two numbers are " + f1 + " and " + f2 + ", because " + f1 + " × " + f2 + " = " + prod + ". Their sum is " + f1 + " + " + f2 + " = " + sum + ". Product means multiply; sum means add.",
+               cite: CITE(1, "whole numbers"), ex: "evaluate", skill: 1 };
+    });
+  }
+
+  /* ================================================================== L2
+     Properties of operations. */
+  var PROPS = [
+    { name: "Commutative Property of Addition", show: function () { var a = between(2, 30), b = between(2, 30); return a + " + " + b + " = " + b + " + " + a; },
+      why: "The order of the addends changed and the sum did not. That is the commutative property." },
+    { name: "Commutative Property of Multiplication", show: function () { var a = between(2, 12), b = between(2, 12); return a + " · " + b + " = " + b + " · " + a; },
+      why: "The order of the factors changed and the product did not. That is the commutative property." },
+    { name: "Associative Property of Addition", show: function () { var a = between(2, 9), b = between(2, 9), c = between(2, 9); return "(" + a + " + " + b + ") + " + c + " = " + a + " + (" + b + " + " + c + ")"; },
+      why: "The grouping changed and the sum did not. That is the associative property — associate means group." },
+    { name: "Associative Property of Multiplication", show: function () { var a = between(2, 6), b = between(2, 6), c = between(2, 6); return "(" + a + " · " + b + ") · " + c + " = " + a + " · (" + b + " · " + c + ")"; },
+      why: "The grouping changed and the product did not. That is the associative property." },
+    { name: "Identity Property of Addition", show: function () { var a = between(2, 60); return a + " + 0 = " + a; },
+      why: "Adding zero leaves a number exactly as it was, so zero is the identity for addition." },
+    { name: "Identity Property of Multiplication", show: function () { var a = between(2, 60); return a + " · 1 = " + a; },
+      why: "Multiplying by one leaves a number exactly as it was, so one is the identity for multiplication." },
+    { name: "Zero Property of Multiplication", show: function () { var a = between(2, 60); return a + " · 0 = 0"; },
+      why: "Anything multiplied by zero is zero. Nothing else in the table does that." },
+  ];
+
+  function L2() {
+    return tries(function () {
+      var kind = pick(["name", "unequal", "mental"]);
+
+      if (kind === "name") {
+        var p = pick(PROPS);
+        var wrong = shuffle(PROPS.filter(function (x) { return x.name !== p.name; })).slice(0, 3);
+        var o = opts(p.name, wrong.map(function (x) { return x.name; }));
+        if (!o) return null;
+        return { q: "Name the property shown by this equation:<br><b>" + p.show() + "</b>",
+                 opts: o.opts, a: o.a, why: p.why,
+                 cite: CITE(2, "properties of operations"), ex: "grouping", skill: 2 };
+      }
+
+      if (kind === "unequal") {
+        /* Division is not associative and that is the whole point of the
+           question, so the odd one out is always a division pair and the other
+           three are always multiplication or addition. */
+        var a = between(2, 9) * between(2, 6), b = pick([2, 3, 4, 6]), c = pick([2, 3]);
+        var big = a * b * c;
+        var right = big + " ÷ (" + (b * c) + " ÷ " + c + ") and (" + big + " ÷ " + (b * c) + ") ÷ " + c;
+        var w = [];
+        for (var i = 0; i < 3; i++) {
+          var x = between(2, 9), y = between(2, 9), z = between(2, 9);
+          w.push(i === 0 ? "(" + x + " + " + y + ") + " + z + " and " + x + " + (" + y + " + " + z + ")"
+                         : "(" + x + " × " + y + ") × " + z + " and " + x + " × (" + y + " × " + z + ")");
+        }
+        var o2 = opts(right, w);
+        if (!o2) return null;
+        return { q: "Which pair is <b>not</b> equal?", opts: o2.opts, a: o2.a,
+                 why: "Division is not associative: " + big + " ÷ (" + (b * c) + " ÷ " + c + ") = " + big + " ÷ " + b + " = " + (big / b) + ", but (" + big + " ÷ " + (b * c) + ") ÷ " + c + " = " + (big / (b * c)) + " ÷ " + c + " = " + (big / (b * c) / c) + ". Addition and multiplication are associative, so the other three pairs match.",
+                 cite: CITE(2, "properties of operations"), ex: "grouping", skill: 2 };
+      }
+
+      // mental: reorder to make it easy
+      var f = pick([[8, 7, 5], [4, 9, 25], [2, 17, 50], [5, 13, 20], [4, 23, 25]]);
+      var prod = f[0] * f[1] * f[2];
+      var easy = f[0] * f[2] === 100 || f[0] * f[2] === 40 || f[0] * f[2] === 100 ? [f[0], f[2]] : [f[0], f[2]];
+      var o3 = opts("Multiply " + f[0] + " × " + f[2] + " first, then multiply by " + f[1],
+                    ["Multiply " + f[0] + " × " + f[1] + " first, then multiply by " + f[2],
+                     "Add " + f[0] + " + " + f[2] + " first, then multiply by " + f[1],
+                     "Multiply " + f[1] + " × " + f[2] + " first, then multiply by " + f[0]]);
+      if (!o3) return null;
+      return { q: "<b>" + f[0] + " · " + f[1] + " · " + f[2] + "</b> — which order makes this easiest to do in your head?",
+               opts: o3.opts, a: o3.a,
+               why: f[0] + " × " + f[2] + " = " + (f[0] * f[2]) + ", which is an easy number to multiply by. " + (f[0] * f[2]) + " × " + f[1] + " = " + commas(prod) + ". The commutative and associative properties let you reorder and regroup factors freely, and the answer is the same whichever way round you do it.",
+               cite: CITE(2, "properties of operations"), ex: "grouping", skill: 2 };
+    });
+  }
+
+  /* ================================================================== L3
+     Unknown numbers in addition, subtraction, multiplication and division.
+     Built first, from a real night's misses: two of the six were the right idea
+     with the inverse operation, so the question asks which move is needed
+     rather than what the answer is. */
+  var MOVES = [
+    { form: function (v, n, r) { return v + " − " + n + " = " + r; }, val: function (n, r) { return r + n; },
+      move: "Add", ex: "minus",
+      why: function (v, n, r) { return n + " was subtracted from " + v + ", so adding " + n + " undoes it: " + v + " = " + r + " + " + n + " = " + (r + n) + ". Check: " + (r + n) + " − " + n + " = " + r + ". ✓"; } },
+    { form: function (v, n, r) { return v + " + " + n + " = " + r; }, val: function (n, r) { return r - n; },
+      move: "Subtract", ex: "plus",
+      why: function (v, n, r) { return n + " was added to " + v + ", so subtracting " + n + " undoes it: " + v + " = " + r + " − " + n + " = " + (r - n) + ". Check: " + (r - n) + " + " + n + " = " + r + ". ✓"; } },
+    { form: function (v, n, r) { return n + v + " = " + r; }, val: function (n, r) { return r / n; },
+      move: "Divide by", ex: "times",
+      why: function (v, n, r) { return n + v + " means " + n + " × " + v + ", so dividing by " + n + " undoes it: " + v + " = " + r + " ÷ " + n + " = " + (r / n) + ". Check: " + n + " × " + (r / n) + " = " + r + ". ✓"; } },
+    { form: function (v, n, r) { return v + " ÷ " + n + " = " + r; }, val: function (n, r) { return r * n; },
+      move: "Multiply by", ex: "divide",
+      why: function (v, n, r) { return v + " was divided by " + n + ", so multiplying by " + n + " undoes it: " + v + " = " + r + " × " + n + " = " + (r * n) + ". Check: " + (r * n) + " ÷ " + n + " = " + r + ". ✓"; } },
+  ];
+
+  function L3() {
+    return tries(function () {
+      var kind = pick(["move", "move", "backwards", "value"]);
+      var v = pick(["m", "n", "w", "k", "p", "x", "y"]);
+
+      if (kind === "move" || kind === "value") {
+        var f = pick(MOVES);
+        var n, r;
+        if (f.move === "Divide by") { n = between(3, 15); r = n * between(4, 30); }
+        else if (f.move === "Multiply by") { n = between(3, 25); r = between(5, 60); }
+        else { n = between(12, 99); r = between(100, 600); }
+        var val = f.val(n, r);
+        if (val <= 0 || !Number.isInteger(val)) return null;
+
+        if (kind === "move") {
+          var right = f.move + " " + n;
+          var o = opts(right, shuffle(MOVES.filter(function (m) { return m.move !== f.move; })
+                                          .map(function (m) { return m.move + " " + n; })));
+          if (!o) return null;
+          return { q: "<b>" + f.form(v, n, r) + ".</b> What should you do to both sides to find " + v + "?",
+                   opts: o.opts, a: o.a, why: f.why(v, n, r),
+                   cite: CITE(3, "unknown numbers"), ex: f.ex, skill: 3 };
+        }
+        var o2 = opts(commas(val), [commas(f.move === "Add" ? r - n : r + n),
+                                    commas(r * n), commas(Math.round(r / n))]
+                                     .filter(function (x) { return x !== commas(val); }));
+        if (!o2) return null;
+        return { q: "Find " + v + ": <b>" + f.form(v, n, r) + "</b>", opts: o2.opts, a: o2.a,
+                 why: f.why(v, n, r), cite: CITE(3, "unknown numbers"), ex: f.ex, skill: 3 };
+      }
+
+      // backwards: the variable is the subtrahend, or the divisor
+      if (pick([0, 1])) {
+        var top = between(30, 90), left = between(5, top - 5), taken = top - left;
+        var o3 = opts(v + " = " + top + " − " + left,
+                      [v + " = " + top + " + " + left, v + " = " + left + " − " + top,
+                       v + " = " + top + " ÷ " + left]);
+        if (!o3) return null;
+        return { q: "<b>" + top + " − " + v + " = " + left + ".</b> Which of these finds " + v + "?",
+                 opts: o3.opts, a: o3.a,
+                 why: "Read it as a story: " + top + ", take away " + v + ", leaves " + left + ". So " + v + " is the part taken away — the difference between them. " + v + " = " + top + " − " + left + " = " + taken + ". Check: " + top + " − " + taken + " = " + left + ". ✓",
+                 cite: CITE(3, "unknown numbers"), ex: "backwards", skill: 3 };
+      }
+      var qq = between(3, 15), dd = between(3, 20), nn = qq * dd;
+      var o4 = opts(v + " = " + nn + " ÷ " + qq,
+                    [v + " = " + nn + " × " + qq, v + " = " + qq + " ÷ " + nn,
+                     v + " = " + nn + " + " + qq]);
+      if (!o4) return null;
+      return { q: "<b>" + nn + " ÷ " + v + " = " + qq + ".</b> Which of these finds " + v + "?",
+               opts: o4.opts, a: o4.a,
+               why: nn + " shared into " + v + " groups puts " + qq + " in each group, so " + v + " is how many " + qq + "s fit into " + nn + ": " + v + " = " + nn + " ÷ " + qq + " = " + dd + ". Check: " + nn + " ÷ " + dd + " = " + qq + ". ✓ The move is division even though the variable is underneath.",
+               cite: CITE(3, "unknown numbers"), ex: "backwards", skill: 3 };
+    });
+  }
+
+  /* ================================================================== L4
+     Number line sequences. Perfect squares live here, which is where the term
+     comes from that caused a miss on the first night this was built for. */
+  function L4() {
+    return tries(function () {
+      var kind = pick(["squares", "squares", "arith", "name", "missing"]);
+
+      if (kind === "squares") {
+        var s = between(5, 11);
+        var seen = [s * s, (s + 1) * (s + 1), (s + 2) * (s + 2), (s + 3) * (s + 3)];
+        var next = [(s + 4) * (s + 4), (s + 5) * (s + 5), (s + 6) * (s + 6)];
+        var right = "Perfect squares — " + next.join(", ");
+        var o = opts(right, [
+          "Perfect squares — " + [next[0], next[1] - 1, next[2] - 4].join(", "),
+          "Adding " + (seen[3] - seen[2]) + " each time — " + [seen[3] + (seen[3] - seen[2]), seen[3] + 2 * (seen[3] - seen[2]), seen[3] + 3 * (seen[3] - seen[2])].join(", "),
+          "Perfect squares — " + [next[0] - 2, next[1] - 3, next[2] - 5].join(", ")]);
+        if (!o) return null;
+        return { q: "Describe this sequence and give the next three numbers:<br><b>…, " + seen.join(", ") + ", …</b>",
+                 opts: o.opts, a: o.a,
+                 why: "These are " + s + " × " + s + ", " + (s + 1) + " × " + (s + 1) + ", " + (s + 2) + " × " + (s + 2) + " and " + (s + 3) + " × " + (s + 3) + " — perfect squares. The next three are " + (s + 4) + " × " + (s + 4) + " = " + next[0] + ", " + (s + 5) + " × " + (s + 5) + " = " + next[1] + " and " + (s + 6) + " × " + (s + 6) + " = " + next[2] + ". The gaps grow each time, so nothing is being added over and over.",
+                 cite: CITE(4, "sequences"), ex: "squares", skill: 4 };
+      }
+
+      if (kind === "arith") {
+        var st = between(3, 30), step = pick([3, 4, 6, 7, 8, 9, 11, 12, 15, 25]);
+        var terms = [st, st + step, st + 2 * step, st + 3 * step];
+        var nxt = [st + 4 * step, st + 5 * step, st + 6 * step];
+        var o2 = opts(nxt.join(", "), [
+          [st + 4 * step, st + 5 * step + 1, st + 6 * step + 2].join(", "),
+          [st + 4 * step + step, st + 5 * step + step, st + 6 * step + step].join(", "),
+          [st + 3 * step + 1, st + 3 * step + 2, st + 3 * step + 3].join(", ")]);
+        if (!o2) return null;
+        return { q: "What are the next three numbers?<br><b>" + terms.join(", ") + ", …</b>",
+                 opts: o2.opts, a: o2.a,
+                 why: "The same number is added each time: " + terms[1] + " − " + terms[0] + " = " + step + ". Keep adding " + step + " and the next three are " + nxt.join(", ") + ".",
+                 cite: CITE(4, "sequences"), ex: "squares", skill: 4 };
+      }
+
+      if (kind === "name") {
+        var base = between(2, 7);
+        var sq = [base * base, (base + 1) * (base + 1), (base + 2) * (base + 2), (base + 3) * (base + 3)];
+        var o3 = opts("Perfect squares", ["Prime numbers", "Multiples of " + base, "Even numbers"]);
+        if (!o3) return null;
+        return { q: "What are the numbers <b>" + sq.join(", ") + "</b> called?",
+                 opts: o3.opts, a: o3.a,
+                 why: "A perfect square is a whole number multiplied by itself: " + base + " × " + base + " = " + sq[0] + ", " + (base + 1) + " × " + (base + 1) + " = " + sq[1] + ", and so on. They are called squares because that many tiles will make a square.",
+                 cite: CITE(4, "sequences"), ex: "squares", skill: 4 };
+      }
+
+      // missing term
+      var s0 = between(2, 20), sp = pick([4, 5, 6, 7, 8, 9, 10, 12]);
+      var run = [s0, s0 + sp, s0 + 2 * sp, s0 + 3 * sp, s0 + 4 * sp];
+      var hole = between(1, 3);
+      var shown = run.slice();
+      shown[hole] = "?";
+      var o4 = opts(run[hole], [run[hole] + 1, run[hole] - sp, run[hole] + sp]);
+      if (!o4) return null;
+      return { q: "What number belongs where the <b>?</b> is?<br><b>" + shown.join(", ") + "</b>",
+               opts: o4.opts, a: o4.a,
+               why: "The sequence counts up by " + sp + " each time, so the missing term is " + run[hole - 1] + " + " + sp + " = " + run[hole] + ". Check it from the other side too: " + run[hole + 1] + " − " + sp + " = " + run[hole] + ".",
+               cite: CITE(4, "sequences"), ex: "squares", skill: 4 };
+    });
+  }
+
+  /* ================================================================== L5
+     Place value through hundred trillions; reading and writing whole numbers. */
+  var PLACES = ["ones", "tens", "hundreds", "thousands", "ten thousands",
+                "hundred thousands", "millions", "ten millions", "hundred millions",
+                "billions", "ten billions", "hundred billions", "trillions"];
+  var SCALE = [["thousand", 1e3], ["million", 1e6], ["billion", 1e9], ["trillion", 1e12]];
+
+  function L5() {
+    return tries(function () {
+      var kind = pick(["digits", "place", "compare"]);
+
+      if (kind === "digits") {
+        var sc = pick(SCALE), n = between(2, 999);
+        var val = n * sc[1];
+        var o = opts(commas(val), [commas(val * 10), commas(val / 10), commas(val + sc[1])]);
+        if (!o) return null;
+        return { q: "Use digits and commas to write <b>" + n + " " + sc[0] + "</b>.",
+                 opts: o.opts, a: o.a,
+                 why: n + " " + sc[0] + " is " + commas(val) + ". Each comma marks off three places, so " + sc[0] + " sits " + (String(sc[1]).length - 1) + " zeros up from the ones place.",
+                 cite: CITE(5, "place value"), ex: "place", skill: 5 };
+      }
+
+      if (kind === "place") {
+        var digits = between(4, 9), num = "";
+        for (var i = 0; i < digits; i++) num += (i === 0 ? between(1, 9) : between(0, 9));
+        var at = between(0, digits - 1);              // 0 = leftmost
+        var d = num[at];
+        var placeIdx = digits - 1 - at;
+        var right = PLACES[placeIdx];
+        var wrong = [PLACES[placeIdx + 1], PLACES[Math.max(0, placeIdx - 1)], PLACES[placeIdx + 2]]
+                      .filter(function (x) { return x && x !== right; });
+        var o2 = opts(right, wrong);
+        if (!o2) return null;
+        return { q: "In <b>" + commas(Number(num)) + "</b>, which place is the digit <b>" + d + "</b> in?" +
+                    (num.split(d).length > 2 ? " (the one " + (at === 0 ? "furthest left" : at === digits - 1 ? "furthest right" : "in position " + (at + 1) + " from the left") + ")" : ""),
+                 opts: o2.opts, a: o2.a,
+                 why: "Counting from the ones place on the right, that digit is " + placeIdx + " place" + (placeIdx === 1 ? "" : "s") + " along, which is the " + right + " place. So it is worth " + commas(Number(d) * Math.pow(10, placeIdx)) + ".",
+                 cite: CITE(5, "place value"), ex: "place", skill: 5 };
+      }
+
+      // compare
+      var a = between(1e6, 9e8), b = a + between(1, 900) * pick([1, 10, 100]);
+      if (a === b) return null;
+      var o3 = opts(commas(Math.max(a, b)) + " is greater",
+                    [commas(Math.min(a, b)) + " is greater", "They are equal",
+                     "There is no way to tell"]);
+      if (!o3) return null;
+      return { q: "Which is greater, <b>" + commas(a) + "</b> or <b>" + commas(b) + "</b>?",
+               opts: o3.opts, a: o3.a,
+               why: "Both have the same number of digits, so compare place by place from the left. The first place where they differ decides it: " + commas(Math.max(a, b)) + " is the greater.",
+               cite: CITE(5, "place value"), ex: "place", skill: 5 };
+    });
+  }
+
+  /* ================================================================== L6
+     Factors and divisibility. The divisibility tests are the lesson's own
+     shortcut and the fast route to a single-digit-factor question. */
+  function L6() {
+    return tries(function () {
+      var kind = pick(["single", "common", "gcf", "divis"]);
+
+      if (kind === "single") {
+        var n = between(2, 6) * between(2, 6) * pick([7, 11, 13, 17, 19, 23]);
+        var sd = factors(n).filter(function (f) { return f < 10; });
+        if (sd.length < 3 || sd.length > 7) return null;
+        var all = factors(n);
+        var o = opts(sd.join(", "),
+                     [sd.concat(all.filter(function (f) { return f >= 10; }).slice(0, 2)).join(", "),
+                      sd.slice(0, -1).join(", "),
+                      sd.filter(function (f) { return f !== sd[1]; }).join(", ")]);
+        if (!o) return null;
+        return { q: "List the <b>single-digit</b> factors of " + n + ".", opts: o.opts, a: o.a,
+                 why: "The factors of " + n + " are " + all.join(", ") + ". Only " + sd.length + " of those are single digits: " + sd.join(", ") + ". The rest are still factors — they were just not what was asked for.",
+                 cite: CITE(6, "factors"), ex: "single", skill: 6 };
+      }
+
+      if (kind === "common" || kind === "gcf") {
+        var x = between(2, 8) * pick([2, 3, 5, 7]), y = between(2, 9) * pick([2, 3, 5, 7]);
+        if (x === y || x < 10 || y < 10) return null;
+        var com = factors(x).filter(function (f) { return y % f === 0; });
+        if (com.length < 3) return null;
+        var g = com[com.length - 1];
+        var onlyX = factors(x).filter(function (f) { return y % f !== 0; })[0];
+        var onlyY = factors(y).filter(function (f) { return x % f !== 0; })[0];
+        if (!onlyX || !onlyY) return null;
+
+        if (kind === "gcf") {
+          var o2 = opts(g, [com[com.length - 2], x * y / g, onlyX]);
+          if (!o2) return null;
+          return { q: "What is the <b>greatest common factor</b> of " + x + " and " + y + "?",
+                   opts: o2.opts, a: o2.a,
+                   why: "Factors of " + x + ": " + factors(x).join(", ") + ". Factors of " + y + ": " + factors(y).join(", ") + ". They share " + com.join(", ") + ", and the greatest of those is " + g + ".",
+                   cite: CITE(6, "greatest common factor"), ex: "common", skill: 6 };
+        }
+        var o3 = opts(com.join(", "),
+                      [com.concat([onlyX]).sort(function (p, q) { return p - q; }).join(", "),
+                       com.concat([onlyY]).sort(function (p, q) { return p - q; }).join(", "),
+                       com.slice(1).join(", ")]);
+        if (!o3) return null;
+        return { q: "List the <b>common factors</b> of " + x + " and " + y + ".", opts: o3.opts, a: o3.a,
+                 why: "Factors of " + x + ": " + factors(x).join(", ") + ". Factors of " + y + ": " + factors(y).join(", ") + ". The common factors are the ones on both lists: " + com.join(", ") + ". " + onlyX + " divides " + x + " but not " + y + ", and " + onlyY + " divides " + y + " but not " + x + ". The greatest common factor is " + g + ".",
+                 cite: CITE(6, "common factors"), ex: "common", skill: 6 };
+      }
+
+      // divisibility
+      var d = pick([2, 3, 4, 5, 6, 9, 10]);
+      var num = between(1000, 9999);
+      var yes = num % d === 0;
+      var TEST = { 2: "the last digit is even", 3: "the digits add up to a multiple of 3",
+                   4: "the last two digits divide by 4", 5: "the last digit is 0 or 5",
+                   6: "it passes the test for 2 and the test for 3",
+                   9: "the digits add up to a multiple of 9", 10: "the last digit is 0" };
+      var o4 = opts(yes ? "Yes" : "No", ["Yes", "No", "Only if you divide and check",
+                                         "There is no way to tell without dividing"]
+                                          .filter(function (t) { return t !== (yes ? "Yes" : "No"); }));
+      if (!o4) return null;
+      var sum = String(num).split("").reduce(function (t, c) { return t + Number(c); }, 0);
+      return { q: "Is <b>" + commas(num) + "</b> divisible by <b>" + d + "</b>?", opts: o4.opts, a: o4.a,
+               why: "A number divides by " + d + " if " + TEST[d] + ". Here the digits add to " + sum + " and the number ends in " + String(num).slice(-1) + ", so the answer is " + (yes ? "yes" : "no") + ": " + commas(num) + " ÷ " + d + (yes ? " = " + commas(num / d) : " leaves a remainder of " + (num % d)) + ".",
+               cite: CITE(6, "divisibility"), ex: "single", skill: 6 };
+    });
+  }
+
+  /* ================================================================== L7
+     Lines, angles and planes. */
+  var ANGLES = [
+    { name: "Right angle", desc: "exactly 90°, the square corner" },
+    { name: "Acute angle", desc: "smaller than a right angle" },
+    { name: "Obtuse angle", desc: "bigger than a right angle but not a straight line" },
+    { name: "Straight angle", desc: "exactly 180°, a straight line" },
+  ];
+
+  function L7() {
+    return tries(function () {
+      var kind = pick(["angle", "segment", "lines", "count"]);
+
+      if (kind === "angle") {
+        var deg = between(1, 179);
+        var right = deg === 90 ? ANGLES[0] : deg < 90 ? ANGLES[1] : ANGLES[2];
+        var o = opts(right.name, shuffle(ANGLES.filter(function (x) { return x.name !== right.name; }))
+                                   .map(function (x) { return x.name; }));
+        if (!o) return null;
+        return { q: "An angle measures <b>" + deg + "°</b>. What kind of angle is it?",
+                 opts: o.opts, a: o.a,
+                 why: deg + "° is " + right.desc + ", so it is " + right.name.toLowerCase() + ". A right angle is exactly 90°, a straight angle exactly 180°; anything below 90° is acute and anything between 90° and 180° is obtuse.",
+                 cite: CITE(7, "angles"), ex: "angles", skill: 7 };
+      }
+
+      if (kind === "segment") {
+        var ab = between(2, 14), bc = between(2, 14), ac = ab + bc;
+        var ask = pick(["BC", "AB", "AC"]);
+        var val = ask === "BC" ? bc : ask === "AB" ? ab : ac;
+        var known = ask === "AC" ? "AB is " + ab + " cm and BC is " + bc + " cm"
+                                 : (ask === "BC" ? "AB is " + ab : "BC is " + bc) + " cm and AC is " + ac + " cm";
+        var o2 = opts(val + " cm", [(val + 2) + " cm", (ac + ab) + " cm", Math.abs(ab - bc) + " cm"]);
+        if (!o2) return null;
+        return { q: "Point B is between A and C on a line. " + known + ". Find <b>" + ask + "</b>.",
+                 opts: o2.opts, a: o2.a,
+                 why: "When B is between A and C, the two short segments make the long one: AB + BC = AC, so " + ab + " + " + bc + " = " + ac + ". That gives " + ask + " = " + val + " cm.",
+                 cite: CITE(7, "segments"), ex: "angles", skill: 7 };
+      }
+
+      if (kind === "lines") {
+        var which = pick([
+          { q: "Two lines in the same plane cross and make square corners. What are they called?",
+            a: "Perpendicular", w: ["Parallel", "Oblique", "Skew"],
+            why: "Lines that intersect and form square corners are perpendicular, written with the ⊥ symbol. Four right angles are made where they cross." },
+          { q: "Two lines in the same plane never meet, however far they are extended. What are they called?",
+            a: "Parallel", w: ["Perpendicular", "Oblique", "Intersecting"],
+            why: "Lines in the same plane that never intersect stay the same distance apart and are parallel, written with the ∥ symbol." },
+          { q: "Two lines in the same plane cross but do not make square corners. What are they called?",
+            a: "Oblique", w: ["Parallel", "Perpendicular", "Skew"],
+            why: "Lines in a plane that are neither parallel nor perpendicular are oblique. They do cross — just not at a right angle." },
+          { q: "Two lines are in different planes and never meet. What are they called?",
+            a: "Skew", w: ["Parallel", "Perpendicular", "Oblique"],
+            why: "Parallel lines are in the same plane. Lines in different planes that never meet are skew — the ceiling edge and a floor edge running the other way, for instance." },
+        ]);
+        var o3 = opts(which.a, which.w);
+        if (!o3) return null;
+        return { q: which.q, opts: o3.opts, a: o3.a, why: which.why,
+                 cite: CITE(7, "lines and planes"), ex: "angles", skill: 7 };
+      }
+
+      var o4 = opts("Four", ["Two", "One", "Eight"]);
+      if (!o4) return null;
+      return { q: "How many <b>right angles</b> are made where two perpendicular lines cross?",
+               opts: o4.opts, a: o4.a,
+               why: "Two crossing lines make four angles. If one of them is a right angle then all four are, because the angles on a straight line add to 180°. So perpendicular lines make four right angles.",
+               cite: CITE(7, "angles"), ex: "angles", skill: 7 };
+    });
+  }
+
+  /* ================================================================== L8
+     Fractions and percents. */
+  var FP = [[1, 2, 50], [1, 4, 25], [3, 4, 75], [1, 5, 20], [2, 5, 40], [3, 5, 60],
+            [4, 5, 80], [1, 10, 10], [3, 10, 30], [7, 10, 70], [9, 10, 90],
+            [1, 20, 5], [1, 100, 1], [1, 3, null], [2, 3, null]];
+
+  function L8() {
+    return tries(function () {
+      var kind = pick(["topct", "tofrac", "ruler"]);
+      var row = pick(FP.filter(function (r) { return r[2] !== null; }));
+      var n = row[0], d = row[1], p = row[2];
+
+      if (kind === "topct") {
+        var o = opts(p + "%", [(p + 10) + "%", (d * 10) + "%", (n * 10) + "%", (100 - p) + "%"]);
+        if (!o) return null;
+        return { q: "Write <b>" + frac(n, d) + "</b> as a percent.", opts: o.opts, a: o.a,
+                 why: "Percent means out of a hundred, so scale the fraction to have 100 underneath: " + frac(n, d) + " = " + frac(n * (100 / d), 100) + " = " + p + "%. Or divide: " + n + " ÷ " + d + " = " + (n / d) + ", and " + (n / d) + " × 100 = " + p + ".",
+                 cite: CITE(8, "fractions and percents"), ex: "percent", skill: 8 };
+      }
+
+      if (kind === "tofrac") {
+        var g = gcd(p, 100);
+        var right = frac(p / g, 100 / g);
+        var o2 = opts(right, [frac(p, 10), frac(100 / g, p / g), frac(p, 100)]);
+        if (!o2) return null;
+        return { q: "Write <b>" + p + "%</b> as a fraction in lowest terms.", opts: o2.opts, a: o2.a,
+                 why: p + "% means " + p + " out of 100, so it starts as " + frac(p, 100) + ". Both parts divide by " + g + ", which gives " + right + ".",
+                 cite: CITE(8, "fractions and percents"), ex: "percent", skill: 8 };
+      }
+
+      // ruler: eighths of an inch
+      var eighths = between(1, 15);
+      var gg = gcd(eighths, 8);
+      var right2 = eighths % 8 === 0 ? String(eighths / 8)
+        : eighths > 8 ? (Math.floor(eighths / 8) + " " + frac((eighths % 8) / gcd(eighths % 8, 8), 8 / gcd(eighths % 8, 8)))
+                      : frac(eighths / gg, 8 / gg);
+      var o3 = opts(right2 + " in.", [frac(eighths, 8) + " in.", frac(eighths, 16) + " in.",
+                                      (eighths / 8).toFixed(2) + " in."]);
+      if (!o3) return null;
+      return { q: "A ruler is marked in eighths of an inch. A line ends <b>" + eighths + " marks</b> past the start. How long is it, in lowest terms?",
+               opts: o3.opts, a: o3.a,
+               why: eighths + " eighths is " + frac(eighths, 8) + ". In lowest terms that is " + right2 + " inches. On an inch ruler the longest marks are halves, then quarters, then eighths.",
+               cite: CITE(8, "the inch ruler"), ex: "percent", skill: 8 };
+    });
+  }
+
+  /* ================================================================== L9
+     Adding, subtracting and multiplying fractions; reciprocals. */
+  function L9() {
+    return tries(function () {
+      var kind = pick(["add", "sub", "mul", "recip"]);
+      var d = pick([3, 4, 5, 6, 8, 9, 10, 12]);
+
+      if (kind === "add" || kind === "sub") {
+        var a = between(1, d - 1), b = between(1, d - 1);
+        var num = kind === "add" ? a + b : Math.abs(a - b);
+        if (num === 0) return null;
+        var g = gcd(num, d);
+        var right = num > d ? (Math.floor(num / d) + " " + frac((num % d) / gcd(num % d, d), d / gcd(num % d, d)))
+                            : (num === d ? "1" : frac(num / g, d / g));
+        var hi = Math.max(a, b), lo = Math.min(a, b);
+        var o = opts(right, [frac(num, d * 2), frac(kind === "add" ? a + b : hi - lo, d) + " (not reduced)",
+                             frac(a * b, d)]);
+        if (!o) return null;
+        return { q: (kind === "add" ? "Add" : "Subtract") + ": <b>" + frac(hi, d) + (kind === "add" ? " + " : " − ") + frac(lo, d) + "</b>",
+                 opts: o.opts, a: o.a,
+                 why: "The denominators already match, so " + (kind === "add" ? "add" : "subtract") + " the numerators and leave the denominator alone: " + frac(hi, d) + (kind === "add" ? " + " : " − ") + frac(lo, d) + " = " + frac(num, d) + (right !== frac(num, d) ? ", which reduces to " + right : "") + ".",
+                 cite: CITE(9, "adding and subtracting fractions"), ex: "fractions", skill: 9 };
+      }
+
+      if (kind === "mul") {
+        var n1 = between(1, 5), d1 = between(n1 + 1, 9);
+        var n2 = between(1, 5), d2 = between(n2 + 1, 9);
+        var pn = n1 * n2, pd = d1 * d2, g2 = gcd(pn, pd);
+        var o2 = opts(frac(pn / g2, pd / g2), [frac(pn, pd) + " (not reduced)",
+                                               frac(n1 + n2, d1 + d2), frac(n1 * d2, d1 * n2)]);
+        if (!o2) return null;
+        return { q: "Multiply: <b>" + frac(n1, d1) + " × " + frac(n2, d2) + "</b>", opts: o2.opts, a: o2.a,
+                 why: "Multiply the numerators together and the denominators together: " + (n1 + " × " + n2) + " = " + pn + " over " + (d1 + " × " + d2) + " = " + pd + ", so " + frac(pn, pd) + (g2 > 1 ? ", which reduces to " + frac(pn / g2, pd / g2) : "") + ". No common denominator is needed to multiply — that is only for adding and subtracting.",
+                 cite: CITE(9, "multiplying fractions"), ex: "fractions", skill: 9 };
+      }
+
+      // reciprocal
+      var rn = between(2, 9), rd = between(2, 9);
+      if (rn === rd) return null;
+      var o3 = opts(frac(rd, rn), [frac(rn, rd), frac(-rn, rd), frac(rd + 1, rn)]);
+      if (!o3) return null;
+      return { q: "What is the <b>reciprocal</b> of " + frac(rn, rd) + "?", opts: o3.opts, a: o3.a,
+               why: "The reciprocal of a fraction is that fraction turned upside down, so the reciprocal of " + frac(rn, rd) + " is " + frac(rd, rn) + ". A number times its reciprocal is always 1: " + frac(rn, rd) + " × " + frac(rd, rn) + " = " + frac(rn * rd, rd * rn) + " = 1.",
+               cite: CITE(9, "reciprocals"), ex: "fractions", skill: 9 };
+    });
+  }
+
+  /* ================================================================== L10
+     Division answers as mixed numbers; improper fractions. */
+  function L10() {
+    return tries(function () {
+      var kind = pick(["divide", "toMixed", "toImproper"]);
+
+      if (kind === "divide") {
+        var d = between(3, 9), w = between(2, 20), r = between(1, d - 1), n = w * d + r;
+        var g = gcd(r, d);
+        var right = w + " " + frac(r / g, d / g);
+        var o = opts(right, [w + " r" + r, (w + 1) + " " + frac(r / g, d / g),
+                             w + " " + frac(d / g, r / g)]);
+        if (!o) return null;
+        return { q: "Divide and write the answer as a <b>mixed number</b>: <b>" + n + " ÷ " + d + "</b>",
+                 opts: o.opts, a: o.a,
+                 why: n + " ÷ " + d + " is " + w + " with " + r + " left over. The remainder becomes the numerator over the divisor, so the answer is " + right + ". Check: " + w + " × " + d + " + " + r + " = " + n + ".",
+                 cite: CITE(10, "mixed numbers"), ex: "mixed", skill: 10 };
+      }
+
+      if (kind === "toMixed") {
+        var dd = between(3, 9), ww = between(2, 12), rr = between(1, dd - 1);
+        var imp = ww * dd + rr, gg = gcd(rr, dd);
+        var right2 = ww + " " + frac(rr / gg, dd / gg);
+        var o2 = opts(right2, [(ww + 1) + " " + frac(rr / gg, dd / gg),
+                               ww + " " + frac(dd / gg, rr / gg), (ww - 1) + " " + frac(rr / gg, dd / gg)]);
+        if (!o2) return null;
+        return { q: "Write <b>" + frac(imp, dd) + "</b> as a mixed number.", opts: o2.opts, a: o2.a,
+                 why: "An improper fraction is a division waiting to happen: " + imp + " ÷ " + dd + " = " + ww + " remainder " + rr + ", so " + frac(imp, dd) + " = " + right2 + ".",
+                 cite: CITE(10, "improper fractions"), ex: "mixed", skill: 10 };
+      }
+
+      var d3 = between(3, 9), w3 = between(2, 12), r3 = between(1, d3 - 1);
+      var imp3 = w3 * d3 + r3;
+      var o3 = opts(frac(imp3, d3), [frac(w3 * d3, d3), frac(w3 + r3, d3), frac(imp3 + 1, d3)]);
+      if (!o3) return null;
+      return { q: "Write <b>" + w3 + " " + frac(r3, d3) + "</b> as an improper fraction.",
+               opts: o3.opts, a: o3.a,
+               why: "Multiply the whole number by the denominator and add the numerator: " + w3 + " × " + d3 + " = " + (w3 * d3) + ", plus " + r3 + " is " + imp3 + ". Keep the same denominator, so " + w3 + " " + frac(r3, d3) + " = " + frac(imp3, d3) + ".",
+               cite: CITE(10, "improper fractions"), ex: "mixed", skill: 10 };
+    });
+  }
+
+  var GEN = { 1: L1, 2: L2, 3: L3, 4: L4, 5: L5, 6: L6, 7: L7, 8: L8, 9: L9, 10: L10 };
+
+  var NAMES = {
+    1: "Whole numbers, money and variables",
+    2: "Properties of operations",
+    3: "Finding an unknown number",
+    4: "Number line sequences",
+    5: "Place value",
+    6: "Factors and divisibility",
+    7: "Lines, angles and planes",
+    8: "Fractions and percents",
+    9: "Adding, subtracting and multiplying fractions",
+    10: "Mixed numbers and improper fractions",
+  };
+
+  var API = {
+    /* Which lesson skills can be practised. Everything past this returns null
+       from gen(), and the app says so rather than showing an empty set. */
+    built: Object.keys(GEN).map(Number).sort(function (a, b) { return a - b; }),
+    name: function (n) { return NAMES[n] || ("Lesson " + n); },
+    has: function (n) { return !!GEN[n]; },
+
+    /* One question for the skill taught in lesson n. Null if not built yet. */
+    gen: function (n) { return GEN[n] ? GEN[n]() : null; },
+
+    /* `count` questions for a problem, avoiding an immediate repeat of the same
+       question text. A problem may review more than one lesson — Saxon writes
+       that as (2, 4) — so the skills are dealt round-robin. */
+    forProblem: function (skills, count) {
+      var out = [], seen = {}, guard = 0;
+      skills = skills.filter(function (s) { return GEN[s]; });
+      if (!skills.length) return out;
+      while (out.length < count && guard++ < count * 30) {
+        var q = GEN[skills[out.length % skills.length]]();
+        if (!q || seen[q.q]) continue;
+        seen[q.q] = true;
+        out.push(q);
+      }
+      return out;
+    },
+  };
+
+  if (typeof module === "object" && module.exports) module.exports = API;
+  else root.MATH = API;
+})(typeof window !== "undefined" ? window : this);
+/* /MATH-SKILLS */</script>
+<script>/* MATH-EX: inlined by build_theme.py, do not hand-edit */
+/* Worked examples, one per skill, opened when a question is missed.
+ *
+ * Ten of these were written for the Lesson 7 review and are the same text,
+ * kept in one place rather than copied. Each carries the lesson's own method
+ * underneath it in the lesson's own words, and a `book` line saying where the
+ * same kind is worked, so there is somewhere further to go than what we wrote.
+ *
+ * Generated by scratchpad/mk_ex.js.py from the Lesson 7 spec plus the seven
+ * skills that review did not touch. Nothing from the book is reproduced.
+ */
+(function (root) {
+  "use strict";
+  var EX = {
+ "angles": {
+  "book": "Lesson 7 names every one of these and works six examples, including naming the angles in a figure and finding a missing segment length. Saxon Course 2, Lesson 7, pages 47-50.",
+  "cite": "Saxon Math Course 2, Lesson 7",
+  "text": [
+   "An angle is made by two rays from a common endpoint, called the vertex. Angles are sorted by size: a right angle is exactly 90° and is marked with a small square, an acute angle is smaller than that, an obtuse angle is bigger than a right angle but less than a straight line, and a straight angle is exactly 180°.",
+   "Two lines in the same plane either cross once or never cross. If they never cross they stay the same distance apart and are parallel, written ∥. If they cross and make square corners they are perpendicular, written ⊥ — and that makes four right angles, not one. If they cross at any other angle they are oblique.",
+   "Lines in different planes that never meet are skew, which is not the same as parallel: parallel lines have to be in the same plane.",
+   "When a point B lies between A and C on a line, the two short segments make the long one: AB + BC = AC. So if AB is 3 cm and AC is 7 cm, then BC is 4 cm."
+  ],
+  "title": "Lines, angles and the words for them",
+  "vocab": [
+   [
+    "vertex",
+    "noun",
+    "the common endpoint where the two rays of an angle meet"
+   ],
+   [
+    "ray",
+    "noun",
+    "part of a line with one endpoint, going on forever the other way"
+   ],
+   [
+    "segment",
+    "noun",
+    "part of a line with two endpoints, so it has a length"
+   ],
+   [
+    "perpendicular",
+    "adjective",
+    "crossing at right angles, written with the ⊥ symbol"
+   ],
+   [
+    "parallel",
+    "adjective",
+    "in the same plane and never crossing, written with the ∥ symbol"
+   ]
+  ]
+ },
+ "backwards": {
+  "book": "The lesson works an unknown subtrahend in Example 2 and an unknown divisor in Example 4, each one alongside the easier form, so the difference between them is on the same page. Saxon Course 2, Lesson 3, pages 22–23.",
+  "cite": "Saxon Math Course 2, Lesson 3",
+  "text": [
+   "Two forms need a moment's thought, because the variable is not the thing being changed — it is the thing doing the changing.",
+   "50 − n = 18. Read it as a story: 50, take away n, leaves 18. When the variable is the part being taken away, the answer is the difference: n = 50 − 18 = 32. Check: 50 − 32 = 18. True.",
+   "60 ÷ n = 12. Read it the same way: 60 shared into n groups puts 12 in each group. When the variable is underneath, ask how many of the answer fit into the top: n = 60 ÷ 12 = 5. Check: 60 ÷ 5 = 12. True.",
+   "In both, the move is the same operation as the one in the equation, not the opposite. That is what makes them different from the other four forms — and it is why naming the position is worth the trouble."
+  ],
+  "title": "When the variable is underneath, or is the part taken away",
+  "vocab": [
+   [
+    "subtrahend",
+    "the part taken away",
+    "The unknown in 50 − n = 18. To find an unknown subtrahend, subtract the difference from the minuend."
+   ],
+   [
+    "divisor",
+    "how many it is shared into",
+    "The unknown in 60 ÷ n = 12. To find an unknown divisor, divide the dividend by the quotient."
+   ]
+  ]
+ },
+ "check": {
+  "book": "Every worked example in the lesson is followed by a check written out underneath it — the book treats the check as part of the answer rather than as optional. Saxon Course 2, Lesson 3, pages 21–23.",
+  "cite": "Saxon Math Course 2, Lesson 3",
+  "text": [
+   "Every one of these can be checked in a few seconds, and the check is worth more than it costs.",
+   "Put the value back into the original equation and see whether it comes out true. Not into the equation you rearranged — into the one you were given. That way a wrong move shows up instead of being repeated.",
+   "Solve 15n = 195, and suppose the answer written down is 13. Check: 15 × 13 = 195. True, so it is right.",
+   "Suppose instead the answer written down was 180, from subtracting 15 rather than dividing. Check: 15 × 180 = 2700, not 195. The check finds it, and it takes one line."
+  ],
+  "title": "Checking the answer",
+  "vocab": [
+   [
+    "check",
+    "the second half of the answer",
+    "Substitute the value into the original equation. If both sides come out equal, the answer is right."
+   ]
+  ]
+ },
+ "column": {
+  "book": "Lesson 1 works addition, subtraction, multiplication and division of whole numbers and money across five examples. Saxon Course 2, Lesson 1, pages 8-10.",
+  "cite": "Saxon Math Course 2, Lesson 1",
+  "text": [
+   "Line the numbers up by place value — ones under ones, tens under tens — and work right to left. With money that means the decimal points sit in a straight line, and everything else follows from that.",
+   "Adding: 4,175 + 2,968. Ones: 5 + 8 = 13, so write 3 and carry 1. Tens: 7 + 6 + 1 = 14, write 4 carry 1. Hundreds: 1 + 9 + 1 = 11, write 1 carry 1. Thousands: 4 + 2 + 1 = 7. The answer is 7,143.",
+   "Subtracting: $80.00 − $72.45. There is nothing to take 5 from, so borrow across: $80.00 becomes 79 dollars and 100 cents. 100 − 45 = 55 cents, and 79 − 72 = 7 dollars. The answer is $7.55.",
+   "Multiplying by a two-digit number takes two rows: multiply by the ones digit, then by the tens digit shifted one place left, then add the rows. 164 × 23 is 164 × 3 = 492, plus 164 × 20 = 3,280, which comes to 3,772.",
+   "Every one of these can be checked by working backwards — add the difference to the smaller number, or divide the product by one factor."
+  ],
+  "title": "Working down the columns",
+  "vocab": [
+   [
+    "sum",
+    "addition",
+    "the answer when numbers are added; the numbers added are addends"
+   ],
+   [
+    "difference",
+    "subtraction",
+    "the answer when one number is taken from another"
+   ],
+   [
+    "product",
+    "multiplication",
+    "the answer when numbers are multiplied; the numbers multiplied are factors"
+   ],
+   [
+    "quotient",
+    "division",
+    "the answer when one number is divided by another"
+   ]
+  ]
+ },
+ "common": {
+  "book": "The lesson works a greatest common factor in Example 3, listing both sets of factors and circling the ones they share. Saxon Course 2, Lesson 6, page 41.",
+  "cite": "Saxon Math Course 2, Lesson 6",
+  "text": [
+   "A common factor divides both numbers. Finding them takes two steps, and the second one is easy to forget.",
+   "Step one: list the factors of each number separately. Factors of 12: 1, 2, 3, 4, 6, 12. Factors of 20: 1, 2, 4, 5, 10, 20.",
+   "Step two: compare the two lists. The common factors are the ones that appear on both lists — here, 1, 2 and 4. The greatest common factor is the largest of those: 4. Two correct lists side by side are not the answer yet; the answer is what they share.",
+   "The lesson's own trick is to write both lists out and circle the numbers that appear in both. The circles are step two made visible, so it is harder to stop after step one."
+  ],
+  "title": "Common factors and the greatest common factor",
+  "vocab": [
+   [
+    "factor",
+    "noun",
+    "a whole number that divides another with no remainder"
+   ],
+   [
+    "common factor",
+    "noun",
+    "a number that is a factor of both numbers"
+   ],
+   [
+    "greatest common factor",
+    "noun",
+    "the largest of the common factors — often written GCF"
+   ],
+   [
+    "divisibility",
+    "noun",
+    "whether one whole number divides another with no remainder"
+   ]
+  ]
+ },
+ "divide": {
+  "book": "The lesson names all three positions and works an unknown dividend and an unknown divisor together in Example 4. Saxon Course 2, Lesson 3, page 23.",
+  "cite": "Saxon Math Course 2, Lesson 3",
+  "text": [
+   "Solve n ÷ 12 = 30.",
+   "Ask what was done to n. It was divided by 12. The variable was divided, so multiply to undo it.",
+   "n ÷ 12 × 12 = 30 × 12, which leaves n = 360.",
+   "Check: 360 ÷ 12 = 30. True.",
+   "Dividing again is the tempting mistake, because the equation has a division sign in it. But the sign says what was already done, not what to do next. Dividing here would give 2.5, and 2.5 ÷ 12 is nowhere near 30 — the check catches it immediately."
+  ],
+  "title": "When the variable was divided",
+  "vocab": [
+   [
+    "dividend",
+    "the number being shared",
+    "To find an unknown dividend, multiply the quotient by the divisor."
+   ],
+   [
+    "divisor",
+    "how many it is shared into",
+    "To find an unknown divisor, divide the dividend by the quotient."
+   ],
+   [
+    "quotient",
+    "the answer",
+    "To find an unknown quotient, divide the dividend by the divisor."
+   ]
+  ]
+ },
+ "evaluate": {
+  "book": "Lesson 1 introduces variables and evaluation after the arithmetic, and Example 5 evaluates an expression for given values. Saxon Course 2, Lesson 1, pages 10-11.",
+  "cite": "Saxon Math Course 2, Lesson 1",
+  "text": [
+   "A variable is a letter standing in for a number that has not been given. To evaluate an expression you put the number in and work it out.",
+   "Evaluate ab when a = 30 and b = 4. Two letters written together means multiply, so ab is 30 × 4 = 120. It does not mean the two digits side by side.",
+   "Evaluate b − a with the same numbers: 4 − 30 would be negative, so read the expression carefully — with a = 30 and b = 4 the answer really is −26. Order matters in subtraction and division, and does not in addition and multiplication.",
+   "A word problem is the same job with the numbers hidden in a sentence. “The product of two one-digit numbers is 24” means two numbers that multiply to 24 — 3 and 8, or 4 and 6. The sentence then tells you which one it wants."
+  ],
+  "title": "Putting numbers in for letters",
+  "vocab": [
+   [
+    "variable",
+    "noun",
+    "a letter used to stand for a number that is not given"
+   ],
+   [
+    "evaluate",
+    "verb",
+    "put the given numbers in place of the letters and work it out"
+   ],
+   [
+    "expression",
+    "noun",
+    "numbers and letters combined by operations, with no equals sign"
+   ]
+  ]
+ },
+ "fractions": {
+  "book": "Lesson 9 works adding, subtracting and multiplying fractions and then reciprocals, keeping the rules side by side so the difference between them is on one page. Saxon Course 2, Lesson 9, pages 60-64.",
+  "cite": "Saxon Math Course 2, Lesson 9",
+  "text": [
+   "Adding and subtracting need the same denominator; multiplying does not. That one sentence is most of the lesson, and mixing the two rules up is the usual mistake.",
+   "Adding with the same denominator: add the numerators and leave the denominator alone. 3/8 + 2/8 = 5/8. The denominator says what size the pieces are, and adding pieces does not change their size.",
+   "Multiplying: multiply the numerators together and the denominators together. 2/3 × 3/5 = 6/15, which reduces to 2/5. No common denominator is needed, and looking for one is wasted work.",
+   "Reduce at the end. Divide the top and the bottom by their greatest common factor: 6/15 has a common factor of 3, so it becomes 2/5.",
+   "The reciprocal of a fraction is that fraction turned upside down. The reciprocal of 3/4 is 4/3, and a number times its reciprocal is always 1."
+  ],
+  "title": "Adding, subtracting and multiplying fractions",
+  "vocab": [
+   [
+    "common denominator",
+    "phrase",
+    "the same bottom number, which adding and subtracting need"
+   ],
+   [
+    "reciprocal",
+    "noun",
+    "the fraction turned upside down; a number times its reciprocal is 1"
+   ],
+   [
+    "reduce",
+    "verb",
+    "divide top and bottom by their greatest common factor"
+   ]
+  ]
+ },
+ "grouping": {
+  "book": "Lesson 2 sets the properties out in a table and then uses them to make a multiplication easier to do in your head. Saxon Course 2, Lesson 2, pages 16–17.",
+  "cite": "Saxon Math Course 2, Lesson 2",
+  "text": [
+   "Parentheses say which part to work out first. With addition and multiplication that turns out not to matter — this is the associative property.",
+   "(3 + 8) + 5 = 11 + 5 = 16, and 3 + (8 + 5) = 3 + 13 = 16. Same answer. (2 × 3) × 4 = 6 × 4 = 24, and 2 × (3 × 4) = 2 × 12 = 24. Same answer.",
+   "Subtraction and division are not associative. In division the parentheses change the answer, and often by a lot.",
+   "100 ÷ (10 ÷ 2) = 100 ÷ 5 = 20, but (100 ÷ 10) ÷ 2 = 10 ÷ 2 = 5. Twenty against five, from the same three numbers in the same order. So with division, work out what is inside the parentheses first, and never assume you can move them."
+  ],
+  "title": "What the parentheses do",
+  "vocab": [
+   [
+    "associative property",
+    "noun",
+    "the grouping can change without changing the answer — true for addition and multiplication, false for subtraction and division"
+   ],
+   [
+    "commutative property",
+    "noun",
+    "the order can change without changing the answer — again true for addition and multiplication only"
+   ],
+   [
+    "identity property",
+    "noun",
+    "adding 0, or multiplying by 1, leaves a number as it was"
+   ]
+  ]
+ },
+ "minus": {
+  "book": "The lesson names all three positions and gives the rule for each, then works an unknown minuend and an unknown subtrahend side by side in Example 2. Saxon Course 2, Lesson 3, page 22.",
+  "cite": "Saxon Math Course 2, Lesson 3",
+  "text": [
+   "Solve n − 26 = 71.",
+   "Ask what was done to n. 26 was subtracted from it. Something was subtracted from the variable, so add it back — that is the move that undoes it.",
+   "n − 26 + 26 = 71 + 26, which leaves n = 97.",
+   "Check: 97 − 26 = 71. True, so 97 is right. If the check comes out false, the move was the wrong one — subtracting again instead of adding would have given 45, and 45 − 26 = 19, not 71."
+  ],
+  "title": "When something was subtracted",
+  "vocab": [
+   [
+    "minuend",
+    "the number you start from",
+    "The unknown in n − 26 = 71. To find an unknown minuend, add the other two numbers."
+   ],
+   [
+    "subtrahend",
+    "the part taken away",
+    "The unknown in 50 − x = 18. To find an unknown subtrahend, subtract."
+   ],
+   [
+    "difference",
+    "what is left",
+    "To find an unknown difference, subtract."
+   ]
+  ]
+ },
+ "mixed": {
+  "book": "Lesson 10 turns division answers into mixed numbers and converts both ways between mixed numbers and improper fractions. Saxon Course 2, Lesson 10, pages 66-69.",
+  "cite": "Saxon Math Course 2, Lesson 10",
+  "text": [
+   "An improper fraction is a division waiting to happen. 17/5 means 17 ÷ 5, which is 3 with 2 left over, so 17/5 = 3 2/5.",
+   "Going the other way, multiply the whole number by the denominator and add the numerator. 3 2/5 becomes 3 × 5 = 15, plus 2, which is 17 — so 17/5. The denominator never changes.",
+   "That is also how a division with a remainder should usually be written. 38 ÷ 5 is 7 remainder 3, and the remainder goes over the divisor: 7 3/5. Writing “7 r3” is a step on the way, not the finished answer.",
+   "Reduce the fraction part if it will go. 14 ÷ 4 is 3 remainder 2, which is 3 2/4 — and 2/4 reduces to 1/2, so the answer is 3 1/2."
+  ],
+  "title": "Mixed numbers and improper fractions",
+  "vocab": [
+   [
+    "improper fraction",
+    "noun",
+    "a fraction whose numerator is bigger than its denominator"
+   ],
+   [
+    "mixed number",
+    "noun",
+    "a whole number and a fraction written together"
+   ],
+   [
+    "remainder",
+    "noun",
+    "what is left over after dividing; it becomes the numerator"
+   ]
+  ]
+ },
+ "percent": {
+  "book": "Lesson 8 covers fractions, percents and the inch ruler together, because they are the same idea measured three ways. Saxon Course 2, Lesson 8, pages 53-58.",
+  "cite": "Saxon Math Course 2, Lesson 8",
+  "text": [
+   "Percent means “per hundred”, so a percent is a fraction whose denominator is 100. That is the whole idea, and everything else is arithmetic.",
+   "To turn a fraction into a percent, scale it so 100 is underneath. 3/4 = 75/100 = 75%. If the denominator does not go into 100 neatly, divide instead: 3 ÷ 4 = 0.75, and 0.75 × 100 = 75.",
+   "To turn a percent into a fraction, put it over 100 and reduce. 40% = 40/100, and both parts divide by 20, so it is 2/5.",
+   "Worth knowing by sight: 1/2 = 50%, 1/4 = 25%, 3/4 = 75%, 1/5 = 20%, 1/10 = 10%, 1/100 = 1%.",
+   "An inch ruler is the same idea in wood. The longest marks are halves, then quarters, then eighths — so six marks past the start on an eighths ruler is 6/8, which reduces to 3/4 of an inch."
+  ],
+  "title": "Fractions and percents are the same thing",
+  "vocab": [
+   [
+    "numerator",
+    "top",
+    "how many parts you have"
+   ],
+   [
+    "denominator",
+    "bottom",
+    "how many parts the whole was cut into"
+   ],
+   [
+    "percent",
+    "noun",
+    "a fraction with 100 underneath; the symbol is %"
+   ],
+   [
+    "lowest terms",
+    "phrase",
+    "the numerator and denominator share no factor but 1"
+   ]
+  ]
+ },
+ "place": {
+  "book": "Lesson 5 works through place value to hundred trillions and reading and writing whole numbers, in seven examples. Saxon Course 2, Lesson 5, pages 35-37.",
+  "cite": "Saxon Math Course 2, Lesson 5",
+  "text": [
+   "A digit is worth different amounts depending on where it sits. Counting from the right: ones, tens, hundreds, thousands, ten thousands, hundred thousands, millions, and so on up through billions and trillions.",
+   "In 47,308,000 the 7 sits six places from the right, which is the millions place, so it is worth 7,000,000. The 3 sits five places along, the hundred thousands, so it is worth 300,000.",
+   "The commas are the shortcut. They mark off groups of three, and each group has its own name: thousands, millions, billions, trillions. So 90 million written in digits is 90,000,000 — nine, zero, then two more groups of three zeros.",
+   "To compare two numbers with the same number of digits, go left to right and stop at the first place where they differ. That place decides it, and nothing to the right of it can change the answer."
+  ],
+  "title": "Which place a digit sits in",
+  "vocab": [
+   [
+    "digit",
+    "noun",
+    "one of the ten symbols 0 through 9"
+   ],
+   [
+    "place value",
+    "noun",
+    "what a digit is worth because of where it sits"
+   ],
+   [
+    "period",
+    "noun",
+    "a group of three places marked off by commas"
+   ]
+  ]
+ },
+ "plus": {
+  "book": "The lesson works three unknown addends in Example 1, including one with four addends where the known ones are added together first. Saxon Course 2, Lesson 3, page 21.",
+  "cite": "Saxon Math Course 2, Lesson 3",
+  "text": [
+   "Solve n + 34 = 90.",
+   "Ask what was done to n. 34 was added to it. Something was added to the variable, so subtract it.",
+   "n + 34 − 34 = 90 − 34, which leaves n = 56.",
+   "Check: 56 + 34 = 90. True.",
+   "If several numbers are being added — 5 + 9 + n + 4 = 30 — add all the known ones first, then subtract that total from the sum: 5 + 9 + 4 = 18, and 30 − 18 = 12."
+  ],
+  "title": "When something was added",
+  "vocab": [
+   [
+    "addend",
+    "a number being added",
+    "To find an unknown addend, subtract the known addend from the sum."
+   ],
+   [
+    "sum",
+    "the total",
+    "To find an unknown sum, add the addends."
+   ]
+  ]
+ },
+ "single": {
+  "book": "The lesson works this kind twice: Example 4 asks which whole numbers from 1 to 10 divide a four-digit number, and the practice set asks for the single-digit divisors of another. Saxon Course 2, Lesson 6, pages 41–42.",
+  "cite": "Saxon Math Course 2, Lesson 6",
+  "text": [
+   "A factor of a number divides it with nothing left over. To find every factor, work up from 1 in pairs: 1 × 60, 2 × 30, 3 × 20, 4 × 15, 5 × 12, 6 × 10. Once the pairs start repeating you have them all, so the factors of 60 are 1, 2, 3, 4, 5, 6, 10, 12, 15, 20, 30 and 60.",
+   "Now read the question again. If it asks for the single-digit factors, only the ones below 10 belong in the answer: 1, 2, 3, 4, 5 and 6. The question asks for the single-digit factors, so the list stops at 9. The rest are still factors — they were just not what was asked for.",
+   "For a single-digit question there is a quicker route than listing every pair: test 1 through 9 with the divisibility tests below. 1 always divides, and the number itself belongs on the list only if it happens to be a single digit."
+  ],
+  "title": "Single-digit factors",
+  "vocab": [
+   [
+    "divisible by 2",
+    "test",
+    "the last digit is even"
+   ],
+   [
+    "divisible by 3",
+    "test",
+    "the digits add up to a multiple of 3"
+   ],
+   [
+    "divisible by 4",
+    "test",
+    "the last two digits divide by 4"
+   ],
+   [
+    "divisible by 5",
+    "test",
+    "the last digit is 0 or 5"
+   ],
+   [
+    "divisible by 6",
+    "test",
+    "it passes both the test for 2 and the test for 3"
+   ],
+   [
+    "divisible by 8",
+    "test",
+    "the last three digits divide by 8"
+   ],
+   [
+    "divisible by 9",
+    "test",
+    "the digits add up to a multiple of 9"
+   ],
+   [
+    "divisible by 10",
+    "test",
+    "the last digit is 0"
+   ],
+   [
+    "7",
+    "no test",
+    "there is no quick test for 7 — divide and see"
+   ]
+  ]
+ },
+ "squares": {
+  "book": "Lesson 4 is where sequences are introduced, working the rule out from the first few terms across eight examples. Saxon Course 2, Lesson 4, pages 26–31.",
+  "cite": "Saxon Math Course 2, Lesson 4",
+  "text": [
+   "A perfect square is a whole number multiplied by itself. They are called squares because that many tiles will make a square: nine tiles make a three-by-three square, sixteen make a four-by-four.",
+   "The first fifteen are 1, 4, 9, 16, 25, 36, 49, 64, 81, 100, 121, 144, 169, 196 and 225 — that is 1 × 1 up to 15 × 15. Worth knowing by sight, because they turn up constantly.",
+   "The gaps between them grow: 3, 5, 7, 9, 11. So a run of perfect squares is never a sequence where the same number is added each time, which is one way to recognise one.",
+   "A number that is not on the list is not a perfect square. 50 is not, because it sits between 49 and 64 — you would need something between 7 and 8 to make it, and that is not a whole number."
+  ],
+  "title": "Perfect squares",
+  "vocab": [
+   [
+    "sequence",
+    "noun",
+    "a list of numbers that follows a rule"
+   ],
+   [
+    "term",
+    "noun",
+    "one of the numbers in a sequence"
+   ],
+   [
+    "perfect square",
+    "noun",
+    "a whole number multiplied by itself"
+   ]
+  ]
+ },
+ "times": {
+  "book": "The lesson works two unknown factors in Example 3, and writes the check underneath each as a multiplication. Saxon Course 2, Lesson 3, pages 22–23.",
+  "cite": "Saxon Math Course 2, Lesson 3",
+  "text": [
+   "Solve 7n = 168.",
+   "7n means 7 × n. The variable was multiplied, so divide to undo it.",
+   "7n ÷ 7 = 168 ÷ 7, which leaves n = 24.",
+   "Check: 7 × 24 = 168. True.",
+   "If there is more than one number on that side — 2 · 3 · n = 168, say — multiply them together first. 2 · 3 · n is 6n, and then one division finishes it: n = 28."
+  ],
+  "title": "When the variable was multiplied",
+  "vocab": [
+   [
+    "factor",
+    "a number being multiplied",
+    "To find an unknown factor, divide the product by the known factor."
+   ],
+   [
+    "product",
+    "the result",
+    "To find an unknown product, multiply the factors."
+   ]
+  ]
+ }
+};
+  if (typeof module === "object" && module.exports) module.exports = EX;
+  else root.MATHEX = EX;
+})(typeof window !== "undefined" ? window : this);
+/* /MATH-EX */</script>
+<script>/* ===== Minecraft theme layer — shared source =====
+   Built once, injected into every app. Do not edit inside an app's
+   index.html; edit theme/mc.js and rebuild, or the four copies drift.
+
+   Contract:
+     MC.config({app, shake, lift, dragon})  once, before anything else
+     MC.begin(id)                           entering a level — refills hearts
+     MC.right()                             a correct answer
+     MC.wrong(missKey)                      a wrong answer — costs half a heart
+     MC.note(missKey)                       record a miss without spending one
+     MC.credit(missKey)                     count a fix without a burst
+     MC.clear(id, pct, {boss})              level finished — may award a tool
+     MC.chest(el, pct, {id})                paint the results reveal into el
+     MC.bests()                             {id: bestPct} for this app
+     MC.mute(on)                            sound off/on, remembered across apps
+     MC.ask(item)                           the wording to ask it in this run
+     MC.runs(id)                            every attempt at one activity
+     MC.picker(el, items, cur, onPick)       a strip of level chips
+     MC.state()                             read-only snapshot (used by the hub)
+
+   No death, no game over. Hearts only shrink the loot. A kid who is stuck
+   must never hit a wall — see HANDOFF.
+*/
+(function () {
+  "use strict";
+
+  var PREFIX = window.__MC_PREFIX__ || "../../assets/";
+  var INLINE = window.__MC_INLINE__ || null;
+  var HAS_BOSS = window.__MC_HAS_BOSS__ === true;
+  var url = function (n) { return INLINE ? (INLINE[n] || "") : PREFIX + n + ".png"; };
+
+  /* ---------- persistence (shared origin, so shared across all four apps) ---------- */
+  var KEY = "mc.study.v1";
+  var S;
+  try { S = JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) { S = {}; }
+  if (!S.cleared || typeof S.cleared !== "object") S.cleared = {};
+  if (!S.misses || typeof S.misses !== "object") S.misses = {};
+  if (typeof S.tool9 !== "boolean") S.tool9 = false;
+  if (!S.ore || typeof S.ore !== "object") S.ore = {};
+  if (!S.gem || typeof S.gem !== "object") S.gem = {};   // "app:id" -> diamond taken
+  if (typeof S.dragon !== "number") S.dragon = 0;
+  /* Every attempt, not just the best one: "app:id" -> [{p:pct, t:when, x:partial}].
+     `cleared` keeps the high score because that is what the game rewards, but a
+     parent wants the shape of the practice — three tries drifting down is worth
+     knowing about even when the best of them was 90. Capped so a year of daily
+     practice cannot fill localStorage. */
+  if (!S.runs || typeof S.runs !== "object") S.runs = {};
+  var RUNS_KEPT = 25;
+  if (typeof S.mute !== "boolean") S.mute = false;
+  /* Coins. The tools run out and the mine takes a while to open, so there was a
+     long middle stretch where a good run paid nothing. Coins pay on every run,
+     from the first one, scaled to how it went — a floor that never disappears
+     and a ceiling that never arrives. */
+  if (typeof S.coins !== "number" || !isFinite(S.coins)) S.coins = 0;
+
+  /* Two numbers, not one. `coins` is the spendable balance; `earned` is every
+     coin ever paid out and never goes down, so buying something does not shrink
+     the year's total — it moves it into things owned. Without this a shop would
+     break the one rule the whole design rests on: nothing earned is taken away.
+
+     Anyone who was here before the shop existed has earned at least what they
+     are holding, so that is where their total starts. */
+  if (typeof S.earned !== "number" || !isFinite(S.earned)) S.earned = S.coins;
+  if (S.earned < S.coins) S.earned = S.coins;
+  if (!S.owned || typeof S.owned !== "object") S.owned = {};
+  if (!S.equip || typeof S.equip !== "object") S.equip = {};
+
+  /* ---------- sound ----------
+     Every answer is heard: a coin when he is right, a soft glass note when he
+     is not, and an unlock when a tool is earned. The wrong note is deliberately
+     the gentlest of the three — it marks the moment without scolding, which is
+     the same reason hearts shrink the loot instead of ending the run.
+
+     All three arrive base64-inlined from the injector, like the sprites under
+     --inline, so an app is still one file you can open from anywhere. They are
+     small enough (about 18 KB of base64 between them) to inline on every build
+     rather than only when asked. */
+  var SFX = window.__MC_SFX__ || null;
+  var VOL = 0.32;                       // quiet by default; this is a study aid
+  /* The wrong note fires more often than either of the others, so it sits
+     lower — audible, but never the loudest thing in the room. */
+  var VOLS = { correct: 0.32, tool: 0.38, wrong: 0.20 };
+  var clips = null, primed = false;
+
+  function vol(k) { return VOLS[k] === undefined ? VOL : VOLS[k]; }
+
+  function build_clips() {
+    if (clips || !SFX) return;
+    clips = {};
+    for (var k in SFX) {
+      try {
+        var a = new Audio(SFX[k]);
+        a.preload = "auto";
+        a.volume = vol(k);
+        clips[k] = a;
+      } catch (e) { /* no Audio in this environment — stay silent */ }
+    }
+  }
+
+  /* Browsers refuse to play audio until the user has interacted with the page,
+     and the refusal is a rejected promise, not an error we would otherwise see.
+     So on the first touch or key we start each clip muted and immediately stop
+     it, which satisfies the policy and leaves them ready to fire instantly. */
+  function unlock() {
+    if (primed) return;
+    primed = true;
+    build_clips();
+    for (var k in clips) prime_one(clips[k], vol(k));
+    document.removeEventListener("pointerdown", unlock, true);
+    document.removeEventListener("keydown", unlock, true);
+  }
+  function prime_one(a, v) {
+    try {
+      a.volume = 0;
+      var p = a.play();
+      var settle = function () { try { a.pause(); a.currentTime = 0; } catch (e) {} a.volume = v; };
+      if (p && p.then) p.then(settle, settle); else settle();
+    } catch (e) { a.volume = v; }
+  }
+  if (typeof document !== "undefined" && document.addEventListener) {
+    document.addEventListener("pointerdown", unlock, true);
+    document.addEventListener("keydown", unlock, true);
+  }
+
+  function play(name) {
+    if (S.mute || !SFX) return;
+    build_clips();
+    var a = clips && clips[name];
+    if (!a) return;
+    try {
+      a.currentTime = 0;
+      a.volume = vol(name);
+      var p = a.play();
+      if (p && p.catch) p.catch(function () { /* still locked; next one will land */ });
+    } catch (e) { /* never let a missing speaker break a question */ }
+  }
+  function save() { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} }
+
+  var TOOLS = ["wooden pickaxe", "stone pickaxe", "iron pickaxe", "diamond pickaxe",
+               "sword", "torch", "shield", "bow", "elytra"];
+
+  /* Tools 1-8 come from how many activities have been cleared anywhere on the
+     site at 75%+. Tool 9, the elytra, only ever comes from spelling Challenge 2 —
+     the one level where he writes his own sentences. */
+  /* ---------- the mine ----------
+     The tool bar was the whole ladder, and with twenty-odd activities on the
+     site he fills it long before he runs out of work. So the tools are only
+     the first age. Once all nine are held the mine opens, and from then on
+     what a run is worth depends on how well it went rather than on whether it
+     was new. Coal through gold are repeatable, so there is always something to
+     dig; diamond is once per activity, so the only way to a pile of them is
+     breadth AND mastery; emerald comes from the dragon alone. */
+  var ORE = [
+    { k: "coal",     name: "coal",     hex: "#2C2C30" },
+    { k: "copper",   name: "copper",   hex: "#C1663F" },
+    { k: "iron",     name: "iron",     hex: "#C6C2BC" },
+    { k: "gold",     name: "gold",     hex: "#E4C04A" },
+    { k: "redstone", name: "redstone", hex: "#B4262A" },
+    { k: "lapis",    name: "lapis",    hex: "#2A5CB4" },
+    { k: "diamond",  name: "diamond",  hex: "#40D5D1" },
+    { k: "emerald",  name: "emerald",  hex: "#2FA84F" }
+  ];
+  var ORE_BY = {};
+  for (var _o = 0; _o < ORE.length; _o++) ORE_BY[ORE[_o].k] = ORE[_o];
+
+  /* A beacon is built from the four block types Minecraft actually accepts.
+     Nine of a mineral makes a block. */
+  var BEACON = ["iron", "gold", "diamond", "emerald"];
+
+  function oreCount(k) { return S.ore[k] || 0; }
+  function blocks(k) { return Math.floor(oreCount(k) / 9); }
+  function beaconLit() {
+    for (var i = 0; i < BEACON.length; i++) if (blocks(BEACON[i]) < 1) return false;
+    return true;
+  }
+
+  /* How many cleared activities each of the first eight tools costs.
+     It used to be one apiece, which was written when the site had about a dozen
+     activities. There are forty now, so the whole hotbar filled inside a
+     fortnight and the next thirty-odd runs paid nothing at all. Spread over a
+     term instead, steeply enough at the start that the first two still arrive
+     the same evening. */
+  var TOOL_GATE = [1, 2, 3, 5, 7, 10, 14, 18];
+
+  function clearedCount() {
+    var n = 0, k;
+    for (k in S.cleared) if (S.cleared[k] >= 75) n++;
+    return n;
+  }
+  /* The ninth tool used to hang on one specific level, spelling:l7. If that
+     level was never set as homework the mine could not open at all — he could
+     clear all forty activities and still be locked out. It now asks for breadth:
+     something cleared in every subject he has work in. That cannot strand him,
+     and it rewards the thing worth rewarding. */
+  function subjectsCleared() {
+    var seen = {}, k;
+    for (k in S.cleared) if (S.cleared[k] >= 75) seen[k.split(":")[0]] = 1;
+    var n = 0, a;
+    for (a in seen) n++;
+    return n;
+  }
+  function toolsFrom(n) {
+    var got = 0;
+    for (var i = 0; i < TOOL_GATE.length; i++) if (n >= TOOL_GATE[i]) got = i + 1;
+    return got;
+  }
+  function unlocked() {
+    var n = toolsFrom(clearedCount());
+    var nine = !!S.tool9 || subjectsCleared() >= ELYTRA_SUBJECTS;
+    return { count: n, nine: nine, all9: n >= 8 && nine,
+             cleared: clearedCount(), next: TOOL_GATE[n] || null };
+  }
+  var ELYTRA_SUBJECTS = 5;   // history, science, reading, spelling, vocabulary
+  function mineOpen() { return unlocked().all9; }
+  function has(slot) { var u = unlocked(); return slot === 9 ? u.nine : slot <= u.count; }
+
+  /* ---------- state ---------- */
+  var cfg = { app: "app", shake: null, lift: null, burst: 320, hud: true,
+              /* Which activities can summon the dragon. null = any level in this
+                 app. An array restricts it to those ids — spelling passes ["l7"]
+                 so only Challenge 2, the hardest level of whatever week's list
+                 is loaded, can wake it. */
+              dragon: null };
+  var halves = 20;          // 10 hearts, tracked in halves
+  var missedHere = {};      // keys missed during this level
+  var fixedHere = 0;        // ...and later got right — the comeback count
+  var partialRun = false;   // a correction round over just the missed items
+  var hud, heartsEl, barEl, muteEl, purseEl, lastNew = 0;
+  var goodN = 0, badN = 0;  // cycle the sprites so it isn't the same one every time
+  var askSeq = 0, askPick = {};   // which wording each question is using this run
+
+  /* The sound toggle sits at the top of every page, on its own rather than
+     inside the HUD. Two reasons: the HUD lives at the bottom and only appears
+     once a level starts, and the two Wordly Wise tests run with hud:false — so
+     a toggle parented to the HUD left no way at all to mute a test. This mounts
+     on the hub as well, wherever the engine is present and there is sound. */
+  function mountMute() {
+    if (muteEl || !SFX || typeof document === "undefined" || !document.body) return;
+    muteEl = document.createElement("button");
+    muteEl.type = "button";
+    muteEl.id = "mc-mute";
+    muteEl.addEventListener("click", function () { MC.mute(!S.mute); });
+    document.body.appendChild(muteEl);
+    drawMute();
+  }
+  if (typeof document !== "undefined" && document.addEventListener) {
+    if (document.readyState === "loading")
+      document.addEventListener("DOMContentLoaded", mountMute);
+    else mountMute();
+  }
+
+  /* A speaker, drawn rather than set in type: a musical note said "sound" but
+     not "sound is on", and the note-with-a-stroke was too small a mark to read
+     at a glance. A crossed-out speaker is the sign everyone already knows. */
+  function speaker(off) {
+    var cone = '<path d="M3 9.5v5h3.2L11 18.5v-13L6.2 9.5H3z"/>';
+    var waves = off ? ""
+      : '<path d="M13.6 8.4a4.6 4.6 0 010 7.2" fill="none" stroke="currentColor"' +
+        ' stroke-width="1.9" stroke-linecap="round"/>' +
+        '<path d="M15.9 6a7.8 7.8 0 010 12" fill="none" stroke="currentColor"' +
+        ' stroke-width="1.9" stroke-linecap="round"/>';
+    var slash = off
+      ? '<path d="M13.2 8.6l6.4 6.8" fill="none" stroke="currentColor"' +
+        ' stroke-width="2.2" stroke-linecap="round"/>'
+      : "";
+    return '<svg class="mc-spk" viewBox="0 0 24 24" aria-hidden="true" focusable="false"' +
+           ' fill="currentColor">' + cone + waves + slash + '</svg>';
+  }
+
+  /* The purse. Deliberately on screen the whole time he is working, because the
+     point of a currency is that it is visibly going up. Falls back to a drawn
+     coin if the sprite is not there yet, so this works before the art lands. */
+  /* What he is wearing, stamped on the root element as the engine loads so a
+     plain CSS rule can pick it
+     up. `html[data-mc-theme=...]` outranks an app's own `:root`, so a theme
+     repaints every page whichever order the stylesheets landed in. */
+  function skin() {
+    var r = document.documentElement;
+    /* Cosmetic, so it must never be the reason the engine fails to load. */
+    if (!r || !r.setAttribute) return;
+    r.setAttribute("data-mc-theme", S.equip.theme || "overworld");
+    r.setAttribute("data-mc-purse", S.equip.purse || "leather");
+  }
+
+  /* The flourish over the chest at the end of a set. Sparkle is the one
+     everybody starts with; the rest are bought. Purely decorative, and it
+     cleans up after itself so nothing accumulates in the DOM. */
+  function burst(host) {
+    var kind = S.equip.effect || "sparkle";
+    var n = kind === "ore" ? 22 : kind === "firework" ? 18 : kind === "confetti" ? 16 : 10;
+    var box = document.createElement("div");
+    box.className = "mc-fx mc-fx-" + kind;
+    for (var i = 0; i < n; i++) {
+      var b = document.createElement("i");
+      b.style.left = (6 + Math.random() * 88).toFixed(2) + "%";
+      b.style.animationDelay = (Math.random() * 0.45).toFixed(2) + "s";
+      b.style.setProperty("--mc-dx", (Math.random() * 60 - 30).toFixed(1) + "px");
+      box.appendChild(b);
+    }
+    host.appendChild(box);
+    setTimeout(function () { if (box.parentNode) box.parentNode.removeChild(box); }, 2600);
+  }
+
+  function drawCoins() {
+    if (!purseEl) return;
+    var src = url("coin");
+    purseEl.innerHTML = (src ? '<img class="mc-coin" alt="" src="' + src + '">'
+                             : '<i class="mc-coin mc-coin-fb"></i>') +
+                        '<b>' + S.coins + '</b>';
+  }
+
+  function drawMute() {
+    if (!muteEl) return;
+    muteEl.innerHTML =
+      '<span class="mc-sw"><span class="mc-knob">' + speaker(S.mute) + '</span></span>' +
+      '<span class="mc-lbl">' + (S.mute ? "OFF" : "ON") + '</span>';
+    muteEl.setAttribute("aria-label",
+      S.mute ? "Sound off — tap to turn sound on" : "Sound on — tap to mute");
+    muteEl.setAttribute("aria-pressed", S.mute ? "true" : "false");
+    muteEl.setAttribute("title", S.mute ? "Sound off" : "Sound on");
+    muteEl.className = "mc-mute" + (S.mute ? " off" : "");
+  }
+
+  /* ---------- HUD ---------- */
+  function build() {
+    if (hud || cfg.hud === false) return;
+    hud = document.createElement("div");
+    hud.className = "mc-hud";
+    hud.id = "mc-hud";
+    hud.innerHTML = '<div class="mc-purse" id="mc-purse"></div>' +
+                    '<div class="mc-hearts" id="mc-hearts"></div>' +
+                    '<div class="mc-bar" id="mc-bar"></div>';
+    document.body.appendChild(hud);
+    purseEl = hud.querySelector("#mc-purse");
+    drawCoins();
+    heartsEl = hud.querySelector("#mc-hearts");
+    barEl = hud.querySelector("#mc-bar");
+    drawBar();
+    drawHearts();
+    fit();
+    window.addEventListener("resize", fit);
+    // the app's own bar can grow when feedback appears — ride above it
+    if (cfg.lift && window.ResizeObserver) {
+      var t = document.querySelector(cfg.lift);
+      if (t) new ResizeObserver(function () { lift(); }).observe(t);
+    }
+    // the HUD is appended before the rest of the page parses, so its height
+    // is not final yet; re-measure once the document is up
+    if (document.readyState === "loading")
+      document.addEventListener("DOMContentLoaded", fit);
+    else setTimeout(fit, 0);
+    window.addEventListener("orientationchange", function () { setTimeout(fit, 120); });
+  }
+
+  /* The hotbar must never wrap and must never overflow. Size the slot from the
+     viewport and let the hearts follow it. Checked 300-1024px. */
+  function fit() {
+    if (!hud) return;
+    var vw = Math.max(280, document.documentElement.clientWidth || window.innerWidth);
+    var vh = Math.max(320, document.documentElement.clientHeight || window.innerHeight);
+    var bsz = Math.max(150, Math.min(cfg.burst, Math.round(vw * 0.55), Math.round(vh * 0.42)));
+    var avail = Math.min(430, vw - 16);
+    var ss = Math.max(24, Math.min(46, Math.floor(avail / 9)));
+    var barw = ss * 9;
+    hud.style.setProperty("--mc-ss", ss + "px");
+    hud.style.setProperty("--mc-barw", barw + "px");
+    hud.style.setProperty("--mc-hh", Math.max(13, Math.round(ss * 0.5)) + "px");
+    hud.style.setProperty("--mc-burst", bsz + "px");
+    document.documentElement.style.setProperty("--mc-burst", bsz + "px");
+    lift();
+    // keep app content clear of the HUD
+    var h = hud.offsetHeight || 70;
+    document.body.style.paddingBottom = (h + (cfg._liftpx || 0) + 10) + "px";
+  }
+
+  /* Only the vocabulary app has a persistent fixed bar of its own, and it grows
+     when feedback appears. Ride above whatever height it currently is. */
+  function lift() {
+    if (!cfg.lift || !hud) return;
+    var t = document.querySelector(cfg.lift);
+    var px = (t && t.offsetParent !== null) ? t.offsetHeight : 0;
+    cfg._liftpx = px;
+    hud.style.setProperty("--mc-lift", px + "px");
+  }
+
+  function drawHearts() {
+    if (!heartsEl) return;
+    var out = "", i, v;
+    for (i = 0; i < 10; i++) {
+      v = Math.max(0, Math.min(2, halves - i * 2));
+      out += '<img class="mc-heart" data-v="' + v + '" alt="" src="' +
+             url(v === 2 ? "heart-full" : v === 1 ? "heart-half" : "heart-empty") + '">';
+    }
+    heartsEl.innerHTML = out;
+  }
+
+  /* Renders a mineral. The coloured block is CSS, so this works before any
+     ore art exists; if the sprite is there it loads on top, and if it is not
+     the broken image removes itself rather than showing a torn-page icon. */
+  function oreChip(k, label, on) {
+    var o = ORE_BY[k];
+    return '<span class="mc-ore' + (on === false ? " mc-dim" : "") + '" title="' + o.name +
+           '" style="--ore:' + o.hex + '">' +
+           '<img alt="" src="' + url("ore-" + k) +
+           '" onerror="this.parentNode.classList.add(\'mc-noart\');this.remove()">' +
+           (label ? '<b>' + label + "</b>" : "") + "</span>";
+  }
+
+  /* A beacon slot. Earned slots show their block; an unearned one shows the
+     plain stone stand-in, so the row reads as a pyramid under construction
+     rather than as four mystery squares. Either falls back to a CSS block. */
+  function blockChip(b) {
+    var got = b.blocks >= 1;
+    return '<span class="mc-blk' + (got ? "" : " mc-dim") + '" title="' + b.name +
+           '" style="--ore:' + b.hex + '">' +
+           '<img alt="" src="' + url(got ? "block-" + b.k : "block-locked") +
+           '" onerror="this.parentNode.classList.add(\'mc-noart\');this.remove()">' +
+           "<b>" + b.blocks + "/1</b></span>";
+  }
+
+  function drawBar() {
+    if (!barEl) return;
+    var out = "", i, on;
+    for (i = 1; i <= 9; i++) {
+      on = has(i);
+      out += '<div class="mc-slot' + (i === lastNew ? " mc-new" : "") + '" data-n="' + i +
+             '" style="background-image:url(' + url("slot") + ')" title="' +
+             (on ? TOOLS[i - 1] : "locked") + '">' +
+             '<img class="mc-frame" alt="" src="' + url("slot-frame") + '">' +
+             (on ? '<img class="mc-tool" alt="' + TOOLS[i - 1] + '" src="' + url("tool-" + i) + '">' : "") +
+             "</div>";
+    }
+    barEl.innerHTML = out;
+  }
+
+  /* ---------- sprite bursts ---------- */
+  function burst(name, cls, narrow) {
+    var old = document.querySelector(".mc-burst");
+    if (old && old.parentNode) old.parentNode.removeChild(old);
+    var d = document.createElement("div");
+    d.className = "mc-burst " + cls;
+    if (narrow) d.setAttribute("data-w", "narrow");
+    d.innerHTML = '<img alt="" src="' + url(name) + '">';
+    document.body.appendChild(d);
+    setTimeout(function () { if (d.parentNode) d.parentNode.removeChild(d); }, 1600);
+  }
+
+  function shake() {
+    if (!cfg.shake) return;                 // science already shakes its own card
+    var t = document.querySelector(cfg.shake);
+    if (!t) return;
+    t.classList.remove("mc-shake");
+    void t.offsetWidth;
+    t.classList.add("mc-shake");
+    setTimeout(function () { t.classList.remove("mc-shake"); }, 400);
+  }
+
+  /* ---------- public ---------- */
+  var MC = {
+    config: function (o) {
+      for (var k in o) if (o.hasOwnProperty(k)) cfg[k] = o[k];
+      if (document.body) build(); else
+        document.addEventListener("DOMContentLoaded", build);
+      return MC;
+    },
+
+    /* Entering a level. Pass {partial:true} for a correction round that
+       replays only the missed items — those must not overwrite a best score
+       or hand out the big rewards, since three words at 100% is not the same
+       achievement as twelve. */
+    begin: function (opts) {
+      halves = 20; lastNew = 0;
+      missedHere = {}; fixedHere = 0;
+      partialRun = !!(opts && opts.partial);
+      askPick = {};              // a new run gets new wordings
+      build(); drawHearts(); drawBar(); fit();
+    },
+
+    /* Credit a fix without any fanfare. The vocabulary sheet settles 26 words
+       on a single check — that is one burst, not twenty-six. */
+    credit: function (missKey) {
+      if (missKey && missedHere[missKey]) { fixedHere++; delete missedHere[missKey]; }
+    },
+
+    /* Pass the same key you passed to wrong()/note() and the correction is
+       counted — that is what earns the comeback badge. */
+    right: function (missKey) {
+      build();
+      MC.credit(missKey);
+      goodN = goodN % 4 + 1;
+      burst("win-" + goodN, "mc-good");
+      play("correct");
+    },
+
+    /* Record a miss without any cost. Used where one action covers several
+       items, or where the answer is revealed after the miss already landed. */
+    note: function (missKey) {
+      if (!missKey) return;
+      missedHere[missKey] = true;
+      var a = cfg.app;
+      if (!S.misses[a]) S.misses[a] = {};
+      S.misses[a][missKey] = (S.misses[a][missKey] || 0) + 1;
+      save();
+    },
+
+    wrong: function (missKey) {
+      build();
+      badN = badN % 4 + 1;
+      burst("bad-" + badN, "mc-bad", badN === 2 || badN === 4);
+      shake();
+      play("wrong");
+      if (halves > 0) {
+        halves--;                            // floors at zero — never a game over
+        drawHearts();
+        var i = Math.floor(halves / 2);
+        var h = heartsEl && heartsEl.children[Math.min(9, i)];
+        if (h) h.classList.add("mc-hit");
+      }
+      MC.note(missKey);
+    },
+
+    /* Records the score, may award a tool. Returns what happened so the
+       results screen can talk about it. */
+    /* Records the score, may award a tool, and works out what he earned.
+       Every band is a real Minecraft tier, because every one of them is a
+       tool you are glad to have — there is no booby prize here. */
+    clear: function (id, pct, opts) {
+      opts = opts || {};
+      pct = Math.round(pct);
+      var key = cfg.app + ":" + id;
+      var prev = S.cleared[key];
+      var before = unlocked();
+      var got = null;
+
+      /* Log the try itself before anything else, so it is recorded whether or
+         not it counted towards the game. A partial run is marked rather than
+         dropped: it is still practice a parent may want to see. */
+      if (!S.runs[key]) S.runs[key] = [];
+      var run = { p: pct, t: Date.now() };
+      if (partialRun) run.x = 1;
+      S.runs[key].push(run);
+      if (S.runs[key].length > RUNS_KEPT) S.runs[key] = S.runs[key].slice(-RUNS_KEPT);
+      save();
+
+      if (!partialRun) {
+        S.cleared[key] = Math.max(prev || 0, pct);
+        if (key === "spelling:l7" && pct >= 75) S.tool9 = true;
+        save();
+        var after = unlocked();
+        if (after.nine && !before.nine) got = 9;
+        else if (after.count > before.count) got = after.count;
+        lastNew = got || 0;
+        if (got) play("tool");             // a new tool is the one thing worth a fanfare
+        drawBar();
+      }
+
+      var clean = pct >= 100 && halves === 20;
+      var isBossLevel = cfg.dragon === null || cfg.dragon.indexOf(id) !== -1;
+      /* The End portal stays shut until the whole tool set is his. A perfect
+         run before that is still a perfect run — it just does not summon a
+         dragon, and the chest says what is still missing rather than going
+         quiet about it. */
+      var ready = unlocked().all9;
+      var dragon = clean && !partialRun && isBossLevel && ready;
+      var portalShut = clean && !partialRun && isBossLevel && !ready;
+      if (dragon) { S.dragon++; save(); }
+
+      /* Coins, every run, from the very first one. Finishing at all is worth
+         something — that is the floor, and it is deliberate: a child who had a
+         bad round should still walk away holding more than he arrived with.
+         Everything above the floor is earned. */
+      var coins = 3;
+      if (pct >= 75) coins += 3;
+      if (pct >= 85) coins += 3;
+      if (pct >= 95) coins += 4;
+      if (pct >= 100) coins += 5;
+      if (halves === 20) coins += 5;          // not a heart lost
+      if (fixedHere) coins += 2 * fixedHere;  // fixing a miss pays, and it should
+      if (dragon) coins += 40;
+      if (partialRun) coins = Math.max(2, Math.round(coins / 2));
+      S.coins += coins;
+      S.earned += coins;
+      save();
+      drawCoins();
+
+      /* What the run was worth at the rock face. Coal through gold repeat, so
+         there is always something to dig; diamond is once per activity, so a
+         pile of them needs breadth AND mastery; emerald comes only from the
+         dragon. Nothing is mined at all until the tool set is complete. */
+      var mined = [];
+      function dig(k, n) {
+        S.ore[k] = (S.ore[k] || 0) + n;
+        mined.push({ k: k, n: n, name: ORE_BY[k].name, hex: ORE_BY[k].hex });
+      }
+      if (mineOpen()) {
+        if (partialRun) {
+          if (pct >= 100) dig("lapis", 1);            // every miss put right
+        } else {
+          if (pct >= 75) dig("coal", 1);
+          if (pct >= 85) dig("copper", 1);
+          if (pct >= 95) dig("iron", 1);
+          if (pct >= 100) dig("gold", 1);
+          if (pct >= 75 && halves === 20) dig("redstone", 1);
+          if (clean && !S.gem[key]) { S.gem[key] = true; dig("diamond", 1); }
+        }
+        if (dragon) dig("emerald", 1);
+        if (mined.length) save();
+      }
+
+      var tier;
+      if (partialRun)   tier = ["CORRECTIONS", "You went back and fixed them. That is the part that sticks."];
+      else if (dragon)  tier = ["DRAGON SLAIN", "Perfect. Not one miss, not one heart."];
+      else if (clean)   tier = ["NETHERITE", "Every single one right."];
+      else if (pct >= 90) tier = ["DIAMOND", "So close to flawless."];
+      else if (pct >= 75) tier = ["IRON", "Solid work \u2014 this one is holding."];
+      else if (pct >= 50) tier = ["STONE", "You got through it. Now you know where to dig."];
+      else                tier = ["WOOD", "You finished it, and that is where everyone starts."];
+
+      /* Badges stack. They reward things accuracy alone does not see. */
+      var badges = [];
+      if (fixedHere)
+        badges.push(fixedHere === 1 ? "TURNED ONE AROUND" : "TURNED " + fixedHere + " AROUND");
+      if (!partialRun && prev != null && pct > prev)
+        badges.push("NEW BEST \u2014 BEAT " + prev + "%");
+      if (!partialRun && (prev == null || prev < 75) && pct >= 75)
+        badges.push("FIRST CLEAR");
+      if (halves > 0 && halves <= 4 && pct >= 50)
+        badges.push("STUCK IT OUT");
+
+      var bea = null;
+      if (mineOpen()) {
+        bea = { lit: beaconLit(), need: [] };
+        for (var bi = 0; bi < BEACON.length; bi++)
+          bea.need.push({ k: BEACON[bi], have: oreCount(BEACON[bi]),
+                          blocks: blocks(BEACON[bi]), name: ORE_BY[BEACON[bi]].name,
+                          hex: ORE_BY[BEACON[bi]].hex });
+      }
+
+      return {
+        mined: mined, beacon: bea, portalShut: portalShut,
+        toolsLeft: (8 - unlocked().count) + (S.tool9 ? 0 : 1),
+        mineOpen: mineOpen(), dragons: S.dragon,
+        tool: got,
+        toolName: got ? TOOLS[got - 1] : null,
+        loot: halves >= 20 ? 4 : halves >= 15 ? 3 : halves >= 8 ? 2 : 1,
+        hearts: halves / 2,
+        fixed: fixedHere,
+        partial: partialRun,
+        tier: tier[0], blurb: tier[1], badges: badges,
+        boss: dragon
+      };
+    },
+
+    /* Paints chest-closed, then opens it on tap or after a beat. */
+    chest: function (host, pct, opts) {
+      if (!host) return null;
+      var r = MC.clear(opts.id, pct, opts);
+      var box = document.createElement("div");
+      box.className = "mc-chest";
+      box.innerHTML = '<img class="mc-lid mc-shut" alt="Closed chest" src="' + url("chest-closed") + '">' +
+                      '<div class="mc-loot"></div>' +
+                      '<div class="mc-tier"></div>' +
+                      '<div class="mc-cap">Tap the chest</div>';
+      host.insertBefore(box, host.firstChild);
+      var lid = box.querySelector(".mc-lid"),
+          loot = box.querySelector(".mc-loot"),
+          tierEl = box.querySelector(".mc-tier"),
+          cap = box.querySelector(".mc-cap"),
+          opened = false;
+
+      function open() {
+        if (opened) return;
+        opened = true;
+        lid.classList.remove("mc-shut");
+        lid.src = url("chest-open");
+        burst(box);   /* whatever he has on: sparkle by default, bought if bought */
+        lid.alt = "Open chest";
+        lid.style.cursor = "default";
+        var html = "", i;
+        for (i = 1; i <= r.loot; i++) html += '<img alt="" src="' + url("win-" + i) + '">';
+        loot.innerHTML = html;
+        tierEl.textContent = r.tier;
+        tierEl.setAttribute("data-t", r.tier.split(" ")[0].toLowerCase());
+        cap.textContent = r.blurb;
+        if (r.badges.length) {
+          box.insertAdjacentHTML("beforeend", '<div class="mc-badges">' +
+            r.badges.map(function (b) { return '<span class="mc-badge">' + b + "</span>"; })
+              .join("") + "</div>");
+        }
+        if (r.tool) {
+          box.insertAdjacentHTML("beforeend",
+            '<div class="mc-earned"><img alt="" src="' + url("tool-" + r.tool) + '">' +
+            "<span>NEW &middot; " + r.toolName.toUpperCase() + "</span></div>");
+        }
+        if (r.mined && r.mined.length) {
+          box.insertAdjacentHTML("beforeend",
+            '<div class="mc-haul"><span class="mc-haullab">MINED</span>' +
+            r.mined.map(function (m) { return oreChip(m.k, "+" + m.n); }).join("") +
+            "</div>");
+        }
+        if (r.portalShut) {
+          box.insertAdjacentHTML("beforeend",
+            '<div class="mc-shutportal"><img class="mc-portal" alt="" src="' + url("portal") +
+            '" onerror="this.remove()">THE PORTAL WILL NOT OPEN<small>A perfect run \u2014 ' +
+            'but the End stays shut until all nine tools are yours. ' +
+            (r.toolsLeft === 1 ? "One to go." : r.toolsLeft + " to go.") + "</small></div>");
+        }
+        if (r.beacon) {
+          box.insertAdjacentHTML("beforeend",
+            '<div class="mc-beacon' + (r.beacon.lit ? " mc-lit" : "") + '">' +
+            '<span class="mc-haullab">' + (r.beacon.lit ? "BEACON LIT" : "BEACON") + "</span>" +
+            r.beacon.need.map(function (b) { return blockChip(b); }).join("") +
+            "<small>" + (r.beacon.lit
+              ? "Iron, gold, diamond and emerald, a block of each. That is the whole pyramid."
+              : "Nine of a mineral makes a block. Four blocks light the beacon.") +
+            "</small></div>");
+        }
+        if (!r.boss && r.dragons > 0 && r.mineOpen) {
+          box.insertAdjacentHTML("beforeend",
+            '<div class="mc-egg"><img alt="" src="' + url("dragon-egg") +
+            '" onerror="this.remove()"><span>' +
+            (r.dragons === 1 ? "One dragon down" : r.dragons + " dragons down") +
+            "</span></div>");
+        }
+        if (r.boss) {
+          box.insertAdjacentHTML("beforeend", HAS_BOSS
+            ? '<img class="mc-boss" alt="Ender dragon defeated" src="' + url("boss-defeated") + '">'
+            : '<div class="mc-bossfall">DRAGON SLAIN<small>Perfect run \u2014 no misses, no hearts lost</small></div>');
+        }
+      }
+      lid.addEventListener("click", open);
+      setTimeout(open, 2600);                // opens itself if he doesn't tap
+      return r;
+    },
+
+    /* Best score per activity for THIS app, keyed by bare id — lets an app's
+       level picker show scores that survive a reload. The apps each kept their
+       own in-memory `best` object, which forgot everything on refresh. */
+    bests: function () {
+      var out = {}, pre = cfg.app + ":", k;
+      for (k in S.cleared) if (k.indexOf(pre) === 0) out[k.slice(pre.length)] = S.cleared[k];
+      return out;
+    },
+
+    /* A strip of level chips, each showing whether it has been cleared.
+       Reusable: any app with several parallel levels calls this rather than
+       rolling its own, so history, and anything added later, look the same.
+
+         MC.picker(hostEl, [{id:"set0", label:"1"}, ...], currentId, onPick)
+
+       Chips colour themselves from MC.bests(): green cleared, amber attempted,
+       plain untouched. Re-call it to repaint after a score changes. */
+    picker: function (host, items, current, onPick) {
+      if (!host) return;
+      var best = MC.bests();
+      host.className = "mc-picker";
+      host.innerHTML = items.map(function (it) {
+        var b = best[it.id];
+        var cls = b == null ? "" : (b >= 75 ? " mc-cleared" : " mc-tried");
+        if (it.id === current) cls += " mc-now";
+        return '<button type="button" class="mc-chip' + cls + '" data-id="' + it.id +
+               '" aria-pressed="' + (it.id === current) + '"' +
+               ' title="' + (b == null ? "not tried yet" : "best " + b + "%") + '">' +
+               '<span class="mc-chip-l">' + it.label + "</span>" +
+               '<span class="mc-chip-s">' + (b == null ? "&mdash;" : b + "%") + "</span>" +
+               "</button>";
+      }).join("");
+      var bs = host.querySelectorAll(".mc-chip");
+      for (var i = 0; i < bs.length; i++) {
+        bs[i].addEventListener("click", function () {
+          onPick(this.getAttribute("data-id"));
+        });
+      }
+    },
+
+    state: function () {
+      var u = unlocked();
+      return {
+        tools: u, toolNames: TOOLS,
+        ore: JSON.parse(JSON.stringify(S.ore)), oreKinds: ORE,
+        mineOpen: mineOpen(), dragons: S.dragon,
+        coins: S.coins, earned: S.earned,
+        owned: JSON.parse(JSON.stringify(S.owned)),
+        equip: JSON.parse(JSON.stringify(S.equip)),
+        gate: TOOL_GATE, elytraNeeds: ELYTRA_SUBJECTS,
+        subjectsCleared: subjectsCleared(),
+        gems: JSON.parse(JSON.stringify(S.gem)),
+        beacon: { needs: BEACON, lit: beaconLit(),
+                  blocks: BEACON.map(function (k) { return blocks(k); }) },
+        cleared: JSON.parse(JSON.stringify(S.cleared)),
+        misses: JSON.parse(JSON.stringify(S.misses)),
+        runs: JSON.parse(JSON.stringify(S.runs)),
+        url: url
+      };
+    },
+
+    /* Every attempt at one activity, oldest first. The hub's report reads this;
+       apps do not need it. */
+    runs: function (id) {
+      var key = cfg.app + ":" + id;
+      return (S.runs[key] || []).slice();
+    },
+
+    /* The wording to ask a question in.
+
+       An item may carry `qv`, a few phrasings of the same question. One is
+       chosen per run, so a second attempt at the same set does not read like a
+       memory test of the first — but it is fixed for the length of that run, so
+       the review screen shows the wording he was actually asked rather than a
+       third one. Items without `qv` just return `q`.
+
+       Options are already re-shuffled on every render; this is the same idea
+       applied to the stem. */
+    ask: function (it) {
+      if (!it) return "";
+      var v = it.qv;
+      if (!v || !v.length) return it.q;
+      if (it.__mcq === undefined) it.__mcq = ++askSeq;
+      if (askPick[it.__mcq] === undefined)
+        askPick[it.__mcq] = (Math.random() * v.length) | 0;
+      return v[askPick[it.__mcq]];
+    },
+
+    /* Sound off/on. Kept in the same saved state as everything else, so the
+       choice holds across every app and survives a reload. Call with no
+       argument to read it. */
+    mute: function (on) {
+      if (on === undefined) return !!S.mute;
+      S.mute = !!on;
+      save();
+      drawMute();
+      return S.mute;
+    },
+
+    /* ---------- the shop ----------
+       The catalogue lives in store/index.html, because what is for sale is
+       content and this is the engine. All the engine owns is the money and the
+       fact of ownership. */
+
+    earned: function () { return S.earned; },
+
+    owns: function (id) { return !!S.owned[id]; },
+
+    /* Buys once and keeps it. Refuses rather than going overdrawn, and refuses
+       a second purchase of something already owned, so a double tap on a slow
+       connection cannot charge twice. */
+    buy: function (id, cost) {
+      cost = Math.max(0, Math.round(Number(cost) || 0));
+      if (!id || S.owned[id]) return false;
+      if (S.coins < cost) return false;
+      S.coins -= cost;
+      S.owned[id] = true;
+      save();
+      drawCoins();
+      return true;
+    },
+
+    /* Wearing costs nothing and can be undone. Passing null takes the slot back
+       to its default, so nothing bought can ever strand him in a look he has
+       gone off. Refuses to equip something not owned. */
+    equip: function (slot, id) {
+      if (!slot) return false;
+      if (id && !S.owned[id]) return false;
+      if (id) S.equip[slot] = id; else delete S.equip[slot];
+      save();
+      skin();
+      return true;
+    },
+
+    equipped: function (slot) { return S.equip[slot] || null; },
+
+    reset: function () {
+      S = { cleared: {}, misses: {}, tool9: false, ore: {}, gem: {}, dragon: 0,
+            runs: {}, coins: 0, earned: 0, owned: {}, equip: {},
+            mute: S.mute };  // muting is a preference, not progress
+      save(); drawBar(); drawCoins(); skin();
+    },
+    _relift: lift
+  };
+
+  skin();
+
+  window.MC = MC;
+})();
+</script>
+<script>
+/* Saxon Course 2 practice.
+ *
+ * The other apps hold a fixed set of questions written in advance. This one
+ * holds none: it holds the book's index of which lesson each written-practice
+ * problem reviews, a generator per skill, and the arithmetic to put the two
+ * together. You tick the problems that came back wrong and it builds practice
+ * on those skills with different numbers.
+ *
+ * That inversion is the point. A night's homework is thirty problems drawn from
+ * everything taught so far, so "which ones did you miss" is a far better
+ * question than any set of questions written a week earlier could be.
+ *
+ * What is saved is the ticks, not the questions — so opening the same lesson
+ * again rebuilds it with new numbers rather than replaying the same sheet.
+ */
+"use strict";
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+
+/* Which problems were ticked, per lesson. Questions are never saved: the whole
+   point is that they come out different next time. */
+const KEY = "math.sets.v1";
+function load(){ try { return JSON.parse(localStorage.getItem(KEY)) || {}; } catch(e){ return {}; } }
+function save(o){ try { localStorage.setItem(KEY, JSON.stringify(o)); } catch(e){} }
+let SAVED = load();
+
+/* A problem is practisable when at least one of the lessons it reviews has a
+   generator. An untagged problem — 25 of the book's 3,598 could not be read —
+   is treated as practising its own lesson, which is the safe guess. */
+function skillsFor(lesson, i){
+  const t = MATHMAP.tags(lesson);
+  const tag = t[i] || [];
+  const raw = tag.length ? tag : [lesson];
+  return raw.filter(s => MATH.has(s));
+}
+function ready(lesson){
+  const n = MATHMAP.count(lesson);
+  let ok = 0;
+  for (let i = 0; i < n; i++) if (skillsFor(lesson, i).length) ok++;
+  return { of: n, ok };
+}
+
+/* ---------------------------------------------------------------- lessons */
+function home(){
+  show("home");
+  const out = [];
+  for (let d = 0; d < 12; d++){
+    const lo = d * 10 + 1, hi = lo + 9;
+    const rows = [];
+    let live = 0;
+    for (let L = lo; L <= hi; L++){
+      const r = ready(L);
+      const has = SAVED[L];
+      if (r.ok) live++;
+      const name = MATH.has(L) ? MATH.name(L) : null;
+      const sub = r.ok === 0
+        ? "No practice built for these skills yet"
+        : (r.ok < r.of ? r.ok + " of " + r.of + " problems ready" : r.of + " problems")
+          + (has ? " · you have a set saved" : "");
+      rows.push(`<li><button class="lrow${has?" saved":""}" data-l="${L}"${r.ok?"":" disabled"}>
+        <span class="lnum">${L}</span>
+        <span class="lwhat"><b>${esc(name || ("Lesson " + L))}</b><small>${esc(sub)}</small></span>
+        <span class="lgo">${r.ok ? (has ? "Open &rsaquo;" : "Pick problems &rsaquo;") : "Soon"}</span>
+      </button></li>`);
+    }
+    out.push(`<details class="decade"${lo === 1 ? " open" : ""}>
+      <summary>
+        <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"
+             stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+        <h2>Lessons ${lo}&ndash;${hi}</h2>
+        <span class="tally">${live} of 10 ready</span>
+      </summary>
+      <ul class="lessons">${rows.join("")}</ul>
+    </details>`);
+  }
+  $("decades").innerHTML = out.join("");
+  [...document.querySelectorAll(".lrow")].forEach(b=>{
+    if(!b.disabled) b.onclick = ()=>pick(+b.dataset.l);
+  });
+
+  const built = MATH.built;
+  $("foot").innerHTML =
+    "Practice is built for the skills taught in lessons " + built[0] + "&ndash;" +
+    built[built.length-1] + ". A later lesson opens as soon as the skills its problems " +
+    "review are built, so lessons past " + built[built.length-1] + " will fill in over time.<br>" +
+    "Questions are written for this review and use different numbers from the homework. " +
+    "Nothing from the textbook is reproduced here; skills and lesson numbers follow " +
+    "Saxon Math, Course 2 (Stephen Hake).";
+}
+
+/* ---------------------------------------------------------------- picker */
+let PICK = {};      // problem number -> how many questions
+let LESSON = 0;
+
+function pick(L){
+  LESSON = L;
+  PICK = Object.assign({}, (SAVED[L] && SAVED[L].picks) || {});
+  drawPicker();
+}
+
+function drawPicker(){
+  const n = MATHMAP.count(LESSON);
+  const cells = [];
+  for (let i = 1; i <= n; i++){
+    const sk = skillsFor(LESSON, i - 1);
+    const on = PICK[i] > 0;
+    const label = sk.length ? sk.map(s=>MATH.name(s)).join(" + ") : "not built yet";
+    cells.push(`<label class="pk${sk.length ? (on ? " on" : "") : " off"}" data-n="${i}">
+      <input type="checkbox" ${on?"checked":""} ${sk.length?"":"disabled"}>
+      <span class="n">${i}</span>
+      <span class="s" title="${esc(label)}">${esc(label)}</span>
+      <span class="howmany">${[2,3,4].map(k=>
+        `<button type="button" data-k="${k}" class="${(PICK[i]||2)===k?"sel":""}">${k}</button>`).join("")}</span>
+    </label>`);
+  }
+  const total = Object.values(PICK).reduce((a,b)=>a+b,0);
+  $("picker").innerHTML = `<div class="scrim" id="scrim">
+    <div class="sheet" role="dialog" aria-modal="true" aria-label="Choose problems">
+      <div class="shead">
+        <div>
+          <h2>Lesson ${LESSON} &mdash; which problems did you miss?</h2>
+          <p>Written practice, page ${MATHMAP.page(LESSON)}. Tick the ones that came
+             back wrong, then say how many of each you want &mdash; two, three or four.</p>
+        </div>
+        <button class="sx" id="sclose" aria-label="Close">&times;</button>
+      </div>
+      <div class="stools">
+        <button class="btn o" id="sclear">Clear all</button>
+        <button class="btn o" id="slast" ${SAVED[LESSON]?"":"disabled"}>Last time's picks</button>
+      </div>
+      <div class="grid" id="pkgrid">${cells.join("")}</div>
+      <div class="sfoot">
+        <span class="count" id="pkcount">${total ? total + " questions" : "Nothing picked yet"}</span>
+        <button class="btn" id="smake" ${total?"":"disabled"}>Make my practice</button>
+      </div>
+    </div></div>`;
+
+  [...document.querySelectorAll(".pk")].forEach(el=>{
+    const num = +el.dataset.n;
+    const box = el.querySelector("input");
+    if(box && !box.disabled){
+      box.onchange = ()=>{ if(box.checked) PICK[num] = PICK[num] || 2; else delete PICK[num]; drawPicker(); };
+    }
+    [...el.querySelectorAll(".howmany button")].forEach(b=>{
+      b.onclick = e=>{
+        e.preventDefault(); e.stopPropagation();
+        PICK[num] = +b.dataset.k;      /* choosing a count also ticks it */
+        drawPicker();
+      };
+    });
+  });
+  $("sclose").onclick = shutPicker;
+  $("scrim").onclick = e=>{ if(e.target === $("scrim")) shutPicker(); };
+  $("sclear").onclick = ()=>{ PICK = {}; drawPicker(); };
+  $("slast").onclick = ()=>{ PICK = Object.assign({}, SAVED[LESSON].picks); drawPicker(); };
+  $("smake").onclick = ()=>make();
+}
+function shutPicker(){ $("picker").innerHTML = ""; }
+
+/* ---------------------------------------------------------------- the run */
+let Q = [], idx = 0, tries = 0, picked = null, shown = false, log = [], state = [], forceFin = false;
+
+function make(only){
+  /* `only` is a map of problem number -> how many, passed by "practise just
+     those". It is guarded because assigning this function straight to an
+     onclick hands it the MouseEvent instead — which is truthy, so the set gets
+     built from an event object, comes out empty, and the button silently does
+     nothing. That is exactly what happened the first time this shipped. */
+  const use = (only && typeof only === "object" && !only.type) ? only : PICK;
+  const out = [];
+  Object.keys(use).map(Number).sort((a,b)=>a-b).forEach(nu=>{
+    const sk = skillsFor(LESSON, nu - 1);
+    MATH.forProblem(sk, use[nu]).forEach(q=>{ q.from = nu; out.push(q); });
+  });
+  if(!out.length) return;
+  if(!only){
+    SAVED[LESSON] = { picks: Object.assign({}, PICK) };
+    save(SAVED);
+  }
+  shutPicker();
+  Q = out; idx = 0; log = []; state = []; forceFin = false;
+  MC.begin({ id: "l" + LESSON, total: Q.length });
+  render();
+  show("play");
+}
+
+function show(w){
+  ["home","play","done"].forEach(x=>$(x).classList.toggle("hide", x !== w));
+  $("tolessons").classList.toggle("hide", w === "home");
+  window.scrollTo(0,0);
+}
+
+function render(){
+  tries = 0; picked = null; shown = false;
+  const it = Q[idx];
+  $("pname").textContent = "Lesson " + LESSON + " practice";
+  $("dots").innerHTML = Q.map((_,i)=>
+    `<span class="dot ${i<idx?"done":i===idx?"now":""}"></span>`).join("");
+  $("card").innerHTML =
+    `<div class="qnum">Question ${idx+1} of ${Q.length}</div>
+     <div class="qsrc">From problem ${it.from} &middot; ${esc(MATH.name(it.skill))}</div>
+     <div class="q">${it.q}</div>
+     <div class="opts" id="opts"></div><div class="act" id="act"></div><div id="fb"></div>`;
+  $("opts").innerHTML = it.opts.map((o,i)=>
+    `<button class="opt" data-i="${i}"><span class="k">${"ABCD"[i]}</span><span>${esc(o)}</span></button>`).join("");
+  $("act").innerHTML = `<button class="btn" id="go" disabled>Check my answer</button>`;
+  [...document.querySelectorAll(".opt")].forEach(b=>b.onclick=()=>{
+    if($("go").dataset.done) return;
+    [...document.querySelectorAll(".opt")].forEach(x=>x.classList.remove("sel"));
+    b.classList.add("sel"); picked = +b.dataset.i; $("go").disabled = false;
+  });
+  $("go").onclick = check;
+  navBar();
+  restore();
+}
+
+function check(){
+  const it = Q[idx];
+  const right = picked === it.a;
+  tries++;
+  const key = "l" + LESSON + ":p" + it.from + ":" + it.skill;
+  if(right){
+    MC[tries === 1 ? "right" : "credit"](key);
+    document.querySelectorAll(".opt")[picked].classList.add("right");
+    finishQ(true);
+  } else {
+    MC.wrong(key);
+    document.querySelectorAll(".opt")[picked].classList.add("wrong");
+    miss(it);
+  }
+}
+
+function finishQ(won){
+  const it = Q[idx];
+  $("go").dataset.done = "1";
+  $("go").remove();
+  log[idx] = { won: won, tries: tries };
+  $("fb").innerHTML =
+    `<div class="fb ${won?"yes":"no"}">${won
+      ? "<strong>That is right.</strong> " : "<strong>Here it is.</strong> "}${esc(it.why)}
+      <cite>${esc(it.cite)}</cite></div>`;
+  keep();
+  navBar();
+}
+
+function miss(it){
+  $("fb").innerHTML =
+    `<div class="fb no"><strong>Not that one.</strong> ` +
+    (tries === 1 ? "Have another go — the worked example is there if you want it."
+                 : "Have another look.") + `</div>`;
+  if(!$("readbtn")){
+    $("act").insertAdjacentHTML("afterbegin",
+      `<button class="btn o" id="readbtn">Show me a worked example</button>`);
+    $("readbtn").onclick = ()=>openEx(it.ex);
+  }
+  if(tries >= 3 && !$("reveal")){
+    $("act").insertAdjacentHTML("afterbegin",
+      `<button class="btn o" id="reveal">Show me the answer</button>`);
+    $("reveal").onclick = ()=>{
+      shown = true;
+      document.querySelectorAll(".opt")[it.a].classList.add("right");
+      finishQ(false);
+    };
+  }
+  $("go").disabled = true;
+  keep();
+}
+
+/* Remembering a question, so Back does not wipe what was done. */
+function keep(){
+  state[idx] = { tries: tries, shown: shown, picked: picked,
+                 html: $("fb").innerHTML, done: !!(log[idx]) };
+}
+function restore(){
+  const st = state[idx];
+  if(!st) return;                       /* never answered — leave it blank */
+  tries = st.tries; shown = st.shown; picked = st.picked;
+  if(st.picked != null){
+    const it = Q[idx];
+    const el = document.querySelectorAll(".opt")[st.picked];
+    if(el) el.classList.add(st.picked === it.a ? "right" : "wrong");
+    if(st.done && st.picked !== it.a) document.querySelectorAll(".opt")[it.a].classList.add("right");
+  }
+  $("fb").innerHTML = st.html || "";
+  if(st.done && $("go")) { $("go").dataset.done = "1"; $("go").remove(); }
+  navBar();
+}
+
+function navBar(){
+  const last = idx === Q.length - 1;
+  const answered = !!log[idx];
+  $("nav").innerHTML =
+    `<button class="navb" id="back" ${idx?"":"disabled"}>&lsaquo; Back</button>
+     <span class="navpos">${idx+1} / ${Q.length}</span>
+     <button class="navb" id="next">${last ? "Finish &rsaquo;" : (answered ? "Next &rsaquo;" : "Skip &rsaquo;")}</button>`;
+  $("back").onclick = ()=>{ if(idx){ keep(); idx--; render(); } };
+  $("next").onclick = ()=>{ keep(); if(last) finish(); else { idx++; render(); } };
+}
+
+function unanswered(){
+  const out = [];
+  for(let i = 0; i < Q.length; i++) if(!log[i]) out.push(i);
+  return out;
+}
+
+function finish(){
+  const left = unanswered();
+  if(left.length && !forceFin){
+    $("skipnote").innerHTML =
+      `<div class="skipnote"><strong>${left.length === 1 ? "One question is"
+        : left.length + " questions are"} still blank.</strong>
+       ${left.length === 1 ? "It is" : "They are"} number ${left.map(i=>i+1).join(", ")}.
+       Nothing is lost by finishing — but they are quick, and they count.
+       <div class="act">
+         <button class="btn" id="goback">Go to the first blank one</button>
+         <button class="btn o" id="anyway">Finish anyway</button>
+       </div></div>`;
+    $("goback").onclick = ()=>{ $("skipnote").innerHTML = ""; idx = left[0]; render(); };
+    $("anyway").onclick = ()=>{ $("skipnote").innerHTML = ""; forceFin = true; finish(); };
+    return;
+  }
+  $("skipnote").innerHTML = "";
+  const first = log.filter(r => r && r.won && r.tries === 1).length;
+  const att = log.reduce((n,r)=> n + (r ? r.tries : 0), 0);
+  const pct = Math.round(first / Q.length * 100);
+  const missed = {};
+  Q.forEach((q,i)=>{ if(!log[i] || !log[i].won || log[i].tries > 1) missed[q.from] = SAVED[LESSON] &&
+    SAVED[LESSON].picks[q.from] || 2; });
+  const miss = Object.keys(missed).map(Number).sort((a,b)=>a-b);
+
+  const band = pct >= 95 ? ["Nailed it","#2F8F76"] : pct >= 85 ? ["Strong","#3D82B8"]
+             : pct >= 70 ? ["Getting there","#E0A83C"] : ["Worth another go","#C4553F"];
+  $("dtag").textContent = "LESSON " + LESSON + " PRACTICE";
+  $("scorebox").innerHTML = `
+    <div class="ring" style="color:${band[1]}">${pct}%</div>
+    <div class="band" style="color:${band[1]}">${band[0]}</div>
+    <div class="stats">
+      <div class="stat"><b>${first} / ${Q.length}</b><span>First try</span></div>
+      <div class="stat"><b>${att}</b><span>Total tries</span></div>
+    </div>
+    ${miss.length ? `<div class="missed"><strong>Still shaky:</strong> problem${miss.length>1?"s":""}
+      ${miss.join(", ")} from the homework. Another round on just those is the fastest
+      way to close it.</div>` : `<div class="missed">Every question first time. Nothing
+      left over from this lot.</div>`}
+    <div class="act">
+      ${miss.length ? `<button class="btn" id="again">Practise just those ${miss.length}</button>` : ""}
+      <button class="btn ${miss.length?"o":""}" id="same">New questions, same problems</button>
+      <button class="btn o" id="change">Change which problems</button>
+      <button class="btn o" id="out">All lessons</button>
+    </div>`;
+  MC.chest($("scorebox"), pct, { id: "l" + LESSON });
+  if($("again")) $("again").onclick = ()=>{
+    const only = {}; miss.forEach(n=>{ only[n] = missed[n]; }); make(only);
+  };
+  $("same").onclick = ()=>make();
+  $("change").onclick = ()=>{ show("home"); pick(LESSON); };
+  $("out").onclick = ()=>{ SAVED = load(); home(); };
+  show("done");
+}
+
+/* ---------------------------------------------------------------- example */
+function openEx(key){
+  const P = MATHEX[key];
+  if(!P) return;
+  const box = $("readbox");
+  box.innerHTML = `<div class="readinner" role="dialog" aria-modal="true" aria-label="Worked example">
+      <div class="readhead">
+        <div><div class="readtitle">${esc(P.title)}</div>
+             <div class="readcite">${esc(P.cite)}</div></div>
+        <button class="readx" id="readx" aria-label="Close">&times;</button>
+      </div>
+      <div class="readbody">${P.text.map(t=>`<p>${esc(t)}</p>`).join("")}</div>
+      ${(P.vocab && P.vocab.length) ? `<div class="readvocab">
+        <div class="vlab">The way the lesson puts it</div>
+        ${P.vocab.map(v=>`<p><b>${esc(v[0])}</b> <i>${esc(v[1])}</i> ${esc(v[2])}</p>`).join("")}
+      </div>` : ""}
+      ${P.book ? `<p class="readbook">${esc(P.book)}</p>` : ""}
+      <button class="btn" id="readdone">Got it &mdash; back to the question</button>
+    </div>`;
+  box.hidden = false;
+  document.body.style.overflow = "hidden";
+  const shut = ()=>{ box.hidden = true; document.body.style.overflow = ""; };
+  $("readx").onclick = shut;
+  $("readdone").onclick = shut;
+  box.onclick = e=>{ if(e.target === box) shut(); };
+  document.addEventListener("keydown", function esc2(e){
+    if(e.key === "Escape"){ shut(); document.removeEventListener("keydown", esc2); }
+  });
+  $("readdone").focus();
+}
+
+$("tolessons").onclick = e=>{ e.preventDefault(); SAVED = load(); home(); };
+home();
+</script>
+</body>
+</html>
