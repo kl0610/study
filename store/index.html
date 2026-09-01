@@ -59,8 +59,13 @@ h1 em{font-style:normal;color:var(--gold)}
 .card.on{border-color:var(--jade);box-shadow:inset -3px -3px 0 rgba(0,0,0,.22),0 0 0 2px rgba(47,143,118,.35)}
 .card.locked{opacity:.72}
 
-.swatch{width:40px;height:40px;flex:none;border:2px solid rgba(0,0,0,.35);
-  box-shadow:inset -2px -2px 0 rgba(0,0,0,.25)}
+.banner{display:block;width:100%;height:auto;margin:14px 0 0;image-rendering:pixelated}
+/* The coloured tile is the floor, not the finish: art sits on top of it, and
+   if a file is missing the img removes itself and the tile shows through. */
+.swatch{width:44px;height:44px;flex:none;border:2px solid rgba(0,0,0,.35);
+  box-shadow:inset -2px -2px 0 rgba(0,0,0,.25);position:relative}
+.swatch img{position:absolute;inset:-2px;width:calc(100% + 4px);height:calc(100% + 4px);
+  image-rendering:pixelated;display:block}
 .swatch.chip{display:grid;place-items:center;font:800 15px var(--mono);color:#fff}
 
 .what{min-width:0}
@@ -241,6 +246,8 @@ html[data-mc-purse="netherite"] .mc-purse b{color:#D8CBE4}
   <a class="hublink" href="../index.html">&lsaquo; All subjects</a>
   <a class="hublink quiet" href="../trophy/index.html">Trophy room</a>
 
+  <img class="banner" src="../assets/store-banner.png" alt=""
+       onerror="this.remove()">
   <p class="eyebrow">Spend what you have earned</p>
   <h1>The <em>Trading Post</em></h1>
   <p class="lede">Everything here is yours for good once you buy it, and you can
@@ -1307,9 +1314,15 @@ function card(a, it){
   const worn = (MC.equipped(a.slot) || a.fallback) === it.id;
   const have = owned(it);
   const stop = have ? null : blocked(it);
+  /* The filename follows from the aisle and the id, so adding art to the
+     assets folder is all it takes — nothing here has to be edited. */
+  const art = a.slot === "title" ? "rank-" + it.id.replace(/^t-/, "")
+            : a.slot === "effect" ? "fx-" + it.id
+            : a.slot + "-" + it.id;
+  const pic = `<img src="../assets/${art}.png" alt="" onerror="this.remove()">`;
   const swatch = it.chip
-    ? `<i class="swatch chip" style="background:${it.bg}">${esc(it.chip)}</i>`
-    : `<i class="swatch" style="background:${it.bg};box-shadow:inset 0 0 0 6px ${it.fg},inset -2px -2px 0 rgba(0,0,0,.25)"></i>`;
+    ? `<i class="swatch chip" style="background:${it.bg}">${esc(it.chip)}${pic}</i>`
+    : `<i class="swatch" style="background:${it.bg};box-shadow:inset 0 0 0 6px ${it.fg},inset -2px -2px 0 rgba(0,0,0,.25)">${pic}</i>`;
 
   let action;
   if (have && worn) {
