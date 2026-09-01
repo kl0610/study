@@ -16,6 +16,9 @@ the patches are all exact-match, so a second run reports "already themed".
 
 import base64, json, pathlib, re, sys
 
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+import review
+
 # Runs either from a folder holding study/ + theme/, or from inside study/_build/.
 HERE   = pathlib.Path(__file__).resolve().parent
 if (HERE / "study").is_dir():
@@ -159,6 +162,12 @@ def hist4(s):
     return Patcher(s, "history4")
 
 
+def math7(s):
+    """Saxon Course 2 Lesson 7 — built on the history shell by gen_math.py, so
+    its call sites came across already patched. Config only."""
+    return Patcher(s, "math7")
+
+
 def spell3(s):
     """Spelling List 3 — generated from List 2's shell, so its call sites came
     across already patched. Config only."""
@@ -296,6 +305,11 @@ APPS = {
                                            dragon=["m1"])),
     "science/g5-matter-ch4":  (sci4,  dict(app="science4",   shake="#card",   lift=None,
                                            dragon=["m1"])),
+    # Math is not a chapter to cover but the misses from one night's homework.
+    # The dragon sits on s2, "Which Move?", because that is the set built from
+    # the two misses that were the right idea with the wrong operation.
+    "math/saxon-c2-l7":       (math7, dict(app="math7",      shake="#card",   lift=None,
+                                           dragon=["s2"])),
     # The Speckled Band, pages 1-44, cut into sections. Each is one mission, m1,
     # which is also its last — so every section can summon the dragon on a
     # flawless first run, the same as the section that came before it.
@@ -479,6 +493,11 @@ def inject(html, cfg):
     # listing — so the link looked broken every time the app was opened by
     # double-clicking it. Naming the file works in both.
     html = html.replace('href="../../"', 'href="../../index.html"')
+
+    # Review marks, a reveal after three misses, and back/skip navigation. It
+    # lives in review.py because these are large blocks of JS, and threading
+    # them through this file made it unreadable.
+    html = review.patch(html)
 
     # Route the question stem through MC.ask(), so an item carrying `qv` is
     # re-worded on a fresh attempt instead of reading back word for word. Items

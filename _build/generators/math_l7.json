@@ -1,0 +1,564 @@
+{
+  "title": "Saxon Course 2 · Lesson 7 review",
+  "lesson": 7,
+  "readCta": "Show me a worked example",
+  "readLabel": "Worked example",
+  "vocabLabel": "The way the lesson puts it",
+  "bigQuestion": "When you undo what was done to a variable, which move actually undoes it?",
+  "eyebrow": "Saxon Math Course 2 · Lesson 7 · practice on last night's misses",
+  "h1": "Finding the Value of a <em>Variable</em>",
+  "ideaLabel": "The idea",
+  "foot": "Practice questions written for this review. The numbers are all different from the homework, and nothing from the textbook is reproduced here. Skills, method and lesson numbers follow Saxon Math, Course 2 (Stephen Hake).",
+  "note": "/* Built from the six problems missed on the Lesson 7 written practice: 6, 8,\n   10, 14, 16 and 24. Three sets of four, two variations on each miss, and\n   nothing that is not aimed at one of them — twelve questions is the cap.\n   Every number is different from the homework's; nothing here is copied from\n   the book. Where the miss was the operation rather than the arithmetic the\n   question asks which move is needed, not what the answer is. Each worked\n   example carries the lesson's own method underneath it and a pointer to\n   where the book works the same kind. */",
+  "sets": [
+    {
+      "id": "s1",
+      "c": "var(--gold)",
+      "tag": "Homework 6 and 10",
+      "name": "Read the Question",
+      "blurb": "Factors, and the words in a question that decide which factors it wants.",
+      "items": [
+        {
+          "type": "pick",
+          "p": "single",
+          "hi": "The question asks for the single-digit factors, so the list stops at 9",
+          "q": "List the <b>single-digit</b> factors of 396.",
+          "opts": [
+            "1, 2, 3, 4, 6, 9",
+            "1, 2, 3, 4, 6, 9, 11, 12",
+            "1, 2, 3, 4, 6",
+            "1, 2, 3, 6, 9"
+          ],
+          "a": 0,
+          "why": "396 = 2 × 2 × 3 × 3 × 11, and its factors are 1, 2, 3, 4, 6, 9, 11, 12, 18, 22, 33, 36, 44, 66, 99, 132, 198 and 396. Only six of those are single digits: 1, 2, 3, 4, 6 and 9. 11 and 12 really are factors — they are just not single digits.",
+          "cite": "Saxon Math Course 2, Lesson 6 — factors",
+          "kind": "single-digit factors"
+        },
+        {
+          "type": "pick",
+          "p": "single",
+          "hi": "The question asks for the single-digit factors, so the list stops at 9",
+          "q": "Ana was asked for the single-digit factors of 84. She wrote: <b>1, 2, 3, 4, 6, 7, 12, 14, 21, 28, 42, 84</b>. What went wrong?",
+          "opts": [
+            "She listed every factor, not only the single-digit ones.",
+            "She included 8, which is not actually a factor of 84.",
+            "She left out 1, and 1 is a factor of every number.",
+            "Nothing is wrong — that is exactly what was asked."
+          ],
+          "a": 0,
+          "why": "Every number Ana wrote really is a factor of 84, so her arithmetic was right. The mistake was in reading the question: it asked for the single-digit factors, which are 1, 2, 3, 4, 6 and 7. Finding the factors is only half the job — the other half is answering the question that was asked.",
+          "cite": "Saxon Math Course 2, Lesson 6 — factors",
+          "kind": "single-digit factors"
+        },
+        {
+          "type": "pick",
+          "p": "common",
+          "hi": "The common factors are the ones that appear on both lists",
+          "q": "List the <b>common factors</b> of 28 and 42.",
+          "opts": [
+            "1, 2, 7, 14",
+            "1, 2, 4, 7, 14",
+            "1, 2, 3, 7, 14",
+            "2, 7, 14"
+          ],
+          "a": 0,
+          "why": "Factors of 28: 1, 2, 4, 7, 14, 28. Factors of 42: 1, 2, 3, 6, 7, 14, 21, 42. The common factors are the ones on both lists: 1, 2, 7 and 14. 4 divides 28 but not 42, and 3 divides 42 but not 28, so neither is common. The greatest common factor is 14.",
+          "cite": "Saxon Math Course 2, Lesson 6 — common factors",
+          "kind": "common factors"
+        },
+        {
+          "type": "pick",
+          "p": "common",
+          "hi": "The common factors are the ones that appear on both lists",
+          "q": "Jamal listed the factors of 24 as <b>1, 2, 3, 4, 6, 8, 12, 24</b> and the factors of 40 as <b>1, 2, 4, 5, 8, 10, 20, 40</b>, then stopped. What does he still have to do to find the common factors?",
+          "opts": [
+            "Find the numbers that appear on both lists.",
+            "Add the two lists together.",
+            "Multiply 24 by 40.",
+            "Take the largest number from each list."
+          ],
+          "a": 0,
+          "why": "Both lists are correct, so the hard part is done. Common factors are the numbers the two lists share: 1, 2, 4 and 8. The greatest common factor is 8. Listing the factors is step one; comparing the lists is step two, and it is the step that is easy to walk past.",
+          "cite": "Saxon Math Course 2, Lesson 6 — common factors",
+          "kind": "common factors"
+        }
+      ]
+    },
+    {
+      "id": "s2",
+      "c": "var(--sky)",
+      "tag": "Homework 14 and 16",
+      "name": "Which Move?",
+      "blurb": "Which move undoes what was done to the variable — not what the answer is.",
+      "items": [
+        {
+          "type": "pick",
+          "p": "minus",
+          "hi": "Something was subtracted from the variable, so add it back",
+          "q": "<b>m − 47 = 156.</b> What should you do to both sides to find m?",
+          "opts": [
+            "Add 47",
+            "Subtract 47",
+            "Multiply by 47",
+            "Divide by 47"
+          ],
+          "a": 0,
+          "why": "47 was subtracted from m, so adding 47 undoes it: m = 156 + 47 = 203. Check by putting it back: 203 − 47 = 156. ✓",
+          "cite": "Saxon Math Course 2, Lesson 3 — unknown numbers",
+          "kind": "which move"
+        },
+        {
+          "type": "pick",
+          "p": "times",
+          "hi": "The variable was multiplied, so divide to undo it.",
+          "q": "<b>12n = 156.</b> What should you do to both sides to find n?",
+          "opts": [
+            "Divide by 12",
+            "Multiply by 12",
+            "Subtract 12",
+            "Add 12"
+          ],
+          "a": 0,
+          "why": "12n means 12 × n, so dividing by 12 undoes it: n = 156 ÷ 12 = 13. Check: 12 × 13 = 156. ✓",
+          "cite": "Saxon Math Course 2, Lesson 3 — unknown numbers",
+          "kind": "which move"
+        },
+        {
+          "type": "pick",
+          "p": "minus",
+          "hi": "Something was subtracted from the variable, so add it back",
+          "q": "Ana solved <b>w − 98 = 432</b> by subtracting 98 from both sides, and got w = 334. What went wrong?",
+          "opts": [
+            "98 was being subtracted, so she needed to add it back.",
+            "She should have divided both sides by 98 instead.",
+            "She subtracted from one side but not the other.",
+            "Nothing went wrong — 334 passes the check."
+          ],
+          "a": 0,
+          "why": "Undoing means doing the opposite. 98 was taken away from w, so put it back: w = 432 + 98 = 530. Check: 530 − 98 = 432. ✓ Ana's answer fails that same check — 334 − 98 = 236, not 432 — which is how she could have caught it herself.",
+          "cite": "Saxon Math Course 2, Lesson 3 — unknown numbers",
+          "kind": "spot the wrong move"
+        },
+        {
+          "type": "pick",
+          "p": "divide",
+          "hi": "The variable was divided, so multiply to undo it.",
+          "q": "Priya solved <b>w ÷ 20 = 200</b> by dividing both sides by 20, and got w = 10. What went wrong?",
+          "opts": [
+            "w was being divided by 20, so she needed to multiply.",
+            "She should have subtracted 20 from both sides.",
+            "She divided one side but forgot to do the other.",
+            "Nothing went wrong — 10 passes the check."
+          ],
+          "a": 0,
+          "why": "w was divided by 20, so multiply to undo it: w = 200 × 20 = 4000. Check: 4000 ÷ 20 = 200. ✓ Priya's answer fails the check badly — 10 ÷ 20 is not 200, it is not even a whole number. An answer that lands far below the number you started with is worth a second look.",
+          "cite": "Saxon Math Course 2, Lesson 3 — unknown numbers",
+          "kind": "spot the wrong move"
+        }
+      ]
+    },
+    {
+      "id": "s3",
+      "c": "var(--jade)",
+      "tag": "Homework 8 and 24",
+      "name": "Squares and Grouping",
+      "blurb": "Perfect squares, and what the parentheses do to an answer.",
+      "items": [
+        {
+          "type": "pick",
+          "p": "squares",
+          "hi": "A perfect square is a whole number multiplied by itself",
+          "q": "What are the numbers <b>1, 4, 9, 16, 25, 36</b> called?",
+          "opts": [
+            "Perfect squares",
+            "Prime numbers",
+            "Multiples of 4",
+            "Factor pairs"
+          ],
+          "a": 0,
+          "why": "A perfect square is what you get when a whole number is multiplied by itself: 1 × 1, 2 × 2, 3 × 3, 4 × 4, 5 × 5, 6 × 6. They are called squares because that many tiles will make a square.",
+          "cite": "Saxon Math Course 2, Lesson 4 — sequences",
+          "kind": "perfect squares"
+        },
+        {
+          "type": "pick",
+          "p": "squares",
+          "hi": "A perfect square is a whole number multiplied by itself",
+          "q": "Describe this sequence and give the next three numbers: <b>…, 64, 81, 100, 121, …</b>",
+          "opts": [
+            "Perfect squares — 144, 169, 196",
+            "Perfect squares — 144, 168, 192",
+            "Adding 17 each time — 138, 155, 172",
+            "Perfect squares — 141, 161, 181"
+          ],
+          "a": 0,
+          "why": "These are 8 × 8, 9 × 9, 10 × 10 and 11 × 11. The next three are 12 × 12 = 144, 13 × 13 = 169 and 14 × 14 = 196. The gaps grow each time — 17, 19, 21, 23 — so nothing is being added over and over.",
+          "cite": "Saxon Math Course 2, Lesson 4 — sequences",
+          "kind": "perfect squares"
+        },
+        {
+          "type": "pick",
+          "p": "grouping",
+          "hi": "In division the parentheses change the answer",
+          "q": "Compare: <b>800 ÷ (40 ÷ 2)</b> and <b>(800 ÷ 40) ÷ 2</b>",
+          "opts": [
+            "The left side is greater",
+            "The right side is greater",
+            "They are equal",
+            "It depends which one you work out first"
+          ],
+          "a": 0,
+          "why": "Left: 40 ÷ 2 = 20, then 800 ÷ 20 = 40. Right: 800 ÷ 40 = 20, then 20 ÷ 2 = 10. So 40 is greater than 10. Moving the parentheses changed the answer, because division is not associative.",
+          "cite": "Saxon Math Course 2, Lesson 2 — properties of operations",
+          "kind": "grouping"
+        },
+        {
+          "type": "pick",
+          "p": "grouping",
+          "hi": "In division the parentheses change the answer",
+          "q": "Which pair is <b>not</b> equal?",
+          "opts": [
+            "36 ÷ (6 ÷ 2) and (36 ÷ 6) ÷ 2",
+            "(4 × 5) × 3 and 4 × (5 × 3)",
+            "(9 + 7) + 4 and 9 + (7 + 4)",
+            "(2 × 6) × 5 and 2 × (6 × 5)"
+          ],
+          "a": 0,
+          "why": "36 ÷ (6 ÷ 2) = 36 ÷ 3 = 12, but (36 ÷ 6) ÷ 2 = 6 ÷ 2 = 3. The other three pairs are multiplication and addition, which are associative, so each pair comes to the same number — 60, 20 and 60.",
+          "cite": "Saxon Math Course 2, Lesson 2 — properties of operations",
+          "kind": "grouping"
+        }
+      ]
+    }
+  ],
+  "build": {
+    "q": "Pick the <b>two</b> equations that are solved by <b>multiplying both sides by 8</b>.",
+    "lead": "The move, and why",
+    "hit": "Both of those are solved by multiplying by 8.",
+    "p": "divide",
+    "hi": "The variable was divided, so multiply to undo it.",
+    "tiles": [
+      {
+        "t": "x ÷ 8 = 40",
+        "a": true
+      },
+      {
+        "t": "x ÷ 8 = 7",
+        "a": true
+      },
+      {
+        "t": "8x = 40",
+        "a": false
+      },
+      {
+        "t": "x − 8 = 40",
+        "a": false
+      },
+      {
+        "t": "x + 8 = 40",
+        "a": false
+      },
+      {
+        "t": "8 ÷ x = 4",
+        "a": false
+      }
+    ],
+    "answer": "Multiplying by 8 undoes dividing by 8, so it is the move for the two equations where x is divided by 8: x ÷ 8 = 40 gives x = 320, and x ÷ 8 = 7 gives x = 56. The others were done to x in different ways, so they come undone in different ways: 8x = 40 is divided by 8 (x = 5), x − 8 = 40 has 8 added back (x = 48), x + 8 = 40 has 8 subtracted (x = 32), and 8 ÷ x = 4 has x underneath, so x = 8 ÷ 4 = 2.",
+    "cite": "Saxon Math Course 2, Lesson 3 — unknown numbers"
+  },
+  "passages": {
+    "single": {
+      "title": "Single-digit factors",
+      "cite": "Saxon Math Course 2, Lesson 6",
+      "text": [
+        "A factor of a number divides it with nothing left over. To find every factor, work up from 1 in pairs: 1 × 60, 2 × 30, 3 × 20, 4 × 15, 5 × 12, 6 × 10. Once the pairs start repeating you have them all, so the factors of 60 are 1, 2, 3, 4, 5, 6, 10, 12, 15, 20, 30 and 60.",
+        "Now read the question again. If it asks for the single-digit factors, only the ones below 10 belong in the answer: 1, 2, 3, 4, 5 and 6. The question asks for the single-digit factors, so the list stops at 9. The rest are still factors — they were just not what was asked for.",
+        "For a single-digit question there is a quicker route than listing every pair: test 1 through 9 with the divisibility tests below. 1 always divides, and the number itself belongs on the list only if it happens to be a single digit."
+      ],
+      "vocab": [
+        [
+          "divisible by 2",
+          "test",
+          "the last digit is even"
+        ],
+        [
+          "divisible by 3",
+          "test",
+          "the digits add up to a multiple of 3"
+        ],
+        [
+          "divisible by 4",
+          "test",
+          "the last two digits divide by 4"
+        ],
+        [
+          "divisible by 5",
+          "test",
+          "the last digit is 0 or 5"
+        ],
+        [
+          "divisible by 6",
+          "test",
+          "it passes both the test for 2 and the test for 3"
+        ],
+        [
+          "divisible by 8",
+          "test",
+          "the last three digits divide by 8"
+        ],
+        [
+          "divisible by 9",
+          "test",
+          "the digits add up to a multiple of 9"
+        ],
+        [
+          "divisible by 10",
+          "test",
+          "the last digit is 0"
+        ],
+        [
+          "7",
+          "no test",
+          "there is no quick test for 7 — divide and see"
+        ]
+      ],
+      "book": "The lesson works this kind twice: Example 4 asks which whole numbers from 1 to 10 divide a four-digit number, and the practice set asks for the single-digit divisors of another. Saxon Course 2, Lesson 6, pages 41–42."
+    },
+    "common": {
+      "title": "Common factors and the greatest common factor",
+      "cite": "Saxon Math Course 2, Lesson 6",
+      "text": [
+        "A common factor divides both numbers. Finding them takes two steps, and the second one is easy to forget.",
+        "Step one: list the factors of each number separately. Factors of 12: 1, 2, 3, 4, 6, 12. Factors of 20: 1, 2, 4, 5, 10, 20.",
+        "Step two: compare the two lists. The common factors are the ones that appear on both lists — here, 1, 2 and 4. The greatest common factor is the largest of those: 4. Two correct lists side by side are not the answer yet; the answer is what they share.",
+        "The lesson's own trick is to write both lists out and circle the numbers that appear in both. The circles are step two made visible, so it is harder to stop after step one."
+      ],
+      "vocab": [
+        [
+          "factor",
+          "noun",
+          "a whole number that divides another with no remainder"
+        ],
+        [
+          "common factor",
+          "noun",
+          "a number that is a factor of both numbers"
+        ],
+        [
+          "greatest common factor",
+          "noun",
+          "the largest of the common factors — often written GCF"
+        ],
+        [
+          "divisibility",
+          "noun",
+          "whether one whole number divides another with no remainder"
+        ]
+      ],
+      "book": "The lesson works a greatest common factor in Example 3, listing both sets of factors and circling the ones they share. Saxon Course 2, Lesson 6, page 41."
+    },
+    "minus": {
+      "title": "When something was subtracted",
+      "cite": "Saxon Math Course 2, Lesson 3",
+      "text": [
+        "Solve n − 26 = 71.",
+        "Ask what was done to n. 26 was subtracted from it. Something was subtracted from the variable, so add it back — that is the move that undoes it.",
+        "n − 26 + 26 = 71 + 26, which leaves n = 97.",
+        "Check: 97 − 26 = 71. True, so 97 is right. If the check comes out false, the move was the wrong one — subtracting again instead of adding would have given 45, and 45 − 26 = 19, not 71."
+      ],
+      "vocab": [
+        [
+          "minuend",
+          "the number you start from",
+          "The unknown in n − 26 = 71. To find an unknown minuend, add the other two numbers."
+        ],
+        [
+          "subtrahend",
+          "the part taken away",
+          "The unknown in 50 − x = 18. To find an unknown subtrahend, subtract."
+        ],
+        [
+          "difference",
+          "what is left",
+          "To find an unknown difference, subtract."
+        ]
+      ],
+      "book": "The lesson names all three positions and gives the rule for each, then works an unknown minuend and an unknown subtrahend side by side in Example 2. Saxon Course 2, Lesson 3, page 22."
+    },
+    "plus": {
+      "title": "When something was added",
+      "cite": "Saxon Math Course 2, Lesson 3",
+      "text": [
+        "Solve n + 34 = 90.",
+        "Ask what was done to n. 34 was added to it. Something was added to the variable, so subtract it.",
+        "n + 34 − 34 = 90 − 34, which leaves n = 56.",
+        "Check: 56 + 34 = 90. True.",
+        "If several numbers are being added — 5 + 9 + n + 4 = 30 — add all the known ones first, then subtract that total from the sum: 5 + 9 + 4 = 18, and 30 − 18 = 12."
+      ],
+      "vocab": [
+        [
+          "addend",
+          "a number being added",
+          "To find an unknown addend, subtract the known addend from the sum."
+        ],
+        [
+          "sum",
+          "the total",
+          "To find an unknown sum, add the addends."
+        ]
+      ],
+      "book": "The lesson works three unknown addends in Example 1, including one with four addends where the known ones are added together first. Saxon Course 2, Lesson 3, page 21."
+    },
+    "times": {
+      "title": "When the variable was multiplied",
+      "cite": "Saxon Math Course 2, Lesson 3",
+      "text": [
+        "Solve 7n = 168.",
+        "7n means 7 × n. The variable was multiplied, so divide to undo it.",
+        "7n ÷ 7 = 168 ÷ 7, which leaves n = 24.",
+        "Check: 7 × 24 = 168. True.",
+        "If there is more than one number on that side — 2 · 3 · n = 168, say — multiply them together first. 2 · 3 · n is 6n, and then one division finishes it: n = 28."
+      ],
+      "vocab": [
+        [
+          "factor",
+          "a number being multiplied",
+          "To find an unknown factor, divide the product by the known factor."
+        ],
+        [
+          "product",
+          "the result",
+          "To find an unknown product, multiply the factors."
+        ]
+      ],
+      "book": "The lesson works two unknown factors in Example 3, and writes the check underneath each as a multiplication. Saxon Course 2, Lesson 3, pages 22–23."
+    },
+    "divide": {
+      "title": "When the variable was divided",
+      "cite": "Saxon Math Course 2, Lesson 3",
+      "text": [
+        "Solve n ÷ 12 = 30.",
+        "Ask what was done to n. It was divided by 12. The variable was divided, so multiply to undo it.",
+        "n ÷ 12 × 12 = 30 × 12, which leaves n = 360.",
+        "Check: 360 ÷ 12 = 30. True.",
+        "Dividing again is the tempting mistake, because the equation has a division sign in it. But the sign says what was already done, not what to do next. Dividing here would give 2.5, and 2.5 ÷ 12 is nowhere near 30 — the check catches it immediately."
+      ],
+      "vocab": [
+        [
+          "dividend",
+          "the number being shared",
+          "To find an unknown dividend, multiply the quotient by the divisor."
+        ],
+        [
+          "divisor",
+          "how many it is shared into",
+          "To find an unknown divisor, divide the dividend by the quotient."
+        ],
+        [
+          "quotient",
+          "the answer",
+          "To find an unknown quotient, divide the dividend by the divisor."
+        ]
+      ],
+      "book": "The lesson names all three positions and works an unknown dividend and an unknown divisor together in Example 4. Saxon Course 2, Lesson 3, page 23."
+    },
+    "backwards": {
+      "title": "When the variable is underneath, or is the part taken away",
+      "cite": "Saxon Math Course 2, Lesson 3",
+      "text": [
+        "Two forms need a moment's thought, because the variable is not the thing being changed — it is the thing doing the changing.",
+        "50 − n = 18. Read it as a story: 50, take away n, leaves 18. When the variable is the part being taken away, the answer is the difference: n = 50 − 18 = 32. Check: 50 − 32 = 18. True.",
+        "60 ÷ n = 12. Read it the same way: 60 shared into n groups puts 12 in each group. When the variable is underneath, ask how many of the answer fit into the top: n = 60 ÷ 12 = 5. Check: 60 ÷ 5 = 12. True.",
+        "In both, the move is the same operation as the one in the equation, not the opposite. That is what makes them different from the other four forms — and it is why naming the position is worth the trouble."
+      ],
+      "vocab": [
+        [
+          "subtrahend",
+          "the part taken away",
+          "The unknown in 50 − n = 18. To find an unknown subtrahend, subtract the difference from the minuend."
+        ],
+        [
+          "divisor",
+          "how many it is shared into",
+          "The unknown in 60 ÷ n = 12. To find an unknown divisor, divide the dividend by the quotient."
+        ]
+      ],
+      "book": "The lesson works an unknown subtrahend in Example 2 and an unknown divisor in Example 4, each one alongside the easier form, so the difference between them is on the same page. Saxon Course 2, Lesson 3, pages 22–23."
+    },
+    "check": {
+      "title": "Checking the answer",
+      "cite": "Saxon Math Course 2, Lesson 3",
+      "text": [
+        "Every one of these can be checked in a few seconds, and the check is worth more than it costs.",
+        "Put the value back into the original equation and see whether it comes out true. Not into the equation you rearranged — into the one you were given. That way a wrong move shows up instead of being repeated.",
+        "Solve 15n = 195, and suppose the answer written down is 13. Check: 15 × 13 = 195. True, so it is right.",
+        "Suppose instead the answer written down was 180, from subtracting 15 rather than dividing. Check: 15 × 180 = 2700, not 195. The check finds it, and it takes one line."
+      ],
+      "vocab": [
+        [
+          "check",
+          "the second half of the answer",
+          "Substitute the value into the original equation. If both sides come out equal, the answer is right."
+        ]
+      ],
+      "book": "Every worked example in the lesson is followed by a check written out underneath it — the book treats the check as part of the answer rather than as optional. Saxon Course 2, Lesson 3, pages 21–23."
+    },
+    "squares": {
+      "title": "Perfect squares",
+      "cite": "Saxon Math Course 2, Lesson 4",
+      "text": [
+        "A perfect square is a whole number multiplied by itself. They are called squares because that many tiles will make a square: nine tiles make a three-by-three square, sixteen make a four-by-four.",
+        "The first fifteen are 1, 4, 9, 16, 25, 36, 49, 64, 81, 100, 121, 144, 169, 196 and 225 — that is 1 × 1 up to 15 × 15. Worth knowing by sight, because they turn up constantly.",
+        "The gaps between them grow: 3, 5, 7, 9, 11. So a run of perfect squares is never a sequence where the same number is added each time, which is one way to recognise one.",
+        "A number that is not on the list is not a perfect square. 50 is not, because it sits between 49 and 64 — you would need something between 7 and 8 to make it, and that is not a whole number."
+      ],
+      "vocab": [
+        [
+          "sequence",
+          "noun",
+          "a list of numbers that follows a rule"
+        ],
+        [
+          "term",
+          "noun",
+          "one of the numbers in a sequence"
+        ],
+        [
+          "perfect square",
+          "noun",
+          "a whole number multiplied by itself"
+        ]
+      ],
+      "book": "Lesson 4 is where sequences are introduced, working the rule out from the first few terms across eight examples. Saxon Course 2, Lesson 4, pages 26–31."
+    },
+    "grouping": {
+      "title": "What the parentheses do",
+      "cite": "Saxon Math Course 2, Lesson 2",
+      "text": [
+        "Parentheses say which part to work out first. With addition and multiplication that turns out not to matter — this is the associative property.",
+        "(3 + 8) + 5 = 11 + 5 = 16, and 3 + (8 + 5) = 3 + 13 = 16. Same answer. (2 × 3) × 4 = 6 × 4 = 24, and 2 × (3 × 4) = 2 × 12 = 24. Same answer.",
+        "Subtraction and division are not associative. In division the parentheses change the answer, and often by a lot.",
+        "100 ÷ (10 ÷ 2) = 100 ÷ 5 = 20, but (100 ÷ 10) ÷ 2 = 10 ÷ 2 = 5. Twenty against five, from the same three numbers in the same order. So with division, work out what is inside the parentheses first, and never assume you can move them."
+      ],
+      "vocab": [
+        [
+          "associative property",
+          "noun",
+          "the grouping can change without changing the answer — true for addition and multiplication, false for subtraction and division"
+        ],
+        [
+          "commutative property",
+          "noun",
+          "the order can change without changing the answer — again true for addition and multiplication only"
+        ],
+        [
+          "identity property",
+          "noun",
+          "adding 0, or multiplying by 1, leaves a number as it was"
+        ]
+      ],
+      "book": "Lesson 2 sets the properties out in a table and then uses them to make a multiplication easier to do in your head. Saxon Course 2, Lesson 2, pages 16–17."
+    }
+  },
+  "backLabel": "Lesson 7"
+}

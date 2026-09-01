@@ -1607,9 +1607,18 @@ const SUBJECTS = [
 
   { name:"Math", ore:"copper", c:"var(--math)", app:"math",
 
-    book:"Saxon Math, Course 1",
+    book:"Saxon Math, Course 2",
 
-    chapters:[ { n:1, t:"Practice sets" } ]}
+    /* One app per night of homework, numbered by the lesson it reviews.
+       These are not chapters to work through in order — each is built from
+       the problems that came back wrong, so a lesson only appears here if
+       something on it was missed. */
+    unit:"lesson",
+    chapters:[
+      { n:7, t:"Finding the Value of a Variable",
+        note:"12 questions in three short sets, a few minutes each",
+        href:"math/saxon-c2-l7/", app:"math7", ids:["s1","s2","s3"] }
+    ]}
 
 ];
 

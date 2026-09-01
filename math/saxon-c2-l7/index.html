@@ -1,0 +1,2570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Saxon Course 2 · Lesson 7 review</title>
+<style>
+:root{
+  --bg:#0B1A18; --panel:#F4F1E9; --panel2:#E8E3D6; --ink:#1A211F; --dim:#6E7A76;
+  --gold:#E0A83C; --stone:#8A9490; --jade:#2F8F76; --red:#C4553F; --sky:#3D82B8;
+  --line:#D6CFBE;
+  --disp:"Trebuchet MS","Segoe UI",Verdana,system-ui,sans-serif;
+  --body:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --mono:ui-monospace,"SF Mono","Cascadia Mono",Consolas,monospace;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;background:var(--bg);color:var(--panel);font-family:var(--body);
+  line-height:1.55;padding:0 0 40px;
+  background-image:radial-gradient(circle at 12% -6%,#153029 0%,transparent 55%)}
+.wrap{max-width:680px;margin:0 auto;padding:0 16px}
+.hublink{display:inline-block;margin:16px 0 0;font:700 12px var(--mono);
+  letter-spacing:.07em;color:var(--gold);text-decoration:none}
+.hublink:hover{text-decoration:underline}
+.eyebrow{font:700 11px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--stone)}
+h1{font-family:var(--disp);font-size:clamp(27px,7vw,40px);line-height:1.05;
+  margin:8px 0 10px;font-weight:800;letter-spacing:-.02em}
+h1 em{font-style:normal;color:var(--gold)}
+.bigq{background:#122A26;border-left:5px solid var(--gold);padding:12px 15px;
+  font-size:14.5px;margin:0 0 20px}
+.bigq b{display:block;font:700 11px var(--mono);letter-spacing:.12em;
+  text-transform:uppercase;color:var(--gold);margin-bottom:3px}
+
+.grid{display:grid;gap:11px;margin-bottom:22px}
+.set{position:relative;background:var(--panel);color:var(--ink);border:none;
+  border-left:6px solid var(--c);padding:15px 17px;text-align:left;cursor:pointer;
+  display:block;width:100%;font-family:inherit}
+.set:hover{background:#FBF9F3}
+.set .tag{font:700 10px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--dim)}
+.set h3{font-family:var(--disp);font-size:19px;margin:3px 0 4px;font-weight:750}
+.set p{margin:0;font-size:13.5px;color:#4A544F}
+.set .go{display:inline-block;margin-top:8px;font:800 11px var(--mono);
+  letter-spacing:.08em;color:var(--c)}
+.badge{position:absolute;right:14px;top:12px;font:700 11px var(--mono);
+  background:var(--jade);color:#fff;padding:3px 8px}
+
+.card{background:var(--panel);color:var(--ink);padding:18px 17px 16px;margin-bottom:14px}
+.qnum{font:700 10.5px var(--mono);letter-spacing:.11em;text-transform:uppercase;color:var(--dim)}
+.q{font-family:var(--disp);font-size:19.5px;font-weight:750;line-height:1.3;margin:5px 0 14px}
+.opts{display:grid;gap:8px}
+.opt{background:var(--panel2);border:2px solid transparent;padding:12px 14px;
+  text-align:left;font-size:15px;font-family:inherit;color:var(--ink);cursor:pointer;
+  display:flex;gap:11px;align-items:flex-start;min-height:46px}
+.opt:hover{border-color:var(--stone)}
+.opt.sel{border-color:var(--sky);background:#DCEAF5}
+.opt.right{border-color:var(--jade);background:#DCEFE7}
+.opt.wrong{border-color:var(--red);background:#F6E0DB}
+.opt .k{flex:none;width:22px;height:22px;background:#fff;color:var(--dim);
+  font:800 11px var(--mono);display:grid;place-items:center;margin-top:1px}
+
+.rows{display:grid;gap:8px}
+.row{background:var(--panel2);padding:11px 13px;display:flex;gap:11px;align-items:center;
+  font-size:14.5px;cursor:grab;min-height:48px}
+.row .n{flex:none;width:26px;height:26px;background:var(--gold);color:#20170A;
+  font:800 12px var(--mono);display:grid;place-items:center}
+.row.right{background:#DCEFE7}
+.row.wrong{background:#F6E0DB}
+.row .mv{margin-left:auto;display:flex;gap:4px}
+.row .mv button{width:34px;height:34px;border:2px solid var(--line);background:#fff;
+  font:800 14px var(--mono);color:var(--dim);cursor:pointer}
+.row .mv button:disabled{opacity:.3;cursor:default}
+
+.tiles{display:grid;gap:8px}
+.tile{background:var(--panel2);border:2px solid transparent;padding:12px 14px;
+  text-align:left;font-size:14.5px;font-family:inherit;color:var(--ink);cursor:pointer;
+  min-height:46px}
+.tile.sel{border-color:var(--sky);background:#DCEAF5}
+.tile.right{border-color:var(--jade);background:#DCEFE7}
+.tile.wrong{border-color:var(--red);background:#F6E0DB}
+
+.act{display:grid;gap:8px;margin-top:14px}
+.btn{padding:13px;font-weight:750;font-size:15px;text-align:center;border:none;
+  font-family:inherit;cursor:pointer}
+.btn.p{background:var(--jade);color:#fff}
+.btn.g{background:var(--gold);color:#20170A}
+.btn.o{background:transparent;border:2px solid var(--line);color:var(--ink)}
+.btn:disabled{opacity:.4;cursor:default}
+.fb{padding:12px 14px;margin-top:12px;font-size:14px;line-height:1.5}
+.fb strong{display:block;font-family:var(--disp);font-size:15.5px;margin-bottom:3px}
+.fb.yes{background:#DCEFE7;border-left:5px solid var(--jade);color:#17372C}
+.fb.no{background:#F6E0DB;border-left:5px solid var(--red);color:#5A2418}
+.fb cite{display:block;font:600 11px var(--mono);color:var(--dim);margin-top:6px;font-style:normal}
+
+.dots{display:flex;gap:5px;margin:0 0 12px}
+.dot{flex:1;height:5px;background:#24403A}
+.dot.done{background:var(--jade)} .dot.now{background:var(--gold)}
+
+.reveal{background:#122A26;color:var(--panel);padding:16px;margin-top:12px}
+.reveal .lead{font:700 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:6px}
+.reveal p{margin:0 0 9px;font-size:14.5px}
+.nums{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0 4px}
+.num{background:#0B1A18;padding:9px 12px;flex:1 1 130px}
+.num b{display:block;font:800 17px var(--mono);color:var(--gold)}
+.num span{font:600 10.5px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--stone)}
+
+.score{background:var(--panel);color:var(--ink);padding:22px 18px;text-align:center}
+.ring{font:800 44px var(--disp);line-height:1}
+.band{font:700 12px var(--mono);letter-spacing:.1em;text-transform:uppercase;margin-top:3px}
+.stats{display:flex;gap:9px;margin:16px 0}
+.stat{flex:1;background:var(--panel2);padding:10px}
+.stat b{display:block;font:800 19px var(--mono)}
+.stat span{font:600 10px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--dim)}
+.review{background:var(--panel2);padding:12px 14px;text-align:left;margin-bottom:10px;font-size:13.5px}
+.review b{display:block;font-family:var(--disp);font-size:15px;margin-bottom:4px}
+.review ul{margin:6px 0 0;padding-left:18px}
+
+footer{margin:26px 0 0;padding-top:15px;border-top:1px solid #24403A;
+  color:#5F6D69;font-size:11.5px;line-height:1.6}
+.hide{display:none!important}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+/* the reading panel */
+.readbox{position:fixed;inset:0;z-index:80;background:rgba(10,14,13,.72);
+  display:flex;align-items:flex-end;justify-content:center;padding:0}
+.readbox[hidden]{display:none}
+.readinner{background:var(--panel,#F4F1E9);color:var(--ink,#1A211F);
+  width:100%;max-width:660px;max-height:86vh;overflow:auto;
+  padding:18px 18px calc(18px + env(safe-area-inset-bottom));
+  border-top:5px solid var(--jade,#2F8F76);
+  animation:readup .22s ease}
+@keyframes readup{from{transform:translateY(18px);opacity:.4}to{transform:none;opacity:1}}
+@media (min-width:640px){
+  .readbox{align-items:center}
+  .readinner{border:4px solid var(--jade,#2F8F76);max-height:80vh}
+}
+.readhead{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;
+  padding-bottom:10px;border-bottom:2px solid rgba(0,0,0,.12)}
+.readtitle{font:800 17px var(--disp,system-ui);line-height:1.25}
+.readcite{font:600 11px var(--mono,monospace);letter-spacing:.05em;
+  color:var(--stone,#8A9490);margin-top:3px}
+.readx{background:none;border:0;font-size:26px;line-height:1;cursor:pointer;
+  color:var(--stone,#8A9490);padding:0 4px}
+.readx:hover{color:var(--ink,#1A211F)}
+.readbody p{font-size:15.5px;line-height:1.65;margin:12px 0}
+.readbox .btn{width:100%;margin-top:6px}
+
+/* the reading panel */
+.readbox{position:fixed;inset:0;z-index:80;background:rgba(10,14,13,.72);
+  display:flex;align-items:flex-end;justify-content:center;padding:0}
+.readbox[hidden]{display:none}
+.readinner{background:var(--panel,#F4F1E9);color:var(--ink,#1A211F);
+  width:100%;max-width:660px;max-height:86vh;overflow:auto;
+  padding:18px 18px calc(18px + env(safe-area-inset-bottom));
+  border-top:5px solid var(--jade,#2F8F76);
+  animation:readup .22s ease}
+@keyframes readup{from{transform:translateY(18px);opacity:.4}to{transform:none;opacity:1}}
+@media (min-width:640px){
+  .readbox{align-items:center}
+  .readinner{border:4px solid var(--jade,#2F8F76);max-height:80vh}
+}
+.readhead{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;
+  padding-bottom:10px;border-bottom:2px solid rgba(0,0,0,.12)}
+.readtitle{font:800 17px var(--disp,system-ui);line-height:1.25}
+.readcite{font:600 11px var(--mono,monospace);letter-spacing:.05em;
+  color:var(--stone,#8A9490);margin-top:3px}
+.readx{background:none;border:0;font-size:26px;line-height:1;cursor:pointer;
+  color:var(--stone,#8A9490);padding:0 4px}
+.readx:hover{color:var(--ink,#1A211F)}
+.readbody p{font-size:15.5px;line-height:1.65;margin:12px 0}
+.readbox .btn{width:100%;margin-top:6px}
+
+/* the reading panel */
+.readbox{position:fixed;inset:0;z-index:80;background:rgba(10,14,13,.72);
+  display:flex;align-items:flex-end;justify-content:center;padding:0}
+.readbox[hidden]{display:none}
+.readinner{background:var(--panel,#F4F1E9);color:var(--ink,#1A211F);
+  width:100%;max-width:660px;max-height:86vh;overflow:auto;
+  padding:18px 18px calc(18px + env(safe-area-inset-bottom));
+  border-top:5px solid var(--jade,#2F8F76);
+  animation:readup .22s ease}
+@keyframes readup{from{transform:translateY(18px);opacity:.4}to{transform:none;opacity:1}}
+@media (min-width:640px){
+  .readbox{align-items:center}
+  .readinner{border:4px solid var(--jade,#2F8F76);max-height:80vh}
+}
+.readhead{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;
+  padding-bottom:10px;border-bottom:2px solid rgba(0,0,0,.12)}
+.readtitle{font:800 17px var(--disp,system-ui);line-height:1.25}
+.readcite{font:600 11px var(--mono,monospace);letter-spacing:.05em;
+  color:var(--stone,#8A9490);margin-top:3px}
+.readx{background:none;border:0;font-size:26px;line-height:1;cursor:pointer;
+  color:var(--stone,#8A9490);padding:0 4px}
+.readx:hover{color:var(--ink,#1A211F)}
+.readbody p{font-size:15.5px;line-height:1.65;margin:12px 0}
+/* the sentence the question turns on */
+/* the Core Vocabulary sidebar, kept visually apart from the prose the way the
+   Reader keeps it apart on the page */
+.readvocab{margin-top:16px;padding:12px 14px;background:rgba(47,143,118,.09);
+  border-left:4px solid var(--jade,#2F8F76)}
+.vlab{font:800 10px var(--mono,monospace);letter-spacing:.16em;text-transform:uppercase;
+  color:var(--jade,#2F8F76);margin-bottom:6px}
+.readvocab p{margin:6px 0;font-size:14.5px;line-height:1.55}
+.readvocab i{color:var(--stone,#8A9490);font-size:13px}
+.readbody mark.hl,.readvocab mark.hl{background:#FFE9A8;color:inherit;font-weight:600;
+  box-shadow:0 0 0 3px #FFE9A8;border-radius:1px}
+.readbox .btn{width:100%;margin-top:6px}
+
+/* the back / skip row, and the notice that stops a half-finished set */
+.nav{display:flex;align-items:center;justify-content:space-between;gap:10px;
+  margin-top:14px;padding-top:12px;border-top:2px solid rgba(0,0,0,.1)}
+.navb{font:700 12px var(--mono);letter-spacing:.06em;text-transform:uppercase;
+  background:none;border:2px solid currentColor;color:var(--stone);
+  padding:7px 12px;cursor:pointer;border-radius:2px}
+.navb:hover:not([disabled]){color:var(--ink)}
+.navb[disabled]{opacity:.3;cursor:default}
+.navb:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.navpos{font:700 11px var(--mono);letter-spacing:.1em;color:var(--stone)}
+.skipnote{margin:10px 0 0;font-size:14px;line-height:1.6;color:var(--stone)}
+
+/* the reading panel */
+.readbox{position:fixed;inset:0;z-index:80;background:rgba(10,14,13,.72);
+  display:flex;align-items:flex-end;justify-content:center;padding:0}
+.readbox[hidden]{display:none}
+.readinner{background:var(--panel,#F4F1E9);color:var(--ink,#1A211F);
+  width:100%;max-width:660px;max-height:86vh;overflow:auto;
+  padding:18px 18px calc(18px + env(safe-area-inset-bottom));
+  border-top:5px solid var(--jade,#2F8F76);
+  animation:readup .22s ease}
+@keyframes readup{from{transform:translateY(18px);opacity:.4}to{transform:none;opacity:1}}
+@media (min-width:640px){
+  .readbox{align-items:center}
+  .readinner{border:4px solid var(--jade,#2F8F76);max-height:80vh}
+}
+.readhead{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;
+  padding-bottom:10px;border-bottom:2px solid rgba(0,0,0,.12)}
+.readtitle{font:800 17px var(--disp,system-ui);line-height:1.25}
+.readcite{font:600 11px var(--mono,monospace);letter-spacing:.05em;
+  color:var(--stone,#8A9490);margin-top:3px}
+.readx{background:none;border:0;font-size:26px;line-height:1;cursor:pointer;
+  color:var(--stone,#8A9490);padding:0 4px}
+.readx:hover{color:var(--ink,#1A211F)}
+.readbody p{font-size:15.5px;line-height:1.65;margin:12px 0}
+/* the sentence the question turns on */
+/* the Core Vocabulary sidebar, kept visually apart from the prose the way the
+   Reader keeps it apart on the page */
+.readvocab{margin-top:16px;padding:12px 14px;background:rgba(47,143,118,.09);
+  border-left:4px solid var(--jade,#2F8F76)}
+.vlab{font:800 10px var(--mono,monospace);letter-spacing:.16em;text-transform:uppercase;
+  color:var(--jade,#2F8F76);margin-bottom:6px}
+.readvocab p{margin:6px 0;font-size:14.5px;line-height:1.55}
+.readvocab i{color:var(--stone,#8A9490);font-size:13px}
+.readbody mark.hl,.readvocab mark.hl{background:#FFE9A8;color:inherit;font-weight:600;
+  box-shadow:0 0 0 3px #FFE9A8;border-radius:1px}
+.readbook{margin:14px 0 0;padding:10px 12px;border-left:3px solid var(--gold);
+  background:rgba(224,168,60,.09);font-size:13.5px;line-height:1.55;color:var(--stone)}
+.readbox .btn{width:100%;margin-top:6px}
+
+.hublink.back{margin-left:14px;color:var(--stone)}
+.hublink.back[hidden]{display:none}
+</style>
+<!-- MC-THEME-CSS: generated by build_theme.py, do not hand-edit -->
+<style>
+/* ===== Minecraft theme layer — shared source, injected into all apps =====
+   Everything is prefixed .mc- / #mc- so it cannot collide with app CSS.
+   z-index budget in the apps: content < 30, HUD 30, scrim 40, drawer 50.
+   Sprite bursts sit at 60 so they play over an auto-opening drawer.        */
+
+.mc-hud{
+  position:fixed; left:0; right:0; z-index:30;
+  bottom:var(--mc-lift, 0px);
+  display:flex; flex-direction:column; align-items:center; gap:3px;
+  padding:6px 8px calc(6px + env(safe-area-inset-bottom));
+  pointer-events:none;
+  background:linear-gradient(to top, rgba(0,0,0,.42), rgba(0,0,0,0));
+  transition:bottom .18s;
+}
+.mc-hud img{image-rendering:pixelated; display:block}
+
+.mc-hearts{
+  display:flex; gap:1px; align-self:center;
+  width:var(--mc-barw, 360px); box-sizing:border-box;
+}
+.mc-heart{width:var(--mc-hh,19px); height:auto}
+/* heart-empty is very faint on dark art — read the row as sockets waiting */
+.mc-heart[data-v="0"]{filter:drop-shadow(0 0 2px rgba(255,255,255,.5)) drop-shadow(0 0 5px rgba(0,0,0,.6)); opacity:.85}
+.mc-heart.mc-hit{animation:mc-hit .42s}
+@keyframes mc-hit{
+  0%{transform:scale(1.55)} 25%{transform:scale(1.1) rotate(-8deg)}
+  55%{transform:scale(1.25)} 100%{transform:none}
+}
+
+.mc-bar{display:flex; gap:0; width:var(--mc-barw,360px); box-sizing:border-box}
+.mc-slot{
+  position:relative; width:var(--mc-ss,38px); height:var(--mc-ss,38px);
+  flex:0 0 auto; background-size:100% 100%; background-repeat:no-repeat;
+}
+.mc-slot .mc-tool{
+  position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);
+  width:69%; height:69%; object-fit:contain;
+}
+/* tool-9 already has zero side margin in the source art — don't scale it up */
+.mc-slot[data-n="9"] .mc-tool{width:62%; height:62%}
+.mc-slot .mc-frame{position:absolute; inset:-2px; width:calc(100% + 4px); height:calc(100% + 4px); opacity:0}
+.mc-slot.mc-new .mc-frame{opacity:1; animation:mc-pulse 1.1s ease-in-out 3}
+.mc-slot.mc-new .mc-tool{animation:mc-drop .5s cubic-bezier(.2,1.5,.4,1)}
+@keyframes mc-pulse{0%,100%{opacity:.35}50%{opacity:1}}
+@keyframes mc-drop{from{transform:translate(-50%,-160%) scale(.4); opacity:0}}
+
+/* ---- sprite burst ---- */
+.mc-burst{
+  position:fixed; left:50%; top:44%; z-index:60; pointer-events:none;
+  width:var(--mc-burst,128px); height:var(--mc-burst,128px);
+  transform:translate(-50%,-50%);
+}
+.mc-burst img{width:100%; height:100%; object-fit:contain; image-rendering:pixelated}
+.mc-burst.mc-good{animation:mc-good 1.35s cubic-bezier(.18,1.3,.4,1) forwards}
+.mc-burst.mc-bad{animation:mc-bad 1.15s ease-out forwards}
+/* bad-2 creeper and bad-4 zombie carry ~30px of side margin; TNT and the
+   spider fill the frame. Nudge the narrow two up so misses land evenly. */
+.mc-burst.mc-bad[data-w="narrow"] img{transform:scale(1.17)}
+@keyframes mc-good{
+  0%{transform:translate(-50%,-50%) scale(.3) rotate(-12deg); opacity:0}
+  18%{transform:translate(-50%,-50%) scale(1.12) rotate(3deg); opacity:1}
+  30%{transform:translate(-50%,-50%) scale(1) rotate(0); opacity:1}
+  72%{transform:translate(-50%,-50%) scale(1) rotate(0); opacity:1}
+  100%{transform:translate(-50%,-80%) scale(1.05); opacity:0}
+}
+@keyframes mc-bad{
+  0%{transform:translate(-50%,-50%) scale(.55); opacity:0}
+  14%{transform:translate(-50%,-50%) scale(1.08); opacity:1}
+  26%{transform:translate(-50%,-50%) scale(1); opacity:1}
+  74%{transform:translate(-50%,-50%) scale(1); opacity:1}
+  100%{transform:translate(-50%,-44%) scale(.96); opacity:0}
+}
+
+.mc-shake{animation:mc-shake .34s}
+@keyframes mc-shake{
+  10%,90%{transform:translateX(-2px)} 20%,80%{transform:translateX(4px)}
+  30%,50%,70%{transform:translateX(-7px)} 40%,60%{transform:translateX(7px)}
+}
+
+/* ---- results chest ---- */
+.mc-chest{
+  display:flex; flex-direction:column; align-items:center; gap:8px;
+  padding:14px 10px 4px; margin:2px 0 6px;
+}
+.mc-chest .mc-lid{width:120px; height:120px; object-fit:contain; image-rendering:pixelated;
+  transition:transform .2s; cursor:pointer}
+.mc-chest .mc-lid.mc-shut{animation:mc-nudge 1.5s ease-in-out infinite}
+@keyframes mc-nudge{0%,88%,100%{transform:none}92%{transform:translateY(-4px) rotate(-2deg)}96%{transform:translateY(-2px) rotate(2deg)}}
+.mc-loot{display:flex; gap:6px; justify-content:center; min-height:4px; flex-wrap:wrap}
+.mc-loot img{width:52px; height:52px; object-fit:contain; image-rendering:pixelated;
+  animation:mc-pop .5s cubic-bezier(.2,1.6,.4,1) both}
+.mc-loot img:nth-child(2){animation-delay:.09s}
+.mc-loot img:nth-child(3){animation-delay:.18s}
+.mc-loot img:nth-child(4){animation-delay:.27s}
+.mc-loot img:nth-child(5){animation-delay:.36s}
+@keyframes mc-pop{from{transform:translateY(26px) scale(.3); opacity:0}}
+.mc-tier{
+  font:800 19px ui-monospace,SFMono-Regular,Menlo,monospace; letter-spacing:.1em;
+  text-align:center; margin-top:2px;
+  animation:mc-pop .5s cubic-bezier(.2,1.6,.4,1) .3s both;
+}
+.mc-tier[data-t="dragon"]{color:#A855C8}
+.mc-tier[data-t="netherite"]{color:#6B5A6E}
+.mc-tier[data-t="diamond"]{color:#2AA7B8}
+.mc-tier[data-t="iron"]{color:#8A8A8A}
+.mc-tier[data-t="stone"]{color:#7A7A7A}
+.mc-tier[data-t="wood"]{color:#9A6B3F}
+.mc-tier[data-t="corrections"]{color:#4A8230}
+.mc-badges{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-top:4px}
+.mc-badge{
+  font:800 10.5px ui-monospace,SFMono-Regular,Menlo,monospace; letter-spacing:.07em;
+  background:#F0E6CF; color:#5A4A2E; border:2px solid #C7B48C; padding:4px 8px;
+  box-shadow:inset -2px -2px 0 rgba(0,0,0,.12), inset 2px 2px 0 rgba(255,255,255,.5);
+  animation:mc-pop .45s cubic-bezier(.2,1.6,.4,1) both;
+}
+.mc-badge:nth-child(2){animation-delay:.1s}
+.mc-badge:nth-child(3){animation-delay:.2s}
+.mc-cap{
+  font:700 12px ui-monospace,SFMono-Regular,Menlo,monospace; letter-spacing:.06em;
+  text-transform:uppercase; opacity:.72; text-align:center;
+}
+.mc-earned{
+  display:flex; align-items:center; gap:9px; justify-content:center;
+  font:700 13px ui-monospace,SFMono-Regular,Menlo,monospace;
+  animation:mc-pop .5s cubic-bezier(.2,1.6,.4,1) .45s both;
+}
+.mc-earned img{width:38px; height:38px; object-fit:contain; image-rendering:pixelated}
+
+.mc-boss{width:100%; max-width:256px; height:auto; image-rendering:pixelated;
+  animation:mc-pop .6s cubic-bezier(.2,1.5,.4,1) .3s both}
+/* fallback while boss-defeated.png is still outstanding */
+.mc-bossfall{
+  width:100%; max-width:280px; border-radius:12px; padding:13px 14px; text-align:center;
+  background:linear-gradient(140deg,#1D1526,#3A1F2E); color:#FFD98A;
+  border:2px solid #6B4A2E; box-shadow:0 6px 0 rgba(0,0,0,.25);
+  font:800 15px ui-monospace,SFMono-Regular,Menlo,monospace; letter-spacing:.05em;
+  animation:mc-pop .6s cubic-bezier(.2,1.5,.4,1) .3s both;
+}
+.mc-bossfall small{display:block; font-size:11px; opacity:.7; margin-top:4px; letter-spacing:.03em}
+
+@media (prefers-reduced-motion:reduce){
+  .mc-burst.mc-good,.mc-burst.mc-bad{animation-duration:.8s}
+  .mc-shake{animation:none}
+  .mc-chest .mc-lid.mc-shut{animation:none}
+}
+
+/* ---- level-picker status ----
+   The apps' own .badge sat in the bottom-right corner of a tall card, so
+   checking seven levels meant scanning seven different corners. Moved to the
+   top-right, level with each card's eyebrow, which gives one straight vertical
+   line to run your eye down. These sit later in the cascade at equal
+   specificity, so they win without editing app CSS. */
+.mc-best{
+  top:11px !important; right:12px !important; bottom:auto !important;
+  background:#E8A93C !important; color:#3A2A08 !important;
+  font-weight:800 !important; letter-spacing:.04em; white-space:nowrap;
+  padding:4px 9px !important; border-radius:3px;
+  box-shadow:inset -2px -2px 0 rgba(0,0,0,.16), inset 2px 2px 0 rgba(255,255,255,.35);
+}
+.mc-best.mc-done{background:#63A93E !important; color:#0F2216 !important}
+/* and mark the card itself, so status is legible even mid-scroll */
+.mc-cleared{box-shadow:inset 0 0 0 3px #63A93E !important}
+.mc-tried{box-shadow:inset 0 0 0 3px #E8A93C !important}
+
+/* ---- level chips (MC.picker) ----
+   For apps whose levels are parallel and equally valid — history's five
+   practice sets — so you can see and choose, not just be dealt one. */
+.mc-picker{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 12px}
+.mc-chip{
+  flex:1 1 auto; min-width:56px; min-height:44px; padding:5px 8px;
+  border:2px solid #C7B48C; background:#F0E6CF; color:#5A4A2E; cursor:pointer;
+  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:1px;
+  box-shadow:inset -2px -2px 0 rgba(0,0,0,.14), inset 2px 2px 0 rgba(255,255,255,.5);
+}
+.mc-chip:hover{filter:brightness(1.05)}
+.mc-chip:focus-visible{outline:3px solid #63A93E;outline-offset:2px}
+.mc-chip-l{font:800 13px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.04em}
+.mc-chip-s{font:700 10px ui-monospace,SFMono-Regular,Menlo,monospace;opacity:.7}
+.mc-chip.mc-cleared{background:#63A93E;border-color:#3F7028;color:#0F2216}
+.mc-chip.mc-tried{background:#E8A93C;border-color:#B07E18;color:#3A2A08}
+.mc-chip.mc-now{box-shadow:inset -2px -2px 0 rgba(0,0,0,.14),
+  inset 2px 2px 0 rgba(255,255,255,.5), 0 0 0 3px #2B79C2}
+
+/* ---------- the mine ---------- */
+.mc-ore{display:inline-flex;align-items:center;gap:5px;margin:3px 5px 3px 0;
+  font:800 11px ui-monospace,"SF Mono",Consolas,monospace;color:#E8E3D6}
+.mc-ore img{width:22px;height:22px;image-rendering:pixelated;display:block}
+.mc-ore.mc-noart::before{content:"";width:20px;height:20px;background:var(--ore);
+  box-shadow:inset -3px -3px 0 rgba(0,0,0,.34), inset 3px 3px 0 rgba(255,255,255,.22);
+  border:2px solid rgba(0,0,0,.45)}
+.mc-ore b{font-weight:800}
+.mc-ore.mc-dim{opacity:.42}
+.mc-haul,.mc-beacon{margin-top:10px;padding:9px 11px;background:rgba(0,0,0,.26);
+  border:2px solid rgba(255,255,255,.10);text-align:left}
+.mc-haullab{display:block;font:800 9.5px ui-monospace,Consolas,monospace;
+  letter-spacing:.14em;color:#9FB0AA;margin-bottom:5px}
+.mc-beacon small,.mc-shutportal small{display:block;margin-top:6px;
+  font:600 11px system-ui,sans-serif;color:#9FB0AA;line-height:1.45}
+.mc-beacon.mc-lit{border-color:#40D5D1;
+  box-shadow:0 0 0 2px rgba(64,213,209,.22), 0 0 22px rgba(64,213,209,.28)}
+.mc-shutportal{margin-top:10px;padding:10px 12px;background:#160E22;
+  border:2px solid #4B2E73;color:#C9A6F0;text-align:left;
+  font:800 11.5px ui-monospace,Consolas,monospace;letter-spacing:.1em}
+
+.mc-blk{display:inline-flex;flex-direction:column;align-items:center;gap:2px;
+  margin:4px 9px 2px 0;font:800 10px ui-monospace,Consolas,monospace;color:#C4CFCB}
+.mc-blk img{width:34px;height:34px;image-rendering:pixelated;display:block}
+.mc-blk.mc-noart::before{content:"";width:30px;height:30px;background:var(--ore);
+  box-shadow:inset -4px -4px 0 rgba(0,0,0,.34),inset 4px 4px 0 rgba(255,255,255,.22);
+  border:2px solid rgba(0,0,0,.45)}
+.mc-blk.mc-dim img{filter:grayscale(.15) brightness(.8)}
+.mc-blk.mc-dim{opacity:.75;color:#7C8A85}
+.mc-portal{float:right;width:46px;height:46px;margin:-2px 0 0 10px;image-rendering:pixelated;
+  filter:grayscale(1) brightness(.6)}
+.mc-egg{margin-top:10px;padding:8px 11px;background:rgba(0,0,0,.26);
+  border:2px solid rgba(255,255,255,.10);display:flex;align-items:center;gap:9px;
+  font:800 10.5px ui-monospace,Consolas,monospace;letter-spacing:.1em;color:#C9A6F0}
+.mc-egg img{width:30px;height:30px;image-rendering:pixelated}
+
+/* The purse, top-left of the HUD, opposite the sound switch. */
+.mc-purse{position:absolute;left:calc(8px + env(safe-area-inset-left));
+  bottom:calc(8px + env(safe-area-inset-bottom));
+  display:flex;align-items:center;gap:5px;pointer-events:none;
+  padding:3px 8px 3px 5px;border:2px solid #0D0D0F;background:rgba(20,20,22,.82);
+  font:800 13px/1 ui-monospace,"Cascadia Mono",Consolas,monospace;color:#FCFC54}
+.mc-coin{width:17px;height:17px;display:block;image-rendering:pixelated}
+/* stands in until the coin sprite exists, so this works before the art lands */
+.mc-coin-fb{border-radius:50%;background:radial-gradient(circle at 34% 30%,#FFE27A,#E0A83C 62%,#9C6F1E);
+  border:2px solid #6E4B10;box-shadow:inset -2px -2px 0 rgba(0,0,0,.28)}
+@media (max-width:400px){.mc-purse{font-size:12px;padding:2px 6px 2px 4px}
+  .mc-coin{width:15px;height:15px}}
+
+/* MC-TOGGLE-CSS-START — the hub borrows everything between these two
+   markers, because it has its own stylesheet and needs only this control. */
+/* The sound toggle: a real switch rather than a lettered button, so its state
+   reads without being learned. Blocky border, hard inner bevel and the grass
+   green of the banner, so it belongs to the same world as the hotbar. */
+.mc-mute{
+  position:fixed; z-index:60;
+  top:calc(10px + env(safe-area-inset-top));
+  right:calc(10px + env(safe-area-inset-right));
+  display:flex; align-items:center; gap:7px;
+  padding:5px 9px 5px 6px; border:3px solid #0D0D0F; background:#1F1F23;
+  cursor:pointer; opacity:.94;
+  box-shadow:inset -3px -3px 0 rgba(0,0,0,.4), inset 3px 3px 0 rgba(255,255,255,.06),
+             0 3px 0 rgba(0,0,0,.35);
+}
+.mc-mute:hover{opacity:1}
+.mc-mute:active{transform:translateY(2px); box-shadow:inset -3px -3px 0 rgba(0,0,0,.4),
+             inset 3px 3px 0 rgba(255,255,255,.06)}
+.mc-mute:focus-visible{opacity:1; outline:3px solid #FCFC54; outline-offset:2px}
+
+/* the track */
+.mc-sw{
+  position:relative; flex:none; width:50px; height:26px;
+  background:#63A93E; border:3px solid #0D0D0F;
+  box-shadow:inset 2px 2px 0 rgba(0,0,0,.28);
+  transition:background .16s steps(2);
+}
+.mc-mute.off .mc-sw{background:#5A5A60}
+
+/* the knob, carrying the speaker */
+.mc-knob{
+  position:absolute; top:-1px; left:22px; width:22px; height:22px;
+  display:grid; place-items:center;
+  background:#E9E6DE; color:#141416; border:2px solid #0D0D0F;
+  box-shadow:inset -2px -2px 0 rgba(0,0,0,.22);
+  transition:left .16s steps(3);
+}
+.mc-mute.off .mc-knob{left:-1px; background:#B9B5AC; color:#2A2A2E}
+.mc-spk{width:15px; height:15px; display:block}
+
+.mc-lbl{
+  font:800 11px/1 ui-monospace,"Cascadia Mono",Consolas,monospace;
+  letter-spacing:.1em; color:#63A93E; min-width:2.2em; text-align:left;
+}
+.mc-mute.off .mc-lbl{color:#8E8A82}
+
+@media (max-width:420px){
+  .mc-mute{gap:5px; padding:4px 7px 4px 5px}
+  .mc-sw{width:42px; height:23px}
+  .mc-knob{width:19px; height:19px; left:18px}
+  .mc-spk{width:13px; height:13px}
+  .mc-lbl{font-size:10px}
+}
+@media (prefers-reduced-motion:reduce){
+  .mc-sw,.mc-knob{transition:none}
+}
+/* MC-TOGGLE-CSS-END */
+</style>
+<!-- /MC-THEME-CSS -->
+</head>
+<body>
+<!-- MC-THEME-JS: generated by build_theme.py, do not hand-edit -->
+<script>window.__MC_PREFIX__="../../assets/";
+window.__MC_HAS_BOSS__=true;
+window.__MC_SFX__={"tool": "data:audio/mpeg;base64,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", "correct": "data:audio/mpeg;base64,//OAxAAAAAAAAAAAAFhpbmcAAAAPAAAAGAAAEU0AEhISEi8vLy9CQkJCUlJSUmFhYWFxcXFxhISEhISUlJSUoaGhoa2tra26urq6w8PDw8vLy8vL0tLS0tra2trh4eHh6Ojo6O7u7u709PT09Pn5+fn7+/v7/Pz8/P7+/v7/////AAAAPExBTUUzLjEwMARuAAAAAAAAAAAVCCQCqCEAAcwAABFN348w+wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP/zoMQAFqGWyutBEADu/7mEMEIAAAAAAHOY8HIgAjIQnOd/85CNOBgYuHAznOc5zk/sc/QhCHO//9TgAgEHcQAh/EAIfBwEHf/B8H/BAEPu5cEAQBAEATB8HwfD4IAgCDuIDnLg4CDlvQzbn/CABAC0Uwdd/zANLLX7n6RVCsTDQYa9DLWNCEAGKTrhFjDgO28BhUUGcgyYICZgAFCIDrDF+gcGqNpKHpbkOAAED8NTLOmn2Y7BzSTEUNMkVgymGzEQAAwaSANjBkgA68WUjg8FRqzh+oqBB6YEHRgoDgkMCp+ARwIAUpNeisKiwKEwsDBUAW13uTAzcVIvgYBCYcDgSAzBA3Bg1MajszcDQEHSETIZQqDasYMDAImGcSbLEYnSS9eIsB2By+Ai+QqIzEYHFQgBRWYLFpr/89DE0XEsFp6xmeEAfIZQaYHEIbHAuQAMHB2NqVkQSV8644FSEAMCdteqnCHF+ZBHnqhhqrWh4KrbXGu1sEpcMAiUyKM1LwcDh0WDxcVrMJAIwqFggZmBhgYAAoIG5gsBgEdGEwc+hgIBwGy5r9hoLULK7RUBsRTJZsnHBLCx0GkQPvLJkMOtIi691+NxIAIio46NoECpCFTGpxEYWMOgIWDQjHRhARGHQYMgMLicyQDTF4OMdhIxGCTBAJEQTDAiGAQSSphsMrqbsAh1JV/O8y9SqBZS80BoJ2cp6MB6/TD2mtxcdTUiD6qkHsvT5LcrgTteRIdgzOcYvD8laBKJMgAA+YCB/+bF8mHSPupSKzFEB6QGeqZQ1bq6vYW6a9O2cu36aM9x1qGmRJrHWYGtK3Pk8MX3RwY/VFqMYxinoYNj+9U1FJ4EpTLbVHLdX6OenpcziWv7A9908ZfTWaOlvzqiDFRwUlKjEjln0FuWQxHZDKYejzVpZLo/M2Ke1WdSHhwgOCcWzLKd3fnXQcB2a2qR7q8zLI9Rzchg6UvSQCCNR6JdlTXoDoLTSI9Tz9eVX6WHZTlq5Muwo9Dy3asdwjUvp7y+ooyCep4jQReTwv41OyliCf/zoMTVRLQWnuHTyABQ0dxlvQTO0sxG5ZSsbf2VQ7lGZJRzkuqWI1mwyhgWNMRlFNyalGE3cbDOT+D+WI1MwO7zy8uK3w5DkdY9fgAP64BhD/qRRZFEyWL4rGC0qkwwKC6JSKqJwpDVREjSMUkTF2OmqSC07leIGo9MY3als7awrs/1Xfv6a3RuJy9zKzBMJesVCJs2sbt165VJoVS3ZfnIcqs7Q3LmWKn2oKyrDxXvMfw1qBpZQXaq269Py7y53G/MJHBYa0/C/8Iu1pbb09mGdrGUW88cqaV++hd0lE2c/3z7EEMVpF/07NdaW0tGco77sJVCYAJ8e7bWGaEiuJ2OyuNzXVzTmBCqFIBxXJ9ppYcouIbCpD3ONdtlj/NVvs/XLVvJPiuXUhXOotEx6QHpDyLjeNAzSVX/85DE7j20FqcAhp9YK31iRAIWk0huAA/nwaH/Ssg2RGcR/6XguGVwukicjgiVl9014Do4hen6kfr4XKWX0lO2AfsUVn78Qh+ewj852xMROCnUL3oLG6wtBU8AxaKReGWDPNSSi07j1tLk8ZGt3HeXeVc3B+nG4SV0yFIhkyvgN0yvXBwMpz4ounLMFsZHasb29VlmDUHk2xmRDzvMIIwDbMZDG/w9ryA2hjLGhQlMOoZEJg9pGR8uDbiPmBjclSchukLnnTjbYniLcEMYbzWWKoQTZFQVIsM7zUXLH3RvJddoUOM82Bwj0XaeOg12w61ISkc5L0QgGyXFX7m1sqpRijjQUMT/85DE70FEFq7gFh7YBKxHkd7kqFe5vE4eCZq5NSoaGCKoZgAO+uKBHr0Cdg4wKN+8CEJWlhTQqeVxmQUZjGpJy928f3RTGEuvU3PuNlboTW0dmOWZDlYgyjsUtXJ/k9zWVPpdNSF56t33pSdb+ApubfZX0uahCbFNuvKZuZqT9vdpusNwlPQAgLXhrL7FWhborn20iztNxoaeRXb+P4zlCu1I6PZR6XwXQ2ErwgR06WmtxX6it99n8uh7O1Or1ZjIbWqtims24YwkFjdS4OEKXiUV6lwpq8GKarEjEJuWIMZpL4m21JIatnLKtTQfXzmrrBl5U6QkvpbFeVYaYwn0m1PUzGn/85DE4kMUFqbgAPJMZT9Yz8vmb3c5HO8cF6pPMtzZHZfiGGuu9VsWt2ZcUFkIFevVhliMhmrPKgAP+IEwD/pLGDpdohCEm5384yJPFsE9SzOcO4Ak+ZxUimeH501jUq5qxfuiArStysy61JtYzWWNHQy9vHaMCiDTw9/qv1ZHuWoBIPmW/mINLvVGTrdjeu8gzv01JSXpyA2oxRaBmKUC7ex7l1u0gizh0eDjxOYiVPM3cv7aaosHCZj4+9VSTpmjQn8uX9VdSpYSLPZA1JI5mU128e+e/Ox/xqP4RuVS10HnHSFsSIdL+N+VZNjZ3E3nleDtLVgx9nZqS3DH8LdijvTmUAr/86DEzUIMFqcAPvDc6GlMfR/eXHtbHL03lfKyy6rVExQ5Z1aptdmaOervE7FuqxtpV2w+0oieW687hHC/ELfqpBSsbLOUmdHVAA/76oH/SMDqKJ1Tmt5lZZHh2RnjciKyKmRdBqhDmkwRZTonS4arMEbonyBCflIl00TomR5JpoSYyAErYB64X6w2MdMYZ4GTysiTpcUIKyNGjeHvyYtTCZSMwWoAIFqg11veTAT7WW6WVOXescSSNm01J5o1I2oNj0JK3LmbHtuRHOZxudrUfqpOsE/r/nUKBGl3UvrnBB2AY4d+zx/XQlsPYcuUsPt0lvec/9br1q35VoEfRoSlv87//eaIrWtC9eW2g3D9WK87/e26sRhuVU2EEthwcaLOdTd/eWEBCw0Pb1q03SW2bN4ADvuCQC3t//OQxPA6RBKq4KPxkM8q2qmLlvayLSqDF2L34Dh9xkBh+Vy3m9VH2wppnDtzP2Ivzj3PO/393t47quk+5iVKCByjqXLc7yotWrAc9W2hr1q6nqn3+3L+u02F7KC2gULIi8iJFDr6Xl1fUNTLUL0fq5vI9ETv2f/PcdoKbt61OySNIRhgbNW8dd/SwEnex5pjKtI7kIfnX91rWN6O2LPxiSFQLLgjwpCbWPMtPuyN4F+0/IjBtC/kEU/O/jvluWQ/a7Fm/uIxA0AnP/LL7SaStSi8hoV8kgRC4xC6mG/u5blFV9sqz+o5TtFDEKq65z8qqAxhkhpH3X5ZoJTIAA7/xyEf/uiy//OAxP89fA6jAAM2VZnKBEDxDS6YKPjKEpdKtaQEiAox0zfTMXRMla4m4haqzTLLTZFI1HOAUEASohY3fDTpgNcEljUCo+QhCOu+Pua9Gsp2gSJE5t8byvOcJj1nNmqPEh4+d+sem61rChIQWK9P6ZqcfMrf+aYy56/r/Gq+3GtHjBisgK2b4zWitRDU12xDaW6FCr8fXtqkPXvl6lyAuP1/qrcgkxFqepuql/En3/j/CmxNnDjVOqk6qV/+VwX8fUafqZRT1loAANz4UDIgH//zgMTMMOQOqwCi34X/qqOCskwXC6WEVh3BbHUpTF84FkRUQVuyB9zFFasuk51dHrdJgE4CZUl59SRoxowcn1RiJtLkrdOaqKpaDISF+pQvHyoY5CiforPRLBfAVS1bZKXElqWOLW+xy3Q9RVC6Ez88qeTPnucxv+doSj8fBQF/SPhDC9lKgdPQr97lWaRDZyYjdvnCQIMmYiFY8YvVAA8P13A8A/9h9vJDv1zbHIEjd4lgWT0ocLrG/9WvGrDx66wfaG41jE/+N/+uG0aIXZP/84DEyyYMBq8Yi9WBN3QfTSXPUkNb+/VnD0QX8wbRZnUQ+d84xfdSIdf6C0THW3Ri3+nPUPAFhb/HpQhM2c00l/5yLlThv+0QwudWGCOc3vKseyFEdDyjfMD0LlndiY6VAAAO/HR2Ogj//2UTB9ZiYE2UQteEGK5mVTYYoyZmjudMazQxZKsWaXvfV9ah2AjjrZHV07EfidvS6OEBXkIkyNdHoj5VoihHT6Pd1ec1fr+potEb+QcT9XOZ3//cLCoP/U9jeyKz/37HFSw1/uSK//NgxPUhdAqnEAvUneUCHb/TotlX84VDjMrqAAAP+qWKI5SP9oGL2tGzKYts2hUe8GAzeu8WgPpqNe/xWRbUt/0B8KB1Gc1lC0eWpCxH+3qsdDJx3pFxo2qUr/1ZvQuD3+SOM+Y6f/48aGvzTDn03T//U0e/q6aJ/9V0Tt/Gpz8aAAAN33Z8PA6P//VTN2RRHwT5DxSAhC25xZcB//NQxP4fG/ajGoPPgZI7DAmnqczKrHHpIxzBh0nV/6xTxApYj1Ca9sQ1i4o1LwXsLhhum59FaMHjv729Hb/9Kiok/1AV3FeVLf0Mfzh0e33VH5a//1VRwj/uug+X/svFbq36B4TiGr+kiixOFrP/XCeVwUgLaDT+G1Sj0xfnXrBo6v/zQMT2GWPypxwDzpXQLZagDCXR/+oKAIcO5HcaCqYWVAd2HPb+lcYA4r+u//+n6KO/h4XFWToY/6L+EQFJ+srehf+VescIf1FxB6Cbp/0vvaX+BRVpqgqWjjVKABR9QVylupajMqCr//NQxOsdI/KXHJMLgAejs2WktZdY2SSdGGIcqDUn/6gcQrjqaMtJ2EuczSYzDaHiwIrW6tZhorCRT/iLXZGtZf/TQDCfth0WHjlahosX7cvGjQVv1r///5T/1Mfh7/1Xq3/xYSrRFx3DYheZOpW6ojn+dNXSNFTRmHeRDNZkdKOr9v/zUMTrGSP2kJ4DyrAZYToNmGHtUFrDrqOiwgQIUf0Oo6pHgXEv1zft//WpEVP+dN+c7f/2NLhL+aYj6uv/v9JH+Okkyo+b/+9XQ5F/UYLvBVUAWYaLkUQKcZBgbL6n+jKxtqS/9ThbTQoqpUUB+NjpZPBFRws3m/w7QOv+rXztN/r/80DE+xp79nSeA0rYdDUAYJjm9RFBJ1bv/S1OMEm/q3Wk3/90U39TLqO//R6to/843xYAQAWXAHAquX////6IBRg90fHWUjHi7srJt/QofCUlfyotnBK4l/a///qDv//UP63xb//dUv/zQMTsGBP2WHoDTtT/////yv////////I////K1UxMQU1FMy4xMDBVVVVVTEFNRTMuMTAwVVVVVUxBTUUzLjEwMFVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NAxOYVg/ZQfANLEVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVX/8zDE6w0pykR8AU8MVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVX/8xDE9wQIAjQAAAAAVVVVVVVVVVVVVVVVVf/zEMTyAAAD/AAAAABVVVVVVVVVVVVVVVVV//MQxPIAAANIAAAAAFVVVVVVVVVVVVVVVVX/8xDE8gAAA0gAAAAAVVVVVVVVVVVVVVVVVQ==", "wrong": "data:audio/mpeg;base64,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"};</script>
+<script>/* ===== Minecraft theme layer — shared source =====
+   Built once, injected into every app. Do not edit inside an app's
+   index.html; edit theme/mc.js and rebuild, or the four copies drift.
+
+   Contract:
+     MC.config({app, shake, lift, dragon})  once, before anything else
+     MC.begin(id)                           entering a level — refills hearts
+     MC.right()                             a correct answer
+     MC.wrong(missKey)                      a wrong answer — costs half a heart
+     MC.note(missKey)                       record a miss without spending one
+     MC.credit(missKey)                     count a fix without a burst
+     MC.clear(id, pct, {boss})              level finished — may award a tool
+     MC.chest(el, pct, {id})                paint the results reveal into el
+     MC.bests()                             {id: bestPct} for this app
+     MC.mute(on)                            sound off/on, remembered across apps
+     MC.ask(item)                           the wording to ask it in this run
+     MC.runs(id)                            every attempt at one activity
+     MC.picker(el, items, cur, onPick)       a strip of level chips
+     MC.state()                             read-only snapshot (used by the hub)
+
+   No death, no game over. Hearts only shrink the loot. A kid who is stuck
+   must never hit a wall — see HANDOFF.
+*/
+(function () {
+  "use strict";
+
+  var PREFIX = window.__MC_PREFIX__ || "../../assets/";
+  var INLINE = window.__MC_INLINE__ || null;
+  var HAS_BOSS = window.__MC_HAS_BOSS__ === true;
+  var url = function (n) { return INLINE ? (INLINE[n] || "") : PREFIX + n + ".png"; };
+
+  /* ---------- persistence (shared origin, so shared across all four apps) ---------- */
+  var KEY = "mc.study.v1";
+  var S;
+  try { S = JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) { S = {}; }
+  if (!S.cleared || typeof S.cleared !== "object") S.cleared = {};
+  if (!S.misses || typeof S.misses !== "object") S.misses = {};
+  if (typeof S.tool9 !== "boolean") S.tool9 = false;
+  if (!S.ore || typeof S.ore !== "object") S.ore = {};
+  if (!S.gem || typeof S.gem !== "object") S.gem = {};   // "app:id" -> diamond taken
+  if (typeof S.dragon !== "number") S.dragon = 0;
+  /* Every attempt, not just the best one: "app:id" -> [{p:pct, t:when, x:partial}].
+     `cleared` keeps the high score because that is what the game rewards, but a
+     parent wants the shape of the practice — three tries drifting down is worth
+     knowing about even when the best of them was 90. Capped so a year of daily
+     practice cannot fill localStorage. */
+  if (!S.runs || typeof S.runs !== "object") S.runs = {};
+  var RUNS_KEPT = 25;
+  if (typeof S.mute !== "boolean") S.mute = false;
+  /* Coins. The tools run out and the mine takes a while to open, so there was a
+     long middle stretch where a good run paid nothing. Coins pay on every run,
+     from the first one, scaled to how it went — a floor that never disappears
+     and a ceiling that never arrives. */
+  if (typeof S.coins !== "number" || !isFinite(S.coins)) S.coins = 0;
+
+  /* ---------- sound ----------
+     Every answer is heard: a coin when he is right, a soft glass note when he
+     is not, and an unlock when a tool is earned. The wrong note is deliberately
+     the gentlest of the three — it marks the moment without scolding, which is
+     the same reason hearts shrink the loot instead of ending the run.
+
+     All three arrive base64-inlined from the injector, like the sprites under
+     --inline, so an app is still one file you can open from anywhere. They are
+     small enough (about 18 KB of base64 between them) to inline on every build
+     rather than only when asked. */
+  var SFX = window.__MC_SFX__ || null;
+  var VOL = 0.32;                       // quiet by default; this is a study aid
+  /* The wrong note fires more often than either of the others, so it sits
+     lower — audible, but never the loudest thing in the room. */
+  var VOLS = { correct: 0.32, tool: 0.38, wrong: 0.20 };
+  var clips = null, primed = false;
+
+  function vol(k) { return VOLS[k] === undefined ? VOL : VOLS[k]; }
+
+  function build_clips() {
+    if (clips || !SFX) return;
+    clips = {};
+    for (var k in SFX) {
+      try {
+        var a = new Audio(SFX[k]);
+        a.preload = "auto";
+        a.volume = vol(k);
+        clips[k] = a;
+      } catch (e) { /* no Audio in this environment — stay silent */ }
+    }
+  }
+
+  /* Browsers refuse to play audio until the user has interacted with the page,
+     and the refusal is a rejected promise, not an error we would otherwise see.
+     So on the first touch or key we start each clip muted and immediately stop
+     it, which satisfies the policy and leaves them ready to fire instantly. */
+  function unlock() {
+    if (primed) return;
+    primed = true;
+    build_clips();
+    for (var k in clips) prime_one(clips[k], vol(k));
+    document.removeEventListener("pointerdown", unlock, true);
+    document.removeEventListener("keydown", unlock, true);
+  }
+  function prime_one(a, v) {
+    try {
+      a.volume = 0;
+      var p = a.play();
+      var settle = function () { try { a.pause(); a.currentTime = 0; } catch (e) {} a.volume = v; };
+      if (p && p.then) p.then(settle, settle); else settle();
+    } catch (e) { a.volume = v; }
+  }
+  if (typeof document !== "undefined" && document.addEventListener) {
+    document.addEventListener("pointerdown", unlock, true);
+    document.addEventListener("keydown", unlock, true);
+  }
+
+  function play(name) {
+    if (S.mute || !SFX) return;
+    build_clips();
+    var a = clips && clips[name];
+    if (!a) return;
+    try {
+      a.currentTime = 0;
+      a.volume = vol(name);
+      var p = a.play();
+      if (p && p.catch) p.catch(function () { /* still locked; next one will land */ });
+    } catch (e) { /* never let a missing speaker break a question */ }
+  }
+  function save() { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} }
+
+  var TOOLS = ["wooden pickaxe", "stone pickaxe", "iron pickaxe", "diamond pickaxe",
+               "sword", "torch", "shield", "bow", "elytra"];
+
+  /* Tools 1-8 come from how many activities have been cleared anywhere on the
+     site at 75%+. Tool 9, the elytra, only ever comes from spelling Challenge 2 —
+     the one level where he writes his own sentences. */
+  /* ---------- the mine ----------
+     The tool bar was the whole ladder, and with twenty-odd activities on the
+     site he fills it long before he runs out of work. So the tools are only
+     the first age. Once all nine are held the mine opens, and from then on
+     what a run is worth depends on how well it went rather than on whether it
+     was new. Coal through gold are repeatable, so there is always something to
+     dig; diamond is once per activity, so the only way to a pile of them is
+     breadth AND mastery; emerald comes from the dragon alone. */
+  var ORE = [
+    { k: "coal",     name: "coal",     hex: "#2C2C30" },
+    { k: "copper",   name: "copper",   hex: "#C1663F" },
+    { k: "iron",     name: "iron",     hex: "#C6C2BC" },
+    { k: "gold",     name: "gold",     hex: "#E4C04A" },
+    { k: "redstone", name: "redstone", hex: "#B4262A" },
+    { k: "lapis",    name: "lapis",    hex: "#2A5CB4" },
+    { k: "diamond",  name: "diamond",  hex: "#40D5D1" },
+    { k: "emerald",  name: "emerald",  hex: "#2FA84F" }
+  ];
+  var ORE_BY = {};
+  for (var _o = 0; _o < ORE.length; _o++) ORE_BY[ORE[_o].k] = ORE[_o];
+
+  /* A beacon is built from the four block types Minecraft actually accepts.
+     Nine of a mineral makes a block. */
+  var BEACON = ["iron", "gold", "diamond", "emerald"];
+
+  function oreCount(k) { return S.ore[k] || 0; }
+  function blocks(k) { return Math.floor(oreCount(k) / 9); }
+  function beaconLit() {
+    for (var i = 0; i < BEACON.length; i++) if (blocks(BEACON[i]) < 1) return false;
+    return true;
+  }
+
+  /* How many cleared activities each of the first eight tools costs.
+     It used to be one apiece, which was written when the site had about a dozen
+     activities. There are forty now, so the whole hotbar filled inside a
+     fortnight and the next thirty-odd runs paid nothing at all. Spread over a
+     term instead, steeply enough at the start that the first two still arrive
+     the same evening. */
+  var TOOL_GATE = [1, 2, 3, 5, 7, 10, 14, 18];
+
+  function clearedCount() {
+    var n = 0, k;
+    for (k in S.cleared) if (S.cleared[k] >= 75) n++;
+    return n;
+  }
+  /* The ninth tool used to hang on one specific level, spelling:l7. If that
+     level was never set as homework the mine could not open at all — he could
+     clear all forty activities and still be locked out. It now asks for breadth:
+     something cleared in every subject he has work in. That cannot strand him,
+     and it rewards the thing worth rewarding. */
+  function subjectsCleared() {
+    var seen = {}, k;
+    for (k in S.cleared) if (S.cleared[k] >= 75) seen[k.split(":")[0]] = 1;
+    var n = 0, a;
+    for (a in seen) n++;
+    return n;
+  }
+  function toolsFrom(n) {
+    var got = 0;
+    for (var i = 0; i < TOOL_GATE.length; i++) if (n >= TOOL_GATE[i]) got = i + 1;
+    return got;
+  }
+  function unlocked() {
+    var n = toolsFrom(clearedCount());
+    var nine = !!S.tool9 || subjectsCleared() >= ELYTRA_SUBJECTS;
+    return { count: n, nine: nine, all9: n >= 8 && nine,
+             cleared: clearedCount(), next: TOOL_GATE[n] || null };
+  }
+  var ELYTRA_SUBJECTS = 5;   // history, science, reading, spelling, vocabulary
+  function mineOpen() { return unlocked().all9; }
+  function has(slot) { var u = unlocked(); return slot === 9 ? u.nine : slot <= u.count; }
+
+  /* ---------- state ---------- */
+  var cfg = { app: "app", shake: null, lift: null, burst: 320, hud: true,
+              /* Which activities can summon the dragon. null = any level in this
+                 app. An array restricts it to those ids — spelling passes ["l7"]
+                 so only Challenge 2, the hardest level of whatever week's list
+                 is loaded, can wake it. */
+              dragon: null };
+  var halves = 20;          // 10 hearts, tracked in halves
+  var missedHere = {};      // keys missed during this level
+  var fixedHere = 0;        // ...and later got right — the comeback count
+  var partialRun = false;   // a correction round over just the missed items
+  var hud, heartsEl, barEl, muteEl, purseEl, lastNew = 0;
+  var goodN = 0, badN = 0;  // cycle the sprites so it isn't the same one every time
+  var askSeq = 0, askPick = {};   // which wording each question is using this run
+
+  /* The sound toggle sits at the top of every page, on its own rather than
+     inside the HUD. Two reasons: the HUD lives at the bottom and only appears
+     once a level starts, and the two Wordly Wise tests run with hud:false — so
+     a toggle parented to the HUD left no way at all to mute a test. This mounts
+     on the hub as well, wherever the engine is present and there is sound. */
+  function mountMute() {
+    if (muteEl || !SFX || typeof document === "undefined" || !document.body) return;
+    muteEl = document.createElement("button");
+    muteEl.type = "button";
+    muteEl.id = "mc-mute";
+    muteEl.addEventListener("click", function () { MC.mute(!S.mute); });
+    document.body.appendChild(muteEl);
+    drawMute();
+  }
+  if (typeof document !== "undefined" && document.addEventListener) {
+    if (document.readyState === "loading")
+      document.addEventListener("DOMContentLoaded", mountMute);
+    else mountMute();
+  }
+
+  /* A speaker, drawn rather than set in type: a musical note said "sound" but
+     not "sound is on", and the note-with-a-stroke was too small a mark to read
+     at a glance. A crossed-out speaker is the sign everyone already knows. */
+  function speaker(off) {
+    var cone = '<path d="M3 9.5v5h3.2L11 18.5v-13L6.2 9.5H3z"/>';
+    var waves = off ? ""
+      : '<path d="M13.6 8.4a4.6 4.6 0 010 7.2" fill="none" stroke="currentColor"' +
+        ' stroke-width="1.9" stroke-linecap="round"/>' +
+        '<path d="M15.9 6a7.8 7.8 0 010 12" fill="none" stroke="currentColor"' +
+        ' stroke-width="1.9" stroke-linecap="round"/>';
+    var slash = off
+      ? '<path d="M13.2 8.6l6.4 6.8" fill="none" stroke="currentColor"' +
+        ' stroke-width="2.2" stroke-linecap="round"/>'
+      : "";
+    return '<svg class="mc-spk" viewBox="0 0 24 24" aria-hidden="true" focusable="false"' +
+           ' fill="currentColor">' + cone + waves + slash + '</svg>';
+  }
+
+  /* The purse. Deliberately on screen the whole time he is working, because the
+     point of a currency is that it is visibly going up. Falls back to a drawn
+     coin if the sprite is not there yet, so this works before the art lands. */
+  function drawCoins() {
+    if (!purseEl) return;
+    var src = url("coin");
+    purseEl.innerHTML = (src ? '<img class="mc-coin" alt="" src="' + src + '">'
+                             : '<i class="mc-coin mc-coin-fb"></i>') +
+                        '<b>' + S.coins + '</b>';
+  }
+
+  function drawMute() {
+    if (!muteEl) return;
+    muteEl.innerHTML =
+      '<span class="mc-sw"><span class="mc-knob">' + speaker(S.mute) + '</span></span>' +
+      '<span class="mc-lbl">' + (S.mute ? "OFF" : "ON") + '</span>';
+    muteEl.setAttribute("aria-label",
+      S.mute ? "Sound off — tap to turn sound on" : "Sound on — tap to mute");
+    muteEl.setAttribute("aria-pressed", S.mute ? "true" : "false");
+    muteEl.setAttribute("title", S.mute ? "Sound off" : "Sound on");
+    muteEl.className = "mc-mute" + (S.mute ? " off" : "");
+  }
+
+  /* ---------- HUD ---------- */
+  function build() {
+    if (hud || cfg.hud === false) return;
+    hud = document.createElement("div");
+    hud.className = "mc-hud";
+    hud.id = "mc-hud";
+    hud.innerHTML = '<div class="mc-purse" id="mc-purse"></div>' +
+                    '<div class="mc-hearts" id="mc-hearts"></div>' +
+                    '<div class="mc-bar" id="mc-bar"></div>';
+    document.body.appendChild(hud);
+    purseEl = hud.querySelector("#mc-purse");
+    drawCoins();
+    heartsEl = hud.querySelector("#mc-hearts");
+    barEl = hud.querySelector("#mc-bar");
+    drawBar();
+    drawHearts();
+    fit();
+    window.addEventListener("resize", fit);
+    // the app's own bar can grow when feedback appears — ride above it
+    if (cfg.lift && window.ResizeObserver) {
+      var t = document.querySelector(cfg.lift);
+      if (t) new ResizeObserver(function () { lift(); }).observe(t);
+    }
+    // the HUD is appended before the rest of the page parses, so its height
+    // is not final yet; re-measure once the document is up
+    if (document.readyState === "loading")
+      document.addEventListener("DOMContentLoaded", fit);
+    else setTimeout(fit, 0);
+    window.addEventListener("orientationchange", function () { setTimeout(fit, 120); });
+  }
+
+  /* The hotbar must never wrap and must never overflow. Size the slot from the
+     viewport and let the hearts follow it. Checked 300-1024px. */
+  function fit() {
+    if (!hud) return;
+    var vw = Math.max(280, document.documentElement.clientWidth || window.innerWidth);
+    var vh = Math.max(320, document.documentElement.clientHeight || window.innerHeight);
+    var bsz = Math.max(150, Math.min(cfg.burst, Math.round(vw * 0.55), Math.round(vh * 0.42)));
+    var avail = Math.min(430, vw - 16);
+    var ss = Math.max(24, Math.min(46, Math.floor(avail / 9)));
+    var barw = ss * 9;
+    hud.style.setProperty("--mc-ss", ss + "px");
+    hud.style.setProperty("--mc-barw", barw + "px");
+    hud.style.setProperty("--mc-hh", Math.max(13, Math.round(ss * 0.5)) + "px");
+    hud.style.setProperty("--mc-burst", bsz + "px");
+    document.documentElement.style.setProperty("--mc-burst", bsz + "px");
+    lift();
+    // keep app content clear of the HUD
+    var h = hud.offsetHeight || 70;
+    document.body.style.paddingBottom = (h + (cfg._liftpx || 0) + 10) + "px";
+  }
+
+  /* Only the vocabulary app has a persistent fixed bar of its own, and it grows
+     when feedback appears. Ride above whatever height it currently is. */
+  function lift() {
+    if (!cfg.lift || !hud) return;
+    var t = document.querySelector(cfg.lift);
+    var px = (t && t.offsetParent !== null) ? t.offsetHeight : 0;
+    cfg._liftpx = px;
+    hud.style.setProperty("--mc-lift", px + "px");
+  }
+
+  function drawHearts() {
+    if (!heartsEl) return;
+    var out = "", i, v;
+    for (i = 0; i < 10; i++) {
+      v = Math.max(0, Math.min(2, halves - i * 2));
+      out += '<img class="mc-heart" data-v="' + v + '" alt="" src="' +
+             url(v === 2 ? "heart-full" : v === 1 ? "heart-half" : "heart-empty") + '">';
+    }
+    heartsEl.innerHTML = out;
+  }
+
+  /* Renders a mineral. The coloured block is CSS, so this works before any
+     ore art exists; if the sprite is there it loads on top, and if it is not
+     the broken image removes itself rather than showing a torn-page icon. */
+  function oreChip(k, label, on) {
+    var o = ORE_BY[k];
+    return '<span class="mc-ore' + (on === false ? " mc-dim" : "") + '" title="' + o.name +
+           '" style="--ore:' + o.hex + '">' +
+           '<img alt="" src="' + url("ore-" + k) +
+           '" onerror="this.parentNode.classList.add(\'mc-noart\');this.remove()">' +
+           (label ? '<b>' + label + "</b>" : "") + "</span>";
+  }
+
+  /* A beacon slot. Earned slots show their block; an unearned one shows the
+     plain stone stand-in, so the row reads as a pyramid under construction
+     rather than as four mystery squares. Either falls back to a CSS block. */
+  function blockChip(b) {
+    var got = b.blocks >= 1;
+    return '<span class="mc-blk' + (got ? "" : " mc-dim") + '" title="' + b.name +
+           '" style="--ore:' + b.hex + '">' +
+           '<img alt="" src="' + url(got ? "block-" + b.k : "block-locked") +
+           '" onerror="this.parentNode.classList.add(\'mc-noart\');this.remove()">' +
+           "<b>" + b.blocks + "/1</b></span>";
+  }
+
+  function drawBar() {
+    if (!barEl) return;
+    var out = "", i, on;
+    for (i = 1; i <= 9; i++) {
+      on = has(i);
+      out += '<div class="mc-slot' + (i === lastNew ? " mc-new" : "") + '" data-n="' + i +
+             '" style="background-image:url(' + url("slot") + ')" title="' +
+             (on ? TOOLS[i - 1] : "locked") + '">' +
+             '<img class="mc-frame" alt="" src="' + url("slot-frame") + '">' +
+             (on ? '<img class="mc-tool" alt="' + TOOLS[i - 1] + '" src="' + url("tool-" + i) + '">' : "") +
+             "</div>";
+    }
+    barEl.innerHTML = out;
+  }
+
+  /* ---------- sprite bursts ---------- */
+  function burst(name, cls, narrow) {
+    var old = document.querySelector(".mc-burst");
+    if (old && old.parentNode) old.parentNode.removeChild(old);
+    var d = document.createElement("div");
+    d.className = "mc-burst " + cls;
+    if (narrow) d.setAttribute("data-w", "narrow");
+    d.innerHTML = '<img alt="" src="' + url(name) + '">';
+    document.body.appendChild(d);
+    setTimeout(function () { if (d.parentNode) d.parentNode.removeChild(d); }, 1600);
+  }
+
+  function shake() {
+    if (!cfg.shake) return;                 // science already shakes its own card
+    var t = document.querySelector(cfg.shake);
+    if (!t) return;
+    t.classList.remove("mc-shake");
+    void t.offsetWidth;
+    t.classList.add("mc-shake");
+    setTimeout(function () { t.classList.remove("mc-shake"); }, 400);
+  }
+
+  /* ---------- public ---------- */
+  var MC = {
+    config: function (o) {
+      for (var k in o) if (o.hasOwnProperty(k)) cfg[k] = o[k];
+      if (document.body) build(); else
+        document.addEventListener("DOMContentLoaded", build);
+      return MC;
+    },
+
+    /* Entering a level. Pass {partial:true} for a correction round that
+       replays only the missed items — those must not overwrite a best score
+       or hand out the big rewards, since three words at 100% is not the same
+       achievement as twelve. */
+    begin: function (opts) {
+      halves = 20; lastNew = 0;
+      missedHere = {}; fixedHere = 0;
+      partialRun = !!(opts && opts.partial);
+      askPick = {};              // a new run gets new wordings
+      build(); drawHearts(); drawBar(); fit();
+    },
+
+    /* Credit a fix without any fanfare. The vocabulary sheet settles 26 words
+       on a single check — that is one burst, not twenty-six. */
+    credit: function (missKey) {
+      if (missKey && missedHere[missKey]) { fixedHere++; delete missedHere[missKey]; }
+    },
+
+    /* Pass the same key you passed to wrong()/note() and the correction is
+       counted — that is what earns the comeback badge. */
+    right: function (missKey) {
+      build();
+      MC.credit(missKey);
+      goodN = goodN % 4 + 1;
+      burst("win-" + goodN, "mc-good");
+      play("correct");
+    },
+
+    /* Record a miss without any cost. Used where one action covers several
+       items, or where the answer is revealed after the miss already landed. */
+    note: function (missKey) {
+      if (!missKey) return;
+      missedHere[missKey] = true;
+      var a = cfg.app;
+      if (!S.misses[a]) S.misses[a] = {};
+      S.misses[a][missKey] = (S.misses[a][missKey] || 0) + 1;
+      save();
+    },
+
+    wrong: function (missKey) {
+      build();
+      badN = badN % 4 + 1;
+      burst("bad-" + badN, "mc-bad", badN === 2 || badN === 4);
+      shake();
+      play("wrong");
+      if (halves > 0) {
+        halves--;                            // floors at zero — never a game over
+        drawHearts();
+        var i = Math.floor(halves / 2);
+        var h = heartsEl && heartsEl.children[Math.min(9, i)];
+        if (h) h.classList.add("mc-hit");
+      }
+      MC.note(missKey);
+    },
+
+    /* Records the score, may award a tool. Returns what happened so the
+       results screen can talk about it. */
+    /* Records the score, may award a tool, and works out what he earned.
+       Every band is a real Minecraft tier, because every one of them is a
+       tool you are glad to have — there is no booby prize here. */
+    clear: function (id, pct, opts) {
+      opts = opts || {};
+      pct = Math.round(pct);
+      var key = cfg.app + ":" + id;
+      var prev = S.cleared[key];
+      var before = unlocked();
+      var got = null;
+
+      /* Log the try itself before anything else, so it is recorded whether or
+         not it counted towards the game. A partial run is marked rather than
+         dropped: it is still practice a parent may want to see. */
+      if (!S.runs[key]) S.runs[key] = [];
+      var run = { p: pct, t: Date.now() };
+      if (partialRun) run.x = 1;
+      S.runs[key].push(run);
+      if (S.runs[key].length > RUNS_KEPT) S.runs[key] = S.runs[key].slice(-RUNS_KEPT);
+      save();
+
+      if (!partialRun) {
+        S.cleared[key] = Math.max(prev || 0, pct);
+        if (key === "spelling:l7" && pct >= 75) S.tool9 = true;
+        save();
+        var after = unlocked();
+        if (after.nine && !before.nine) got = 9;
+        else if (after.count > before.count) got = after.count;
+        lastNew = got || 0;
+        if (got) play("tool");             // a new tool is the one thing worth a fanfare
+        drawBar();
+      }
+
+      var clean = pct >= 100 && halves === 20;
+      var isBossLevel = cfg.dragon === null || cfg.dragon.indexOf(id) !== -1;
+      /* The End portal stays shut until the whole tool set is his. A perfect
+         run before that is still a perfect run — it just does not summon a
+         dragon, and the chest says what is still missing rather than going
+         quiet about it. */
+      var ready = unlocked().all9;
+      var dragon = clean && !partialRun && isBossLevel && ready;
+      var portalShut = clean && !partialRun && isBossLevel && !ready;
+      if (dragon) { S.dragon++; save(); }
+
+      /* Coins, every run, from the very first one. Finishing at all is worth
+         something — that is the floor, and it is deliberate: a child who had a
+         bad round should still walk away holding more than he arrived with.
+         Everything above the floor is earned. */
+      var coins = 3;
+      if (pct >= 75) coins += 3;
+      if (pct >= 85) coins += 3;
+      if (pct >= 95) coins += 4;
+      if (pct >= 100) coins += 5;
+      if (halves === 20) coins += 5;          // not a heart lost
+      if (fixedHere) coins += 2 * fixedHere;  // fixing a miss pays, and it should
+      if (dragon) coins += 40;
+      if (partialRun) coins = Math.max(2, Math.round(coins / 2));
+      S.coins += coins;
+      save();
+      drawCoins();
+
+      /* What the run was worth at the rock face. Coal through gold repeat, so
+         there is always something to dig; diamond is once per activity, so a
+         pile of them needs breadth AND mastery; emerald comes only from the
+         dragon. Nothing is mined at all until the tool set is complete. */
+      var mined = [];
+      function dig(k, n) {
+        S.ore[k] = (S.ore[k] || 0) + n;
+        mined.push({ k: k, n: n, name: ORE_BY[k].name, hex: ORE_BY[k].hex });
+      }
+      if (mineOpen()) {
+        if (partialRun) {
+          if (pct >= 100) dig("lapis", 1);            // every miss put right
+        } else {
+          if (pct >= 75) dig("coal", 1);
+          if (pct >= 85) dig("copper", 1);
+          if (pct >= 95) dig("iron", 1);
+          if (pct >= 100) dig("gold", 1);
+          if (pct >= 75 && halves === 20) dig("redstone", 1);
+          if (clean && !S.gem[key]) { S.gem[key] = true; dig("diamond", 1); }
+        }
+        if (dragon) dig("emerald", 1);
+        if (mined.length) save();
+      }
+
+      var tier;
+      if (partialRun)   tier = ["CORRECTIONS", "You went back and fixed them. That is the part that sticks."];
+      else if (dragon)  tier = ["DRAGON SLAIN", "Perfect. Not one miss, not one heart."];
+      else if (clean)   tier = ["NETHERITE", "Every single one right."];
+      else if (pct >= 90) tier = ["DIAMOND", "So close to flawless."];
+      else if (pct >= 75) tier = ["IRON", "Solid work \u2014 this one is holding."];
+      else if (pct >= 50) tier = ["STONE", "You got through it. Now you know where to dig."];
+      else                tier = ["WOOD", "You finished it, and that is where everyone starts."];
+
+      /* Badges stack. They reward things accuracy alone does not see. */
+      var badges = [];
+      if (fixedHere)
+        badges.push(fixedHere === 1 ? "TURNED ONE AROUND" : "TURNED " + fixedHere + " AROUND");
+      if (!partialRun && prev != null && pct > prev)
+        badges.push("NEW BEST \u2014 BEAT " + prev + "%");
+      if (!partialRun && (prev == null || prev < 75) && pct >= 75)
+        badges.push("FIRST CLEAR");
+      if (halves > 0 && halves <= 4 && pct >= 50)
+        badges.push("STUCK IT OUT");
+
+      var bea = null;
+      if (mineOpen()) {
+        bea = { lit: beaconLit(), need: [] };
+        for (var bi = 0; bi < BEACON.length; bi++)
+          bea.need.push({ k: BEACON[bi], have: oreCount(BEACON[bi]),
+                          blocks: blocks(BEACON[bi]), name: ORE_BY[BEACON[bi]].name,
+                          hex: ORE_BY[BEACON[bi]].hex });
+      }
+
+      return {
+        mined: mined, beacon: bea, portalShut: portalShut,
+        toolsLeft: (8 - unlocked().count) + (S.tool9 ? 0 : 1),
+        mineOpen: mineOpen(), dragons: S.dragon,
+        tool: got,
+        toolName: got ? TOOLS[got - 1] : null,
+        loot: halves >= 20 ? 4 : halves >= 15 ? 3 : halves >= 8 ? 2 : 1,
+        hearts: halves / 2,
+        fixed: fixedHere,
+        partial: partialRun,
+        tier: tier[0], blurb: tier[1], badges: badges,
+        boss: dragon
+      };
+    },
+
+    /* Paints chest-closed, then opens it on tap or after a beat. */
+    chest: function (host, pct, opts) {
+      if (!host) return null;
+      var r = MC.clear(opts.id, pct, opts);
+      var box = document.createElement("div");
+      box.className = "mc-chest";
+      box.innerHTML = '<img class="mc-lid mc-shut" alt="Closed chest" src="' + url("chest-closed") + '">' +
+                      '<div class="mc-loot"></div>' +
+                      '<div class="mc-tier"></div>' +
+                      '<div class="mc-cap">Tap the chest</div>';
+      host.insertBefore(box, host.firstChild);
+      var lid = box.querySelector(".mc-lid"),
+          loot = box.querySelector(".mc-loot"),
+          tierEl = box.querySelector(".mc-tier"),
+          cap = box.querySelector(".mc-cap"),
+          opened = false;
+
+      function open() {
+        if (opened) return;
+        opened = true;
+        lid.classList.remove("mc-shut");
+        lid.src = url("chest-open");
+        lid.alt = "Open chest";
+        lid.style.cursor = "default";
+        var html = "", i;
+        for (i = 1; i <= r.loot; i++) html += '<img alt="" src="' + url("win-" + i) + '">';
+        loot.innerHTML = html;
+        tierEl.textContent = r.tier;
+        tierEl.setAttribute("data-t", r.tier.split(" ")[0].toLowerCase());
+        cap.textContent = r.blurb;
+        if (r.badges.length) {
+          box.insertAdjacentHTML("beforeend", '<div class="mc-badges">' +
+            r.badges.map(function (b) { return '<span class="mc-badge">' + b + "</span>"; })
+              .join("") + "</div>");
+        }
+        if (r.tool) {
+          box.insertAdjacentHTML("beforeend",
+            '<div class="mc-earned"><img alt="" src="' + url("tool-" + r.tool) + '">' +
+            "<span>NEW &middot; " + r.toolName.toUpperCase() + "</span></div>");
+        }
+        if (r.mined && r.mined.length) {
+          box.insertAdjacentHTML("beforeend",
+            '<div class="mc-haul"><span class="mc-haullab">MINED</span>' +
+            r.mined.map(function (m) { return oreChip(m.k, "+" + m.n); }).join("") +
+            "</div>");
+        }
+        if (r.portalShut) {
+          box.insertAdjacentHTML("beforeend",
+            '<div class="mc-shutportal"><img class="mc-portal" alt="" src="' + url("portal") +
+            '" onerror="this.remove()">THE PORTAL WILL NOT OPEN<small>A perfect run \u2014 ' +
+            'but the End stays shut until all nine tools are yours. ' +
+            (r.toolsLeft === 1 ? "One to go." : r.toolsLeft + " to go.") + "</small></div>");
+        }
+        if (r.beacon) {
+          box.insertAdjacentHTML("beforeend",
+            '<div class="mc-beacon' + (r.beacon.lit ? " mc-lit" : "") + '">' +
+            '<span class="mc-haullab">' + (r.beacon.lit ? "BEACON LIT" : "BEACON") + "</span>" +
+            r.beacon.need.map(function (b) { return blockChip(b); }).join("") +
+            "<small>" + (r.beacon.lit
+              ? "Iron, gold, diamond and emerald, a block of each. That is the whole pyramid."
+              : "Nine of a mineral makes a block. Four blocks light the beacon.") +
+            "</small></div>");
+        }
+        if (!r.boss && r.dragons > 0 && r.mineOpen) {
+          box.insertAdjacentHTML("beforeend",
+            '<div class="mc-egg"><img alt="" src="' + url("dragon-egg") +
+            '" onerror="this.remove()"><span>' +
+            (r.dragons === 1 ? "One dragon down" : r.dragons + " dragons down") +
+            "</span></div>");
+        }
+        if (r.boss) {
+          box.insertAdjacentHTML("beforeend", HAS_BOSS
+            ? '<img class="mc-boss" alt="Ender dragon defeated" src="' + url("boss-defeated") + '">'
+            : '<div class="mc-bossfall">DRAGON SLAIN<small>Perfect run \u2014 no misses, no hearts lost</small></div>');
+        }
+      }
+      lid.addEventListener("click", open);
+      setTimeout(open, 2600);                // opens itself if he doesn't tap
+      return r;
+    },
+
+    /* Best score per activity for THIS app, keyed by bare id — lets an app's
+       level picker show scores that survive a reload. The apps each kept their
+       own in-memory `best` object, which forgot everything on refresh. */
+    bests: function () {
+      var out = {}, pre = cfg.app + ":", k;
+      for (k in S.cleared) if (k.indexOf(pre) === 0) out[k.slice(pre.length)] = S.cleared[k];
+      return out;
+    },
+
+    /* A strip of level chips, each showing whether it has been cleared.
+       Reusable: any app with several parallel levels calls this rather than
+       rolling its own, so history, and anything added later, look the same.
+
+         MC.picker(hostEl, [{id:"set0", label:"1"}, ...], currentId, onPick)
+
+       Chips colour themselves from MC.bests(): green cleared, amber attempted,
+       plain untouched. Re-call it to repaint after a score changes. */
+    picker: function (host, items, current, onPick) {
+      if (!host) return;
+      var best = MC.bests();
+      host.className = "mc-picker";
+      host.innerHTML = items.map(function (it) {
+        var b = best[it.id];
+        var cls = b == null ? "" : (b >= 75 ? " mc-cleared" : " mc-tried");
+        if (it.id === current) cls += " mc-now";
+        return '<button type="button" class="mc-chip' + cls + '" data-id="' + it.id +
+               '" aria-pressed="' + (it.id === current) + '"' +
+               ' title="' + (b == null ? "not tried yet" : "best " + b + "%") + '">' +
+               '<span class="mc-chip-l">' + it.label + "</span>" +
+               '<span class="mc-chip-s">' + (b == null ? "&mdash;" : b + "%") + "</span>" +
+               "</button>";
+      }).join("");
+      var bs = host.querySelectorAll(".mc-chip");
+      for (var i = 0; i < bs.length; i++) {
+        bs[i].addEventListener("click", function () {
+          onPick(this.getAttribute("data-id"));
+        });
+      }
+    },
+
+    state: function () {
+      var u = unlocked();
+      return {
+        tools: u, toolNames: TOOLS,
+        ore: JSON.parse(JSON.stringify(S.ore)), oreKinds: ORE,
+        mineOpen: mineOpen(), dragons: S.dragon,
+        coins: S.coins,
+        gate: TOOL_GATE, elytraNeeds: ELYTRA_SUBJECTS,
+        subjectsCleared: subjectsCleared(),
+        gems: JSON.parse(JSON.stringify(S.gem)),
+        beacon: { needs: BEACON, lit: beaconLit(),
+                  blocks: BEACON.map(function (k) { return blocks(k); }) },
+        cleared: JSON.parse(JSON.stringify(S.cleared)),
+        misses: JSON.parse(JSON.stringify(S.misses)),
+        runs: JSON.parse(JSON.stringify(S.runs)),
+        url: url
+      };
+    },
+
+    /* Every attempt at one activity, oldest first. The hub's report reads this;
+       apps do not need it. */
+    runs: function (id) {
+      var key = cfg.app + ":" + id;
+      return (S.runs[key] || []).slice();
+    },
+
+    /* The wording to ask a question in.
+
+       An item may carry `qv`, a few phrasings of the same question. One is
+       chosen per run, so a second attempt at the same set does not read like a
+       memory test of the first — but it is fixed for the length of that run, so
+       the review screen shows the wording he was actually asked rather than a
+       third one. Items without `qv` just return `q`.
+
+       Options are already re-shuffled on every render; this is the same idea
+       applied to the stem. */
+    ask: function (it) {
+      if (!it) return "";
+      var v = it.qv;
+      if (!v || !v.length) return it.q;
+      if (it.__mcq === undefined) it.__mcq = ++askSeq;
+      if (askPick[it.__mcq] === undefined)
+        askPick[it.__mcq] = (Math.random() * v.length) | 0;
+      return v[askPick[it.__mcq]];
+    },
+
+    /* Sound off/on. Kept in the same saved state as everything else, so the
+       choice holds across every app and survives a reload. Call with no
+       argument to read it. */
+    mute: function (on) {
+      if (on === undefined) return !!S.mute;
+      S.mute = !!on;
+      save();
+      drawMute();
+      return S.mute;
+    },
+
+    reset: function () {
+      S = { cleared: {}, misses: {}, tool9: false, ore: {}, gem: {}, dragon: 0,
+            runs: {}, coins: 0, mute: S.mute };  // muting is a preference, not progress
+      save(); drawBar(); drawCoins();
+    },
+    _relift: lift
+  };
+
+  window.MC = MC;
+})();
+</script>
+<script>MC.config({"app": "math7", "shake": "#card", "lift": null, "dragon": ["s2"]});</script>
+<!-- /MC-THEME-JS -->
+
+<div class="wrap">
+  <a class="hublink" href="../../index.html">&lsaquo; All subjects</a>
+  <a class="hublink back" id="tohome" href="#" hidden></a>
+
+  <div id="home">
+    <p class="eyebrow">Saxon Math Course 2 · Lesson 7 · practice on last night's misses</p>
+    <h1>Finding the Value of a <em>Variable</em></h1>
+    <div class="bigq"><b>The idea</b>
+      When you undo what was done to a variable, which move actually undoes it?</div>
+    <div class="grid" id="sets"></div>
+    <footer id="foot"></footer>
+  </div>
+
+  <div id="play" class="hide">
+    <p class="eyebrow" id="sname"></p>
+    <div class="dots" id="dots"></div>
+    <div class="card" id="card"></div>
+  </div>
+
+  <div id="done" class="hide">
+    <p class="eyebrow" id="dtag"></p>
+    <div class="score" id="scorebox"></div>
+  </div>
+</div>
+
+<script>
+/* Built from the six problems missed on the Lesson 7 written practice: 6, 8,
+   10, 14, 16 and 24. Three sets of four, two variations on each miss, and
+   nothing that is not aimed at one of them — twelve questions is the cap.
+   Every number is different from the homework's; nothing here is copied from
+   the book. Where the miss was the operation rather than the arithmetic the
+   question asks which move is needed, not what the answer is. Each worked
+   example carries the lesson's own method underneath it and a pointer to
+   where the book works the same kind. */
+const DATA = {
+ "bigQuestion": "When you undo what was done to a variable, which move actually undoes it?",
+ "readCta": "Show me a worked example",
+ "readLabel": "Worked example",
+ "vocabLabel": "The way the lesson puts it",
+ "backLabel": "Lesson 7",
+ "sets": [
+  {
+   "id": "s1",
+   "c": "var(--gold)",
+   "tag": "Homework 6 and 10",
+   "name": "Read the Question",
+   "blurb": "Factors, and the words in a question that decide which factors it wants.",
+   "items": [
+    {
+     "type": "pick",
+     "p": "single",
+     "hi": "The question asks for the single-digit factors, so the list stops at 9",
+     "q": "List the <b>single-digit</b> factors of 396.",
+     "opts": [
+      "1, 2, 3, 4, 6",
+      "1, 2, 3, 4, 6, 9, 11, 12",
+      "1, 2, 3, 4, 6, 9",
+      "1, 2, 3, 6, 9"
+     ],
+     "a": 2,
+     "why": "396 = 2 × 2 × 3 × 3 × 11, and its factors are 1, 2, 3, 4, 6, 9, 11, 12, 18, 22, 33, 36, 44, 66, 99, 132, 198 and 396. Only six of those are single digits: 1, 2, 3, 4, 6 and 9. 11 and 12 really are factors — they are just not single digits.",
+     "cite": "Saxon Math Course 2, Lesson 6 — factors",
+     "kind": "single-digit factors"
+    },
+    {
+     "type": "pick",
+     "p": "single",
+     "hi": "The question asks for the single-digit factors, so the list stops at 9",
+     "q": "Ana was asked for the single-digit factors of 84. She wrote: <b>1, 2, 3, 4, 6, 7, 12, 14, 21, 28, 42, 84</b>. What went wrong?",
+     "opts": [
+      "She listed every factor, not only the single-digit ones.",
+      "She included 8, which is not actually a factor of 84.",
+      "Nothing is wrong — that is exactly what was asked.",
+      "She left out 1, and 1 is a factor of every number."
+     ],
+     "a": 0,
+     "why": "Every number Ana wrote really is a factor of 84, so her arithmetic was right. The mistake was in reading the question: it asked for the single-digit factors, which are 1, 2, 3, 4, 6 and 7. Finding the factors is only half the job — the other half is answering the question that was asked.",
+     "cite": "Saxon Math Course 2, Lesson 6 — factors",
+     "kind": "single-digit factors"
+    },
+    {
+     "type": "pick",
+     "p": "common",
+     "hi": "The common factors are the ones that appear on both lists",
+     "q": "List the <b>common factors</b> of 28 and 42.",
+     "opts": [
+      "1, 2, 7, 14",
+      "1, 2, 3, 7, 14",
+      "2, 7, 14",
+      "1, 2, 4, 7, 14"
+     ],
+     "a": 0,
+     "why": "Factors of 28: 1, 2, 4, 7, 14, 28. Factors of 42: 1, 2, 3, 6, 7, 14, 21, 42. The common factors are the ones on both lists: 1, 2, 7 and 14. 4 divides 28 but not 42, and 3 divides 42 but not 28, so neither is common. The greatest common factor is 14.",
+     "cite": "Saxon Math Course 2, Lesson 6 — common factors",
+     "kind": "common factors"
+    },
+    {
+     "type": "pick",
+     "p": "common",
+     "hi": "The common factors are the ones that appear on both lists",
+     "q": "Jamal listed the factors of 24 as <b>1, 2, 3, 4, 6, 8, 12, 24</b> and the factors of 40 as <b>1, 2, 4, 5, 8, 10, 20, 40</b>, then stopped. What does he still have to do to find the common factors?",
+     "opts": [
+      "Take the largest number from each list.",
+      "Add the two lists together.",
+      "Find the numbers that appear on both lists.",
+      "Multiply 24 by 40."
+     ],
+     "a": 2,
+     "why": "Both lists are correct, so the hard part is done. Common factors are the numbers the two lists share: 1, 2, 4 and 8. The greatest common factor is 8. Listing the factors is step one; comparing the lists is step two, and it is the step that is easy to walk past.",
+     "cite": "Saxon Math Course 2, Lesson 6 — common factors",
+     "kind": "common factors"
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "c": "var(--sky)",
+   "tag": "Homework 14 and 16",
+   "name": "Which Move?",
+   "blurb": "Which move undoes what was done to the variable — not what the answer is.",
+   "items": [
+    {
+     "type": "pick",
+     "p": "minus",
+     "hi": "Something was subtracted from the variable, so add it back",
+     "q": "<b>m − 47 = 156.</b> What should you do to both sides to find m?",
+     "opts": [
+      "Add 47",
+      "Divide by 47",
+      "Subtract 47",
+      "Multiply by 47"
+     ],
+     "a": 0,
+     "why": "47 was subtracted from m, so adding 47 undoes it: m = 156 + 47 = 203. Check by putting it back: 203 − 47 = 156. ✓",
+     "cite": "Saxon Math Course 2, Lesson 3 — unknown numbers",
+     "kind": "which move"
+    },
+    {
+     "type": "pick",
+     "p": "times",
+     "hi": "The variable was multiplied, so divide to undo it.",
+     "q": "<b>12n = 156.</b> What should you do to both sides to find n?",
+     "opts": [
+      "Add 12",
+      "Divide by 12",
+      "Multiply by 12",
+      "Subtract 12"
+     ],
+     "a": 1,
+     "why": "12n means 12 × n, so dividing by 12 undoes it: n = 156 ÷ 12 = 13. Check: 12 × 13 = 156. ✓",
+     "cite": "Saxon Math Course 2, Lesson 3 — unknown numbers",
+     "kind": "which move"
+    },
+    {
+     "type": "pick",
+     "p": "minus",
+     "hi": "Something was subtracted from the variable, so add it back",
+     "q": "Ana solved <b>w − 98 = 432</b> by subtracting 98 from both sides, and got w = 334. What went wrong?",
+     "opts": [
+      "Nothing went wrong — 334 passes the check.",
+      "She should have divided both sides by 98 instead.",
+      "She subtracted from one side but not the other.",
+      "98 was being subtracted, so she needed to add it back."
+     ],
+     "a": 3,
+     "why": "Undoing means doing the opposite. 98 was taken away from w, so put it back: w = 432 + 98 = 530. Check: 530 − 98 = 432. ✓ Ana's answer fails that same check — 334 − 98 = 236, not 432 — which is how she could have caught it herself.",
+     "cite": "Saxon Math Course 2, Lesson 3 — unknown numbers",
+     "kind": "spot the wrong move"
+    },
+    {
+     "type": "pick",
+     "p": "divide",
+     "hi": "The variable was divided, so multiply to undo it.",
+     "q": "Priya solved <b>w ÷ 20 = 200</b> by dividing both sides by 20, and got w = 10. What went wrong?",
+     "opts": [
+      "She should have subtracted 20 from both sides.",
+      "Nothing went wrong — 10 passes the check.",
+      "She divided one side but forgot to do the other.",
+      "w was being divided by 20, so she needed to multiply."
+     ],
+     "a": 3,
+     "why": "w was divided by 20, so multiply to undo it: w = 200 × 20 = 4000. Check: 4000 ÷ 20 = 200. ✓ Priya's answer fails the check badly — 10 ÷ 20 is not 200, it is not even a whole number. An answer that lands far below the number you started with is worth a second look.",
+     "cite": "Saxon Math Course 2, Lesson 3 — unknown numbers",
+     "kind": "spot the wrong move"
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "c": "var(--jade)",
+   "tag": "Homework 8 and 24",
+   "name": "Squares and Grouping",
+   "blurb": "Perfect squares, and what the parentheses do to an answer.",
+   "items": [
+    {
+     "type": "pick",
+     "p": "squares",
+     "hi": "A perfect square is a whole number multiplied by itself",
+     "q": "What are the numbers <b>1, 4, 9, 16, 25, 36</b> called?",
+     "opts": [
+      "Multiples of 4",
+      "Perfect squares",
+      "Prime numbers",
+      "Factor pairs"
+     ],
+     "a": 1,
+     "why": "A perfect square is what you get when a whole number is multiplied by itself: 1 × 1, 2 × 2, 3 × 3, 4 × 4, 5 × 5, 6 × 6. They are called squares because that many tiles will make a square.",
+     "cite": "Saxon Math Course 2, Lesson 4 — sequences",
+     "kind": "perfect squares"
+    },
+    {
+     "type": "pick",
+     "p": "squares",
+     "hi": "A perfect square is a whole number multiplied by itself",
+     "q": "Describe this sequence and give the next three numbers: <b>…, 64, 81, 100, 121, …</b>",
+     "opts": [
+      "Adding 17 each time — 138, 155, 172",
+      "Perfect squares — 141, 161, 181",
+      "Perfect squares — 144, 168, 192",
+      "Perfect squares — 144, 169, 196"
+     ],
+     "a": 3,
+     "why": "These are 8 × 8, 9 × 9, 10 × 10 and 11 × 11. The next three are 12 × 12 = 144, 13 × 13 = 169 and 14 × 14 = 196. The gaps grow each time — 17, 19, 21, 23 — so nothing is being added over and over.",
+     "cite": "Saxon Math Course 2, Lesson 4 — sequences",
+     "kind": "perfect squares"
+    },
+    {
+     "type": "pick",
+     "p": "grouping",
+     "hi": "In division the parentheses change the answer",
+     "q": "Compare: <b>800 ÷ (40 ÷ 2)</b> and <b>(800 ÷ 40) ÷ 2</b>",
+     "opts": [
+      "It depends which one you work out first",
+      "The right side is greater",
+      "They are equal",
+      "The left side is greater"
+     ],
+     "a": 3,
+     "why": "Left: 40 ÷ 2 = 20, then 800 ÷ 20 = 40. Right: 800 ÷ 40 = 20, then 20 ÷ 2 = 10. So 40 is greater than 10. Moving the parentheses changed the answer, because division is not associative.",
+     "cite": "Saxon Math Course 2, Lesson 2 — properties of operations",
+     "kind": "grouping"
+    },
+    {
+     "type": "pick",
+     "p": "grouping",
+     "hi": "In division the parentheses change the answer",
+     "q": "Which pair is <b>not</b> equal?",
+     "opts": [
+      "36 ÷ (6 ÷ 2) and (36 ÷ 6) ÷ 2",
+      "(9 + 7) + 4 and 9 + (7 + 4)",
+      "(4 × 5) × 3 and 4 × (5 × 3)",
+      "(2 × 6) × 5 and 2 × (6 × 5)"
+     ],
+     "a": 0,
+     "why": "36 ÷ (6 ÷ 2) = 36 ÷ 3 = 12, but (36 ÷ 6) ÷ 2 = 6 ÷ 2 = 3. The other three pairs are multiplication and addition, which are associative, so each pair comes to the same number — 60, 20 and 60.",
+     "cite": "Saxon Math Course 2, Lesson 2 — properties of operations",
+     "kind": "grouping"
+    }
+   ]
+  }
+ ],
+ "build": {
+  "q": "Pick the <b>two</b> equations that are solved by <b>multiplying both sides by 8</b>.",
+  "lead": "The move, and why",
+  "hit": "Both of those are solved by multiplying by 8.",
+  "p": "divide",
+  "hi": "The variable was divided, so multiply to undo it.",
+  "tiles": [
+   {
+    "t": "x ÷ 8 = 40",
+    "a": true
+   },
+   {
+    "t": "x ÷ 8 = 7",
+    "a": true
+   },
+   {
+    "t": "8x = 40",
+    "a": false
+   },
+   {
+    "t": "x − 8 = 40",
+    "a": false
+   },
+   {
+    "t": "x + 8 = 40",
+    "a": false
+   },
+   {
+    "t": "8 ÷ x = 4",
+    "a": false
+   }
+  ],
+  "answer": "Multiplying by 8 undoes dividing by 8, so it is the move for the two equations where x is divided by 8: x ÷ 8 = 40 gives x = 320, and x ÷ 8 = 7 gives x = 56. The others were done to x in different ways, so they come undone in different ways: 8x = 40 is divided by 8 (x = 5), x − 8 = 40 has 8 added back (x = 48), x + 8 = 40 has 8 subtracted (x = 32), and 8 ÷ x = 4 has x underneath, so x = 8 ÷ 4 = 2.",
+  "cite": "Saxon Math Course 2, Lesson 3 — unknown numbers"
+ },
+ "passages": {
+  "single": {
+   "title": "Single-digit factors",
+   "cite": "Saxon Math Course 2, Lesson 6",
+   "text": [
+    "A factor of a number divides it with nothing left over. To find every factor, work up from 1 in pairs: 1 × 60, 2 × 30, 3 × 20, 4 × 15, 5 × 12, 6 × 10. Once the pairs start repeating you have them all, so the factors of 60 are 1, 2, 3, 4, 5, 6, 10, 12, 15, 20, 30 and 60.",
+    "Now read the question again. If it asks for the single-digit factors, only the ones below 10 belong in the answer: 1, 2, 3, 4, 5 and 6. The question asks for the single-digit factors, so the list stops at 9. The rest are still factors — they were just not what was asked for.",
+    "For a single-digit question there is a quicker route than listing every pair: test 1 through 9 with the divisibility tests below. 1 always divides, and the number itself belongs on the list only if it happens to be a single digit."
+   ],
+   "vocab": [
+    [
+     "divisible by 2",
+     "test",
+     "the last digit is even"
+    ],
+    [
+     "divisible by 3",
+     "test",
+     "the digits add up to a multiple of 3"
+    ],
+    [
+     "divisible by 4",
+     "test",
+     "the last two digits divide by 4"
+    ],
+    [
+     "divisible by 5",
+     "test",
+     "the last digit is 0 or 5"
+    ],
+    [
+     "divisible by 6",
+     "test",
+     "it passes both the test for 2 and the test for 3"
+    ],
+    [
+     "divisible by 8",
+     "test",
+     "the last three digits divide by 8"
+    ],
+    [
+     "divisible by 9",
+     "test",
+     "the digits add up to a multiple of 9"
+    ],
+    [
+     "divisible by 10",
+     "test",
+     "the last digit is 0"
+    ],
+    [
+     "7",
+     "no test",
+     "there is no quick test for 7 — divide and see"
+    ]
+   ],
+   "book": "The lesson works this kind twice: Example 4 asks which whole numbers from 1 to 10 divide a four-digit number, and the practice set asks for the single-digit divisors of another. Saxon Course 2, Lesson 6, pages 41–42."
+  },
+  "common": {
+   "title": "Common factors and the greatest common factor",
+   "cite": "Saxon Math Course 2, Lesson 6",
+   "text": [
+    "A common factor divides both numbers. Finding them takes two steps, and the second one is easy to forget.",
+    "Step one: list the factors of each number separately. Factors of 12: 1, 2, 3, 4, 6, 12. Factors of 20: 1, 2, 4, 5, 10, 20.",
+    "Step two: compare the two lists. The common factors are the ones that appear on both lists — here, 1, 2 and 4. The greatest common factor is the largest of those: 4. Two correct lists side by side are not the answer yet; the answer is what they share.",
+    "The lesson's own trick is to write both lists out and circle the numbers that appear in both. The circles are step two made visible, so it is harder to stop after step one."
+   ],
+   "vocab": [
+    [
+     "factor",
+     "noun",
+     "a whole number that divides another with no remainder"
+    ],
+    [
+     "common factor",
+     "noun",
+     "a number that is a factor of both numbers"
+    ],
+    [
+     "greatest common factor",
+     "noun",
+     "the largest of the common factors — often written GCF"
+    ],
+    [
+     "divisibility",
+     "noun",
+     "whether one whole number divides another with no remainder"
+    ]
+   ],
+   "book": "The lesson works a greatest common factor in Example 3, listing both sets of factors and circling the ones they share. Saxon Course 2, Lesson 6, page 41."
+  },
+  "minus": {
+   "title": "When something was subtracted",
+   "cite": "Saxon Math Course 2, Lesson 3",
+   "text": [
+    "Solve n − 26 = 71.",
+    "Ask what was done to n. 26 was subtracted from it. Something was subtracted from the variable, so add it back — that is the move that undoes it.",
+    "n − 26 + 26 = 71 + 26, which leaves n = 97.",
+    "Check: 97 − 26 = 71. True, so 97 is right. If the check comes out false, the move was the wrong one — subtracting again instead of adding would have given 45, and 45 − 26 = 19, not 71."
+   ],
+   "vocab": [
+    [
+     "minuend",
+     "the number you start from",
+     "The unknown in n − 26 = 71. To find an unknown minuend, add the other two numbers."
+    ],
+    [
+     "subtrahend",
+     "the part taken away",
+     "The unknown in 50 − x = 18. To find an unknown subtrahend, subtract."
+    ],
+    [
+     "difference",
+     "what is left",
+     "To find an unknown difference, subtract."
+    ]
+   ],
+   "book": "The lesson names all three positions and gives the rule for each, then works an unknown minuend and an unknown subtrahend side by side in Example 2. Saxon Course 2, Lesson 3, page 22."
+  },
+  "plus": {
+   "title": "When something was added",
+   "cite": "Saxon Math Course 2, Lesson 3",
+   "text": [
+    "Solve n + 34 = 90.",
+    "Ask what was done to n. 34 was added to it. Something was added to the variable, so subtract it.",
+    "n + 34 − 34 = 90 − 34, which leaves n = 56.",
+    "Check: 56 + 34 = 90. True.",
+    "If several numbers are being added — 5 + 9 + n + 4 = 30 — add all the known ones first, then subtract that total from the sum: 5 + 9 + 4 = 18, and 30 − 18 = 12."
+   ],
+   "vocab": [
+    [
+     "addend",
+     "a number being added",
+     "To find an unknown addend, subtract the known addend from the sum."
+    ],
+    [
+     "sum",
+     "the total",
+     "To find an unknown sum, add the addends."
+    ]
+   ],
+   "book": "The lesson works three unknown addends in Example 1, including one with four addends where the known ones are added together first. Saxon Course 2, Lesson 3, page 21."
+  },
+  "times": {
+   "title": "When the variable was multiplied",
+   "cite": "Saxon Math Course 2, Lesson 3",
+   "text": [
+    "Solve 7n = 168.",
+    "7n means 7 × n. The variable was multiplied, so divide to undo it.",
+    "7n ÷ 7 = 168 ÷ 7, which leaves n = 24.",
+    "Check: 7 × 24 = 168. True.",
+    "If there is more than one number on that side — 2 · 3 · n = 168, say — multiply them together first. 2 · 3 · n is 6n, and then one division finishes it: n = 28."
+   ],
+   "vocab": [
+    [
+     "factor",
+     "a number being multiplied",
+     "To find an unknown factor, divide the product by the known factor."
+    ],
+    [
+     "product",
+     "the result",
+     "To find an unknown product, multiply the factors."
+    ]
+   ],
+   "book": "The lesson works two unknown factors in Example 3, and writes the check underneath each as a multiplication. Saxon Course 2, Lesson 3, pages 22–23."
+  },
+  "divide": {
+   "title": "When the variable was divided",
+   "cite": "Saxon Math Course 2, Lesson 3",
+   "text": [
+    "Solve n ÷ 12 = 30.",
+    "Ask what was done to n. It was divided by 12. The variable was divided, so multiply to undo it.",
+    "n ÷ 12 × 12 = 30 × 12, which leaves n = 360.",
+    "Check: 360 ÷ 12 = 30. True.",
+    "Dividing again is the tempting mistake, because the equation has a division sign in it. But the sign says what was already done, not what to do next. Dividing here would give 2.5, and 2.5 ÷ 12 is nowhere near 30 — the check catches it immediately."
+   ],
+   "vocab": [
+    [
+     "dividend",
+     "the number being shared",
+     "To find an unknown dividend, multiply the quotient by the divisor."
+    ],
+    [
+     "divisor",
+     "how many it is shared into",
+     "To find an unknown divisor, divide the dividend by the quotient."
+    ],
+    [
+     "quotient",
+     "the answer",
+     "To find an unknown quotient, divide the dividend by the divisor."
+    ]
+   ],
+   "book": "The lesson names all three positions and works an unknown dividend and an unknown divisor together in Example 4. Saxon Course 2, Lesson 3, page 23."
+  },
+  "backwards": {
+   "title": "When the variable is underneath, or is the part taken away",
+   "cite": "Saxon Math Course 2, Lesson 3",
+   "text": [
+    "Two forms need a moment's thought, because the variable is not the thing being changed — it is the thing doing the changing.",
+    "50 − n = 18. Read it as a story: 50, take away n, leaves 18. When the variable is the part being taken away, the answer is the difference: n = 50 − 18 = 32. Check: 50 − 32 = 18. True.",
+    "60 ÷ n = 12. Read it the same way: 60 shared into n groups puts 12 in each group. When the variable is underneath, ask how many of the answer fit into the top: n = 60 ÷ 12 = 5. Check: 60 ÷ 5 = 12. True.",
+    "In both, the move is the same operation as the one in the equation, not the opposite. That is what makes them different from the other four forms — and it is why naming the position is worth the trouble."
+   ],
+   "vocab": [
+    [
+     "subtrahend",
+     "the part taken away",
+     "The unknown in 50 − n = 18. To find an unknown subtrahend, subtract the difference from the minuend."
+    ],
+    [
+     "divisor",
+     "how many it is shared into",
+     "The unknown in 60 ÷ n = 12. To find an unknown divisor, divide the dividend by the quotient."
+    ]
+   ],
+   "book": "The lesson works an unknown subtrahend in Example 2 and an unknown divisor in Example 4, each one alongside the easier form, so the difference between them is on the same page. Saxon Course 2, Lesson 3, pages 22–23."
+  },
+  "check": {
+   "title": "Checking the answer",
+   "cite": "Saxon Math Course 2, Lesson 3",
+   "text": [
+    "Every one of these can be checked in a few seconds, and the check is worth more than it costs.",
+    "Put the value back into the original equation and see whether it comes out true. Not into the equation you rearranged — into the one you were given. That way a wrong move shows up instead of being repeated.",
+    "Solve 15n = 195, and suppose the answer written down is 13. Check: 15 × 13 = 195. True, so it is right.",
+    "Suppose instead the answer written down was 180, from subtracting 15 rather than dividing. Check: 15 × 180 = 2700, not 195. The check finds it, and it takes one line."
+   ],
+   "vocab": [
+    [
+     "check",
+     "the second half of the answer",
+     "Substitute the value into the original equation. If both sides come out equal, the answer is right."
+    ]
+   ],
+   "book": "Every worked example in the lesson is followed by a check written out underneath it — the book treats the check as part of the answer rather than as optional. Saxon Course 2, Lesson 3, pages 21–23."
+  },
+  "squares": {
+   "title": "Perfect squares",
+   "cite": "Saxon Math Course 2, Lesson 4",
+   "text": [
+    "A perfect square is a whole number multiplied by itself. They are called squares because that many tiles will make a square: nine tiles make a three-by-three square, sixteen make a four-by-four.",
+    "The first fifteen are 1, 4, 9, 16, 25, 36, 49, 64, 81, 100, 121, 144, 169, 196 and 225 — that is 1 × 1 up to 15 × 15. Worth knowing by sight, because they turn up constantly.",
+    "The gaps between them grow: 3, 5, 7, 9, 11. So a run of perfect squares is never a sequence where the same number is added each time, which is one way to recognise one.",
+    "A number that is not on the list is not a perfect square. 50 is not, because it sits between 49 and 64 — you would need something between 7 and 8 to make it, and that is not a whole number."
+   ],
+   "vocab": [
+    [
+     "sequence",
+     "noun",
+     "a list of numbers that follows a rule"
+    ],
+    [
+     "term",
+     "noun",
+     "one of the numbers in a sequence"
+    ],
+    [
+     "perfect square",
+     "noun",
+     "a whole number multiplied by itself"
+    ]
+   ],
+   "book": "Lesson 4 is where sequences are introduced, working the rule out from the first few terms across eight examples. Saxon Course 2, Lesson 4, pages 26–31."
+  },
+  "grouping": {
+   "title": "What the parentheses do",
+   "cite": "Saxon Math Course 2, Lesson 2",
+   "text": [
+    "Parentheses say which part to work out first. With addition and multiplication that turns out not to matter — this is the associative property.",
+    "(3 + 8) + 5 = 11 + 5 = 16, and 3 + (8 + 5) = 3 + 13 = 16. Same answer. (2 × 3) × 4 = 6 × 4 = 24, and 2 × (3 × 4) = 2 × 12 = 24. Same answer.",
+    "Subtraction and division are not associative. In division the parentheses change the answer, and often by a lot.",
+    "100 ÷ (10 ÷ 2) = 100 ÷ 5 = 20, but (100 ÷ 10) ÷ 2 = 10 ÷ 2 = 5. Twenty against five, from the same three numbers in the same order. So with division, work out what is inside the parentheses first, and never assume you can move them."
+   ],
+   "vocab": [
+    [
+     "associative property",
+     "noun",
+     "the grouping can change without changing the answer — true for addition and multiplication, false for subtraction and division"
+    ],
+    [
+     "commutative property",
+     "noun",
+     "the order can change without changing the answer — again true for addition and multiplication only"
+    ],
+    [
+     "identity property",
+     "noun",
+     "adding 0, or multiplying by 1, leaves a number as it was"
+    ]
+   ],
+   "book": "Lesson 2 sets the properties out in a table and then uses them to make a multiplication easier to do in your head. Saxon Course 2, Lesson 2, pages 16–17."
+  }
+ }
+};
+
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+const shuffle = a => { a=a.slice(); for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]];} return a; };
+
+let S=null, idx=0, log=[], tries=0, picked=null, order=[], chosen=new Set();
+let shown=false;
+const best = MC.bests();
+
+function home(){
+  $("sets").innerHTML = DATA.sets.map((s,i)=>{
+    const b = best[s.id];
+    const done = b!=null && b>=75;
+    return `<button class="set ${b==null?"":(done?"mc-cleared":"mc-tried")}" style="--c:${s.c}" data-s="${i}">
+      <span class="tag">${esc(s.tag)}</span>
+      <h3>${esc(s.name)}</h3>
+      <p>${esc(s.blurb)}</p>
+      <span class="go">${s.items.length} questions &rsaquo;</span>
+      ${b!=null?`<span class="badge mc-best${done?" mc-done":""}">${done?"CLEARED &middot; ":""}best ${b}%</span>`:""}
+    </button>`;
+  }).join("");
+  [...document.querySelectorAll(".set")].forEach(b=>b.onclick=()=>start(+b.dataset.s));
+  $("foot").innerHTML = "Practice questions written for this review. The numbers are all different from the homework, and nothing from the textbook is reproduced here. Skills, method and lesson numbers follow Saxon Math, Course 2 (Stephen Hake).";
+  show("home");
+}
+function show(w){
+  ["home","play","done"].forEach(x=>$(x).classList.toggle("hide",x!==w));
+  /* Only offered when there is somewhere to go back to. Wired here rather than
+     once at load, because the label comes from the data and the link has to be
+     hidden again the moment we are home. */
+  const b = $("tohome");
+  if(b){
+    b.textContent = "\u2039 " + (DATA.backLabel || "Back to the sets");
+    b.hidden = (w === "home");
+    b.onclick = e=>{ e.preventDefault(); Object.assign(best, MC.bests()); home(); };
+  }
+  window.scrollTo(0,0);
+}
+
+function start(i){
+  S = DATA.sets[i]; idx=0; log=[]; forceFinish=false; saved=[]; forceFinish=false; forceFinish=false; forceFinish=false;
+  MC.begin();
+  $("sname").textContent = S.name.toUpperCase() + " · " + S.tag;
+  show("play"); render();
+}
+
+function render(){
+  tries=0; picked=null; chosen=new Set(); shown=false;
+  $("dots").innerHTML = S.items.map((_,i)=>
+    `<span class="dot ${i<idx?"done":i===idx?"now":""}"></span>`).join("");
+  const it = S.items[idx];
+  const head = `<div class="qnum">Question ${idx+1} of ${S.items.length}</div>`;
+  if(it.type==="pick")  rPick(it, head);
+  else if(it.type==="order") rOrder(it, head);
+  else rBuild(head);
+  navBar();
+  restoreState();
+}
+
+/* ---------- multiple choice ---------- */
+function rPick(it, head){
+  const opts = shuffle(it.opts.map((t,i)=>({t,ok:i===it.a})));
+  $("card").innerHTML = head + `<div class="q">${it.q}</div>
+    <div class="opts" id="opts"></div><div class="act" id="act"></div><div id="fb"></div>`;
+  $("opts").innerHTML = opts.map((o,i)=>
+    `<button class="opt" data-i="${i}"><span class="k">${"ABCD"[i]}</span><span>${esc(o.t)}</span></button>`).join("");
+  $("act").innerHTML = `<button class="btn p" id="go" disabled>Check my answer</button>`;
+  [...document.querySelectorAll(".opt")].forEach(b=>b.onclick=()=>{
+    [...document.querySelectorAll(".opt")].forEach(x=>x.classList.remove("sel"));
+    b.classList.add("sel"); picked=+b.dataset.i; $("go").disabled=false;
+  });
+  $("go").onclick=()=>{
+    const o = opts[picked], el = document.querySelector(`.opt[data-i="${picked}"]`);
+    if(o.ok){ el.classList.add("right"); win(it); }
+    else { el.classList.add("wrong"); el.classList.remove("sel"); miss(it,"Not that one. Read it again and try another."); }
+  };
+}
+
+/* ---------- put the steps in order ---------- */
+function rOrder(it, head){
+  order = shuffle(it.steps.map((t,i)=>({t,i})));
+  $("card").innerHTML = head + `<div class="q">${it.q}</div>
+    <div class="rows" id="rows"></div><div class="act" id="act"></div><div id="fb"></div>`;
+  $("act").innerHTML = `<button class="btn p" id="go">Check the order</button>`;
+  drawRows();
+  $("go").onclick=()=>{
+    let wrong=0;
+    document.querySelectorAll(".row").forEach((r,n)=>{
+      const ok = order[n].i===n;
+      r.classList.add(ok?"right":"wrong"); if(!ok) wrong++;
+    });
+    if(!wrong){ $("go").remove(); win(it); }
+    else {
+      /* First miss flashes the marks and clears them. From the second they stay
+         up, so he can see which rows are already right instead of permuting
+         blindly. */
+      if(tries >= 1) markOrder();
+      else setTimeout(()=>document.querySelectorAll(".row").forEach(r=>r.classList.remove("right","wrong")),900);
+      miss(it, wrong===1?"One step is out of place.":wrong+" steps are out of place."); }
+  };
+}
+function drawRows(){
+  $("rows").innerHTML = order.map((s,n)=>
+    `<div class="row"><span class="n">${n+1}</span><span>${esc(s.t)}</span>
+      <span class="mv">
+        <button data-up="${n}" ${n===0?"disabled":""} aria-label="Move up">&uarr;</button>
+        <button data-dn="${n}" ${n===order.length-1?"disabled":""} aria-label="Move down">&darr;</button>
+      </span></div>`).join("");
+  document.querySelectorAll("[data-up]").forEach(b=>b.onclick=()=>{
+    const n=+b.dataset.up; [order[n-1],order[n]]=[order[n],order[n-1]]; drawRows(); });
+  document.querySelectorAll("[data-dn]").forEach(b=>b.onclick=()=>{
+    const n=+b.dataset.dn; [order[n+1],order[n]]=[order[n],order[n+1]]; drawRows(); });
+}
+
+/* ---------- build the Big Question answer ---------- */
+function rBuild(head){
+  const B = DATA.build, tiles = shuffle(B.tiles.map((t,i)=>({...t,i})));
+  /* How many tiles are correct is read off the data, never hardcoded: Chapter 2's
+     Check for Understanding asks for three key points, Chapter 3's asks for two. */
+  const N = B.tiles.filter(t=>t.a).length;
+  const word = n => ["no","one","two","three","four","five","six"][n] || String(n);
+  $("card").innerHTML = head + `<div class="q">${B.q}</div>
+    <div class="tiles" id="tiles"></div><div class="act" id="act"></div><div id="fb"></div>`;
+  $("tiles").innerHTML = tiles.map((t,i)=>
+    `<button class="tile" data-i="${i}">${esc(t.t)}</button>`).join("");
+  $("act").innerHTML = `<button class="btn p" id="go" disabled>Build the answer</button>`;
+  const sync = ()=>{ $("go").disabled = chosen.size!==N;
+    $("go").textContent = chosen.size===N ? "Build the answer" : `Pick ${N-chosen.size} more`; };
+  [...document.querySelectorAll(".tile")].forEach(b=>b.onclick=()=>{
+    const i=+b.dataset.i;
+    if(chosen.has(i)){ chosen.delete(i); b.classList.remove("sel","right","wrong"); }
+    else if(chosen.size<N){ chosen.add(i); b.classList.add("sel");
+                            b.classList.remove("right","wrong"); }
+    sync();
+  });
+  sync();
+  $("go").onclick=()=>{
+    let wrong=0;
+    chosen.forEach(i=>{
+      const el=document.querySelector(`.tile[data-i="${i}"]`);
+      if(tiles[i].a) el.classList.add("right");
+      else { el.classList.add("wrong"); wrong++; }
+    });
+    if(!wrong){
+      document.querySelectorAll(".tile").forEach(t=>{ if(!t.classList.contains("right")) t.style.opacity=".35"; });
+      $("go").remove(); win({why:B.answer, cite:B.cite}, true);
+    } else {
+      if(tries >= 1) markBuild(tiles);
+      else setTimeout(()=>document.querySelectorAll(".tile").forEach(t=>{
+        t.classList.remove("right","wrong"); }),1000);
+      miss({why:"Those are all real equations — but only "+word(N)+" of them take that move.",
+            cite:B.cite},
+           wrong===1?"One of your "+word(N)+" is an equation, but not one that takes that move."
+                    :wrong+" of your "+word(N)+" are equations, but not ones that take that move.");
+    }
+  };
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ---------- review marks ----------
+   Green on what is already right, red on what is not, left on screen from the
+   second miss so a wrong answer says what to change. */
+function markOrder(){
+  document.querySelectorAll(".row").forEach((r,n)=>{
+    r.classList.remove("right","wrong");
+    r.classList.add(order[n].i===n ? "right" : "wrong");
+  });
+}
+function markBuild(tiles){
+  document.querySelectorAll(".tile").forEach(el=>{
+    const i = +el.dataset.i;
+    el.classList.remove("right","wrong");
+    if(chosen.has(i)) el.classList.add(tiles[i].a ? "right" : "wrong");
+  });
+}
+/* Shows the answer outright. Offered only after a third miss, and it scores the
+   question at the floor rather than zero — he still finished it. */
+function revealHistory(it){
+  const cur = S.items[idx];
+  if(cur.type === "order"){
+    order.sort((a,b)=>a.i-b.i); drawRows(); markOrder();
+  } else if(cur.type === "build"){
+    const B = DATA.build;
+    document.querySelectorAll(".tile").forEach(el=>{
+      const t = B.tiles.find(x=>x.t === el.textContent);
+      el.classList.remove("right","wrong","sel");
+      if(t && t.a) el.classList.add("right"); else el.style.opacity=".35";
+    });
+  } else {
+    document.querySelectorAll(".opt").forEach(el=>{
+      if(el.textContent.trim().slice(1).trim() === (cur.opts||[])[cur.a]) el.classList.add("right");
+    });
+  }
+  shown = true;
+}
+
+/* Clears the marks and hands the question back. Offered as soon as a check
+   fails on anything with several parts — the marks show what was wrong, this
+   is how you act on it. */
+function retryHere(){
+  document.querySelectorAll(".tile").forEach(el=>{
+    el.classList.remove("right","wrong","sel"); el.style.opacity="";
+  });
+  document.querySelectorAll(".row").forEach(el=>el.classList.remove("right","wrong"));
+  chosen.clear();
+  const go = $("go");
+  if(go){
+    go.disabled = S.items[idx].type === "build";
+    if(S.items[idx].type === "build"){
+      const N = DATA.build.tiles.filter(t=>t.a).length;
+      go.textContent = "Pick " + N + " more";
+    }
+  }
+  const b = $("retry"); if(b) b.remove();
+  $("fb").innerHTML = "";
+}
+function offerRetry(){
+  const t = S.items[idx].type;
+  if(t !== "order" && t !== "build") return;
+  if($("retry") || shown) return;
+  $("act").insertAdjacentHTML("afterbegin",
+    `<button class="btn o" id="retry">Clear these and try again</button>`);
+  $("retry").onclick = retryHere;
+}
+
+/* ---------- remembering each question ----------
+   render() rebuilds a question from scratch, which was fine when the only way
+   through was forward. With a Back button it meant leaving an answered question
+   and finding it blank on return, as though the work had not happened.
+
+   What is stored is what he did, not which button it was: options are reshuffled
+   on every render, so a saved index would restore the wrong answer. Selections
+   are kept by their text and found again after the shuffle. */
+let saved = [];
+function saveState(fbHTML, won){
+  const it = S.items[idx];
+  const st = { tries, shown, won, fb: fbHTML, type: it.type };
+  if(it.type === "pick"){
+    const sel = document.querySelector(".opt.sel, .opt.right, .opt.wrong");
+    st.pick = sel ? sel.textContent.trim().slice(1).trim() : null;
+  } else if(it.type === "order"){
+    st.order = order.map(o=>o.i);
+  } else {
+    st.tiles = [...chosen].map(i=>{
+      const el = document.querySelector(`.tile[data-i="${i}"]`);
+      return el ? el.textContent : null;
+    }).filter(Boolean);
+  }
+  saved[idx] = st;
+}
+function restoreState(){
+  const st = saved[idx];
+  if(!st) return;                       /* never checked — leave it blank */
+  tries = st.tries; shown = st.shown;
+
+  if(st.type === "pick" && st.pick){
+    document.querySelectorAll(".opt").forEach(el=>{
+      if(el.textContent.trim().slice(1).trim() !== st.pick) return;
+      el.classList.add(st.won ? "right" : "wrong");
+    });
+  } else if(st.type === "order" && st.order){
+    const by = {}; order.forEach(o=>{ by[o.i] = o; });
+    const back = st.order.map(i=>by[i]).filter(Boolean);
+    if(back.length === order.length){ order = back; drawRows(); }
+    if(st.tries >= 1 || st.won) markOrder();
+  } else if(st.type === "build" && st.tiles){
+    document.querySelectorAll(".tile").forEach(el=>{
+      if(st.tiles.indexOf(el.textContent) === -1) return;
+      chosen.add(+el.dataset.i);
+      el.classList.add("sel");
+    });
+    const B = DATA.build, need = B.tiles.filter(t=>t.a).length;
+    if(st.tries >= 1 || st.won){
+      document.querySelectorAll(".tile").forEach(el=>{
+        if(!chosen.has(+el.dataset.i)) return;
+        const t = B.tiles.find(x=>x.t === el.textContent);
+        el.classList.remove("sel");
+        el.classList.add(t && t.a ? "right" : "wrong");
+      });
+    }
+    const g = $("go");
+    if(g){
+      g.disabled = chosen.size !== need;
+      g.textContent = chosen.size === need ? "Build the answer" : `Pick ${need - chosen.size} more`;
+    }
+  }
+
+  if(st.fb) $("fb").innerHTML = st.fb;
+  if(st.won){
+    /* already answered — offer the way onward rather than another check */
+    const last = idx === S.items.length - 1;
+    $("act").innerHTML =
+      `<button class="btn g" id="next">${last ? "See how I did" : "Next question"}</button>`;
+    $("next").onclick = ()=>{
+      if(last) finish(); else { idx++; render(); window.scrollTo(0,0); }
+    };
+  }
+  navBar();
+}
+
+/* ---------- getting about ----------
+   Back and Skip on every question. Until now there was no way past a question
+   except to answer it correctly, which is a wall — and the whole design says a
+   child who is stuck must never hit one. Skipping is not free: an unanswered
+   question scores zero, and finishing stops to say so. */
+let forceFinish = false;
+function navBar(){
+  const card = $("card"); if(!card || !S) return;
+  let nav = document.getElementById("nav");
+  if(!nav){
+    nav = document.createElement("div");
+    nav.id = "nav"; nav.className = "nav";
+    card.appendChild(nav);
+  }
+  const last = idx === S.items.length - 1;
+  const done = !!log[idx];
+  nav.innerHTML =
+    `<button class="navb" id="navback"${idx === 0 ? " disabled" : ""}>&lsaquo; Back</button>` +
+    `<span class="navpos">${idx + 1} of ${S.items.length}</span>` +
+    `<button class="navb" id="navnext">` +
+      (last ? "Finish &rsaquo;" : (done ? "Next &rsaquo;" : "Skip &rsaquo;")) + `</button>`;
+  $("navback").onclick = ()=>{ if(idx > 0){ idx--; render(); window.scrollTo(0,0); } };
+  $("navnext").onclick = ()=>{
+    if(last) finish();
+    else { idx++; render(); window.scrollTo(0,0); }
+  };
+}
+/* Nothing unanswered slips past without being noticed. The button goes to the
+   first gap rather than just naming it, because a child told "question 4" still
+   has to find question 4. */
+function unanswered(){
+  const out = [];
+  for(let i = 0; i < S.items.length; i++) if(!log[i]) out.push(i);
+  return out;
+}
+function skippedNotice(missing){
+  const n = missing.length;
+  $("card").innerHTML =
+    `<div class="qnum">Before you finish</div>
+     <div class="q">${n === 1 ? "One question is still unanswered." :
+                                n + " questions are still unanswered."}</div>
+     <p class="skipnote">Unanswered questions count as zero, so it is worth going back.
+        You can still finish now if you would rather.</p>
+     <div class="act" id="act">
+       <button class="btn p" id="goback">Go to question ${missing[0] + 1}</button>
+       <button class="btn o" id="anyway">Finish anyway</button>
+     </div>`;
+  $("goback").onclick = ()=>{ idx = missing[0]; render(); window.scrollTo(0,0); };
+  $("anyway").onclick = ()=>{ forceFinish = true; finish(); };
+}
+
+/* The reading, in a panel over the question. Offered on the first miss, because
+   the point is to go and read rather than to guess again. Closing it puts the
+   question back exactly as it was. */
+/* Highlights the sentence the question turns on. Opening the passage without
+   pointing at anything just moves the problem: a child who could not answer the
+   question is not obviously better placed to find the answer in four paragraphs
+   of prose. The text is escaped first and the needle escaped the same way, so
+   the match happens on the escaped string and no markup can be injected. */
+function markUp(text, hi){
+  let out = esc(text);
+  const list = Array.isArray(hi) ? hi : (hi ? [hi] : []);
+  list.forEach(h=>{
+    const n = esc(h);
+    if(n && out.indexOf(n) !== -1) out = out.split(n).join('<mark class="hl">' + n + '</mark>');
+  });
+  return out;
+}
+function openReading(key, hi){
+  const P = (DATA.passages || {})[key];
+  if(!P) return;
+  let box = document.getElementById("readbox");
+  if(!box){
+    box = document.createElement("div");
+    box.id = "readbox"; box.className = "readbox";
+    document.body.appendChild(box);
+  }
+  box.innerHTML =
+    `<div class="readinner" role="dialog" aria-modal="true" aria-label="${esc(DATA.readLabel || 'The reading')}">
+       <div class="readhead">
+         <div><div class="readtitle">${esc(P.title)}</div>
+              <div class="readcite">${esc(P.cite)}</div></div>
+         <button class="readx" id="readx" aria-label="Close the reading">&times;</button>
+       </div>
+       <div class="readbody">${P.text.map(t=>`<p>${markUp(t, hi)}</p>`).join("")}</div>
+       ${(P.vocab && P.vocab.length) ? `<div class="readvocab">
+         <div class="vlab">${esc(DATA.vocabLabel || "Vocabulary")}</div>
+         ${P.vocab.map(v=>`<p><b>${esc(v[0])}</b> <i>${esc(v[1])}</i> ${markUp(v[2], hi)}</p>`).join("")}
+       </div>` : ""}
+       ${P.book ? `<p class="readbook">${esc(P.book)}</p>` : ""}
+       <button class="btn p" id="readdone">Got it — back to the question</button>
+     </div>`;
+  box.hidden = false;
+  document.body.style.overflow = "hidden";
+  const shut = ()=>{ box.hidden = true; document.body.style.overflow = ""; };
+  $("readx").onclick = shut;
+  $("readdone").onclick = shut;
+  box.onclick = e=>{ if(e.target === box) shut(); };
+  document.addEventListener("keydown", function esc2(e){
+    if(e.key === "Escape"){ shut(); document.removeEventListener("keydown", esc2); }
+  });
+  const first = box.querySelector("mark.hl");
+  if(first) first.scrollIntoView({block:"center"});
+  $("readdone").focus();
+}
+function offerReading(it){
+  const key = it && it.p;
+  if(!key || !(DATA.passages || {})[key]) return;
+  if($("readbtn")) return;
+  $("act").insertAdjacentHTML("afterbegin",
+    `<button class="btn o" id="readbtn">${esc(DATA.readCta || "Show me the reading")}</button>`);
+  $("readbtn").onclick = ()=>openReading(key, it.hi);
+}
+
+/* ---------- feedback ---------- */
+function miss(it,msg){
+  tries++;
+  MC.wrong(S.id+"-"+idx);
+  $("fb").innerHTML = `<div class="fb no"><strong>Not yet.</strong>${esc(msg)}</div>`;
+  if(tries >= 3 && !shown && !$("reveal")){
+    $("act").insertAdjacentHTML("afterbegin",
+      `<button class="btn h" id="reveal">Show me the answer</button>`);
+    $("reveal").onclick = ()=>{
+      revealHistory(it); $("reveal").remove();
+      const go = $("go"); if(go) go.remove();
+      $("fb").innerHTML = `<div class="fb no"><strong>Here it is.</strong>${esc(it.why||"")}
+        <cite>${esc(it.cite||"")}</cite>
+        <p class="hintnote">Answer shown \u2014 this question scores 25%. Read it through, then carry on.</p></div>`;
+    };
+  }
+  offerRetry();
+  offerReading(it);
+  saveState($("fb").innerHTML, false);
+  if(tries >= 3 && !shown && !$("reveal")){
+    $("act").insertAdjacentHTML("afterbegin",
+      `<button class="btn h" id="reveal">Show me the answer</button>`);
+    $("reveal").onclick = ()=>{
+      revealHistory(it); $("reveal").remove();
+      const go = $("go"); if(go) go.remove();
+      $("fb").innerHTML = `<div class="fb no"><strong>Here it is.</strong>${esc(it.why||"")}
+        <cite>${esc(it.cite||"")}</cite>
+        <p class="hintnote">Answer shown \u2014 this question scores 25%. Read it through, then carry on.</p></div>`;
+    };
+  }
+  offerRetry();
+  offerReading(it);
+  offerReading(it);
+  offerRetry();
+  if(tries >= 3 && !shown && !$("reveal")){
+    $("act").insertAdjacentHTML("afterbegin",
+      `<button class="btn h" id="reveal">Show me the answer</button>`);
+    $("reveal").onclick = ()=>{
+      revealHistory(it); $("reveal").remove();
+      const go = $("go"); if(go) go.remove();
+      $("fb").innerHTML = `<div class="fb no"><strong>Here it is.</strong>${esc(it.why||"")}
+        <cite>${esc(it.cite||"")}</cite>
+        <p class="hintnote">Answer shown \u2014 this question scores 25%. Read it through, then carry on.</p></div>`;
+    };
+  }
+  offerRetry();
+  if(tries >= 3 && !shown && !$("reveal")){
+    $("act").insertAdjacentHTML("afterbegin",
+      `<button class="btn h" id="reveal">Show me the answer</button>`);
+    $("reveal").onclick = ()=>{
+      revealHistory(it); $("reveal").remove();
+      const go = $("go"); if(go) go.remove();
+      $("fb").innerHTML = `<div class="fb no"><strong>Here it is.</strong>${esc(it.why||"")}
+        <cite>${esc(it.cite||"")}</cite>
+        <p class="hintnote">Answer shown \u2014 this question scores 25%. Read it through, then carry on.</p></div>`;
+    };
+  }
+  offerRetry();
+  if(tries >= 3 && !shown && !$("reveal")){
+    $("act").insertAdjacentHTML("afterbegin",
+      `<button class="btn h" id="reveal">Show me the answer</button>`);
+    $("reveal").onclick = ()=>{
+      revealHistory(it); $("reveal").remove();
+      const go = $("go"); if(go) go.remove();
+      $("fb").innerHTML = `<div class="fb no"><strong>Here it is.</strong>${esc(it.why||"")}
+        <cite>${esc(it.cite||"")}</cite>
+        <p class="hintnote">Answer shown \u2014 this question scores 25%. Read it through, then carry on.</p></div>`;
+    };
+  }
+  offerRetry();
+  if(tries >= 3 && !shown && !$("reveal")){
+    $("act").insertAdjacentHTML("afterbegin",
+      `<button class="btn h" id="reveal">Show me the answer</button>`);
+    $("reveal").onclick = ()=>{
+      revealHistory(it); $("reveal").remove();
+      const go = $("go"); if(go) go.remove();
+      $("fb").innerHTML = `<div class="fb no"><strong>Here it is.</strong>${esc(it.why||"")}
+        <cite>${esc(it.cite||"")}</cite>
+        <p class="hintnote">Answer shown \u2014 this question scores 25%. Read it through, then carry on.</p></div>`;
+    };
+  }
+  if(tries >= 3 && !shown && !$("reveal")){
+    $("act").insertAdjacentHTML("afterbegin",
+      `<button class="btn h" id="reveal">Show me the answer</button>`);
+    $("reveal").onclick = ()=>{
+      revealHistory(it); $("reveal").remove();
+      const go = $("go"); if(go) go.remove();
+      $("fb").innerHTML = `<div class="fb no"><strong>Here it is.</strong>${esc(it.why||"")}
+        <cite>${esc(it.cite||"")}</cite>
+        <p class="hintnote">Answer shown \u2014 this question scores 25%. Read it through, then carry on.</p></div>`;
+    };
+  }
+  if(tries >= 3 && !shown && !$("reveal")){
+    $("act").insertAdjacentHTML("afterbegin",
+      `<button class="btn h" id="reveal">Show me the answer</button>`);
+    $("reveal").onclick = ()=>{
+      revealHistory(it); $("reveal").remove();
+      const go = $("go"); if(go) go.remove();
+      $("fb").innerHTML = `<div class="fb no"><strong>Here it is.</strong>${esc(it.why||"")}
+        <cite>${esc(it.cite||"")}</cite>
+        <p class="hintnote">Answer shown \u2014 this question scores 25%. Read it through, then carry on.</p></div>`;
+    };
+  }
+  if(tries >= 3 && !shown && !$("reveal")){
+    $("act").insertAdjacentHTML("afterbegin",
+      `<button class="btn h" id="reveal">Show me the answer</button>`);
+    $("reveal").onclick = ()=>{
+      revealHistory(it); $("reveal").remove();
+      const go = $("go"); if(go) go.remove();
+      $("fb").innerHTML = `<div class="fb no"><strong>Here it is.</strong>${esc(it.why||"")}
+        <cite>${esc(it.cite||"")}</cite>
+        <p class="hintnote">Answer shown \u2014 this question scores 25%. Read it through, then carry on.</p></div>`;
+    };
+  }
+}
+function win(it, isBuild){
+  MC.right(S.id+"-"+idx);
+  const pts = tries===0?100:tries===1?75:tries===2?50:25;
+  log[idx] = {pts,tries};
+  const last = idx===S.items.length-1;
+  if(isBuild){
+    const _n = DATA.build.tiles.filter(t=>t.a).length;
+    const _w = ["no","one","two","three","four","five","six","seven","eight"][_n] || String(_n);
+    const _f = DATA.build.figures;
+    const _lead = DATA.build.lead || "The Big Question, answered";
+    const _hit = DATA.build.hit ||
+      `The ${_w} you picked are exactly the ${_w} the Big Question needs.`;
+    $("fb").innerHTML = `<div class="fb yes"><strong>That is the answer.</strong>
+      ${esc(_hit)}</div>
+      <div class="reveal">
+        <div class="lead">${esc(_lead)}</div>
+        <p>${esc(it.why)}</p>
+        ${_f ? `<div class="nums">${_f.nums.map(n=>
+            `<div class="num"><b>${esc(n[0])}</b><span>${esc(n[1])}</span></div>`).join("")}</div>
+          <p style="margin-top:10px">${_f.note}</p>` : ""}
+        ${it.cite ? `<cite style="display:block;font:600 11px var(--mono);color:var(--stone);margin-top:8px">${esc(it.cite)}</cite>` : ""}
+      </div>`;
+  } else {
+    $("fb").innerHTML = `<div class="fb yes"><strong>${tries===0?"Right, first try.":"Got it."}</strong>
+      ${esc(it.why)}<cite>${esc(it.cite)}</cite></div>`;
+  }
+  $("act").innerHTML = `<button class="btn g" id="next">${last?"See how I did":"Next question"}</button>`;
+  $("next").onclick=()=>{ if(last) finish(); else { idx++; render(); window.scrollTo(0,0); } };
+  navBar();
+  saveState($("fb").innerHTML, true);
+  navBar();
+  $("fb").scrollIntoView({behavior:"smooth",block:"nearest"});
+}
+
+/* ---------- results ---------- */
+function finish(){
+  const missing = unanswered();
+  if(missing.length && !forceFinish){ skippedNotice(missing); return; }
+  forceFinish = false;
+  /* Scored over every question, not only the answered ones — otherwise
+     skipping everything but one easy question would read as 100%. */
+  const done = S.items.map((_,i)=>log[i]).filter(Boolean);
+  const pct = Math.round(done.reduce((s,l)=>s+l.pts,0)/S.items.length);
+  const first = done.filter(l=>l.tries===0).length;
+  const att = done.reduce((s,l)=>s+l.tries,0)+done.length;
+  const band = pct>=90?["Sharp work","#2F8F76"]:pct>=75?["Solid","#3D82B8"]
+             :pct>=50?["Getting there","#E0A83C"]:["Worth another climb","#C4553F"];
+  $("dtag").textContent = S.name.toUpperCase();
+  $("scorebox").innerHTML = `
+    <div class="ring" style="color:${band[1]}">${pct}%</div>
+    <div class="band" style="color:${band[1]}">${band[0]}</div>
+    <div class="stats">
+      <div class="stat"><b>${first} / ${log.length}</b><span>First try</span></div>
+      <div class="stat"><b>${att}</b><span>Total tries</span></div>
+    </div>
+    <div class="review"><b>The idea</b>${esc(DATA.bigQuestion)}</div>
+    <div class="act">
+      <button class="btn p" id="again">Run this set again</button>
+      <button class="btn o" id="pick">Pick another set</button>
+    </div>`;
+  MC.chest($("scorebox"), pct, {id:S.id});
+  $("again").onclick=()=>start(DATA.sets.indexOf(S));
+  $("pick").onclick=()=>{ Object.assign(best, MC.bests()); home(); };
+  show("done");
+}
+
+home();
+</script>
+</body>
+</html>
