@@ -79,6 +79,17 @@ function Node(tag, attr) {
     if (k.startsWith("data-")) n.dataset[k.slice(5).replace(/-(\w)/g, (_, c) => c.toUpperCase())] = attr[k];
   }
   n.id = attr.id || "";
+  /* The DOM names these parentNode and nextSibling; the shim was only setting
+     `parent`, so code that guards on `el.parentNode` bailed out and its work
+     looked like it had never run. */
+  Object.defineProperty(n, "parentNode", { get() { return n.parent; } });
+  Object.defineProperty(n, "nextSibling", {
+    get() {
+      if (!n.parent) return null;
+      const i = n.parent.kids.indexOf(n);
+      return i >= 0 ? (n.parent.kids[i + 1] || null) : null;
+    },
+  });
   Object.defineProperty(n, "innerHTML", {
     get() { return n._html; },
     set(v) { n._html = String(v); n.kids = parse(n._html, n); },

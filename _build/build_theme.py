@@ -497,6 +497,26 @@ def strip_theme(html):
     return None
 
 
+SUBJECT_NAMES = {"history": "History", "science": "Science", "reading": "Reading",
+                 "spelling": "Spelling", "vocabulary": "Vocabulary", "math": "Math"}
+
+
+def with_subject(rel, cfg):
+    """Tell an app which subject it belongs to.
+
+    Taken from the folder it lives in rather than declared per app: everything
+    is already filed under history/, science/ and so on, so a new chapter gets
+    its way back by being put in the right place. A folder with no name here
+    simply gets no subject link, rather than a wrong one.
+    """
+    top = rel.split("/")[0]
+    if top not in SUBJECT_NAMES:
+        return cfg
+    out = dict(cfg)
+    out["subject"] = SUBJECT_NAMES[top]
+    return out
+
+
 def inject(html, cfg):
     css = (THEME / "mc.css").read_text(encoding="utf-8")
     js  = (THEME / "mc.js").read_text(encoding="utf-8")
@@ -695,7 +715,7 @@ def main():
         # will hunt for anchors that its own first pass already rewrote.
         was_themed = "mc-hud" in src
 
-        staged = inject(src, cfg)
+        staged = inject(src, with_subject(rel, cfg))
         if staged is None:
             print("  %-24s already themed \u2014 skipped" % rel)
             continue

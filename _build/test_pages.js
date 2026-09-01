@@ -143,6 +143,41 @@ group("app names");
   ok(`${Object.keys(named).length} distinct apps`, Object.keys(named).length >= 15);
 }
 
+group("three ways out of a chapter, not one");
+{
+  /* Leaving a chapter used to mean going out to the whole site and finding the
+     subject again. The middle step goes back to the subject with its section
+     already open. It is drawn by the engine from the folder the app lives in,
+     so nothing has to be remembered per app. */
+  const SUBJECTS = { history: "History", science: "Science", reading: "Reading",
+                     spelling: "Spelling", vocabulary: "Vocabulary", math: "Math" };
+  const missing = [], wrong = [];
+  for (const f of runs) {
+    const top = f.rel.split("/")[0];
+    const want = SUBJECTS[top];
+    const m = f.html.match(/"subject": "([^"]*)"/);
+    if (!want) continue;
+    if (!m) { missing.push(f.rel); continue; }
+    if (m[1] !== want) wrong.push(f.rel + " says " + m[1]);
+  }
+  ok("every chapter knows which subject it belongs to", !missing.length, missing.join(", "));
+  ok("and none of them is filed under the wrong one", !wrong.length, wrong.join(", "));
+  ok("the engine draws the link rather than each shell carrying one",
+     runs.every(f => /function subjectLink\(\)/.test(f.html)));
+  ok("it waits for the header, which comes after the config call",
+     runs.every(f => /readyState === "loading"[\s\S]{0,120}subjectLink/.test(f.html)));
+  ok("no page that only reads state pretends to belong to a subject",
+     reads.every(f => !/"subject": "\w/.test(f.html)));
+}
+
+group("the hub answers those links");
+{
+  const hub = FILES.find(f => f.rel === "index.html").html;
+  ok("each subject is addressable", /<details class="subj" id="\$\{s\.name\.toLowerCase\(\)\}"/.test(hub));
+  ok("arriving with one named opens it", /location\.hash/.test(hub) && /o\.open = \(o === d\)/.test(hub));
+  ok("...and scrolls to it", /scrollIntoView/.test(hub));
+}
+
 group("links");
 {
   const bad = [];

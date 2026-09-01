@@ -216,6 +216,7 @@
 
   /* ---------- state ---------- */
   var cfg = { app: "app", shake: null, lift: null, burst: 320, hud: true,
+              subject: null,   /* which subject this app belongs to */
               /* Which activities can summon the dragon. null = any level in this
                  app. An array restricts it to those ids — spelling passes ["l7"]
                  so only Challenge 2, the hardest level of whatever week's list
@@ -274,6 +275,30 @@
      plain CSS rule can pick it
      up. `html[data-mc-theme=...]` outranks an app's own `:root`, so a theme
      repaints every page whichever order the stylesheets landed in. */
+
+  /* ---------- a way back to the subject ----------
+     Leaving a chapter used to mean going out to the whole site and finding the
+     subject again. This sits between the two: back to the subject you are
+     working through, with its section already open.
+
+     Drawn by the engine so every app gets it without its own shell being
+     touched, and placed after whatever link is already there. The path comes
+     from the sprite prefix, which every page has to declare correctly anyway. */
+  function subjectLink() {
+    if (!cfg.subject) return;
+    if (document.getElementById("mc-tosubject")) return;
+    var first = document.querySelector(".hublink");
+    if (!first || !first.parentNode) return;
+    var hub = PREFIX.replace(/assets\/?$/, "index.html");
+    var a = document.createElement("a");
+    a.id = "mc-tosubject";
+    a.className = "hublink subject";
+    a.href = hub + "#" + cfg.subject.toLowerCase();
+    a.innerHTML = "&lsaquo; " + cfg.subject;
+    if (first.nextSibling) first.parentNode.insertBefore(a, first.nextSibling);
+    else first.parentNode.appendChild(a);
+  }
+
   function skin() {
     var r = document.documentElement;
     /* Cosmetic, so it must never be the reason the engine fails to load. */
@@ -522,6 +547,11 @@
       for (var k in o) if (o.hasOwnProperty(k)) cfg[k] = o[k];
       if (document.body) build(); else
         document.addEventListener("DOMContentLoaded", build);
+      /* The header this hangs off is further down the document than the config
+         call, so it has to wait for the rest of the page even when body exists. */
+      if (document.readyState === "loading")
+        document.addEventListener("DOMContentLoaded", subjectLink);
+      else subjectLink();
       return MC;
     },
 
