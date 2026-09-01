@@ -678,6 +678,114 @@ def unpatch(html):
     return html
 
 
+# ------------------------------------------------- the mission drawer's marker
+#
+# Science and reading open the passage and, until now, pointed at nothing in it.
+# The item's `hi` says which line answers the question; this marks it, exactly
+# as the history and math panels do. Escaped first, and the needle escaped the
+# same way, so the match happens on the escaped string and no markup from the
+# data can reach the page as markup.
+
+M_MARK = """
+/* ---------- pointing at the line that answers it ----------
+   Opening the page without marking anything just moves the problem. `hi` may be
+   one string or several — a select-all is answered by several sentences, and a
+   vocabulary match by the definitions rather than by any sentence at all. */
+function markUp(text, hi){
+  let out = esc(text);
+  const list = Array.isArray(hi) ? hi : (hi ? [hi] : []);
+  list.forEach(h=>{
+    const n = esc(h);
+    if(n && out.indexOf(n) !== -1) out = out.split(n).join('<mark class="hl">' + n + '</mark>');
+  });
+  return out;
+}
+"""
+
+# The drawer is handed the passage key and never the item, so the highlight has
+# to travel with it. Kept in a module-level variable rather than threaded
+# through every caller, because the drawer is opened from five places.
+M_DRAWER_OLD = """function drawer(key, exKey, mode){
+  const p  = DATA.passages[key];"""
+
+M_DRAWER_NEW = """let drawerHi = null;      /* the line to mark, set by whoever opens the drawer */
+function drawer(key, exKey, mode, hi){
+  if(hi !== undefined) drawerHi = hi;
+  const p  = DATA.passages[key];"""
+
+M_BODY_OLD = """       ${p.vocab.length?`<div class="vbox" style="margin-top:10px"><span class="vh">Vocabulary</span>`+
+         p.vocab.map(([w,d])=>`<div><dt>${esc(w)}</dt> <dd>${esc(d)}</dd></div>`).join("")+`</div>`:""}
+       ${p.text.map(t=>`<p>${esc(t)}</p>`).join("")}"""
+
+M_BODY_NEW = """       ${p.vocab.length?`<div class="vbox" style="margin-top:10px"><span class="vh">Vocabulary</span>`+
+         p.vocab.map(([w,d])=>`<div><dt>${esc(w)}</dt> <dd>${markUp(d, drawerHi)}</dd></div>`).join("")+`</div>`:""}
+       ${p.text.map(t=>`<p>${markUp(t, drawerHi)}</p>`).join("")}"""
+
+M_CSS = """
+.morepg mark.hl,.vbox mark.hl{background:#FFF1B8;box-shadow:0 0 0 2px #FFF1B8;
+  color:inherit;border-radius:2px}
+"""
+
+
+def mission(html):
+    """Science and reading. A no-op on any shell without the drawer."""
+    if "function drawer(" not in html or "function markUp(" in html:
+        return html
+    html = html.replace(M_DRAWER_OLD, M_DRAWER_NEW, 1)
+    html = html.replace(M_BODY_OLD, M_BODY_NEW, 1)
+    # every call site passes the current item's highlight
+    html = re.sub(r"drawer\((it|cur|S\.items\[idx\])\.p\s*,\s*([^,)]+)\s*,\s*([^,)]+)\)",
+                  lambda m: "drawer(%s.p, %s, %s, %s.hi)" % (m.group(1), m.group(2),
+                                                             m.group(3), m.group(1)),
+                  html)
+    html = html.replace("</style>", M_CSS + "</style>", 1)
+    return html.replace("function drawer(", M_MARK + "function drawer(", 1)
+
+
+# ----------------------------------------------- the chapter 1 reader's marker
+#
+# Chapter 1 is the older shell: it builds its reader with document.createElement
+# rather than from a template, and keeps each passage as one string instead of a
+# list of paragraphs. Same idea as everywhere else, different plumbing — and it
+# is the one app that was still opening the source and marking nothing on it.
+
+H1_MARK = """
+/* Marks the line that answers the question, in the reader panel. The text is
+   escaped first and the needle escaped the same way, so the match happens on
+   the escaped string and nothing in the data can reach the page as markup. */
+function markUp(text, hi){
+  let out = esc(text);
+  const list = Array.isArray(hi) ? hi : (hi ? [hi] : []);
+  list.forEach(h=>{
+    const n = esc(h);
+    if(n && out.indexOf(n) !== -1) out = out.split(n).join('<mark class="hl">' + n + '</mark>');
+  });
+  return out;
+}
+"""
+
+H1_BODY_OLD = '    ex.appendChild(el("p",null,p.text));'
+H1_BODY_NEW = """    const body = el("p");
+    body.innerHTML = markUp(p.text, it.hi);   /* the line this question turns on */
+    ex.appendChild(body);"""
+
+H1_CSS = """
+.reader mark.hl{background:#FFF1B8;box-shadow:0 0 0 2px #FFF1B8;
+  color:inherit;border-radius:2px}
+"""
+
+
+def history1(html):
+    """Chapter 1 only. A no-op anywhere else."""
+    if "function openReader(" not in html or "function markUp(" in html:
+        return html
+    if H1_BODY_OLD not in html:
+        return html
+    html = html.replace(H1_BODY_OLD, H1_BODY_NEW, 1)
+    html = html.replace("</style>", H1_CSS + "</style>", 1)
+    return html.replace("function openReader(", H1_MARK + "function openReader(", 1)
+
+
 def patch(html):
     """Run every shell patch. Each is a no-op where its anchor is absent.
 
@@ -688,4 +796,4 @@ def patch(html):
     to the bare shell and patching that means a rebuild always applies today's
     version rather than whatever was current when the file was last written.
     """
-    return hide_teacher_guide(history(unpatch(html)))
+    return hide_teacher_guide(history1(mission(history(unpatch(html)))))

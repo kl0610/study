@@ -1561,193 +1561,545 @@ window.__MC_SFX__={"tool": "data:audio/mpeg;base64,//OAxAAAAAAAAAAAAFhpbmcAAAAPA
    definitions. The sets follow the Teacher Guide's own three reading segments,
    not equal page counts. */
 const DATA = {
-  bigQuestion: "Why did the Aztec make human sacrifices?",
-  sets: [
-    { id:"s1", c:"var(--sky)", tag:"Pages 20–22", name:"The Eagle and the Cactus",
-      blurb:"Wandering, a sign from a god, and a city built on a swampy island.",
-      items:[
-        { type:"pick", q:"What does <b>Aztec</b> mean?",
-          opts:["A civilization that thrived in present-day central Mexico from 1325 to 1521 CE",
-                "A group of peoples who lived in the rainforests of the Yucatán Peninsula",
-                "A civilization that thrived on the western coast of South America",
-                "A historical region made up of parts of Mexico and Central America"], a:0,
-          why:"Aztec: a civilization that thrived in present-day central Mexico from 1325 to 1521 CE. The other three describe the Maya, the Inca and Mesoamerica.",
-          cite:"Core Vocabulary, Student Reader page 20" },
-        { type:"pick", q:"What does <b>nomadic</b> mean?",
-          opts:["Moving around often in search of food; not settled in one place",
-                "Ruling over a group of conquered territories",
-                "Living by farming a single piece of land for many years",
-                "Trained to carry out religious ceremonies"], a:0,
-          why:"Nomadic: moving around often in search of food; not settled in one place. Before building their capital city, the nomadic Aztec wandered for years.",
-          cite:"Core Vocabulary, Student Reader page 20" },
-        { type:"pick", q:"When did the Aztec civilization arise?",
-          opts:["About three hundred years after the Maya abandoned their cities",
-                "At the same time as the Maya, in the same rainforest",
-                "About a thousand years before the Maya",
-                "Shortly after the Spanish arrived in the Americas"], a:0,
-          why:"About three hundred years after the Maya abandoned their cities, another great civilization arose. They were the Aztec people, who lived in what is today central Mexico.",
-          cite:"Student Reader, page 20" },
-        { type:"pick", q:"According to the legend, how did the Aztec know where to build their city?",
-          opts:["The sun god told them to look for an eagle with a snake in its beak, perched on a cactus",
-                "Priests read the answer in the movements of the stars",
-                "They followed a river until it reached the sea",
-                "The emperor chose the spot where his father was buried"], a:0,
-          why:"One day, the god of the sun spoke to the people. The god told the Aztec people to look for a sign — an eagle with a snake in its beak perched on a cactus. On the spot where the eagle perched, the Aztec were to build a great city.",
-          cite:"Student Reader, page 20" },
-        { type:"pick", q:"Where did the eagle finally appear, and what did the Aztec name the city they built there?",
-          opts:["On a swampy island in Lake Texcoco — they named it Tenochtitlán",
-                "On a hilltop above the rainforest, at a city the Maya had left behind",
-                "On the dry open plain where they had wandered for years",
-                "Beside the sea, where they could trade with other city-states"], a:0,
-          why:"The eagle appeared on a swampy island in Lake Texcoco. On that day, the Aztec's wandering ended. The Aztec people called their new home Tenochtitlán, which means \u201cthe place of the prickly pear.\u201d",
-          cite:"Student Reader, page 22" },
-        { type:"pick", q:"If you looked for Tenochtitlán on a map of the world today, what would be standing there?",
-          opts:["Mexico City, in central Mexico",
-                "Lima, on the coast of Peru",
-                "Guatemala City, in Central America",
-                "Havana, on the island of Cuba"], a:0,
-          why:"The Aztec lived in what is today central Mexico, and Tenochtitlán stood where Mexico City stands now. Even today the eagle and serpent from the legend are shown on the flag of Mexico.",
-          cite:"Student Reader, pages 20–22" },
-        { type:"pick", q:"The legend says the Aztec wandered, set up temporary homes, fought off attackers, and survived on snakes and lizards. What does that suggest about their life before Tenochtitlán?",
-          opts:["Life as nomads was difficult",
-                "They were already the most powerful people in Mexico",
-                "They had no interest in ever settling down",
-                "They were farmers who moved only between planting seasons"], a:0,
-          why:"The legend suggests that the Aztec lived difficult lives as nomads. Wandering, temporary shelter, fighting off attackers and eating whatever could be caught all point the same way.",
-          cite:"Student Reader, page 20" },
-        { type:"build" }
-      ]},
-
-    { id:"s2", c:"var(--gold)", tag:"Pages 22–25", name:"Empire and the Five Suns",
-      blurb:"Conquest, tribute, and a world that had already ended four times.",
-      items:[
-        { type:"pick", q:"What does <b>empire</b> mean?",
-          opts:["A group of countries or territories under the control of one government or one ruler",
-                "A city that is an independent state with its own ruling government",
-                "A society with similar beliefs, customs, language and government",
-                "A group of families who farm one piece of land together"], a:0,
-          why:"Empire: a group of countries or territories under the control of one government or one ruler. By conquering their neighbours, the Aztec built a vast empire.",
-          cite:"Core Vocabulary, Student Reader page 23" },
-        { type:"pick", q:"What does <b>emperor</b> mean?",
-          opts:["The ruler of an empire",
-                "A person trained to carry out religious ceremonies",
-                "A government official who counts the people of a village",
-                "A soldier who has been honoured for success in battle"], a:0,
-          why:"Emperor: the ruler of an empire. The Aztec emperor was thought to be a living god.",
-          cite:"Core Vocabulary, Student Reader page 23" },
-        { type:"pick", q:"By the early 1500s, how many people did the Aztec emperor rule?",
-          opts:["More than five million","About fifty thousand",
-                "About two hundred thousand","More than fifty million"], a:0,
-          why:"By the early 1500s, the Aztec Empire included four hundred to five hundred city-states and controlled much of present-day Mexico. The Aztec emperor ruled more than five million people.",
-          cite:"Student Reader, page 23" },
-        { type:"pick", q:"About how many people lived in Tenochtitlán itself?",
-          opts:["Between 150,000 and 200,000","Between 5,000 and 10,000",
-                "Between 400 and 500","More than one million"], a:0,
-          why:"Tenochtitlán alone probably had between 150,000 and 200,000 residents, making it one of the largest cities in the world at this time. No city in the United States would grow so large until the 1800s.",
-          cite:"Student Reader, page 23" },
-        { type:"pick", q:"How did conquering their neighbours make the Aztec wealthy?",
-          opts:["Conquered peoples were forced to send goods to Tenochtitlán — gold, silver, jade and turquoise, or food, cloth and other goods if they had no valuables",
-                "The Aztec took over the farmland and moved Aztec families onto it",
-                "The Aztec charged travellers a toll to use their roads",
-                "The Aztec sold the goods they captured to Spanish traders"], a:0,
-          why:"By conquering other people, they were able to gain wealth. Aztec warriors then forced conquered peoples to send their gold, silver, jade, and turquoise to Tenochtitlán. Those who had no valuables could send food, cloth, or other goods.",
-          cite:"Student Reader, page 24" },
-        { type:"pick", q:"Besides food and precious metals and stones, what else did victorious Aztec warriors send back to Tenochtitlán?",
-          opts:["Soldiers captured in battle","Priests from the conquered city",
-                "Children to be raised as Aztec","Stone for building temples"], a:0,
-          why:"Victorious Aztec warriors sent more than food and precious metals and stones back to Tenochtitlán. They also sent back soldiers captured in battle. The captured soldiers sometimes were used in an important religious ritual of the Aztec people: human sacrifice.",
-          cite:"Student Reader, page 24" },
-        { type:"order", q:"The Aztec believed the world and the sun had already been created and destroyed four times. Put the four lost suns back in order.",
-          steps:["Under the first sun, a race of giants roamed the world — until a jaguar devoured them.",
-                 "The world under the second sun was swept away by a great wind.",
-                 "People under the third sun died in the fire and ash of volcanoes.",
-                 "Those living under the fourth sun drowned in floods."],
-          why:"Giants eaten by a jaguar, then a great wind, then volcanoes, then floods. The Aztec of Tenochtitlán believed they were living under the fifth sun — and that this one would die too.",
-          cite:"Student Reader, pages 24–25" },
-        { type:"pick", q:"The Aztec believed the fifth sun would die too. How did they think they could help their sun god?",
-          opts:["By offering human sacrifices, to give the god the strength to make the sun rise each morning",
-                "By building a taller pyramid than any before it",
-                "By refusing to go to war until the danger had passed",
-                "By moving their capital away from Lake Texcoco"], a:0,
-          why:"They believed that each night, the sun god battled the forces of darkness. Each morning, the god had to find the strength to make the sun rise again. The Aztec believed they could help their god by offering human sacrifices in their temples.",
-          cite:"Student Reader, page 25" },
-        { type:"build" }
-      ]},
-
-    { id:"s3", c:"var(--jade)", tag:"Pages 25–27", name:"Sacrifice and the Warrior",
-      blurb:"What the priests did, what the Aztec thought it proved, and why war never stopped.",
-      items:[
-        { type:"pick", q:"How did the Aztec carry out a sacrifice?",
-          opts:["A drum sounded, attendants led the victim to the top of a pyramid, and the priest removed the heart, which was burned on an altar",
-                "The victim was sealed inside the temple and left there",
-                "The victim was buried beneath the steps of the pyramid",
-                "The emperor himself carried out the sacrifice in his palace"], a:0,
-          why:"The Aztec held their sacrifices on top of pyramids not unlike those built by the Maya. A big drum sounded as attendants led the victims to the top. The priest killed the victim by removing his heart. The heart was then burned on an altar.",
-          cite:"Student Reader, page 25" },
-        { type:"pick", q:"Whom did the Aztec prefer to sacrifice, and why that person in particular?",
-          opts:["Foreign soldiers captured in war — priests believed the strong heart of a soldier was the best offering",
-                "The losers of a ball game, as the Maya had done",
-                "Their own priests, who were closest to the gods",
-                "Enslaved people bought at the market in Tenochtitlán"], a:0,
-          why:"The Aztec preferred to sacrifice someone other than their own friends and family. Most of their victims were foreign soldiers captured in war. Aztec priests believed that the heart was the most important thing to sacrifice. They preferred to offer up the strong heart of a soldier.",
-          cite:"Student Reader, page 25" },
-        { type:"pick", q:"A long drought once threatened the Aztec corn harvest. What happened next?",
-          opts:["Priests offered a number of human sacrifices, and a day or so later, rain came",
-                "The emperor ordered the canals opened to water the fields",
-                "The Aztec abandoned the harvest and went to war instead",
-                "Priests declared that the fifth sun had ended"], a:0,
-          why:"Once, when a long drought threatened the Aztec corn harvest, priests offered a number of human sacrifices. A day or so later, rain came. To the Aztec, this was no coincidence. It was proof that the gifts of blood had saved the crop.",
-          cite:"Student Reader, page 26" },
-        { type:"pick", q:"The reader says the Aztec could point to events that <em>seemed</em> to prove the sacrifices worked. Why does the writer choose the word <em>seemed</em>?",
-          opts:["Because things that were really natural events or coincidences could be mistaken for results of the sacrifices",
-                "Because the Aztec were not certain the sacrifices had truly been carried out",
-                "Because only the priests were allowed to say what the gods had done",
-                "Because the rain arrived later than the priests had promised"], a:0,
-          why:"The word suggests that what were actually natural events or even coincidences could mistakenly be viewed as the results of the sacrifices. Rain falling after a drought is not caused by what happened the day before — but to the Aztec, it looked like proof, and so the offerings were regular and generous.",
-          cite:"Student Reader, page 26" },
-        { type:"pick", q:"Most Aztec people were born into a social class and had little chance to leave it. What was the one real way for a brave man to rise?",
-          opts:["Success in battle, which was rewarded with advancement and honour",
-                "Becoming a farmer on the raised gardens of the lake",
-                "Trading cacao beans and cotton in the great market",
-                "Marrying into the family of a conquered ruler"], a:0,
-          why:"As in many societies until recent times, Aztec people were born into a certain social class. Most people had relatively little chance to advance out of it. The army provided one opportunity for brave men to better themselves. Success in battle was rewarded with advancement and honour.",
-          cite:"Student Reader, page 26" },
-        { type:"pick", q:"What did the Aztec believe was the greatest honour of all?",
-          opts:["To die in battle","To be chosen as emperor",
-                "To be trained as a priest","To own land beside the lake"], a:0,
-          why:"The Aztec people believed there was no greater honour than to die in battle.",
-          cite:"Student Reader, page 26" },
-        { type:"pick", q:"Two things about Aztec life pushed them into war again and again. Which pair were they?",
-          opts:["Their religion needed a steady supply of victims, and war was one of the few ways a man could rise in society",
-                "They had run out of farmland, and they needed stone for their temples",
-                "Their emperor was chosen by combat, and their priests forbade trade",
-                "They were under attack from the Spanish, and their crops had failed"], a:0,
-          why:"Aztec religion required a steady supply of victims for sacrifice, and war provided one of the few ways for a person to advance socially. These two factors helped encourage warfare. Priests used human sacrifice to please the gods; Aztec soldiers held the empire together and provided the victims for the sacrifices.",
-          cite:"Student Reader, pages 25–26" },
-        { type:"build" }
-      ]}
-  ],
-
-  /* The Big Question, built rather than written. The correct tiles are exactly
-     the key points the Teacher Guide's Check for Understanding asks students to
-     cite — and for this chapter there are only TWO, not three. The distractors
-     are all true statements from the reader that simply do not answer *why the
-     Aztec made human sacrifices*: two are about the empire, one is about who the
-     victims were, one is about why they fought wars. Telling evidence from mere
-     fact is the skill; a blank text box never tests it. */
-  build: {
-    q: "Build the answer to the Big Question. Pick the <b>two</b> facts that actually explain why the Aztec made human sacrifices.",
-    tiles: [
-      { t:"Aztec religious belief held that the gods shaped everything in their world.", a:true },
-      { t:"They believed sacrifices gave the sun god strength to raise the sun, holding off the violent end of the world.", a:true },
-      { t:"Most of the victims were foreign soldiers captured in war.", a:false },
-      { t:"The army was one of the few ways a brave man could rise in Aztec society.", a:false },
-      { t:"Conquered peoples were forced to send gold, silver, jade and turquoise to Tenochtitlán.", a:false },
-      { t:"Tenochtitlán had between 150,000 and 200,000 residents.", a:false }
-    ],
-    answer: "The Aztec were strongly affected by their religious beliefs about the influence of the gods in their world. They believed human sacrifices could delay the violent end of the world by giving the sun god the strength to continue. The other four facts are all true — but the first two are about who was sacrificed and why the Aztec fought, and the last two are about the empire, not about why the sacrifices were made at all.",
-    cite: "Student Reader, pages 24–26"
+ "bigQuestion": "Why did the Aztec make human sacrifices?",
+ "sets": [
+  {
+   "id": "s1",
+   "c": "var(--sky)",
+   "tag": "Pages 20–22",
+   "name": "The Eagle and the Cactus",
+   "blurb": "Wandering, a sign from a god, and a city built on a swampy island.",
+   "items": [
+    {
+     "type": "pick",
+     "q": "What does <b>Aztec</b> mean?",
+     "opts": [
+      "A civilization that thrived in present-day central Mexico from 1325 to 1521 CE",
+      "A group of peoples who lived in the rainforests of the Yucatán Peninsula",
+      "A civilization that thrived on the western coast of South America",
+      "A historical region made up of parts of Mexico and Central America"
+     ],
+     "a": 0,
+     "why": "Aztec: a civilization that thrived in present-day central Mexico from 1325 to 1521 CE. The other three describe the Maya, the Inca and Mesoamerica.",
+     "cite": "Core Vocabulary, Student Reader page 20",
+     "p": "legend",
+     "hi": "a civilization that thrived in present-day central Mexico from 1325 to 1521 CE"
+    },
+    {
+     "type": "pick",
+     "q": "What does <b>nomadic</b> mean?",
+     "opts": [
+      "Moving around often in search of food; not settled in one place",
+      "Ruling over a group of conquered territories",
+      "Living by farming a single piece of land for many years",
+      "Trained to carry out religious ceremonies"
+     ],
+     "a": 0,
+     "why": "Nomadic: moving around often in search of food; not settled in one place. Before building their capital city, the nomadic Aztec wandered for years.",
+     "cite": "Core Vocabulary, Student Reader page 20",
+     "p": "legend",
+     "hi": "moving around often in search of food; not settled in one place"
+    },
+    {
+     "type": "pick",
+     "q": "When did the Aztec civilization arise?",
+     "opts": [
+      "About three hundred years after the Maya abandoned their cities",
+      "At the same time as the Maya, in the same rainforest",
+      "About a thousand years before the Maya",
+      "Shortly after the Spanish arrived in the Americas"
+     ],
+     "a": 0,
+     "why": "About three hundred years after the Maya abandoned their cities, another great civilization arose. They were the Aztec people, who lived in what is today central Mexico.",
+     "cite": "Student Reader, page 20",
+     "p": "legend",
+     "hi": [
+      "About three hundred years after the Maya abandoned their cities, another great civilization arose.",
+      "They were the Aztec people, who lived in what is today central Mexico."
+     ]
+    },
+    {
+     "type": "pick",
+     "q": "According to the legend, how did the Aztec know where to build their city?",
+     "opts": [
+      "The sun god told them to look for an eagle with a snake in its beak, perched on a cactus",
+      "Priests read the answer in the movements of the stars",
+      "They followed a river until it reached the sea",
+      "The emperor chose the spot where his father was buried"
+     ],
+     "a": 0,
+     "why": "One day, the god of the sun spoke to the people. The god told the Aztec people to look for a sign — an eagle with a snake in its beak perched on a cactus. On the spot where the eagle perched, the Aztec were to build a great city.",
+     "cite": "Student Reader, page 20",
+     "p": "legend",
+     "hi": [
+      "The god told the Aztec people to look for a sign—an eagle with a snake in its beak perched on a cactus.",
+      "On the spot where the eagle perched, the Aztec were to build a great city."
+     ]
+    },
+    {
+     "type": "pick",
+     "q": "Where did the eagle finally appear, and what did the Aztec name the city they built there?",
+     "opts": [
+      "On a swampy island in Lake Texcoco — they named it Tenochtitlán",
+      "On a hilltop above the rainforest, at a city the Maya had left behind",
+      "On the dry open plain where they had wandered for years",
+      "Beside the sea, where they could trade with other city-states"
+     ],
+     "a": 0,
+     "why": "The eagle appeared on a swampy island in Lake Texcoco. On that day, the Aztec's wandering ended. The Aztec people called their new home Tenochtitlán, which means “the place of the prickly pear.”",
+     "cite": "Student Reader, page 22",
+     "p": "legend",
+     "hi": [
+      "The eagle appeared on a swampy island in Lake Texcoco.",
+      "The Aztec people called their new home Tenochtitlán, which means “the place of the prickly pear.”"
+     ]
+    },
+    {
+     "type": "pick",
+     "q": "If you looked for Tenochtitlán on a map of the world today, what would be standing there?",
+     "opts": [
+      "Mexico City, in central Mexico",
+      "Lima, on the coast of Peru",
+      "Guatemala City, in Central America",
+      "Havana, on the island of Cuba"
+     ],
+     "a": 0,
+     "why": "The Aztec lived in what is today central Mexico, and Tenochtitlán stood where Mexico City stands now. Even today the eagle and serpent from the legend are shown on the flag of Mexico.",
+     "cite": "Student Reader, pages 20–22",
+     "p": "legend",
+     "hi": [
+      "Even today the eagle and serpent are shown on the flag of Mexico.",
+      "They were the Aztec people, who lived in what is today central Mexico."
+     ]
+    },
+    {
+     "type": "pick",
+     "q": "The legend says the Aztec wandered, set up temporary homes, fought off attackers, and survived on snakes and lizards. What does that suggest about their life before Tenochtitlán?",
+     "opts": [
+      "Life as nomads was difficult",
+      "They were already the most powerful people in Mexico",
+      "They had no interest in ever settling down",
+      "They were farmers who moved only between planting seasons"
+     ],
+     "a": 0,
+     "why": "The legend suggests that the Aztec lived difficult lives as nomads. Wandering, temporary shelter, fighting off attackers and eating whatever could be caught all point the same way.",
+     "cite": "Student Reader, page 20",
+     "p": "legend",
+     "hi": [
+      "On that day, the Aztec’s wandering ended.",
+      "They wandered the land, setting up temporary homes here and there, fighting off attackers, and surviving on snakes and lizards."
+     ]
+    },
+    {
+     "type": "build"
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "c": "var(--gold)",
+   "tag": "Pages 22–25",
+   "name": "Empire and the Five Suns",
+   "blurb": "Conquest, tribute, and a world that had already ended four times.",
+   "items": [
+    {
+     "type": "pick",
+     "q": "What does <b>empire</b> mean?",
+     "opts": [
+      "A group of countries or territories under the control of one government or one ruler",
+      "A city that is an independent state with its own ruling government",
+      "A society with similar beliefs, customs, language and government",
+      "A group of families who farm one piece of land together"
+     ],
+     "a": 0,
+     "why": "Empire: a group of countries or territories under the control of one government or one ruler. By conquering their neighbours, the Aztec built a vast empire.",
+     "cite": "Core Vocabulary, Student Reader page 23",
+     "p": "empire",
+     "hi": "a group of countries or territories under the control of one government or one ruler"
+    },
+    {
+     "type": "pick",
+     "q": "What does <b>emperor</b> mean?",
+     "opts": [
+      "The ruler of an empire",
+      "A person trained to carry out religious ceremonies",
+      "A government official who counts the people of a village",
+      "A soldier who has been honoured for success in battle"
+     ],
+     "a": 0,
+     "why": "Emperor: the ruler of an empire. The Aztec emperor was thought to be a living god.",
+     "cite": "Core Vocabulary, Student Reader page 23",
+     "p": "empire",
+     "hi": "the ruler of an empire"
+    },
+    {
+     "type": "pick",
+     "q": "By the early 1500s, how many people did the Aztec emperor rule?",
+     "opts": [
+      "More than five million",
+      "About fifty thousand",
+      "About two hundred thousand",
+      "More than fifty million"
+     ],
+     "a": 0,
+     "why": "By the early 1500s, the Aztec Empire included four hundred to five hundred city-states and controlled much of present-day Mexico. The Aztec emperor ruled more than five million people.",
+     "cite": "Student Reader, page 23",
+     "p": "empire",
+     "hi": [
+      "By the early 1500s, the Aztec Empire included four hundred to five hundred city-states and controlled much of present-day Mexico.",
+      "The Aztec emperor ruled more than five million people."
+     ]
+    },
+    {
+     "type": "pick",
+     "q": "About how many people lived in Tenochtitlán itself?",
+     "opts": [
+      "Between 150,000 and 200,000",
+      "Between 5,000 and 10,000",
+      "Between 400 and 500",
+      "More than one million"
+     ],
+     "a": 0,
+     "why": "Tenochtitlán alone probably had between 150,000 and 200,000 residents, making it one of the largest cities in the world at this time. No city in the United States would grow so large until the 1800s.",
+     "cite": "Student Reader, page 23",
+     "p": "empire",
+     "hi": [
+      "Tenochtitlán alone probably had between 150,000 and 200,000 residents, making it one of the largest cities in the world at this time.",
+      "No city in the United States would grow so large until the 1800s."
+     ]
+    },
+    {
+     "type": "pick",
+     "q": "How did conquering their neighbours make the Aztec wealthy?",
+     "opts": [
+      "Conquered peoples were forced to send goods to Tenochtitlán — gold, silver, jade and turquoise, or food, cloth and other goods if they had no valuables",
+      "The Aztec took over the farmland and moved Aztec families onto it",
+      "The Aztec charged travellers a toll to use their roads",
+      "The Aztec sold the goods they captured to Spanish traders"
+     ],
+     "a": 0,
+     "why": "By conquering other people, they were able to gain wealth. Aztec warriors then forced conquered peoples to send their gold, silver, jade, and turquoise to Tenochtitlán. Those who had no valuables could send food, cloth, or other goods.",
+     "cite": "Student Reader, page 24",
+     "p": "tribute",
+     "hi": [
+      "Aztec warriors then forced conquered peoples to send their gold, silver, jade, and turquoise to Tenochtitlán.",
+      "Those who had no valuables could send food, cloth, or other goods."
+     ]
+    },
+    {
+     "type": "pick",
+     "q": "Besides food and precious metals and stones, what else did victorious Aztec warriors send back to Tenochtitlán?",
+     "opts": [
+      "Soldiers captured in battle",
+      "Priests from the conquered city",
+      "Children to be raised as Aztec",
+      "Stone for building temples"
+     ],
+     "a": 0,
+     "why": "Victorious Aztec warriors sent more than food and precious metals and stones back to Tenochtitlán. They also sent back soldiers captured in battle. The captured soldiers sometimes were used in an important religious ritual of the Aztec people: human sacrifice.",
+     "cite": "Student Reader, page 24",
+     "p": "fivesuns",
+     "hi": [
+      "They also sent back soldiers captured in battle.",
+      "The captured soldiers sometimes were used in an important religious ritual of the Aztec people: human sacrifice."
+     ]
+    },
+    {
+     "type": "order",
+     "q": "The Aztec believed the world and the sun had already been created and destroyed four times. Put the four lost suns back in order.",
+     "steps": [
+      "Under the first sun, a race of giants roamed the world — until a jaguar devoured them.",
+      "The world under the second sun was swept away by a great wind.",
+      "People under the third sun died in the fire and ash of volcanoes.",
+      "Those living under the fourth sun drowned in floods."
+     ],
+     "why": "Giants eaten by a jaguar, then a great wind, then volcanoes, then floods. The Aztec of Tenochtitlán believed they were living under the fifth sun — and that this one would die too.",
+     "cite": "Student Reader, pages 24–25",
+     "p": "fivesuns",
+     "hi": [
+      "The world under the second sun was swept away by a great wind.",
+      "Those living under the fourth sun drowned in floods."
+     ]
+    },
+    {
+     "type": "pick",
+     "q": "The Aztec believed the fifth sun would die too. How did they think they could help their sun god?",
+     "opts": [
+      "By offering human sacrifices, to give the god the strength to make the sun rise each morning",
+      "By building a taller pyramid than any before it",
+      "By refusing to go to war until the danger had passed",
+      "By moving their capital away from Lake Texcoco"
+     ],
+     "a": 0,
+     "why": "They believed that each night, the sun god battled the forces of darkness. Each morning, the god had to find the strength to make the sun rise again. The Aztec believed they could help their god by offering human sacrifices in their temples.",
+     "cite": "Student Reader, page 25",
+     "p": "sunbattle",
+     "hi": [
+      "Each morning, the god had to find the strength to make the sun rise again.",
+      "The Aztec believed they could help their god by offering human sacrifices in their temples."
+     ]
+    },
+    {
+     "type": "build"
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "c": "var(--jade)",
+   "tag": "Pages 25–27",
+   "name": "Sacrifice and the Warrior",
+   "blurb": "What the priests did, what the Aztec thought it proved, and why war never stopped.",
+   "items": [
+    {
+     "type": "pick",
+     "q": "How did the Aztec carry out a sacrifice?",
+     "opts": [
+      "A drum sounded, attendants led the victim to the top of a pyramid, and the priest removed the heart, which was burned on an altar",
+      "The victim was sealed inside the temple and left there",
+      "The victim was buried beneath the steps of the pyramid",
+      "The emperor himself carried out the sacrifice in his palace"
+     ],
+     "a": 0,
+     "why": "The Aztec held their sacrifices on top of pyramids not unlike those built by the Maya. A big drum sounded as attendants led the victims to the top. The priest killed the victim by removing his heart. The heart was then burned on an altar.",
+     "cite": "Student Reader, page 25",
+     "p": "ritual",
+     "hi": [
+      "A big drum sounded as attendants led the victims to the top.",
+      "The heart was then burned on an altar."
+     ]
+    },
+    {
+     "type": "pick",
+     "q": "Whom did the Aztec prefer to sacrifice, and why that person in particular?",
+     "opts": [
+      "Foreign soldiers captured in war — priests believed the strong heart of a soldier was the best offering",
+      "The losers of a ball game, as the Maya had done",
+      "Their own priests, who were closest to the gods",
+      "Enslaved people bought at the market in Tenochtitlán"
+     ],
+     "a": 0,
+     "why": "The Aztec preferred to sacrifice someone other than their own friends and family. Most of their victims were foreign soldiers captured in war. Aztec priests believed that the heart was the most important thing to sacrifice. They preferred to offer up the strong heart of a soldier.",
+     "cite": "Student Reader, page 25",
+     "p": "sunbattle",
+     "hi": [
+      "Aztec priests believed that the heart was the most important thing to sacrifice.",
+      "They preferred to offer up the strong heart of a soldier."
+     ]
+    },
+    {
+     "type": "pick",
+     "q": "A long drought once threatened the Aztec corn harvest. What happened next?",
+     "opts": [
+      "Priests offered a number of human sacrifices, and a day or so later, rain came",
+      "The emperor ordered the canals opened to water the fields",
+      "The Aztec abandoned the harvest and went to war instead",
+      "Priests declared that the fifth sun had ended"
+     ],
+     "a": 0,
+     "why": "Once, when a long drought threatened the Aztec corn harvest, priests offered a number of human sacrifices. A day or so later, rain came. To the Aztec, this was no coincidence. It was proof that the gifts of blood had saved the crop.",
+     "cite": "Student Reader, page 26",
+     "p": "proof",
+     "hi": [
+      "Once, when a long drought threatened the Aztec corn harvest, priests offered a number of human sacrifices.",
+      "A day or so later, rain came."
+     ]
+    },
+    {
+     "type": "pick",
+     "q": "The reader says the Aztec could point to events that <em>seemed</em> to prove the sacrifices worked. Why does the writer choose the word <em>seemed</em>?",
+     "opts": [
+      "Because things that were really natural events or coincidences could be mistaken for results of the sacrifices",
+      "Because the Aztec were not certain the sacrifices had truly been carried out",
+      "Because only the priests were allowed to say what the gods had done",
+      "Because the rain arrived later than the priests had promised"
+     ],
+     "a": 0,
+     "why": "The word suggests that what were actually natural events or even coincidences could mistakenly be viewed as the results of the sacrifices. Rain falling after a drought is not caused by what happened the day before — but to the Aztec, it looked like proof, and so the offerings were regular and generous.",
+     "cite": "Student Reader, page 26",
+     "p": "proof",
+     "hi": [
+      "They could even point to events that seemed to prove that the sacrifices worked.",
+      "As a result, Aztec offerings to the gods were regular and generous."
+     ]
+    },
+    {
+     "type": "pick",
+     "q": "Most Aztec people were born into a social class and had little chance to leave it. What was the one real way for a brave man to rise?",
+     "opts": [
+      "Success in battle, which was rewarded with advancement and honour",
+      "Becoming a farmer on the raised gardens of the lake",
+      "Trading cacao beans and cotton in the great market",
+      "Marrying into the family of a conquered ruler"
+     ],
+     "a": 0,
+     "why": "As in many societies until recent times, Aztec people were born into a certain social class. Most people had relatively little chance to advance out of it. The army provided one opportunity for brave men to better themselves. Success in battle was rewarded with advancement and honour.",
+     "cite": "Student Reader, page 26",
+     "p": "war",
+     "hi": [
+      "Success in battle was rewarded with advancement and honor.",
+      "As in many societies until recent times, Aztec people were born into a certain social class."
+     ]
+    },
+    {
+     "type": "pick",
+     "q": "What did the Aztec believe was the greatest honour of all?",
+     "opts": [
+      "To die in battle",
+      "To be chosen as emperor",
+      "To be trained as a priest",
+      "To own land beside the lake"
+     ],
+     "a": 0,
+     "why": "The Aztec people believed there was no greater honour than to die in battle.",
+     "cite": "Student Reader, page 26",
+     "p": "war",
+     "hi": [
+      "The Aztec people believed there was no greater honor than to die in battle.",
+      "Success in battle was rewarded with advancement and honor."
+     ]
+    },
+    {
+     "type": "pick",
+     "q": "Two things about Aztec life pushed them into war again and again. Which pair were they?",
+     "opts": [
+      "Their religion needed a steady supply of victims, and war was one of the few ways a man could rise in society",
+      "They had run out of farmland, and they needed stone for their temples",
+      "Their emperor was chosen by combat, and their priests forbade trade",
+      "They were under attack from the Spanish, and their crops had failed"
+     ],
+     "a": 0,
+     "why": "Aztec religion required a steady supply of victims for sacrifice, and war provided one of the few ways for a person to advance socially. These two factors helped encourage warfare. Priests used human sacrifice to please the gods; Aztec soldiers held the empire together and provided the victims for the sacrifices.",
+     "cite": "Student Reader, pages 25–26",
+     "p": "war",
+     "hi": [
+      "Aztec soldiers held the empire together and provided the victims for the sacrifices.",
+      "Priests used human sacrifice to please the gods."
+     ]
+    },
+    {
+     "type": "build"
+    }
+   ]
   }
+ ],
+ "passages": {
+  "legend": {
+   "title": "The Eagle and the Cactus",
+   "cite": "Student Reader, pages 20–22",
+   "vocab": [
+    [
+     "Aztec, n.",
+     "a civilization that thrived in present-day central Mexico from 1325 to 1521 CE"
+    ],
+    [
+     "nomadic, adj.",
+     "moving around often in search of food; not settled in one place"
+    ]
+   ],
+   "text": [
+    "About three hundred years after the Maya abandoned their cities, another great civilization arose. They were the Aztec people, who lived in what is today central Mexico.",
+    "According to legend, the Aztec were once a nomadic tribe. They wandered the land, setting up temporary homes here and there, fighting off attackers, and surviving on snakes and lizards. One day, the god of the sun spoke to the people. The god told the Aztec people to look for a sign—an eagle with a snake in its beak perched on a cactus. On the spot where the eagle perched, the Aztec were to build a great city.",
+    "The legend goes on to describe how the Aztec finally received the sign the god had told them about. The eagle appeared on a swampy island in Lake Texcoco. On that day, the Aztec’s wandering ended. They settled down and began building a city. The Aztec people called their new home Tenochtitlán, which means “the place of the prickly pear.” Even today the eagle and serpent are shown on the flag of Mexico."
+   ]
+  },
+  "empire": {
+   "title": "Conquering City-States",
+   "cite": "Student Reader, pages 22–23",
+   "vocab": [
+    [
+     "empire, n.",
+     "a group of countries or territories under the control of one government or one ruler"
+    ],
+    [
+     "emperor, n.",
+     "the ruler of an empire"
+    ]
+   ],
+   "text": [
+    "Whether or not the myth is true, we do know that the Aztec established Tenochtitlán by 1325. By the 1400s, the Aztec civilization had begun to expand. The Aztec proved to be fearsome warriors. One by one they conquered neighboring city-states and added them to their empire.",
+    "By the early 1500s, the Aztec Empire included four hundred to five hundred city-states and controlled much of present-day Mexico. The Aztec emperor ruled more than five million people. Tenochtitlán alone probably had between 150,000 and 200,000 residents, making it one of the largest cities in the world at this time. No city in the United States would grow so large until the 1800s."
+   ]
+  },
+  "tribute": {
+   "title": "What the conquered had to send",
+   "cite": "Student Reader, page 24",
+   "text": [
+    "The Aztec were well-known warriors. By conquering other people, they were able to gain wealth. Aztec warriors then forced conquered peoples to send their gold, silver, jade, and turquoise to Tenochtitlán. Those who had no valuables could send food, cloth, or other goods.",
+    "People who lived by the ocean might also have to send seashells, fish, or turtles. Farmers might send corn, beans, peppers, squash, or fruit. Groups with access to specific environments might have to give animal skins and feathers. Craft-working communities might send pottery or blankets to Tenochtitlán."
+   ]
+  },
+  "fivesuns": {
+   "title": "The Legend of the Five Suns",
+   "cite": "Student Reader, pages 24–25",
+   "text": [
+    "Victorious Aztec warriors sent more than food and precious metals and stones back to Tenochtitlán. They also sent back soldiers captured in battle. The captured soldiers sometimes were used in an important religious ritual of the Aztec people: human sacrifice. To understand the importance of human sacrifice, we need to take a closer look at Aztec religion.",
+    "According to Aztec beliefs, life was uncertain. The one thing people could count on was that the world would one day come to a terrible, violent end. In fact, the Aztec believed that the world and the sun had been created and destroyed four times in the past. Under the first sun, a race of giants roamed the world. This world ended when a jaguar devoured the giants. The world under the second sun was swept away by a great wind. People under the third sun died in the fire and ash of volcanoes. Those living under the fourth sun drowned in floods.",
+    "The Aztec of Tenochtitlán believed they were living under the fifth sun. But they believed that this sun would also someday die: “There will be earthquakes and hunger, and then our end shall come,” the priests said. The Aztec people believed these predictions. They planned their lives in response to them."
+   ]
+  },
+  "sunbattle": {
+   "title": "Why they thought it was necessary",
+   "cite": "Student Reader, page 25",
+   "text": [
+    "So the Aztec awaited their fate. But they did not simply accept it. They believed that each night, the sun god battled the forces of darkness. Each morning, the god had to find the strength to make the sun rise again. The Aztec believed they could help their god by offering human sacrifices in their temples.",
+    "The Aztec preferred to sacrifice someone other than their own friends and family. Most of their victims were foreign soldiers captured in war. Aztec priests believed that the heart was the most important thing to sacrifice. They preferred to offer up the strong heart of a soldier."
+   ]
+  },
+  "ritual": {
+   "title": "Religious Sacrifice",
+   "cite": "Student Reader, page 25",
+   "text": [
+    "The Aztec held their sacrifices on top of pyramids not unlike those built by the Maya. A big drum sounded as attendants led the victims to the top. The priest killed the victim by removing his heart. The heart was then burned on an altar. The victim’s body was then allowed to tumble down the pyramid’s steps. The process was repeated for each victim."
+   ]
+  },
+  "proof": {
+   "title": "The evidence they believed they had",
+   "cite": "Student Reader, page 26",
+   "text": [
+    "The Aztec believed human sacrifices were necessary to keep the sun rising and moving across the sky. They could even point to events that seemed to prove that the sacrifices worked. Once, when a long drought threatened the Aztec corn harvest, priests offered a number of human sacrifices. A day or so later, rain came. To the Aztec, this was no coincidence. It was proof that the gifts of blood had saved the crop. Experiences like this convinced the Aztec of the power of human sacrifice. As a result, Aztec offerings to the gods were regular and generous."
+   ]
+  },
+  "war": {
+   "title": "Success at War",
+   "cite": "Student Reader, page 26",
+   "text": [
+    "Priests and soldiers were key elements of Aztec life. Priests used human sacrifice to please the gods. Aztec soldiers held the empire together and provided the victims for the sacrifices.",
+    "As in many societies until recent times, Aztec people were born into a certain social class. Most people had relatively little chance to advance out of it. The army provided one opportunity for brave men to better themselves. Success in battle was rewarded with advancement and honor. The Aztec people believed there was no greater honor than to die in battle."
+   ]
+  }
+ },
+ "build": {
+  "q": "Build the answer to the Big Question. Pick the <b>two</b> facts that actually explain why the Aztec made human sacrifices.",
+  "tiles": [
+   {
+    "t": "Aztec religious belief held that the gods shaped everything in their world.",
+    "a": true
+   },
+   {
+    "t": "They believed sacrifices gave the sun god strength to raise the sun, holding off the violent end of the world.",
+    "a": true
+   },
+   {
+    "t": "Most of the victims were foreign soldiers captured in war.",
+    "a": false
+   },
+   {
+    "t": "The army was one of the few ways a brave man could rise in Aztec society.",
+    "a": false
+   },
+   {
+    "t": "Conquered peoples were forced to send gold, silver, jade and turquoise to Tenochtitlán.",
+    "a": false
+   },
+   {
+    "t": "Tenochtitlán had between 150,000 and 200,000 residents.",
+    "a": false
+   }
+  ],
+  "answer": "The Aztec were strongly affected by their religious beliefs about the influence of the gods in their world. They believed human sacrifices could delay the violent end of the world by giving the sun god the strength to continue. The other four facts are all true — but the first two are about who was sacrificed and why the Aztec fought, and the last two are about the empire, not about why the sacrifices were made at all.",
+  "cite": "Student Reader, pages 24–26"
+ }
 };
 
 const $ = id => document.getElementById(id);
@@ -1909,6 +2261,10 @@ function rBuild(head){
     }
   };
 }
+
+
+
+
 
 
 

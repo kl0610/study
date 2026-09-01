@@ -1559,186 +1559,569 @@ window.__MC_SFX__={"tool": "data:audio/mpeg;base64,//OAxAAAAAAAAAAAAFhpbmcAAAAPA
    Core Vocabulary for this chapter is exactly five: astronomy, leap year,
    equinox, "initiation ceremony", priest — all five are tested. */
 const DATA = {
-  bigQuestion: "Why is the 365-day solar calendar employed by the Maya particularly impressive?",
-  sets: [
-    { id:"s1", c:"var(--sky)", tag:"Pages 10–14", name:"Wisdom in the Sky",
-      blurb:"Astronomy, two calendars, and the invention of zero.",
-      items:[
-        { type:"pick", q:"The Maya made very precise observations of the stars. What did they use to make them?",
-          opts:["Their own eyes, and nothing else","Telescopes","Early computers","Satellites"], a:0,
-          why:"The Maya did not have telescopes, computers, or satellites. They did not even have the wheel. All they had were their own eyes.",
-          cite:"Student Reader, page 11" },
-        { type:"pick", q:"What does <b>astronomy</b> mean?",
-          opts:["The study of the stars, planets, and other features of outer space",
-                "The style and construction of a building",
-                "A picture or symbol standing for an idea or sound",
-                "A count of the number of people living in an area"], a:0,
-          why:"Astronomy is the study of the stars, planets, and other features of outer space.",
-          cite:"Core Vocabulary, Student Reader page 11" },
-        { type:"pick", q:"How did the Maya divide their 365-day solar year?",
-          opts:["Eighteen months of twenty days, plus a special five-day month",
-                "Twelve months, the same as our calendar",
-                "Thirteen months of twenty-eight days",
-                "Twenty months of eighteen days, with no extra days"], a:0,
-          why:"We divide our year into twelve months. The Maya divided their year into eighteen months. A special five-day month completed the 365-day year.",
-          cite:"Student Reader, page 12" },
-        { type:"pick", q:"Besides the solar calendar, Maya astronomers created a second calendar. What was it?",
-          opts:["The Sacred Round, 260 days long, for religious holidays and important events",
-                "The Long Count, 400 days long, for recording the reigns of kings",
-                "The Rain Calendar, 180 days long, for planting seasons",
-                "The Star Table, 365 days long, for tracking the planets"], a:0,
-          why:"Maya astronomers created another calendar called the Sacred Round. This calendar was 260 days long and was used to keep track of religious holidays and other important events.",
-          cite:"Student Reader, page 12" },
-        { type:"pick", q:"Because the Maya used two calendars at once, what was true of every Maya person?",
-          opts:["Every person had two birthdays","Every person had two names",
-                "Every person celebrated the new year twice","Every person had to learn two languages"], a:0,
-          why:"Because the Maya had two calendars, each day had two names. One name came from the Sacred Round and the other from the solar calendar. This also meant that all Maya people had two birthdays.",
-          cite:"Student Reader, page 12" },
-        { type:"pick", q:"At Chichén Itzá, what happens on the spring and fall <b>equinoxes</b>?",
-          opts:["The sun casts the shadow of a serpent statue down the pyramid steps",
-                "The pyramid's inner chamber fills completely with sunlight",
-                "The sun rises exactly behind the temple doorway",
-                "The pyramid's shadow disappears entirely at noon"], a:0,
-          why:"In Chichén Itzá the sun of the spring and fall equinoxes casts the shadow of a serpent statue onto the pyramid steps. As the sun rises, the shadow slithers down the stairs. An equinox is a day when daytime and nighttime are about the same length, which happens twice every year.",
-          cite:"Student Reader, page 13" },
-        { type:"pick", q:"In the Maya number system, which symbol stood for <b>zero</b>?",
-          opts:["A shell","A dot","A bar","A feather"], a:0,
-          why:"A dot stood for one. A bar stood for five. A shell stood for zero. The Maya were among the first people in the world to develop the concept of zero.",
-          cite:"Student Reader, pages 13–14" },
-        { type:"build" }
-      ]},
-
-    { id:"s2", c:"var(--gold)", tag:"Pages 14–17", name:"How They Lived",
-      blurb:"Farming, family life, and the long road to becoming an adult.",
-      items:[
-        { type:"pick", q:"What was the main crop of the Maya?",
-          opts:["Corn","Potatoes","Wheat","Rice"], a:0,
-          why:"Most Maya people made their living as farmers. Their main crop was corn. One of their main foods was a flat bread called a tortilla.",
-          cite:"Student Reader, page 14" },
-        { type:"pick", q:"What kind of homes did Maya farmers live in?",
-          opts:["One-room huts made of mud and grass, in walled areas holding several huts",
-                "Stone houses built into the sides of the pyramids",
-                "Windowless stone huts with thatched roofs",
-                "Wooden longhouses shared by the whole village"], a:0,
-          why:"Maya farmers lived in one-room huts made out of mud and grass. Families lived in walled areas that had several huts.",
-          cite:"Student Reader, page 14" },
-        { type:"pick", q:"What does the phrase <b>initiation ceremony</b> mean?",
-          opts:["A special event to mark a person's entry into a certain group or status",
-                "A yearly festival held at the end of the five-day month",
-                "A ball game played to settle a dispute between two cities",
-                "A gift offered to the gods at the top of a pyramid"], a:0,
-          why:"An initiation ceremony is a special event to mark a person's entry into a certain group or status. For the Maya it marked a child's passage to adulthood at the age of fourteen.",
-          cite:"Core Vocabulary, Student Reader page 16" },
-        { type:"order", q:"Put the Maya path from childhood to adulthood back in order.",
-          steps:["Before age five, children are cared for by parents and other relatives.",
-                 "At age five, children take on chores. A boy has a white bead braided into his hair; a girl has a string tied at her waist with a red shell.",
-                 "The bead and the string stay in place until the child turns fourteen.",
-                 "A priest picks a day when the stars are favourable.",
-                 "The bead is cut from the boy's hair, and a girl's mother cuts the string from her waist.",
-                 "The parents hold a celebration with family members and neighbours."],
-          why:"The markers were put on at five and cut off at fourteen, and a priest chose the day by the stars — the same way priests chose days for planting, for war, and for marriages.",
-          cite:"Student Reader, page 16" },
-        { type:"pick", q:"Who decided <em>when</em> an initiation ceremony or a marriage should take place, and how?",
-          opts:["A priest, by picking a day when the stars were favourable",
-                "The child's father, by counting the harvests",
-                "The city's ruler, by consulting the hieroglyphs",
-                "The oldest woman in the family, by choosing a market day"], a:0,
-          why:"A priest would pick a day when the stars were favourable. As with the initiation ceremonies, priests picked marriage dates. They checked with the stars and the gods to find a day that would bring good fortune.",
-          cite:"Student Reader, page 16" },
-        { type:"pick", q:"What does <b>priest</b> mean?",
-          opts:["A person who has the training or authority to carry out religious ceremonies or rituals",
-                "An expert in the study of ancient people and the objects they left behind",
-                "A person whose job is copying written information",
-                "A person who carries out a government duty"], a:0,
-          why:"A priest is a person who has the training or authority to carry out certain religious ceremonies or rituals.",
-          cite:"Core Vocabulary, Student Reader page 16" },
-        { type:"pick", q:"The Maya believed some gods were good and some were bad. What did they therefore expect of life?",
-          opts:["That life would include both joy and sorrow",
-                "That life would be good if the harvest was good",
-                "That only priests could expect good fortune",
-                "That the gods would leave people alone"], a:0,
-          why:"The Maya believed that every aspect of life was controlled by the gods. Because some gods were good and some were bad, they expected life to include both joy and sorrow.",
-          cite:"Student Reader, page 16" },
-        { type:"build" }
-      ]},
-
-    { id:"s3", c:"var(--red)", tag:"Pages 18–19", name:"Where Did Everybody Go?",
-      blurb:"The cities empty out — and the evidence that rules the theories out.",
-      items:[
-        { type:"pick", q:"When do archaeologists believe the Maya left their cities?",
-          opts:["Sometime between 800 and 900","Sometime between 200 and 300",
-                "Shortly after 1500, when the Spanish arrived","In the 1830s, when explorers found the ruins"], a:0,
-          why:"Archaeologists believe that the Maya left their cities sometime between 800 and 900. It is possible this event happened over just a few decades.",
-          cite:"Student Reader, page 18" },
-        { type:"pick", q:"What sign tells archaeologists that something changed in the 900s?",
-          opts:["The carving of names and dates on pyramids and temples stopped",
-                "The ball courts were torn down","The pyramids were buried on purpose",
-                "The Maya began writing in a new kind of hieroglyph"], a:0,
-          why:"Until the 900s, the Maya kept careful historical records. They used their hieroglyphs to carve names and dates on pyramids and temples. Then in the 900s, the writing mysteriously stopped.",
-          cite:"Student Reader, page 18" },
-        { type:"pick", q:"One theory is that farmers rose up against the priests and nobles. What evidence argues <em>against</em> it?",
-          opts:["There is no evidence of a new group of people replacing the old ones in power",
-                "No weapons from that period have ever been found",
-                "The farmers left written records saying they did not revolt",
-                "The priests and nobles are buried in the pyramids"], a:0,
-          why:"One theory holds that farmers rose up against the priests and nobles. But this raises another question: what happened to the farmers? There is no evidence of a new group of people replacing the old ones in power.",
-          cite:"Student Reader, page 19" },
-        { type:"pick", q:"Another theory is that disease wiped out the Maya. What evidence argues <em>against</em> it?",
-          opts:["No mass burial grounds have been found, and almost all disease deaths there happened after 1500",
-                "The Maya had already developed medicines for every illness",
-                "Archaeologists have found no skeletons at all",
-                "Disease could not spread in a rainforest"], a:0,
-          why:"No mass burial grounds have been found. Archaeologists have found signs that some people in this area did die from diseases. Almost all of these deaths, however, seemed to have occurred after 1500, when the Spanish brought new diseases to the Americas. The Maya had been gone for years before that.",
-          cite:"Student Reader, page 19" },
-        { type:"pick", q:"So what <em>do</em> archaeologists know about why the cities were abandoned?",
-          opts:["They have several theories but cannot find clear proof for any one of them",
-                "They have proved it was a drought","They have proved it was an invasion",
-                "They agree it will never be worth studying"], a:0,
-          why:"Archaeologists have theories, but they can't find clear proof for any one of them. Drought, heavy rainfall, famine, earthquake, shifting trade routes and invaders have all been suggested.",
-          cite:"Student Reader, pages 18–19" },
-        { type:"pick", q:"What is true of Maya people today?",
-          opts:["Millions still speak languages related to ancient Mayan",
-                "No trace of the Maya people remains",
-                "The Maya moved to North America and settled there",
-                "Only their written records survive"], a:0,
-          why:"The Maya scattered. But the people themselves did not disappear. Today, millions still speak languages related to ancient Mayan, living in southern Mexico, Guatemala, and Honduras.",
-          cite:"Student Reader, page 19" },
-        { type:"pick", q:"What does <b>leap year</b> mean?",
-          opts:["A year of 366 days — one more than all other years — that occurs every four years",
-                "A year in which the equinox happens three times",
-                "The 260-day year of the Sacred Round",
-                "The five-day month that completed the Maya year"], a:0,
-          why:"A leap year is a year that has 366 days, or one more than all other years, and occurs every four years.",
-          cite:"Core Vocabulary, Student Reader page 11" },
-        { type:"build" }
-      ]}
-  ],
-
-  /* The Big Question, built rather than written. The three correct tiles are the
-     three key points the Teacher Guide asks students to cite. The distractors
-     are all true statements from the reader that simply do not answer it — the
-     skill being tested is telling evidence from mere fact. */
-  build: {
-    q: "Build the answer to the Big Question. Pick the <b>three</b> facts that actually explain why the Maya calendar is so impressive.",
-    tiles: [
-      { t:"They made detailed, precise observations of the sun, the planets and the stars.", a:true },
-      { t:"They did it with nothing but their own eyes — no telescopes, no computers, no satellites.", a:true },
-      { t:"They calculated the year at 365.2420 days. Modern astronomers measure it at 365.2422.", a:true },
-      { t:"They played a ball game called pok-ta-pok on stone courts.", a:false },
-      { t:"They lived in one-room huts made of mud and grass.", a:false },
-      { t:"They grew corn, beans, squash, sweet potatoes and tomatoes.", a:false }
-    ],
-    figures: {
-      nums: [
-        ["365.2420", "Maya, by eye"],
-        ["365.2422", "Modern, by machine"],
-        ["17 seconds", "Apart, per year"]
-      ],
-      note: "Seventeen seconds a year. At that rate the Maya calendar would not slip a single day for about <b>five thousand years</b>."
+ "bigQuestion": "Why is the 365-day solar calendar employed by the Maya particularly impressive?",
+ "sets": [
+  {
+   "id": "s1",
+   "c": "var(--sky)",
+   "tag": "Pages 10–14",
+   "name": "Wisdom in the Sky",
+   "blurb": "Astronomy, two calendars, and the invention of zero.",
+   "items": [
+    {
+     "type": "pick",
+     "q": "The Maya made very precise observations of the stars. What did they use to make them?",
+     "opts": [
+      "Their own eyes, and nothing else",
+      "Telescopes",
+      "Early computers",
+      "Satellites"
+     ],
+     "a": 0,
+     "why": "The Maya did not have telescopes, computers, or satellites. They did not even have the wheel. All they had were their own eyes.",
+     "cite": "Student Reader, page 11",
+     "p": "astronomy",
+     "hi": [
+      "All they had were their own eyes.",
+      "The Maya, of course, did not have telescopes, computers, or satellites."
+     ]
     },
-    answer: "The Maya made detailed, precise observations of the sun and stars using nothing but their own eyes — no telescopes, no computers, no satellites. With only that, they calculated the length of a year to 365.2420 days. Modern astronomers, using modern technology, measure it at 365.2422 days.",
-    cite: "Student Reader, pages 11–12"
+    {
+     "type": "pick",
+     "q": "What does <b>astronomy</b> mean?",
+     "opts": [
+      "The study of the stars, planets, and other features of outer space",
+      "The style and construction of a building",
+      "A picture or symbol standing for an idea or sound",
+      "A count of the number of people living in an area"
+     ],
+     "a": 0,
+     "why": "Astronomy is the study of the stars, planets, and other features of outer space.",
+     "cite": "Core Vocabulary, Student Reader page 11",
+     "p": "astronomy",
+     "hi": "the study of the stars, planets, and other features of outer space"
+    },
+    {
+     "type": "pick",
+     "q": "How did the Maya divide their 365-day solar year?",
+     "opts": [
+      "Eighteen months of twenty days, plus a special five-day month",
+      "Twelve months, the same as our calendar",
+      "Thirteen months of twenty-eight days",
+      "Twenty months of eighteen days, with no extra days"
+     ],
+     "a": 0,
+     "why": "We divide our year into twelve months. The Maya divided their year into eighteen months. A special five-day month completed the 365-day year.",
+     "cite": "Student Reader, page 12",
+     "p": "calendars",
+     "hi": [
+      "A special five-day “month” completed the 365-day year.",
+      "We divide our year into twelve months."
+     ]
+    },
+    {
+     "type": "pick",
+     "q": "Besides the solar calendar, Maya astronomers created a second calendar. What was it?",
+     "opts": [
+      "The Sacred Round, 260 days long, for religious holidays and important events",
+      "The Long Count, 400 days long, for recording the reigns of kings",
+      "The Rain Calendar, 180 days long, for planting seasons",
+      "The Star Table, 365 days long, for tracking the planets"
+     ],
+     "a": 0,
+     "why": "Maya astronomers created another calendar called the Sacred Round. This calendar was 260 days long and was used to keep track of religious holidays and other important events.",
+     "cite": "Student Reader, page 12",
+     "p": "calendars",
+     "hi": [
+      "This calendar was 260 days long and was used to keep track of religious holidays and other important events.",
+      "Besides their 365-day solar calendar, Maya astronomers created another calendar called the Sacred Round."
+     ]
+    },
+    {
+     "type": "pick",
+     "q": "Because the Maya used two calendars at once, what was true of every Maya person?",
+     "opts": [
+      "Every person had two birthdays",
+      "Every person had two names",
+      "Every person celebrated the new year twice",
+      "Every person had to learn two languages"
+     ],
+     "a": 0,
+     "why": "Because the Maya had two calendars, each day had two names. One name came from the Sacred Round and the other from the solar calendar. This also meant that all Maya people had two birthdays.",
+     "cite": "Student Reader, page 12",
+     "p": "calendars",
+     "hi": [
+      "This also meant that all Maya people had two birthdays.",
+      "Because the Maya had two calendars, each day had two names."
+     ]
+    },
+    {
+     "type": "pick",
+     "q": "At Chichén Itzá, what happens on the spring and fall <b>equinoxes</b>?",
+     "opts": [
+      "The sun casts the shadow of a serpent statue down the pyramid steps",
+      "The pyramid's inner chamber fills completely with sunlight",
+      "The sun rises exactly behind the temple doorway",
+      "The pyramid's shadow disappears entirely at noon"
+     ],
+     "a": 0,
+     "why": "In Chichén Itzá the sun of the spring and fall equinoxes casts the shadow of a serpent statue onto the pyramid steps. As the sun rises, the shadow slithers down the stairs. An equinox is a day when daytime and nighttime are about the same length, which happens twice every year.",
+     "cite": "Student Reader, page 13",
+     "p": "atwork",
+     "hi": [
+      "In Chichén Itzá, for example, the sun of the spring and fall equinoxes casts the shadow of a serpent statue onto the pyramid steps.",
+      "As the sun rises, the shadow slithers down the stairs."
+     ]
+    },
+    {
+     "type": "pick",
+     "q": "In the Maya number system, which symbol stood for <b>zero</b>?",
+     "opts": [
+      "A shell",
+      "A dot",
+      "A bar",
+      "A feather"
+     ],
+     "a": 0,
+     "why": "A dot stood for one. A bar stood for five. A shell stood for zero. The Maya were among the first people in the world to develop the concept of zero.",
+     "cite": "Student Reader, pages 13–14",
+     "p": "zero",
+     "hi": [
+      "In fact, the Maya were among the first people in the world to develop the concept of zero.",
+      "The Maya symbol for zero worked the same way ours does."
+     ]
+    },
+    {
+     "type": "build"
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "c": "var(--gold)",
+   "tag": "Pages 14–17",
+   "name": "How They Lived",
+   "blurb": "Farming, family life, and the long road to becoming an adult.",
+   "items": [
+    {
+     "type": "pick",
+     "q": "What was the main crop of the Maya?",
+     "opts": [
+      "Corn",
+      "Potatoes",
+      "Wheat",
+      "Rice"
+     ],
+     "a": 0,
+     "why": "Most Maya people made their living as farmers. Their main crop was corn. One of their main foods was a flat bread called a tortilla.",
+     "cite": "Student Reader, page 14",
+     "p": "farming",
+     "hi": [
+      "Their main crop was corn.",
+      "One of their main foods was something you may have eaten—a flat bread called a tortilla."
+     ]
+    },
+    {
+     "type": "pick",
+     "q": "What kind of homes did Maya farmers live in?",
+     "opts": [
+      "One-room huts made of mud and grass, in walled areas holding several huts",
+      "Stone houses built into the sides of the pyramids",
+      "Windowless stone huts with thatched roofs",
+      "Wooden longhouses shared by the whole village"
+     ],
+     "a": 0,
+     "why": "Maya farmers lived in one-room huts made out of mud and grass. Families lived in walled areas that had several huts.",
+     "cite": "Student Reader, page 14",
+     "p": "farming",
+     "hi": [
+      "Maya farmers lived in one-room huts made out of mud and grass.",
+      "Families lived in walled areas that had several huts."
+     ]
+    },
+    {
+     "type": "pick",
+     "q": "What does the phrase <b>initiation ceremony</b> mean?",
+     "opts": [
+      "A special event to mark a person's entry into a certain group or status",
+      "A yearly festival held at the end of the five-day month",
+      "A ball game played to settle a dispute between two cities",
+      "A gift offered to the gods at the top of a pyramid"
+     ],
+     "a": 0,
+     "why": "An initiation ceremony is a special event to mark a person's entry into a certain group or status. For the Maya it marked a child's passage to adulthood at the age of fourteen.",
+     "cite": "Core Vocabulary, Student Reader page 16",
+     "p": "coming",
+     "hi": [
+      "At this point, an initiation ceremony was performed to mark their passage to adulthood.",
+      "Before age five, Maya children were cared for by parents and other relatives."
+     ]
+    },
+    {
+     "type": "order",
+     "q": "Put the Maya path from childhood to adulthood back in order.",
+     "steps": [
+      "Before age five, children are cared for by parents and other relatives.",
+      "At age five, children take on chores. A boy has a white bead braided into his hair; a girl has a string tied at her waist with a red shell.",
+      "The bead and the string stay in place until the child turns fourteen.",
+      "A priest picks a day when the stars are favourable.",
+      "The bead is cut from the boy's hair, and a girl's mother cuts the string from her waist.",
+      "The parents hold a celebration with family members and neighbours."
+     ],
+     "why": "The markers were put on at five and cut off at fourteen, and a priest chose the day by the stars — the same way priests chose days for planting, for war, and for marriages.",
+     "cite": "Student Reader, page 16",
+     "p": "coming",
+     "hi": [
+      "Before age five, Maya children were cared for by parents and other relatives.",
+      "A girl’s mother would cut the string from her daughter’s waist."
+     ]
+    },
+    {
+     "type": "pick",
+     "q": "Who decided <em>when</em> an initiation ceremony or a marriage should take place, and how?",
+     "opts": [
+      "A priest, by picking a day when the stars were favourable",
+      "The child's father, by counting the harvests",
+      "The city's ruler, by consulting the hieroglyphs",
+      "The oldest woman in the family, by choosing a market day"
+     ],
+     "a": 0,
+     "why": "A priest would pick a day when the stars were favourable. As with the initiation ceremonies, priests picked marriage dates. They checked with the stars and the gods to find a day that would bring good fortune.",
+     "cite": "Student Reader, page 16",
+     "p": "gods",
+     "hi": [
+      "They checked with the stars and the gods to find a day that would bring good fortune.",
+      "As with the initiation ceremonies, priests picked marriage dates."
+     ]
+    },
+    {
+     "type": "pick",
+     "q": "What does <b>priest</b> mean?",
+     "opts": [
+      "A person who has the training or authority to carry out religious ceremonies or rituals",
+      "An expert in the study of ancient people and the objects they left behind",
+      "A person whose job is copying written information",
+      "A person who carries out a government duty"
+     ],
+     "a": 0,
+     "why": "A priest is a person who has the training or authority to carry out certain religious ceremonies or rituals.",
+     "cite": "Core Vocabulary, Student Reader page 16",
+     "p": "coming",
+     "hi": "a person who has the training or authority to carry out religious ceremonies or rituals"
+    },
+    {
+     "type": "pick",
+     "q": "The Maya believed some gods were good and some were bad. What did they therefore expect of life?",
+     "opts": [
+      "That life would include both joy and sorrow",
+      "That life would be good if the harvest was good",
+      "That only priests could expect good fortune",
+      "That the gods would leave people alone"
+     ],
+     "a": 0,
+     "why": "The Maya believed that every aspect of life was controlled by the gods. Because some gods were good and some were bad, they expected life to include both joy and sorrow.",
+     "cite": "Student Reader, page 16",
+     "p": "gods",
+     "hi": [
+      "Because some gods were good and some were bad, they expected life to include both joy and sorrow.",
+      "The Maya believed that every aspect of life was controlled by the gods."
+     ]
+    },
+    {
+     "type": "build"
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "c": "var(--red)",
+   "tag": "Pages 18–19",
+   "name": "Where Did Everybody Go?",
+   "blurb": "The cities empty out — and the evidence that rules the theories out.",
+   "items": [
+    {
+     "type": "pick",
+     "q": "When do archaeologists believe the Maya left their cities?",
+     "opts": [
+      "Sometime between 800 and 900",
+      "Sometime between 200 and 300",
+      "Shortly after 1500, when the Spanish arrived",
+      "In the 1830s, when explorers found the ruins"
+     ],
+     "a": 0,
+     "why": "Archaeologists believe that the Maya left their cities sometime between 800 and 900. It is possible this event happened over just a few decades.",
+     "cite": "Student Reader, page 18",
+     "p": "end",
+     "hi": [
+      "Archaeologists believe that the Maya left their cities sometime between 800 and 900.",
+      "It’s possible this event happened over just a few decades."
+     ]
+    },
+    {
+     "type": "pick",
+     "q": "What sign tells archaeologists that something changed in the 900s?",
+     "opts": [
+      "The carving of names and dates on pyramids and temples stopped",
+      "The ball courts were torn down",
+      "The pyramids were buried on purpose",
+      "The Maya began writing in a new kind of hieroglyph"
+     ],
+     "a": 0,
+     "why": "Until the 900s, the Maya kept careful historical records. They used their hieroglyphs to carve names and dates on pyramids and temples. Then in the 900s, the writing mysteriously stopped.",
+     "cite": "Student Reader, page 18",
+     "p": "end",
+     "hi": [
+      "They used their hieroglyphs to carve names and dates on pyramids and temples.",
+      "Until the 900s, the Maya kept careful historical records."
+     ]
+    },
+    {
+     "type": "pick",
+     "q": "One theory is that farmers rose up against the priests and nobles. What evidence argues <em>against</em> it?",
+     "opts": [
+      "There is no evidence of a new group of people replacing the old ones in power",
+      "No weapons from that period have ever been found",
+      "The farmers left written records saying they did not revolt",
+      "The priests and nobles are buried in the pyramids"
+     ],
+     "a": 0,
+     "why": "One theory holds that farmers rose up against the priests and nobles. But this raises another question: what happened to the farmers? There is no evidence of a new group of people replacing the old ones in power.",
+     "cite": "Student Reader, page 19",
+     "p": "end",
+     "hi": [
+      "There is no evidence of a new group of people replacing the old ones in power.",
+      "One theory holds that farmers rose up against the priests and nobles."
+     ]
+    },
+    {
+     "type": "pick",
+     "q": "Another theory is that disease wiped out the Maya. What evidence argues <em>against</em> it?",
+     "opts": [
+      "No mass burial grounds have been found, and almost all disease deaths there happened after 1500",
+      "The Maya had already developed medicines for every illness",
+      "Archaeologists have found no skeletons at all",
+      "Disease could not spread in a rainforest"
+     ],
+     "a": 0,
+     "why": "No mass burial grounds have been found. Archaeologists have found signs that some people in this area did die from diseases. Almost all of these deaths, however, seemed to have occurred after 1500, when the Spanish brought new diseases to the Americas. The Maya had been gone for years before that.",
+     "cite": "Student Reader, page 19",
+     "p": "end",
+     "hi": [
+      "Almost all of these deaths, however, seemed to have occurred after 1500, when the Spanish brought new diseases to the Americas.",
+      "But no mass burial grounds have been found."
+     ]
+    },
+    {
+     "type": "pick",
+     "q": "So what <em>do</em> archaeologists know about why the cities were abandoned?",
+     "opts": [
+      "They have several theories but cannot find clear proof for any one of them",
+      "They have proved it was a drought",
+      "They have proved it was an invasion",
+      "They agree it will never be worth studying"
+     ],
+     "a": 0,
+     "why": "Archaeologists have theories, but they can't find clear proof for any one of them. Drought, heavy rainfall, famine, earthquake, shifting trade routes and invaders have all been suggested.",
+     "cite": "Student Reader, pages 18–19",
+     "p": "end",
+     "hi": [
+      "Archaeologists have theories, but they can’t find clear proof for any one of them.",
+      "That fact alone is a reason to find them interesting."
+     ]
+    },
+    {
+     "type": "pick",
+     "q": "What is true of Maya people today?",
+     "opts": [
+      "Millions still speak languages related to ancient Mayan",
+      "No trace of the Maya people remains",
+      "The Maya moved to North America and settled there",
+      "Only their written records survive"
+     ],
+     "a": 0,
+     "why": "The Maya scattered. But the people themselves did not disappear. Today, millions still speak languages related to ancient Mayan, living in southern Mexico, Guatemala, and Honduras.",
+     "cite": "Student Reader, page 19",
+     "p": "end",
+     "hi": [
+      "Today, millions still speak languages related to ancient Mayan.",
+      "But the people themselves did not disappear."
+     ]
+    },
+    {
+     "type": "pick",
+     "q": "What does <b>leap year</b> mean?",
+     "opts": [
+      "A year of 366 days — one more than all other years — that occurs every four years",
+      "A year in which the equinox happens three times",
+      "The 260-day year of the Sacred Round",
+      "The five-day month that completed the Maya year"
+     ],
+     "a": 0,
+     "why": "A leap year is a year that has 366 days, or one more than all other years, and occurs every four years.",
+     "cite": "Core Vocabulary, Student Reader page 11",
+     "p": "astronomy",
+     "hi": "a year that has 366 days, or one more than all other years, and occurs every four years"
+    },
+    {
+     "type": "build"
+    }
+   ]
   }
+ ],
+ "passages": {
+  "astronomy": {
+   "title": "Wisdom in the Sky",
+   "cite": "Student Reader, pages 10–11",
+   "vocab": [
+    [
+     "astronomy, n.",
+     "the study of the stars, planets, and other features of outer space"
+    ],
+    [
+     "leap year, n.",
+     "a year that has 366 days, or one more than all other years, and occurs every four years"
+    ]
+   ],
+   "text": [
+    "The Maya believed that their gods gave them an unclear view of the world that was “like breath on a mirror.” But we also know that the Maya understood some things very well.",
+    "Their knowledge of astronomy, for example, was impressive. The Maya, of course, did not have telescopes, computers, or satellites. They didn’t even have the wheel. All they had were their own eyes. Yet they were able to make very precise observations of the stars.",
+    "Some priests were expert astronomers and charted the sky. They consulted the heavens to determine favorable days for planting and harvesting."
+   ]
+  },
+  "calendars": {
+   "title": "Maya Calendars",
+   "cite": "Student Reader, pages 11–12",
+   "text": [
+    "We all know that there are 365 days in a year, plus an extra day every fourth year, or leap year. These numbers are the result of years of study of the sun and the seasons. The Maya, working without scientific tools, calculated that there were 365.2420 days in a year. Modern astronomers used modern technology to measure the year at 365.2422 days!",
+    "The Maya created a solar calendar, or calendar based on the movement of the sun. This calendar is similar to our calendar, but there are some differences. We divide our year into twelve months. The Maya divided their year into eighteen months with names like Pop and Zip. A special five-day “month” completed the 365-day year.",
+    "Besides their 365-day solar calendar, Maya astronomers created another calendar called the Sacred Round. This calendar was 260 days long and was used to keep track of religious holidays and other important events.",
+    "Because the Maya had two calendars, each day had two names. One name came from the Sacred Round and the other from the solar calendar. This also meant that all Maya people had two birthdays."
+   ]
+  },
+  "atwork": {
+   "title": "Astronomy at Work",
+   "cite": "Student Reader, page 13",
+   "vocab": [
+    [
+     "equinox, n.",
+     "a day in which daytime and nighttime are about the same length, which happens twice every year"
+    ]
+   ],
+   "text": [
+    "We can see the results of Maya astronomy in the placement of their temples and pyramids. These structures were built so the sun would shine directly on key areas on certain days. In Chichén Itzá, for example, the sun of the spring and fall equinoxes casts the shadow of a serpent statue onto the pyramid steps. As the sun rises, the shadow slithers down the stairs."
+   ]
+  },
+  "zero": {
+   "title": "Inventing Zero",
+   "cite": "Student Reader, pages 13–14",
+   "text": [
+    "The Maya were also skilled at mathematics. They developed a system of number symbols. A dot stood for one. A bar stood for five. A shell stood for zero. We all know that zero can stand for “nothing.”",
+    "But when it comes to a system of numbers, zero means a lot! Think, for example, of the difference between the numbers twenty and two hundred. The Maya symbol for zero worked the same way ours does. In fact, the Maya were among the first people in the world to develop the concept of zero."
+   ]
+  },
+  "farming": {
+   "title": "How They Lived",
+   "cite": "Student Reader, page 14",
+   "text": [
+    "Most Maya people made their living as farmers. Their main crop was corn. One of their main foods was something you may have eaten—a flat bread called a tortilla. Farmers also grew beans, squash, sweet potatoes, tomatoes, and pumpkins.",
+    "Maya farmers lived in one-room huts made out of mud and grass. Families lived in walled areas that had several huts. Men and boys did the farming. Women and girls took care of the house, cooked, and made clothing and pottery."
+   ]
+  },
+  "customs": {
+   "title": "Customs that look strange from outside",
+   "cite": "Student Reader, page 14",
+   "text": [
+    "Every culture has practices that seem odd to other people. The Maya did two things that may seem a little strange to you. They considered crossed eyes to be beautiful. So mothers would hang something in front of a baby’s nose to help the baby develop crossed eyes. The Maya also viewed a flat head as a symbol of beauty. They would strap a long board to the backs of newborn babies. As the babies’ heads rested against the board, the board gradually flattened the back of the babies’ soft skulls."
+   ]
+  },
+  "coming": {
+   "title": "Coming of Age",
+   "cite": "Student Reader, pages 14–16",
+   "vocab": [
+    [
+     "initiation ceremony (phrase)",
+     "a special event to mark a person’s entry into a certain group or status"
+    ],
+    [
+     "priest, n.",
+     "a person who has the training or authority to carry out religious ceremonies or rituals"
+    ]
+   ],
+   "text": [
+    "Before age five, Maya children were cared for by parents and other relatives. At age five, they took on new responsibilities, such as helping with farming and household chores. A boy had a white bead braided to his hair. A girl had a string tied to her waist with a red shell attached.",
+    "These symbols remained in place until the children reached the age of fourteen. At this point, an initiation ceremony was performed to mark their passage to adulthood. A priest would pick a day when the stars were favorable. Then the priest would cut the bead from the boy’s hair. A girl’s mother would cut the string from her daughter’s waist. Then the parents would have a celebration with family members and neighbors.",
+    "After these ceremonies, boys moved into a house for unmarried men. There they would remain until they got married. Marriages were arranged. In the hard life of Maya farmers, marriages were not romantic affairs. They were more like business deals between families."
+   ]
+  },
+  "gods": {
+   "title": "What the gods controlled",
+   "cite": "Student Reader, page 16",
+   "text": [
+    "As with the initiation ceremonies, priests picked marriage dates. They checked with the stars and the gods to find a day that would bring good fortune. However, no Maya couple expected married life to bring only good fortune. The Maya believed that every aspect of life was controlled by the gods. Because some gods were good and some were bad, they expected life to include both joy and sorrow."
+   ]
+  },
+  "end": {
+   "title": "Where Did Everybody Go?",
+   "cite": "Student Reader, pages 18–19",
+   "text": [
+    "The ancient Maya were amazing people who built a great civilization. That fact alone is a reason to find them interesting. But one of the most fascinating questions about ancient Maya civilization (200–900 CE) is what happened to cause it to end.",
+    "Archaeologists believe that the Maya left their cities sometime between 800 and 900. It’s possible this event happened over just a few decades. Until the 900s, the Maya kept careful historical records. They used their hieroglyphs to carve names and dates on pyramids and temples. Then in the 900s, the writing mysteriously stopped. The temples and pyramids began to fall into disrepair.",
+    "So what happened? Archaeologists have theories, but they can’t find clear proof for any one of them.",
+    "One theory holds that farmers rose up against the priests and nobles. But this raises another question: what happened to the farmers? There is no evidence of a new group of people replacing the old ones in power.",
+    "Some have guessed that disease wiped out the Maya population. But no mass burial grounds have been found. Archaeologists have found signs that some people in this area did die from diseases. Almost all of these deaths, however, seemed to have occurred after 1500, when the Spanish brought new diseases to the Americas. The Maya had been gone for years before that.",
+    "Did disaster strike the Maya? Did drought or heavy rainfall bring famine? Was there an earthquake? Did shifting trade routes affect the lowland Maya rulers and their settlements? Could invaders have toppled the civilization?",
+    "No one knows for sure. We only know that the once-great Maya cities were abandoned and swallowed up by the rain forest. The Maya scattered. But the people themselves did not disappear. Today, millions still speak languages related to ancient Mayan."
+   ]
+  }
+ },
+ "build": {
+  "q": "Build the answer to the Big Question. Pick the <b>three</b> facts that actually explain why the Maya calendar is so impressive.",
+  "tiles": [
+   {
+    "t": "They made detailed, precise observations of the sun, the planets and the stars.",
+    "a": true
+   },
+   {
+    "t": "They did it with nothing but their own eyes — no telescopes, no computers, no satellites.",
+    "a": true
+   },
+   {
+    "t": "They calculated the year at 365.2420 days. Modern astronomers measure it at 365.2422.",
+    "a": true
+   },
+   {
+    "t": "They played a ball game called pok-ta-pok on stone courts.",
+    "a": false
+   },
+   {
+    "t": "They lived in one-room huts made of mud and grass.",
+    "a": false
+   },
+   {
+    "t": "They grew corn, beans, squash, sweet potatoes and tomatoes.",
+    "a": false
+   }
+  ],
+  "figures": {
+   "nums": [
+    [
+     "365.2420",
+     "Maya, by eye"
+    ],
+    [
+     "365.2422",
+     "Modern, by machine"
+    ],
+    [
+     "17 seconds",
+     "Apart, per year"
+    ]
+   ],
+   "note": "Seventeen seconds a year. At that rate the Maya calendar would not slip a single day for about <b>five thousand years</b>."
+  },
+  "answer": "The Maya made detailed, precise observations of the sun and stars using nothing but their own eyes — no telescopes, no computers, no satellites. With only that, they calculated the length of a year to 365.2420 days. Modern astronomers, using modern technology, measure it at 365.2422 days.",
+  "cite": "Student Reader, pages 11–12"
+ }
 };
 
 const $ = id => document.getElementById(id);
@@ -1895,6 +2278,10 @@ function rBuild(head){
     }
   };
 }
+
+
+
+
 
 
 

@@ -271,10 +271,19 @@ group("the worked example, opened on a miss");
      is marked. Reading and History have done this from the start; math opened
      the panel and highlighted nothing until now. */
   R.$("same").click();
-  const wrongFirst = R.q(".opt").findIndex((_, i) => i === 0);
-  R.q(".opt")[wrongFirst].click();
-  R.$("go").click();
-  const btn = R.$("readbtn");
+  /* Getting a question wrong on purpose takes a little care: the first option
+     is right about a quarter of the time, and picking it produces no miss and
+     no button. So work along the questions until one is actually missed. */
+  let btn = null;
+  for (let i = 0; i < 12 && !btn; i++) {
+    const opts = R.q(".opt");
+    if (!opts.length) break;
+    opts[0].click();
+    const go = R.$("go");
+    if (go) go.click();
+    btn = R.$("readbtn");
+    if (!btn) { const nx = R.$("next"); if (nx) nx.click(); }
+  }
   ok("a worked example is offered after the miss", !!btn);
   if (btn) {
     btn.click();
