@@ -15,3 +15,8 @@ _returned/*
 # here so a later session can read them; they must not reach a public repo.
 _source/spelling/
 _source/vocabulary/
+
+# Purchased material. Not Creative Commons, not ours to redistribute, and this
+# repo is public — so nothing under _private/ is ever committed. The CC-licensed
+# Core Knowledge books live in _source/ and are committed; these do not.
+_private/
