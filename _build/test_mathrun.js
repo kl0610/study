@@ -231,6 +231,21 @@ ok("six problems are ticked",
 ok("the count says twelve questions", /12 questions/.test(R.$("picker").innerHTML));
 ok("the make button is live now", R.$("smake").disabled === false);
 
+group("asking for a single question");
+{
+  /* Some problems only want one look, so one is a choice alongside two, three
+     and four. Checked by building a set of exactly that. */
+  const one = R.q(".pk").find(p => p.dataset.n === "6");
+  const buttons = one.querySelectorAll(".howmany button").map(b => b.dataset.k);
+  ok("one, two, three and four are all offered",
+     JSON.stringify(buttons) === JSON.stringify(["1", "2", "3", "4"]), buttons.join());
+  one.querySelectorAll(".howmany button").find(b => b.dataset.k === "1").click();
+  ok("choosing one drops the count to eleven", /11 questions/.test(R.$("picker").innerHTML));
+  one.querySelectorAll(".howmany button").find(b => b.dataset.k === "2").click();
+  ok("...and putting it back to two restores twelve",
+     /12 questions/.test(R.$("picker").innerHTML));
+}
+
 group("pressing Make my practice");
 R.$("smake").click();
 ok("the picker closes", R.$("picker").innerHTML === "");

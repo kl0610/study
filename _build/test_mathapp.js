@@ -123,8 +123,10 @@ group("building a set from ticks");
   ok("problem 24 draws on both lessons it is tagged with",
      new Set(out.filter(q => q.from === 24).map(q => q.skill)).size === 2);
   ok("every question has a worked example that exists", out.every(q => EX[q.ex]));
-  ok("four is the most that can be asked for per problem",
-     /data-k="\$\{k\}"/.test(html) && /\[2,3,4\]\.map/.test(html));
+  ok("one to four questions can be asked for per problem",
+     /data-k="\$\{k\}"/.test(html) && /\[1,2,3,4\]\.map/.test(html));
+  ok("one is offered, for a problem that wants a single look",
+     /\[1,2,3,4\]/.test(html));
 
   // the same ticks twice must not give the same sheet
   const again = [];

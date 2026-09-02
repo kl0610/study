@@ -76,7 +76,7 @@ h1 em{font-style:normal;color:var(--gold)}
 .sx:hover{color:var(--ink)}
 .stools{display:flex;flex-wrap:wrap;gap:8px;padding:10px 16px;border-bottom:1px solid var(--line);
   background:var(--panel-2)}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(132px,1fr));gap:6px;
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(152px,1fr));gap:6px;
   padding:12px 16px;max-height:46vh;overflow:auto}
 .pk{display:flex;align-items:center;gap:8px;padding:7px 8px;border:1px solid var(--line);
   background:#fff;cursor:pointer;user-select:none}
@@ -87,7 +87,7 @@ h1 em{font-style:normal;color:var(--gold)}
 .pk .s{font-size:11px;color:var(--dim);line-height:1.25;min-width:0;flex:1;
   overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .pk .howmany{display:flex;gap:2px}
-.pk .howmany button{width:20px;height:20px;padding:0;border:1px solid var(--line);
+.pk .howmany button{width:19px;height:20px;padding:0;border:1px solid var(--line);
   background:#fff;font:700 11px var(--mono);color:var(--dim);cursor:pointer}
 .pk .howmany button.sel{background:var(--jade);border-color:var(--jade);color:#fff}
 .pk.off .howmany{visibility:hidden}
@@ -3087,7 +3087,7 @@ function drawPicker(){
       <input type="checkbox" ${on?"checked":""} ${sk.length?"":"disabled"}>
       <span class="n">${i}</span>
       <span class="s" title="${esc(label)}">${esc(label)}</span>
-      <span class="howmany">${[2,3,4].map(k=>
+      <span class="howmany">${[1,2,3,4].map(k=>
         `<button type="button" data-k="${k}" class="${(PICK[i]||2)===k?"sel":""}">${k}</button>`).join("")}</span>
     </label>`);
   }
@@ -3098,7 +3098,7 @@ function drawPicker(){
         <div>
           <h2>Lesson ${LESSON} &mdash; which problems did you miss?</h2>
           <p>Written practice, page ${MATHMAP.page(LESSON)}. Tick the ones that came
-             back wrong, then say how many of each you want &mdash; two, three or four.</p>
+             back wrong, then say how many of each you want &mdash; one, two, three or four.</p>
         </div>
         <button class="sx" id="sclose" aria-label="Close">&times;</button>
       </div>
