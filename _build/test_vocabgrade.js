@@ -120,6 +120,21 @@ for (const t of TESTS) {
   ok("every form draws on items that exist",
      D.forms.every(f => f.items.every(k => D.pool[k])));
 
+  /* The test is on Friday, at school. These are practice for it, and saying
+     otherwise puts the weight of a real test on a child for none of the reason
+     — and spends a word worth keeping for the real one. */
+  {
+    const body = t.html.replace(/\/\*[\s\S]*?\*\//g, "");
+    ok("it calls itself practice, not a test",
+       /Practice Tests<\/(title|em)>/.test(body) && !/This is a test/.test(body));
+    /* "Test-ready", "Friday's test" and the book's own sentence about cheating
+       on a test all point at the real one, which is the whole idea. */
+    const loose = [...body.matchAll(/.{0,30}\btest\b.{0,30}/gi)]
+      .map(m => m[0])
+      .filter(x => !/practice test|Test-ready|Friday's test|Cheating on the test/i.test(x));
+    ok("no loose talk of a test left", !loose.length, loose.slice(0, 3).join(" | "));
+  }
+
   /* The list it says it is has to be the list it is. Chapter 4 of History
      shipped introducing itself as Chapter 3 for the same reason: a clone. */
   const want = /lesson(\d)/.exec(t.rel)[1];
