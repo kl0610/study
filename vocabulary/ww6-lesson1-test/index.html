@@ -1527,6 +1527,24 @@ window.__MC_SFX__={"tool": "data:audio/mpeg;base64,//OAxAAAAAAAAAAAAFhpbmcAAAAPA
       host.innerHTML = heroHTML(title || "");
     },
 
+    /* Drop everything recorded about one app: its scores, its run history and
+       its miss log. For use when a grading fault means the numbers cannot be
+       trusted — there is no way to recompute a score after the fact, because
+       what was chosen is not kept, only the total.
+
+       Coins, tools, ore and anything worn are untouched. Those are not in
+       doubt, and nothing earned is ever taken away. */
+    forget: function (app) {
+      if (!app) return 0;
+      var gone = 0, k;
+      for (k in S.cleared) if (k.indexOf(app + ":") === 0) { delete S.cleared[k]; gone++; }
+      for (k in S.runs) if (k.indexOf(app + ":") === 0) delete S.runs[k];
+      for (k in S.misses) if (k.indexOf(app + "-") === 0 || k.indexOf(app + ":") === 0) delete S.misses[k];
+      for (k in S.gem) if (k.indexOf(app + ":") === 0) delete S.gem[k];
+      if (gone) { save(); drawBar(); drawHeroes(); }
+      return gone;
+    },
+
     earned: function () { return S.earned; },
 
     owns: function (id) { return !!S.owned[id]; },
@@ -1671,7 +1689,13 @@ function positions(n){
 function lay(items){
   const slots = positions(items.length);
   return shuffle(items).map((it,n)=>{
-    const opts = shuffle(it.opts.map((t,k)=>({t, ok:k===0})));
+    /* Which option is the answer: `a` where the item says so, and the first
+       one where it does not. Word List 1 was written to the older rule and
+       carries no `a`; Word List 2 carries one on every item, and this shell
+       used to ignore it and mark whatever came first — which after shuffling
+       was the answer only about a third of the time. */
+    const key = typeof it.a === "number" ? it.a : 0;
+    const opts = shuffle(it.opts.map((t,k)=>({t, ok:k===key})));
     const at = opts.findIndex(o=>o.ok), want = slots[n];
     [opts[at], opts[want]] = [opts[want], opts[at]];
     return { it, opts, pick:null, flag:false };
