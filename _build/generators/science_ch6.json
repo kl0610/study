@@ -1,0 +1,348 @@
+{
+ "chapter": "Chapter 6 — The Language of Chemistry",
+ "title": "The Language of Chemistry — Investigating Matter, Chapter 6",
+ "eyebrow": "CKSci Grade 5 · Investigating Matter · Chapter 6 · Student Reader pp. 33–38",
+ "h1": "The Language of <em>Chemistry</em>",
+ "bigQuestion": "What are atoms, elements, and molecules?",
+ "mission": {
+  "name": "Chapter 6 review",
+  "tag": "11 questions · about 9 minutes",
+  "blurb": "A quick check that the chapter landed — not a test."
+ },
+ "items": [
+  {
+   "type": "pick",
+   "p": "chemistry",
+   "q": "What does the book say <b>chemistry</b> is the science of?",
+   "opts": [
+    "What matter is made of and how matter changes",
+    "How living things grow, feed and reproduce",
+    "The movement of the planets and the stars",
+    "How heat travels from one place to another"
+   ],
+   "a": 0,
+   "why": "Chemistry is the science of what matter is made of and how matter changes. And no one person thought it up — the ideas were shared and built on, from the ancient Greeks to today.",
+   "cite": "Student Reader, page 33"
+  },
+  {
+   "type": "pick",
+   "p": "chemistry",
+   "q": "Democritus and Leucippus built the word <b>atom</b> out of two Greek pieces. What did they mean by it?",
+   "opts": [
+    "Not to cut — a particle that cannot be cut smaller",
+    "Not to see — a particle too small for any eye",
+    "To join — a particle that sticks to other particles",
+    "To burn — a particle released by fire"
+   ],
+   "a": 0,
+   "why": "The Greek prefix a- means “not,” and temnein means “to cut.” Put them together and you get atomos — “not to cut.” Atoms became the new word for particles that could not be cut any smaller.",
+   "cite": "Student Reader, page 33"
+  },
+  {
+   "type": "pick",
+   "p": "dalton",
+   "q": "The ancient Greeks and John Dalton both said matter is made of atoms. What did Dalton do that they did not?",
+   "opts": [
+    "He studied evidence from chemical reactions",
+    "He gave the particles the name we still use",
+    "He looked at matter through a microscope",
+    "He was the first to suggest atoms exist"
+   ],
+   "a": 0,
+   "why": "The Greeks did not use a scientific process for examining ideas for supporting evidence — they did not determine whether their ideas were true or false. Dalton, unlike them, studied evidence from chemical reactions. It took about two thousand years before there was evidence to support the atomic theory.",
+   "cite": "Student Reader, page 34"
+  },
+  {
+   "type": "pick",
+   "p": "dalton",
+   "q": "What did Dalton <em>add</em> to Democritus’s idea?",
+   "opts": [
+    "Some atoms are alike and some are different",
+    "Atoms can be cut into still smaller pieces",
+    "Atoms are far too small ever to be counted",
+    "All atoms in the universe are exactly alike"
+   ],
+   "a": 0,
+   "why": "Dalton's atomic theory was built upon the ideas of Democritus: that atoms are tiny particles that cannot be further cut. But Dalton added to this idea. Dalton said that some atoms are alike and some are different, and that when atoms join, they make up different types of matter.",
+   "cite": "Student Reader, page 34"
+  },
+  {
+   "type": "match",
+   "p": "bond",
+   "q": "Match each word to the meaning the book gives it.",
+   "pairs": [
+    [
+     "chemistry",
+     "The science of what matter is made of and how matter changes"
+    ],
+    [
+     "atom",
+     "A small particle of chemical matter"
+    ],
+    [
+     "element",
+     "A substance made of a single type of atom"
+    ],
+    [
+     "bond",
+     "A connection that holds atoms together"
+    ],
+    [
+     "molecule",
+     "A substance made of one or more kinds of atoms joined together by chemical bonds"
+    ]
+   ],
+   "why": "These five are the chapter's Core Vocabulary. Everything else in the chapter is built out of them: atoms are the pieces, an element is matter made of one kind of piece, a bond is what holds pieces together, and a molecule is what you get when they are held together.",
+   "cite": "Core Vocabulary, Student Reader pages 33–36"
+  },
+  {
+   "type": "pick",
+   "p": "element",
+   "q": "All the glowing gas in a neon sign is one kind of atom. What does that make neon?",
+   "opts": [
+    "An element",
+    "A molecule",
+    "A mixture",
+    "A precipitate"
+   ],
+   "a": 0,
+   "why": "When all the atoms in matter are the same, the matter is called an element. All of the glowing gas in a neon sign is made of one kind of atom — neon. In the same way, every atom in a gold nugget is an atom of the element gold.",
+   "cite": "Student Reader, page 35"
+  },
+  {
+   "type": "pick",
+   "p": "bond",
+   "q": "Two hydrogen atoms join with one oxygen atom. What have you got?",
+   "opts": [
+    "A molecule of water",
+    "An element called water",
+    "A mixture of two gases",
+    "A precipitate"
+   ],
+   "a": 0,
+   "why": "When one or more kinds of atoms form chemical bonds with other atoms, they form molecules. Two hydrogen atoms often join with one oxygen atom — and when this happens, you get a molecule of a substance you use every day. Water. It is not an element, because the atoms are not all the same kind.",
+   "cite": "Student Reader, page 36"
+  },
+  {
+   "type": "sort",
+   "p": "element",
+   "q": "Sort each one by whether it is an element or a molecule.",
+   "bins": [
+    "An element — one type of atom",
+    "A molecule — atoms bonded together"
+   ],
+   "chips": [
+    [
+     "The glowing gas in a neon sign",
+     0
+    ],
+    [
+     "A gold nugget",
+     0
+    ],
+    [
+     "Water",
+     1
+    ],
+    [
+     "Carbon dioxide",
+     1
+    ],
+    [
+     "A protein in an egg",
+     1
+    ]
+   ],
+   "why": "The test is whether the atoms are all the same kind. Neon and gold are elements — every atom in them is the same. Water, carbon dioxide and protein are molecules — different kinds of atoms bonded together.",
+   "cite": "Student Reader, pages 35–37"
+  },
+  {
+   "type": "selectall",
+   "p": "living",
+   "q": "Which of these does the book name as molecules in the food we eat? Select every correct answer.",
+   "opts": [
+    [
+     "Proteins, in eggs, nuts, beans and meat",
+     1
+    ],
+    [
+     "Carbohydrates, in bread, potatoes and pasta",
+     1
+    ],
+    [
+     "Fats, such as plant oils and animal fats",
+     1
+    ],
+    [
+     "Neon, in the air we breathe in",
+     0
+    ],
+    [
+     "Gold, in a nugget from a stream",
+     0
+    ]
+   ],
+   "why": "Proteins are large molecules. Bread, potatoes and pasta are made of complex molecules called carbohydrates, and another kind of complex molecule is fat. Neon and gold are elements, and neither is a food.",
+   "cite": "Student Reader, page 37"
+  },
+  {
+   "type": "pick",
+   "p": "models",
+   "q": "Why does the book say scientists use models?",
+   "opts": [
+    "Because some things are too big or too small to see",
+    "Because a model is faster to build than a real thing",
+    "Because rules require a model before an experiment",
+    "Because models are more accurate than measuring"
+   ],
+   "a": 0,
+   "why": "When something in science is too big or too small to see, scientists use models. A visual model is another form of language shared by chemists — models help make things easier to understand.",
+   "cite": "Student Reader, page 38"
+  },
+  {
+   "type": "mystery",
+   "p": "models",
+   "q": "Match each model or sight to what it shows.",
+   "headers": [
+    "What you are looking at",
+    "What it is"
+   ],
+   "rows": [
+    {
+     "key": "A",
+     "cells": [
+      "Two oxygen atoms bonded to one carbon atom"
+     ],
+     "answer": "Carbon dioxide"
+    },
+    {
+     "key": "B",
+     "cells": [
+      "Two hydrogen atoms bonded to one oxygen atom"
+     ],
+     "answer": "Water"
+    },
+    {
+     "key": "C",
+     "cells": [
+      "A glowing sign whose gas is one kind of atom"
+     ],
+     "answer": "An element"
+    }
+   ],
+   "choices": [
+    "Carbon dioxide",
+    "Water",
+    "An element"
+   ],
+   "why": "A model of carbon dioxide shows two atoms of oxygen and one atom of carbon bonded together. Water is two hydrogen atoms bonded to one oxygen atom. And matter made of a single type of atom, like the neon in a sign, is an element.",
+   "cite": "Student Reader, pages 35–38"
+  }
+ ],
+ "passages": {
+  "chemistry": {
+   "title": "The Language of Chemistry",
+   "cite": "Student Reader, page 33",
+   "vocab": [
+    [
+     "chemistry",
+     "the science of what matter is made of and how matter changes"
+    ],
+    [
+     "atom",
+     "a small particle of chemical matter"
+    ]
+   ],
+   "text": [
+    "Chemistry is the science of what matter is made of and how matter changes. But no one person thought up the idea of chemistry or of matter. People who were interested in the subject shared their ideas with one another.",
+    "By 500 BCE ancient Greeks were sharing their ideas about matter. One man, Democritus, talked to his teacher, Leucippus. They agreed that all matter was made of particles too small to be seen. They could not see the particles. They could only talk about this idea.",
+    "Democritus and Leucippus needed a name for these particles. The Greek prefix a- means “not,” and temnein means “to cut.” If you put the words together, you get atomos. Atomos means “not to cut.”"
+   ]
+  },
+  "dalton": {
+   "title": "John Dalton Explained the Atomic Theory",
+   "cite": "Student Reader, page 34",
+   "text": [
+    "The language of chemistry began and grew in ancient Greece. The ancient Greeks had a problem, though. They did not use a scientific process for examining ideas for supporting evidence. They did not determine whether their ideas were true or false.",
+    "Democritus is known as the “Father of the Atom.” However, it took about two thousand years before there was evidence to support the atomic theory of matter.",
+    "John Dalton was an English schoolteacher who studied the atom in 1808. He described matter as being made up of small particles called atoms. Unlike the ancient Greeks, he studied evidence from chemical reactions.",
+    "Dalton developed what we now call the atomic theory. It was built upon the ideas of Democritus: that atoms are tiny particles that cannot be further cut. But Dalton added to this idea. Dalton said that some atoms are alike and some are different. When atoms join, they make up different types of matter."
+   ]
+  },
+  "element": {
+   "title": "An Element Is Matter Made of a Single Type of Atom",
+   "cite": "Student Reader, page 35",
+   "vocab": [
+    [
+     "element",
+     "a substance made of a single type of atom"
+    ]
+   ],
+   "text": [
+    "Today, scientists have found 118 different kinds of atoms. Everything in the universe is made of the same 118 atoms. Only about 94 of the atoms are found naturally on Earth. Some atoms are made by people in special laboratories.",
+    "Matter is sometimes made of a single type of atom. When all the atoms in matter are the same, the matter is called an element. If we could see all the atoms in a single element, they would all be the same.",
+    "The glow of a neon sign is a beautiful sight. Likewise, all of the atoms that make up a gold nugget are atoms of the element gold."
+   ]
+  },
+  "bond": {
+   "title": "Atoms Bond Together to Form Molecules",
+   "cite": "Student Reader, page 36",
+   "vocab": [
+    [
+     "bond",
+     "a connection that holds atoms together"
+    ],
+    [
+     "molecule",
+     "a substance made of one or more kinds of atoms joined together by chemical bonds"
+    ]
+   ],
+   "text": [
+    "The element that occurs the most in the universe is hydrogen. Hydrogen gas is found in the stars and the sun. Most of the planet Jupiter is made of hydrogen gas. Hydrogen gas is two hydrogen atoms joined together.",
+    "When atoms like hydrogen atoms join, they form a bond. A chemical bond is a connection that holds atoms together. In oxygen gas, two oxygen atoms are connected by a chemical bond. When one or more kinds of atoms form chemical bonds with other atoms, they form molecules.",
+    "In hydrogen gas and oxygen gas, atoms of the same kind form chemical bonds. Atoms of different elements can bond together too. Much of the hydrogen on Earth is found in a bond with another element. Two hydrogen atoms often join with one oxygen atom. When this happens, you get a molecule of a substance you use every day. Water!"
+   ]
+  },
+  "living": {
+   "title": "Molecules Are Important for Living Things",
+   "cite": "Student Reader, page 37",
+   "text": [
+    "While elements represent the different basic types of matter, molecules make up almost all the matter we see every day. The matter that makes up a sidewalk, a building, or a bedspread is all composed of molecules.",
+    "Importantly, the food we eat is composed of molecules. Eggs, nuts, beans, and meat have lots of protein in them. Proteins are large molecules. Bread, potatoes, and pasta are made of complex molecules called carbohydrates. Another kind of complex molecules are fats, such as plant oils and animal fats.",
+    "Chemical changes occur in our bodies. The molecules of the food we eat are broken apart and then combine to form new chemicals. These chemical changes give us energy and the materials our bodies need to stay alive."
+   ]
+  },
+  "models": {
+   "title": "Models Help Us Understand Molecules",
+   "cite": "Student Reader, page 38",
+   "text": [
+    "When something in science is too big or too small to see, scientists use models. In a way, a visual model is another form of language shared by chemists. Models help make things easier to understand. Scientists use models of molecules to show how the atoms are joined together.",
+    "Carbon dioxide is a molecule. Many of them form carbon dioxide gas. It has no color and no odor. When you breathe out, you breathe out carbon dioxide gas. Plants use it to make food. Carbon dioxide is one of the most common molecules in the world. It is found in the air and in the water.",
+    "A model of carbon dioxide helps us to understand that it is made of two atoms of oxygen and one atom of carbon that are bonded together."
+   ]
+  }
+ },
+ "videos": [
+  {
+   "id": "ELchwUIlWa8",
+   "t": "What's Matter?",
+   "s": "Crash Course Kids #3.1",
+   "d": "5 min. What counts as matter, and how we know.",
+   "when": "Start here. Atoms are the pieces this is made of."
+  },
+  {
+   "id": "hIY0Ykt6-Js",
+   "t": "What Is Evidence?",
+   "s": "Crash Course Kids #16.2",
+   "d": "5 min. How a claim gets supported by what you can observe.",
+   "when": "Best match to page 34 — evidence is Dalton's whole difference."
+  },
+  {
+   "id": "AIhU4gaAoyk",
+   "t": "Modeling and Prototypes",
+   "s": "Crash Course Kids #30.1",
+   "d": "5 min. Why scientists build models of things they cannot see.",
+   "when": "Watch after page 38 — the models of water and carbon dioxide."
+  }
+ ]
+}

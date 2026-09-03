@@ -147,6 +147,17 @@ def sci4(s):
     return Patcher(s, "science4")
 
 
+def sci5(s):
+    """CKSci Chapter 5 — generated from Ch4's shell, so its call sites came
+    across already patched. Config only."""
+    return Patcher(s, "science5")
+
+
+def sci6(s):
+    """CKSci Chapter 6 — config only, same as Ch5."""
+    return Patcher(s, "science6")
+
+
 def vtest(s):
     """Wordly Wise List 1 unit test — theme-aware; config only. It runs with
     hud:false, because a test should not have hearts draining while it is being
@@ -327,6 +338,12 @@ APPS = {
     "science/g5-matter-ch3":  (sci3,  dict(app="science3",   shake="#card",   lift=None,
                                            dragon=["m1"])),
     "science/g5-matter-ch4":  (sci4,  dict(app="science4",   shake="#card",   lift=None,
+                                           dragon=["m1"])),
+    # Chapters 5 and 6 close the Matter unit. One mission each, m1, the same
+    # shape as every chapter before them.
+    "science/g5-matter-ch5":  (sci5,  dict(app="science5",   shake="#card",   lift=None,
+                                           dragon=["m1"])),
+    "science/g5-matter-ch6":  (sci6,  dict(app="science6",   shake="#card",   lift=None,
                                            dragon=["m1"])),
     # The Inca half of the unit. Same shell as the Maya and Aztec chapters, and
     # the dragon sits on the last set of each, where it does for those too.

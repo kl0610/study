@@ -1,0 +1,360 @@
+{
+ "chapter": "Chapter 5 — Matter Can Change Chemically",
+ "title": "Matter Can Change Chemically — Investigating Matter, Chapter 5",
+ "eyebrow": "CKSci Grade 5 · Investigating Matter · Chapter 5 · Student Reader pp. 27–32",
+ "h1": "Matter Can Change <em>Chemically</em>",
+ "bigQuestion": "Why do some interactions of matter result in new substances?",
+ "mission": {
+  "name": "Chapter 5 review",
+  "tag": "11 questions · about 8 minutes",
+  "blurb": "A quick check that the chapter landed — not a test."
+ },
+ "items": [
+  {
+   "type": "pick",
+   "p": "mixture",
+   "q": "Ana makes a salad and Jamal bakes bread. Which is a mixture, and how can you tell?",
+   "opts": [
+    "The salad — it can be taken apart to get back the same ingredients",
+    "The bread — heating always leaves the ingredients unchanged",
+    "Both, because in each one two things were put together",
+    "Neither, because both were made in a kitchen rather than a lab"
+   ],
+   "a": 0,
+   "why": "A mixture is different types of matter mixed together while each type stays unchanged, so it can be separated back into its original parts. You can take a salad apart and get the same ingredients you started with. You cannot take bread apart to get back flour, water and yeast — a chemical change happened in the baking.",
+   "cite": "Student Reader, page 27"
+  },
+  {
+   "type": "match",
+   "p": "mixture",
+   "q": "Match each word to the meaning the book gives it.",
+   "pairs": [
+    [
+     "mixture",
+     "A combination of different types of matter that can usually be separated back into its original parts"
+    ],
+    [
+     "chemical",
+     "A specific type of matter made of particles of the same type"
+    ],
+    [
+     "chemical change",
+     "The result when two or more types of matter interact to form a new type of matter"
+    ],
+    [
+     "precipitate",
+     "A solid formed from a chemical change"
+    ]
+   ],
+   "why": "These four are the chapter's Core Vocabulary, and every question in this review turns on one of them. A mixture keeps its parts; a chemical change makes something new that cannot easily be taken apart again.",
+   "cite": "Core Vocabulary, Student Reader pages 27–31"
+  },
+  {
+   "type": "pick",
+   "p": "rust",
+   "q": "An iron chain turns from smooth grey to rough reddish-brown. Why does the book call that a chemical change?",
+   "opts": [
+    "Water and oxygen interacted with the iron to make a new substance",
+    "The iron was scratched and dented by years of being pulled over rocks",
+    "The iron was painted a different colour by someone else",
+    "The iron cooled down and its particles moved much closer"
+   ],
+   "a": 0,
+   "why": "Water and oxygen in the air interact with the iron to form a new substance, rust. The material in a rusty chain cannot be changed back to iron from rust. We know this is a chemical change because the effect of the change is a new substance with new chemical properties.",
+   "cite": "Student Reader, page 28"
+  },
+  {
+   "type": "pick",
+   "p": "rust",
+   "q": "What is the one test the book gives for whether a chemical change has happened?",
+   "opts": [
+    "A new substance has formed, with new properties",
+    "The matter has changed shape or been broken smaller",
+    "Heat was used at some point during the change",
+    "The change happened too quickly to be seen"
+   ],
+   "a": 0,
+   "why": "A chemical change occurs when two or more types of matter interact to form a new substance that has new properties. That is the test: not heat, not speed, not a change of shape — a new substance.",
+   "cite": "Student Reader, page 28"
+  },
+  {
+   "type": "selectall",
+   "p": "evidence",
+   "q": "Which of these does the book list as evidence that a chemical change has happened? Select every correct answer.",
+   "opts": [
+    [
+     "A gas forms",
+     1
+    ],
+    [
+     "The odour changes",
+     1
+    ],
+    [
+     "The colour changes",
+     1
+    ],
+    [
+     "The temperature changes",
+     1
+    ],
+    [
+     "Light is given off",
+     1
+    ],
+    [
+     "The matter is broken into smaller pieces",
+     0
+    ],
+    [
+     "The matter changes shape",
+     0
+    ]
+   ],
+   "why": "Because the particles are too small to see, we have to look for evidence: a gas forming, a change of odour, a change of colour, a change of temperature, light, or a precipitate. Breaking something smaller or changing its shape is a physical change — the matter is still the same matter.",
+   "cite": "Student Reader, pages 29–31"
+  },
+  {
+   "type": "pick",
+   "p": "gas",
+   "q": "A baker mixes yeast and sugar, bubbles form, and a smell fills the kitchen. What is the evidence here?",
+   "opts": [
+    "A gas forming, and an odour that was not there before",
+    "A change of colour, and a drop in temperature",
+    "A precipitate settling at the bottom of the bowl",
+    "Light being given off as the mixture is stirred"
+   ],
+   "a": 0,
+   "why": "Bubbles form when a baker combines yeast and sugar, and the bubbles of gas make bread rise. A change in odour is evidence of a chemical change. Since the odour was not there to start with, we know there was a chemical change.",
+   "cite": "Student Reader, page 29"
+  },
+  {
+   "type": "pick",
+   "p": "colour",
+   "q": "Silver goes dull and dark after a while in the air. What has happened?",
+   "opts": [
+    "It reacted with the air to form a new substance, tarnish",
+    "Dust from the room settled on it and can be polished away again",
+    "Its particles cooled and packed themselves closer",
+    "It absorbed water and became slightly heavier"
+   ],
+   "a": 0,
+   "why": "Shiny sterling silver metal changes color when it reacts with the air. The chemical change causes a new substance, commonly called tarnish. The change in properties, the change of color, is evidence that a new substance has formed.",
+   "cite": "Student Reader, page 30"
+  },
+  {
+   "type": "sort",
+   "p": "evidence",
+   "q": "Sort each one by whether it is evidence of a chemical change or of a physical change.",
+   "bins": [
+    "Evidence of a chemical change",
+    "A physical change"
+   ],
+   "chips": [
+    [
+     "Rust forms on an iron chain",
+     0
+    ],
+    [
+     "A lit match gets hot",
+     0
+    ],
+    [
+     "A lightning bug flashes",
+     0
+    ],
+    [
+     "A solid appears where two solutions meet",
+     0
+    ],
+    [
+     "An ice cube melts into water",
+     1
+    ],
+    [
+     "A can is crushed flat",
+     1
+    ],
+    [
+     "Sand is worn from rock by the wind",
+     1
+    ]
+   ],
+   "why": "The question is always whether a new substance has formed. Rust, heat from a match, a firefly's light and a precipitate all say yes. Melting, crushing and wearing down change the form of the matter and leave it the same matter.",
+   "cite": "Student Reader, pages 28–31"
+  },
+  {
+   "type": "pick",
+   "p": "precipitate",
+   "q": "What does <b>precipitate</b> mean?",
+   "opts": [
+    "A solid formed from a chemical change",
+    "A gas released when a liquid is heated",
+    "A liquid left when a solid dissolves",
+    "A mixture that can be separated again"
+   ],
+   "a": 0,
+   "why": "A precipitate is a solid formed from a chemical change — a solid that forms from the combination of two solutions. The solid is a new type of matter with new properties, and it cannot easily be changed back to its original chemicals.",
+   "cite": "Core Vocabulary, Student Reader page 31"
+  },
+  {
+   "type": "pick",
+   "p": "conserved",
+   "q": "Fireworks turn solid chemicals into a great deal of gas. What happens to the total weight?",
+   "opts": [
+    "It is exactly the same before and after",
+    "It falls, because gas weighs less than a solid",
+    "It rises, because the gas takes up more space",
+    "It cannot be measured once the gas escapes"
+   ],
+   "a": 0,
+   "why": "During chemical changes the types of matter change, but just like physical changes the total weight of matter does not change. If you measured the weight of all the chemicals before and after, you would find it is exactly the same. No matter is lost or gained in any chemical change.",
+   "cite": "Student Reader, page 32"
+  },
+  {
+   "type": "mystery",
+   "p": "conserved",
+   "q": "Match each piece of evidence to what it shows.",
+   "headers": [
+    "What was observed",
+    "What it shows"
+   ],
+   "rows": [
+    {
+     "key": "A",
+     "cells": [
+      "Iron turns reddish-brown and cannot be turned back"
+     ],
+     "answer": "A chemical change"
+    },
+    {
+     "key": "B",
+     "cells": [
+      "A salad is taken apart into the same vegetables"
+     ],
+     "answer": "A mixture"
+    },
+    {
+     "key": "C",
+     "cells": [
+      "Fireworks weigh the same before and after burning"
+     ],
+     "answer": "Matter is conserved"
+    }
+   ],
+   "choices": [
+    "A chemical change",
+    "A mixture",
+    "Matter is conserved"
+   ],
+   "why": "Rust cannot be undone, so a new substance formed. A salad comes apart, so nothing new formed. And the weight being unchanged is the rule that holds for every change, chemical or physical: no matter is lost or gained.",
+   "cite": "Student Reader, pages 27–32"
+  }
+ ],
+ "passages": {
+  "mixture": {
+   "title": "Mixtures and chemical changes",
+   "cite": "Student Reader, page 27",
+   "vocab": [
+    [
+     "mixture",
+     "a combination of different types of matter that can usually be separated back into its original parts"
+    ]
+   ],
+   "text": [
+    "When different types of matter mix but each type of matter remains unchanged, it is called a mixture. A mixture can be separated back into its original parts.",
+    "Sometimes when two types of matter are mixed, one form of matter will interact with the other. The result is a chemical change. This produces new chemicals with different properties. The original “ingredients” cannot easily be separated again.",
+    "A salad is a mixture of things, such as vegetables or fruit. You can take the salad apart and get the same ingredients with which you started.",
+    "Bread is a mixture of ingredients that are heated and baked. You cannot take the bread apart to get the same ingredients with which you started."
+   ]
+  },
+  "rust": {
+   "title": "Particles Interact to Form New Matter",
+   "cite": "Student Reader, page 28",
+   "vocab": [
+    [
+     "chemical",
+     "a specific type of matter made of particles of the same type"
+    ],
+    [
+     "chemical change",
+     "the result when two or more types of matter interact to form a new type of matter"
+    ]
+   ],
+   "text": [
+    "When certain chemicals are put together, the particles they are made of sometimes combine to make a new chemical. When this happens, a chemical change has taken place. A chemical change occurs when two or more types of matter interact to form a new substance that has new properties.",
+    "Newly cast iron is usually gray with a smooth surface, but over time the metal can change and become reddish-brown with a rough surface. Water and oxygen in the air interact with the iron to form a new substance, rust. The material in a rusty chain cannot be changed back to iron from rust. We know this is a chemical change because the effect of the change is a new substance with new chemical properties."
+   ]
+  },
+  "evidence": {
+   "title": "Evidence of Chemical Changes",
+   "cite": "Student Reader, page 29",
+   "text": [
+    "New matter forms when the chemicals interact and recombine. This provides more evidence that matter is made up of small particles. Since the particles of matter are too small to be seen, we have to look closely for evidence of a chemical change. So, what evidence do we look for?"
+   ]
+  },
+  "gas": {
+   "title": "Formation of Gas, and a change of odour",
+   "cite": "Student Reader, page 29",
+   "text": [
+    "Cars produce exhaust when the engine is running. Exhaust is a gas that forms when an engine burns fuel such as liquid gasoline. The burning releases a set of new chemicals all mixed together as a gas. When a substance is burned, such as fuel, or when it combines with other matter to form a gas, it is often the result of a chemical change.",
+    "Another example of gas formation is when a baker combines yeast and sugar. Bubbles form. The bubbles of gas make bread rise. How else can you tell if someone is baking bread? A change in odor is evidence of a chemical change. Baking bread gives off a yummy odor. Since the odor was not there to start with, we know there was a chemical change."
+   ]
+  },
+  "colour": {
+   "title": "Change of Colour, and of Temperature",
+   "cite": "Student Reader, page 30",
+   "text": [
+    "When copper is exposed to air and water for a long time, the copper changes into other chemicals, causing a change in color. The copper changes color because a chemical change has occurred.",
+    "Shiny sterling silver metal also changes color when it reacts with the air. The chemical change causes a new substance, commonly called tarnish. The change in properties, the change of color, is evidence that a new substance has formed.",
+    "Just like color changes, a change in temperature signals a chemical change. You would never touch the head of a burning match. It is hot! The change in temperature when you light a match tells you that a chemical change has occurred."
+   ]
+  },
+  "precipitate": {
+   "title": "Light, and a precipitate",
+   "cite": "Student Reader, page 31",
+   "vocab": [
+    [
+     "precipitate",
+     "a solid formed from a chemical change"
+    ]
+   ],
+   "text": [
+    "Have you ever seen tiny flashes of light in the sky at night on a summer evening? If so, you might have seen the light of a lightning bug. Lightning bugs can produce light. The light appears when a chemical change occurs in part of the insect’s body. Those little flashes of light are evidence of a chemical change occurring.",
+    "The chemical change shown in this picture of a sink drain forms a precipitate. A precipitate is a solid that forms from the combination of two solutions. The solid is a new type of matter with new properties. The precipitate cannot easily be changed back to its original chemicals. Formation of a precipitate shows that a chemical change has occurred!"
+   ]
+  },
+  "conserved": {
+   "title": "Matter Is Conserved During a Chemical Change",
+   "cite": "Student Reader, page 32",
+   "text": [
+    "During chemical changes, the types of matter change. But, just like physical changes, the total weight of matter does not change.",
+    "Imagine colorful fireworks lighting up a night sky. Fireworks contain solid chemicals. When the solids burn, they quickly turn to large amounts of gas that take up more space. Since the gas is in a very small tube, pressure builds up. When the pressure releases, you hear a loud bang!",
+    "Fireworks are the result of a number of chemical changes. But if you were to measure carefully the weight of all the chemicals before and after, you would discover something interesting. You would have data that shows that the weight of all chemicals before and after a chemical change is exactly the same. No matter is lost or gained in any chemical change."
+   ]
+  }
+ },
+ "videos": [
+  {
+   "id": "hIY0Ykt6-Js",
+   "t": "What Is Evidence?",
+   "s": "Crash Course Kids #16.2",
+   "d": "5 min. How a claim gets supported by what you can observe.",
+   "when": "Start here. This whole chapter is about spotting evidence."
+  },
+  {
+   "id": "YCQXDegwnoE",
+   "t": "Wood, Water, and Properties",
+   "s": "Crash Course Kids #35.2",
+   "d": "5 min. Properties are how you tell one substance from another.",
+   "when": "Watch after page 28 — new substance, new properties."
+  },
+  {
+   "id": "ELchwUIlWa8",
+   "t": "What's Matter?",
+   "s": "Crash Course Kids #3.1",
+   "d": "5 min. What counts as matter, and how we know.",
+   "when": "Any time, for a reminder of what is doing the changing."
+  }
+ ]
+}
