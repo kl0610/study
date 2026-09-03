@@ -116,6 +116,20 @@ svg.art{display:block;width:100%;height:auto;max-height:210px}
 .opt.good .k{background:var(--green);color:#fff}
 .opt.bad{border-color:var(--red);background:#FDF0EE}
 .opt.bad .k{background:var(--red);color:#fff}
+/* MC-NAV — chosen but not yet checked */
+.opt.sel{border-color:var(--copper);background:#FBF3E6}
+.opt.sel .k{background:var(--copper);color:#fff}
+/* the back / skip row, and the notice that stops a half-finished mission */
+.nav{display:flex;align-items:center;justify-content:space-between;gap:10px;
+  margin-top:14px;padding-top:12px;border-top:2px solid rgba(0,0,0,.1)}
+.navb{font:700 12px var(--mono);letter-spacing:.06em;text-transform:uppercase;
+  background:none;border:2px solid currentColor;color:#6E7F79;
+  padding:7px 12px;cursor:pointer;border-radius:2px}
+.navb:hover:not([disabled]){color:var(--ink)}
+.navb[disabled]{opacity:.3;cursor:default}
+.navb:focus-visible{outline:2px solid var(--copper);outline-offset:2px}
+.navpos{font:700 11px var(--mono);letter-spacing:.1em;color:#6E7F79}
+.skipnote{margin:10px 0 0;font-size:14px;line-height:1.6;color:#6E7F79}
 /* select-all */
 .opt.multi .k{border-radius:50%}
 .opt.on{border-color:var(--violet);background:#F4EFFA}
@@ -2186,13 +2200,13 @@ function show(w){ ["home","play","done"].forEach(x=>$(x).classList.toggle("hide"
 
 /* ---------- mission ---------- */
 function start(i){
-  M = DATA.missions[i]; idx=0; log=[];
+  M = DATA.missions[i]; idx=0; log=[]; snap=[]; triesAt=[]; forceFinish=false;
   MC.begin();
   $("mname").textContent = M.name; $("mtag").textContent = M.tag;
   show("play"); render();
 }
 function render(){
-  tries=0; sel=null; place={}; chosen=new Set();
+  tries=triesAt[idx]||0; sel=null; place={}; chosen=new Set();
   hintFn=null; hintMarks=new Set(); hinted=false;
   $("dots").innerHTML = M.items.map((_,i)=>
     `<span class="dot ${i<idx?"done":i===idx?"now":""}"></span>`).join("");
@@ -2200,7 +2214,9 @@ function render(){
   const head = `<div class="qnum">Question ${idx+1} of ${M.items.length}</div><div class="q">${esc(MC.ask(it))}</div>`;
   const art  = it.art && ART[it.art] ? `<div class="artbox">${ART[it.art]}</div>` : "";
   $("card").innerHTML = head + art + `<div id="body"></div><div class="act" id="act"></div><div id="fb"></div>`;
-  ({pick:rPick, selectall:rMulti, tool:rTool, sort:rPlace, match:rPlace, mystery:rMystery})[it.type](it);
+  if(snap[idx]) replay(it);
+  else ({pick:rPick, selectall:rMulti, tool:rTool, sort:rPlace, match:rPlace, mystery:rMystery})[it.type](it);
+  navBar();
 }
 
 /* ---------- pick ---------- */
@@ -2208,12 +2224,29 @@ function rPick(it){
   const order = shuffle(it.opts.map((t,i)=>({t,ok:i===it.a})));
   $("body").innerHTML = `<div class="opts">` + order.map((o,i)=>
     `<button class="opt" data-i="${i}"><span class="k">${KEYS[i]}</span><span>${esc(o.t)}</span></button>`).join("") + `</div>`;
+  /* MC-NAV — choose first, check second. Judging on the tap itself made a
+     mis-tap into a wrong answer, and every other subject on the site asks for
+     the answer to be confirmed before it counts. */
+  $("act").innerHTML = `<button class="btn p" id="go" disabled>Check my answer</button>`;
+  let picked = null;
   [...document.querySelectorAll(".opt")].forEach(b=>b.onclick=()=>{
-    if(b.classList.contains("out")) return;
-    tries++;
-    if(order[+b.dataset.i].ok){ b.classList.add("good"); lockAll(".opt"); win(it); }
-    else{ b.classList.add("out"); b.disabled=true; miss(it,"That's not it."); }
+    if(b.disabled || b.classList.contains("out")) return;
+    [...document.querySelectorAll(".opt")].forEach(x=>x.classList.remove("sel"));
+    b.classList.add("sel"); picked = +b.dataset.i;
+    if($("go")) $("go").disabled = false;
   });
+  $("go").onclick = ()=>{
+    if(picked===null) return;
+    tries++; triesAt[idx] = tries;
+    const b = document.querySelector(`.opt[data-i="${picked}"]`);
+    b.classList.remove("sel");
+    if(order[picked].ok){ b.classList.add("good"); lockAll(".opt"); win(it); }
+    else{
+      b.classList.add("out"); b.disabled = true;
+      picked = null; $("go").disabled = true;
+      miss(it,"That's not it.");
+    }
+  };
 }
 function lockAll(s){ [...document.querySelectorAll(s)].forEach(b=>b.disabled=true); }
 
@@ -2347,7 +2380,7 @@ function rMystery(it){
 
 /* ---------- feedback ---------- */
 function miss(it,msg){
-  MC.wrong(M.id+"-"+idx);
+  MC.wrong(M.id+"-"+idx); triesAt[idx] = tries;
   $("card").classList.remove("shake"); void $("card").offsetWidth; $("card").classList.add("shake");
   $("fb").innerHTML = `<div class="fb no"><strong>Not yet.</strong>${esc(msg)}</div>`;
   if(!$("read")) $("act").insertAdjacentHTML("afterbegin", `<button class="btn o" id="read">Open the book again</button>`);
@@ -2363,17 +2396,84 @@ function miss(it,msg){
   };
   $("fb").scrollIntoView({behavior:"smooth",block:"nearest"});
 }
+/* MC-NAV — getting about ----------
+   Back and Skip on every question. Until now there was no way past a question
+   except to answer it correctly, which is a wall, and the whole design says a
+   child who is stuck must never hit one. Skipping is not free: an unanswered
+   question scores zero, and finishing stops to say so. */
+let forceFinish = false;
+let triesAt = [];
+let snap = [];
+function navBar(){
+  const card = $("card"); if(!card || !M) return;
+  let nav = document.getElementById("nav");
+  if(!nav){
+    nav = document.createElement("div");
+    nav.id = "nav"; nav.className = "nav";
+    card.appendChild(nav);
+  }
+  const last = idx === M.items.length - 1;
+  const answered = !!log[idx];
+  nav.innerHTML =
+    `<button class="navb" id="navback"${idx===0?" disabled":""}>&lsaquo; Back</button>` +
+    `<span class="navpos">${idx+1} of ${M.items.length}</span>` +
+    `<button class="navb" id="navnext">` +
+      (last ? "Finish &rsaquo;" : (answered ? "Next &rsaquo;" : "Skip &rsaquo;")) + `</button>`;
+  $("navback").onclick = ()=>{ if(idx>0){ idx--; render(); window.scrollTo(0,0); } };
+  $("navnext").onclick = ()=>{ if(last) tryFinish(); else { idx++; render(); window.scrollTo(0,0); } };
+}
+/* Nothing unanswered slips past without being noticed. The button goes to the
+   first gap rather than just naming it, because a child told "question 4" still
+   has to find question 4. */
+function unanswered(){
+  const out = [];
+  for(let i=0;i<M.items.length;i++) if(!log[i]) out.push(i);
+  return out;
+}
+function tryFinish(){
+  const missing = unanswered();
+  if(missing.length && !forceFinish){ skippedNotice(missing); return; }
+  finish();
+}
+function skippedNotice(missing){
+  const n = missing.length;
+  $("card").innerHTML =
+    `<div class="qnum">Before you finish</div>
+     <div class="q">${n===1?"One question is still unanswered.":n+" questions are still unanswered."}</div>
+     <p class="skipnote">Unanswered questions count as zero, so it is worth going back.
+        You can still finish now if you would rather.</p>
+     <div class="act" id="act">
+       <button class="btn p" id="goback">Go to question ${missing[0]+1}</button>
+       <button class="btn o" id="anyway">Finish anyway</button>
+     </div>`;
+  $("goback").onclick = ()=>{ idx = missing[0]; render(); window.scrollTo(0,0); };
+  $("anyway").onclick = ()=>{ forceFinish = true; finish(); };
+}
+/* Coming back to a question already answered shows what he did rather than
+   asking it again. The card is replayed exactly as it stood, with everything in
+   it dead except the two ways onward. */
+function replay(it){
+  $("card").innerHTML = snap[idx];
+  [...$("card").querySelectorAll("button")].forEach(b=>{ b.disabled = true; b.onclick = null; });
+  const last = idx === M.items.length - 1;
+  const r = $("read"), n = $("next");
+  if(r){ r.disabled = false; r.onclick = ()=>drawer(it.p, M.id+"-"+idx, "review", it.hi); }
+  if(n){ n.disabled = false;
+         n.onclick = ()=>{ if(last) tryFinish(); else { idx++; render(); window.scrollTo({top:0,behavior:"smooth"}); } }; }
+}
 function win(it){
   MC.right(M.id+"-"+idx);
   const pts = hinted ? 25 : (tries===1?100:tries===2?75:tries===3?50:25);
-  log.push({q:idx+1,tries,pts,p:it.p,hinted});
+  log[idx] = {q:idx+1,tries,pts,p:it.p,hinted}; triesAt[idx] = tries;
   const head = hinted ? "Got it \u2014 with a hint." : (tries===1?"Got it, first try.":"Got it.");
   $("fb").innerHTML = `<div class="fb yes"><strong>${head}</strong>${esc(it.why)}</div>`;
   const last = idx===M.items.length-1;
   $("act").innerHTML = `<button class="btn o" id="read">See the book page or watch the video</button>
                         <button class="btn g" id="next">${last?"See how I did":"Next question"}</button>`;
   $("read").onclick=()=>drawer(it.p, M.id+"-"+idx, "review", it.hi);
-  $("next").onclick=()=>{ if(last) finish(); else { idx++; render(); window.scrollTo({top:0,behavior:"smooth"}); } };
+  $("next").onclick=()=>{ if(last) tryFinish(); else { idx++; render(); window.scrollTo({top:0,behavior:"smooth"}); } };
+  navBar();
+  snap[idx] = $("card").innerHTML;
   $("fb").scrollIntoView({behavior:"smooth",block:"nearest"});
 }
 
@@ -2430,12 +2530,16 @@ document.addEventListener("keydown",e=>{ if(e.key==="Escape") closeD(); });
 
 /* ---------- results ---------- */
 function finish(){
-  const pct = Math.round(log.reduce((s,l)=>s+l.pts,0)/log.length);
-  const first = log.filter(l=>l.tries===1).length;
-  const att = log.reduce((s,l)=>s+l.tries,0);
+  /* MC-NAV — a skipped question is a zero, so it divides by the number of
+     questions asked rather than the number answered. */
+  const done = log.filter(Boolean);
+  const skipped = M.items.length - done.length;
+  const pct = Math.round(done.reduce((s,l)=>s+l.pts,0)/M.items.length);
+  const first = done.filter(l=>l.tries===1).length;
+  const att = done.reduce((s,l)=>s+l.tries,0);
   const band = pct>=90?["Sharp work","#59B27C"]:pct>=75?["Solid","#3FB4CE"]:pct>=60?["Getting there","#EFB04A"]:["Worth another run","#E0685A"];
-  const rough = log.filter(l=>l.tries>1);
-  const hints = log.filter(l=>l.hinted).length;
+  const rough = done.filter(l=>l.tries>1);
+  const hints = done.filter(l=>l.hinted).length;
   const pages = [...new Set(rough.map(l=>DATA.passages[l.p].cite))];
   best[M.id] = Math.max(best[M.id]||0, pct);
   $("dtag").textContent = M.name;
@@ -2443,12 +2547,14 @@ function finish(){
     <div class="ring" style="color:${band[1]}">${pct}%</div>
     <div class="band" style="color:${band[1]}">${band[0]}</div>
     <div class="stats">
-      <div class="stat"><b>${first} / ${log.length}</b><span>First try</span></div>
+      <div class="stat"><b>${first} / ${M.items.length}</b><span>First try</span></div>
+      ${skipped?`<div class="stat"><b>${skipped}</b><span>Skipped \u2014 scored zero</span></div>`:""}
       <div class="stat"><b>${att}</b><span>Total tries</span></div>
       ${hints?`<div class="stat" style="grid-column:1/-1"><b>${hints}</b><span>Hint${hints>1?"s":""} used \u2014 worth rerunning without</span></div>`:""}
     </div>
+    ${skipped?`<div class="review"><b>${skipped} question${skipped>1?"s were":" was"} left unanswered</b>Those score zero. Run it again and they are worth full marks.</div>`:""}
     ${rough.length?`<div class="review"><b>Pages worth rereading</b><ul>${pages.map(p=>`<li>${esc(p)}</li>`).join("")}</ul></div>`
-                  :`<div class="review"><b>Nothing to reread.</b>Every question went in on the first try.</div>`}
+                  :(skipped?"":`<div class="review"><b>Nothing to reread.</b>Every question went in on the first try.</div>`)}
     <div class="aloud">
       <div class="eyebrow">Now say it out loud</div>
       <p>${esc(DATA.bigQuestion)}</p>
@@ -2457,7 +2563,7 @@ function finish(){
       <button class="btn p" id="again">Run this mission again</button>
       <button class="btn o" id="pick">Pick another mission</button>
     </div>`;
-  $("again").onclick=()=>{ idx=0; log=[]; show("play"); render(); };
+  $("again").onclick=()=>{ idx=0; log=[]; snap=[]; triesAt=[]; forceFinish=false; show("play"); render(); };
   MC.chest($("scorebox"), pct, {id:M.id,
     boss: DATA.missions.indexOf(M)===DATA.missions.length-1});
   $("pick").onclick=home;
