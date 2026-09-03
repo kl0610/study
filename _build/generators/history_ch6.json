@@ -1,0 +1,471 @@
+{
+  "title": "Inca Engineering",
+  "chapter": 6,
+  "eyebrow": "CKHG Grade 5 · Unit 2 · Chapter 6 · Student Reader pp. 44–53",
+  "h1": "Inca <em>Engineering</em>",
+  "bigQuestion": "How did the Inca use their engineering skills to manage and grow their empire?",
+  "note": "/* Every question, answer and excerpt below comes from the CKHG Grade 5 Unit 2\n   Student Reader, Chapter 6 (pp. 44–53). Core Vocabulary for this chapter is\n   official, engineer, mortar, suspension bridge and terrace — each is tested,\n   and each question about one points at the sidebar box that defines it rather\n   than at a sentence that merely uses the word. The sets follow the chapter's\n   three reading segments, not equal page counts. */",
+  "sets": [
+    {
+      "id": "s1",
+      "c": "var(--gold)",
+      "tag": "Pages 44–48",
+      "name": "The Royal Road",
+      "blurb": "Two thousand miles of road, and the bridges that carried it over the gorges.",
+      "items": [
+        {
+          "type": "pick",
+          "p": "why",
+          "q": "The chapter opens by comparing the Inca to the ancient Romans. What is the comparison?",
+          "opts": [
+            "Both held an empire together by building roads across it",
+            "Both wrote down their laws and sent copies to every city",
+            "Both used horses and wagons to move an army quickly",
+            "Both built temples at the centre of every conquered town"
+          ],
+          "a": 0,
+          "why": "It is one thing to conquer many lands, another to keep control of what you have conquered. The Romans built roads all across their empire. The Inca knew nothing of ancient Rome, but they too were great road builders.",
+          "cite": "Student Reader, pages 44–45"
+        },
+        {
+          "type": "pick",
+          "p": "why",
+          "q": "What does <b>official</b> mean?",
+          "opts": [
+            "A person who carries out a government duty",
+            "A soldier who has been promoted for bravery",
+            "Someone who designs a building or a road",
+            "A trader licensed to sell goods on the road"
+          ],
+          "a": 0,
+          "why": "An official is a person who carries out a government duty. The roads made it possible for government officials to travel around the empire.",
+          "cite": "Core Vocabulary, Student Reader page 45"
+        },
+        {
+          "type": "pick",
+          "p": "why",
+          "q": "The reader gives three uses for the roads. Which does it call the most important?",
+          "opts": [
+            "Letting the army travel quickly, to put down a rebellion",
+            "Letting government officials travel round the empire",
+            "Encouraging trade between one region and another",
+            "Giving travellers somewhere shaded to walk"
+          ],
+          "a": 0,
+          "why": "The roads let officials travel and they encouraged trade. Most importantly, the roads allowed the army to travel quickly. This way, they could put down a rebellion or enforce the emperor's rule.",
+          "cite": "Student Reader, page 45"
+        },
+        {
+          "type": "pick",
+          "p": "road",
+          "q": "How long was the Royal Road, and how long did it hold its record?",
+          "opts": [
+            "Over two thousand miles — the longest in the world until the 1800s",
+            "Over five hundred miles — the longest in the Americas at the time",
+            "Over four thousand miles — the longest until the railways came",
+            "Over one thousand miles — the longest until the Romans built theirs"
+          ],
+          "a": 0,
+          "why": "Their Royal Road stretched over two thousand miles. It ran from the northern end of the empire to the southern tip. It was the longest road in the world until the 1800s.",
+          "cite": "Student Reader, page 45"
+        },
+        {
+          "type": "pick",
+          "p": "road",
+          "q": "What could a traveller find beside the Royal Road?",
+          "opts": [
+            "Distance markers, shade trees, a canal, and storehouses with food",
+            "Inns run by the army where a bed could be paid for in gold",
+            "Toll gates where every trader had to declare what he carried",
+            "Watchtowers with a runner stationed in each one"
+          ],
+          "a": 0,
+          "why": "Markers measured distances along the road. Trees shaded the road. A canal provided water for travelers. There were even roadside storehouses where travelers could get food at the end of the day.",
+          "cite": "Student Reader, page 46"
+        },
+        {
+          "type": "pick",
+          "p": "stone",
+          "q": "What does <b>mortar</b> mean, and did the Inca use it?",
+          "opts": [
+            "A cement-like material that hardens — no, they cut stone to fit",
+            "A tool for shaping stone — yes, on every paved stretch of road",
+            "A soft clay used for roofing — yes, on all of the storehouses",
+            "A rope made from plant fibre — no, they used leather instead"
+          ],
+          "a": 0,
+          "why": "Mortar is a material used in building that is soft at first but then gets hard and rocklike. Modern builders use mortar to keep stones together. The Inca did not use any mortar. Instead, they cut stones so exactly that they fit together snugly.",
+          "cite": "Core Vocabulary, Student Reader page 47"
+        },
+        {
+          "type": "build"
+        }
+      ]
+    },
+    {
+      "id": "s2",
+      "c": "var(--sky)",
+      "tag": "Pages 47–49",
+      "name": "Bridges and Terraces",
+      "blurb": "A rope bridge that lasted five hundred years, and staircases cut into a mountain.",
+      "items": [
+        {
+          "type": "pick",
+          "p": "stone",
+          "q": "What did Inca builders <b>not</b> have?",
+          "opts": [
+            "Earth-moving machinery, horses, oxen, or even the wheel",
+            "Stone tools, rope, or any way of measuring a distance",
+            "Enough workers to build anything larger than a bridge",
+            "Any way of crossing a river deeper than a stream"
+          ],
+          "a": 0,
+          "why": "These builders had no earth-moving machinery. They did not have horses or oxen to pull wagons. They did not even have the wheel. Everything was done by hand. Yet the Inca were able to build roads so sturdy, not even heavy rains or flash floods could destroy them.",
+          "cite": "Student Reader, page 47"
+        },
+        {
+          "type": "pick",
+          "p": "network",
+          "q": "The reader compares the road network to a body. What is the comparison?",
+          "opts": [
+            "The Royal Road was the spine, and the crossroads were nerves",
+            "The Royal Road was an artery, and the towns were the heart",
+            "The Royal Road was a backbone, and the bridges were joints",
+            "The Royal Road was a ribcage protecting the empire inside"
+          ],
+          "a": 0,
+          "why": "At every valley, east-west roads crossed the Royal Road. The Royal Road was like the spine. The crossroads were like nerves branching out from it. This network of roads linked all parts of the empire together.",
+          "cite": "Student Reader, page 47"
+        },
+        {
+          "type": "pick",
+          "p": "bridge",
+          "q": "What does <b>suspension bridge</b> mean?",
+          "opts": [
+            "One where the pathway hangs from ropes or cables",
+            "One built of stone arches resting on the riverbed",
+            "One that can be raised to let boats pass beneath",
+            "One made of logs laid flat across a narrow stream"
+          ],
+          "a": 0,
+          "why": "A suspension bridge is a type of bridge in which the road or pathway hangs from ropes or cables that are attached to anchors or towers. The bridge over the Apurimac River was one.",
+          "cite": "Core Vocabulary, Student Reader page 47"
+        },
+        {
+          "type": "pick",
+          "p": "bridge",
+          "q": "How long was the bridge over the Apurimac River in service, and what kept it standing?",
+          "opts": [
+            "From 1350 to 1890 — its ropes were replaced every two years",
+            "From 1350 to 1532 — it was rebuilt after every rainy season",
+            "From 1400 to 1700 — the stone piers were repaired each spring",
+            "From 1350 to 1450 — it was abandoned when the road moved"
+          ],
+          "a": 0,
+          "why": "It was built over a steep river gorge in 1350. It was a suspension bridge, held together by heavy strands of rope. The ropes were replaced every two years. This amazing bridge was in service from 1350 until 1890 — more than five hundred years.",
+          "cite": "Student Reader, page 47"
+        },
+        {
+          "type": "pick",
+          "p": "terrace",
+          "q": "What does <b>terrace</b> mean?",
+          "opts": [
+            "A flat piece of land carved out of a mountainside",
+            "A channel dug to carry water to a field that is dry",
+            "A wall built to hold back a river when it is in flood",
+            "A stone platform on which the harvest was left to dry"
+          ],
+          "a": 0,
+          "why": "A terrace is a flat piece of land carved out of the side of a mountain or hill. The terraces created level fields that could be planted and harvested just like valley fields.",
+          "cite": "Core Vocabulary, Student Reader page 49"
+        },
+        {
+          "type": "pick",
+          "p": "terrace",
+          "q": "What two problems did farming on a mountainside cause, before the terraces?",
+          "opts": [
+            "The incline made every task hard, and rain washed the crops out",
+            "The soil was frozen, and nothing but potatoes would grow in it",
+            "The fields were too far from the road to carry the harvest",
+            "The slopes were owned by the emperor and could not be farmed"
+          ],
+          "a": 0,
+          "why": "Farming on a mountainside is challenging. The incline makes every task — plowing, planting, and harvesting — very difficult. In heavy downpours, water runs downhill and washes out crops. The Inca cut terraces into the sides of the mountains and built irrigation systems to bring water to them.",
+          "cite": "Student Reader, pages 48–49"
+        },
+        {
+          "type": "order",
+          "p": "terrace",
+          "q": "Put the problem and the Inca answer to it back in order.",
+          "steps": [
+            "Crops have to be grown, but the empire is in the mountains.",
+            "On a slope, ploughing, planting and harvesting are all very difficult.",
+            "In heavy rain the water runs downhill and washes the crops out.",
+            "Terraces are cut into the mountainside to make level fields.",
+            "Irrigation systems are built to bring water to those fields."
+          ],
+          "why": "The problem came first and the engineering answered it: level the ground by cutting terraces, then bring the water to it. The terraces created level fields that could be planted and harvested just like valley fields.",
+          "cite": "Student Reader, pages 48–49"
+        },
+        {
+          "type": "build"
+        }
+      ]
+    },
+    {
+      "id": "s3",
+      "c": "var(--jade)",
+      "tag": "Pages 49–53",
+      "name": "Running an Empire Without Writing",
+      "blurb": "The quipu, the relay runners, Machu Picchu, and what happened to the conquered.",
+      "items": [
+        {
+          "type": "pick",
+          "p": "quipu",
+          "q": "What problem did the Inca face in running their empire, and what was the quipu for?",
+          "opts": [
+            "They had no writing — the quipu kept counts on knotted string",
+            "They had no calendar — the quipu tracked the days of the year",
+            "They had no coins — the quipu recorded what each family owed",
+            "They had no maps — the quipu showed where all the roads ran"
+          ],
+          "a": 0,
+          "why": "The Inca had an advanced road system, but they had no written language. A quipu was a piece of string that had shorter strings of various colors dangling from it. By tying knots in a certain pattern, an official could record how many warriors were headed for a village or how much corn was in a storehouse.",
+          "cite": "Student Reader, pages 49–50"
+        },
+        {
+          "type": "pick",
+          "p": "runner",
+          "q": "How did an Inca messenger pass on his message?",
+          "opts": [
+            "He memorised it and ran alongside the next runner to tell him",
+            "He carried a knotted string and handed it over at the station",
+            "He shouted it from the top of a hill to the next station",
+            "He rode a llama between the stations along the Royal Road"
+          ],
+          "a": 0,
+          "why": "Since the Inca had no written language, these messengers did not carry a written note. Instead, a runner memorized his message and sprinted to a station, a mile or so away. Without slowing the pace, the second messenger ran alongside the first to hear the message, then continued on.",
+          "cite": "Student Reader, page 50"
+        },
+        {
+          "type": "pick",
+          "p": "runner",
+          "q": "How fast was the relay, compared with the pony express riders of the 1860s?",
+          "opts": [
+            "150 miles a day on foot, against about 200 on horseback",
+            "50 miles a day on foot, against about 200 on horseback",
+            "300 miles a day on foot, against about 200 on horseback",
+            "150 miles a day on foot, against about 500 on horseback"
+          ],
+          "a": 0,
+          "why": "A message could travel 150 miles in a day, so news could go from Quito to Cuzco in a little over a week. In the 1860s, the famous pony express riders of the American West were only able to cover about two hundred miles a day — and they rode on horseback.",
+          "cite": "Student Reader, page 51"
+        },
+        {
+          "type": "pick",
+          "p": "machu",
+          "q": "Where is Machu Picchu, and what was it used for?",
+          "opts": [
+            "A mountain fortress near Cuzco, a vacation spot for emperors",
+            "A port on the Pacific coast, the empire's main trading town",
+            "A fort on the northern border, built to watch for invaders",
+            "A farming village on the plateau, famous for its terraces"
+          ],
+          "a": 0,
+          "why": "Machu Picchu is a mountain fortress seven thousand feet above sea level, located about fifty miles northwest of Cuzco. Archaeologists estimate it was built in the mid-1400s. For years it was a vacation spot for Inca emperors. Today it is the leading tourist attraction in Peru.",
+          "cite": "Student Reader, page 51"
+        },
+        {
+          "type": "pick",
+          "p": "conquered",
+          "q": "How did the Inca treat conquered people who cooperated?",
+          "opts": [
+            "Few changes were made, and local gods could still be worshipped",
+            "They were moved at once to villages nearer to Cuzco",
+            "They were required to give up their language within a year",
+            "They were made to send their young men to Cuzco as sacrifices"
+          ],
+          "a": 0,
+          "why": "When conquered people were cooperative, the Sapa Inca made few changes. Inca architects and managers oversaw the building of roads and temples, and the Inca taught their language and asked them to worship Inti. The worship of local gods was allowed, and sometimes those gods were even made a part of the Inca religion.",
+          "cite": "Student Reader, pages 52–53"
+        },
+        {
+          "type": "pick",
+          "p": "conquered",
+          "q": "And what did the Sapa Inca do when conquered people were <b>not</b> cooperative?",
+          "opts": [
+            "Moved troublemakers away, and settled loyal Inca among them",
+            "Destroyed their temples and forbade their language outright",
+            "Took their leaders hostage and held them in Cuzco",
+            "Left them alone but stopped the roads at their border"
+          ],
+          "a": 0,
+          "why": "If conquered people were uncooperative, the Sapa Inca moved swiftly. He shipped troublemakers from their homes to villages where they were surrounded by local Inca citizens. He also shipped loyal Inca citizens to live among the conquered people.",
+          "cite": "Student Reader, page 53"
+        },
+        {
+          "type": "pick",
+          "p": "conquered",
+          "q": "How does the reader compare Inca and Aztec human sacrifice?",
+          "opts": [
+            "It seems to have been less widespread among the Inca",
+            "It was far more widespread among the Inca",
+            "The two empires practised it in exactly the same way",
+            "The Inca did not practise it at all"
+          ],
+          "a": 0,
+          "why": "Like the Aztec, the Inca built their empire by conquering other people, and they also sacrificed human beings for religious purposes. However, human sacrifice seems to have been less widespread in the Inca Empire. The Inca focused more on turning conquered people into loyal subjects.",
+          "cite": "Student Reader, page 52"
+        },
+        {
+          "type": "build"
+        }
+      ]
+    }
+  ],
+  "build": {
+    "q": "Build the answer to the Big Question. Pick the <b>two</b> statements that best explain how engineering let the Inca manage and grow their empire.",
+    "lead": "The Big Question, answered",
+    "tiles": [
+      {
+        "t": "Roads and bridges let officials, traders and above all the army move quickly across two thousand miles.",
+        "a": true
+      },
+      {
+        "t": "Terraces and irrigation turned mountainsides into level fields, so a mountain empire could feed itself.",
+        "a": true
+      },
+      {
+        "t": "They invented a written language and sent written orders along the roads.",
+        "a": false
+      },
+      {
+        "t": "They used horses and wagons to carry stone to the building sites.",
+        "a": false
+      },
+      {
+        "t": "They built Machu Picchu as the capital from which the empire was governed.",
+        "a": false
+      },
+      {
+        "t": "They used mortar to hold the paving stones of the Royal Road together.",
+        "a": false
+      }
+    ],
+    "answer": "Holding a conquered land is harder than taking it. The Inca answer was engineering. The Royal Road and its bridges meant an army could reach a rebellion, officials could reach a village, and news could cross the empire in a week — all without the wheel, horses or oxen. And terraces cut into the Andes, watered by irrigation, meant a mountain empire could grow enough to feed twelve million people and fill the storehouses that kept them through a bad year.",
+    "cite": "Student Reader, pages 45–49"
+  },
+  "passages": {
+    "why": {
+      "title": "The Royal Road",
+      "cite": "Student Reader, pages 44–45",
+      "vocab": [
+        [
+          "official, n.",
+          "a person who carries out a government duty"
+        ]
+      ],
+      "text": [
+        "It’s one thing to conquer many lands. It’s another thing to keep control of what you’ve conquered. Remember how the ancient Romans held their empire together? They built roads all across it.",
+        "The roads made it possible for government officials to travel around the empire. Roads also encouraged trade. Most importantly, the roads allowed the army to travel quickly. This way, they could put down a rebellion or enforce the emperor’s rule.",
+        "The Inca knew nothing of ancient Rome. But they too were great road builders. Their Royal Road stretched over two thousand miles. It ran from the northern end of the empire to the southern tip. It was the longest road in the world until the 1800s."
+      ]
+    },
+    "road": {
+      "title": "What the road was like",
+      "cite": "Student Reader, page 46",
+      "vocab": [
+        [
+          "engineer, n.",
+          "someone who uses science and math to design useful objects or buildings"
+        ]
+      ],
+      "text": [
+        "The Royal Road was twenty-four feet wide in most places. Although it crossed mountains, valleys, deserts, and swamps, long stretches were straight as an arrow. Markers measured distances along the road. Trees shaded the road. A canal provided water for travelers. There were even roadside storehouses where travelers could get food at the end of the day.",
+        "Parts of the Royal Road were made of packed dirt. Other parts were paved. Inca engineers fitted paving stones together like pieces of a jigsaw puzzle."
+      ]
+    },
+    "stone": {
+      "title": "Stone cut to fit",
+      "cite": "Student Reader, page 47",
+      "vocab": [
+        [
+          "mortar, n.",
+          "a material used in building that is soft at first but that then gets hard and rocklike"
+        ]
+      ],
+      "text": [
+        "Modern builders use mortar, a cement-like material, to keep stones together. The Inca did not use any mortar. Instead, they cut stones so exactly that they fit together snugly.",
+        "The Royal Road shows the great skill of Inca builders. These builders had no earth-moving machinery. They did not have horses or oxen to pull wagons. They did not even have the wheel. Everything was done by hand. Yet the Inca were able to build roads so sturdy, not even heavy rains or flash floods could destroy them."
+      ]
+    },
+    "network": {
+      "title": "A spine and its nerves",
+      "cite": "Student Reader, page 47",
+      "text": [
+        "The Royal Road was the main Inca road, but there were others. At every valley, east-west roads crossed the Royal Road. The Royal Road was like the spine. The crossroads were like nerves branching out from it. This network of roads linked all parts of the empire together."
+      ]
+    },
+    "bridge": {
+      "title": "Bridges Built for the Centuries",
+      "cite": "Student Reader, pages 47–48",
+      "vocab": [
+        [
+          "suspension bridge, n.",
+          "a type of bridge in which the road or pathway hangs from ropes or cables that are attached to anchors or towers"
+        ]
+      ],
+      "text": [
+        "To build roads through mountains and across streams, the Inca had to build lots of bridges. Like the roads, these bridges are marvels of engineering. A bridge built over the Apurimac River in Peru is a fine example. It was built over a steep river gorge in 1350. It was a suspension bridge, held together by heavy strands of rope. The ropes were replaced every two years. This amazing bridge was in service from 1350 until 1890! For more than five hundred years, the bridge was maintained and used by the Inca."
+      ]
+    },
+    "terrace": {
+      "title": "Mountain Staircases",
+      "cite": "Student Reader, pages 48–49",
+      "vocab": [
+        [
+          "terrace, n.",
+          "a flat piece of land carved out of the side of a mountain or hill"
+        ]
+      ],
+      "text": [
+        "The Inca also used their engineering know-how to help them farm in the Andes. Farming on a mountainside is challenging. The incline makes every task—plowing, planting, and harvesting—very difficult. In heavy downpours, water runs downhill and washes out crops.",
+        "The Inca had to find a way to grow crops on the slopes of the Andes. Their solution was to cut terraces into the sides of the mountains. The terraces created level fields that could be planted and harvested just like valley fields. The Inca also built irrigation systems. This allowed them to bring water to the terraced fields."
+      ]
+    },
+    "quipu": {
+      "title": "Keeping It All Together",
+      "cite": "Student Reader, pages 49–50",
+      "text": [
+        "The Inca had an advanced road system, but they had no written language. How could they possibly run an empire of twelve million people that spanned the length of a continent without writing?",
+        "The Inca came up with some clever strategies. For instance, they invented a means for counting and record-keeping using a quipu. A quipu was a piece of string that had shorter strings of various colors dangling from it. By tying knots in a certain pattern on a quipu, an official could record how many warriors were headed for a village or how much corn was in a storehouse."
+      ]
+    },
+    "runner": {
+      "title": "The runners",
+      "cite": "Student Reader, pages 50–51",
+      "text": [
+        "The Inca also used messengers trained to run short distances to carry news. Since the Inca had no written language, these messengers did not carry a written note. Instead, a runner memorized his message and sprinted to a station, a mile or so away. There, the next runner would be waiting. Without slowing the pace, the second messenger ran alongside the first messenger to hear the message. Then the second messenger continued on.",
+        "The system was fast! A message could travel 150 miles in a day. This meant news could travel all the way from Quito to Cuzco in a little over a week. In the 1860s, the famous pony express riders of the American West were only able to cover about two hundred miles a day—and they rode on horseback!"
+      ]
+    },
+    "machu": {
+      "title": "City in the Clouds",
+      "cite": "Student Reader, page 51",
+      "text": [
+        "Another marvel of Inca engineering is the famous city of Machu Picchu. Machu Picchu is a mountain fortress seven thousand feet above sea level, located about fifty miles northwest of Cuzco. It sits in a high valley, between two peaks of the Andes.",
+        "Today, visitors can stand in the center of Machu Picchu. From there, they can see the ruins of an open plaza, a temple, and a place where archaeologists discovered Inca skeletons. The surrounding hillside is terraced for farming.",
+        "Archaeologists estimate that Machu Picchu was built in the mid-1400s. For years it was a vacation spot for Inca emperors. Today it is the leading tourist attraction in Peru."
+      ]
+    },
+    "conquered": {
+      "title": "Expanding the Empire",
+      "cite": "Student Reader, pages 52–53",
+      "text": [
+        "Like the Aztec, the Inca built their empire by conquering other people. They also sacrificed human beings for religious purposes. However, human sacrifice seems to have been less widespread in the Inca Empire. The Inca focused more on turning conquered people into loyal subjects.",
+        "When conquered people were cooperative, the Sapa Inca made few changes. Inca architects and managers went to new regions. Their job was to oversee the building of roads and temples. The Inca taught their language to the local people. They also asked them to worship the sun god Inti. The worship of local gods was allowed. Sometimes those gods were even made a part of the Inca religion.",
+        "If conquered people were uncooperative, the Sapa Inca moved swiftly. He shipped troublemakers from their homes to villages. There, they were surrounded by local Inca citizens. He also shipped loyal Inca citizens to live among the conquered people. In this way, the Sapa Inca was able to quickly build a large and unified empire."
+      ]
+    }
+  }
+}

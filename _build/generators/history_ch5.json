@@ -1,0 +1,507 @@
+{
+  "title": "The Inca: Lords of the Mountains",
+  "chapter": 5,
+  "eyebrow": "CKHG Grade 5 · Unit 2 · Chapter 5 · Student Reader pp. 36–43",
+  "h1": "The Inca: <em>Lords of the Mountains</em>",
+  "bigQuestion": "Why were llamas so important to the Inca?",
+  "note": "/* Every question, answer and excerpt below comes from the CKHG Grade 5 Unit 2\n   Student Reader, Chapter 5 (pp. 36–43). Core Vocabulary for this chapter is\n   Inca, conquistador, geographical diversity, plateau, clan, alpaca, llama and\n   census — each is tested, and each question about one points at the sidebar\n   box that defines it rather than at a sentence that merely uses the word. The\n   sets follow the chapter's three reading segments, not equal page counts. */",
+  "sets": [
+    {
+      "id": "s1",
+      "c": "var(--gold)",
+      "tag": "Pages 36–39",
+      "name": "The Son of the Sun",
+      "blurb": "The Sapa Inca, the size of the empire, and the land it covered.",
+      "items": [
+        {
+          "type": "pick",
+          "p": "dream",
+          "q": "In the dream, why does everyone along the road kneel and touch their foreheads to the ground?",
+          "opts": [
+            "The Sapa Inca, the king of the Inca people, was passing by.",
+            "A funeral procession was going past on its way to the temple.",
+            "A storm was coming and they were sheltering from it.",
+            "They were harvesting a crop that grew along the roadside."
+          ],
+          "a": 0,
+          "why": "The people were bowing because the Sapa Inca, the king of the Inca people, was approaching. The Inca believed the Sapa Inca was the son of Inti, the sun god, and no one was allowed to look at him.",
+          "cite": "Student Reader, pages 36–38"
+        },
+        {
+          "type": "pick",
+          "p": "dream",
+          "q": "What does <b>Inca</b> mean?",
+          "opts": [
+            "A civilization on the western coast of South America, 1438 to 1532",
+            "A group of families who together farmed one piece of clan land",
+            "The Spanish word for a conqueror who came seeking gold",
+            "A large area of high, flat ground between two mountain ranges"
+          ],
+          "a": 0,
+          "why": "The Inca were a civilization that thrived from 1438 to 1532 on the western coast of South America, including most of modern-day Peru and parts of Colombia, Ecuador, Bolivia, Chile, and Argentina.",
+          "cite": "Core Vocabulary, Student Reader page 36"
+        },
+        {
+          "type": "pick",
+          "p": "empire",
+          "q": "What does <b>conquistador</b> mean?",
+          "opts": [
+            "The Spanish word for conqueror",
+            "A soldier who guarded the Sapa Inca",
+            "An official who counted the people of a village",
+            "A messenger who ran between stations"
+          ],
+          "a": 0,
+          "why": "Conquistador is the Spanish word for conqueror. The Spanish conquistadors arrived in the 1530s.",
+          "cite": "Core Vocabulary, Student Reader page 38"
+        },
+        {
+          "type": "pick",
+          "p": "empire",
+          "q": "By the time the Spanish arrived in the 1530s, how did the Inca Empire compare with the Aztec Empire?",
+          "opts": [
+            "It was larger — the largest in the Americas.",
+            "It was smaller but much wealthier.",
+            "It was about the same size.",
+            "It had already broken apart into city-states."
+          ],
+          "a": 0,
+          "why": "By the time the Spanish conquistadors arrived in the 1530s, the Inca Empire was the largest in the Americas — larger even than the Aztec Empire had been.",
+          "cite": "Student Reader, page 38"
+        },
+        {
+          "type": "pick",
+          "p": "empire",
+          "q": "How many people did the Sapa Inca rule, and how far did his territory stretch?",
+          "opts": [
+            "More than twelve million people, over two thousand miles",
+            "About five million people, over about five hundred miles",
+            "More than twenty million people, over four thousand miles",
+            "About two million people, over roughly one thousand miles"
+          ],
+          "a": 0,
+          "why": "The Sapa Inca ruled over more than twelve million people. His territory stretched for more than two thousand miles along the Pacific Coast.",
+          "cite": "Student Reader, page 38"
+        },
+        {
+          "type": "pick",
+          "p": "land",
+          "q": "What does <b>geographical diversity</b> mean?",
+          "opts": [
+            "Many different kinds of landforms and waterways in a region",
+            "Land that is high and flat over a very wide area indeed",
+            "A region where only one single crop will grow at all",
+            "The border drawn between two neighbouring empires"
+          ],
+          "a": 0,
+          "why": "Geographical diversity is the presence of many different kinds of landforms, waterways, or other geographic features in a region. The Inca Empire had arid plains, mountains, a high plateau and thick forests.",
+          "cite": "Core Vocabulary, Student Reader page 39"
+        },
+        {
+          "type": "pick",
+          "p": "land",
+          "q": "The land between the two ranges of the Andes is described as being what?",
+          "opts": [
+            "Sizzling hot by day and freezing by night",
+            "Warm and wet more or less all year round",
+            "Under deep snow for most of the year",
+            "Too steep for anyone to cross on foot"
+          ],
+          "a": 0,
+          "why": "Between the ranges lies a high plateau. Land here is sizzling hot by day and freezing by night.",
+          "cite": "Student Reader, page 39"
+        },
+        {
+          "type": "build"
+        }
+      ]
+    },
+    {
+      "id": "s2",
+      "c": "var(--sky)",
+      "tag": "Pages 39–41",
+      "name": "Clans, Crops and Llamas",
+      "blurb": "How Inca families lived, what they grew, and the animal everything depended on.",
+      "items": [
+        {
+          "type": "pick",
+          "p": "life",
+          "q": "What does <b>clan</b> mean?",
+          "opts": [
+            "A group of families",
+            "A piece of land farmed for the emperor",
+            "A one-room stone hut with a thatched roof",
+            "A count of the people living in an area"
+          ],
+          "a": 0,
+          "why": "A clan is a group of families. The Inca people were organized into clans, and each clan farmed a piece of land.",
+          "cite": "Core Vocabulary, Student Reader page 39"
+        },
+        {
+          "type": "pick",
+          "p": "life",
+          "q": "What were Inca family homes like?",
+          "opts": [
+            "Windowless, one-room stone huts with thatched roofs",
+            "Two-storey houses built of mud brick around a courtyard",
+            "Wooden longhouses shared by a whole clan",
+            "Rooms cut into the terraces on the mountainside"
+          ],
+          "a": 0,
+          "why": "Families lived in windowless, one-room stone huts with thatched roofs. Parents and children slept together on animal skins spread on the bare floor, and a few wall pegs were the only furnishings.",
+          "cite": "Student Reader, page 39"
+        },
+        {
+          "type": "pick",
+          "p": "farming",
+          "q": "What was the main crop for the Inca, and why did it suit their land?",
+          "opts": [
+            "The potato — it grew well high on the Andes slopes",
+            "Corn — it needed the steady heat of the plateau",
+            "Cotton — it could be traded for food from the coast",
+            "Peanuts — they needed very little water to grow"
+          ],
+          "a": 0,
+          "why": "The potato was the main crop for the Inca. It grew well even at high altitudes on the slopes of the Andes Mountains. They grew more than a hundred varieties of it.",
+          "cite": "Student Reader, page 40"
+        },
+        {
+          "type": "pick",
+          "p": "farming",
+          "q": "What were guinea pigs and alpacas each raised for?",
+          "opts": [
+            "Guinea pigs for food, alpacas for wool",
+            "Guinea pigs for wool, alpacas for food",
+            "Both of them for carrying loads",
+            "Both of them for their hides only"
+          ],
+          "a": 0,
+          "why": "The guinea pigs were raised for food. The alpacas were a source of wool. The llamas were used for all sorts of things, but especially as pack animals.",
+          "cite": "Student Reader, page 40"
+        },
+        {
+          "type": "pick",
+          "p": "llama",
+          "q": "How much can a llama carry, and how far in a day?",
+          "opts": [
+            "Up to 125 pounds, for fifteen to twenty miles",
+            "Up to 250 pounds, for about thirty miles",
+            "Up to 60 pounds, for four or five miles",
+            "Up to 400 pounds, for eight to ten miles"
+          ],
+          "a": 0,
+          "why": "Llamas can carry loads up to 125 pounds for fifteen to twenty miles a day. A llama stands about four feet high at the shoulder and weighs about 250 pounds.",
+          "cite": "Student Reader, page 40"
+        },
+        {
+          "type": "pick",
+          "p": "llama",
+          "q": "What does an unhappy or overloaded llama do?",
+          "opts": [
+            "Sits down and refuses to move, and may hiss and spit",
+            "Runs back to the village it set out from on its own",
+            "Lies down and goes quietly to sleep until morning",
+            "Kicks until the load falls off and then walks away"
+          ],
+          "a": 0,
+          "why": "If they are mistreated or overloaded, they will let you know it. A llama may simply sit down and refuse to move. An unhappy llama may hiss and spit to make its point.",
+          "cite": "Student Reader, page 41"
+        },
+        {
+          "type": "pick",
+          "p": "uses",
+          "q": "Which English word comes from the Inca word <b>charqui</b>?",
+          "opts": [
+            "Jerky",
+            "Llama",
+            "Canoe",
+            "Potato"
+          ],
+          "a": 0,
+          "why": "When a llama died, the Inca cut the meat into strips and dried it in the sun. They called these strips charqui. This is the source of our own word for dried meat, jerky.",
+          "cite": "Student Reader, page 41"
+        },
+        {
+          "type": "build"
+        }
+      ]
+    },
+    {
+      "id": "s3",
+      "c": "var(--jade)",
+      "tag": "Pages 41–43",
+      "name": "Working for the Empire",
+      "blurb": "The labour every family owed, the storehouses, and He-Who-Sees-Everything.",
+      "items": [
+        {
+          "type": "pick",
+          "p": "work",
+          "q": "Besides farming for themselves, what were Inca families required to do?",
+          "opts": [
+            "Spend part of their time working for the Sapa Inca",
+            "Pay a share of their crop in silver to the temple",
+            "Send one child away to be educated in Cuzco itself",
+            "Move to a new village every few years, as ordered"
+          ],
+          "a": 0,
+          "why": "Inca families worked for themselves. In addition, they were required to spend part of their time working for the Sapa Inca and the empire. Inca men also had to donate time by working on construction projects, building roads, or serving in the military.",
+          "cite": "Student Reader, page 41"
+        },
+        {
+          "type": "pick",
+          "p": "store",
+          "q": "What happened to most of the goods the people produced for the empire?",
+          "opts": [
+            "Stored in warehouses and given out to those who could not work",
+            "Burned as offerings to the sun god at the temple in Cuzco",
+            "Sold to traders from beyond the borders of the empire",
+            "Kept entirely by the Sapa Inca and the priests of Inti"
+          ],
+          "a": 0,
+          "why": "The Sapa Inca and the priests used only a small part of the goods produced. The rest were stored in warehouses and given to those who were too old or too sick to work. When crops failed and times were hard, food and goods were given to the working people, too. This system ensured that no one went hungry.",
+          "cite": "Student Reader, page 42"
+        },
+        {
+          "type": "pick",
+          "p": "store",
+          "q": "Why does the reader say the Inca people worked willingly?",
+          "opts": [
+            "They understood it kept the empire going and their families safe",
+            "They were paid in gold for every day of work they did",
+            "They were allowed to keep everything they made for themselves",
+            "They were told the sun itself would not rise otherwise"
+          ],
+          "a": 0,
+          "why": "The Inca people understood that their labor was necessary to maintain the empire and to help protect them and their families. As a result, they worked willingly.",
+          "cite": "Student Reader, page 42"
+        },
+        {
+          "type": "pick",
+          "p": "census",
+          "q": "What does <b>census</b> mean?",
+          "opts": [
+            "A count of the number of people living in an area",
+            "A tax paid in crops rather than in gold or silver",
+            "A record of amounts kept on knotted coloured strings",
+            "A journey made by a government official each year"
+          ],
+          "a": 0,
+          "why": "A census is a count of the number of people living in a certain area. He-Who-Sees-Everything ordered villagers to gather so that he could take one — and the more people in the village, the more the village had to pay in taxes.",
+          "cite": "Core Vocabulary, Student Reader page 42"
+        },
+        {
+          "type": "pick",
+          "p": "census",
+          "q": "What were the two jobs of the official called He-Who-Sees-Everything?",
+          "opts": [
+            "Making villages pay their taxes, and arranging marriages",
+            "Building the roads, and training the empire's messengers",
+            "Counting the llamas, and guarding the storehouses",
+            "Teaching the Inca language, and collecting the gold"
+          ],
+          "a": 0,
+          "why": "He-Who-Sees-Everything was responsible for visiting Inca villages and making them pay their taxes. Oddly enough, he also served as a matchmaker — he could make dozens of marriages on the spot.",
+          "cite": "Student Reader, pages 42–43"
+        },
+        {
+          "type": "order",
+          "p": "census",
+          "q": "Put He-Who-Sees-Everything's visit back in the order the reader gives it.",
+          "steps": [
+            "He arrives in the village every few years.",
+            "He orders the villagers to gather so he can take a census.",
+            "The village is told how much it must pay in taxes.",
+            "Unmarried women over a certain age step forward and are interviewed.",
+            "The unmarried young men are called before him and paired off."
+          ],
+          "why": "He arrived every few years, took the census, set the taxes from it, then interviewed the unmarried women — the most worthy were sent to Cuzco — and finally paired off the young men and women. No questions were asked, because the marriages were for the good of the empire.",
+          "cite": "Student Reader, pages 42–43"
+        },
+        {
+          "type": "pick",
+          "p": "end",
+          "q": "How long did the Inca Empire last, from the start of its expansion to the Spanish conquest?",
+          "opts": [
+            "From 1438 to 1532 — not quite a century",
+            "From 1200 to 1532 — more than three centuries",
+            "From 1438 to 1650 — over two centuries",
+            "From 1325 to 1521 — the same span as the Aztec"
+          ],
+          "a": 0,
+          "why": "The Inca Empire lasted only from the beginning of its expansion in 1438 to the Spanish conquest in 1532. But it was a century of towering achievement.",
+          "cite": "Student Reader, page 43"
+        },
+        {
+          "type": "build"
+        }
+      ]
+    }
+  ],
+  "build": {
+    "q": "Build the answer to the Big Question. Pick the <b>two</b> facts that actually explain why llamas mattered so much to the Inca.",
+    "lead": "The Big Question, answered",
+    "tiles": [
+      {
+        "t": "They were pack animals: strong, tough, and able to carry 125 pounds for twenty miles a day.",
+        "a": true
+      },
+      {
+        "t": "Almost every part of them was used — wool for cloth, hide for rugs, waste for fuel, meat for food.",
+        "a": true
+      },
+      {
+        "t": "They were raised mainly to be eaten, the way guinea pigs were.",
+        "a": false
+      },
+      {
+        "t": "They pulled the wagons that carried stone to the building sites.",
+        "a": false
+      },
+      {
+        "t": "They were kept in the storehouses and given out when crops failed.",
+        "a": false
+      },
+      {
+        "t": "They were sacrificed to Inti, the sun god, at the temple in Cuzco.",
+        "a": false
+      }
+    ],
+    "answer": "The Inca had no horses, no oxen and no wheel, so a llama was the only thing that could move a load across mountains — 125 pounds, fifteen to twenty miles a day, on almost any food and very little water. And nothing was wasted: wool for cloth, hide for rugs and coats, waste for fuel and fertilizer, and meat dried into charqui. One animal did the work of a cart, a coat, a fire and a meal.",
+    "cite": "Student Reader, pages 40–41"
+  },
+  "passages": {
+    "dream": {
+      "title": "Here Comes the Sun",
+      "cite": "Student Reader, pages 36–38",
+      "vocab": [
+        [
+          "Inca, n.",
+          "a civilization that thrived from 1438 to 1532 on the western coast of South America, including most of modern-day Peru and parts of Colombia, Ecuador, Bolivia, Chile, and Argentina"
+        ]
+      ],
+      "text": [
+        "It is the year 1500. You are standing along a road in South America in a crowd of people. You seem to be at some kind of parade. You look down the road and see a gleaming, golden litter carried on the shoulders of several men. Inside the litter is a man wearing furs and golden jewelry.",
+        "As the litter gets closer, the people around you go down on their knees and touch their foreheads to the ground. You are the only one still standing. Suddenly you notice several people yelling at you. An angry soldier is running at you with a raised club. You begin to run. With a start, you wake up and realize you were having a dream.",
+        "It’s a good thing you woke up. The people in your dream were bowing because the Sapa Inca, the king of the Inca people, was approaching.",
+        "The Inca believed that the Sapa Inca was the son of Inti, the sun god. No one was allowed to look at this powerful king—and you were staring right at him!"
+      ]
+    },
+    "empire": {
+      "title": "The Empire of the Sun",
+      "cite": "Student Reader, page 38",
+      "vocab": [
+        [
+          "conquistador, n.",
+          "the Spanish word for conqueror"
+        ]
+      ],
+      "text": [
+        "Who were the Inca? They were people who built a great civilization on the western coast of South America. The first Inca people lived in the area around Cuzco in modern-day Peru. In the early 1400s, these people began conquering neighboring lands and extending their empire. By the time the Spanish conquistadors arrived in the 1530s, the Inca Empire was the largest in the Americas—larger even than the Aztec Empire had been.",
+        "The Sapa Inca ruled over more than twelve million people. His territory stretched for more than two thousand miles along the Pacific Coast. The empire covered an area so large that most of modern-day Peru and parts of Colombia, Ecuador, Bolivia, Chile, and Argentina would lie inside its borders."
+      ]
+    },
+    "land": {
+      "title": "A land of every kind",
+      "cite": "Student Reader, page 39",
+      "vocab": [
+        [
+          "geographical diversity (phrase)",
+          "the presence of many different kinds of landforms, waterways, or other geographic features in a region"
+        ],
+        [
+          "plateau, n.",
+          "a large area of high, flat ground"
+        ]
+      ],
+      "text": [
+        "This is a region of great geographical diversity. Arid plains stretch along the western coastline. This region is so dry that not even a cactus can grow. Farther east, the twin ranges of the snow-capped Andes Mountains rise toward the skies. Between the ranges lies a high plateau. Land here is sizzling hot by day and freezing by night. East of the Andes are thick forests where heavy rains feed the mighty Amazon River. All these lands were ruled by the Sapa Inca."
+      ]
+    },
+    "life": {
+      "title": "Inca Life",
+      "cite": "Student Reader, pages 39–40",
+      "vocab": [
+        [
+          "clan, n.",
+          "a group of families"
+        ]
+      ],
+      "text": [
+        "The Inca people were organized into clans, or groups. Every Inca family was part of a clan, and each clan farmed a piece of land. Families lived in windowless, one-room stone huts with thatched roofs. Home, sweet home, probably didn’t smell so sweet, since families sometimes burned dried animal waste as fuel. Parents and children slept together on animal skins spread on the bare floor. A few wall pegs were the only furnishings.",
+        "Boys followed their fathers’ trades. Girls copied their mothers’."
+      ]
+    },
+    "farming": {
+      "title": "What they grew and raised",
+      "cite": "Student Reader, page 40",
+      "vocab": [
+        [
+          "alpaca, n.",
+          "a South American mammal valued for its long, woolly coat"
+        ],
+        [
+          "llama, n.",
+          "a South American mammal valued for its endurance and for its woolly coat and meat"
+        ]
+      ],
+      "text": [
+        "Most Inca were farmers. They grew corn, squash, tomatoes, peanuts, cotton, and more than a hundred varieties of potatoes. The potato was the main crop for the Inca. It grew well even at high altitudes on the slopes of the Andes Mountains.",
+        "Inca farmers also raised livestock. This included guinea pigs, alpacas, and llamas. The guinea pigs were raised for food. The alpacas were a source of wool. The Inca used llamas for all sorts of things, but especially as pack animals."
+      ]
+    },
+    "llama": {
+      "title": "The llama itself",
+      "cite": "Student Reader, pages 40–41",
+      "text": [
+        "The llama is truly an amazing animal. It is a smaller cousin of the camel. A llama stands about four feet high at the shoulder and weighs about 250 pounds. Like its camel cousin, the llama has great strength and endurance. Llamas can carry loads up to 125 pounds for fifteen to twenty miles a day. They will eat just about anything and can go long periods without drinking.",
+        "Llamas are also gentle animals. But if they are mistreated or overloaded, they will let you know it. A llama may simply sit down and refuse to move. An unhappy llama may hiss and spit to make its point. Llama spit is not just wet and nasty. It can include hard pellets of food, which can cause pain if they hit you."
+      ]
+    },
+    "uses": {
+      "title": "Nothing wasted",
+      "cite": "Student Reader, page 41",
+      "text": [
+        "The Inca used llamas to transport goods. They also used the llama’s wool for cloth, its hide for rugs and coats, its waste for fuel and fertilizer, and its meat for food. When a llama died, the Inca cut the meat into strips and dried it in the sun. They called these strips charqui. This is the source of our own word for dried meat, jerky.",
+        "Inca women were skilled weavers. They made clothing from the cotton they grew and from the wool of their llamas and alpacas."
+      ]
+    },
+    "work": {
+      "title": "For the Good of the Empire",
+      "cite": "Student Reader, page 41",
+      "text": [
+        "Inca families worked for themselves. In addition, they were required to spend part of their time working for the Sapa Inca and the empire. Farmers raised crops for themselves and also for the empire. Inca men also had to donate time by working on construction projects, building roads, or serving in the military."
+      ]
+    },
+    "store": {
+      "title": "The storehouses",
+      "cite": "Student Reader, page 42",
+      "text": [
+        "The Inca people understood that their labor was necessary to maintain the empire and to help protect them and their families. As a result, they worked willingly. The Sapa Inca and the priests used only a small part of the goods produced. The rest were stored in warehouses and given to those who were too old or too sick to work. When crops failed and times were hard, food and goods were given to the working people, too. This system ensured that no one went hungry.",
+        "The rule of the Sapa Inca was absolute. Many government officials traveled throughout the empire to make sure his laws were obeyed."
+      ]
+    },
+    "census": {
+      "title": "He-Who-Sees-Everything",
+      "cite": "Student Reader, pages 42–43",
+      "vocab": [
+        [
+          "census, n.",
+          "a count of the number of people living in a certain area"
+        ]
+      ],
+      "text": [
+        "One of those officials was known as He-Who-Sees-Everything. He-Who-Sees-Everything was responsible for visiting Inca villages and making them pay their taxes. Oddly enough, he also served as a matchmaker.",
+        "He-Who-Sees-Everything would arrive in an Inca village every few years. When he arrived, he ordered the villagers to gather so that he could take a census. The more people in the village, the more the village had to pay in taxes.",
+        "Once the counting was over, He-Who-Sees-Everything asked unmarried women over a certain age to step forward. The official interviewed each young woman. If one was found especially worthy, she was sent to Cuzco to become one of the Sapa Inca’s many wives.",
+        "Once these chosen few had been selected, He-Who-Sees-Everything called all the unmarried young men before him. He proceeded to pair off the young men and women. He could make dozens of marriages on the spot. No questions were asked. After all, He-Who-Sees-Everything was a servant of the Sapa Inca. The marriages he was arranging were for the good of the empire."
+      ]
+    },
+    "end": {
+      "title": "A century of towering achievement",
+      "cite": "Student Reader, page 43",
+      "text": [
+        "The Inca Empire lasted only from the beginning of its expansion in 1438 to the Spanish conquest in 1532. But it was a century of towering achievement. The Inca did not just conquer people. To keep their empire unified, they changed every place they conquered."
+      ]
+    }
+  }
+}

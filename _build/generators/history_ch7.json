@@ -1,0 +1,512 @@
+{
+  "title": "The End of Two Empires",
+  "chapter": 7,
+  "eyebrow": "CKHG Grade 5 · Unit 2 · Chapter 7 · Student Reader pp. 54–63",
+  "h1": "The End of <em>Two Empires</em>",
+  "bigQuestion": "What were the factors that contributed to the end of the Aztec and Inca empires?",
+  "note": "/* Every question, answer and excerpt below comes from the CKHG Grade 5 Unit 2\n   Student Reader, Chapter 7 (pp. 54–63). Core Vocabulary for this chapter is\n   expedition, religious ceremony, smallpox, immunity and epidemic — each is\n   tested, and each question about one points at the sidebar box that defines it\n   rather than at a sentence that merely uses the word. The sets follow the\n   chapter's three reading segments: the Aztec, the Inca, and what the two ends\n   had in common. */",
+  "sets": [
+    {
+      "id": "s1",
+      "c": "var(--gold)",
+      "tag": "Pages 54–58",
+      "name": "The Floating Mountain",
+      "blurb": "What the messengers saw, who Cortés was, and why the Aztec had so many enemies.",
+      "items": [
+        {
+          "type": "pick",
+          "p": "sighting",
+          "q": "A messenger told Moctezuma, “it was a mountain, and it floated on the water.” What had he seen?",
+          "opts": [
+            "A Spanish sailing ship",
+            "A raft of logs on the lake",
+            "A cloud sitting low on the sea",
+            "An island the Aztec had not mapped"
+          ],
+          "a": 0,
+          "why": "The “floating mountain” was actually a Spanish ship. The “magic sticks” were cannons, and the “giant dogs” were horses. The Aztec had never seen horses or cannons, and knew nothing of sailing ships or Spaniards.",
+          "cite": "Student Reader, pages 54–56"
+        },
+        {
+          "type": "pick",
+          "p": "sighting",
+          "q": "Why did the messengers describe what they saw in such strange terms?",
+          "opts": [
+            "They had never seen ships, cannons or horses before",
+            "They had been told to keep the news a secret",
+            "They were describing a dream, not a real sight",
+            "The Aztec language had no word for the sea"
+          ],
+          "a": 0,
+          "why": "The Aztec had never seen horses or cannons, and they knew nothing of sailing ships or Spaniards. They could only guess who these strange beings might be.",
+          "cite": "Student Reader, page 56"
+        },
+        {
+          "type": "pick",
+          "p": "gifts",
+          "q": "What did Moctezuma guess about the strangers, and what did he do about it?",
+          "opts": [
+            "That they might be gods, so he sent golden robes and gifts",
+            "That they were traders, so he sent merchants to bargain",
+            "That they were spies, so he sent soldiers to arrest them",
+            "That they were lost, so he sent guides to lead them away"
+          ],
+          "a": 0,
+          "why": "Moctezuma remembered the troubling events of recent years. He guessed that the strangers might be gods come down to earth. To please them, the emperor sent golden robes and other gifts — which caught Cortés's attention.",
+          "cite": "Student Reader, page 56"
+        },
+        {
+          "type": "pick",
+          "p": "cortes",
+          "q": "What does <b>expedition</b> mean?",
+          "opts": [
+            "A special journey taken by a group with a clear purpose",
+            "A gift sent from one ruler to another as a greeting",
+            "A gathering held for a religious purpose or theme",
+            "A count of the people living in a certain area"
+          ],
+          "a": 0,
+          "why": "An expedition is a special journey taken by a group that has a clear purpose or goal. Cortés led the Spanish expedition, and the Aztec messengers presented Moctezuma's gifts to him.",
+          "cite": "Core Vocabulary, Student Reader page 56"
+        },
+        {
+          "type": "pick",
+          "p": "cortes",
+          "q": "What were Cortés's two stated hopes in setting sail from Cuba in 1519?",
+          "opts": [
+            "To spread the Catholic religion, and to get rich",
+            "To map the coast, and to find a route to Asia",
+            "To found a colony, and to make peace with the Aztec",
+            "To rescue Spaniards held captive, and to trade for gold"
+          ],
+          "a": 0,
+          "why": "Cortés was a Spanish explorer who had taken part in the conquest of Cuba a few years earlier. In 1519 he set sail from Cuba for Central America. Like other conquistadors, he hoped to spread the Catholic religion. He also hoped to get rich.",
+          "cite": "Student Reader, page 56"
+        },
+        {
+          "type": "pick",
+          "p": "allies",
+          "q": "Why did many of the conquered people Cortés met want to help him?",
+          "opts": [
+            "They had paid tribute to the Aztec and lost young men to it",
+            "They had been promised a share of the Spanish gold for helping",
+            "They believed Cortés was a god who had returned to rule them",
+            "They had been at war with one another and wanted a truce"
+          ],
+          "a": 0,
+          "why": "As he journeyed west, Cortés marched through areas the Aztec had conquered. The people there had been forced to pay tribute to the Aztec, and had watched their young men dragged off to Tenochtitlán to be offered as sacrifices. Many hoped the newcomers would help them get revenge.",
+          "cite": "Student Reader, page 57"
+        },
+        {
+          "type": "pick",
+          "p": "hostage",
+          "q": "Why did the Spaniards take Moctezuma hostage after being welcomed as guests?",
+          "opts": [
+            "They were outnumbered, and weapons alone could not keep them safe",
+            "They wanted a ransom in gold before they would leave the city",
+            "Moctezuma had ordered an attack on their camp during the night",
+            "They meant to make him swear loyalty to the king of Spain first"
+          ],
+          "a": 0,
+          "why": "For a while, all was peaceful in Tenochtitlán. The Spaniards, however, grew nervous. They knew they were greatly outnumbered and that even their superior weapons could not keep them safe. They took Moctezuma hostage.",
+          "cite": "Student Reader, pages 57–58"
+        },
+        {
+          "type": "build"
+        }
+      ]
+    },
+    {
+      "id": "s2",
+      "c": "var(--red)",
+      "tag": "Pages 58–59",
+      "name": "The Fall of Tenochtitlán",
+      "blurb": "Fighting, siege, and a disease the Aztec had never met before.",
+      "items": [
+        {
+          "type": "pick",
+          "p": "fighting",
+          "q": "What does <b>smallpox</b> mean?",
+          "opts": [
+            "A serious disease that spreads person to person, with fever and rash",
+            "A weapon that fires small stones and makes a great deal of smoke",
+            "A shortage of food caused by a siege that goes on too long",
+            "A gathering or event that has a religious purpose or theme"
+          ],
+          "a": 0,
+          "why": "Smallpox is a serious disease that spreads from person to person and causes a fever and rash. It was carried by the conquistadors and swept through Tenochtitlán during the siege.",
+          "cite": "Core Vocabulary, Student Reader page 58"
+        },
+        {
+          "type": "pick",
+          "p": "fighting",
+          "q": "What does <b>immunity</b> mean, and why did it matter here?",
+          "opts": [
+            "A body's power to stay free of an illness — the Aztec had none",
+            "A promise of safety given by a ruler — Cortés broke his own",
+            "A tax the conquered paid in goods — the Aztec had raised theirs",
+            "A store of food kept for a siege — the city ran out of its own"
+          ],
+          "a": 0,
+          "why": "Immunity is a body's ability to remain free of illness even after being exposed to the cause of the illness. The Aztec had no immunities against European diseases, so the diseases hit very hard and spread quickly.",
+          "cite": "Core Vocabulary, Student Reader page 58"
+        },
+        {
+          "type": "pick",
+          "p": "epidemic",
+          "q": "What does <b>epidemic</b> mean?",
+          "opts": [
+            "A disease spreading to many people in an area",
+            "A long shortage of rain that makes the crops fail",
+            "A rebellion raised by people who have been conquered",
+            "A journey made by an army into enemy territory"
+          ],
+          "a": 0,
+          "why": "An epidemic is a situation in which a disease spreads to many people in an area or region. Warriors, commoners, and nobles alike died in the epidemic that swept Tenochtitlán.",
+          "cite": "Core Vocabulary, Student Reader page 59"
+        },
+        {
+          "type": "pick",
+          "p": "fighting",
+          "q": "What set off the fighting inside Tenochtitlán?",
+          "opts": [
+            "The Spanish killed hundreds of priests at a ceremony",
+            "The Aztec refused to hand over any more gold to Cortés",
+            "Moctezuma escaped from the Spaniards and raised an army",
+            "A Spanish soldier was caught stealing from the Great Temple"
+          ],
+          "a": 0,
+          "why": "The Spaniards demanded that the emperor order the Aztec to stop sacrificing to their gods. Moctezuma refused. A few weeks later, fighting broke out. The Spanish grew fearful that the Aztec priests were plotting against them, and attacked and killed hundreds of priests during a religious ceremony.",
+          "cite": "Student Reader, page 58"
+        },
+        {
+          "type": "pick",
+          "p": "siege",
+          "q": "How did Cortés rebuild his strength after fleeing the city?",
+          "opts": [
+            "By enlisting more of the Aztec's old enemies",
+            "By sending to Cuba for a second Spanish army",
+            "By hiring soldiers with the gold he had taken",
+            "By waiting until the smallpox had passed"
+          ],
+          "a": 0,
+          "why": "The Spaniards rebuilt their army by enlisting more of the Aztec's old enemies. In 1521, Cortés and his allies surrounded the capital. With no supplies coming into Tenochtitlán, city residents began to starve.",
+          "cite": "Student Reader, page 58"
+        },
+        {
+          "type": "order",
+          "p": "siege",
+          "q": "Put the fall of Tenochtitlán back in the order the reader gives it.",
+          "steps": [
+            "The Spaniards take Moctezuma hostage.",
+            "They attack a religious ceremony and kill hundreds of priests.",
+            "Fighting breaks out, Moctezuma is killed, and the Spanish flee.",
+            "Cortés returns with more allies and surrounds the city.",
+            "Starvation and a smallpox epidemic empty the streets.",
+            "Tenochtitlán falls in August of 1521."
+          ],
+          "why": "Each step made the next one possible. The city was not simply beaten in battle: it was besieged, starved and swept by a disease its people had no defence against, and only then attacked.",
+          "cite": "Student Reader, pages 57–59"
+        },
+        {
+          "type": "pick",
+          "p": "fall",
+          "q": "Which two things does the reader say were happening while the final attack came?",
+          "opts": [
+            "Thousands lay dead or dying, and others were too sick to fight",
+            "The city walls had fallen and the causeways were destroyed",
+            "The Aztec had run out of weapons and their allies had gone",
+            "The emperor had fled the city and the priests had given up"
+          ],
+          "a": 0,
+          "why": "In May of 1521, Cortés organized a final bloody attack. The Aztec fought bravely but were overwhelmed. Meanwhile, the smallpox epidemic left thousands dead or dying in the streets. Others were too sick to fight. Tenochtitlán fell in August of 1521.",
+          "cite": "Student Reader, page 59"
+        },
+        {
+          "type": "build"
+        }
+      ]
+    },
+    {
+      "id": "s3",
+      "c": "var(--jade)",
+      "tag": "Pages 59–63",
+      "name": "The End for the Inca",
+      "blurb": "Disease before the Spaniards arrived, a civil war, and an ambush at Cajamarca.",
+      "items": [
+        {
+          "type": "pick",
+          "p": "disease",
+          "q": "What did the first Spaniards leave behind on the Inca coast before they sailed away?",
+          "opts": [
+            "Deadly diseases the people had never had before",
+            "A small fort with a garrison of Spanish soldiers",
+            "A priest to teach them the Christian religion",
+            "Horses that ran wild along the coastline"
+          ],
+          "a": 0,
+          "why": "Not long after, the bearded ones disappeared in their “sea house.” But they left something behind — deadly diseases the natives had never had before. Those along the coast became sick first. Later, travelers carried the diseases inland.",
+          "cite": "Student Reader, pages 59–60"
+        },
+        {
+          "type": "pick",
+          "p": "civil",
+          "q": "What happened when the Sapa Inca died, and who won?",
+          "opts": [
+            "Two sons claimed the throne; Atahualpa won the civil war",
+            "His brother took the throne without any fighting at all",
+            "The empire was split in two and ruled by both of the sons",
+            "The priests chose a new Sapa Inca from among the nobles"
+          ],
+          "a": 0,
+          "why": "When the Sapa Inca died, two of his sons claimed the throne. This led to a civil war. The fighting was as bloody as any the Inca people had ever waged. When the battles were over, the son named Atahualpa had won.",
+          "cite": "Student Reader, page 60"
+        },
+        {
+          "type": "pick",
+          "p": "pizarro",
+          "q": "Why did Atahualpa not take the Spaniards seriously?",
+          "opts": [
+            "The old warnings were forgotten, and he had no news of the Aztec",
+            "He had already beaten a Spanish force down on the coastline",
+            "His priests had told him the strangers would soon sail away",
+            "He believed the messengers had invented the whole report"
+          ],
+          "a": 0,
+          "why": "The signs from a few years earlier had been forgotten during the civil war. Also, the Inca had no contact with the Aztec, so they had no way of knowing what had happened to their neighbors to the north. Besides, what could the mighty Sapa Inca have to fear from a small band of men?",
+          "cite": "Student Reader, pages 60–61"
+        },
+        {
+          "type": "pick",
+          "p": "pizarro",
+          "q": "The Spaniards marched on Cuzco. What did they travel along?",
+          "opts": [
+            "The very roads the Inca had built to unite their empire",
+            "A route through the forest that local guides showed them",
+            "The coastline, keeping their ships alongside them",
+            "A chain of mountain passes above the snow line"
+          ],
+          "a": 0,
+          "why": "The Spaniards marched toward Cuzco. They traveled along the very roads that the Inca had built to unite their empire. Meanwhile, speedy Inca messengers told Atahualpa that the Spaniards were coming.",
+          "cite": "Student Reader, page 60"
+        },
+        {
+          "type": "pick",
+          "p": "ambush",
+          "q": "How did Atahualpa come to the meeting at Cajamarca?",
+          "opts": [
+            "As a friend, with six thousand unarmed nobles and attendants",
+            "At the head of his army, expecting the Spanish to surrender",
+            "In secret at night, with only a handful of his own nobles",
+            "With his warriors armed and hidden all around the square"
+          ],
+          "a": 0,
+          "why": "As Pizarro had requested, Atahualpa came as a friend. The Sapa Inca had left his warriors outside the city. He was marching into Cajamarca with six thousand unarmed nobles and attendants. Pizarro had already set an ambush, with soldiers hidden inside the buildings around the square.",
+          "cite": "Student Reader, page 61"
+        },
+        {
+          "type": "pick",
+          "p": "ambush",
+          "q": "Why did a Spanish priest approach Atahualpa before the attack?",
+          "opts": [
+            "Spanish law required a warning to surrender before force was used",
+            "He hoped to persuade Atahualpa to hand over the empire's gold",
+            "He had been sent to learn where the Inca warriors were waiting",
+            "He was translating for Pizarro, who spoke no Quechua"
+          ],
+          "a": 0,
+          "why": "Spanish laws forbade Pizarro from attacking without warning. Before using force, he had to ask the enemies to surrender and become Christians peacefully. So the priest urged Atahualpa to accept Christianity and offered a Catholic prayer book. The insulted ruler knocked the book to the ground — and that was the moment the Spaniards were waiting for.",
+          "cite": "Student Reader, page 61"
+        },
+        {
+          "type": "pick",
+          "p": "ransom",
+          "q": "What did Atahualpa offer for his freedom, and what did Pizarro do?",
+          "opts": [
+            "A room filled with gold — Pizarro took it, then had him executed",
+            "A room filled with gold — Pizarro released him as agreed",
+            "The city of Cuzco — Pizarro refused and marched on it anyway",
+            "His army's surrender — Pizarro accepted and left the empire alone"
+          ],
+          "a": 0,
+          "why": "Atahualpa placed his hand high on the wall of his prison room and offered to fill it to that height with gold. His subjects stripped the temples and emptied the storehouses. Once the Inca paid this fantastic ransom, Pizarro broke his promise. He charged Atahualpa with plotting against the Spaniards and had him executed.",
+          "cite": "Student Reader, pages 62–63"
+        },
+        {
+          "type": "build"
+        }
+      ]
+    }
+  ],
+  "build": {
+    "q": "Build the answer to the Big Question. Pick the <b>two</b> factors the reader says brought down <b>both</b> empires.",
+    "lead": "The Big Question, answered",
+    "tiles": [
+      {
+        "t": "European diseases the people had no immunity to, which killed thousands before and during the fighting.",
+        "a": true
+      },
+      {
+        "t": "Division at home — the Aztec's conquered enemies joined Cortés, and the Inca had just fought a civil war.",
+        "a": true
+      },
+      {
+        "t": "Both empires had run out of gold and could no longer pay their soldiers.",
+        "a": false
+      },
+      {
+        "t": "Both had been weakened by many years of drought and failed harvests.",
+        "a": false
+      },
+      {
+        "t": "Both emperors surrendered without any fighting at all.",
+        "a": false
+      },
+      {
+        "t": "The Spanish arrived with armies far larger than either empire could raise.",
+        "a": false
+      }
+    ],
+    "answer": "Not superior weapons alone — the Spaniards were badly outnumbered in both places and knew it. What decided it was disease and division. Smallpox and other European illnesses swept through people who had no immunity to them, killing warriors, commoners and nobles alike, and reaching the Inca even before the conquistadors did. And both empires were divided: the peoples the Aztec had conquered and taken for sacrifice joined Cortés for revenge, while the Inca had just torn themselves apart in a civil war over the throne.",
+    "cite": "Student Reader, pages 58–63"
+  },
+  "passages": {
+    "sighting": {
+      "title": "The Answer",
+      "cite": "Student Reader, pages 54–56",
+      "text": [
+        "In 1519 Aztec emperor Moctezuma II ruled a mighty empire. One day a messenger arrived in Tenochtitlán. He had walked all the way from the Gulf of Mexico with shocking news. “My lord,” the exhausted man told Moctezuma, “it was a mountain, and it floated on the water.”",
+        "What was the traveler talking about? The emperor’s men journeyed to the coast to find out for themselves. They returned with tales of white men with thick beards. Like the first messenger, they saw a “floating mountain.” They also saw other wonders, including “magic sticks” that belched smoke and “enormous dogs” with flat ears and long tongues.",
+        "The “floating mountain” was actually a Spanish ship. The “magic sticks” were cannons, and the “giant dogs” were horses. The Aztec had never seen horses or cannons, and they knew nothing of sailing ships or Spaniards. They could only guess who these strange beings might be."
+      ]
+    },
+    "gifts": {
+      "title": "Gifts for the strangers",
+      "cite": "Student Reader, page 56",
+      "text": [
+        "Moctezuma remembered the troubling events of recent years. He guessed that the strangers might be gods come down to earth. To please them, the emperor sent golden robes and other gifts. When the Aztec messengers reached the coast, they presented these gifts to the leader of the Spanish expedition, Hernán Cortés."
+      ]
+    },
+    "cortes": {
+      "title": "Hernán Cortés",
+      "cite": "Student Reader, pages 56–57",
+      "vocab": [
+        [
+          "expedition, n.",
+          "a special journey taken by a group that has a clear purpose or goal"
+        ]
+      ],
+      "text": [
+        "Cortés was a Spanish explorer. He had taken part in the conquest of Cuba a few years earlier. In 1519 he set sail from Cuba for Central America. Like other conquistadors, he hoped to spread the Catholic religion. He also hoped to get rich. Moctezuma’s gifts caught Cortés’s attention. He found a native woman, whom the Spanish called Marina, to serve as his translator and guide. Then he set off with his men toward the Aztec capital."
+      ]
+    },
+    "allies": {
+      "title": "Old enemies of the Aztec",
+      "cite": "Student Reader, page 57",
+      "text": [
+        "As he journeyed west, Cortés marched through areas the Aztec had conquered. The people in these areas had been forced to pay tribute to the Aztec. They had also watched their young men dragged off to Tenochtitlán to be offered as sacrifices. Many of the conquered people Cortés met hoped the newcomers would help them get revenge on the Aztec.",
+        "Moctezuma learned that Cortés was getting support from old enemies. He tried to talk Cortés out of coming to Tenochtitlán and even sent magicians to cast spells on the Spaniards. But Cortés and his men marched on."
+      ]
+    },
+    "hostage": {
+      "title": "Guests, then hostages",
+      "cite": "Student Reader, pages 57–58",
+      "text": [
+        "Moctezuma at last accepted that he could not stop the Spaniards. So he decided to welcome them as honored guests.",
+        "For a while, all was peaceful in Tenochtitlán. The Spaniards, however, grew nervous. They knew they were greatly outnumbered and that even their superior weapons could not keep them safe. They took Moctezuma hostage."
+      ]
+    },
+    "fighting": {
+      "title": "The fighting begins",
+      "cite": "Student Reader, page 58",
+      "vocab": [
+        [
+          "religious ceremony (phrase)",
+          "a special gathering or event that has a religious purpose or theme"
+        ],
+        [
+          "smallpox, n.",
+          "a serious disease that spreads from person to person and causes a fever and rash"
+        ],
+        [
+          "immunity, n.",
+          "a body’s ability to remain free of illness even after being exposed to the cause of the illness"
+        ]
+      ],
+      "text": [
+        "In addition, they demanded that the emperor order the Aztec to stop sacrificing to their gods. Moctezuma refused. A few weeks later, fighting broke out. The Spanish grew fearful that the Aztec priests were plotting against them. The Spaniards attacked and killed hundreds of priests during a religious ceremony.",
+        "The Aztec responded by trying to wipe out the Spanish. Many men were killed on both sides. Among the victims was Moctezuma himself. The Spaniards then fled Tenochtitlán."
+      ]
+    },
+    "siege": {
+      "title": "The siege",
+      "cite": "Student Reader, pages 58–59",
+      "text": [
+        "The Spaniards rebuilt their army by enlisting more of the Aztec’s old enemies. In 1521, Cortés and his allies surrounded the capital. With no supplies coming into Tenochtitlán, city residents began to starve. An outbreak of smallpox also swept through the city. This disease was carried by the conquistadors. The Aztec had no immunities against European diseases."
+      ]
+    },
+    "epidemic": {
+      "title": "The epidemic",
+      "cite": "Student Reader, page 59",
+      "vocab": [
+        [
+          "epidemic, n.",
+          "a situation in which a disease spreads to many people in an area or region"
+        ]
+      ],
+      "text": [
+        "As a result, the diseases hit very hard and spread quickly. Warriors, commoners, and nobles alike died in the epidemic."
+      ]
+    },
+    "fall": {
+      "title": "The fall of the city",
+      "cite": "Student Reader, page 59",
+      "text": [
+        "In May of 1521, Cortés organized a final bloody attack. Spanish forces, armed with guns and cannons and joined by thousands of native allies, advanced along the causeways. The Aztec fought bravely but were overwhelmed by their attackers. Meanwhile, the smallpox epidemic left thousands dead or dying in the streets. Others were too sick to fight. Tenochtitlán fell in August of 1521. The once-great city lay in ruins, and the mighty empire of the Aztec was defeated."
+      ]
+    },
+    "disease": {
+      "title": "The End for the Inca",
+      "cite": "Student Reader, pages 59–60",
+      "text": [
+        "A few years later, a similar series of events unfolded in South America. One day, a messenger dropped to the ground before the Sapa Inca. He delivered startling news. “A house!” he exclaimed. “It drifts on the sea along the coast!” He went on to speak of bearded ones with white skin. They were masters of lightning and thunder!",
+        "The Sapa Inca felt fear. There had been frightening signs in recent times. Violent earthquakes had split the ground. The sea had tossed gigantic waves ashore.",
+        "Not long after, the bearded ones disappeared in their “sea house.” But they left something behind—deadly diseases the natives had never had before. Those along the coast became sick first. Later, travelers carried the diseases inland. The Inca people had no natural ability to fight off the European germs. They became very ill and died by the thousands."
+      ]
+    },
+    "civil": {
+      "title": "A war between brothers",
+      "cite": "Student Reader, page 60",
+      "text": [
+        "When the Sapa Inca died, two of his sons claimed the throne. This led to a civil war. The fighting was as bloody as any the Inca people had ever waged. When the battles were over, the son named Atahualpa had won. Atahualpa would not rest easy on his throne, however. Before long, another message arrived from the coast. The bearded ones had returned!"
+      ]
+    },
+    "pizarro": {
+      "title": "Francisco Pizarro",
+      "cite": "Student Reader, pages 60–61",
+      "text": [
+        "The bearded strangers were Spanish conquistadors led by Francisco Pizarro. Pizarro had heard rumors of an empire in South America that was even richer than the Aztec Empire. In 1527, Pizarro led a group of about 160 men to find this empire. When Pizarro found Inca temples decorated with gold and silver, he figured he had found what he was looking for.",
+        "The Spaniards marched toward Cuzco. They traveled along the very roads that the Inca had built to unite their empire. Meanwhile, speedy Inca messengers told Atahualpa that the Spaniards were coming. The Sapa Inca did not take the Spaniards seriously, however. The signs from a few years earlier had been forgotten during the civil war. Also, the Inca had no contact with the Aztec. As a result, they had no way of knowing what had happened to their neighbors to the north."
+      ]
+    },
+    "ambush": {
+      "title": "Cajamarca",
+      "cite": "Student Reader, pages 61–62",
+      "text": [
+        "When the Spaniards approached Atahualpa’s camp near the town of Cajamarca, a meeting was arranged. Atahualpa agreed to meet Pizarro in the town square. It was here that Pizarro set an ambush. His soldiers hid inside buildings surrounding the square. Though well-armed, the Spaniards waited nervously. They knew they were greatly outnumbered.",
+        "As Pizarro had requested, Atahualpa came as a friend. The Sapa Inca had left his warriors outside the city. He was marching into Cajamarca with six thousand unarmed nobles and attendants.",
+        "Spanish laws forbade Pizarro from attacking without warning. Before using force, he had to ask the enemies to surrender and become Christians peacefully. So the priest urged Atahualpa to accept Christianity. The priest offered a Catholic prayer book to Atahualpa. The insulted ruler knocked the book to the ground.",
+        "This was the moment the Spaniards were waiting for. Pizarro had given the required warning. Now, he gave the signal for attack."
+      ]
+    },
+    "ransom": {
+      "title": "A Deadly Bargain",
+      "cite": "Student Reader, pages 62–63",
+      "text": [
+        "Atahualpa offered to pay a ransom for his release. The Sapa Inca placed his hand high on the wall of his prison room. “I will fill the room to this height with gold,” he told Pizarro. “This I give in exchange for my freedom.”",
+        "The Sapa Inca’s orders went out. His subjects stripped temples of their gold. They emptied storehouses and gathered up gold that would be worth tens of millions of dollars today. Once the Inca paid this fantastic ransom, Pizarro broke his promise. He charged Atahualpa with plotting against the Spaniards and had him executed.",
+        "The Sapa Inca’s death was the beginning of the end for the Inca Empire. The Inca were highly successful in battle. But they had been weakened by civil war, ravaged by deadly diseases, and upset by the loss of their leader. They were in no condition to oppose the Spaniards."
+      ]
+    }
+  }
+}

@@ -156,6 +156,22 @@ def vtest(s):
     return Patcher(s, "vocabtest")
 
 
+def inca5(s):
+    """CKHG Chapter 5 — generated from Chapter 3's shell, so its call sites came
+    across already patched. Config only."""
+    return Patcher(s, "inca5")
+
+
+def inca6(s):
+    """CKHG Chapter 6 — config only, same as the rest."""
+    return Patcher(s, "inca6")
+
+
+def inca7(s):
+    """CKHG Chapter 7 — config only, same as the rest."""
+    return Patcher(s, "inca7")
+
+
 def hist4(s):
     """CKHG Chapter 4 — generated from Ch3's shell, so its call sites came
     across already patched. Config only, like hist2/hist3."""
@@ -312,6 +328,14 @@ APPS = {
                                            dragon=["m1"])),
     "science/g5-matter-ch4":  (sci4,  dict(app="science4",   shake="#card",   lift=None,
                                            dragon=["m1"])),
+    # The Inca half of the unit. Same shell as the Maya and Aztec chapters, and
+    # the dragon sits on the last set of each, where it does for those too.
+    "history/g5-inca-ch5":    (inca5, dict(app="inca5",      shake="#card",   lift=None,
+                                           dragon=["s3"])),
+    "history/g5-inca-ch6":    (inca6, dict(app="inca6",      shake="#card",   lift=None,
+                                           dragon=["s3"])),
+    "history/g5-inca-ch7":    (inca7, dict(app="inca7",      shake="#card",   lift=None,
+                                           dragon=["s3"])),
     # Practice is generated, and the child chooses how long a set is — so a
     # perfect run on a set of four would be trivial to arrange. Math therefore
     # earns coins, hearts and ore but is not a boss level: `dragon: []` means no

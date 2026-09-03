@@ -14,6 +14,10 @@ RNG = random.Random(20260901)   # deterministic build; the app reshuffles at ren
 ROOT = r"C:\Users\kl\projects\study"
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(ROOT, "_build"))
+# build_theme reads sys.argv at import time for its own flags, so hide ours
+# from it and put them back — the first version simply threw them away, and
+# every run quietly rebuilt whatever the defaults named.
+MINE = sys.argv[1:]
 sys.argv = ["x"]
 import build_theme as B
 
@@ -87,8 +91,8 @@ def spread(spec):
 
 
 def main():
-    spec_name = sys.argv[1] if len(sys.argv) > 1 else "history_ch4.json"
-    out_dir = sys.argv[2] if len(sys.argv) > 2 else "g5-maya-ch4"
+    spec_name = MINE[0] if MINE else "history_ch4.json"
+    out_dir = MINE[1] if len(MINE) > 1 else "g5-maya-ch4"
     spec = json.load(io.open(os.path.join(HERE, spec_name), encoding="utf-8"))
     spread(spec)
     check(spec)
