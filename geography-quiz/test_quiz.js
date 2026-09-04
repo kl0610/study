@@ -75,7 +75,7 @@ function load(referrer) {
      scope rather than on the context object — so it is read back by evaluating
      a second script in the same context, which can see those bindings. */
   const G = vm.runInContext(
-    "({COUNTRIES, BY, S, GROUP, REGIONS, AREAS, AREA, judgeTyped, norm})", ctx);
+    "({COUNTRIES, BY, S, GROUP, REGIONS, AREAS, AREA, UNPLACED, judgeTyped, norm})", ctx);
 
   return {
     ctx: G, body,
@@ -417,21 +417,26 @@ G("typing, and how forgiving it is");
 }
 
 /* ====================================================================== */
-G("the four areas the Regions tab asks about");
+G("the three areas the Regions tab asks about");
 {
   const P = load();
   const A = P.ctx.AREAS;
-  ok("there are four", A.length === 4);
+  ok("there are three", A.length === 3);
   ok("named for what a class is asked",
-     A.map(a => a.label).join(", ") ===
-     "North America, Central America, The Caribbean, South America",
+     A.map(a => a.label).join(", ") === "Central America, The Caribbean, South America",
      A.map(a => a.label).join(", "));
   const all = A.flatMap(a => a.ns);
-  ok("between them they cover all 24 countries", new Set(all).size === 24);
-  ok("...with none in two areas at once", all.length === 24, all.length + " placings");
+  ok("no country is in two areas at once", new Set(all).size === all.length);
   ok("...and none invented", all.every(n => !!P.BY[n]));
-  ok("Mexico stands alone in North America",
-     P.ctx.AREA.na.ns.join() === "1" && P.BY[1].name === "Mexico");
+
+  /* There is no North America sweep: Mexico would be the only country in it,
+     which makes the question answer itself. It is the leftover instead, and
+     being the leftover is what makes it the trap in all three sweeps. */
+  ok("no area is a single country that answers itself", A.every(a => a.ns.length > 1));
+  ok("Mexico is the one country in none of them",
+     P.ctx.UNPLACED.join() === "1" && P.BY[1].name === "Mexico");
+  ok("the three plus Mexico account for all 24",
+     all.length + P.ctx.UNPLACED.length === 24);
   ok("Central America is the six below it, and does not include Mexico",
      P.ctx.AREA.ca.ns.join() === "6,7,8,9,10,11" &&
      P.ctx.AREA.ca.ns.indexOf(1) === -1);
@@ -449,7 +454,7 @@ G("sweeping an area on the map");
   const P = load(); withClosest(P);
   P.setMode("region");
   ok("the mode took", P.S.mode === "region");
-  ok("the round is the four areas", P.S.pool.length === 4);
+  ok("the round is the three areas", P.S.pool.length === 3);
   ok("the whole map is drawn, not just one area's countries", P.q(".mk").length === 24);
   ok("no single marker is ringed — the question is an area", P.q(".ring").length === 0);
   ok("the region filter is put away", P.$("reggrp").hidden === true);
@@ -464,17 +469,48 @@ G("sweeping an area on the map");
   ok("...and warns that not everything belongs",
      /Not every country on the map belongs/.test(P.panel()));
   ok("Check starts disabled with nothing chosen", P.$("go").disabled === true);
+  ok("...and it says where the names will appear",
+     /Tap the numbers on the map and they will be listed here by name/.test(P.panel()));
+
+  G("...what has been tapped is listed by name");
+  /* The map prints numbers and nothing else. Read back as "6, 7, 8" a sweep
+     tells a child nothing about whether those countries are in the area. */
+  P.marker(6).onclick();
+  ok("tapping a marker names the country in the panel",
+     P.q(".chip").length === 1 && P.q(".chip")[0].textContent.indexOf("Guatemala") !== -1,
+     P.q(".chip").map(c => c.textContent).join(" | "));
+  ok("...with its number beside it", /<b>6<\/b>/.test(P.panel()));
+  P.marker(7).onclick();
+  P.marker(8).onclick();
+  ok("three tapped, three named", P.q(".chip").length === 3);
+  ok("...and they are the right three",
+     P.q(".chip").map(c => c.textContent).join(",").indexOf("Honduras") !== -1 &&
+     P.q(".chip").map(c => c.textContent).join(",").indexOf("El Salvador") !== -1);
+  ok("...listed in number order",
+     P.q(".chip").map(c => +c.getAttribute("data-pick")).join() === "6,7,8");
+  P.q('.chip[data-pick="7"]')[0].onclick();
+  ok("a name taps off again without hunting for its marker on the map",
+     P.S.picked.size === 2 && !P.S.picked.has(7) && P.q(".chip").length === 2);
+  ok("...and the marker stops showing as chosen",
+     !P.marker(7).classList.contains("pick"));
+  P.marker(7).onclick();
 
   G("...the trap: Mexico is not Central America");
-  [1, 6, 7, 8, 9, 10, 11].forEach(n => P.marker(n).onclick());
+  [1, 9, 10, 11].forEach(n => P.marker(n).onclick());
   ok("seven chosen", P.S.picked.size === 7);
   ok("the chosen markers show it", P.q(".mk.pick").length === 7);
-  ok("...and the counter says so", /7 chosen of 6 wanted/.test(P.panel()));
+  ok("...and Mexico is named in the list, so the mistake is visible",
+     P.q(".chip").map(c => c.textContent).join(",").indexOf("Mexico") !== -1);
+  ok("...and the counter says so", /Chosen &mdash; 7 of 6 wanted/.test(P.panel()));
   P.$("go").onclick();
   ok("including Mexico is wrong", !P.S.matched.has("ca"));
+  /* The verdict counts, it does not name. Mexico is on screen — in the list of
+     what the student chose, which is theirs already — but the message that says
+     something is wrong must not point at it. */
   ok("...and it says how many, never which",
-     /one you tapped does not belong/i.test(P.panel()) &&
-     P.panel().indexOf("Mexico") === -1);
+     /one you tapped does not belong/i.test(P.q(".wrongnote")[0].textContent) &&
+     P.q(".wrongnote")[0].textContent.indexOf("Mexico") === -1,
+     P.q(".wrongnote")[0].textContent);
   ok("...and the choice is left alone so it can be adjusted", P.S.picked.size === 7);
   ok("...and it counts as an attempt", P.S.tries.ca === 1);
 
@@ -498,8 +534,9 @@ G("sweeping an area on the map");
   [2, 3, 4].forEach(n => P.marker(n).onclick());
   P.$("go").onclick();
   ok("three of the four Caribbean islands is not right", !P.S.matched.has("car"));
-  ok("...and it says one is missing",
-     /one is still missing/i.test(P.panel()) && P.panel().indexOf("Puerto Rico") === -1);
+  ok("...and it says one is missing, without naming it",
+     /one is still missing/i.test(P.q(".wrongnote")[0].textContent) &&
+     P.panel().indexOf("Puerto Rico") === -1);
   P.marker(5).onclick();
   P.$("go").onclick();
   ok("all four is right", P.S.matched.has("car"));
@@ -519,14 +556,18 @@ G("sweeping an area on the map");
     const nx = P.$("next"); if (!nx) break;
     nx.onclick();
   }
-  ok("all four areas are done", P.S.matched.size === 4);
+  ok("all three areas are done", P.S.matched.size === 3);
   ok("the round finishes", P.S.done === true && !!P.$("results"));
-  ok("two of four on the first try — the other two were fumbled",
-     /2 of 4 on the first try/.test(P.$("results").innerHTML),
-     P.$("results").innerHTML.match(/\d+ of \d+ on the first try/));
-  ok("the results name the areas, not countries",
-     P.$("results").innerHTML.indexOf("Central America") !== -1 &&
-     P.$("results").innerHTML.indexOf("Brazil") === -1);
+  ok("one of three on the first try — the other two were fumbled",
+     /1 of 3 on the first try/.test(P.$("results").innerHTML),
+     (P.$("results").innerHTML.match(/\d+ of \d+ on the first try/) || [])[0]);
+  ok("the results list the areas that were missed, not countries",
+     P.q(".missed li").map(li => li.textContent).join(",").indexOf("Central America") !== -1 &&
+     P.q(".missed li").map(li => li.textContent).join(",").indexOf("Brazil") === -1);
+  /* Only now, when it can no longer give a sweep away. */
+  ok("and the round ends by saying where Mexico belongs",
+     /Mexico belongs to none of the three\. It is in North America/
+       .test(P.$("results").innerHTML));
   ok("Retry missed only comes back with the two areas",
      (P.$("retry").onclick(), P.S.pool.length === 2 && P.S.pool.every(k => !!P.ctx.AREA[k])));
 }

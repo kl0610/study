@@ -190,9 +190,25 @@ select{
   background:#FCEEEB;color:#8E2E1D;font-size:16px;font-weight:700;
 }
 .counter{
-  margin:0 0 12px;font:700 15px var(--mono,inherit);color:var(--dim);
-  font-variant-numeric:tabular-nums;
+  margin:0 0 8px;font:700 13px var(--mono,inherit);color:var(--dim);
+  letter-spacing:.06em;text-transform:uppercase;font-variant-numeric:tabular-nums;
 }
+/* What has been swept in, by name. The map prints numbers and nothing else, so
+   without this a child is choosing blind and cannot tell whether the thing they
+   just tapped is in the area or not. */
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 14px;padding:0;list-style:none}
+.chip{
+  display:inline-flex;align-items:center;gap:8px;min-height:42px;
+  padding:6px 12px;border:2px solid var(--blue);border-radius:11px;
+  background:#EAF3FB;color:var(--blue-d);font-size:15px;font-weight:600;
+}
+.chip:hover{background:#DCEBF8}
+.chip b{
+  font:800 12px var(--mono,inherit);background:var(--blue);color:#fff;
+  border-radius:6px;padding:3px 6px;font-variant-numeric:tabular-nums;
+}
+.chip i{font-style:normal;color:#6E7F79;font-weight:700;font-size:17px;line-height:1}
+.nochip{margin:0 0 14px;color:var(--dim);font-size:15px}
 
 /* multiple choice + typing */
 .opts{display:grid;gap:10px;margin:0 0 14px}
@@ -359,19 +375,26 @@ REGIONS.filter(r=>r.key!=="all").forEach(r => r.ns.forEach(n => { GROUP[n] = r.k
 
 /* The areas the Regions tab asks about. Deliberately not the four above: those
    exist to keep a practice set short, and split South America in half for that
-   reason alone. These are the ones a class is actually asked to name.
+   reason alone. These are the three a class is actually asked to name.
 
-   Mexico stands on its own, because "everything south of the border is Central
-   America" is the mistake this tab is here to catch — leaving Mexico out of the
-   Central America sweep is the whole point of the question. Between them the
-   four areas account for all 24 countries exactly once, which is checked. */
+   Mexico is in none of them, and that is the whole design. "Everything south of
+   the border is Central America" is the mistake this tab exists to catch, so
+   Mexico has to be on the map, tappable, and wrong in all three sweeps.
+
+   There is deliberately no "North America" sweep. Mexico is the only country on
+   this map that would be in it, which makes the question answer itself — and
+   the claim would be shaky anyway, since Central America and the Caribbean are
+   part of North America too. Where Mexico does belong is said at the end of the
+   round, once it can no longer give a sweep away. */
 const AREAS = [
-  {key:"na",  label:"North America",  ns:[1]},
   {key:"ca",  label:"Central America", ns:[6,7,8,9,10,11]},
   {key:"car", label:"The Caribbean",   ns:[2,3,4,5]},
   {key:"sa",  label:"South America",   ns:[12,13,14,15,16,17,18,19,20,21,22,23,24]}
 ];
 const AREA = {}; AREAS.forEach(a => { AREA[a.key] = a; });
+/* Everything the three sweeps between them do not claim. */
+const UNPLACED = COUNTRIES.map(c => c.n)
+  .filter(n => !AREAS.some(a => a.ns.indexOf(n) !== -1));
 const COUNT_WORD = ["no","One","Two","Three","Four","Five","Six","Seven","Eight",
                     "Nine","Ten","Eleven","Twelve","Thirteen"];
 
@@ -988,7 +1011,7 @@ function areaPanel(){
   const bar = '<div class="meter"><i style="width:' +
       (S.pool.length ? (S.matched.size / S.pool.length * 100) : 0) + '%"></i></div>';
 
-  if (!cur) return head + '<p class="prompt">All four areas done.</p>' +
+  if (!cur) return head + '<p class="prompt">All ' + S.pool.length + ' areas done.</p>' +
                   '<ul class="list">' + list + "</ul>" + bar;
 
   const need = cur.ns.length;
@@ -1008,9 +1031,19 @@ function areaPanel(){
             ". Adjust and check again.</p>";
   }
 
+  /* Named, not just counted. The map prints numbers, so a sweep read back as
+     "6, 7, 8" tells a child nothing about whether those belong to the area.
+     Each one taps off again, which beats hunting for its marker a second time. */
+  const chosen = [...S.picked].sort((a, b) => a - b);
   body += '<div class="counter">' +
-    (S.picked.size ? S.picked.size + " chosen of " + need + " wanted"
+    (chosen.length ? "Chosen &mdash; " + chosen.length + " of " + need + " wanted"
                    : "Nothing chosen yet") + "</div>";
+  body += chosen.length
+    ? '<ul class="chips">' + chosen.map(n =>
+        '<li><button class="chip" data-pick="' + n + '" aria-label="Remove ' +
+        esc(BY[n].name) + '"><b>' + n + "</b>" + esc(BY[n].name) +
+        "<i>&times;</i></button></li>").join("") + "</ul>"
+    : '<p class="nochip">Tap the numbers on the map and they will be listed here by name.</p>';
 
   if (S.answered){
     const last = S.matched.size >= S.pool.length;
@@ -1080,6 +1113,9 @@ function wirePanel(){
   });
   document.querySelectorAll("#panel .name[data-area]").forEach(b => {
     b.onclick = () => chooseArea(b.dataset.area);
+  });
+  document.querySelectorAll("#panel .chip[data-pick]").forEach(b => {
+    b.onclick = () => sweep(+b.dataset.pick);
   });
   const go = $("go");
   if (go && S.mode === "region") go.onclick = checkArea;
@@ -1181,6 +1217,15 @@ function finish(){
       '<div style="color:var(--dim)">' + S.gotFirst.size + " of " + S.pool.length + " on the first try</div>" +
       (missed.length ? '<p style="margin:16px 0 0;font-weight:700">Worth another look</p>' : "") +
       list +
+      /* Where the leftovers belong. Said here and not in the prompt: during the
+         round it would give away every sweep it is the trap for. */
+      (S.mode === "region" && UNPLACED.length
+        ? '<p class="skipnote" style="margin-top:14px">' +
+          UNPLACED.map(n => esc(BY[n].name)).join(", ") +
+          (UNPLACED.length === 1
+            ? " belongs to none of the three. It is in North America, north of Central America."
+            : " belong to none of the three. They are in North America.") + "</p>"
+        : "") +
       '<div class="acts">' +
         (missed.length ? '<button class="btn" id="retry">Retry missed only</button>' : "") +
         '<button class="btn ghost" id="again">Run it again</button>' +
