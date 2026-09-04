@@ -30,14 +30,15 @@ function load(referrer) {
   const { doc, body } = boot(["modeseg", "dirseg", "dirgrp", "region", "teacher",
     "scoren", "scored", "zin", "zout", "zlvl", "zreset", "magbtn", "maphint",
     "viewport", "canvas", "mapimg", "overlay", "panel", "lens", "live",
-    "sofar", "tohub"], true);
+    "sofar", "tohub", "reggrp"], true);
 
   /* The page's own markup for the things it reaches into. boot() only makes
      empty divs, so the pieces that must be real elements are built here. */
   byId(body, "modeseg").innerHTML =
     '<button data-mode="match" aria-pressed="true">Matching</button>' +
     '<button data-mode="mc" aria-pressed="false">Multiple choice</button>' +
-    '<button data-mode="type" aria-pressed="false">Type it</button>';
+    '<button data-mode="type" aria-pressed="false">Type it</button>' +
+    '<button data-mode="region" aria-pressed="false">Regions</button>';
   /* the map is a real img, because the teacher toggle swaps its src */
   byId(body, "mapimg").kids = [];
   byId(body, "mapimg").tagName = "img";
@@ -74,7 +75,7 @@ function load(referrer) {
      scope rather than on the context object — so it is read back by evaluating
      a second script in the same context, which can see those bindings. */
   const G = vm.runInContext(
-    "({COUNTRIES, BY, S, GROUP, REGIONS, judgeTyped, norm})", ctx);
+    "({COUNTRIES, BY, S, GROUP, REGIONS, AREAS, AREA, judgeTyped, norm})", ctx);
 
   return {
     ctx: G, body,
@@ -413,6 +414,121 @@ G("typing, and how forgiving it is");
   ok("...and the right one is shown", /Not quite/.test(P.panel()));
   P.$("next").onclick();
   ok("...and it does not come round again", P.S.current !== t2);
+}
+
+/* ====================================================================== */
+G("the four areas the Regions tab asks about");
+{
+  const P = load();
+  const A = P.ctx.AREAS;
+  ok("there are four", A.length === 4);
+  ok("named for what a class is asked",
+     A.map(a => a.label).join(", ") ===
+     "North America, Central America, The Caribbean, South America",
+     A.map(a => a.label).join(", "));
+  const all = A.flatMap(a => a.ns);
+  ok("between them they cover all 24 countries", new Set(all).size === 24);
+  ok("...with none in two areas at once", all.length === 24, all.length + " placings");
+  ok("...and none invented", all.every(n => !!P.BY[n]));
+  ok("Mexico stands alone in North America",
+     P.ctx.AREA.na.ns.join() === "1" && P.BY[1].name === "Mexico");
+  ok("Central America is the six below it, and does not include Mexico",
+     P.ctx.AREA.ca.ns.join() === "6,7,8,9,10,11" &&
+     P.ctx.AREA.ca.ns.indexOf(1) === -1);
+  ok("the Caribbean is the four islands", P.ctx.AREA.car.ns.join() === "2,3,4,5");
+  ok("South America is the other thirteen", P.ctx.AREA.sa.ns.length === 13 &&
+     P.ctx.AREA.sa.ns.indexOf(11) === -1 && P.ctx.AREA.sa.ns.indexOf(12) !== -1);
+  ok("these are not the practice filter's groups, which split South America",
+     P.ctx.REGIONS.some(r => r.key === "nsa") &&
+     !A.some(a => /Northern|Southern/.test(a.label)));
+}
+
+/* ====================================================================== */
+G("sweeping an area on the map");
+{
+  const P = load(); withClosest(P);
+  P.setMode("region");
+  ok("the mode took", P.S.mode === "region");
+  ok("the round is the four areas", P.S.pool.length === 4);
+  ok("the whole map is drawn, not just one area's countries", P.q(".mk").length === 24);
+  ok("no single marker is ringed — the question is an area", P.q(".ring").length === 0);
+  ok("the region filter is put away", P.$("reggrp").hidden === true);
+  ok("the direction toggle stays away too", P.$("dirgrp").hidden === true);
+  ok("the map is touchable", P.$("overlay").classList.contains("live"));
+
+  /* work the areas in a fixed order so the assertions can name them */
+  P.q('.name[data-area="ca"]')[0].onclick();
+  ok("an area can be picked from the list", P.S.current === "ca");
+  ok("the prompt asks for it by name", /Tap every country in <em>Central America<\/em>/.test(P.panel()));
+  ok("...and says how many", /Six of them/.test(P.panel()));
+  ok("...and warns that not everything belongs",
+     /Not every country on the map belongs/.test(P.panel()));
+  ok("Check starts disabled with nothing chosen", P.$("go").disabled === true);
+
+  G("...the trap: Mexico is not Central America");
+  [1, 6, 7, 8, 9, 10, 11].forEach(n => P.marker(n).onclick());
+  ok("seven chosen", P.S.picked.size === 7);
+  ok("the chosen markers show it", P.q(".mk.pick").length === 7);
+  ok("...and the counter says so", /7 chosen of 6 wanted/.test(P.panel()));
+  P.$("go").onclick();
+  ok("including Mexico is wrong", !P.S.matched.has("ca"));
+  ok("...and it says how many, never which",
+     /one you tapped does not belong/i.test(P.panel()) &&
+     P.panel().indexOf("Mexico") === -1);
+  ok("...and the choice is left alone so it can be adjusted", P.S.picked.size === 7);
+  ok("...and it counts as an attempt", P.S.tries.ca === 1);
+
+  P.marker(1).onclick();
+  ok("un-tapping Mexico leaves six", P.S.picked.size === 6);
+  ok("...and clears the message", !/wrongnote/.test(P.panel()));
+  P.$("go").onclick();
+  ok("the six on their own are right", P.S.matched.has("ca"));
+  ok("...but not a first-try score", !P.S.gotFirst.has("ca"));
+  ok("...and it says so", /That is Central America/.test(P.panel()));
+  ok("...and the area's countries grey out on the map",
+     [6, 7, 8, 9, 10, 11].every(n => P.marker(n).classList.contains("locked")) &&
+     !P.marker(1).classList.contains("locked"));
+  ok("...and the map is locked until the next area is asked for",
+     !P.$("overlay").classList.contains("live"));
+
+  G("...leaving one out is as wrong as putting one in");
+  P.$("next").onclick();
+  ok("the sweep is cleared for the next area", P.S.picked.size === 0);
+  P.q('.name[data-area="car"]')[0].onclick();
+  [2, 3, 4].forEach(n => P.marker(n).onclick());
+  P.$("go").onclick();
+  ok("three of the four Caribbean islands is not right", !P.S.matched.has("car"));
+  ok("...and it says one is missing",
+     /one is still missing/i.test(P.panel()) && P.panel().indexOf("Puerto Rico") === -1);
+  P.marker(5).onclick();
+  P.$("go").onclick();
+  ok("all four is right", P.S.matched.has("car"));
+
+  G("...and a solved area cannot be swept again");
+  P.$("next").onclick();
+  const before = P.S.current;
+  P.marker(3).onclick();
+  ok("tapping a country already placed does nothing", P.S.picked.size === 0);
+  ok("...and does not change the question", P.S.current === before);
+
+  G("...through to the results");
+  let guard = 0;
+  while (P.S.current != null && guard++ < 12) {
+    P.ctx.AREA[P.S.current].ns.forEach(n => P.marker(n).onclick());
+    P.$("go").onclick();
+    const nx = P.$("next"); if (!nx) break;
+    nx.onclick();
+  }
+  ok("all four areas are done", P.S.matched.size === 4);
+  ok("the round finishes", P.S.done === true && !!P.$("results"));
+  ok("two of four on the first try — the other two were fumbled",
+     /2 of 4 on the first try/.test(P.$("results").innerHTML),
+     P.$("results").innerHTML.match(/\d+ of \d+ on the first try/));
+  ok("the results name the areas, not countries",
+     P.$("results").innerHTML.indexOf("Central America") !== -1 &&
+     P.$("results").innerHTML.indexOf("Brazil") === -1);
+  ok("Retry missed only comes back with the two areas",
+     (P.$("retry").onclick(), P.S.pool.length === 2 && P.S.pool.every(k => !!P.ctx.AREA[k])));
 }
 
 /* ====================================================================== */

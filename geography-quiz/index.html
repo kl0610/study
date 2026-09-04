@@ -110,6 +110,12 @@ select{
   font-size:min(3vw,20px);font-weight:700;
 }
 .mk.bad{animation:shake .42s}
+/* chosen for a region sweep, but not yet checked */
+.overlay .mk.pick,
+.overlay.live .mk.pick:hover{
+  background:rgba(29,111,184,.24);
+  box-shadow:inset 0 0 0 4px var(--blue),0 0 0 3px rgba(29,111,184,.3);
+}
 
 /* the pulsing ring over the item being asked about */
 .ring{
@@ -183,6 +189,10 @@ select{
   margin:0 0 14px;padding:9px 13px;border-radius:10px;
   background:#FCEEEB;color:#8E2E1D;font-size:16px;font-weight:700;
 }
+.counter{
+  margin:0 0 12px;font:700 15px var(--mono,inherit);color:var(--dim);
+  font-variant-numeric:tabular-nums;
+}
 
 /* multiple choice + typing */
 .opts{display:grid;gap:10px;margin:0 0 14px}
@@ -252,6 +262,7 @@ select{
         <button data-mode="match"  aria-pressed="true">Matching</button>
         <button data-mode="mc"     aria-pressed="false">Multiple choice</button>
         <button data-mode="type"   aria-pressed="false">Type it</button>
+        <button data-mode="region" aria-pressed="false">Regions</button>
       </div>
     </div>
     <div class="grp" id="dirgrp">
@@ -261,7 +272,7 @@ select{
         <button data-dir="m2n" aria-pressed="false">Map &rarr; Name</button>
       </div>
     </div>
-    <div class="grp">
+    <div class="grp" id="reggrp">
       <span class="lab">Region</span>
       <select id="region" aria-label="Which countries to practise"></select>
     </div>
@@ -345,6 +356,24 @@ const REGIONS = [
 /* Which group a country belongs to, for drawing plausible wrong answers. */
 const GROUP = {};
 REGIONS.filter(r=>r.key!=="all").forEach(r => r.ns.forEach(n => { GROUP[n] = r.key; }));
+
+/* The areas the Regions tab asks about. Deliberately not the four above: those
+   exist to keep a practice set short, and split South America in half for that
+   reason alone. These are the ones a class is actually asked to name.
+
+   Mexico stands on its own, because "everything south of the border is Central
+   America" is the mistake this tab is here to catch — leaving Mexico out of the
+   Central America sweep is the whole point of the question. Between them the
+   four areas account for all 24 countries exactly once, which is checked. */
+const AREAS = [
+  {key:"na",  label:"North America",  ns:[1]},
+  {key:"ca",  label:"Central America", ns:[6,7,8,9,10,11]},
+  {key:"car", label:"The Caribbean",   ns:[2,3,4,5]},
+  {key:"sa",  label:"South America",   ns:[12,13,14,15,16,17,18,19,20,21,22,23,24]}
+];
+const AREA = {}; AREAS.forEach(a => { AREA[a.key] = a; });
+const COUNT_WORD = ["no","One","Two","Three","Four","Five","Six","Seven","Eight",
+                    "Nine","Ten","Eleven","Twelve","Thirteen"];
 
 /* What a typed answer may also be called. Checked after accents are stripped
    and everything but letters and digits is turned into a single space. */
@@ -435,8 +464,29 @@ function judgeTyped(input, target){
 const S = {
   mode:"match", dir:"n2m", region:"all", teacher:false, magnifier:false,
   pool:[], order:[], current:null, tries:{}, matched:new Set(), gotFirst:new Set(),
-  asked:0, answered:false, done:false, options:[], lastWrong:null
+  asked:0, answered:false, done:false, options:[], lastWrong:null,
+  /* the Regions tab: which markers are currently swept in, and the count of
+     what was wrong last time it was checked */
+  picked:new Set(), areaFb:null
 };
+
+/* An item is a country in three of the tabs and an area in the fourth, so
+   everything that has to name one goes through here. */
+function label(id){
+  return S.mode === "region" ? (AREA[id] ? AREA[id].label : String(id))
+                             : (BY[id] ? BY[id].name : String(id));
+}
+function badgeOf(id){
+  return S.mode === "region" ? (AREA[id] ? AREA[id].ns.length : "?") : id;
+}
+/* Countries belonging to an area already swept correctly. They grey out on the
+   map: the area is done, and tapping them again is not an answer to anything. */
+function solvedNs(){
+  const out = new Set();
+  if (S.mode !== "region") return out;
+  S.pool.forEach(k => { if (S.matched.has(k) && AREA[k]) AREA[k].ns.forEach(n => out.add(n)); });
+  return out;
+}
 
 /* =============================== the map ============================= */
 const viewport = $("viewport"), canvas = $("canvas"), overlay = $("overlay"),
@@ -590,31 +640,44 @@ $("teacher").onclick = () => {
 function drawMarkers(){
   overlay.innerHTML = "";
   /* The map is touchable throughout a matching round — to answer in Name to
-     Map, to pick the next number to identify in Map to Name. In the two quiz
-     modes the marker is the question and there is nothing to tap. */
-  overlay.classList.toggle("live", S.mode === "match" && !S.done);
+     Map, to pick the next number to identify in Map to Name — and throughout a
+     regions sweep. In the two quiz modes the marker is the question and there
+     is nothing to tap. */
+  overlay.classList.toggle("live",
+    (S.mode === "match" || (S.mode === "region" && !S.answered)) && !S.done);
 
-  S.pool.forEach(n => {
+  /* A regions round always shows the whole map: the question is where an area
+     begins and ends, so the countries outside it have to be there to be left
+     alone. Everywhere else only the countries in play are drawn. */
+  const solved = solvedNs();
+  const shown = S.mode === "region" ? COUNTRIES.map(c => c.n) : S.pool;
+
+  shown.forEach(n => {
     const c = BY[n];
     const b = document.createElement("button");
-    /* Only matching greys a marker out. In the quiz modes the map is there to
-       be read, and a grey disc would blot out the number being asked about. */
-    const lock = S.mode === "match" && S.matched.has(n);
-    b.className = "mk" + (lock ? " locked" : "");
+    /* Only matching and regions grey a marker out. In the quiz modes the map is
+       there to be read, and a grey disc would blot out the number being asked
+       about. */
+    const lock = S.mode === "match" ? S.matched.has(n)
+               : S.mode === "region" ? solved.has(n) : false;
+    const pick = S.mode === "region" && !lock && S.picked.has(n);
+    b.className = "mk" + (lock ? " locked" : "") + (pick ? " pick" : "");
     b.style.left = pct(c.x, MAPW);
     b.style.top = pct(c.y, MAPH);
     b.style.width = pct(c.hit * 2, MAPW);
     b.dataset.n = String(n);
     b.type = "button";
     b.setAttribute("aria-label", "Marker " + n +
-      (lock ? ", matched"
+      (lock ? (S.mode === "region" ? ", already placed" : ", matched")
+            : S.mode === "region" ? (pick ? ", chosen" : ", tap to choose")
             : (S.mode === "match" && S.dir === "m2n" ? ", choose this one" : "")));
     b.onclick = () => { if (moved) return; onMarker(n); };
     overlay.appendChild(b);
   });
 
-  /* the pulsing ring, when the marker is what is being asked about */
-  const showRing = !S.done && S.current != null &&
+  /* The pulsing ring, when one marker is what is being asked about. A regions
+     sweep asks about a whole area, so there is no single marker to ring. */
+  const showRing = !S.done && S.current != null && S.mode !== "region" &&
         (S.mode !== "match" || S.dir === "m2n");
   if (showRing){
     const c = BY[S.current];
@@ -643,6 +706,7 @@ function startRound(pool){
   S.matched = new Set();          /* settled: matched, or asked and moved past */
   S.gotFirst = new Set();         /* right at the first attempt — this is the score */
   S.options = [];
+  S.picked = new Set(); S.areaFb = null;
   S.asked = 0; S.done = false; S.answered = false; S.lastWrong = null;
   S.order = shuffle(S.pool);
   S.current = S.order[0] != null ? S.order[0] : null;
@@ -650,9 +714,14 @@ function startRound(pool){
   drawMarkers();
   renderPanel();
   updateScore();
-  if (S.mode !== "match" || S.dir === "m2n") focusMarker(S.current);
+  if (S.mode === "mc" || S.mode === "type" ||
+      (S.mode === "match" && S.dir === "m2n")) focusMarker(S.current);
 }
-function newRound(){ startRound(poolFor(S.region)); }
+/* A regions round is always the four areas over the whole map — there is no
+   sense in sweeping "the Caribbean" out of a set filtered to the Caribbean. */
+function newRound(){
+  startRound(S.mode === "region" ? AREAS.map(a => a.key) : poolFor(S.region));
+}
 
 function updateScore(){
   $("scoren").textContent = String(S.gotFirst.size);
@@ -697,7 +766,9 @@ function choose(n){
 }
 
 function onMarker(n){
-  if (S.done || S.mode !== "match" || S.matched.has(n)) return;
+  if (S.done) return;
+  if (S.mode === "region"){ sweep(n); return; }
+  if (S.mode !== "match" || S.matched.has(n)) return;
   if (S.dir === "m2n"){ choose(n); return; }     /* the map is the asking side */
   if (S.current == null) return;
   const correct = n === S.current;
@@ -730,6 +801,55 @@ function onName(n){
     S.lastWrong = n;
     renderPanel();
   }
+}
+
+/* ---------------------------------------------------------- mode: regions
+   Naming all 24 countries and still not knowing where Central America stops is
+   an easy thing to be good at. So this asks for the area rather than the
+   country: sweep in every country that belongs to it, leave out every country
+   that does not, and check.
+
+   Leaving one out is as wrong as putting one in, which is the point — Mexico
+   sits right beside Guatemala and belongs to neither Central America nor South
+   America, and "everything south of the border is Central America" is the
+   mistake the sweep is built to catch. */
+function sweep(n){
+  if (S.done || S.answered || S.current == null) return;
+  if (solvedNs().has(n)) return;          /* its area is already placed */
+  if (S.picked.has(n)) S.picked.delete(n); else S.picked.add(n);
+  S.areaFb = null;
+  drawMarkers(); renderPanel();
+}
+function chooseArea(key){
+  if (S.done || S.matched.has(key) || key === S.current) return;
+  S.current = key;
+  S.picked = new Set(); S.areaFb = null; S.answered = false;
+  drawMarkers(); renderPanel();
+  say("Now on " + AREA[key].label);
+}
+function checkArea(){
+  if (S.done || S.answered || S.current == null || !S.picked.size) return;
+  const want = new Set(AREA[S.current].ns);
+  let extra = 0, missing = 0;
+  S.picked.forEach(n => { if (!want.has(n)) extra++; });
+  want.forEach(n => { if (!S.picked.has(n)) missing++; });
+  const correct = !extra && !missing;
+  record(S.current, correct);
+  if (correct){
+    S.answered = true; S.areaFb = null;
+    say("Correct");
+  } else {
+    /* How many, never which. The count is enough to work with and gives away
+       no country — the same rule the rest of the app plays by. */
+    S.areaFb = {extra, missing};
+    say("Not yet");
+  }
+  drawMarkers(); renderPanel();
+}
+function nextArea(){
+  S.picked = new Set(); S.areaFb = null;
+  if (!advance()) return;
+  drawMarkers(); renderPanel();
 }
 
 /* ------------------------------------------------- mode: multiple choice */
@@ -781,6 +901,7 @@ function renderPanel(){
   const at = was ? was.scrollTop : 0;
 
   if (S.mode === "match") p.innerHTML = matchPanel();
+  else if (S.mode === "region") p.innerHTML = areaPanel();
   else p.innerHTML = quizPanel();
 
   const now = p.querySelector(".list");
@@ -846,6 +967,66 @@ function matchPanel(){
   return head + prompt + '<ul class="list">' + items + "</ul>" + bar;
 }
 
+function areaPanel(){
+  const cur = S.current != null ? AREA[S.current] : null;
+  const head =
+    '<div class="phead"><span class="ptitle">Regions</span>' +
+    '<span class="ptitle">' + S.matched.size + " / " + S.pool.length + " areas</span></div>";
+
+  /* The four areas, as a list. Same as everywhere else on this page: whichever
+     one is wanted can be tapped, rather than waiting for it to come round. */
+  const list = S.order.map(k => {
+    const a = AREA[k];
+    const done = S.matched.has(k);
+    const on = k === S.current;
+    const cls = "name" + (done ? " done" : "") + (on ? " on" : "");
+    return '<li><button class="' + cls + '" data-area="' + k + '"' +
+      (done || S.done ? " disabled" : "") + '>' +
+      '<span class="num">' + a.ns.length + "</span><span>" + esc(a.label) + "</span></button></li>";
+  }).join("");
+
+  const bar = '<div class="meter"><i style="width:' +
+      (S.pool.length ? (S.matched.size / S.pool.length * 100) : 0) + '%"></i></div>';
+
+  if (!cur) return head + '<p class="prompt">All four areas done.</p>' +
+                  '<ul class="list">' + list + "</ul>" + bar;
+
+  const need = cur.ns.length;
+  let body = '<p class="prompt">Tap every country in <em>' + esc(cur.label) + "</em>.</p>" +
+    '<p class="sub">' + (COUNT_WORD[need] || need) + " of them. Tap their numbers on the map, " +
+    "then check. Not every country on the map belongs to one of these areas.</p>";
+
+  if (S.areaFb){
+    /* how many are wrong, never which */
+    const e = S.areaFb.extra, m = S.areaFb.missing;
+    const bits = [];
+    if (e) bits.push(e === 1 ? "one you tapped does not belong"
+                             : e + " you tapped do not belong");
+    if (m) bits.push(m === 1 ? "one is still missing" : m + " are still missing");
+    const s = bits.join(", and ");
+    body += '<p class="wrongnote">Incorrect &mdash; ' + s.charAt(0).toUpperCase() + s.slice(1) +
+            ". Adjust and check again.</p>";
+  }
+
+  body += '<div class="counter">' +
+    (S.picked.size ? S.picked.size + " chosen of " + need + " wanted"
+                   : "Nothing chosen yet") + "</div>";
+
+  if (S.answered){
+    const last = S.matched.size >= S.pool.length;
+    body += '<div class="fb yes"><b>' +
+      (S.tries[cur.key] === 1 ? "Right, first try." : "Right.") + "</b>" +
+      "That is " + esc(cur.label) + " &mdash; all " + need +
+      (need === 1 ? " of it." : " of them, and nothing else.") + "</div>" +
+      '<button class="btn" id="next">' + (last ? "See how I did" : "Next area") + "</button>";
+  } else {
+    body += '<button class="btn" id="go"' + (S.picked.size ? "" : " disabled") +
+            ">Check my answer</button>";
+  }
+
+  return head + body + '<ul class="list" style="margin-top:16px">' + list + "</ul>" + bar;
+}
+
 function quizPanel(){
   const cur = S.current != null ? BY[S.current] : null;
   const head =
@@ -897,6 +1078,11 @@ function wirePanel(){
   document.querySelectorAll("#panel .opt[data-opt]").forEach(b => {
     b.onclick = () => onOption(+b.dataset.opt);
   });
+  document.querySelectorAll("#panel .name[data-area]").forEach(b => {
+    b.onclick = () => chooseArea(b.dataset.area);
+  });
+  const go = $("go");
+  if (go && S.mode === "region") go.onclick = checkArea;
   const chk = $("check"), ans = $("answer"), nxt = $("next");
   if (chk && ans && !S.answered){
     chk.onclick = () => onTyped(ans.value);
@@ -905,7 +1091,7 @@ function wirePanel(){
        throws the keyboard up over the map for no reason. */
     ans.focus();
   }
-  if (nxt) nxt.onclick = nextQuestion;
+  if (nxt) nxt.onclick = S.mode === "region" ? nextArea : nextQuestion;
 }
 
 /* ============================== results ==============================
@@ -936,8 +1122,9 @@ function soFar(){
   const rows = settled.map(n => {
     const t = S.tries[n] || 0;
     const first = S.gotFirst.has(n);
-    const note = first ? "first try" : (S.mode === "match" ? t + " tries" : "got it wrong");
-    return '<li><span class="num">' + n + "</span><span>" + esc(BY[n].name) + "</span>" +
+    const note = first ? "first try"
+               : (S.mode === "match" || S.mode === "region" ? t + " tries" : "got it wrong");
+    return '<li><span class="num">' + badgeOf(n) + "</span><span>" + esc(label(n)) + "</span>" +
       '<span class="tries" style="margin-left:auto;color:' +
       (first ? "var(--green)" : "var(--red)") + '">' + note + "</span></li>";
   }).join("");
@@ -982,8 +1169,8 @@ function finish(){
     ? "<ul class=\"missed\">" + missed.map(n => {
         const t = S.tries[n] || 0;
         const note = t === 0 ? "not answered"
-                   : (S.mode === "match" ? t + " tries" : "got it wrong");
-        return "<li><span class=\"num\">" + n + "</span><span>" + esc(BY[n].name) + "</span>" +
+                   : (S.mode === "match" || S.mode === "region" ? t + " tries" : "got it wrong");
+        return "<li><span class=\"num\">" + badgeOf(n) + "</span><span>" + esc(label(n)) + "</span>" +
           "<span class=\"tries\" style=\"margin-left:auto\">" + note + "</span></li>";
       }).join("") + "</ul>"
     : "<p style=\"margin:14px 0 0;color:var(--dim)\">Every one on the first try. Nothing to go back over.</p>";
@@ -1031,6 +1218,9 @@ $("modeseg").onclick = e => {
   [...$("modeseg").children].forEach(x =>
     x.setAttribute("aria-pressed", String(x === b)));
   $("dirgrp").hidden = S.mode !== "match";
+  /* A regions round is over the whole map by definition, so the filter that
+     narrows a country round to one region has nothing to do here. */
+  $("reggrp").hidden = S.mode === "region";
   newRound();
 };
 $("dirseg").onclick = e => {
