@@ -589,9 +589,10 @@ $("teacher").onclick = () => {
 /* ------------------------------------------------------- drawing markers */
 function drawMarkers(){
   overlay.innerHTML = "";
-  /* Only the matching round in the Name-to-Map direction wants the map to be
-     answerable; everywhere else the marker is the question. */
-  overlay.classList.toggle("live", S.mode === "match" && S.dir === "n2m" && !S.done);
+  /* The map is touchable throughout a matching round — to answer in Name to
+     Map, to pick the next number to identify in Map to Name. In the two quiz
+     modes the marker is the question and there is nothing to tap. */
+  overlay.classList.toggle("live", S.mode === "match" && !S.done);
 
   S.pool.forEach(n => {
     const c = BY[n];
@@ -605,7 +606,9 @@ function drawMarkers(){
     b.style.width = pct(c.hit * 2, MAPW);
     b.dataset.n = String(n);
     b.type = "button";
-    b.setAttribute("aria-label", "Marker " + n + (lock ? ", matched" : ""));
+    b.setAttribute("aria-label", "Marker " + n +
+      (lock ? ", matched"
+            : (S.mode === "match" && S.dir === "m2n" ? ", choose this one" : "")));
     b.onclick = () => { if (moved) return; onMarker(n); };
     overlay.appendChild(b);
   });
@@ -676,10 +679,27 @@ function record(n, correct, settle){
   updateScore();
 }
 
-/* --------------------------------------------------------- mode: matching */
+/* --------------------------------------------------------- mode: matching
+   Each direction has a side that asks and a side that answers. In Name to Map
+   the list asks and the map answers; in Map to Name it is the other way round.
+
+   The asking side is the student's to choose from. Working down an order the
+   program picked meant scrolling past the country you actually wanted and
+   waiting for it to come up, so either list can be tapped to set the question,
+   and the other side answers it. Picking is free: it scores nothing, counts no
+   attempt, and does not give anything away. */
+function choose(n){
+  if (S.done || S.mode !== "match" || S.matched.has(n) || n === S.current) return;
+  S.current = n;
+  S.lastWrong = null;
+  drawMarkers(); renderPanel();
+  say(S.dir === "n2m" ? "Now finding " + BY[n].name : "Now on number " + n);
+}
+
 function onMarker(n){
-  if (S.done || S.mode !== "match" || S.dir !== "n2m") return;
-  if (S.matched.has(n) || S.current == null) return;
+  if (S.done || S.mode !== "match" || S.matched.has(n)) return;
+  if (S.dir === "m2n"){ choose(n); return; }     /* the map is the asking side */
+  if (S.current == null) return;
   const correct = n === S.current;
   record(S.current, correct);
   if (correct){
@@ -693,22 +713,22 @@ function onMarker(n){
     renderPanel();
   }
 }
+
 function onName(n){
-  if (S.done || S.current == null) return;
-  if (S.mode === "match" && S.dir === "m2n"){
-    if (S.matched.has(n)) return;
-    const correct = n === S.current;
-    record(S.current, correct);
-    if (correct){
-      say("Correct");
-      advance();
-      drawMarkers(); renderPanel();
-      if (S.current != null) focusMarker(S.current);
-    } else {
-      say("Not that one");
-      S.lastWrong = n;
-      renderPanel();
-    }
+  if (S.done || S.mode !== "match" || S.matched.has(n)) return;
+  if (S.dir === "n2m"){ choose(n); return; }     /* the list is the asking side */
+  if (S.current == null) return;
+  const correct = n === S.current;
+  record(S.current, correct);
+  if (correct){
+    say("Correct");
+    advance();
+    drawMarkers(); renderPanel();
+    if (S.current != null) focusMarker(S.current);
+  } else {
+    say("Not that one");
+    S.lastWrong = n;
+    renderPanel();
   }
 }
 
@@ -793,11 +813,13 @@ function matchPanel(){
     prompt = '<p class="prompt">All matched.</p>';
   } else if (S.dir === "n2m"){
     prompt = '<p class="prompt">Find <em>' + esc(cur.name) + '</em> on the map.</p>' +
-             '<p class="sub">Tap its number. Zoom in if the markers are close together.</p>' +
+             '<p class="sub">Tap its number on the map. Zoom in if the markers are close ' +
+             'together — or pick any other country from the list to do that one first.</p>' +
              missNote;
   } else {
     prompt = '<p class="prompt">Which country is number <em>' + cur.n + '</em>?</p>' +
-             '<p class="sub">The marker is ringed on the map. Tap its name below.</p>' +
+             '<p class="sub">The marker is ringed on the map. Tap its name in the list ' +
+             '— or tap any other marker to switch to that one first.</p>' +
              missNote;
   }
 
@@ -810,7 +832,9 @@ function matchPanel(){
     /* In Name-to-Map the numbers are the answer, so the list shows none of
        them until that pair is matched. */
     const badge = (S.dir === "m2n" || done) ? '<span class="num">' + n + "</span>" : "";
-    const clickable = S.dir === "m2n" && !done && !S.done;
+    /* Live in both directions: to answer in Map to Name, to pick the next
+       country to look for in Name to Map. */
+    const clickable = !done && !S.done;
     return "<li>" +
       "<button class=\"" + cls + "\" data-n=\"" + n + "\"" + (clickable ? "" : " disabled") + ">" +
       badge + "<span>" + esc(c.name) + "</span></button></li>";

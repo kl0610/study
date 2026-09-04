@@ -214,6 +214,59 @@ G("matching, name to map");
 }
 
 /* ====================================================================== */
+G("the student picks what to work on");
+{
+  const P = load(); withClosest(P);
+
+  G("...from the list, in Name to Map");
+  const offered = P.S.current;
+  const wanted = P.S.pool.find(n => n !== offered);
+  ok("the list is tappable, not just readable",
+     P.q('.name[data-n="' + wanted + '"]')[0].disabled === false);
+  P.q('.name[data-n="' + wanted + '"]')[0].onclick();
+  ok("tapping a country makes it the question", P.S.current === wanted);
+  ok("...and the prompt says so", P.panel().indexOf(P.BY[wanted].name) !== -1);
+  ok("...and it is the row highlighted", P.q(".name.on").length === 1 &&
+     +P.q(".name.on")[0].getAttribute("data-n") === wanted);
+  ok("choosing costs nothing", (P.S.tries[wanted] || 0) === 0 &&
+     (P.S.tries[offered] || 0) === 0 && P.S.matched.size === 0);
+  ok("...and gives nothing away — still no numbers in the list",
+     P.q(".name .num").length === 0);
+  ok("...and nothing is ringed on the map", P.q(".ring").length === 0);
+  P.marker(wanted).onclick();
+  ok("the one the student picked is the one that gets matched",
+     P.S.matched.has(wanted) && P.S.gotFirst.has(wanted));
+  ok("the one the program had offered is untouched",
+     !P.S.matched.has(offered) && (P.S.tries[offered] || 0) === 0);
+
+  G("...and from the map, in Map to Name");
+  const Q = load(); withClosest(Q);
+  Q.setDir("m2n");
+  const shown = Q.S.current;
+  const pick = Q.S.pool.find(n => n !== shown);
+  Q.marker(pick).onclick();
+  ok("tapping a marker makes it the question", Q.S.current === pick);
+  ok("...and the ring moves to it", Q.q(".ring").length === 1);
+  ok("...and it is not treated as an answer",
+     Q.S.matched.size === 0 && (Q.S.tries[shown] || 0) === 0 && (Q.S.tries[pick] || 0) === 0);
+  ok("...and the prompt asks for that number",
+     new RegExp("number <em>" + pick + "</em>").test(Q.panel()));
+  ok("no row in the list is singled out, so the answer is still hidden",
+     Q.q(".name.on").length === 0);
+  Q.q('.name[data-n="' + pick + '"]')[0].onclick();
+  ok("answering in the list matches the one that was picked",
+     Q.S.matched.has(pick) && Q.S.gotFirst.has(pick));
+
+  G("...but an answered one cannot be picked again");
+  const settled = Q.S.current;
+  ok("a matched marker is locked", Q.marker(pick).classList.contains("locked"));
+  Q.marker(pick).onclick();
+  ok("...and tapping it changes nothing", Q.S.current === settled);
+  ok("...and its row is greyed and disabled",
+     Q.q('.name[data-n="' + pick + '"]')[0].disabled === true);
+}
+
+/* ====================================================================== */
 G("matching, map to name");
 {
   const P = load(); withClosest(P);
@@ -222,8 +275,12 @@ G("matching, map to name");
   ok("the prompt names a number now", /number <em>\d+<\/em>/.test(P.panel()));
   ok("the marker being asked about is ringed", P.q(".ring").length === 1);
   ok("the list shows its numbers now", P.q(".name .num").length === 24);
-  ok("the map is not answerable in this direction",
-     !P.$("overlay").classList.contains("live"));
+  /* The map is live here, but for choosing which number to identify — never
+     for answering. Answering in this direction happens in the list. */
+  ok("the map is touchable", P.$("overlay").classList.contains("live"));
+  ok("...but tapping a marker never answers anything",
+     (P.marker(P.S.pool.find(n => n !== P.S.current)).onclick(),
+      P.S.matched.size === 0 && Object.values(P.S.tries).every(t => !t)));
 
   const target = P.S.current;
   const wrong = P.S.pool.find(n => n !== target);
