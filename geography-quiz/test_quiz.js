@@ -243,7 +243,21 @@ G("matching, map to name");
   ok("and no row mentions a try or a miss",
      P.q(".name").every(el => !/Incorrect|\btr(y|ies)\b/i.test(el.innerHTML)));
   P.q('.name[data-n="' + target + '"]')[0].onclick();
-  ok("the right name matches", P.S.matched.has(target));
+  G("...and the list stays where it was left");
+  /* The list is long enough to scroll and is redrawn after every answer. If the
+     redraw loses the scroll position, a child who tapped a name near the bottom
+     is thrown back to the top and has to find their place again. */
+  P.q(".list")[0].scrollTop = 420;
+  const wrong2 = P.S.pool.find(n => n !== P.S.current);
+  P.q('.name[data-n="' + wrong2 + '"]')[0].onclick();
+  ok("a wrong answer does not scroll it back to the top",
+     P.q(".list")[0].scrollTop === 420, "at " + P.q(".list")[0].scrollTop);
+
+  P.q(".list")[0].scrollTop = 260;
+  ok("the right name matches",
+     (P.q('.name[data-n="' + target + '"]')[0].onclick(), P.S.matched.has(target)));
+  ok("...and a right answer does not either",
+     P.q(".list")[0].scrollTop === 260, "at " + P.q(".list")[0].scrollTop);
   ok("...and the ring has moved to the next marker", P.q(".ring").length === 1);
 }
 

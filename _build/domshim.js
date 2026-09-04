@@ -43,6 +43,7 @@ function Node(tag, attr) {
       deleteProperty(_, k) { delete attr["data-" + dashed(k)]; return true; },
     }),
     checked: "checked" in attr, hidden: "hidden" in attr,
+    scrollTop: 0, scrollLeft: 0,
     classList: {
       add(...c) { c.forEach(x => cls.add(x)); sync(); },
       remove(...c) { c.forEach(x => cls.delete(x)); sync(); },

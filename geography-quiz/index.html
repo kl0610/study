@@ -752,8 +752,19 @@ function nextQuestion(){
 /* ============================== the panel ============================ */
 function renderPanel(){
   const p = $("panel");
+  /* Stay where the list was left. The panel is redrawn wholesale after every
+     answer, which throws the old list away along with how far down it was
+     scrolled — so tapping a name near the bottom snapped the list back to the
+     top and the next name had to be found all over again. Nothing here scrolls
+     anything on purpose; this is only putting back what the redraw lost. */
+  const was = p.querySelector(".list");
+  const at = was ? was.scrollTop : 0;
+
   if (S.mode === "match") p.innerHTML = matchPanel();
   else p.innerHTML = quizPanel();
+
+  const now = p.querySelector(".list");
+  if (now && at) now.scrollTop = at;
   wirePanel();
 }
 
