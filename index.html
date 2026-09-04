@@ -39,6 +39,7 @@
   --history:#F2B233; --science:#4AEDD9; --reading:#42D18C;
 
   --spelling:#E0574F; --vocab:#B57CE0; --math:#E08A4B;
+  --geography:#5FA8E8;
 
   --disp:"Trebuchet MS","Segoe UI",Verdana,system-ui,sans-serif;
 
@@ -1908,6 +1909,23 @@ const SUBJECTS = [
      by `key` — stable and order-independent — and labelled by story and pages.
 
      Array order is display order only; nothing derives identity from it. */
+
+  { name:"Geography", ore:"iron", c:"var(--geography)", app:"geography",
+
+    book:"Latin America — the 24 countries on the map",
+
+    /* The map quiz is a standalone page: no engine, no theme, and nothing kept
+       between visits, because it has to open by being double-clicked. So it
+       reports no progress here and says so, rather than showing a figure it
+       has no way of knowing. */
+
+    chapters:[
+
+      { n:"✦", t:"Latin America — 24 countries",
+        note:"Match, multiple choice or type it · nothing is saved",
+        href:"geography-quiz/" }
+
+    ]},
 
   { name:"Reading", ore:"emerald", c:"var(--reading)", app:"reading",
 

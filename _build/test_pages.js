@@ -31,11 +31,16 @@ function ok(what, cond, extra) {
 }
 function group(n) { console.log("\n" + n); }
 
-/* every index.html in the site */
+/* Every index.html in the site.
+   geography-quiz is not one: it is a standalone file that has to open by being
+   double-clicked, with no theme layer, no engine and no hub around it. It is
+   checked instead by geography-quiz/test_quiz.js, which drives it. */
+const NOT_SITE = new Set(["geography-quiz"]);
 function pages(dir, out) {
   out = out || [];
   for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
     if (e.name.startsWith("_") || e.name === "assets" || e.name === ".git") continue;
+    if (NOT_SITE.has(e.name)) continue;
     const p = path.join(dir, e.name);
     if (e.isDirectory()) pages(p, out);
     else if (e.name === "index.html") out.push(p);

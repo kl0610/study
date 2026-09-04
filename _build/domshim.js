@@ -28,8 +28,21 @@ function Node(tag, attr) {
   const n = {
     tagName: tag.toLowerCase(), attr, kids: [], parent: null,
     onclick: null, onchange: null, _gone: false, _html: "",
-    style: { setProperty() {}, removeProperty() {} },
-    dataset: {}, checked: "checked" in attr, hidden: "hidden" in attr,
+    /* style records what is set and writes it back to the style attribute, the
+       way the real one does. It used to swallow everything, so a page that
+       positions an overlay from JS — which is the whole of a marker's placement
+       and size — left nothing behind that could be read back and checked. */
+    style: styleFor(attr),
+    /* dataset writes through to the attribute, as the real one does. It used to
+       be a plain object, so a page that set el.dataset.n could never be found
+       again by [data-n="..."] — the assignment worked and left no trace. */
+    dataset: new Proxy({}, {
+      get(_, k) { return typeof k === "string" ? attr["data-" + dashed(k)] : undefined; },
+      set(_, k, v) { attr["data-" + dashed(k)] = String(v); return true; },
+      has(_, k) { return ("data-" + dashed(k)) in attr; },
+      deleteProperty(_, k) { delete attr["data-" + dashed(k)]; return true; },
+    }),
+    checked: "checked" in attr, hidden: "hidden" in attr,
     classList: {
       add(...c) { c.forEach(x => cls.add(x)); sync(); },
       remove(...c) { c.forEach(x => cls.delete(x)); sync(); },
@@ -61,9 +74,7 @@ function Node(tag, attr) {
     querySelector(s) { return find(n, s)[0] || null; },
     querySelectorAll(s) { return find(n, s); },
   };
-  for (const k in attr) {
-    if (k.startsWith("data-")) n.dataset[k.slice(5).replace(/-(\w)/g, (_, c) => c.toUpperCase())] = attr[k];
-  }
+  /* nothing to seed: dataset reads straight off the attributes */
   let _id = attr.id || "", _dis = "disabled" in attr;
   Object.defineProperty(n, "id", {
     get() { return _id; },
@@ -77,6 +88,20 @@ function Node(tag, attr) {
     get() { return _dis; },
     set(v) { _dis = !!v; if (_dis) attr.disabled = ""; else delete attr.disabled; },
   });
+  /* src and href mirror their attributes both ways, as they do in a browser.
+     Setting img.src on a plain object left the attribute untouched, so swapping
+     one picture for another was invisible to anything reading the element. */
+  ["src", "href"].forEach(k => Object.defineProperty(n, k, {
+    get() { return attr[k] === undefined ? "" : attr[k]; },
+    set(v) { attr[k] = String(v); },
+  }));
+  /* value starts at the attribute and then goes its own way, which is what an
+     input does once it has been typed into. */
+  let _val = attr.value === undefined ? "" : attr.value;
+  Object.defineProperty(n, "value", {
+    get() { return _val; },
+    set(v) { _val = String(v); },
+  });
   /* Text is a real child, so that reading a subtree back gives the words and not
      just the tags. Without it every replayed card came back blank. */
   Object.defineProperty(n, "textContent", {
@@ -87,6 +112,11 @@ function Node(tag, attr) {
      `parent`, so code that guards on `el.parentNode` bailed out and its work
      looked like it had never run. */
   Object.defineProperty(n, "parentNode", { get() { return n.parent; } });
+  /* `children` is elements only — text is not one, and neither is anything
+     already removed. */
+  Object.defineProperty(n, "children", {
+    get() { return n.kids.filter(k => k.tagName !== "#text" && !k._gone); },
+  });
   Object.defineProperty(n, "nextSibling", {
     get() {
       if (!n.parent) return null;
@@ -108,6 +138,34 @@ function text(s, parent) {
   return { tagName: "#text", text: s, kids: [], attr: {}, parent: parent || null,
            _gone: false, classList: { contains() { return false; } },
            getAttribute() { return null; }, textContent: s };
+}
+
+/* dataset keys are camelCase; the attribute they stand for is dashed. */
+function dashed(k) { return String(k).replace(/[A-Z]/g, c => '-' + c.toLowerCase()); }
+function camel(k) { return String(k).replace(/-(\w)/g, (_, c) => c.toUpperCase()); }
+
+function styleFor(attr) {
+  const props = {};
+  const write = () => {
+    const t = Object.keys(props).map(k => dashed(k) + ": " + props[k] + ";").join(" ");
+    if (t) attr.style = t; else delete attr.style;
+  };
+  const api = {
+    setProperty(k, v) { props[camel(k)] = String(v); write(); },
+    removeProperty(k) { delete props[camel(k)]; write(); },
+    getPropertyValue(k) { return props[camel(k)] || ""; },
+  };
+  return new Proxy(api, {
+    get(t, k) {
+      if (k in t) return t[k];
+      if (k === "cssText") return attr.style || "";
+      return props[k] === undefined ? "" : props[k];
+    },
+    set(t, k, v) {
+      if (k === "cssText") { attr.style = String(v); return true; }
+      props[k] = String(v); write(); return true;
+    },
+  });
 }
 
 function ser(n) {
@@ -166,6 +224,13 @@ function matches(n, sel) {
     if (have === undefined || have === null) return false;
     if (want[1] !== undefined && String(have) !== want[1]) return false;
   }
+  if (!sel) return true;
+  /* #id, which pages use to root a query at one region of the page —
+     "#panel .opt[data-opt]". Without it that matched nothing, and the handlers
+     it was meant to wire were silently never attached. */
+  let id = null;
+  sel = sel.replace(/#([\w-]+)/, (m, v) => { id = v; return ""; });
+  if (id !== null && n.id !== id) return false;
   if (!sel) return true;
   const bits = sel.split(".");
   const tag = bits.shift();

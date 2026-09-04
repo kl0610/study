@@ -1,0 +1,1018 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Latin America &mdash; Map Practice</title>
+<style>
+/* ------------------------------------------------------------------ basics
+   System fonts only: this file has to open by double-clicking, with no network
+   at all, so nothing may be fetched from anywhere but the folder it sits in. */
+:root{
+  --ink:#152029; --dim:#5A6B78; --line:#D9E0E6; --bg:#F4F7F9; --card:#FFFFFF;
+  --blue:#1D6FB8; --blue-d:#15507F; --green:#1E8A5F; --red:#C8452F;
+  --amber:#E3A008; --shadow:0 1px 2px rgba(20,35,50,.08),0 8px 24px rgba(20,35,50,.07);
+  --r:14px;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  background:var(--bg); color:var(--ink);
+  font:16px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  -webkit-text-size-adjust:100%;
+  padding:0 0 40px;
+}
+button,select,input{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
+
+/* ------------------------------------------------------------------- header */
+.bar{
+  position:sticky;top:0;z-index:40;background:var(--card);
+  border-bottom:1px solid var(--line);box-shadow:0 1px 0 rgba(20,35,50,.04);
+  padding:10px clamp(12px,2vw,22px);
+}
+.tohub{
+  display:inline-block;margin:0 0 6px;font:700 12px/1 var(--mono,inherit);
+  letter-spacing:.08em;text-transform:uppercase;color:var(--dim);text-decoration:none;
+  min-height:32px;line-height:32px;
+}
+.tohub:hover{color:var(--blue-d)}
+.bar h1{margin:0 0 8px;font-size:19px;letter-spacing:-.01em}
+.bar h1 span{color:var(--dim);font-weight:500;font-size:15px}
+.rows{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center}
+.grp{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.lab{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--dim)}
+
+/* segmented control — big enough to hit with a thumb */
+.seg{display:inline-flex;background:#EDF1F4;border-radius:11px;padding:3px;gap:3px}
+.seg button{
+  border:0;background:none;border-radius:9px;padding:10px 14px;min-height:44px;
+  font-weight:600;font-size:15px;color:var(--dim);white-space:nowrap;
+}
+.seg button[aria-pressed="true"]{background:var(--card);color:var(--blue-d);box-shadow:var(--shadow)}
+
+select{
+  min-height:44px;padding:8px 12px;border:1px solid var(--line);border-radius:11px;
+  background:var(--card);font-size:15px;
+}
+.tbtn{
+  min-height:44px;padding:9px 14px;border:1px solid var(--line);border-radius:11px;
+  background:var(--card);font-weight:600;font-size:15px;display:inline-flex;align-items:center;gap:8px;
+}
+.tbtn[aria-pressed="true"]{background:#FFF6DF;border-color:#F0D18A;color:#7A5406}
+.score{margin-left:auto;display:flex;align-items:baseline;gap:10px;font-variant-numeric:tabular-nums}
+.score b{font-size:24px}
+.score span{font-size:13px;color:var(--dim)}
+
+/* --------------------------------------------------------------------- app */
+.app{
+  display:grid;gap:18px;align-items:start;
+  grid-template-columns:minmax(0,1.15fr) minmax(330px,.85fr);
+  padding:18px clamp(12px,2vw,22px) 0;max-width:1500px;margin:0 auto;
+}
+@media (max-width:940px){ .app{grid-template-columns:minmax(0,1fr)} }
+
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow)}
+
+/* --------------------------------------------------------------------- map */
+.maptools{display:flex;gap:8px;align-items:center;padding:8px 10px;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.zbtn{
+  width:44px;height:44px;border:1px solid var(--line);border-radius:11px;background:var(--card);
+  font-size:20px;font-weight:700;line-height:1;display:grid;place-items:center;
+}
+.zlvl{font-variant-numeric:tabular-nums;font-weight:700;color:var(--dim);min-width:52px;text-align:center}
+.hintline{margin-left:auto;font-size:13px;color:var(--dim)}
+
+.viewport{
+  position:relative;overflow:hidden;border-radius:0 0 var(--r) var(--r);
+  background:#EDF1F4;touch-action:none;cursor:default;
+}
+.viewport.grabbing{cursor:grabbing}
+.canvas{position:relative;width:100%;transform-origin:0 0;will-change:transform}
+.canvas img{display:block;width:100%;height:auto;user-select:none;-webkit-user-drag:none;pointer-events:none}
+.overlay{position:absolute;inset:0}
+
+/* A marker sits on the printed circle and is invisible until touched, so it
+   never covers the number a child is trying to read. */
+.mk{
+  position:absolute;transform:translate(-50%,-50%);aspect-ratio:1;
+  border:0;background:none;border-radius:50%;padding:0;
+  box-shadow:inset 0 0 0 3px rgba(29,111,184,0);transition:box-shadow .12s;
+}
+.overlay.live .mk{cursor:pointer}
+.overlay.live .mk:hover{box-shadow:inset 0 0 0 3px rgba(29,111,184,.55)}
+.overlay:not(.live) .mk{pointer-events:none}
+.mk.locked{pointer-events:none}
+.mk.locked::after{
+  content:"\2713";position:absolute;inset:0;border-radius:50%;
+  background:rgba(96,112,124,.86);color:#fff;display:grid;place-items:center;
+  font-size:min(3vw,20px);font-weight:700;
+}
+.mk.bad{animation:shake .42s}
+
+/* the pulsing ring over the item being asked about */
+.ring{
+  position:absolute;transform:translate(-50%,-50%);aspect-ratio:1;
+  border-radius:50%;pointer-events:none;
+  box-shadow:0 0 0 3px var(--red),0 0 0 7px rgba(200,69,47,.28);
+  animation:pulse 1.5s ease-out infinite;
+}
+@keyframes pulse{
+  0%{transform:translate(-50%,-50%) scale(.86);opacity:1}
+  70%{transform:translate(-50%,-50%) scale(1.22);opacity:.28}
+  100%{transform:translate(-50%,-50%) scale(1.22);opacity:0}
+}
+@keyframes shake{
+  0%,100%{transform:translate(-50%,-50%)}
+  15%{transform:translate(calc(-50% - 7px),-50%)}
+  35%{transform:translate(calc(-50% + 7px),-50%)}
+  55%{transform:translate(calc(-50% - 5px),-50%)}
+  75%{transform:translate(calc(-50% + 4px),-50%)}
+}
+@keyframes shakex{
+  0%,100%{transform:translateX(0)}
+  15%{transform:translateX(-8px)} 35%{transform:translateX(8px)}
+  55%{transform:translateX(-5px)} 75%{transform:translateX(4px)}
+}
+@media (prefers-reduced-motion:reduce){
+  .ring{animation:none;box-shadow:0 0 0 4px var(--red),0 0 0 9px rgba(200,69,47,.3)}
+  .mk.bad,.shakeme{animation:none!important}
+}
+
+/* the magnifier, for the six countries stacked on top of each other */
+.lens{
+  position:fixed;z-index:60;width:210px;height:210px;border-radius:50%;
+  border:4px solid var(--card);box-shadow:0 6px 26px rgba(20,35,50,.32);
+  background-repeat:no-repeat;pointer-events:none;
+}
+.lens::after{
+  content:"";position:absolute;inset:0;border-radius:50%;
+  box-shadow:inset 0 0 0 1px rgba(20,35,50,.25);
+}
+
+/* ------------------------------------------------------------------- panel */
+.panel{padding:16px}
+.phead{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px}
+.ptitle{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--dim)}
+.prompt{
+  font-size:clamp(19px,2.4vw,25px);font-weight:700;line-height:1.25;margin:0 0 4px;
+}
+.prompt em{font-style:normal;color:var(--blue-d)}
+.sub{margin:0 0 14px;color:var(--dim);font-size:15px}
+
+.list{list-style:none;margin:0;padding:0;max-height:min(56vh,560px);overflow:auto;-webkit-overflow-scrolling:touch}
+.list li{margin:0 0 8px}
+.name{
+  width:100%;text-align:left;display:flex;align-items:center;gap:10px;
+  min-height:52px;padding:10px 14px;border:2px solid var(--line);border-radius:12px;
+  background:var(--card);font-size:17px;font-weight:600;
+}
+.name:hover:not(:disabled){border-color:#B9CBD9}
+.name.on{border-color:var(--blue);background:#EAF3FB;color:var(--blue-d)}
+.name.done{background:#F1F4F6;color:#93A2AC;border-style:dashed;border-color:#DDE4E9}
+.name.done .num{background:#C7D0D6}
+.name:disabled{cursor:default}
+.name.shakeme{animation:shakex .42s}
+.num{
+  flex:none;width:34px;height:34px;border-radius:9px;background:#E7EEF4;color:var(--blue-d);
+  display:grid;place-items:center;font-weight:800;font-variant-numeric:tabular-nums;font-size:15px;
+}
+.tries{margin-left:auto;font-size:12px;font-weight:700;color:var(--red);white-space:nowrap}
+.wrongnote{
+  margin:0 0 14px;padding:9px 13px;border-radius:10px;
+  background:#FCEEEB;color:#8E2E1D;font-size:16px;font-weight:700;
+}
+
+/* multiple choice + typing */
+.opts{display:grid;gap:10px;margin:0 0 14px}
+.opt{
+  text-align:left;min-height:56px;padding:12px 16px;border:2px solid var(--line);
+  border-radius:12px;background:var(--card);font-size:17px;font-weight:600;
+}
+.opt:hover:not(:disabled){border-color:#B9CBD9}
+.opt.right{border-color:var(--green);background:#EAF7F1;color:#126244}
+.opt.wrong{border-color:var(--red);background:#FCEEEB;color:#8E2E1D}
+.opt.shakeme{animation:shakex .42s}
+.opt:disabled{cursor:default}
+
+.typerow{display:flex;gap:10px;margin:0 0 14px;flex-wrap:wrap}
+.typerow input{
+  flex:1 1 200px;min-height:56px;padding:12px 16px;border:2px solid var(--line);
+  border-radius:12px;font-size:18px;background:var(--card);
+}
+.typerow input:focus{border-color:var(--blue);outline:none}
+.btn{
+  min-height:56px;padding:12px 22px;border:0;border-radius:12px;background:var(--blue);color:#fff;
+  font-size:17px;font-weight:700;
+}
+.btn:hover{background:var(--blue-d)}
+.btn.ghost{background:var(--card);color:var(--ink);border:2px solid var(--line)}
+.btn.ghost:hover{background:#F1F4F6}
+.btn:disabled{opacity:.45;cursor:default}
+
+.fb{border-radius:12px;padding:12px 14px;font-size:16px;margin:0 0 12px;line-height:1.45}
+.fb.yes{background:#EAF7F1;color:#126244}
+.fb.no{background:#FCEEEB;color:#8E2E1D}
+.fb.plain{background:#F1F4F6;color:var(--dim)}
+.fb b{display:block;font-size:17px}
+
+.meter{height:8px;border-radius:99px;background:#E7EDF1;overflow:hidden;margin:14px 0 0}
+.meter i{display:block;height:100%;background:var(--blue);border-radius:99px;transition:width .25s}
+
+/* ----------------------------------------------------------------- results */
+.scrim{
+  position:fixed;inset:0;z-index:70;background:rgba(21,32,41,.55);
+  display:grid;place-items:center;padding:18px;overflow:auto;
+}
+.sheet{
+  background:var(--card);border-radius:18px;box-shadow:0 18px 60px rgba(20,35,50,.35);
+  max-width:560px;width:100%;padding:24px;
+}
+.sheet h2{margin:0 0 2px;font-size:24px}
+.big{font-size:56px;font-weight:800;line-height:1;margin:10px 0 2px;font-variant-numeric:tabular-nums}
+.missed{list-style:none;margin:14px 0 0;padding:0;max-height:38vh;overflow:auto}
+.missed li{display:flex;gap:10px;align-items:center;padding:9px 0;border-top:1px solid var(--line);font-size:16px}
+.missed .num{width:30px;height:30px;font-size:14px}
+.missed .tries{color:var(--dim);font-weight:600}
+.acts{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.acts .btn{flex:1 1 auto}
+.vis{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <a class="tohub" id="tohub" href="../index.html" hidden>&lsaquo; All subjects</a>
+  <h1>Latin America <span>&mdash; map practice</span></h1>
+  <div class="rows">
+    <div class="grp">
+      <span class="lab">Mode</span>
+      <div class="seg" id="modeseg" role="group" aria-label="Practice mode">
+        <button data-mode="match"  aria-pressed="true">Matching</button>
+        <button data-mode="mc"     aria-pressed="false">Multiple choice</button>
+        <button data-mode="type"   aria-pressed="false">Type it</button>
+      </div>
+    </div>
+    <div class="grp" id="dirgrp">
+      <span class="lab">Direction</span>
+      <div class="seg" id="dirseg" role="group" aria-label="Matching direction">
+        <button data-dir="n2m" aria-pressed="true">Name &rarr; Map</button>
+        <button data-dir="m2n" aria-pressed="false">Map &rarr; Name</button>
+      </div>
+    </div>
+    <div class="grp">
+      <span class="lab">Region</span>
+      <select id="region" aria-label="Which countries to practise"></select>
+    </div>
+    <button class="tbtn" id="teacher" aria-pressed="false">Teacher key</button>
+    <button class="tbtn" id="sofar" aria-label="Check the answers so far">Check answers so far</button>
+    <div class="score">
+      <b id="scoren">0</b><span id="scored">of 24</span>
+    </div>
+  </div>
+</header>
+
+<main class="app">
+  <section class="card">
+    <div class="maptools">
+      <button class="zbtn" id="zout" aria-label="Zoom out">&minus;</button>
+      <span class="zlvl" id="zlvl">100%</span>
+      <button class="zbtn" id="zin" aria-label="Zoom in">+</button>
+      <button class="btn ghost" id="zreset" style="min-height:44px;padding:9px 14px;font-size:15px">Reset</button>
+      <button class="tbtn" id="magbtn" aria-pressed="false">Magnifier</button>
+      <span class="hintline" id="maphint">Pinch or scroll to zoom &middot; drag to move</span>
+    </div>
+    <div class="viewport" id="viewport">
+      <div class="canvas" id="canvas">
+        <img id="mapimg" src="latin_america_quiz_map.png"
+             alt="Map of Mexico, Central America, the Caribbean and South America with 24 numbered markers">
+        <div class="overlay" id="overlay"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="card panel" id="panel"></section>
+</main>
+
+<div class="lens" id="lens" hidden></div>
+<div id="live" class="vis" role="status" aria-live="polite"></div>
+
+<script>
+"use strict";
+
+/* =====================================================================
+   The answer key. x and y are pixels in the 1387x1438 map, at the centre
+   of the printed circle; every position on screen is derived from these as
+   a percentage, so the overlay stays true at any size and any zoom.
+   ===================================================================== */
+const MAPW = 1387, MAPH = 1438;
+const COUNTRIES = [
+  {n: 1, name:"Mexico",             x:259,  y:217},
+  {n: 2, name:"Cuba",               x:573,  y:226},
+  {n: 3, name:"Haiti",              x:619,  y:301},
+  {n: 4, name:"Dominican Republic", x:759,  y:199},
+  {n: 5, name:"Puerto Rico",        x:801,  y:292},
+  {n: 6, name:"Guatemala",          x:358,  y:336},
+  {n: 7, name:"Honduras",           x:499,  y:269},
+  {n: 8, name:"El Salvador",        x:403,  y:376},
+  {n: 9, name:"Nicaragua",          x:551,  y:352},
+  {n:10, name:"Costa Rica",         x:470,  y:429},
+  {n:11, name:"Panama",             x:533,  y:458},
+  {n:12, name:"Venezuela",          x:784,  y:348},
+  {n:13, name:"Guyana",             x:897,  y:393},
+  {n:14, name:"Colombia",           x:661,  y:532},
+  {n:15, name:"Ecuador",            x:521,  y:528},
+  {n:16, name:"Peru",               x:672,  y:756},
+  {n:17, name:"Bolivia",            x:799,  y:819},
+  {n:18, name:"Brazil",             x:1036, y:794},
+  {n:19, name:"Paraguay",           x:869,  y:892},
+  {n:20, name:"Chile",              x:699,  y:980},
+  {n:21, name:"Argentina",          x:849,  y:1107},
+  {n:22, name:"Uruguay",            x:1028, y:1128},
+  {n:23, name:"Suriname",           x:942,  y:428},
+  {n:24, name:"French Guiana",      x:1015, y:459}
+];
+const BY = {}; COUNTRIES.forEach(c => { BY[c.n] = c; });
+
+const REGIONS = [
+  {key:"all", label:"All 24",                     ns:COUNTRIES.map(c=>c.n)},
+  {key:"mca", label:"Mexico & Central America",   ns:[1,6,7,8,9,10,11]},
+  {key:"car", label:"Caribbean",                  ns:[2,3,4,5]},
+  {key:"nsa", label:"Northern South America",     ns:[12,13,14,15,23,24]},
+  {key:"ssa", label:"Southern South America",     ns:[16,17,18,19,20,21,22]}
+];
+/* Which group a country belongs to, for drawing plausible wrong answers. */
+const GROUP = {};
+REGIONS.filter(r=>r.key!=="all").forEach(r => r.ns.forEach(n => { GROUP[n] = r.key; }));
+
+/* What a typed answer may also be called. Checked after accents are stripped
+   and everything but letters and digits is turned into a single space. */
+const ALIAS = {
+  1:["mejico"],
+  4:["dr","d r","dom rep","dominican rep","republica dominicana"],
+  5:["pr"],
+  8:["salvador"],
+  13:["co operative republic of guyana"],
+  14:["columbia"],
+  18:["brasil"],
+  23:["surinam","dutch guiana"],
+  24:["french guyana","guyane","guyane francaise","fr guiana"]
+};
+
+/* Each marker's hit circle: the printed circle at least, opened up to a
+   comfortable size, but never past halfway to its nearest neighbour. Numbers
+   6 to 11 sit on top of each other, and a target that overlapped them would
+   answer a different country from the one that was tapped. */
+COUNTRIES.forEach(c => {
+  let near = Infinity;
+  COUNTRIES.forEach(o => {
+    if (o === c) return;
+    near = Math.min(near, Math.hypot(o.x - c.x, o.y - c.y));
+  });
+  c.hit = Math.max(22, Math.min(58, near / 2 - 3));
+});
+
+/* ============================== helpers ============================== */
+const $ = id => document.getElementById(id);
+const pct = (v, of) => (v / of * 100) + "%";
+const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) {
+  const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+const esc = s => String(s).replace(/[&<>"]/g, m => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[m]));
+const say = m => { $("live").textContent = m; };
+
+function norm(s){
+  return String(s).toLowerCase()
+    .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9]+/g, " ").trim();
+}
+function keysFor(c){ return [norm(c.name)].concat((ALIAS[c.n] || []).map(norm)); }
+
+/* How far apart two spellings are, counting a swap of two neighbouring letters
+   as one slip rather than two. "Nicaragau" for Nicaragua is the commonest way a
+   ten-year-old typing quickly gets a country wrong, and plain Levenshtein calls
+   that two mistakes and turns it down. It only ever has to answer "is this one
+   slip out?", so it gives up the moment it cannot be. */
+function lev(a, b){
+  if (Math.abs(a.length - b.length) > 1) return 9;
+  let two = null;
+  let prev = Array.from({length: b.length + 1}, (_, i) => i);
+  for (let i = 1; i <= a.length; i++){
+    const cur = [i];
+    let best = i;
+    for (let j = 1; j <= b.length; j++){
+      let v = Math.min(prev[j] + 1, cur[j-1] + 1, prev[j-1] + (a[i-1] === b[j-1] ? 0 : 1));
+      if (i > 1 && j > 1 && a[i-1] === b[j-2] && a[i-2] === b[j-1])
+        v = Math.min(v, two[j-2] + 1);          /* the two letters were swapped */
+      cur[j] = v;
+      best = Math.min(best, v);
+    }
+    if (best > 1) return 9;
+    two = prev; prev = cur;
+  }
+  return prev[b.length];
+}
+
+/* A typed answer is right if it names this country and no other. An exact
+   name or alias always wins; only if nothing matches exactly does one letter
+   out count, and only when exactly one country is that close — "guyane" is
+   French Guiana outright, and never both Guianas at once. */
+function judgeTyped(input, target){
+  const a = norm(input);
+  if (!a) return false;
+  const exact = COUNTRIES.filter(c => keysFor(c).some(k => k === a));
+  if (exact.length) return exact.length === 1 && exact[0].n === target.n;
+  if (a.length >= 5){
+    const near = COUNTRIES.filter(c => keysFor(c).some(k => k.length >= 5 && lev(k, a) <= 1));
+    if (near.length === 1) return near[0].n === target.n;
+  }
+  return false;
+}
+
+/* ============================== the state ============================
+   All of it lives here, in memory. Nothing is written to the browser: close
+   the tab and the round is gone, which is what was asked for. */
+const S = {
+  mode:"match", dir:"n2m", region:"all", teacher:false, magnifier:false,
+  pool:[], order:[], current:null, tries:{}, matched:new Set(), gotFirst:new Set(),
+  asked:0, answered:false, done:false, options:[], lastWrong:null
+};
+
+/* =============================== the map ============================= */
+const viewport = $("viewport"), canvas = $("canvas"), overlay = $("overlay"),
+      mapimg = $("mapimg"), lens = $("lens");
+let z = 1, tx = 0, ty = 0;
+
+function applyTransform(){
+  canvas.style.transform = "translate(" + tx + "px," + ty + "px) scale(" + z + ")";
+  $("zlvl").textContent = Math.round(z * 100) + "%";
+  $("zout").disabled = z <= 1.001;
+  $("zin").disabled = z >= 5.999;
+}
+function clampPan(){
+  const vw = viewport.clientWidth, vh = viewport.clientHeight;
+  const cw = canvas.offsetWidth * z, ch = canvas.offsetHeight * z;
+  tx = cw <= vw ? (vw - cw) / 2 : Math.min(0, Math.max(vw - cw, tx));
+  ty = ch <= vh ? (vh - ch) / 2 : Math.min(0, Math.max(vh - ch, ty));
+}
+function zoomAt(clientX, clientY, factor){
+  const r = viewport.getBoundingClientRect();
+  const px = clientX - r.left, py = clientY - r.top;
+  const nz = Math.min(6, Math.max(1, z * factor));
+  const k = nz / z;
+  tx = px - k * (px - tx);
+  ty = py - k * (py - ty);
+  z = nz;
+  clampPan(); applyTransform();
+}
+function resetZoom(){ z = 1; tx = 0; ty = 0; clampPan(); applyTransform(); }
+
+/* Put a marker in the middle of the view. Only ever called when the marker is
+   the question rather than the answer — centring on it in "Name to Map" would
+   be handing the answer over. */
+function focusMarker(n){
+  if (z <= 1.01) return;
+  const c = BY[n]; if (!c) return;
+  const vw = viewport.clientWidth, vh = viewport.clientHeight;
+  const cw = canvas.offsetWidth, ch = canvas.offsetHeight;
+  tx = vw / 2 - (c.x / MAPW) * cw * z;
+  ty = vh / 2 - (c.y / MAPH) * ch * z;
+  clampPan(); applyTransform();
+}
+
+$("zin").onclick  = () => { const r = viewport.getBoundingClientRect();
+  zoomAt(r.left + r.width / 2, r.top + r.height / 2, 1.5); };
+$("zout").onclick = () => { const r = viewport.getBoundingClientRect();
+  zoomAt(r.left + r.width / 2, r.top + r.height / 2, 1 / 1.5); };
+$("zreset").onclick = resetZoom;
+
+viewport.addEventListener("wheel", e => {
+  e.preventDefault();
+  zoomAt(e.clientX, e.clientY, e.deltaY < 0 ? 1.12 : 1 / 1.12);
+}, {passive:false});
+
+/* Drag to pan, and pinch with two fingers. A drag must not also count as a tap
+   on whatever was under the finger when it went down, so anything past a few
+   pixels of movement cancels the click that follows. */
+let dragging = false, moved = false, sx = 0, sy = 0, stx = 0, sty = 0;
+let pinch = null;
+
+viewport.addEventListener("pointerdown", e => {
+  if (e.pointerType === "touch") return;      /* touch is handled below */
+  dragging = true; moved = false;
+  sx = e.clientX; sy = e.clientY; stx = tx; sty = ty;
+  /* Deliberately no setPointerCapture: capturing redirects the click that ends
+     the gesture to the viewport, and a tap on a marker would never reach the
+     marker. Tracking the pointer on the window does the same job without
+     touching where the click lands. */
+});
+addEventListener("pointermove", e => {
+  if (!dragging) return;
+  const dx = e.clientX - sx, dy = e.clientY - sy;
+  if (!moved && Math.hypot(dx, dy) < 6) return;
+  moved = true; viewport.classList.add("grabbing");
+  tx = stx + dx; ty = sty + dy; clampPan(); applyTransform();
+});
+function endDrag(){ dragging = false; viewport.classList.remove("grabbing"); }
+addEventListener("pointerup", endDrag);
+addEventListener("pointercancel", endDrag);
+
+viewport.addEventListener("touchstart", e => {
+  if (e.touches.length === 2){
+    const [a, b] = e.touches;
+    pinch = {d:Math.hypot(a.clientX - b.clientX, a.clientY - b.clientY),
+             cx:(a.clientX + b.clientX) / 2, cy:(a.clientY + b.clientY) / 2};
+    moved = true;
+  } else if (e.touches.length === 1){
+    dragging = true; moved = false;
+    sx = e.touches[0].clientX; sy = e.touches[0].clientY; stx = tx; sty = ty;
+  }
+}, {passive:true});
+viewport.addEventListener("touchmove", e => {
+  if (e.touches.length === 2 && pinch){
+    e.preventDefault();
+    const [a, b] = e.touches;
+    const d = Math.hypot(a.clientX - b.clientX, a.clientY - b.clientY);
+    if (pinch.d > 0) zoomAt(pinch.cx, pinch.cy, d / pinch.d);
+    pinch.d = d;
+    pinch.cx = (a.clientX + b.clientX) / 2; pinch.cy = (a.clientY + b.clientY) / 2;
+  } else if (e.touches.length === 1 && dragging && z > 1.01){
+    const dx = e.touches[0].clientX - sx, dy = e.touches[0].clientY - sy;
+    if (!moved && Math.hypot(dx, dy) < 8) return;
+    e.preventDefault(); moved = true;
+    tx = stx + dx; ty = sty + dy; clampPan(); applyTransform();
+  }
+}, {passive:false});
+viewport.addEventListener("touchend", e => {
+  if (e.touches.length < 2) pinch = null;
+  if (e.touches.length === 0) dragging = false;
+}, {passive:true});
+
+/* ----------------------------------------------------------- magnifier */
+const fine = window.matchMedia("(hover:hover) and (pointer:fine)").matches;
+const LENSZ = 2.6, LENSR = 105;
+function moveLens(e){
+  if (!S.magnifier){ lens.hidden = true; return; }
+  const r = mapimg.getBoundingClientRect();
+  const rx = e.clientX - r.left, ry = e.clientY - r.top;
+  if (rx < 0 || ry < 0 || rx > r.width || ry > r.height){ lens.hidden = true; return; }
+  lens.hidden = false;
+  lens.style.backgroundImage = "url(" + currentSrc() + ")";
+  lens.style.backgroundSize = (r.width * LENSZ) + "px " + (r.height * LENSZ) + "px";
+  lens.style.backgroundPosition = (-(rx * LENSZ - LENSR)) + "px " + (-(ry * LENSZ - LENSR)) + "px";
+  let lx = e.clientX + 26, ly = e.clientY - LENSR - 26;
+  if (lx + LENSR * 2 > innerWidth - 8) lx = e.clientX - LENSR * 2 - 26;
+  if (ly < 8) ly = e.clientY + 26;
+  if (ly + LENSR * 2 > innerHeight - 8) ly = innerHeight - LENSR * 2 - 8;
+  lens.style.left = Math.max(8, lx) + "px";
+  lens.style.top = Math.max(8, ly) + "px";
+}
+viewport.addEventListener("mousemove", moveLens);
+viewport.addEventListener("mouseleave", () => { lens.hidden = true; });
+$("magbtn").onclick = () => {
+  S.magnifier = !S.magnifier;
+  $("magbtn").setAttribute("aria-pressed", String(S.magnifier));
+  if (!S.magnifier) lens.hidden = true;
+};
+if (!fine){ $("magbtn").hidden = true; $("maphint").textContent = "Pinch to zoom · drag to move"; }
+
+function currentSrc(){
+  return S.teacher ? "latin_america_answer_key.png" : "latin_america_quiz_map.png";
+}
+$("teacher").onclick = () => {
+  S.teacher = !S.teacher;
+  $("teacher").setAttribute("aria-pressed", String(S.teacher));
+  mapimg.src = currentSrc();
+  say(S.teacher ? "Answer key shown" : "Answer key hidden");
+};
+
+/* ------------------------------------------------------- drawing markers */
+function drawMarkers(){
+  overlay.innerHTML = "";
+  /* Only the matching round in the Name-to-Map direction wants the map to be
+     answerable; everywhere else the marker is the question. */
+  overlay.classList.toggle("live", S.mode === "match" && S.dir === "n2m" && !S.done);
+
+  S.pool.forEach(n => {
+    const c = BY[n];
+    const b = document.createElement("button");
+    /* Only matching greys a marker out. In the quiz modes the map is there to
+       be read, and a grey disc would blot out the number being asked about. */
+    const lock = S.mode === "match" && S.matched.has(n);
+    b.className = "mk" + (lock ? " locked" : "");
+    b.style.left = pct(c.x, MAPW);
+    b.style.top = pct(c.y, MAPH);
+    b.style.width = pct(c.hit * 2, MAPW);
+    b.dataset.n = String(n);
+    b.type = "button";
+    b.setAttribute("aria-label", "Marker " + n + (lock ? ", matched" : ""));
+    b.onclick = () => { if (moved) return; onMarker(n); };
+    overlay.appendChild(b);
+  });
+
+  /* the pulsing ring, when the marker is what is being asked about */
+  const showRing = !S.done && S.current != null &&
+        (S.mode !== "match" || S.dir === "m2n");
+  if (showRing){
+    const c = BY[S.current];
+    const ring = document.createElement("div");
+    ring.className = "ring";
+    ring.style.left = pct(c.x, MAPW);
+    ring.style.top = pct(c.y, MAPH);
+    ring.style.width = pct(34 * 2, MAPW);
+    overlay.appendChild(ring);
+  }
+}
+function shakeMarker(n){
+  const el = overlay.querySelector('.mk[data-n="' + n + '"]');
+  if (!el) return;
+  el.classList.remove("bad"); void el.offsetWidth; el.classList.add("bad");
+}
+
+/* ============================== the round ============================ */
+function poolFor(key){
+  const r = REGIONS.find(x => x.key === key) || REGIONS[0];
+  return r.ns.slice();
+}
+function startRound(pool){
+  S.pool = pool.slice();
+  S.tries = {}; S.pool.forEach(n => { S.tries[n] = 0; });
+  S.matched = new Set();          /* settled: matched, or asked and moved past */
+  S.gotFirst = new Set();         /* right at the first attempt — this is the score */
+  S.options = [];
+  S.asked = 0; S.done = false; S.answered = false; S.lastWrong = null;
+  S.order = shuffle(S.pool);
+  S.current = S.order[0] != null ? S.order[0] : null;
+  closeResults();
+  drawMarkers();
+  renderPanel();
+  updateScore();
+  if (S.mode !== "match" || S.dir === "m2n") focusMarker(S.current);
+}
+function newRound(){ startRound(poolFor(S.region)); }
+
+function updateScore(){
+  $("scoren").textContent = String(S.gotFirst.size);
+  $("scored").textContent = "/ " + S.pool.length + " on the first try";
+}
+
+/* the next thing to ask: the first item in the shuffled order not yet done */
+function advance(){
+  const left = S.order.filter(n => !S.matched.has(n));
+  if (!left.length){ S.current = null; finish(); return false; }
+  S.current = left[0];
+  S.answered = false; S.lastWrong = null;
+  return true;
+}
+
+/* `settle` is the difference between the two kinds of round. Matching keeps a
+   pair open until it is right, so a wrong attempt settles nothing. The two quiz
+   modes ask each number once, so a wrong answer settles it too — without that
+   the question the child just got wrong came straight back round again. */
+function record(n, correct, settle){
+  S.tries[n] = (S.tries[n] || 0) + 1;
+  if (correct && S.tries[n] === 1) S.gotFirst.add(n);
+  if (correct || settle) S.matched.add(n);
+  updateScore();
+}
+
+/* --------------------------------------------------------- mode: matching */
+function onMarker(n){
+  if (S.done || S.mode !== "match" || S.dir !== "n2m") return;
+  if (S.matched.has(n) || S.current == null) return;
+  const correct = n === S.current;
+  record(S.current, correct);
+  if (correct){
+    say("Correct");
+    advance();
+    drawMarkers(); renderPanel();
+  } else {
+    /* Nothing is revealed mid-round: it shakes, it counts, it stays open. */
+    say("Not that one");
+    shakeMarker(n);
+    renderPanel();
+  }
+}
+function onName(n){
+  if (S.done || S.current == null) return;
+  if (S.mode === "match" && S.dir === "m2n"){
+    if (S.matched.has(n)) return;
+    const correct = n === S.current;
+    record(S.current, correct);
+    if (correct){
+      say("Correct");
+      advance();
+      drawMarkers(); renderPanel();
+      if (S.current != null) focusMarker(S.current);
+    } else {
+      say("Not that one");
+      S.lastWrong = n;
+      renderPanel();
+    }
+  }
+}
+
+/* ------------------------------------------------- mode: multiple choice */
+function buildOptions(target){
+  const same = COUNTRIES.filter(c => c.n !== target.n && GROUP[c.n] === GROUP[target.n]);
+  const rest = COUNTRIES.filter(c => c.n !== target.n && GROUP[c.n] !== GROUP[target.n]);
+  const picks = shuffle(same).slice(0, 3);
+  const spare = shuffle(rest);
+  while (picks.length < 3 && spare.length) picks.push(spare.pop());
+  return shuffle([target].concat(picks));
+}
+function onOption(n){
+  if (S.answered || S.current == null) return;
+  const correct = n === S.current;
+  record(S.current, correct, true);
+  S.answered = true;
+  S.lastWrong = correct ? null : n;
+  S.asked++;
+  say(correct ? "Correct" : "Wrong");
+  renderPanel();
+}
+function onTyped(value){
+  if (S.answered || S.current == null) return;
+  const correct = judgeTyped(value, BY[S.current]);
+  record(S.current, correct, true);
+  S.answered = true;
+  S.lastWrong = correct ? null : value;
+  S.asked++;
+  say(correct ? "Correct" : "Wrong");
+  renderPanel();
+}
+function nextQuestion(){
+  if (!advance()) return;
+  S.options = [];
+  drawMarkers(); renderPanel();
+  focusMarker(S.current);
+  if (S.mode === "type"){ const i = $("answer"); if (i) i.focus(); }
+}
+
+/* ============================== the panel ============================ */
+function renderPanel(){
+  const p = $("panel");
+  if (S.mode === "match") p.innerHTML = matchPanel();
+  else p.innerHTML = quizPanel();
+  wirePanel();
+}
+
+function matchPanel(){
+  const cur = S.current != null ? BY[S.current] : null;
+  const head =
+    '<div class="phead"><span class="ptitle">Matching</span>' +
+    '<span class="ptitle">' + S.matched.size + " / " + S.pool.length + " matched</span></div>";
+
+  /* Wrong attempts on the question being asked. It says "Incorrect" rather than
+     counting tries, because "1 try" reads as a neutral tally of work done and
+     leaves a child unsure whether that guess was taken or not.
+
+     It belongs against the question and not against a row in the list. Only the
+     open question ever has attempts on it, so a badge in the list would appear
+     on exactly one row — the row holding the answer. In Map-to-Name that is the
+     name being asked for, and a wrong guess would have pointed straight at it. */
+  const misses = cur ? (S.tries[cur.n] || 0) : 0;
+  const missNote = misses
+    ? '<p class="wrongnote">Incorrect' +
+      (misses > 1 ? " — " + misses + " wrong so far" : "") + ". Try again.</p>"
+    : "";
+
+  let prompt;
+  if (!cur){
+    prompt = '<p class="prompt">All matched.</p>';
+  } else if (S.dir === "n2m"){
+    prompt = '<p class="prompt">Find <em>' + esc(cur.name) + '</em> on the map.</p>' +
+             '<p class="sub">Tap its number. Zoom in if the markers are close together.</p>' +
+             missNote;
+  } else {
+    prompt = '<p class="prompt">Which country is number <em>' + cur.n + '</em>?</p>' +
+             '<p class="sub">The marker is ringed on the map. Tap its name below.</p>' +
+             missNote;
+  }
+
+  const items = S.order.map(n => {
+    const c = BY[n];
+    const done = S.matched.has(n);
+    const isPrompt = S.dir === "n2m" && n === S.current;
+    const wrong = S.lastWrong === n;
+    const cls = "name" + (done ? " done" : "") + (isPrompt ? " on" : "") + (wrong ? " shakeme" : "");
+    /* In Name-to-Map the numbers are the answer, so the list shows none of
+       them until that pair is matched. */
+    const badge = (S.dir === "m2n" || done) ? '<span class="num">' + n + "</span>" : "";
+    const clickable = S.dir === "m2n" && !done && !S.done;
+    return "<li>" +
+      "<button class=\"" + cls + "\" data-n=\"" + n + "\"" + (clickable ? "" : " disabled") + ">" +
+      badge + "<span>" + esc(c.name) + "</span></button></li>";
+  }).join("");
+
+  const bar = '<div class="meter"><i style="width:' +
+      (S.pool.length ? (S.matched.size / S.pool.length * 100) : 0) + '%"></i></div>';
+
+  return head + prompt + '<ul class="list">' + items + "</ul>" + bar;
+}
+
+function quizPanel(){
+  const cur = S.current != null ? BY[S.current] : null;
+  const head =
+    '<div class="phead"><span class="ptitle">' +
+    (S.mode === "mc" ? "Multiple choice" : "Type the answer") + "</span>" +
+    '<span class="ptitle">' + Math.min(S.asked + (S.answered ? 0 : 1), S.pool.length) +
+    " / " + S.pool.length + "</span></div>";
+  if (!cur) return head + '<p class="prompt">Finished.</p>';
+
+  let body = '<p class="prompt">Which country is number <em>' + cur.n + "</em>?</p>" +
+             '<p class="sub">Look for the ringed marker on the map.</p>';
+
+  if (S.mode === "mc"){
+    if (!S.options.length) S.options = buildOptions(cur);
+    body += '<div class="opts">' + S.options.map(o => {
+      let cls = "opt";
+      if (S.answered && o.n === cur.n) cls += " right";
+      else if (S.answered && S.lastWrong === o.n) cls += " wrong";
+      return '<button class="' + cls + '" data-opt="' + o.n + '"' +
+             (S.answered ? " disabled" : "") + ">" + esc(o.name) + "</button>";
+    }).join("") + "</div>";
+  } else {
+    body += '<div class="typerow">' +
+      '<input id="answer" type="text" autocomplete="off" autocorrect="off" ' +
+      'autocapitalize="words" spellcheck="false" placeholder="Type the country" ' +
+      (S.answered ? 'disabled value="' + esc(S.lastWrong == null ? BY[cur.n].name : S.lastWrong) + '"' : "") +
+      ">" +
+      '<button class="btn" id="check"' + (S.answered ? " disabled" : "") + ">Check</button></div>";
+  }
+
+  if (S.answered){
+    const got = S.lastWrong == null;
+    body += '<div class="fb ' + (got ? "yes" : "no") + '"><b>' +
+      (got ? (S.tries[cur.n] === 1 ? "Right, first try." : "Right.") : "Not quite.") + "</b>" +
+      "Number " + cur.n + " is <strong>" + esc(cur.name) + "</strong>.</div>" +
+      '<button class="btn" id="next">' +
+      (S.matched.size >= S.pool.length ? "See how I did" : "Next question") + "</button>";
+  }
+
+  const bar = '<div class="meter"><i style="width:' +
+      (S.pool.length ? (S.matched.size / S.pool.length * 100) : 0) + '%"></i></div>';
+  return head + body + bar;
+}
+
+function wirePanel(){
+  document.querySelectorAll("#panel .name[data-n]").forEach(b => {
+    b.onclick = () => onName(+b.dataset.n);
+  });
+  document.querySelectorAll("#panel .opt[data-opt]").forEach(b => {
+    b.onclick = () => onOption(+b.dataset.opt);
+  });
+  const chk = $("check"), ans = $("answer"), nxt = $("next");
+  if (chk && ans && !S.answered){
+    chk.onclick = () => onTyped(ans.value);
+    ans.onkeydown = e => { if (e.key === "Enter") onTyped(ans.value); };
+    /* Only while there is something to type. Focusing a disabled box on an iPad
+       throws the keyboard up over the map for no reason. */
+    ans.focus();
+  }
+  if (nxt) nxt.onclick = nextQuestion;
+}
+
+/* ============================== results ==============================
+   One sheet, put up two ways: at the end of a round, and part way through when
+   the student asks how it is going. */
+function sheet(label, html){
+  closeResults();
+  const el = document.createElement("div");
+  el.className = "scrim";
+  el.id = "results";
+  el.innerHTML = '<div class="sheet" role="dialog" aria-modal="true" aria-label="' +
+                 label + '">' + html + "</div>";
+  document.body.appendChild(el);
+  return el;
+}
+
+/* How it is going, at any point — after one question or after twenty.
+   It reports only on what has actually been settled. What is still to come is
+   counted and not named: naming it would be handing over the answers to
+   questions that have not been asked yet, which is the one thing the matching
+   round is built to avoid. */
+function soFar(){
+  if (S.done){ finish(); return; }
+  const settled = S.pool.filter(n => S.matched.has(n));
+  const left = S.pool.length - settled.length;
+  const p = settled.length ? Math.round(S.gotFirst.size / settled.length * 100) : 0;
+
+  const rows = settled.map(n => {
+    const t = S.tries[n] || 0;
+    const first = S.gotFirst.has(n);
+    const note = first ? "first try" : (S.mode === "match" ? t + " tries" : "got it wrong");
+    return '<li><span class="num">' + n + "</span><span>" + esc(BY[n].name) + "</span>" +
+      '<span class="tries" style="margin-left:auto;color:' +
+      (first ? "var(--green)" : "var(--red)") + '">' + note + "</span></li>";
+  }).join("");
+
+  sheet("How it is going",
+    "<h2>How it is going</h2>" +
+    (settled.length
+      ? '<div class="big">' + p + "%</div>" +
+        '<div style="color:var(--dim)">' + S.gotFirst.size + " of " + settled.length +
+        " answered so far, on the first try</div>" +
+        '<p style="margin:16px 0 0;font-weight:700">' +
+        (settled.length === 1 ? "The one you have done" : "What you have done") + "</p>" +
+        '<ul class="missed">' + rows + "</ul>"
+      : '<p style="margin:14px 0 0;color:var(--dim)">Nothing answered yet. ' +
+        "Have a go at the first one and come straight back.</p>") +
+    '<p class="skipnote" style="margin-top:14px">' +
+      (left === 0
+        ? "That is all of them."
+        : left + (left === 1 ? " still to go — it is" : " still to go — they are") +
+          " not listed, because that would be giving them away.") +
+    "</p>" +
+    '<div class="acts">' +
+      '<button class="btn" id="keep">Keep going</button>' +
+      (left ? '<button class="btn ghost" id="stop">Finish now</button>' : "") +
+    "</div>");
+  $("keep").onclick = closeResults;
+  if ($("stop")) $("stop").onclick = () => { S.current = null; finish(); };
+  say(settled.length ? (S.gotFirst.size + " of " + settled.length + " so far")
+                     : "Nothing answered yet");
+}
+
+function finish(){
+  S.done = true;
+  drawMarkers();
+  /* Missed means "not right at the first attempt" — which covers a wrong quiz
+     answer, a matching pair that took two goes, and anything never reached. */
+  const missed = S.pool.filter(n => !S.gotFirst.has(n));
+  const p = Math.round(S.gotFirst.size / S.pool.length * 100);
+  const band = p >= 90 ? "Sharp work" : p >= 75 ? "Solid" : p >= 60 ? "Getting there" : "Worth another run";
+
+  const list = missed.length
+    ? "<ul class=\"missed\">" + missed.map(n => {
+        const t = S.tries[n] || 0;
+        const note = t === 0 ? "not answered"
+                   : (S.mode === "match" ? t + " tries" : "got it wrong");
+        return "<li><span class=\"num\">" + n + "</span><span>" + esc(BY[n].name) + "</span>" +
+          "<span class=\"tries\" style=\"margin-left:auto\">" + note + "</span></li>";
+      }).join("") + "</ul>"
+    : "<p style=\"margin:14px 0 0;color:var(--dim)\">Every one on the first try. Nothing to go back over.</p>";
+
+  sheet("Results",
+      "<h2>" + band + "</h2>" +
+      '<div class="big">' + p + "%</div>" +
+      '<div style="color:var(--dim)">' + S.gotFirst.size + " of " + S.pool.length + " on the first try</div>" +
+      (missed.length ? '<p style="margin:16px 0 0;font-weight:700">Worth another look</p>' : "") +
+      list +
+      '<div class="acts">' +
+        (missed.length ? '<button class="btn" id="retry">Retry missed only</button>' : "") +
+        '<button class="btn ghost" id="again">Run it again</button>' +
+        '<button class="btn ghost" id="close">Back to the map</button>' +
+      "</div>");
+  $("retry") && ($("retry").onclick = () => startRound(missed));
+  $("again").onclick = () => newRound();
+  $("close").onclick = closeResults;
+  say("Round finished. " + p + " percent.");
+}
+function closeResults(){
+  const r = $("results");
+  if (r) r.remove();
+}
+
+/* ============================== controls ============================= */
+REGIONS.forEach(r => {
+  const o = document.createElement("option");
+  o.value = r.key;
+  o.textContent = r.label + " (" + r.ns.length + ")";
+  $("region").appendChild(o);
+});
+$("region").onchange = e => { S.region = e.target.value; newRound(); };
+$("sofar").onclick = soFar;
+
+/* The way back to the hub, offered only when there was a hub to come from.
+   Opened by double-clicking the file there is no referrer and no link, which is
+   right: the folder may have been copied to an iPad on its own, and a link to a
+   page that is not there is worse than no link. */
+if (document.referrer) $("tohub").hidden = false;
+
+$("modeseg").onclick = e => {
+  const b = e.target.closest("button[data-mode]"); if (!b) return;
+  S.mode = b.dataset.mode;
+  [...$("modeseg").children].forEach(x =>
+    x.setAttribute("aria-pressed", String(x === b)));
+  $("dirgrp").hidden = S.mode !== "match";
+  newRound();
+};
+$("dirseg").onclick = e => {
+  const b = e.target.closest("button[data-dir]"); if (!b) return;
+  S.dir = b.dataset.dir;
+  [...$("dirseg").children].forEach(x =>
+    x.setAttribute("aria-pressed", String(x === b)));
+  newRound();
+};
+
+/* The overlay is positioned as a share of the image, so nothing has to be
+   recomputed when the window changes shape — only the pan needs re-clamping. */
+addEventListener("resize", () => { clampPan(); applyTransform(); });
+mapimg.addEventListener("load", () => { clampPan(); applyTransform(); });
+
+applyTransform();
+newRound();
+</script>
+</body>
+</html>
