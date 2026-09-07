@@ -1103,8 +1103,16 @@ window.__MC_SFX__={"tool": "data:audio/mpeg;base64,//OAxAAAAAAAAAAAAFhpbmcAAAAPA
 
   /* The flourish over the chest at the end of a set. Sparkle is the one
      everybody starts with; the rest are bought. Purely decorative, and it
-     cleans up after itself so nothing accumulates in the DOM. */
-  function burst(host) {
+     cleans up after itself so nothing accumulates in the DOM.
+
+     Named `flourish` and not `burst`, because there was a second function
+     called burst further down for the win/lose sprites. Two declarations of
+     one name in one scope is not an error: the later one simply wins, so the
+     chest was calling the sprite burst with a DOM node where it wanted a
+     sprite name, and painting a broken image over the results screen. This
+     one had never run at all, which is to say the flourishes on sale in the
+     shop had never once been drawn. */
+  function flourish(host) {
     var kind = S.equip.effect || "sparkle";
     var n = kind === "ore" ? 22 : kind === "firework" ? 18 : kind === "confetti" ? 16 : 10;
     var box = document.createElement("div");
@@ -1558,7 +1566,7 @@ window.__MC_SFX__={"tool": "data:audio/mpeg;base64,//OAxAAAAAAAAAAAAFhpbmcAAAAPA
         opened = true;
         lid.classList.remove("mc-shut");
         lid.src = url("chest-open");
-        burst(box);   /* whatever he has on: sparkle by default, bought if bought */
+        flourish(box);   /* whatever he has on: sparkle by default, bought if bought */
         lid.alt = "Open chest";
         lid.style.cursor = "default";
         var html = "", i;

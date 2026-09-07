@@ -478,5 +478,23 @@ MC.reset();
 ok("reset clears the purse", MC.state().coins === 0);
 
 
+/* Two functions in one scope with one name is not an error in JavaScript: the
+   later declaration simply wins and the earlier one never runs again. There
+   were two called `burst`. The sprite one won, so the chest at the end of every
+   level called it with a DOM node where it wanted a sprite name and painted a
+   broken image over the results — and the flourishes on sale in the shop, which
+   were the other one, had never been drawn at all. */
+console.log("\nno two functions in the engine share a name");
+{
+  const src = fs.readFileSync(MCJS, "utf8");
+  const names = [...src.matchAll(/^\s*function\s+([A-Za-z_$][\w$]*)\s*\(/gm)].map(m => m[1]);
+  const seen = {}, dupes = [];
+  names.forEach(n => { if (seen[n] && dupes.indexOf(n) < 0) dupes.push(n); seen[n] = 1; });
+  ok(names.length + " functions, every name its own", dupes.length === 0, dupes.join(", "));
+  ok("the chest's flourish and the sprite burst are two different things",
+     /function flourish\(/.test(src) && /function burst\(/.test(src) &&
+     /flourish\(box\)/.test(src));
+}
+
 console.log(fails ? "\n" + fails + " FAILURES" : "\nall green");
 process.exit(fails ? 1 : 0);

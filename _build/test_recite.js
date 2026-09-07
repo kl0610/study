@@ -38,7 +38,11 @@ function load() {
     wrong(k) { calls.wrong++; calls.lastWrong = k; },
     note(k) { calls.note++; calls.lastNote = k; },
     credit() {}, clear(id, pct) { calls.clear.push({ id, pct }); return {}; },
-    chest() { calls.chest++; }, bests() { return {}; },
+    /* Faithful to the real engine, where chest() calls clear() itself. The app
+       called both, so every level was logged twice and paid its coins twice —
+       a stub that treated them as unrelated could never have shown that. */
+    chest(host, pct, opts) { calls.chest++; return MC.clear(opts.id, pct, opts); },
+    bests() { return {}; },
     state() { return { coins: 0, cleared: {} }; }, ask(it) { return it.q; },
   };
   const ctx = {
@@ -170,6 +174,11 @@ G("level 1 — the last word of each line");
      P.calls.note === 1 && P.calls.wrong === 1);
   ok("...and now the words are printed under the picture",
      /class="artline"/.test(P.card()) && P.card().indexOf("The more he saw") !== -1);
+  /* Being handed the answer is not a win to be congratulated for, and not a
+     failure to be told off for. */
+  ok("...and it is neither congratulated nor punished",
+     /class="fb plain"/.test(P.card()) &&
+     !/class="fb yes"/.test(P.card()) && !/class="fb no"/.test(P.card()));
 
   G("...to the end");
   let guard = 0;
@@ -182,14 +191,71 @@ G("level 1 — the last word of each line");
   ok("the results appear", P.$("done").classList.contains("hide") === false);
   ok("the level is recorded against l1", P.calls.clear.length === 1 &&
      P.calls.clear[0].id === "l1");
+  /* chest() calls clear() itself, so calling both logged the level twice and
+     paid the coins twice. Once, exactly once, however it ended. */
+  ok("...once, not twice", P.calls.clear.length === 1, P.calls.clear.length + " times");
   ok("...and the chest is painted into the results", P.calls.chest === 1);
   const pct = P.calls.clear[0].pct;
   ok("the score is dragged down by the miss and the peek, not perfect",
      pct > 0 && pct < 100, pct + "%");
+  ok("...and it is still above the clear bar, so the chest is earned",
+     pct >= 75 && P.$("scorebox").innerHTML.indexOf('class="again"') === -1, pct + "%");
   ok("the lines that were rough are listed with their pictures",
      /class="rline"/.test(P.$("scorebox").innerHTML) &&
      /<svg/.test(P.$("scorebox").innerHTML));
   ok("...and it offers the next level", !!P.$("up"));
+}
+
+/* ====================================================================== */
+G("asking to be shown the answer is not a way to win");
+{
+  /* Three of the eight shown: (5x100 + 3x25) / 8 = 72%, under the 75% every
+     subject on this site treats as cleared. */
+  const P = load();
+  P.level(0);
+  for (let i = 0; i < 3; i++) P.$("peek").onclick();
+  let guard = 0;
+  while (P.blanks().length && guard++ < 20) {
+    const el = P.blanks()[0];
+    P.type(el, vm.runInContext("BL", P.ctx)[+el.getAttribute("data-b")].w);
+  }
+  const pct = P.calls.clear[0].pct;
+  ok("three lines shown drops it under the bar", pct === 72, pct + "%");
+  ok("...so the chest stays shut", P.calls.chest === 0);
+  ok("...and it is still recorded, once", P.calls.clear.length === 1);
+  const box = P.$("scorebox").innerHTML;
+  ok("...and the screen is encouraging, not empty-handed",
+     /class="again"/.test(box) && /Try again/.test(box));
+  ok("...and says why, without scolding",
+     /3 lines were shown to you/.test(box) && !/wrong|bad|poor|fail/i.test(box));
+  ok("...and points at what to do next",
+     /Say the poem out loud once/.test(box));
+  ok("...and the way back in is still offered",
+     !!P.$("again") && !!P.$("pick"));
+
+  G("...and no amount of being shown gets you a perfect score");
+  const Q = load();
+  Q.level(0);
+  let g2 = 0;
+  while (Q.blanks().length && g2++ < 20) Q.$("peek").onclick();
+  ok("every gap shown scores the floor", Q.calls.clear[0].pct === 25);
+  ok("...never a hundred", Q.calls.clear[0].pct < 100);
+  ok("...no chest", Q.calls.chest === 0);
+  ok("...and nothing was logged as a wrong answer either",
+     Q.calls.wrong === 0 && Q.calls.right === 0);
+
+  /* And the other way: one peek out of eight is not enough to lose it. */
+  const R = load();
+  R.level(0);
+  R.$("peek").onclick();
+  let g3 = 0;
+  while (R.blanks().length && g3++ < 20) {
+    const el = R.blanks()[0];
+    R.type(el, vm.runInContext("BL", R.ctx)[+el.getAttribute("data-b")].w);
+  }
+  ok("one peek out of eight still clears (91%)", R.calls.clear[0].pct === 91,
+     R.calls.clear[0].pct + "%");
+  ok("...and still opens the chest", R.calls.chest === 1);
 }
 
 /* ====================================================================== */

@@ -128,6 +128,15 @@ h1 em{font-style:italic;color:var(--mid-d)}
 .fb.yes{background:#EAF6EF;color:#1C6340}
 .fb.no{background:#FCEFEC;color:#8E2E1D}
 .fb b{display:block;font-size:17px;margin-bottom:2px}
+/* Being handed the answer is neither a win nor a loss, so it is neither
+   green nor red. */
+.fb.plain{background:#F2EFE7;color:#5A5348}
+
+/* what a level that leaned on help gets instead of a chest */
+.again{border:2px dashed var(--line);border-radius:14px;padding:18px;margin-bottom:16px;text-align:center}
+.again .big{font:800 46px/1 var(--mono);color:var(--mid);font-variant-numeric:tabular-nums}
+.again b{display:block;margin:8px 0 4px;font-size:20px}
+.again p{margin:0;color:var(--dim);font-size:15px;line-height:1.55}
 
 /* the picture for a line */
 .artbox{
@@ -928,8 +937,16 @@ window.__MC_SFX__={"tool": "data:audio/mpeg;base64,//OAxAAAAAAAAAAAAFhpbmcAAAAPA
 
   /* The flourish over the chest at the end of a set. Sparkle is the one
      everybody starts with; the rest are bought. Purely decorative, and it
-     cleans up after itself so nothing accumulates in the DOM. */
-  function burst(host) {
+     cleans up after itself so nothing accumulates in the DOM.
+
+     Named `flourish` and not `burst`, because there was a second function
+     called burst further down for the win/lose sprites. Two declarations of
+     one name in one scope is not an error: the later one simply wins, so the
+     chest was calling the sprite burst with a DOM node where it wanted a
+     sprite name, and painting a broken image over the results screen. This
+     one had never run at all, which is to say the flourishes on sale in the
+     shop had never once been drawn. */
+  function flourish(host) {
     var kind = S.equip.effect || "sparkle";
     var n = kind === "ore" ? 22 : kind === "firework" ? 18 : kind === "confetti" ? 16 : 10;
     var box = document.createElement("div");
@@ -1383,7 +1400,7 @@ window.__MC_SFX__={"tool": "data:audio/mpeg;base64,//OAxAAAAAAAAAAAAFhpbmcAAAAPA
         opened = true;
         lid.classList.remove("mc-shut");
         lid.src = url("chest-open");
-        burst(box);   /* whatever he has on: sparkle by default, bought if bought */
+        flourish(box);   /* whatever he has on: sparkle by default, bought if bought */
         lid.alt = "Open chest";
         lid.style.cursor = "default";
         var html = "", i;
@@ -1623,7 +1640,6 @@ window.__MC_SFX__={"tool": "data:audio/mpeg;base64,//OAxAAAAAAAAAAAAFhpbmcAAAAPA
 </script>
 <script>MC.config({"app": "recite1", "shake": "#card", "lift": null, "dragon": ["l5"], "subject": "Recitation"});</script>
 <!-- /MC-THEME-JS -->
-
 
 <!-- HOME -->
 <div id="home" class="wrap">
@@ -2088,7 +2104,9 @@ function reveal(k){
   if (!gave) return;
   MC.note(LVL().id + ":line" + (b.li + 1));
   SHOWART = b.li;
-  FB = '<div class="fb yes"><b>Here it is.</b>Say it out loud twice, then carry on.</div>';
+    /* Neither green nor red. Being handed the answer is not a success to be
+     congratulated for, and not a failure to be told off for either. */
+  FB = '<div class="fb plain"><b>Here it is.</b>Say it out loud twice, then carry on.</div>';
   nextOpen(last);
   render();
 }
@@ -2125,6 +2143,21 @@ function paintFb(){ if ($("fb")) $("fb").innerHTML = FB; }
 function say(msg){ FB = '<div class="fb no">' + esc(msg) + "</div>"; paintFb(); }
 
 /* =============================== results ============================== */
+/* What a level that leaned on help says instead of opening a chest. It names
+   the score plainly and then points at the way forward, because a ten-year-old
+   who asked to be shown a line already knows he did not have it. */
+function encourage(pct, shown){
+  const why = shown === 0
+    ? "A few slipped away. That is exactly what the practice is for."
+    : shown === 1
+      ? "One line was shown to you, so this one is not learnt just yet."
+      : shown + " lines were shown to you, so this one is not learnt just yet.";
+  return '<div class="again"><div class="big">' + pct + "%</div>" +
+    "<b>Try again &mdash; you’ll do better.</b>" +
+    "<p>" + why + " Say the poem out loud once, then run the level again. " +
+    "It goes in faster than you think.</p></div>";
+}
+
 function finish(){
   const pts = ST.map(pointsFor);
   const pct = Math.round(pts.reduce((a, b) => a + b, 0) / pts.length);
@@ -2142,6 +2175,7 @@ function finish(){
 
   $("dtag").textContent = LVL().name;
   $("scorebox").innerHTML =
+    (pct >= 75 ? "" : encourage(pct, shown)) +
     (rough.length
       ? '<div class="review"><b>Lines worth saying out loud again</b>' +
         rough.map(r => '<div class="rline">' + (ART[DATA.lines[r.li].art] || "") +
@@ -2158,8 +2192,17 @@ function finish(){
       '<button class="btn o" id="pick">Pick a level</button>' +
     "</div>";
 
-  MC.clear(LVL().id, pct, {boss: !!LVL().boss});
-  MC.chest($("scorebox"), pct, {id: LVL().id, boss: !!LVL().boss});
+  /* The chest is for a level you got through on your own. Being shown the
+     answers drags the score under the 75% every subject on this site uses as
+     its clear bar, and under it the chest stays shut and the screen says come
+     back rather than handing over a reward for having been told.
+
+     Only one of these two is ever called: chest() runs clear() itself. Calling
+     both logged every level twice and paid the coins twice, which is the
+     opposite of the fault this is here to fix. */
+  const opts = {id: LVL().id, boss: !!LVL().boss};
+  if (pct >= 75) MC.chest($("scorebox"), pct, opts);
+  else MC.clear(LVL().id, pct, opts);
   if ($("up")) $("up").onclick = () => start(LV + 1);
   $("again").onclick = () => start(LV);
   $("pick").onclick = home;
