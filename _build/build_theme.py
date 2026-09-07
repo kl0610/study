@@ -158,6 +158,12 @@ def sci6(s):
     return Patcher(s, "science6")
 
 
+def recite1(s):
+    """A poem learnt a piece at a time. Written already calling the engine, so
+    like every generated chapter this is config only."""
+    return Patcher(s, "recite1")
+
+
 def vtest(s):
     """Wordly Wise List 1 unit test — theme-aware; config only. It runs with
     hud:false, because a test should not have hearts draining while it is being
@@ -339,6 +345,11 @@ APPS = {
                                            dragon=["m1"])),
     "science/g5-matter-ch4":  (sci4,  dict(app="science4",   shake="#card",   lift=None,
                                            dragon=["m1"])),
+    # Recitation. Five levels over one poem, each giving a little less away;
+    # l5 is saying it with nothing on the screen, so that is where the dragon
+    # sits — the same place it sits on spelling's ladder.
+    "recitation/wise-old-owl": (recite1, dict(app="recite1",    shake="#card",   lift=None,
+                                           dragon=["l5"], subject="Recitation")),
     # Chapters 5 and 6 close the Matter unit. One mission each, m1, the same
     # shape as every chapter before them.
     "science/g5-matter-ch5":  (sci5,  dict(app="science5",   shake="#card",   lift=None,

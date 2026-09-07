@@ -40,6 +40,7 @@
 
   --spelling:#E0574F; --vocab:#B57CE0; --math:#E08A4B;
   --geography:#5FA8E8;
+  --recite:#C58BD6;
 
   --disp:"Trebuchet MS","Segoe UI",Verdana,system-ui,sans-serif;
 
@@ -200,6 +201,7 @@ summary:focus-visible{outline:2px solid var(--c);outline-offset:-3px}
   box-shadow:inset -3px -3px 0 rgba(0,0,0,.32), inset 3px 3px 0 rgba(255,255,255,.3)}
 
 .sbadge.two{font-size:16px;letter-spacing:-.03em}
+.sbadge.three{font-size:12px;letter-spacing:-.04em}
 
 .stext{flex:1;min-width:0}
 
@@ -1927,6 +1929,22 @@ const SUBJECTS = [
 
     ]},
 
+  { name:"Recitation", ore:"amethyst", c:"var(--recite)", app:"recite1",
+
+    book:"A poem to learn by heart, a new one every fortnight",
+
+    /* One poem per entry. The five levels are the ids: each hands over a
+       little less of the poem than the one before. */
+
+    unit:"poem",
+    chapters:[
+
+      { n:"♪", t:"A Wise Old Owl", note:"Five levels, from last words to by heart",
+        href:"recitation/wise-old-owl/", app:"recite1",
+        ids:["l1","l2","l3","l4","l5"] }
+
+    ]},
+
   { name:"Reading", ore:"emerald", c:"var(--reading)", app:"reading",
 
     unit:"story",
@@ -2095,25 +2113,19 @@ function progress(app, ids){
    than hard-coded, so a subject added later cannot collide silently. */
 
 const initial = (() => {
-
-  const first = {};
-
-  SUBJECTS.forEach(s => { const c = s.name[0].toUpperCase();
-
-                          first[c] = (first[c] || 0) + 1; });
-
+  /* The shortest prefix no other subject shares. One letter where it can be —
+     H, G, M — and more only where it must. Two was not always enough: adding
+     Recitation beside Reading gave both of them "Re", and a badge that names
+     two subjects names neither. It now grows until it is unique. */
+  const names = SUBJECTS.map(s => s.name);
   const out = {};
-
-  SUBJECTS.forEach(s => {
-
-    const c = s.name[0].toUpperCase();
-
-    out[s.name] = first[c] > 1 ? c + s.name.slice(1, 2).toLowerCase() : c;
-
+  names.forEach(n => {
+    let len = 1;
+    while (len < n.length && names.some(m => m !== n &&
+           m.slice(0, len).toLowerCase() === n.slice(0, len).toLowerCase())) len++;
+    out[n] = n[0].toUpperCase() + n.slice(1, len).toLowerCase();
   });
-
   return n => out[n] || n[0].toUpperCase();
-
 })();
 
 
@@ -2126,7 +2138,7 @@ document.getElementById("subjects").innerHTML = SUBJECTS.map(s=>{
 
     <summary>
 
-      <span class="sbadge${initial(s.name).length>1?" two":""}">${esc(initial(s.name))}</span>
+      <span class="sbadge${initial(s.name).length>2?" two three":initial(s.name).length>1?" two":""}">${esc(initial(s.name))}</span>
 
       <span class="stext">
 
