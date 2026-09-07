@@ -85,8 +85,16 @@ G("the poem, and what the page makes of it");
      "A wise old owl / Lived in an oak. / The more he saw, / The less he spoke. / " +
      "The less he spoke, / The more he heard. / Why can’t we be / Like that wise old bird?",
      L.map(l => l.t).join(" / "));
-  ok("the stanza break is after the fourth line",
+  ok("one stanza break, on the fourth line",
      L.filter(l => l.gap).length === 1 && L[3].gap === true);
+  ok("...splitting it four and four, not three and five",
+     L.findIndex(l => l.gap) === 3 && L.length === 8);
+  /* The data said line four all along; the space was being put above that line
+     instead of below it, so the poem broke after three. Where the gap falls is
+     a rule in the stylesheet, so that is what has to be asserted. */
+  ok("...and the space goes under that line, not over it",
+     /\.poem \.line\.gap\{margin-bottom:/.test(HTML) &&
+     !/\.poem \.line\.gap\{margin-top:/.test(HTML));
   ok("every line has a picture", L.every(l => !!P.ART[l.art]));
   ok("every picture is drawn in the file, not fetched",
      Object.values(P.ART).every(s => /^<svg/.test(s.trim()) && !/https?:|<image/.test(s)));

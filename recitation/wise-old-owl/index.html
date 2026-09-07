@@ -45,7 +45,8 @@ h1 em{font-style:italic;color:var(--mid-d)}
 .poembox .eyebrow{display:block;margin-bottom:10px}
 .poem{font:400 clamp(17px,2.4vw,21px)/1.75 var(--serif)}
 .poem .line{white-space:normal}
-.poem .line.gap{margin-top:14px}
+/* `gap` marks the line a stanza ENDS on, so the space goes underneath it. Putting it on top broke the poem after three lines instead of four. */
+.poem .line.gap{margin-bottom:16px}
 
 /* level cards */
 .grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));margin:20px 0 26px}
