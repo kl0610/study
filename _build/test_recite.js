@@ -235,7 +235,7 @@ G("asking to be shown the answer is not a way to win");
   ok("...and the screen is encouraging, not empty-handed",
      /class="again"/.test(box) && /Try again/.test(box));
   ok("...and says why, without scolding",
-     /3 lines were shown to you/.test(box) && !/wrong|bad|poor|fail/i.test(box));
+     /3 lines were given to you in full/.test(box) && !/wrong|bad|poor|fail/i.test(box));
   ok("...and points at what to do next",
      /Say the poem out loud once/.test(box));
   ok("...and the way back in is still offered",
@@ -326,6 +326,68 @@ G("level 4 — a whole line at a time");
 }
 
 /* ====================================================================== */
+G("on the whole-line levels the hint hands over one word at a time");
+{
+  const P = load();
+  P.level(3);                                   /* Line by line */
+  const input = () => P.$("lineinput");
+  ok("the button offers a word, not the line",
+     /Give me the first word/.test(P.card()), P.card().match(/id="peek">[^<]*/));
+  ok("the input starts empty", (input().value || "") === "");
+
+  P.$("peek").onclick();
+  ok("one press writes in the first word", (input().value || "").trim() === "A");
+  ok("...and says to carry on from there", /Carry on from there/.test(P.card()));
+  ok("...and does not settle the line", P.q(".lineinput").length === 1);
+  ok("...and the button now offers another", /Give me another word/.test(P.card()));
+  ok("...and it is one note against that line, not one per word",
+     P.calls.note === 1);
+
+  P.$("peek").onclick();
+  ok("the next press adds the second word", (input().value || "").trim() === "A wise");
+  ok("...still one note", P.calls.note === 1);
+
+  /* Finish it yourself after two words and it costs two words, not the line. */
+  P.type(input(), "A wise old owl");
+  ok("typing the rest is accepted", P.calls.right === 1);
+  const ST = vm.runInContext("ST", P.ctx);
+  ok("...and two of the four words are recorded as given", ST[0].given === 2);
+
+  G("...and the last word settles the line, so it is never a dead end");
+  const Q = load();
+  Q.level(3);
+  for (let i = 0; i < 4; i++) Q.$("peek").onclick();   /* "Lived in an oak." is four */
+  const QST = vm.runInContext("ST", Q.ctx);
+  ok("four presses on a four-word line completes it", QST[0].done === true);
+  ok("...and moves on to the next line", vm.runInContext("CUR", Q.ctx) === 1);
+
+  G("...and a word costs less than the whole line");
+  const one = load(); one.level(3);
+  one.$("peek").onclick();
+  one.type(one.$("lineinput"), "A wise old owl");
+  let g = 0;
+  while (one.q(".lineinput").length && g++ < 20) {
+    const li = vm.runInContext("CUR", one.ctx);
+    one.type(one.$("lineinput"), one.DATA.lines[li].t);
+  }
+  const all = load(); all.level(3);
+  let g2 = 0;
+  while (all.q(".lineinput").length && g2++ < 80) all.$("peek").onclick();
+  ok("one word out of four on one line barely costs anything (" +
+     one.calls.clear[0].pct + "%)", one.calls.clear[0].pct === 98);
+  ok("...and being handed every line lands on the floor (" +
+     all.calls.clear[0].pct + "%)", all.calls.clear[0].pct === 25);
+  ok("...so needing a word is not the same as being told",
+     one.calls.clear[0].pct > all.calls.clear[0].pct);
+  ok("one word given still clears, and still opens the chest",
+     one.calls.clear[0].pct >= 75 && one.calls.chest === 1);
+  ok("...and the results call it a word given, not a line shown",
+     /one word given/.test(one.$("scorebox").innerHTML) &&
+     one.$("scorebox").innerHTML.indexOf("shown to you") === -1,
+     one.$("scorebox").innerHTML.match(/<small>[^<]*/g));
+}
+
+/* ====================================================================== */
 G("level 5 — by heart, nothing but the picture");
 {
   const P = load();
@@ -347,8 +409,8 @@ G("level 5 — by heart, nothing but the picture");
 
   G("...and a child who is stuck is never stuck");
   let guard = 0;
-  while (P.q(".lineinput").length && guard++ < 12) P.$("peek").onclick();
-  ok("Show me this line walks all the way to the end", P.$("done").classList.contains("hide") === false);
+  while (P.q(".lineinput").length && guard++ < 80) P.$("peek").onclick();
+  ok("asking for words walks all the way to the end", P.$("done").classList.contains("hide") === false);
   ok("...and it still finishes and scores", P.calls.clear.length === 1);
   ok("...and the one line said from memory still counts for something",
      P.calls.clear[0].pct === 34, P.calls.clear[0].pct + "% for one right and seven shown");
@@ -359,7 +421,7 @@ G("level 5 — by heart, nothing but the picture");
   const Q = load();
   Q.level(4);
   let g2 = 0;
-  while (Q.q(".lineinput").length && g2++ < 12) Q.$("peek").onclick();
+  while (Q.q(".lineinput").length && g2++ < 80) Q.$("peek").onclick();
   ok("a level done entirely on help still finishes", Q.calls.clear.length === 1);
   ok("...and scores the floor rather than nothing",
      Q.calls.clear[0].pct === 25, Q.calls.clear[0].pct + "%");

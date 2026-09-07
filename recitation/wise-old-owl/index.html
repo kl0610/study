@@ -1878,8 +1878,18 @@ let FB = "";
 const LVL = () => DATA.levels[LV];
 const bests = {};
 
-function pointsFor(s){
-  return s.shown ? 25 : s.tries === 1 ? 100 : s.tries === 2 ? 75 : s.tries === 3 ? 50 : 25;
+/* What an item is worth. Tries set the ceiling; asking for words lowers it in
+   proportion to how many were given, so one word out of four costs a little
+   and the whole line costs everything down to the floor. A child who needs one
+   word should not be charged the same as one who was handed the line.
+
+   A single-word gap is one word of one, which lands on the floor — the same
+   25% those levels have always given for being shown a gap. */
+function pointsFor(s, k){
+  const base = s.tries === 1 ? 100 : s.tries === 2 ? 75 : s.tries === 3 ? 50 : 25;
+  if (!s.given) return base;
+  const of = WORDS_OF(BL[k].w).length;
+  return Math.min(base, Math.max(25, Math.round(100 - 75 * s.given / of)));
 }
 
 /* =============================== home =============================== */
@@ -1949,8 +1959,8 @@ function instr(mode){
   return mode === "last"  ? "Type the word that finishes each line. Press Enter and it will jump to the next one."
        : mode === "first" ? "Type the word each line starts with. Press Enter to move on."
        : mode === "half"  ? "Fill in every gap. Press Enter to move to the next one."
-       : mode === "line"  ? "Type the missing line in full. Capitals and commas do not matter."
-       : "Say the line the picture stands for, then type it. Capitals and commas do not matter.";
+       : mode === "line"  ? "Type the missing line in full. Capitals and commas do not matter, and the button below hands you one word at a time if you get stuck."
+       : "Say the line the picture stands for, then type it. Stuck? The button below gives you the words one at a time.";
 }
 
 /* ---- the three fill-in-a-word levels: the whole poem, with gaps ---- */
@@ -1982,7 +1992,10 @@ function lineBody(mode){
       return '<div class="line now" data-li="' + li + '">' +
         '<input class="lineinput" id="lineinput" type="text" autocomplete="off" ' +
         'autocorrect="off" autocapitalize="sentences" spellcheck="false" ' +
-        'aria-label="Type line ' + (li + 1) + '" placeholder="Line ' + (li + 1) + '"></div>';
+        'aria-label="Type line ' + (li + 1) + '" placeholder="Line ' + (li + 1) + '"' +
+        /* the words handed over so far, written in to carry on from */
+        ' value="' + esc(WORDS_OF(BL[li].w).slice(0, s.given || 0).join(" ")) +
+        (s.given ? " " : "") + '"></div>';
     }
     if (s.done) return '<div class="line' + (ln.gap ? " gap" : "") + '">' +
       '<span class="w ' + (s.shown ? "shown" : "got") + '">' + esc(ln.t) + "</span></div>";
@@ -2023,7 +2036,14 @@ function wire(mode){
   }
   /* Always there, not only after a slip. A child who has to fail first before
      the help appears has already had the discouraging bit. */
-  acts.push('<button class="btn o" id="peek">Show me this line</button>');
+  /* Always there, not only after a slip. On the two whole-line levels it hands
+     over one word at a time, so a child who is one word short is not given the
+     whole line to get it. */
+  const word = mode === "line" || mode === "heart";
+  const got = word && ST[CUR] ? (ST[CUR].given || 0) : 0;
+  acts.push('<button class="btn o" id="peek">' +
+    (word ? (got ? "Give me another word" : "Give me the first word")
+          : "Show me this line") + "</button>");
   $("act").innerHTML = acts.join("");
   $("check").onclick = checkAll;
   $("peek").onclick = () => reveal(CUR);
@@ -2093,12 +2113,38 @@ function nextOpen(from){
    line" means the line — and scores those at 25%, the same as the hint
    everywhere else on the site. */
 function reveal(k){
-  const b = BL[k];
-  if (!b) return;
+  const b = BL[k], s = ST[k];
+  if (!b || !s || s.done) return;
+  const mode = LVL().mode;
+
+  /* On the two whole-line levels the help arrives a word at a time: the first
+     press writes in the first word, the next press the second, and so on. The
+     line settles itself once the last word is given, so this is still never a
+     dead end — it just costs less to need one word than to be handed eight. */
+  if (mode === "line" || mode === "heart"){
+    const words = WORDS_OF(b.w);
+    if (!s.given) MC.note(LVL().id + ":line" + (b.li + 1));   /* once per line */
+    s.given = (s.given || 0) + 1;
+    s.shown = true;
+    SHOWART = b.li;
+    if (s.given < words.length){
+      FB = '<div class="fb plain"><b>' + esc(words.slice(0, s.given).join(" ")) +
+        ' &hellip;</b>Carry on from there. Press again for the next word.</div>';
+      render();
+      return;
+    }
+    s.done = true;
+    if (!s.tries) s.tries = 1;
+    FB = '<div class="fb plain"><b>Here it is.</b>Say it out loud twice, then carry on.</div>';
+    nextOpen(k);
+    render();
+    return;
+  }
+
   let last = k, gave = 0;
   BL.forEach((x, i) => {
     if (x.li !== b.li || ST[i].done) return;
-    ST[i].shown = true; ST[i].done = true;
+    ST[i].shown = true; ST[i].done = true; ST[i].given = 1;
     if (!ST[i].tries) ST[i].tries = 1;
     last = i; gave++;
   });
@@ -2151,8 +2197,8 @@ function encourage(pct, shown){
   const why = shown === 0
     ? "A few slipped away. That is exactly what the practice is for."
     : shown === 1
-      ? "One line was shown to you, so this one is not learnt just yet."
-      : shown + " lines were shown to you, so this one is not learnt just yet.";
+      ? "One line was given to you in full, so this one is not learnt just yet."
+      : shown + " lines were given to you in full, so this one is not learnt just yet.";
   return '<div class="again"><div class="big">' + pct + "%</div>" +
     "<b>Try again &mdash; you’ll do better.</b>" +
     "<p>" + why + " Say the poem out loud once, then run the level again. " +
@@ -2163,15 +2209,28 @@ function finish(){
   const pts = ST.map(pointsFor);
   const pct = Math.round(pts.reduce((a, b) => a + b, 0) / pts.length);
   const first = ST.filter(s => !s.shown && s.tries === 1).length;
-  const shown = ST.filter(s => s.shown).length;
+  /* A line handed over completely is a different thing from a line that
+     needed one word, and the encouragement should not call them the same. */
+  const told = ST.filter((s, k) => s.given && s.given >= WORDS_OF(BL[k].w).length).length;
+  const shown = told;
 
   /* Which lines were not clean, with the picture beside each — the same
      picture that was the clue, so it means something by now. */
+/* How a line went, in the fewest words that are true: given outright,
+   given a word or two, or simply taken a few goes. */
+function helpNote(r){
+  if (!r.given) return r.tries + (r.tries === 1 ? " go" : " goes");
+  if (r.given >= r.of) return "shown to you";
+  return r.given === 1 ? "one word given" : r.given + " words given";
+}
+
   const rough = [];
   BL.forEach((b, k) => {
     const s = ST[k];
     if (s.tries === 1 && !s.shown) return;
-    if (!rough.some(r => r.li === b.li)) rough.push({li:b.li, shown:s.shown, tries:s.tries});
+    if (!rough.some(r => r.li === b.li))
+      rough.push({li:b.li, shown:s.shown, tries:s.tries,
+                  given:s.given || 0, of:WORDS_OF(b.w).length});
   });
 
   $("dtag").textContent = LVL().name;
@@ -2181,7 +2240,7 @@ function finish(){
       ? '<div class="review"><b>Lines worth saying out loud again</b>' +
         rough.map(r => '<div class="rline">' + (ART[DATA.lines[r.li].art] || "") +
           '<span><span class="t">' + esc(DATA.lines[r.li].t) + "</span>" +
-          "<small>" + (r.shown ? "shown to you" : r.tries + " goes") + "</small></span></div>").join("") +
+          "<small>" + helpNote(r) + "</small></span></div>").join("") +
         "</div>"
       : '<div class="review"><b>Straight through, every line first go.</b>' +
         (LV < DATA.levels.length - 1 ? "Move up a level." : "That is the whole poem, by heart.") +
