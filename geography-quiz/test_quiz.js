@@ -121,26 +121,33 @@ function matchesSel(n, sel) {
 G("the answer key survives the trip into the page");
 {
   const P = load();
-  ok("25 countries: the sheet's 24, plus the one it left off", P.C.length === 25);
+  ok("26 entries: the sheet's 24, plus Belize and Puerto Rico which it left off,\n      less nothing — Jamaica is still here, just out of play", P.C.length === 26);
   /* The sheet mislabels the Caribbean: the pink island south-east of Cuba is
      Jamaica and it calls it Haiti, and it hangs "Puerto Rico" over the eastern
      half of Hispaniola. Puerto Rico is really the first of six little islands
      further east, and carries no number at all. */
-  ok("...and 24 are in play, Jamaica being unusable", P.PLAY.length === 24);
+  ok("...and 25 are in play, Jamaica being unusable", P.PLAY.length === 25);
   ok("Belize is number 25, and the app draws it because the sheet does not",
      P.BY[25].name === "Belize" && !!P.BY[25].draw);
   ok("...with a shape, a dot on the coast and a badge out in open water",
      P.BY[25].draw.shape.charAt(0) === "M" && P.BY[25].draw.dot.length === 2 &&
      P.BY[25].x > 500 && P.BY[25].y < 250);
-  ok("number 3 is Jamaica, and skipped", P.BY[3].name === "Jamaica" && P.BY[3].skip === true);
+  ok("number 3 is Puerto Rico, drawn by the app on the island it really is",
+     P.BY[3].name === "Puerto Rico" && !!P.BY[3].draw);
+  ok("Jamaica is here, greyed and numberless",
+     P.C.some(c => c.name === "Jamaica" && c.skip === true));
   ok("number 4 is Haiti", P.BY[4].name === "Haiti");
   ok("number 5 is the Dominican Republic", P.BY[5].name === "Dominican Republic");
-  ok("Puerto Rico is not asked about, having no number",
-     !P.C.some(c => /puerto/i.test(c.name)));
-  ok("the numbers run 1 to 25 with no gaps",
-     P.C.map(c => c.n).sort((a, b) => a - b).join() ===
+  ok("Puerto Rico is asked about now that it has one",
+     P.PLAY.some(c => /puerto/i.test(c.name)));
+  ok("the numbers in play run 1 to 25 with no gaps",
+     P.PLAY.map(c => c.n).sort((a, b) => a - b).join() ===
      Array.from({ length: 25 }, (_, i) => i + 1).join());
-  ok("every name is distinct", new Set(P.C.map(c => c.name)).size === 25);
+  /* Jamaica has no number, because the sheet spent 3 on it wrongly and 3 now
+     belongs to Puerto Rico. Two entries cannot share one. */
+  ok("...and the one out of play has no number to clash with",
+     P.C.filter(c => c.skip).every(c => typeof c.n !== "number"));
+  ok("every name is distinct", new Set(P.C.map(c => c.name)).size === 26);
   ok("every marker is inside the image",
      P.C.every(c => c.x > 0 && c.x < 1387 && c.y > 0 && c.y < 1438));
   ok("...and so is everything the app draws on it",
@@ -170,9 +177,9 @@ G("the answer key survives the trip into the page");
   const seen = P.PLAY.map(c => P.ctx.GROUP[c.n]);
   ok("every country in play is in one of the four", seen.every(g => groups.indexOf(g) !== -1));
   const counts = {}; seen.forEach(g => { counts[g] = (counts[g] || 0) + 1; });
-  ok("the four add up to 24 (" + groups.map(g => counts[g]).join("+") + ")",
-     groups.reduce((s, g) => s + counts[g], 0) === 24);
-  ok("the skipped one is in no group at all", P.ctx.GROUP[3] === undefined);
+  ok("the four add up to 25 (" + groups.map(g => counts[g]).join("+") + ")",
+     groups.reduce((s, g) => s + counts[g], 0) === 25);
+  ok("the skipped one is in no group at all", P.ctx.GROUP.jam === undefined);
 }
 
 /* ====================================================================== */
@@ -180,21 +187,24 @@ G("matching, name to map");
 {
   const P = load(); withClosest(P);
   ok("it opens in matching mode", P.S.mode === "match" && P.S.dir === "n2m");
-  ok("24 are in play", P.S.pool.length === 24);
+  ok("25 are in play", P.S.pool.length === 25);
   ok("a marker for every one, plus the greyed-out Jamaica",
-     P.q(".mk").length === 25 && P.q(".mk.out").length === 1);
-  ok("...and Belize is painted onto the map, carrying its number",
-     P.q("svg").length === 1 && P.$("overlay").innerHTML.indexOf(">25</text>") !== -1);
+     P.q(".mk").length === 26 && P.q(".mk.out").length === 1);
+  ok("...and both drawn countries are painted on, carrying their numbers",
+     P.q("svg").length === 1 &&
+     P.$("overlay").innerHTML.indexOf(">25</text>") !== -1 &&
+     P.$("overlay").innerHTML.indexOf(">3</text>") !== -1);
   ok("...and the greyed one cannot be tapped",
      P.q(".mk.out")[0].disabled === true && !P.q(".mk.out")[0].getAttribute("data-n"));
   ok("the prompt names a country, not a number",
      /Find <em>[A-Z]/.test(P.panel()));
   ok("the list hides the numbers — they are the answer",
-     P.q(".name").length === 24 && P.q(".name .num").length === 0);
+     P.q(".name").length === 25 && P.q(".name .num").length === 0);
   ok("...and Jamaica is not among the names to choose from",
      P.q(".name").every(el => el.textContent.indexOf("Jamaica") === -1));
-  ok("...but Belize is",
-     P.q(".name").some(el => el.textContent.indexOf("Belize") !== -1));
+  ok("...but Belize and Puerto Rico are",
+     P.q(".name").some(el => el.textContent.indexOf("Belize") !== -1) &&
+     P.q(".name").some(el => el.textContent.indexOf("Puerto Rico") !== -1));
   ok("nothing on the map is ringed yet", P.q(".ring").length === 0);
 
   const target = P.S.current;
@@ -225,11 +235,11 @@ G("matching, name to map");
   G("...and it plays through to the end");
   let guard = 0;
   while (P.S.current != null && guard++ < 60) P.marker(P.S.current).onclick();
-  ok("every pair gets matched", P.S.matched.size === 24, "matched " + P.S.matched.size);
+  ok("every pair gets matched", P.S.matched.size === 25, "matched " + P.S.matched.size);
   ok("the round is over", P.S.done === true);
   ok("the results appear", !!P.$("results"));
   /* one was answered on the second try, the other 23 first time */
-  ok("23 of 24 on the first try", P.S.gotFirst.size === 23, "got " + P.S.gotFirst.size);
+  ok("24 of 25 on the first try", P.S.gotFirst.size === 24, "got " + P.S.gotFirst.size);
   ok("the percentage is right (96%)", /\b96%/.test(P.$("results").innerHTML));
   ok("the one that took two goes is listed",
      P.$("results").innerHTML.indexOf(P.BY[target].name) !== -1);
@@ -305,7 +315,7 @@ G("matching, map to name");
   ok("the direction took", P.S.dir === "m2n");
   ok("the prompt names a number now", /number <em>\d+<\/em>/.test(P.panel()));
   ok("the marker being asked about is ringed", P.q(".ring").length === 1);
-  ok("the list shows its numbers now", P.q(".name .num").length === 24);
+  ok("the list shows its numbers now", P.q(".name .num").length === 25);
   /* The map is live here, but for choosing which number to identify — never
      for answering. Answering in this direction happens in the list. */
   ok("the map is touchable", P.$("overlay").classList.contains("live"));
@@ -391,9 +401,9 @@ G("multiple choice");
     const nx = P.$("next"); if (!nx) break;
     nx.onclick();
   }
-  ok("every number was asked exactly once", P.S.matched.size === 24);
+  ok("every number was asked exactly once", P.S.matched.size === 25);
   ok("the round finishes", P.S.done === true && !!P.$("results"));
-  ok("23 of 24, the one deliberately fumbled missing", P.S.gotFirst.size === 23);
+  ok("24 of 25, the one deliberately fumbled missing", P.S.gotFirst.size === 24);
   ok("that one is the only thing listed as missed", P.q(".missed li").length === 1);
   ok("...and it is named", P.$("results").innerHTML.indexOf(P.BY[target].name) !== -1);
 }
@@ -416,7 +426,8 @@ G("typing, and how forgiving it is");
   yes("Peru", 16); yes("Perú", 16);
   yes("Panamá", 11);
   yes("Haïti", 4); yes("haiti", 4);
-  no("puerto rico", 5); no("PR", 5);   /* no number, so never the answer */
+  yes("puerto rico", 3); yes("PR", 3); yes("Puerto Rico", 3);
+  no("puerto rico", 5);                 /* 5 is the Dominican Republic */
   no("jamaica", 3);                     /* printed, but out of play */
   yes("belize", 25); yes("Belize", 25);
   yes("suriname", 23); yes("surinam", 23);
@@ -472,8 +483,8 @@ G("the three areas the Regions tab asks about");
   ok("Central America is the seven below it, Belize included, Mexico not",
      P.ctx.AREA.ca.ns.join() === "6,7,8,9,10,11,25" &&
      P.ctx.AREA.ca.ns.indexOf(1) === -1);
-  ok("the Caribbean is Cuba, Haiti and the Dominican Republic",
-     P.ctx.AREA.car.ns.join() === "2,4,5");
+  ok("the Caribbean is Cuba, Puerto Rico, Haiti and the Dominican Republic",
+     P.ctx.AREA.car.ns.join() === "2,3,4,5");
   ok("South America is the other thirteen", P.ctx.AREA.sa.ns.length === 13 &&
      P.ctx.AREA.sa.ns.indexOf(11) === -1 && P.ctx.AREA.sa.ns.indexOf(12) !== -1);
   ok("these are not the practice filter's groups, which split South America",
@@ -489,7 +500,7 @@ G("sweeping an area on the map");
   ok("the mode took", P.S.mode === "region");
   ok("the round is the three areas", P.S.pool.length === 3);
   ok("the whole map is drawn, not just one area's countries",
-     P.q(".mk").length === 25 && P.q(".mk.out").length === 1);
+     P.q(".mk").length === 26 && P.q(".mk.out").length === 1);
   ok("no single marker is ringed — the question is an area", P.q(".ring").length === 0);
   ok("the region filter is put away", P.$("reggrp").hidden === true);
   ok("the direction toggle stays away too", P.$("dirgrp").hidden === true);
@@ -566,15 +577,15 @@ G("sweeping an area on the map");
   P.$("next").onclick();
   ok("the sweep is cleared for the next area", P.S.picked.size === 0);
   P.q('.name[data-area="car"]')[0].onclick();
-  [2, 4].forEach(n => P.marker(n).onclick());
+  [2, 3, 4].forEach(n => P.marker(n).onclick());
   P.$("go").onclick();
-  ok("two of the three Caribbean countries is not right", !P.S.matched.has("car"));
+  ok("three of the four Caribbean countries is not right", !P.S.matched.has("car"));
   ok("...and it says one is missing, without naming it",
      /one is still missing/i.test(P.q(".wrongnote")[0].textContent) &&
-     P.panel().indexOf("Puerto Rico") === -1);
+     P.panel().indexOf("Dominican Republic") === -1);
   P.marker(5).onclick();
   P.$("go").onclick();
-  ok("all three is right", P.S.matched.has("car"));
+  ok("all four is right", P.S.matched.has("car"));
 
   G("...and a solved area cannot be swept again");
   P.$("next").onclick();
@@ -615,12 +626,11 @@ G("regions");
   ok("five choices, All 24 first", sel.kids.length === 5);
   P.ctx.S.region = "car";
   sel.onchange({ target: { value: "car" } });
-  /* Three, not four: the sheet's number 3 is Jamaica and is out of play. */
-  ok("the Caribbean round is three countries", P.S.pool.length === 3);
-  ok("...and they are 2, 4, 5", P.S.pool.slice().sort((a, b) => a - b).join() === "2,4,5");
-  ok("...and four markers are drawn, the fourth being greyed-out Jamaica",
-     P.q(".mk").length === 4 && P.q(".mk.out").length === 1);
-  ok("the score line counts to three", P.$("scored").textContent.indexOf("/ 3") === 0);
+  ok("the Caribbean round is four countries", P.S.pool.length === 4);
+  ok("...and they are 2, 3, 4, 5", P.S.pool.slice().sort((a, b) => a - b).join() === "2,3,4,5");
+  ok("...and five markers are drawn, the fifth being greyed-out Jamaica",
+     P.q(".mk").length === 5 && P.q(".mk.out").length === 1);
+  ok("the score line counts to four", P.$("scored").textContent.indexOf("/ 4") === 0);
 }
 
 /* ====================================================================== */
@@ -634,7 +644,7 @@ G("checking the answers so far");
      /Nothing answered yet/.test(P.$("results").innerHTML));
   ok("...and names nothing", P.q(".missed li").length === 0);
   ok("...and says how many are still to come",
-     /24 still to go/.test(P.$("results").innerHTML));
+     /25 still to go/.test(P.$("results").innerHTML));
   P.$("keep").onclick();
   ok("Keep going puts it away", !P.$("results"));
   ok("...and the round carries on", P.S.done === false && P.S.current != null);
@@ -650,7 +660,7 @@ G("checking the answers so far");
   ok("...naming it, since it is already known", sheet1.indexOf(P.BY[first].name) !== -1);
   ok("...and saying it took two goes", /2 tries/.test(sheet1));
   ok("...and scoring 0% of the one settled", /\b0%/.test(sheet1));
-  ok("...and 23 still to go", /23 still to go/.test(sheet1));
+  ok("...and 24 still to go", /24 still to go/.test(sheet1));
 
   /* the point of the whole exercise: it must not leak what has not been asked */
   const shown = P.C.filter(c => sheet1.indexOf(c.name) !== -1).map(c => c.n);
@@ -672,11 +682,11 @@ G("checking the answers so far");
   P.$("stop").onclick();
   ok("the round is over", P.S.done === true);
   ok("the real results are up", /Retry missed only/.test(P.$("results").innerHTML));
-  ok("the score is out of all 24, not out of the two answered",
-     /1 of 24 on the first try/.test(P.$("results").innerHTML));
-  ok("the 22 never reached are listed as unanswered",
-     (P.$("results").innerHTML.match(/not answered/g) || []).length === 22);
-  ok("Retry missed only then takes back all 23", (P.$("retry").onclick(), P.S.pool.length === 23));
+  ok("the score is out of all 25, not out of the two answered",
+     /1 of 25 on the first try/.test(P.$("results").innerHTML));
+  ok("the 23 never reached are listed as unanswered",
+     (P.$("results").innerHTML.match(/not answered/g) || []).length === 23);
+  ok("Retry missed only then takes back all 24", (P.$("retry").onclick(), P.S.pool.length === 24));
 
   G("...and after the round it shows the real results");
   const Q = load(); withClosest(Q);

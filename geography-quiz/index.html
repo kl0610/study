@@ -121,8 +121,8 @@ select{
 .drawnlayer{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
 /* printed on the sheet but not part of the quiz */
 .mk.out{
-  pointer-events:none;background:rgba(120,132,142,.66);
-  box-shadow:0 0 0 2px rgba(255,255,255,.55);
+  pointer-events:none;background:#98A3AB;
+  box-shadow:0 0 0 2px rgba(255,255,255,.8), inset 0 0 0 2px rgba(255,255,255,.35);
 }
 /* chosen for a region sweep, but not yet checked */
 .overlay .mk.pick,
@@ -323,11 +323,11 @@ select{
       <button class="btn ghost" id="zreset" style="min-height:44px;padding:9px 14px;font-size:15px">Reset</button>
       <button class="tbtn" id="magbtn" aria-pressed="false">Magnifier</button>
       <span class="hintline" id="maphint">Pinch or scroll to zoom &middot; drag to move</span>
-      <p class="keynote">This map is corrected. The sheet mislabels the Caribbean:
-        <b>3 is Jamaica</b> and is greyed out, <b>4 is Haiti</b>, and <b>5 is the
-        Dominican Republic</b>. It leaves Belize out altogether, so Belize is drawn
-        here in purple as <b>25</b>. Puerto Rico is the first of the little islands
-        east of 5 and carries no number, so it is not asked about.</p>
+      <p class="keynote">This map is corrected. The printed sheet mislabels the
+        Caribbean: its <b>3</b> sits on Jamaica and calls it Haiti, so that marker is
+        greyed over here and <b>3 is Puerto Rico</b>, drawn in purple on the island it
+        really is. <b>4 is Haiti</b> and <b>5 is the Dominican Republic</b>. The sheet
+        leaves Belize out altogether, so it is drawn too, as <b>25</b>.</p>
     </div>
     <div class="viewport" id="viewport">
       <div class="canvas" id="canvas">
@@ -365,7 +365,11 @@ const COUNTRIES = [
 
      Jamaica keeps its marker, because the marker is printed and a child can
      see it, but `skip` keeps it out of every question and every answer list. */
-  {n: 3, name:"Jamaica",            x:619,  y:301, skip:true},
+  /* Puerto Rico takes the number, because the sheet's 3 is spent on an island
+     it mislabelled and the app draws this one itself. */
+  {n: 3, name:"Puerto Rico",        x:880,  y:250, draw:{
+     shape:"M819,234 L838,234 L838,265 L833,272 L827,270 L823,256 Z",
+     dot:[829,250]}},
   {n: 4, name:"Haiti",              x:759,  y:199},
   {n: 5, name:"Dominican Republic", x:801,  y:292},
   {n: 6, name:"Guatemala",          x:358,  y:336},
@@ -396,6 +400,12 @@ const COUNTRIES = [
 
      `draw` is what marks a country the app puts on the map itself rather than
      one the sheet already numbered. */
+  /* Printed on the sheet, and wrong on it: the pink island south-east of Cuba
+     is Jamaica, not Haiti. Kept so the map still matches the paper, greyed
+     over so the wrong number cannot be read, and out of every question. Its
+     key is not a number because it does not need one and 3 is spoken for. */
+  {n:"jam", name:"Jamaica",         x:619,  y:301, skip:true},
+
   {n:25, name:"Belize",             x:524,  y:222, draw:{
      shape:"M440,237 L452,235 L449,250 L444,261 L437,258 L435,245 Z",
      dot:[443,248]}}
@@ -409,7 +419,7 @@ const PLAY = COUNTRIES.filter(c => !c.skip);
 const REGIONS = [
   {key:"all", label:"All of them",                ns:PLAY.map(c=>c.n)},
   {key:"mca", label:"Mexico & Central America",   ns:[1,6,7,8,9,10,11,25]},
-  {key:"car", label:"Caribbean",                  ns:[2,4,5]},
+  {key:"car", label:"Caribbean",                  ns:[2,3,4,5]},
   {key:"nsa", label:"Northern South America",     ns:[12,13,14,15,23,24]},
   {key:"ssa", label:"Southern South America",     ns:[16,17,18,19,20,21,22]}
 ];
@@ -432,7 +442,7 @@ REGIONS.filter(r=>r.key!=="all").forEach(r => r.ns.forEach(n => { GROUP[n] = r.k
    round, once it can no longer give a sweep away. */
 const AREAS = [
   {key:"ca",  label:"Central America", ns:[6,7,8,9,10,11,25]},
-  {key:"car", label:"The Caribbean",   ns:[2,4,5]},
+  {key:"car", label:"The Caribbean",   ns:[2,3,4,5]},
   {key:"sa",  label:"South America",   ns:[12,13,14,15,16,17,18,19,20,21,22,23,24]}
 ];
 const AREA = {}; AREAS.forEach(a => { AREA[a.key] = a; });
@@ -446,6 +456,7 @@ const COUNT_WORD = ["no","One","Two","Three","Four","Five","Six","Seven","Eight"
    and everything but letters and digits is turned into a single space. */
 const ALIAS = {
   1:["mejico"],
+  3:["pr"],
   5:["dr","d r","dom rep","dominican rep","republica dominicana"],
   8:["salvador"],
   13:["co operative republic of guyana"],
@@ -749,9 +760,12 @@ function drawMarkers(){
     b.disabled = true;
     b.style.left = pct(c.x, MAPW);
     b.style.top = pct(c.y, MAPH);
-    b.style.width = pct(c.hit * 2, MAPW);
+    /* Sized to the printed circle rather than to the hit radius, and solid, so
+       the number underneath cannot be read. Two visible 3s on one map would be
+       worse than none. */
+    b.style.width = pct(48, MAPW);
     b.type = "button";
-    b.setAttribute("aria-label", "Marker " + c.n + ", not part of this quiz");
+    b.setAttribute("aria-label", esc(c.name) + " is not part of this quiz");
     overlay.appendChild(b);
   });
 
