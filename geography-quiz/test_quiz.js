@@ -75,11 +75,11 @@ function load(referrer) {
      scope rather than on the context object — so it is read back by evaluating
      a second script in the same context, which can see those bindings. */
   const G = vm.runInContext(
-    "({COUNTRIES, BY, S, GROUP, REGIONS, AREAS, AREA, UNPLACED, judgeTyped, norm})", ctx);
+    "({COUNTRIES, PLAY, BY, S, GROUP, REGIONS, AREAS, AREA, UNPLACED, judgeTyped, norm})", ctx);
 
   return {
     ctx: G, body,
-    S: G.S, C: G.COUNTRIES, BY: G.BY,
+    S: G.S, C: G.COUNTRIES, PLAY: G.PLAY, BY: G.BY,
     $: id => byId(body, id),
     q: s => find(body, s),
     panel: () => byId(body, "panel").innerHTML,
@@ -121,14 +121,33 @@ function matchesSel(n, sel) {
 G("the answer key survives the trip into the page");
 {
   const P = load();
-  ok("all 24 countries are there", P.C.length === 24);
-  ok("the numbers run 1 to 24 with no gaps",
+  ok("25 countries: the sheet's 24, plus the one it left off", P.C.length === 25);
+  /* The sheet mislabels the Caribbean: the pink island south-east of Cuba is
+     Jamaica and it calls it Haiti, and it hangs "Puerto Rico" over the eastern
+     half of Hispaniola. Puerto Rico is really the first of six little islands
+     further east, and carries no number at all. */
+  ok("...and 24 are in play, Jamaica being unusable", P.PLAY.length === 24);
+  ok("Belize is number 25, and the app draws it because the sheet does not",
+     P.BY[25].name === "Belize" && !!P.BY[25].draw);
+  ok("...with a shape, a dot on the coast and a badge out in open water",
+     P.BY[25].draw.shape.charAt(0) === "M" && P.BY[25].draw.dot.length === 2 &&
+     P.BY[25].x > 500 && P.BY[25].y < 250);
+  ok("number 3 is Jamaica, and skipped", P.BY[3].name === "Jamaica" && P.BY[3].skip === true);
+  ok("number 4 is Haiti", P.BY[4].name === "Haiti");
+  ok("number 5 is the Dominican Republic", P.BY[5].name === "Dominican Republic");
+  ok("Puerto Rico is not asked about, having no number",
+     !P.C.some(c => /puerto/i.test(c.name)));
+  ok("the numbers run 1 to 25 with no gaps",
      P.C.map(c => c.n).sort((a, b) => a - b).join() ===
-     Array.from({ length: 24 }, (_, i) => i + 1).join());
-  ok("every name is distinct", new Set(P.C.map(c => c.name)).size === 24);
+     Array.from({ length: 25 }, (_, i) => i + 1).join());
+  ok("every name is distinct", new Set(P.C.map(c => c.name)).size === 25);
   ok("every marker is inside the image",
      P.C.every(c => c.x > 0 && c.x < 1387 && c.y > 0 && c.y < 1438));
-  const spot = { 1: "Mexico", 11: "Panama", 18: "Brazil", 24: "French Guiana" };
+  ok("...and so is everything the app draws on it",
+     P.C.filter(c => c.draw).every(c =>
+       c.draw.dot[0] > 0 && c.draw.dot[0] < 1387 &&
+       c.draw.dot[1] > 0 && c.draw.dot[1] < 1438));
+  const spot = { 1: "Mexico", 4: "Haiti", 11: "Panama", 18: "Brazil", 24: "French Guiana" };
   ok("the numbers still name the right countries",
      Object.keys(spot).every(n => P.BY[n].name === spot[n]));
 
@@ -148,11 +167,12 @@ G("the answer key survives the trip into the page");
 
   G("the regions account for every country exactly once");
   const groups = ["mca", "car", "nsa", "ssa"];
-  const seen = P.C.map(c => c.n).map(n => P.ctx.GROUP[n]);
-  ok("every country is in one of the four", seen.every(g => groups.indexOf(g) !== -1));
+  const seen = P.PLAY.map(c => P.ctx.GROUP[c.n]);
+  ok("every country in play is in one of the four", seen.every(g => groups.indexOf(g) !== -1));
   const counts = {}; seen.forEach(g => { counts[g] = (counts[g] || 0) + 1; });
   ok("the four add up to 24 (" + groups.map(g => counts[g]).join("+") + ")",
      groups.reduce((s, g) => s + counts[g], 0) === 24);
+  ok("the skipped one is in no group at all", P.ctx.GROUP[3] === undefined);
 }
 
 /* ====================================================================== */
@@ -160,12 +180,21 @@ G("matching, name to map");
 {
   const P = load(); withClosest(P);
   ok("it opens in matching mode", P.S.mode === "match" && P.S.dir === "n2m");
-  ok("all 24 are in play", P.S.pool.length === 24);
-  ok("a marker exists for every one", P.q(".mk").length === 24);
+  ok("24 are in play", P.S.pool.length === 24);
+  ok("a marker for every one, plus the greyed-out Jamaica",
+     P.q(".mk").length === 25 && P.q(".mk.out").length === 1);
+  ok("...and Belize is painted onto the map, carrying its number",
+     P.q("svg").length === 1 && P.$("overlay").innerHTML.indexOf(">25</text>") !== -1);
+  ok("...and the greyed one cannot be tapped",
+     P.q(".mk.out")[0].disabled === true && !P.q(".mk.out")[0].getAttribute("data-n"));
   ok("the prompt names a country, not a number",
      /Find <em>[A-Z]/.test(P.panel()));
   ok("the list hides the numbers — they are the answer",
      P.q(".name").length === 24 && P.q(".name .num").length === 0);
+  ok("...and Jamaica is not among the names to choose from",
+     P.q(".name").every(el => el.textContent.indexOf("Jamaica") === -1));
+  ok("...but Belize is",
+     P.q(".name").some(el => el.textContent.indexOf("Belize") !== -1));
   ok("nothing on the map is ringed yet", P.q(".ring").length === 0);
 
   const target = P.S.current;
@@ -209,7 +238,8 @@ G("matching, name to map");
   G("retry missed only");
   P.$("retry").onclick();
   ok("the new round is just the missed one", P.S.pool.length === 1 && P.S.pool[0] === target);
-  ok("the map only offers that marker", P.q(".mk").length === 1);
+  ok("the map only offers that marker, beside the greyed-out one",
+     P.q(".mk").length === 2 && P.q(".mk.out").length === 1);
   ok("the score is back to zero of one", P.$("scoren").textContent === "0");
   ok("the results sheet is gone", !P.$("results"));
 }
@@ -381,12 +411,14 @@ G("typing, and how forgiving it is");
 
   yes("brazil", 18); yes("BRAZIL", 18); yes("  Brazil ", 18); yes("brasil", 18);
   yes("mexico", 1); yes("México", 1);
-  yes("Dominican Republic", 4); yes("dr", 4); yes("D.R.", 4); yes("dominican rep", 4);
+  yes("Dominican Republic", 5); yes("dr", 5); yes("D.R.", 5); yes("dominican rep", 5);
   yes("El Salvador", 8); yes("salvador", 8); yes("el salvador", 8);
   yes("Peru", 16); yes("Perú", 16);
   yes("Panamá", 11);
-  yes("Haïti", 3);
-  yes("puerto rico", 5); yes("PR", 5);
+  yes("Haïti", 4); yes("haiti", 4);
+  no("puerto rico", 5); no("PR", 5);   /* no number, so never the answer */
+  no("jamaica", 3);                     /* printed, but out of play */
+  yes("belize", 25); yes("Belize", 25);
   yes("suriname", 23); yes("surinam", 23);
   yes("french guiana", 24); yes("guyane", 24); yes("French Guyana", 24);
   yes("guyana", 13);
@@ -435,12 +467,13 @@ G("the three areas the Regions tab asks about");
   ok("no area is a single country that answers itself", A.every(a => a.ns.length > 1));
   ok("Mexico is the one country in none of them",
      P.ctx.UNPLACED.join() === "1" && P.BY[1].name === "Mexico");
-  ok("the three plus Mexico account for all 24",
-     all.length + P.ctx.UNPLACED.length === 24);
-  ok("Central America is the six below it, and does not include Mexico",
-     P.ctx.AREA.ca.ns.join() === "6,7,8,9,10,11" &&
+  ok("the three plus Mexico account for everything in play",
+     all.length + P.ctx.UNPLACED.length === P.PLAY.length);
+  ok("Central America is the seven below it, Belize included, Mexico not",
+     P.ctx.AREA.ca.ns.join() === "6,7,8,9,10,11,25" &&
      P.ctx.AREA.ca.ns.indexOf(1) === -1);
-  ok("the Caribbean is the four islands", P.ctx.AREA.car.ns.join() === "2,3,4,5");
+  ok("the Caribbean is Cuba, Haiti and the Dominican Republic",
+     P.ctx.AREA.car.ns.join() === "2,4,5");
   ok("South America is the other thirteen", P.ctx.AREA.sa.ns.length === 13 &&
      P.ctx.AREA.sa.ns.indexOf(11) === -1 && P.ctx.AREA.sa.ns.indexOf(12) !== -1);
   ok("these are not the practice filter's groups, which split South America",
@@ -455,7 +488,8 @@ G("sweeping an area on the map");
   P.setMode("region");
   ok("the mode took", P.S.mode === "region");
   ok("the round is the three areas", P.S.pool.length === 3);
-  ok("the whole map is drawn, not just one area's countries", P.q(".mk").length === 24);
+  ok("the whole map is drawn, not just one area's countries",
+     P.q(".mk").length === 25 && P.q(".mk.out").length === 1);
   ok("no single marker is ringed — the question is an area", P.q(".ring").length === 0);
   ok("the region filter is put away", P.$("reggrp").hidden === true);
   ok("the direction toggle stays away too", P.$("dirgrp").hidden === true);
@@ -465,7 +499,7 @@ G("sweeping an area on the map");
   P.q('.name[data-area="ca"]')[0].onclick();
   ok("an area can be picked from the list", P.S.current === "ca");
   ok("the prompt asks for it by name", /Tap every country in <em>Central America<\/em>/.test(P.panel()));
-  ok("...and says how many", /Six of them/.test(P.panel()));
+  ok("...and says how many", /Seven of them/.test(P.panel()));
   ok("...and warns that not everything belongs",
      /Not every country on the map belongs/.test(P.panel()));
   ok("Check starts disabled with nothing chosen", P.$("go").disabled === true);
@@ -496,12 +530,13 @@ G("sweeping an area on the map");
   P.marker(7).onclick();
 
   G("...the trap: Mexico is not Central America");
-  [1, 9, 10, 11].forEach(n => P.marker(n).onclick());
-  ok("seven chosen", P.S.picked.size === 7);
-  ok("the chosen markers show it", P.q(".mk.pick").length === 7);
+  [1, 9, 10, 11, 25].forEach(n => P.marker(n).onclick());
+  ok("eight chosen, one of them Mexico, which does not belong",
+     P.S.picked.size === 8);
+  ok("the chosen markers show it", P.q(".mk.pick").length === 8);
   ok("...and Mexico is named in the list, so the mistake is visible",
      P.q(".chip").map(c => c.textContent).join(",").indexOf("Mexico") !== -1);
-  ok("...and the counter says so", /Chosen &mdash; 7 of 6 wanted/.test(P.panel()));
+  ok("...and the counter says so", /Chosen &mdash; 8 of 7 wanted/.test(P.panel()));
   P.$("go").onclick();
   ok("including Mexico is wrong", !P.S.matched.has("ca"));
   /* The verdict counts, it does not name. Mexico is on screen — in the list of
@@ -511,18 +546,18 @@ G("sweeping an area on the map");
      /one you tapped does not belong/i.test(P.q(".wrongnote")[0].textContent) &&
      P.q(".wrongnote")[0].textContent.indexOf("Mexico") === -1,
      P.q(".wrongnote")[0].textContent);
-  ok("...and the choice is left alone so it can be adjusted", P.S.picked.size === 7);
+  ok("...and the choice is left alone so it can be adjusted", P.S.picked.size === 8);
   ok("...and it counts as an attempt", P.S.tries.ca === 1);
 
   P.marker(1).onclick();
-  ok("un-tapping Mexico leaves six", P.S.picked.size === 6);
+  ok("un-tapping Mexico leaves seven", P.S.picked.size === 7);
   ok("...and clears the message", !/wrongnote/.test(P.panel()));
   P.$("go").onclick();
-  ok("the six on their own are right", P.S.matched.has("ca"));
+  ok("the seven on their own are right", P.S.matched.has("ca"));
   ok("...but not a first-try score", !P.S.gotFirst.has("ca"));
   ok("...and it says so", /That is Central America/.test(P.panel()));
   ok("...and the area's countries grey out on the map",
-     [6, 7, 8, 9, 10, 11].every(n => P.marker(n).classList.contains("locked")) &&
+     [6, 7, 8, 9, 10, 11, 25].every(n => P.marker(n).classList.contains("locked")) &&
      !P.marker(1).classList.contains("locked"));
   ok("...and the map is locked until the next area is asked for",
      !P.$("overlay").classList.contains("live"));
@@ -531,20 +566,20 @@ G("sweeping an area on the map");
   P.$("next").onclick();
   ok("the sweep is cleared for the next area", P.S.picked.size === 0);
   P.q('.name[data-area="car"]')[0].onclick();
-  [2, 3, 4].forEach(n => P.marker(n).onclick());
+  [2, 4].forEach(n => P.marker(n).onclick());
   P.$("go").onclick();
-  ok("three of the four Caribbean islands is not right", !P.S.matched.has("car"));
+  ok("two of the three Caribbean countries is not right", !P.S.matched.has("car"));
   ok("...and it says one is missing, without naming it",
      /one is still missing/i.test(P.q(".wrongnote")[0].textContent) &&
      P.panel().indexOf("Puerto Rico") === -1);
   P.marker(5).onclick();
   P.$("go").onclick();
-  ok("all four is right", P.S.matched.has("car"));
+  ok("all three is right", P.S.matched.has("car"));
 
   G("...and a solved area cannot be swept again");
   P.$("next").onclick();
   const before = P.S.current;
-  P.marker(3).onclick();
+  P.marker(2).onclick();
   ok("tapping a country already placed does nothing", P.S.picked.size === 0);
   ok("...and does not change the question", P.S.current === before);
 
@@ -580,10 +615,12 @@ G("regions");
   ok("five choices, All 24 first", sel.kids.length === 5);
   P.ctx.S.region = "car";
   sel.onchange({ target: { value: "car" } });
-  ok("the Caribbean round is four countries", P.S.pool.length === 4);
-  ok("...and they are 2, 3, 4, 5", P.S.pool.slice().sort((a, b) => a - b).join() === "2,3,4,5");
-  ok("...and only four markers are drawn", P.q(".mk").length === 4);
-  ok("the score line counts to four", P.$("scored").textContent.indexOf("/ 4") === 0);
+  /* Three, not four: the sheet's number 3 is Jamaica and is out of play. */
+  ok("the Caribbean round is three countries", P.S.pool.length === 3);
+  ok("...and they are 2, 4, 5", P.S.pool.slice().sort((a, b) => a - b).join() === "2,4,5");
+  ok("...and four markers are drawn, the fourth being greyed-out Jamaica",
+     P.q(".mk").length === 4 && P.q(".mk.out").length === 1);
+  ok("the score line counts to three", P.$("scored").textContent.indexOf("/ 3") === 0);
 }
 
 /* ====================================================================== */
@@ -693,8 +730,11 @@ G("nothing is written outside the page");
 {
   ok("the file never mentions localStorage or sessionStorage",
      !/localStorage|sessionStorage|indexedDB|document\.cookie/.test(HTML));
+  /* The SVG namespace is a name, not an address: nothing is ever fetched from
+     it. Every other absolute URL would be a real request. */
+  const outside = HTML.replace(/http:\/\/www\.w3\.org\/2000\/svg/g, "");
   ok("nothing is fetched from anywhere",
-     !/https?:\/\/|\bfetch\(|XMLHttpRequest|<link\b/i.test(HTML));
+     !/https?:\/\/|\bfetch\(|XMLHttpRequest|<link\b/i.test(outside));
   const srcs = [...HTML.matchAll(/\bsrc\s*=\s*"([^"]+)"/g)].map(m => m[1])
     .concat([...HTML.matchAll(/latin_america_\w+\.png/g)].map(m => m[0]));
   ok("the only files it asks for are the two maps beside it",

@@ -273,6 +273,10 @@ function boot(extra, exact) {
                        style: { setProperty() {} }, clientWidth: 400 },
     body, head: Node("head", {}),
     createElement: t => Node(t, {}),
+    /* SVG is made this way. The shim keeps no namespaces, so the element is
+       the same kind of node as any other — which is all a page that builds an
+       overlay out of svg/path/text needs it to be. */
+    createElementNS: (ns, t) => Node(t, {}),
     getElementById: id => byId(body, id),
     querySelector(s) { return find(body, s)[0] || null; },
     querySelectorAll(s) { return find(body, s); },
