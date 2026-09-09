@@ -1,0 +1,126 @@
+{
+ "book": "Wordly Wise 3000, Book 6",
+ "lesson": "Word List 3",
+ "cite": "Wordly Wise 3000, Book 6, Word List 3",
+
+ "bank": ["abundant","abundance","arid","distinct","graze","hectic","horde","humid",
+          "humidity","incredible","inhabit","inhabitant","peninsula","rural","sanctuary",
+          "splendor","splendid","squalor","squalid","terrain"],
+
+ "headwords": ["abundant","arid","distinct","graze","hectic","horde","humid","incredible",
+               "inhabit","peninsula","rural","sanctuary","splendor","squalor","terrain"],
+
+ "senses": [
+  { "w":"abundant", "head":"abundant", "first":true, "pos":"adj.",
+    "def":"More than enough; plentiful.",
+    "sent":"After all that rain the blackberries were so ____ that we could not pick them fast enough.",
+    "ant":["scarce","gentle","hollow","sudden"], "antA":0 },
+  { "w":"abundance", "head":"abundant", "pos":"n.",
+    "def":"A great amount.",
+    "sent":"The river gave the village an ____ of fish, far more than anyone could eat.",
+    "ant":["scarcity","distance","weakness","silence"], "antA":0 },
+
+  { "w":"arid", "head":"arid", "first":true, "pos":"adj.",
+    "def":"Having little or no rainfall; very dry.",
+    "sent":"Nothing much grows in that ____ stretch of ground where it has not rained for a year.",
+    "ant":["damp","steep","noisy","narrow"], "antA":0 },
+
+  { "w":"distinct", "head":"distinct", "first":true, "pos":"adj.",
+    "def":"Not the same; different or separate.",
+    "sent":"The two brothers had quite ____ handwriting, so we always knew who had written the note.",
+    "ant":["identical","distant","gentle","curious"], "antA":0 },
+  { "w":"distinct", "head":"distinct", "pos":"adj.", "s":1,
+    "def":"Unmistakable; definite.",
+    "sent":"There was a ____ smell of woodsmoke long before we could see the fire." },
+
+  { "w":"graze", "head":"graze", "first":true, "pos":"v.",
+    "def":"To feed on growing grass.",
+    "sent":"The sheep were left to ____ on the hillside all through the summer." },
+  { "w":"graze", "head":"graze", "pos":"v.", "s":1,
+    "def":"To touch lightly in passing.",
+    "sent":"The ball did no more than ____ his shoulder on its way past." },
+
+  { "w":"hectic", "head":"hectic", "first":true, "pos":"adj.",
+    "def":"Full of feverish activity, haste, or confusion.",
+    "sent":"The morning of the school play was so ____ that nobody remembered to eat breakfast.",
+    "ant":["calm","crowded","costly","sudden"], "antA":0 },
+
+  { "w":"horde", "head":"horde", "first":true, "pos":"n.",
+    "def":"A large group or crowd, especially one on the move.",
+    "sent":"A ____ of gulls came down on the beach the moment the chips were unwrapped." },
+
+  { "w":"humid", "head":"humid", "first":true, "pos":"adj.",
+    "def":"Having a large amount of water or moisture in the air.",
+    "sent":"The air was so ____ that our shirts were damp before we had walked a mile.",
+    "ant":["dry","dark","rough","heavy"], "antA":0 },
+  { "w":"humidity", "head":"humid", "pos":"n.",
+    "def":"The amount of moisture in the air.",
+    "sent":"The ____ climbs every afternoon until the storm finally breaks." },
+
+  { "w":"incredible", "head":"incredible", "first":true, "pos":"adj.",
+    "def":"Hard or impossible to believe.",
+    "sent":"He told an ____ story about a fish that had pulled him clean out of the boat.",
+    "ant":["believable","enormous","ancient","cheerful"], "antA":0 },
+
+  { "w":"inhabit", "head":"inhabit", "first":true, "pos":"v.",
+    "def":"To live in or on.",
+    "sent":"Only lichens and a few hardy birds ____ the top of that mountain." },
+  { "w":"inhabitant", "head":"inhabit", "pos":"n.",
+    "def":"A person or animal that lives in a certain place.",
+    "sent":"Every ____ of the island knew the lighthouse keeper by name." },
+
+  { "w":"peninsula", "head":"peninsula", "first":true, "pos":"n.",
+    "def":"A piece of land, connected to a larger land mass, that juts out and is almost completely surrounded by water.",
+    "sent":"The road runs the length of the ____ with the sea on both sides of it." },
+
+  { "w":"rural", "head":"rural", "first":true, "pos":"adj.",
+    "def":"Of or relating to the country and the people who live there.",
+    "sent":"After years in the city they moved to a ____ village with one shop and no traffic lights.",
+    "ant":["urban","distant","peaceful","modern"], "antA":0 },
+
+  { "w":"sanctuary", "head":"sanctuary", "first":true, "pos":"n.",
+    "def":"A place of safety or shelter.",
+    "sent":"The old barn was a ____ for anyone caught out in the storm." },
+  { "w":"sanctuary", "head":"sanctuary", "pos":"n.", "s":1,
+    "def":"Protection offered by such a place.",
+    "sent":"The birds are given ____ on the marshes and nobody may hunt them there." },
+
+  { "w":"splendor", "head":"splendor", "first":true, "pos":"n.",
+    "def":"Magnificence; brilliance of appearance.",
+    "sent":"We stood in the doorway staring at the ____ of the great hall." },
+  { "w":"splendid", "head":"splendor", "pos":"adj.",
+    "def":"Very impressive; magnificent.",
+    "sent":"She wore a ____ blue coat that everyone in the room turned to look at.",
+    "ant":["shabby","enormous","ancient","quiet"], "antA":0 },
+
+  { "w":"squalor", "head":"squalor", "first":true, "pos":"n.",
+    "def":"Filth; misery.",
+    "sent":"The photographs showed the ____ the families had been left to live in." },
+  { "w":"squalid", "head":"squalor", "pos":"adj.",
+    "def":"Dirty and unfit for living, especially as a result of neglect.",
+    "sent":"Nobody had cleaned the shed in years and it was in a ____ state.",
+    "ant":["spotless","enormous","ancient","narrow"], "antA":0 },
+
+  { "w":"terrain", "head":"terrain", "first":true, "pos":"n.",
+    "def":"An area of land; a region.",
+    "sent":"The guide knew every path across that ____ and never once looked at a map." },
+  { "w":"terrain", "head":"terrain", "pos":"n.", "s":1,
+    "def":"The surface features of a region.",
+    "sent":"The rocky ____ made the last mile of the climb far harder than the first." }
+ ],
+
+ "rounds": [
+  { "id":"r1", "name":"Land and weather",
+    "blurb":"Six words for what the ground and the air are like.",
+    "words":["arid","humid","humidity","peninsula","rural","terrain"] },
+  { "id":"r2", "name":"Living somewhere",
+    "blurb":"Who is there, and whether the place will keep them safe.",
+    "words":["horde","inhabit","inhabitant","sanctuary"] },
+  { "id":"r3", "name":"Grand or grim",
+    "blurb":"Two roots, two forms each, and they are opposites. Read all four together.",
+    "words":["splendor","splendid","squalor","squalid"] },
+  { "id":"r4", "name":"How much, and how sure",
+    "blurb":"Plenty, hurry, and the two words here that do two jobs apiece.",
+    "words":["abundant","abundance","distinct","graze","hectic","incredible"] }
+ ]
+}

@@ -17,6 +17,9 @@ import io, json, os, pathlib, random, re, sys
 ROOT = r"C:\Users\kl\projects\study"
 SCRATCH = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(ROOT, "_build"))
+# build_theme reads sys.argv at import time for its own flags, so ours are put
+# aside first and put back after. Doing it the other way round threw them away.
+MINE = sys.argv[1:]
 sys.argv = ["x"]
 import build_theme as B
 
@@ -91,16 +94,22 @@ def balance(opts, ai):
 
 
 def main():
-    src = io.open(os.path.join(ROOT, "vocabulary", "ww6-lesson1-test", "index.html"),
+    """usage: gen_vocab.py <spec.json> <out-dir> [shell-dir]"""
+    if len(MINE) < 2:
+        raise SystemExit("usage: gen_vocab.py <spec.json> <out-dir> [shell-dir]")
+    spec_name, out_dir = MINE[0], MINE[1]
+    shell_dir = MINE[2] if len(MINE) > 2 else "ww6-lesson2-test"
+
+    src = io.open(os.path.join(ROOT, "vocabulary", shell_dir, "index.html"),
                   encoding="utf-8").read()
     shell = B.strip_theme(src)
     if shell is None:
-        raise SystemExit("could not strip the theme off the List 1 test")
+        raise SystemExit("could not strip the theme off %s" % shell_dir)
 
-    spec = json.load(io.open(os.path.join(SCRATCH, "ww6_l2.json"), encoding="utf-8"))
+    spec = json.load(io.open(os.path.join(SCRATCH, spec_name), encoding="utf-8"))
     senses = spec["senses"]
     CITE = spec["cite"]
-    WRITTEN = "Written for this test; the meaning it turns on is the book\u2019s."
+    WRITTEN = "Written for this practice; the meaning it turns on is the book\u2019s."
 
     all_defs = [s["def"] for s in senses]
     all_words = sorted(set(s["w"] for s in senses))
@@ -239,9 +248,24 @@ def main():
     b, e = data_span(shell)
     out = shell[:b] + json.dumps(data, ensure_ascii=False, indent=1) + shell[e:]
     out = re.sub(r"<title>.*?</title>",
-                 "<title>Word List 2 \u2014 Tests</title>", out, count=1)
+                 "<title>%s \u2014 Practice</title>" % spec["lesson"], out, count=1)
 
-    d = os.path.join(ROOT, "vocabulary", "ww6-lesson2-test")
+    # The eyebrow, the heading and the footer are markup, not data, so a list
+    # built from another one keeps that one's name until it is told otherwise.
+    # List 3 came out of this calling itself List 2 in all three \u2014 which are
+    # exactly the three places a child actually reads.
+    L = spec["lesson"]
+    for rx, rep, why in (
+        (r'<p class="eyebrow">[^<]*</p>',
+         '<p class="eyebrow">Wordly Wise 3000 &middot; Book 6 &middot; %s</p>' % L, "eyebrow"),
+        (r"<h1>.*?</h1>", "<h1>%s &mdash; <em>Practice Tests</em></h1>" % L, "heading"),
+        (r"Book 6, Word List \d+, ", "Book 6, %s, " % L, "footer"),
+    ):
+        out, n = re.subn(rx, rep, out, count=1, flags=re.S)
+        if not n:
+            raise SystemExit("the %s is not where it was" % why)
+
+    d = os.path.join(ROOT, "vocabulary", out_dir)
     os.makedirs(d, exist_ok=True)
     io.open(os.path.join(d, "index.html"), "w", encoding="utf-8", newline="\r\n").write(out)
     print("  senses %d   pool %d" % (len(senses), len(pool)))

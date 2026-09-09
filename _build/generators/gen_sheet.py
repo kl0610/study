@@ -12,6 +12,9 @@ import io, json, os, re, sys
 ROOT = r"C:\Users\kl\projects\study"
 SCRATCH = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(ROOT, "_build"))
+# build_theme reads sys.argv at import time for its own flags, so ours are put
+# aside first and put back after. Doing it the other way round threw them away.
+MINE = sys.argv[1:]
 sys.argv = ["x"]
 import build_theme as B
 
@@ -30,27 +33,27 @@ def data_span(html):
     raise SystemExit("unbalanced DATA")
 
 
-ROUNDS = [
-    ("r1", "One meaning each", "Seven words that mean exactly one thing.",
-     ["ceremony", "detain", "vacate", "arrogant", "degrade", "integrate", "segregate"]),
-    ("r2", "Word families", "The same root doing a different job in the sentence.",
-     ["arrogance", "degrading", "integration", "segregation", "triumphant", "violation"]),
-    ("r3", "Words that do two jobs", "Five words, two meanings each. Read both before you match.",
-     ["boycott", "custody", "supreme", "verdict", "violate"]),
-    ("r4", "The tricky ones", "Three words carrying three and four meanings between them.",
-     ["campaign", "triumph", "extend"]),
-]
+# The rounds come from the week's spec now. They were a constant here, naming
+# List 2's words, which meant a new list could not be built without editing this
+# file — and a round naming a word that is not on the list is caught below.
 
 
 def main():
-    src = io.open(os.path.join(ROOT, "vocabulary", "ww6-lesson1", "index.html"),
+    """usage: gen_sheet.py <spec.json> <out-dir> [shell-dir]"""
+    if len(MINE) < 2:
+        raise SystemExit("usage: gen_sheet.py <spec.json> <out-dir> [shell-dir]")
+    spec_name, out_dir = MINE[0], MINE[1]
+    shell_dir = MINE[2] if len(MINE) > 2 else "ww6-lesson2"
+
+    src = io.open(os.path.join(ROOT, "vocabulary", shell_dir, "index.html"),
                   encoding="utf-8").read()
     shell = B.strip_theme(src)
     if shell is None:
-        raise SystemExit("could not strip the theme off the List 1 sheet")
+        raise SystemExit("could not strip the theme off %s" % shell_dir)
 
-    spec = json.load(io.open(os.path.join(SCRATCH, "ww6_l2.json"), encoding="utf-8"))
+    spec = json.load(io.open(os.path.join(SCRATCH, spec_name), encoding="utf-8"))
     senses = spec["senses"]
+    ROUNDS = [(r["id"], r["name"], r["blurb"], r["words"]) for r in spec["rounds"]]
 
     by_word = {}
     order = []
@@ -86,9 +89,24 @@ def main():
     b, e = data_span(shell)
     out = shell[:b] + json.dumps(data, ensure_ascii=False, indent=1) + shell[e:]
     out = re.sub(r"<title>.*?</title>",
-                 "<title>Word List 2 \u2014 all the meanings</title>", out, count=1)
+                 "<title>%s \u2014 all the meanings</title>" % spec["lesson"], out, count=1)
 
-    d = os.path.join(ROOT, "vocabulary", "ww6-lesson2")
+    # Same reason as the test app: the sheet's headings are markup, and would
+    # otherwise go on naming the list it was built from. Both of them — List 2's
+    # sheet has carried "Word List 1" in its title since the day it shipped,
+    # because only the smaller heading was ever being substituted.
+    out, n = re.subn(r"<h3>Word List \d+</h3>", "<h3>%s</h3>" % spec["lesson"], out, count=1)
+    if not n:
+        raise SystemExit("the sheet's heading is not where it was")
+
+    m = re.search(r"(\d+)", spec["lesson"])
+    h1 = ("<h1>Word <em>List %s</em></h1>" % m.group(1) if m
+          else "<h1><em>%s</em></h1>" % spec["lesson"])
+    out, n = re.subn(r"<h1>.*?</h1>", h1, out, count=1, flags=re.S)
+    if not n:
+        raise SystemExit("the sheet's title is not where it was")
+
+    d = os.path.join(ROOT, "vocabulary", out_dir)
     os.makedirs(d, exist_ok=True)
     io.open(os.path.join(d, "index.html"), "w", encoding="utf-8", newline="\r\n").write(out)
     print("  %d word forms, %d meanings" % (len(lst), total))

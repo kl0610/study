@@ -144,6 +144,24 @@ for (const t of TESTS) {
      !stale.length, stale.length + " mentions of another list");
 }
 
+/* The same check, over the study sheets as well as the tests. Every list is
+   built from the last one's shell, so a heading that is markup rather than
+   data goes on naming the list it was cloned from — and List 2's sheet said
+   "Word List 1" in its title from the day it shipped. Nothing here could see
+   it, because this suite only ever read the -test folders. */
+group("no sheet carries another list's name");
+fs.readdirSync(path.join(ROOT, "vocabulary"))
+  .filter(d => !d.endsWith("-test"))
+  .forEach(dir => {
+    const want = (dir.match(/lesson(\d+)/) || [])[1];
+    if (!want) return;
+    const html = fs.readFileSync(path.join(ROOT, "vocabulary", dir, "index.html"), "utf8");
+    const body = html.replace(/\/\*[\s\S]*?\*\//g, "");     // not developer comments
+    const stale = [...body.matchAll(/List\s*(\d+)/g)].filter(m => m[1] !== want);
+    ok(dir + " names only itself", !stale.length,
+       stale.map(m => m[0]).slice(0, 4).join(" | "));
+  });
+
 console.log("");
 if (fails.length) {
   console.log(fails.length + " FAILED:");

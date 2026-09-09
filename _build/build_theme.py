@@ -189,6 +189,17 @@ def inca7(s):
     return Patcher(s, "inca7")
 
 
+def vocab3(s):
+    """Word List 3's sheet — generated from List 2's, so its call sites came
+    across already patched. Config only."""
+    return Patcher(s, "vocabulary3")
+
+
+def vtest3(s):
+    """Word List 3's tests. Config only, same as List 2's."""
+    return Patcher(s, "vocabtest3")
+
+
 def hist4(s):
     """CKHG Chapter 4 — generated from Ch3's shell, so its call sites came
     across already patched. Config only, like hist2/hist3."""
@@ -345,6 +356,12 @@ APPS = {
                                            dragon=["m1"])),
     "science/g5-matter-ch4":  (sci4,  dict(app="science4",   shake="#card",   lift=None,
                                            dragon=["m1"])),
+    # A new list every week or two, same two apps each time: the sheet to study
+    # from, and the five forms to test with. The dragon sits on the final.
+    "vocabulary/ww6-lesson3":      (vocab3, dict(app="vocabulary3", shake="#sheet",
+                                           lift=".bar", dragon=["sheet"])),
+    "vocabulary/ww6-lesson3-test": (vtest3, dict(app="vocabtest3", shake=None, lift=None,
+                                           dragon=["final"], hud=False)),
     # Recitation. Five levels over one poem, each giving a little less away;
     # l5 is saying it with nothing on the screen, so that is where the dragon
     # sits — the same place it sits on spelling's ladder.
