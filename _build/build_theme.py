@@ -158,6 +158,12 @@ def sci6(s):
     return Patcher(s, "science6")
 
 
+def recite2(s):
+    """The Eagle — the second poem, built from the first one's shell with its own
+    pictures. Config only, like every generated app."""
+    return Patcher(s, "recite2")
+
+
 def recite1(s):
     """A poem learnt a piece at a time. Written already calling the engine, so
     like every generated chapter this is config only."""
@@ -362,6 +368,8 @@ APPS = {
                                            lift=".bar", dragon=["sheet"])),
     "vocabulary/ww6-lesson3-test": (vtest3, dict(app="vocabtest3", shake=None, lift=None,
                                            dragon=["final"], hud=False)),
+    "recitation/the-eagle":   (recite2, dict(app="recite2",     shake="#card",   lift=None,
+                                           dragon=["l5"], subject="Recitation")),
     # Recitation. Five levels over one poem, each giving a little less away;
     # l5 is saying it with nothing on the screen, so that is where the dragon
     # sits — the same place it sits on spelling's ladder.

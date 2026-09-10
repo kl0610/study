@@ -61,8 +61,8 @@ def check(spec, art):
         if not ln.get("art"):
             bad.append("line %d has no picture" % i)
         elif ln["art"] not in art:
-            bad.append("line %d wants a picture called %r, which is not drawn "
-                       "in the shell" % (i, ln["art"]))
+            bad.append("line %d wants a picture called %r, which nothing has "
+                       "drawn" % (i, ln["art"]))
         # A line whose words are all punctuation cannot be typed back.
         if not re.search(r"[A-Za-z0-9]", ln.get("t", "")):
             bad.append("line %d has nothing to type" % i)
@@ -95,11 +95,24 @@ def main():
         raise SystemExit("could not strip the theme off the shell")
 
     ab, ae = span(shell, "ART")
-    art = set(re.findall(r"^(\w+):\s*`<svg", shell[ab:ae], re.M))
+    db, de = span(shell, "DATA")
+
+    # A poem brings its own pictures. The shell's are the last poem's and mean
+    # nothing here — an eagle on a crag is not an owl in an oak — so a spec that
+    # carries an `art` block replaces them outright, and it is that block the
+    # lines are checked against. A spec without one keeps the shell's, which is
+    # what a second poem about the same things would want.
+    own = spec.pop("art", None)
+    art = set(own) if own else set(re.findall(r"^(\w+):\s*`<svg", shell[ab:ae], re.M))
     check(spec, art)
 
-    db, de = span(shell, "DATA")
+    # DATA sits after ART in the file, so it is replaced first and the ART
+    # offsets stay where they were.
     out = shell[:db] + json.dumps(spec, ensure_ascii=False, indent=1) + shell[de:]
+    if own:
+        drawn = "{\n\n" + "\n\n".join(
+            "%s: `%s`," % (k, own[k].strip()) for k in own) + "\n\n}"
+        out = out[:ab] + drawn + out[ae:]
 
     out = re.sub(r"<title>.*?</title>",
                  "<title>%s &mdash; Recitation</title>" % spec["plain"], out, count=1)
@@ -110,7 +123,11 @@ def main():
             newline="\r\n").write(out)
 
     print("  recitation/%s  %d lines  %.1f KB" % (out_dir, len(spec["lines"]), len(out) / 1024))
-    print("    pictures available in the shell: %s" % ", ".join(sorted(art)))
+    print("    pictures %s: %s"
+          % ("drawn for this poem" if own else "kept from the shell", ", ".join(sorted(art))))
+    unused = sorted(art - {ln["art"] for ln in spec["lines"]})
+    if unused:
+        print("    note: nothing uses %s" % ", ".join(unused))
     print("    next: add it to APPS in build_theme.py and to the hub, then rebuild")
 
 

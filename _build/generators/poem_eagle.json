@@ -1,0 +1,49 @@
+{
+ "title": "The <em>Eagle</em>",
+ "plain": "The Eagle",
+ "eyebrow": "Recitation · Poem of the fortnight",
+ "sub": "Six lines, and every one of them a picture. Each level gives you a little less, so by the last one you are saying it on your own.",
+ "source": "Alfred, Lord Tennyson, 1851. Out of copyright.",
+
+ "lines": [
+  {"t": "He clasps the crag with crooked hands;",  "art": "clasp"},
+  {"t": "Close to the sun in lonely lands,",       "art": "sun"},
+  {"t": "Ring’d with the azure world, he stands.", "art": "azure", "gap": true},
+  {"t": "The wrinkled sea beneath him crawls;",    "art": "sea"},
+  {"t": "He watches from his mountain walls,",     "art": "watch"},
+  {"t": "And like a thunderbolt he falls.",        "art": "fall"}
+ ],
+
+ "levels": [
+  {"id": "l1", "mode": "last",  "name": "Last words",
+   "tag": "One blank at the end of each line",
+   "blurb": "The whole poem is in front of you. Only the last word of each line is missing — and hands, lands and stands all rhyme, which helps."},
+  {"id": "l2", "mode": "first", "name": "First words",
+   "tag": "One blank at the start of each line",
+   "blurb": "Now the first word of each line is gone. Starting a line is the bit people get stuck on when they stand up to recite."},
+  {"id": "l3", "mode": "half",  "name": "Half gone",
+   "tag": "Every other word missing",
+   "blurb": "About half the words are away now, spread through the poem. The shape of it is still there to lean on."},
+  {"id": "l4", "mode": "line",  "name": "Line by line",
+   "tag": "Type a whole line",
+   "blurb": "One whole line at a time, with the rest of the poem still on the page around it."},
+  {"id": "l5", "mode": "heart", "name": "By heart", "boss": true,
+   "tag": "Nothing but the picture",
+   "blurb": "No words on the screen at all. A picture for each line, and you say it from memory."}
+ ],
+
+ "art": {
+
+  "clasp": "<svg viewBox=\"0 0 200 140\" role=\"img\" aria-label=\"Talons gripping a rock\">\n  <path d=\"M0 138 L28 96 L64 112 L96 74 L138 104 L172 68 L200 92 L200 140 L0 140 Z\" fill=\"#8A7E6E\"/>\n  <path d=\"M96 74 L138 104 L172 68 L200 92 L200 140 L120 140 Z\" fill=\"#6E6355\"/>\n  <ellipse cx=\"100\" cy=\"52\" rx=\"34\" ry=\"30\" fill=\"#6B4A2E\"/>\n  <path d=\"M74 44 q-16 -8 -22 -22 q18 4 26 14 Z\" fill=\"#54381F\"/>\n  <circle cx=\"116\" cy=\"44\" r=\"9\" fill=\"#FFF8EC\"/>\n  <circle cx=\"118\" cy=\"44\" r=\"4.5\" fill=\"#2C2118\"/>\n  <path d=\"M128 46 L146 52 L128 58 Z\" fill=\"#E0A22C\"/>\n  <g stroke=\"#E0A22C\" stroke-width=\"6\" stroke-linecap=\"round\" fill=\"none\">\n    <path d=\"M86 80 q-6 16 -20 20\"/><path d=\"M100 82 q0 18 -4 24\"/><path d=\"M114 80 q6 16 18 20\"/>\n  </g>\n  <g stroke=\"#B07C1E\" stroke-width=\"3.5\" stroke-linecap=\"round\" fill=\"none\">\n    <path d=\"M66 100 q-6 6 -4 12\"/><path d=\"M96 106 q-2 6 2 10\"/><path d=\"M132 100 q6 6 4 12\"/>\n  </g>\n</svg>",
+
+  "sun": "<svg viewBox=\"0 0 200 140\" role=\"img\" aria-label=\"The sun over empty land\">\n  <rect x=\"0\" y=\"0\" width=\"200\" height=\"140\" fill=\"#F6EBD6\"/>\n  <circle cx=\"128\" cy=\"44\" r=\"26\" fill=\"#F0C34A\"/>\n  <g stroke=\"#E8B032\" stroke-width=\"4\" stroke-linecap=\"round\">\n    <path d=\"M128 6 v-4\"/><path d=\"M128 86 v4\"/><path d=\"M90 44 h-6\"/><path d=\"M172 44 h6\"/>\n    <path d=\"M101 17 l-4 -4\"/><path d=\"M155 71 l4 4\"/><path d=\"M155 17 l4 -4\"/><path d=\"M101 71 l-4 4\"/>\n  </g>\n  <path d=\"M0 118 L38 96 L74 114 L108 90 L150 116 L200 94 L200 140 L0 140 Z\" fill=\"#B9A88C\"/>\n  <path d=\"M0 132 L54 116 L110 130 L200 112 L200 140 L0 140 Z\" fill=\"#9A8A70\"/>\n  <g fill=\"#4A3A28\">\n    <path d=\"M40 74 q6 -5 12 0 q-6 -2 -12 0 Z\"/>\n    <path d=\"M58 64 q5 -4 10 0 q-5 -2 -10 0 Z\"/>\n  </g>\n</svg>",
+
+  "azure": "<svg viewBox=\"0 0 200 140\" role=\"img\" aria-label=\"An eagle ringed by blue sky\">\n  <rect x=\"0\" y=\"0\" width=\"200\" height=\"140\" fill=\"#BFE0F2\"/>\n  <circle cx=\"100\" cy=\"70\" r=\"58\" fill=\"none\" stroke=\"#7FC0E6\" stroke-width=\"5\"/>\n  <circle cx=\"100\" cy=\"70\" r=\"44\" fill=\"none\" stroke=\"#9BCFEC\" stroke-width=\"4\"/>\n  <path d=\"M56 126 h88 l-10 -14 h-68 Z\" fill=\"#8A7E6E\"/>\n  <ellipse cx=\"100\" cy=\"84\" rx=\"20\" ry=\"28\" fill=\"#6B4A2E\"/>\n  <path d=\"M84 66 q16 -14 32 0 q-8 -6 -16 -6 t-16 6 Z\" fill=\"#FBF6EC\"/>\n  <circle cx=\"100\" cy=\"54\" r=\"15\" fill=\"#FBF6EC\"/>\n  <circle cx=\"106\" cy=\"51\" r=\"4\" fill=\"#2C2118\"/>\n  <path d=\"M113 55 L128 60 L113 65 Z\" fill=\"#E0A22C\"/>\n  <path d=\"M80 84 q-14 10 -16 26 q14 -10 20 -20 Z\" fill=\"#54381F\"/>\n  <path d=\"M120 84 q14 10 16 26 q-14 -10 -20 -20 Z\" fill=\"#54381F\"/>\n  <g stroke=\"#E0A22C\" stroke-width=\"4\" stroke-linecap=\"round\"><path d=\"M94 110 v6\"/><path d=\"M106 110 v6\"/></g>\n</svg>",
+
+  "sea": "<svg viewBox=\"0 0 200 140\" role=\"img\" aria-label=\"The wrinkled sea far below\">\n  <rect x=\"0\" y=\"0\" width=\"200\" height=\"140\" fill=\"#CFE6F4\"/>\n  <rect x=\"0\" y=\"46\" width=\"200\" height=\"94\" fill=\"#4E8FBF\"/>\n  <g stroke=\"#7FB4D8\" stroke-width=\"3\" fill=\"none\" stroke-linecap=\"round\">\n    <path d=\"M6 62 q10 -6 20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0\"/>\n    <path d=\"M0 78 q10 -6 20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0\"/>\n    <path d=\"M6 94 q10 -6 20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0\"/>\n    <path d=\"M0 110 q10 -6 20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0\"/>\n    <path d=\"M6 126 q10 -6 20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0\"/>\n  </g>\n  <path d=\"M0 0 L0 46 L46 46 L30 22 Z\" fill=\"#6E6355\"/>\n  <path d=\"M0 0 L0 46 L24 46 L14 18 Z\" fill=\"#8A7E6E\"/>\n</svg>",
+
+  "watch": "<svg viewBox=\"0 0 200 140\" role=\"img\" aria-label=\"An eagle watching from a cliff\">\n  <rect x=\"0\" y=\"0\" width=\"200\" height=\"140\" fill=\"#DCEAF4\"/>\n  <path d=\"M0 0 L0 140 L58 140 L74 96 L52 52 L64 0 Z\" fill=\"#8A7E6E\"/>\n  <path d=\"M0 0 L0 140 L30 140 L40 92 L24 46 L34 0 Z\" fill=\"#6E6355\"/>\n  <ellipse cx=\"128\" cy=\"70\" rx=\"36\" ry=\"32\" fill=\"#6B4A2E\"/>\n  <path d=\"M100 56 q28 -22 56 0 q-14 -10 -28 -10 t-28 10 Z\" fill=\"#FBF6EC\"/>\n  <circle cx=\"120\" cy=\"58\" r=\"20\" fill=\"#FBF6EC\"/>\n  <circle cx=\"126\" cy=\"58\" r=\"8\" fill=\"#E0A22C\"/>\n  <circle cx=\"127\" cy=\"58\" r=\"4\" fill=\"#2C2118\"/>\n  <path d=\"M104 50 q12 -8 26 -4\" stroke=\"#54381F\" stroke-width=\"5\" fill=\"none\" stroke-linecap=\"round\"/>\n  <path d=\"M140 62 L166 70 L140 78 Z\" fill=\"#E0A22C\"/>\n  <path d=\"M108 94 q20 12 42 4\" stroke=\"#54381F\" stroke-width=\"4\" fill=\"none\" stroke-linecap=\"round\"/>\n</svg>",
+
+  "fall": "<svg viewBox=\"0 0 200 140\" role=\"img\" aria-label=\"An eagle falling like a thunderbolt\">\n  <rect x=\"0\" y=\"0\" width=\"200\" height=\"140\" fill=\"#B9D8ED\"/>\n  <path d=\"M52 6 L86 6 L70 48 L94 44 L54 118 L64 66 L40 70 Z\" fill=\"#F2C63C\" stroke=\"#D9A21B\" stroke-width=\"3\" stroke-linejoin=\"round\"/>\n  <g transform=\"translate(126 74) rotate(28)\">\n    <ellipse cx=\"0\" cy=\"0\" rx=\"14\" ry=\"32\" fill=\"#6B4A2E\"/>\n    <path d=\"M-10 -18 q-34 -6 -50 14 q30 2 48 10 Z\" fill=\"#54381F\"/>\n    <path d=\"M10 -18 q34 -6 50 14 q-30 2 -48 10 Z\" fill=\"#54381F\"/>\n    <circle cx=\"0\" cy=\"-32\" r=\"12\" fill=\"#FBF6EC\"/>\n    <circle cx=\"4\" cy=\"-35\" r=\"3.5\" fill=\"#2C2118\"/>\n    <path d=\"M0 -44 L10 -50 L2 -38 Z\" fill=\"#E0A22C\"/>\n    <path d=\"M0 30 L8 46 L-8 46 Z\" fill=\"#54381F\"/>\n  </g>\n  <g stroke=\"#FFFFFF\" stroke-width=\"3\" stroke-linecap=\"round\" opacity=\".75\">\n    <path d=\"M150 26 v16\"/><path d=\"M168 40 v14\"/><path d=\"M184 22 v12\"/>\n  </g>\n</svg>"
+ }
+}
