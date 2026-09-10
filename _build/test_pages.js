@@ -221,6 +221,31 @@ group("the footer every borrowed page owes");
      missing.map(f => f.rel).join(", "));
 }
 
+/* Every option gets a letter in the little circle beside it. KEYS held six, A
+   to F, so a select-all with a seventh option asked for KEYS[6], got undefined,
+   and printed that word where the letter should be. Six questions across the
+   site were doing it, one of them in science chapter 5. */
+group("no question has more options than there are letters for them");
+{
+  const short = [];
+  FILES.forEach(f => {
+    const keys = f.html.match(/const KEYS = ([^;]+);/);
+    const data = f.html.match(/const DATA = (\{[\s\S]*?\});\r?\n/);
+    if (!keys || !data) return;
+    const n = /split\(""\)/.test(keys[1])
+      ? (keys[1].match(/"([A-Z]+)"/) || ["", ""])[1].length
+      : (keys[1].match(/"/g) || []).length / 2;
+    let most = 0;
+    (JSON.parse(data[1]).missions || []).forEach(m =>
+      (m.items || []).forEach(it => {
+        if (it.opts) most = Math.max(most, it.opts.length);
+      }));
+    if (most > n) short.push(f.rel + ": " + most + " options, " + n + " letters");
+  });
+  ok("every app has a letter for every option it offers", !short.length,
+     short.join(" | "));
+}
+
 console.log("");
 if (fails.length) {
   console.log(fails.length + " FAILED:");

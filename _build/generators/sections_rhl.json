@@ -52,10 +52,11 @@
     "hi":"Your right hand is larger than your left. You have worked with it, and the muscles are more developed.",
     "cite":"Reader, page 48" },
 
-  { "type":"selectall", "p":"deduce",
-    "q":"Which of these does Holmes work out about Wilson just by looking at him? Select every correct answer.",
-    "opts":[["That he has done manual labor",1],["That he takes snuff",1],["That he is a Freemason",1],["That he has been in China",1],["That he has done a lot of writing lately",1],["That he keeps a pawnbroker’s shop",0],["That he is a widower",0]],
-    "why":"Holmes lists five things and stops there. The shop and the fact that Wilson is a widower are things Wilson tells them later — they are not on his cuffs or his wrists, so Holmes cannot read them.",
+  { "type":"pick", "p":"deduce",
+    "q":"Holmes lists what he can tell about Wilson just by looking at him. Which one is NOT on his list?",
+    "opts":["That he keeps a pawnbroker’s shop","That he has done manual labor","That he is a Freemason","That he has been in China"],
+    "a":0,
+    "why":"Holmes names five things and stops: manual labor, snuff, Freemasonry, China, and a good deal of writing lately. The shop is not one of them — Wilson tells them that himself, a little later.",
     "hi":"Beyond the obvious facts that he has done manual labor, that he takes snuff, that he is a Freemason, that he has been in China, and that he has done a considerable amount of writing lately, I can deduce nothing else.",
     "cite":"Reader, page 47" },
 

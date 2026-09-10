@@ -2046,7 +2046,9 @@ DATA.vidFor = {
 
 
 const COLORS = ["#D07A45","#3FB4CE","#59B27C","#7C5BA6"];
-const KEYS = ["A","B","C","D","E","F"];
+/* A to Z. It stopped at F, so the seventh option on a select-all was
+   labelled "undefined" — six questions across the site were showing it. */
+const KEYS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 const $ = id => document.getElementById(id);
 const esc = s => String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
 const shuffle = a => { a=a.slice(); for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]];} return a; };
