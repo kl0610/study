@@ -414,6 +414,27 @@ APPS = {
     "reading/sherlock-speckled-5":  (reads("reading5"),
                                      dict(app="reading5",  shake="#card", lift=None,
                                           dragon=["m1"])),
+    # The Red-Headed League, pages 45-86, cut into six. Same arrangement as
+    # the Speckled Band sections: one mission each, m1, which is also its
+    # last, so a flawless first run can summon the dragon in any of them.
+    "reading/sherlock-redheaded-1": (reads("redheaded1"),
+                                     dict(app="redheaded1", shake="#card", lift=None,
+                                          dragon=["m1"])),
+    "reading/sherlock-redheaded-2": (reads("redheaded2"),
+                                     dict(app="redheaded2", shake="#card", lift=None,
+                                          dragon=["m1"])),
+    "reading/sherlock-redheaded-3": (reads("redheaded3"),
+                                     dict(app="redheaded3", shake="#card", lift=None,
+                                          dragon=["m1"])),
+    "reading/sherlock-redheaded-4": (reads("redheaded4"),
+                                     dict(app="redheaded4", shake="#card", lift=None,
+                                          dragon=["m1"])),
+    "reading/sherlock-redheaded-5": (reads("redheaded5"),
+                                     dict(app="redheaded5", shake="#card", lift=None,
+                                          dragon=["m1"])),
+    "reading/sherlock-redheaded-6": (reads("redheaded6"),
+                                     dict(app="redheaded6", shake="#card", lift=None,
+                                          dragon=["m1"])),
 }
 
 # ---------------------------------------------------------------- machinery
