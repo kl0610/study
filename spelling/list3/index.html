@@ -1695,14 +1695,14 @@ window.__MC_SFX__={"tool": "data:audio/mpeg;base64,//OAxAAAAAAAAAAAAFhpbmcAAAAPA
 <div id="home" class="wrap">
   <a class="hublink" href="../../index.html">&lsaquo; All subjects</a>
   <header>
-    <div class="eyebrow" style="margin-top:14px">Spelling &middot; Week 2</div>
-    <h1>List <em>2</em></h1>
-    <div class="rule">Rule: <b>syllabication with double consonants</b> &mdash; ten of these twelve words hide a doubled letter.</div>
+    <div class="eyebrow" style="margin-top:14px">Spelling &middot; Week 3</div>
+    <h1>List <em>3</em></h1>
+    <div class="rule">Rule: <b>ie / ei</b> &mdash; ten of these fourteen words carry an ie or an ei — and the pair is not always where your ear puts it.</div>
   </header>
   <div class="grid" id="levels"></div>
-  <button class="listbtn" id="showlist">Study the twelve words first</button>
-  <button class="listbtn" id="chart1" style="margin-top:9px">See the doubled letters side by side</button>
-  <footer>Twelve words, three ways. Test Friday, Aug 28.</footer>
+  <button class="listbtn" id="showlist">Study the 14 words first</button>
+  <button class="listbtn" id="chart1" style="margin-top:9px">See the ie and ei words side by side</button>
+  <footer>14 words, three ways. Test Friday, Sep 4.</footer>
 </div>
 
 <div id="play" class="wrap hide">
@@ -1726,7 +1726,7 @@ window.__MC_SFX__={"tool": "data:audio/mpeg;base64,//OAxAAAAAAAAAAAAFhpbmcAAAAPA
     <button class="back" id="chback" aria-label="Back">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
     </button>
-    <div class="t"><strong>All twelve words</strong><span>Doubled letters in pink</span></div>
+    <div class="t"><strong>All 14 words</strong><span>The ie / ei pairs in pink</span></div>
   </div>
   <div id="chbody"></div>
 </div>
@@ -1749,8 +1749,8 @@ window.__MC_SFX__={"tool": "data:audio/mpeg;base64,//OAxAAAAAAAAAAAAFhpbmcAAAAPA
 <div class="scrim" id="scrim"></div>
 <div class="drawer" id="drawer" role="dialog" aria-modal="true" aria-label="Word list">
   <div class="dhead">
-    <div class="eyebrow">Spelling List 2</div>
-    <h3>All twelve words</h3>
+    <div class="eyebrow">Spelling List 3</div>
+    <h3>All 14 words</h3>
     <button class="x" id="dclose" aria-label="Close">
       <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
     </button>
@@ -1760,13 +1760,45 @@ window.__MC_SFX__={"tool": "data:audio/mpeg;base64,//OAxAAAAAAAAAAAAFhpbmcAAAAPA
 </div>
 
 <script>
-/* Spelling List 2 — Week 2, 8/24–8/28. Test Friday 8/28/26.
-   Rule: Syllabication with Double Consonants.
+/* Spelling List 3 — Week 3. Test Friday, Sep 4.
+   Rule: ie / ei.
    "___" in a sentence marks where the word belongs. */
 const DATA = {
  "title": "Spelling List 3",
+ "n": 3,
  "rule": "ie / ei",
- "week": "Week 3 · Test Friday, Sep 4",
+ "weekLabel": "Week 3",
+ "test": "Friday, Sep 4",
+ "root": {
+  "stem": "flam",
+  "means": "fire"
+ },
+ "tips": {
+  "listen": " Listen right through the middle — the ie or ei is the rule this week.",
+  "boxes": " Remember the rule — this word has an ie or an ei in it.",
+  "reveal": "The ie / ei pair is in pink. That is the part the test is looking for.",
+  "plain": "No ie or ei in this one — it is a root or teacher's-choice word."
+ },
+ "chart": [
+  {
+   "key": "ie",
+   "head": "Spelt i before e",
+   "dot": "two",
+   "note": "the i comes first."
+  },
+  {
+   "key": "ei",
+   "head": "Spelt e before i",
+   "dot": "one",
+   "note": "the e comes first — which is most of this week's list."
+  },
+  {
+   "key": "other",
+   "head": "Root and teacher's choice",
+   "dot": "none",
+   "note": "flam = fire, and two the teacher chose."
+  }
+ ],
  "words": [
   {
    "w": "unwieldy",
@@ -1777,7 +1809,12 @@ const DATA = {
    ],
    "pos": "adj",
    "def": "difficult to move because of its size or shape",
-   "sent": "The old couch was so ___ that it took four of us to get it up the stairs."
+   "sent": "The old couch was so ___ that it took four of us to get it up the stairs.",
+   "mark": [
+    3,
+    2
+   ],
+   "group": "ie"
   },
   {
    "w": "deceive",
@@ -1787,7 +1824,12 @@ const DATA = {
    ],
    "pos": "v",
    "def": "to make someone accept as true something that is false",
-   "sent": "He tried to ___ the class into thinking the test had been cancelled."
+   "sent": "He tried to ___ the class into thinking the test had been cancelled.",
+   "mark": [
+    3,
+    2
+   ],
+   "group": "ei"
   },
   {
    "w": "freight",
@@ -1796,7 +1838,12 @@ const DATA = {
    ],
    "pos": "n",
    "def": "goods carried in bulk by truck, train, ship, or aircraft",
-   "sent": "The ___ train was so long that we counted ninety cars."
+   "sent": "The ___ train was so long that we counted ninety cars.",
+   "mark": [
+    2,
+    2
+   ],
+   "group": "ei"
   },
   {
    "w": "beige",
@@ -1805,7 +1852,12 @@ const DATA = {
    ],
    "pos": "n",
    "def": "a pale sandy yellowish-brown colour",
-   "sent": "She painted the hallway a soft ___ so the room would feel bigger."
+   "sent": "She painted the hallway a soft ___ so the room would feel bigger.",
+   "mark": [
+    1,
+    2
+   ],
+   "group": "ei"
   },
   {
    "w": "seizure",
@@ -1815,7 +1867,12 @@ const DATA = {
    ],
    "pos": "n",
    "def": "a sudden attack of a physical or mental disorder",
-   "sent": "The nurse explained exactly what to do if someone has a ___."
+   "sent": "The nurse explained exactly what to do if someone has a ___.",
+   "mark": [
+    1,
+    2
+   ],
+   "group": "ei"
   },
   {
    "w": "neither",
@@ -1825,7 +1882,12 @@ const DATA = {
    ],
    "pos": "adv",
    "def": "not the one nor the other of two people or things",
-   "sent": "___ of the twins wanted to admit who had eaten the last slice."
+   "sent": "___ of the twins wanted to admit who had eaten the last slice.",
+   "mark": [
+    1,
+    2
+   ],
+   "group": "ei"
   },
   {
    "w": "kaleidoscope",
@@ -1837,7 +1899,12 @@ const DATA = {
    ],
    "pos": "n",
    "def": "a tube of mirrors and coloured glass that shows changing patterns when turned",
-   "sent": "Every twist of the ___ made a pattern nobody had ever seen before."
+   "sent": "Every twist of the ___ made a pattern nobody had ever seen before.",
+   "mark": [
+    3,
+    2
+   ],
+   "group": "ei"
   },
   {
    "w": "heist",
@@ -1846,7 +1913,12 @@ const DATA = {
    ],
    "pos": "n",
    "def": "a robbery",
-   "sent": "The film was about a ___ that went wrong in the first ten minutes."
+   "sent": "The film was about a ___ that went wrong in the first ten minutes.",
+   "mark": [
+    1,
+    2
+   ],
+   "group": "ei"
   },
   {
    "w": "forfeit",
@@ -1856,7 +1928,12 @@ const DATA = {
    ],
    "pos": "v",
    "def": "to lose something, or give it up, as a penalty for doing wrong",
-   "sent": "A team that arrives late has to ___ the match."
+   "sent": "A team that arrives late has to ___ the match.",
+   "mark": [
+    4,
+    2
+   ],
+   "group": "ei"
   },
   {
    "w": "counterfeit",
@@ -1867,7 +1944,12 @@ const DATA = {
    ],
    "pos": "adj",
    "def": "made in exact imitation of something valuable, meaning to deceive",
-   "sent": "The cashier held the note to the light to check it was not ___."
+   "sent": "The cashier held the note to the light to check it was not ___.",
+   "mark": [
+    8,
+    2
+   ],
+   "group": "ei"
   },
   {
    "w": "flammable",
@@ -1878,7 +1960,9 @@ const DATA = {
    ],
    "pos": "adj",
    "def": "easily set on fire",
-   "sent": "Keep the paint thinner outside — the label says it is highly ___."
+   "sent": "Keep the paint thinner outside — the label says it is highly ___.",
+   "group": "other",
+   "root": true
   },
   {
    "w": "flamboyant",
@@ -1889,7 +1973,9 @@ const DATA = {
    ],
    "pos": "adj",
    "def": "attracting attention by being bold, confident, and full of style",
-   "sent": "His ___ purple jacket could be spotted from the far end of the field."
+   "sent": "His ___ purple jacket could be spotted from the far end of the field.",
+   "group": "other",
+   "root": true
   },
   {
    "w": "pawnbroker",
@@ -1900,7 +1986,8 @@ const DATA = {
    ],
    "pos": "n",
    "def": "a person who lends money in exchange for an item left as security",
-   "sent": "The ___ kept the watch until the loan was paid back."
+   "sent": "The ___ kept the watch until the loan was paid back.",
+   "group": "other"
   },
   {
    "w": "formidable",
@@ -1912,13 +1999,10 @@ const DATA = {
    ],
    "pos": "adj",
    "def": "inspiring fear or respect by being large, powerful, or very capable",
-   "sent": "Their goalkeeper was a ___ opponent who had not let in a goal all season."
+   "sent": "Their goalkeeper was a ___ opponent who had not let in a goal all season.",
+   "group": "other"
   }
  ],
- "root": {
-  "stem": "flam",
-  "means": "fire"
- },
  "levels": [
   {
    "id": "l1",
@@ -1992,8 +2076,17 @@ const $=id=>document.getElementById(id);
 const esc=s=>String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
 const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]];}return a;};
 
-/* positions that are part of a doubled letter */
-function doubles(w){const s=new Set();for(let i=0;i<w.length-1;i++) if(w[i]===w[i+1]){s.add(i);s.add(i+1);}return s;}
+/* The letters this week's rule turns on, looked up by word. List 2's rule was
+   doubled consonants, which can be computed from the spelling; ie/ei and a
+   Latin plural ending cannot, so each word carries its own mark and this is the
+   lookup. A word with no mark -- a root or teacher's-choice word -- gets an
+   empty set, and nothing is painted. */
+const MARKS={};
+DATA.words.forEach(x=>{ const s=new Set();
+  if(x.mark) for(let i=0;i<x.mark[1];i++) s.add(x.mark[0]+i);
+  MARKS[x.w]=s; });
+const marked = w => MARKS[w] || new Set();
+const ROOTLAB = DATA.root.stem+" = "+DATA.root.means;
 /* which letters are given away, by level */
 function clueSet(w,mode,syl){
   if(mode==="first")  return new Set([0]);
@@ -2003,7 +2096,7 @@ function clueSet(w,mode,syl){
     (syl||[]).forEach(part=>{ out.add(i); i+=part.length; });
     return out;
   }
-  const d=doubles(w), out=new Set();          /* scatter: never a doubled letter */
+  const d=marked(w), out=new Set();           /* scatter: never a letter the rule is about */
   for(let i=1;i<w.length;i++) if(i%3===1 && !d.has(i)) out.add(i);
   return out;
 }
@@ -2053,7 +2146,7 @@ function render(){
       <span class="qn">Word ${idx+1} of ${order.length}</span>
       ${LVL().prompt==="none"?`<span class="qn" style="color:#E0709A">${LVL().dictate==="def"?"Name the word":"Dictation"}</span>`:""}
       ${LVL().prompt!=="none"?`<span class="postag" data-p="${w.pos}">${w.pos}.</span>`:""}
-      ${w.root && LVL().prompt!=="none"?`<span class="rootpill">ROOT AGR = FIELD</span>`:""}
+      ${w.root && LVL().prompt!=="none"?`<span class="rootpill">ROOT ${esc(ROOTLAB.toUpperCase())}</span>`:""}
     </div>
     ${LVL().prompt==="def"||LVL().prompt==="both"?`<p class="def">${esc(w.def)}</p>`:""}
     ${LVL().prompt==="sent"||LVL().prompt==="both"?`<p class="sent">${sentenceHTML(w)}</p>`:""}
@@ -2221,14 +2314,14 @@ function checkNow(){
   if(free ? typed.length<2 : typed.length!==w.w.length) return;
   tries++;
   if(typed===w.w){ good(); return; }
-  const dbl=doubles(w.w).size>0;
+  const dbl=marked(w.w).size>0;
 
   if(free){
     MC.wrong(w.w);
     /* say nothing about length or position — that would hand him the shape */
     $("typed").classList.add("bad");
     $("fb").innerHTML=`<div class="fb no"><strong>Not quite.</strong>Tap the speaker and listen again.${
-      dbl && tries===1?" Listen for the doubled letter \u2014 that is the rule this week.":""
+      dbl && tries===1?DATA.tips.listen:""
     }</div>`;
     setTimeout(()=>speak(LVL().dictate==="def"?w.def:w.w),260);
   } else {
@@ -2237,7 +2330,7 @@ function checkNow(){
     [...document.querySelectorAll(".tile")].forEach((t,i)=>{ if(typed[i]!==w.w[i]) t.classList.add("bad"); });
     $("fb").innerHTML=`<div class="fb no"><strong>Not quite.</strong>${
       wrong===1?"One letter is off.":wrong+" letters are off."
-    }${dbl && tries===1?" Remember the rule \u2014 this word has a doubled letter.":""}</div>`;
+    }${dbl && tries===1?DATA.tips.boxes:""}</div>`;
   }
 
   const act=$("card").querySelector(".act");
@@ -2285,7 +2378,7 @@ function good(revealed){
   const w=DATA.words[order[idx]];
   log[idx] = revealed ? false : (tries===1);
   if(revealed) MC.note(w.w); else MC.right(w.w);
-  const d=doubles(w.w);
+  const d=marked(w.w);
   let i=0;
   const pretty = w.syl.map(s=>[...s].map(ch=>{
     const pos=i++; return d.has(pos)?`<b>${ch}</b>`:ch;
@@ -2294,9 +2387,9 @@ function good(revealed){
     `<button class="btn g" id="next">${idx===order.length-1?"See how I did":"Next word"}</button>`;
   $("fb").innerHTML=`<div class="fb ${revealed?"no":"yes"}"><strong>${
     revealed?"Here it is.":(tries===1?"Right, first try.":"Got it.")
-  }</strong>${d.size?"The doubled letters are in pink. That is the part the test is looking for.":"No double consonant in this one \u2014 it is a root word."}</div>
+  }</strong>${d.size?DATA.tips.reveal:DATA.tips.plain}</div>
   <div class="reveal"><div class="word">${pretty}</div>
-    <div class="cap">${w.syl.length} syllables${w.root?" \u00b7 agr = field":""}</div></div>`;
+    <div class="cap">${w.syl.length} syllables${w.root?" \u00b7 "+ROOTLAB:""}</div></div>`;
   [...document.querySelectorAll(".tile")].forEach(t=>{t.classList.remove("bad","cursor");t.classList.add("good");});
   const t=$("typed");
   if(t){ if(LVL().input==="free"){ t.value=w.w; t.classList.remove("bad"); t.classList.add("good"); t.readOnly=true; }
@@ -2329,7 +2422,7 @@ function finish(){
       ${wrong>1?`<button class="btn o" id="rev">Review and match them</button>`:""}
       <button class="btn ${wrong?"o":"p"}" id="again">Run the whole level again</button>
       ${LV<DATA.levels.length-1?`<button class="btn o" id="up">Try ${esc(DATA.levels[LV+1].name)}</button>`:""}
-      <button class="btn o" id="chart2">See all 12 words \u2014 doubles in pink</button>
+      <button class="btn o" id="chart2">See all 14 words \u2014 ie / ei in pink</button>
       <button class="btn o" id="pick">Pick a level</button>
     </div>`;
   if($("retry")) $("retry").onclick=()=>start(LV,missed);
@@ -2391,26 +2484,19 @@ $("rvgo").onclick=()=>{
   }
 };
 
-function pairsIn(w){                       /* how many doubled pairs the word contains */
-  const out=[]; for(let i=0;i<w.length-1;i++) if(w[i]===w[i+1]){ out.push(w[i]+w[i+1]); i++; }
-  return out;
-}
 function chart(){
   const card=(x)=>{
-    const d=doubles(x.w);
+    const d=marked(x.w);
     const html=[...x.w].map((ch,i)=>d.has(i)?`<b>${ch}</b>`:ch).join("");   /* whole word, no breaks */
-    const p=pairsIn(x.w);
+    const chips=[];
+    if(x.mark) chips.push(x.w.slice(x.mark[0],x.mark[0]+x.mark[1]));
+    if(x.pair) chips.push("\u2194 "+x.pair);
     return `<div class="chw"><div class="chword">${html}</div>
-      ${p.length?`<div class="chpairs">${p.map(q=>`<span>${q}</span>`).join("")}</div>`:""}
+      ${chips.length?`<div class="chpairs">${chips.map(q=>`<span>${esc(q)}</span>`).join("")}</div>`:""}
       <div class="chdef">${esc(x.def)}</div></div>`;};
 
-  const groups=[
-    { n:2, head:"Two pairs", note:"two doubled letters in the same word", dot:"two" },
-    { n:1, head:"One pair",  note:"a single doubled letter",              dot:"one" },
-    { n:0, head:"No pairs",  note:"the agr root words",                   dot:"none" }
-  ];
-  $("chbody").innerHTML = groups.map(g=>{
-    const list=DATA.words.filter(x=>pairsIn(x.w).length===g.n);
+  $("chbody").innerHTML = DATA.chart.map(g=>{
+    const list=DATA.words.filter(x=>x.group===g.key);
     if(!list.length) return "";
     return `<div class="chgroup">
       <div class="chhead"><span class="chdot ${g.dot}"></span>${g.head}
@@ -2426,11 +2512,11 @@ function chart(){
 /* ---------- word list ---------- */
 function openList(){
   $("dbody").innerHTML = DATA.words.map(w=>{
-    const d=doubles(w.w); let i=0;
+    const d=marked(w.w); let i=0;
     const pretty=w.syl.map(s=>[...s].map(ch=>{const p=i++;return d.has(p)?`<b>${ch}</b>`:ch;}).join("")).join("\u00b7");
     return `<div class="we">
       <div class="h"><span class="w">${pretty}</span><span class="s">${w.pos}.</span>
-        ${w.root?`<span class="s">agr = field</span>`:""}</div>
+        ${w.root?`<span class="s">${esc(ROOTLAB)}</span>`:""}</div>
       <div class="d">${esc(w.def)}</div>
       <div class="ex">${esc(w.sent.replace("___",w.w))}</div></div>`;}).join("");
   $("dbody").scrollTop=0;
