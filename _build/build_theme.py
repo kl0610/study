@@ -231,6 +231,11 @@ def spell3(s):
     return Patcher(s, "spelling3")
 
 
+def spell4(s):
+    """Spelling List 4 — same shell, same seven levels. Config only."""
+    return Patcher(s, "spelling4")
+
+
 def vocab2(s):
     """Word List 2 sheet — generated from the List 1 sheet's shell, so its call
     sites came across already patched. Config only."""
@@ -326,6 +331,8 @@ APPS = {
     # A new list each week, same seven-level ladder. l7 is where he writes his
     # own sentence, so that is where the dragon sits.
     "spelling/list3":         (spell3, dict(app="spelling3",  shake="#card",   lift=None,
+                                           dragon=["l7"])),
+    "spelling/list4":         (spell4, dict(app="spelling4",  shake="#card",   lift=None,
                                            dragon=["l7"])),
     "vocabulary/ww6-lesson1": (vocab, dict(app="vocabulary", shake="#sheet",  lift=".bar",
                                            dragon=["sheet"])),

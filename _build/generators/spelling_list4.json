@@ -1,0 +1,97 @@
+{
+  "title": "Spelling List 4",
+  "n": 4,
+  "rule": "irregular plurals",
+  "ruleLine": "ten of these fourteen words are Latin words that change their ending, not their beginning, to go from one to many.",
+  "weekLabel": "Week 5",
+  "test": "Friday, Sep 11",
+  "root": { "stem": "flam", "means": "fire" },
+  "chartBtn": "singulars and plurals side by side",
+  "chartSub": "The endings in pink",
+  "chartTail": "endings in pink",
+  "tips": {
+    "listen": " Listen right to the end — the ending is the rule this week.",
+    "boxes": " Remember the rule — it is the ending that changes, not the beginning.",
+    "reveal": "The ending is in pink. That is the part the test is looking for.",
+    "plain": "No Latin ending on this one — it is a root or teacher's-choice word."
+  },
+  "chart": [
+    { "key": "sing",  "head": "One of them",  "dot": "one",
+      "note": "the singular. Latin endings — a, on, um." },
+    { "key": "plur",  "head": "More than one", "dot": "two",
+      "note": "the plural. Same word, new ending — ae, a, a." },
+    { "key": "other", "head": "Root and teacher's choice", "dot": "none",
+      "note": "flam = fire, and two the teacher chose." }
+  ],
+  "words": [
+    { "w": "alumna", "syl": ["a","lum","na"], "pos": "adj",
+      "mark": [5,1], "group": "sing", "pair": "alumnae",
+      "def": "a girl or woman who has attended or graduated from a particular school, college, or university",
+      "sent": "The school invited one ___ back to speak at the assembly about her career." },
+
+    { "w": "alumnae", "syl": ["a","lum","nae"], "pos": "n",
+      "mark": [5,2], "group": "plur", "pair": "alumna",
+      "def": "more than one girl or woman who has attended or graduated from a particular school, college, or university",
+      "sent": "Four ___ came back for the reunion and sat together in the front row." },
+
+    { "w": "phenomena", "syl": ["phe","nom","e","na"], "pos": "n",
+      "mark": [8,1], "group": "plur", "pair": "phenomenon",
+      "def": "facts or situations that are observed to exist or happen, especially ones whose cause or explanation is in question",
+      "sent": "Lightning and rainbows are two ___ that people once had no way to explain." },
+
+    { "w": "phenomenon", "syl": ["phe","nom","e","non"], "pos": "n",
+      "mark": [8,2], "group": "sing", "pair": "phenomena",
+      "def": "a fact or situation that is observed to exist or happen, especially one whose cause or explanation is in question",
+      "sent": "The northern lights are a ___ that scientists still study closely." },
+
+    { "w": "datum", "syl": ["da","tum"], "pos": "n",
+      "mark": [3,2], "group": "sing", "pair": "data",
+      "def": "a single piece of information",
+      "sent": "A single ___ tells you almost nothing until you have hundreds more to compare." },
+
+    { "w": "data", "syl": ["da","ta"], "pos": "n",
+      "mark": [3,1], "group": "plur", "pair": "datum",
+      "def": "facts and statistics collected together for reference or analysis",
+      "sent": "The class collected rainfall ___ every morning for a month." },
+
+    { "w": "curricula", "syl": ["cur","ric","u","la"], "pos": "n",
+      "mark": [8,1], "group": "plur", "pair": "curriculum",
+      "def": "more than one lesson plan, each one made up of different subjects",
+      "sent": "The two schools follow different ___, so their fifth graders read different books." },
+
+    { "w": "curriculum", "syl": ["cur","ric","u","lum"], "pos": "n",
+      "mark": [8,2], "group": "sing", "pair": "curricula",
+      "def": "the subjects that make up a course of study in a school or college",
+      "sent": "Fifth grade has a full ___ of math, science, history, and reading." },
+
+    { "w": "memoranda", "syl": ["mem","o","ran","da"], "pos": "n",
+      "mark": [8,1], "group": "plur", "pair": "memorandum",
+      "def": "written statements, records, or communications, such as within an office",
+      "sent": "The principal's folder was stuffed with ___ from the district office." },
+
+    { "w": "memorandum", "syl": ["mem","o","ran","dum"], "pos": "n",
+      "mark": [8,2], "group": "sing", "pair": "memoranda",
+      "def": "a written message in business and diplomacy",
+      "sent": "Ana's mother wrote a short ___ to remind everyone about the meeting." },
+
+    { "w": "inflammatory", "syl": ["in","flam","ma","to","ry"], "pos": "adj",
+      "group": "other", "root": true,
+      "def": "meant to stir up angry or violent feelings",
+      "sent": "The coach warned the team not to post anything ___ about the other side." },
+
+    { "w": "flamingo", "syl": ["fla","min","go"], "pos": "n",
+      "group": "other", "root": true,
+      "def": "a tall wading bird with pink or scarlet feathers and long legs and neck",
+      "sent": "A ___ stands on one leg for hours without ever losing its balance." },
+
+    { "w": "acquaintance", "syl": ["ac","quain","tance"], "pos": "n",
+      "group": "other",
+      "def": "a person one knows slightly, but who is not a close friend",
+      "sent": "Jamal knew the man from the bus stop, but he was only an ___." },
+
+    { "w": "hasten", "syl": ["has","ten"], "pos": "v",
+      "group": "other",
+      "def": "to be quick to do something, or to move and travel hurriedly",
+      "sent": "If we ___ we can still catch the ferry before it leaves." }
+  ]
+}
