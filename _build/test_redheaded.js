@@ -22,7 +22,7 @@ const ok = (what, cond, extra) => {
 const G = g => console.log("\n" + g);
 
 const ROOT = path.join(__dirname, "..");
-const SECTIONS = [1, 2, 3, 4, 5, 6].map(n => {
+const SECTIONS = [1, 2, 3, 4].map(n => {
   const rel = "reading/sherlock-redheaded-" + n;
   const html = fs.readFileSync(path.join(ROOT, rel, "index.html"), "utf8");
   const DATA = JSON.parse(html.match(/const DATA = (\{[\s\S]*?\});\r?\n/)[1]);
@@ -38,32 +38,38 @@ const score = pts => Math.round(pts.reduce((a, b) => a + b, 0) / pts.length);
 /* ====================================================================== */
 G("the story is cut into sections that fit together");
 {
-  ok("six sections", SECTIONS.length === 6);
-  ok("the first is pages 45 to 50, as asked",
-     SECTIONS[0].from === 45 && SECTIONS[0].to === 50,
+  ok("four sections, one per reading assignment", SECTIONS.length === 4);
+  ok("the first is pages 45 to 54, as the class set it",
+     SECTIONS[0].from === 45 && SECTIONS[0].to === 54,
      SECTIONS[0].from + "–" + SECTIONS[0].to);
+  ok("the second is 54 to 64, picking up where the first stopped",
+     SECTIONS[1].from === 54 && SECTIONS[1].to === 64,
+     SECTIONS[1].from + "–" + SECTIONS[1].to);
   ok("the last ends at 86, where the story ends",
-     SECTIONS[5].to === 86, String(SECTIONS[5].to));
+     SECTIONS[SECTIONS.length - 1].to === 86, String(SECTIONS[SECTIONS.length - 1].to));
+  /* Each block starts on the page the one before it ended on, which is how the
+     assignments were set: read to 54, then read 54 to 64. So a shared boundary
+     page is expected; a gap between blocks is not. */
   const gaps = [];
   SECTIONS.forEach((s, i) => {
-    if (i && s.from !== SECTIONS[i - 1].to + 1)
+    if (i && s.from !== SECTIONS[i - 1].to && s.from !== SECTIONS[i - 1].to + 1)
       gaps.push(SECTIONS[i - 1].to + " then " + s.from);
     if (s.to < s.from) gaps.push("section " + s.n + " runs backwards");
   });
-  ok("they run straight on with no gap and no overlap", !gaps.length, gaps.join(", "));
+  ok("each block starts where the last one ended, with no gap", !gaps.length,
+     gaps.join(", "));
   const lens = SECTIONS.map(s => s.to - s.from + 1);
-  ok("no section is longer than eight pages (" + lens.join(", ") + ")",
-     Math.max(...lens) <= 8);
-  ok("...and none shorter than five", Math.min(...lens) >= 5);
-  ok("the whole story is covered, 42 pages",
-     lens.reduce((a, b) => a + b, 0) === 42);
+  ok("the blocks are about ten pages each (" + lens.join(", ") + ")",
+     Math.max(...lens) <= 13 && Math.min(...lens) >= 9);
+  ok("the story is covered from 45 to 86",
+     SECTIONS[0].from === 45 && SECTIONS[SECTIONS.length - 1].to === 86);
 }
 
 /* ====================================================================== */
 G("no section is longer than five minutes");
 SECTIONS.forEach(s => {
   const m = s.DATA.missions[0];
-  ok("section " + s.n + ": " + m.items.length + " questions", m.items.length === 5);
+  ok("section " + s.n + ": " + m.items.length + " questions", m.items.length === 6);
   const mins = +(m.tag.match(/about (\d+) minute/) || [])[1];
   ok("...and it says " + mins + " minutes, which is under five", mins > 0 && mins <= 5,
      m.tag);
@@ -113,10 +119,10 @@ SECTIONS.forEach(s => {
       if (it.opts[it.a].length === L[0] && L[0] - L[1] >= 8)
         bad.push(where + ": correct option is the longest by " + (L[0] - L[1]));
     }
-    if (it.type === "selectall") {
-      if (!it.opts.some(o => o[1])) bad.push(where + ": nothing is correct");
-      if (it.opts.every(o => o[1])) bad.push(where + ": everything is correct");
-    }
+    /* One answer, always. A question that asks for several at once is a
+       different job from reading a page and remembering it, and was asked not
+       to be set. */
+    if (it.type !== "pick") bad.push(where + ": is a " + it.type + ", not a single choice");
   });
   ok("section " + s.n + ": every question holds together", !bad.length, bad.join(" | "));
 

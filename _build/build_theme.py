@@ -437,12 +437,6 @@ APPS = {
     "reading/sherlock-redheaded-4": (reads("redheaded4"),
                                      dict(app="redheaded4", shake="#card", lift=None,
                                           dragon=["m1"])),
-    "reading/sherlock-redheaded-5": (reads("redheaded5"),
-                                     dict(app="redheaded5", shake="#card", lift=None,
-                                          dragon=["m1"])),
-    "reading/sherlock-redheaded-6": (reads("redheaded6"),
-                                     dict(app="redheaded6", shake="#card", lift=None,
-                                          dragon=["m1"])),
 }
 
 # ---------------------------------------------------------------- machinery

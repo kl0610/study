@@ -2,11 +2,11 @@
 {
  "slug": "sherlock-redheaded-1",
  "title": "The Man with the Red Head",
- "pages": "45–50",
+ "pages": "45–54",
  "bigQuestion": "What is strange about the job Jabez Wilson answered an advertisement for?",
  "mission": {
-   "name": "Pages 45 to 50",
-   "tag": "5 questions · about 4 minutes",
+   "name": "Pages 45 to 54",
+   "tag": "6 questions · about 5 minutes",
    "blurb": "A quick check that the reading landed — not a test."
  },
  "passages": {
@@ -16,15 +16,7 @@
    "text": [
     "Sherlock Holmes shook his head with a smile as he noticed my questioning glances. “Beyond the obvious facts that he has done manual labor, that he takes snuff, that he is a Freemason, that he has been in China, and that he has done a considerable amount of writing lately, I can deduce nothing else.”",
     "“Your hands, my dear sir. Your right hand is larger than your left. You have worked with it, and the muscles are more developed.”",
-    "“What else can be indicated by that right cuff so very shiny for five inches, and the left one with the smooth patch by the elbow where you rest it upon the desk?”",
     "“The fish that you have tattooed above your right wrist could only have been done in China. I have studied tattoo marks. That trick of staining the fish’s scales pink is peculiar to China. When I see a Chinese coin hanging from your watch chain, the matter becomes simple.”"
-   ]
-  },
-  "again": {
-   "title": "Tell it again, from the beginning",
-   "cite": "Reader, page 46",
-   "text": [
-    "“Mr. Jabez Wilson here has called upon me this morning to begin a narrative that promises to be one of the most singular that I have listened to for some time. Perhaps, Mr. Wilson, you would kindly begin your narrative again. I ask you not merely because Dr. Watson has not heard the opening part, but also because the peculiar nature of the story makes me anxious to have every possible detail from your lips. In this instance the facts are, to the best of my belief, unique.”"
    ]
   },
   "advert": {
@@ -41,12 +33,26 @@
    "text": [
     "“I have a small pawnbroker’s business. Lately it has barely given me a living. I used to keep two assistants, but now I keep only one. And I wouldn’t be able to pay him, if he weren’t willing to come for half wages, so as to learn the business.”"
    ]
+  },
+  "spaulding": {
+   "title": "The assistant’s one fault",
+   "cite": "Reader, page 52",
+   "text": [
+    "“Oh, he has his faults, too,” said Mr. Wilson. “Never was such a fellow for photography. Snapping away with a camera when he ought to be improving his mind, and then diving down into the cellar to develop his pictures. But on the whole, he’s a good worker.”"
+   ]
+  },
+  "founded": {
+   "title": "Where the League came from",
+   "cite": "Reader, page 54",
+   "text": [
+    "“As far as I can make out, the League was founded by an American millionaire, Ezekiah Hopkins, who was red-headed. When he died, he left his enormous fortune in the hands of trustees, with instructions to provide easy jobs to men whose hair is that color. From all I hear it is splendid pay, and very little to do.”"
+   ]
   }
  },
  "items": [
   { "type":"pick", "p":"deduce",
     "q":"Holmes says Jabez Wilson has done manual labor. What is his evidence?",
-    "opts":["His right hand is larger than his left.","His boots are worn through at the heel.","His coat is torn at the shoulder.","He speaks the way a workman speaks."],
+    "opts":["His right hand is larger than his left.","His boots are worn through at the heel.","His coat is torn across the shoulder.","He speaks the way a workman speaks."],
     "a":0,
     "why":"Holmes never guesses. He looks at the hands: the right one is larger, and the muscles are more developed, because that is the hand the work was done with.",
     "hi":"Your right hand is larger than your left. You have worked with it, and the muscles are more developed.",
@@ -62,7 +68,7 @@
 
   { "type":"pick", "p":"advert",
     "q":"What does the advertisement offer?",
-    "opts":["Four pounds a week for work that is purely nominal","A share of a red-headed millionaire’s fortune","A free place at a London school","A partnership in a Fleet Street office"],
+    "opts":["Four pounds a week for work that is purely nominal","A share of a red-headed millionaire’s fortune","A free place at a good London school","A partnership in a Fleet Street office"],
     "a":0,
     "why":"Four pounds a week was good money, and “purely nominal” means the work is next to nothing. Money for almost nothing is exactly what should make a reader suspicious.",
     "hi":"there is now another vacancy open which entitles a member of the League to a salary of four pounds a week for purely nominal services",
@@ -70,53 +76,46 @@
 
   { "type":"pick", "p":"shop",
     "q":"Wilson says his business “has barely given me a living.” What is odd about the assistant he keeps?",
-    "opts":["He is willing to work for half wages.","He refuses to be paid at all.","He works only on Saturdays.","He has been there for twenty years."],
+    "opts":["He is willing to work for half wages.","He refuses to take any pay at all.","He comes in only on Saturday mornings.","He has worked there for twenty years."],
     "a":0,
     "why":"A man who will take half the going rate is a bargain — or he is there for some other reason. Wilson thinks he is lucky. Holmes will think about it rather harder.",
     "hi":"And I wouldn’t be able to pay him, if he weren’t willing to come for half wages, so as to learn the business.",
     "cite":"Reader, page 50" },
 
-  { "type":"pick", "p":"again",
-    "q":"Why does Holmes ask Wilson to start his story over from the beginning?",
-    "opts":["He wants every possible detail from Wilson’s own lips.","He was not attending properly the first time round.","He wants to see whether the story changes in the telling.","He is playing for time until the police arrive."],
+  { "type":"pick", "p":"spaulding",
+    "q":"Wilson says his assistant has one fault. What is it?",
+    "opts":["Photography, and vanishing into the cellar to develop pictures","Falling asleep behind the counter in the afternoon","Arguing with the customers over what their goods are worth","Turning up late every morning and leaving early at night"],
     "a":0,
-    "why":"Two reasons, and Holmes gives both: Watson has missed the opening, and the story is so peculiar that Holmes wants every detail said aloud again in Wilson’s own words.",
-    "hi":"but also because the peculiar nature of the story makes me anxious to have every possible detail from your lips",
-    "cite":"Reader, page 46" }
+    "why":"Wilson tells this as a harmless complaint about a hobby. Keep hold of it: a man who spends hours a day down a cellar, with a reason ready for anyone who asks, is the whole story in one sentence.",
+    "hi":"Never was such a fellow for photography. Snapping away with a camera when he ought to be improving his mind, and then diving down into the cellar to develop his pictures.",
+    "cite":"Reader, page 52" },
+
+  { "type":"pick", "p":"founded",
+    "q":"According to Spaulding, who founded the Red-Headed League?",
+    "opts":["An American millionaire named Ezekiah Hopkins","A society of London businessmen and bankers","The owner of a Fleet Street newspaper","The trustees of an old London bank"],
+    "a":0,
+    "why":"A dead millionaire who left his fortune to provide easy jobs for red-haired men. It is a strange enough story that Wilson never thinks to check whether any of it is true.",
+    "hi":"the League was founded by an American millionaire, Ezekiah Hopkins, who was red-headed",
+    "cite":"Reader, page 54" }
  ]
 },
 
 {
  "slug": "sherlock-redheaded-2",
- "title": "A Crowd of Red-Headed Men",
- "pages": "51–57",
- "bigQuestion": "Who really wanted Jabez Wilson to get this job, and why might that matter?",
+ "title": "Four Pounds a Week",
+ "pages": "54–64",
+ "bigQuestion": "Why would anyone pay a man four pounds a week to copy out an encyclopedia?",
  "mission": {
-   "name": "Pages 51 to 57",
-   "tag": "5 questions · about 4 minutes",
+   "name": "Pages 54 to 64",
+   "tag": "6 questions · about 5 minutes",
    "blurb": "A quick check that the reading landed — not a test."
  },
  "passages": {
-  "spaulding": {
-   "title": "The assistant’s one fault",
-   "cite": "Reader, page 52",
-   "text": [
-    "“Oh, he has his faults, too,” said Mr. Wilson. “Never was such a fellow for photography. Snapping away with a camera when he ought to be improving his mind, and then diving down into the cellar to develop his pictures. But on the whole, he’s a good worker.”"
-   ]
-  },
-  "league": {
+  "notmany": {
    "title": "Not so many as you might think",
-   "cite": "Reader, pages 54–55",
-   "text": [
-    "“As far as I can make out, the League was founded by an American millionaire, Ezekiah Hopkins, who was red-headed. When he died, he left his enormous fortune in the hands of trustees, with instructions to provide easy jobs to men whose hair is that color.”",
-    "“Not so many as you might think,” he answered. “You see, it is really confined to Londoners and grown men. Mr. Hopkins came from London and he wanted to do the old town a good turn. I have heard it is no use applying if your hair is light red, or dark red, or anything but real, bright, blazing, fiery red. Now, if you apply, Mr. Wilson, you would just walk in.”"
-   ]
-  },
-  "crowd": {
-   "title": "Every shade of red in London",
    "cite": "Reader, page 55",
    "text": [
-    "“I never hope to see such a sight as that again, Mr. Holmes. Every man who had a shade of red in his hair had tramped into the City to answer the advertisement. Every shade of color they were – straw, lemon, orange, brick, Irish-setter, liver, clay. But, as Spaulding said, there were not many who had the real vivid flame-colored tint. When I saw how many were waiting, I would have given it up, but Spaulding would not hear of it. He pushed and pulled until he got me through the crowd.”"
+    "“Not so many as you might think,” he answered. “You see, it is really confined to Londoners and grown men. Mr. Hopkins came from London and he wanted to do the old town a good turn. I have heard it is no use applying if your hair is light red, or dark red, or anything but real, bright, blazing, fiery red. Now, if you apply, Mr. Wilson, you would just walk in.”"
    ]
   },
   "office": {
@@ -126,61 +125,7 @@
     "With that he seized my hair in both his hands and tugged until I yelled with the pain. “There is water in your eyes,” said he, as he released me. “All is as it should be. But we have to be careful, for we have twice been deceived by wigs.”",
     "He stepped over to the window, and shouted through it at the top of his voice that the vacancy was filled. A groan of disappointment came up from below, and the folk all trooped away."
    ]
-  }
- },
- "items": [
-  { "type":"pick", "p":"spaulding",
-    "q":"Wilson says his assistant has one fault. What is it?",
-    "opts":["Photography, and vanishing into the cellar to develop pictures","Falling asleep behind the counter in the afternoon","Arguing with the customers over what their goods are worth","Turning up late every morning and leaving early at night"],
-    "a":0,
-    "why":"Wilson tells this as a harmless complaint about a hobby. Keep hold of it: a man who spends hours a day down a cellar, with a reason ready for anyone who asks, is the whole story in one sentence.",
-    "hi":"Never was such a fellow for photography. Snapping away with a camera when he ought to be improving his mind, and then diving down into the cellar to develop his pictures.",
-    "cite":"Reader, page 52" },
-
-  { "type":"pick", "p":"league",
-    "q":"Spaulding says millions of red-headed men will not apply. What reasons does he give?",
-    "opts":["It is only for Londoners and grown men, and only for really fiery red hair","Almost nobody in England bothers to read the advertisement columns any more","The pay is far too low to be worth any grown man’s while","There is a large fee to be paid before anyone may apply"],
-    "a":0,
-    "why":"Every reason he gives narrows the field until Wilson can hardly fail. That is the point of them — Spaulding is not describing a rule, he is talking one particular man into walking through a door.",
-    "hi":"You see, it is really confined to Londoners and grown men.",
-    "cite":"Reader, page 55" },
-
-  { "type":"selectall", "p":"crowd",
-    "q":"What does Wilson say about the crowd at Pope’s Court? Select every correct answer.",
-    "opts":[["Every man with a shade of red in his hair had come",1],["Their hair was every shade — straw, lemon, orange, brick",1],["Not many had the real vivid flame-colored tint",1],["Wilson would have given up and gone home",1],["Spaulding pushed and pulled him through the crowd",1],["The office was empty when they arrived",0],["Wilson was the only man who applied",0]],
-    "why":"The crowd is real and Wilson nearly turned back. The one who would not let him is Spaulding — the assistant who found the advertisement in the first place.",
-    "hi":"When I saw how many were waiting, I would have given it up, but Spaulding would not hear of it. He pushed and pulled until he got me through the crowd.",
-    "cite":"Reader, page 55" },
-
-  { "type":"pick", "p":"office",
-    "q":"Why does the man in the office pull Wilson’s hair until he shouts?",
-    "opts":["To check it is not a wig, as they have twice been fooled before","To find out whether Wilson will lose his temper easily","Because it is part of the League’s ceremony of welcome","To pull out a single hair and match it against a colour chart"],
-    "a":0,
-    "why":"He says it plainly: twice deceived by wigs. It sounds like a joke about a silly club, and it does the job of convincing Wilson that the League is real.",
-    "hi":"But we have to be careful, for we have twice been deceived by wigs.",
-    "cite":"Reader, page 57" },
-
-  { "type":"pick", "p":"office",
-    "q":"What does he do the moment Wilson is accepted?",
-    "opts":["Shouts out of the window that the vacancy is filled","Locks the office door and leaves by a back way","Hands Wilson four pounds on the spot","Writes Wilson’s name in a great leather book"],
-    "a":0,
-    "why":"The crowd groans and trooped away, and the League has what it wanted: one particular red-headed man, in one particular office, every morning.",
-    "hi":"He stepped over to the window, and shouted through it at the top of his voice that the vacancy was filled.",
-    "cite":"Reader, pages 57–58" }
- ]
-},
-
-{
- "slug": "sherlock-redheaded-3",
- "title": "Four Pounds a Week",
- "pages": "58–64",
- "bigQuestion": "Why would anyone pay a man four pounds a week to copy out an encyclopedia?",
- "mission": {
-   "name": "Pages 58 to 64",
-   "tag": "5 questions · about 4 minutes",
-   "blurb": "A quick check that the reading landed — not a test."
- },
- "passages": {
+  },
   "terms": {
    "title": "The conditions of the job",
    "cite": "Reader, pages 59–60",
@@ -194,23 +139,46 @@
    "title": "Eight weeks of the letter A",
    "cite": "Reader, pages 60–61",
    "text": [
-    "“This went on day after day, Mr. Holmes, and on Saturday the manager gave me four golden sovereigns for my week’s work. It was the same the next week, and the same the week after. Every morning I was there at ten, and every afternoon I left at two. Mr. Duncan Ross took to coming in only once a morning, and then, after a time, he did not come in at all. Still, I never dared to leave the room, for I was not sure when he might come, and the position suited me so well that I would not risk the loss of it.”",
+    "“This went on day after day, Mr. Holmes, and on Saturday the manager gave me four golden sovereigns for my week’s work. Every morning I was there at ten, and every afternoon I left at two. Mr. Duncan Ross took to coming in only once a morning, and then, after a time, he did not come in at all. Still, I never dared to leave the room, for I was not sure when he might come, and the position suited me so well that I would not risk the loss of it.”",
     "“Eight weeks passed like this. I had written about Abbots, and Archery, and Armor, and Architecture, and Attica, and hoped that I might get on to the B’s before very long. Then suddenly the whole business came to an end.”"
    ]
   },
   "dissolved": {
    "title": "The card on the door",
-   "cite": "Reader, pages 63–64",
+   "cite": "Reader, page 63",
    "text": [
-    "He held up a piece of white cardboard, about the size of a sheet of paper. It read: The Red-Headed League is Dissolved. Oct. 9, 1890.",
-    "“Oh,” said he, “his name was William Morris. He was an attorney, and he was using my room as a temporary convenience until his new offices were ready. He moved out yesterday.”"
+    "He held up a piece of white cardboard, about the size of a sheet of paper. It read: The Red-Headed League is Dissolved. Oct. 9, 1890."
    ]
   }
  },
  "items": [
+  { "type":"pick", "p":"notmany",
+    "q":"Spaulding says millions of red-headed men will not apply. What reason does he give?",
+    "opts":["It is only for Londoners and grown men","Almost nobody in England bothers to read the advertisement columns any more","The pay is far too low to be worth any grown man’s while","There is a large fee to be paid before anyone may apply"],
+    "a":0,
+    "why":"Every reason he gives narrows the field until Wilson can hardly fail. That is the point of them — Spaulding is not describing a rule, he is talking one particular man into walking through a door.",
+    "hi":"You see, it is really confined to Londoners and grown men.",
+    "cite":"Reader, page 55" },
+
+  { "type":"pick", "p":"office",
+    "q":"Why does the man in the office pull Wilson’s hair until he shouts?",
+    "opts":["To check it is not a wig, as they have twice been fooled","To find out whether Wilson will lose his temper easily","Because it is part of the League’s ceremony of welcome","To pull out a single hair and match it against a colour chart"],
+    "a":0,
+    "why":"He says it plainly: twice deceived by wigs. It sounds like a joke about a silly club, and it does the job of convincing Wilson that the League is real.",
+    "hi":"But we have to be careful, for we have twice been deceived by wigs.",
+    "cite":"Reader, page 57" },
+
+  { "type":"pick", "p":"office",
+    "q":"What does he do the moment Wilson is accepted?",
+    "opts":["Shouts out of the window that the vacancy is filled","Locks the office door and leaves by a back way","Counts out four pounds and hands them over","Writes Wilson’s name into a great leather book"],
+    "a":0,
+    "why":"The crowd groans and troops away, and the League has what it wanted: one particular red-headed man, in one particular office, every morning.",
+    "hi":"He stepped over to the window, and shouted through it at the top of his voice that the vacancy was filled.",
+    "cite":"Reader, page 58" },
+
   { "type":"pick", "p":"terms",
     "q":"What was the work Wilson was paid four pounds a week to do?",
-    "opts":["Copy out the Encyclopedia Britannica","Keep the League’s accounts","Answer letters from red-headed men","Read the newspapers and cut out notices"],
+    "opts":["Copy out the Encyclopedia Britannica","Keep the League’s books and accounts","Answer the letters red-headed men sent in","Read the papers and cut out every notice"],
     "a":0,
     "why":"Copying an encyclopedia by hand is work nobody needs done. That is the giveaway: the League is not buying the copying, it is buying the four hours Wilson is somewhere else.",
     "hi":"Is to copy out the Encyclopedia Britannica.",
@@ -224,42 +192,35 @@
     "hi":"If you leave, you forfeit your position forever.",
     "cite":"Reader, page 59" },
 
-  { "type":"selectall", "p":"weeks",
-    "q":"What happened over the eight weeks? Select every correct answer.",
-    "opts":[["He was paid four golden sovereigns every Saturday",1],["He was there from ten until two every day",1],["Duncan Ross came in less and less, then not at all",1],["He never dared leave the room",1],["He had got as far as the A’s",1],["He was moved on to the letter B",0],["Ross checked on him every hour",0]],
-    "why":"Ross stops coming because he no longer needs to — Wilson is frightened enough of losing four pounds a week to keep himself in that room. The job guards itself.",
-    "hi":"Mr. Duncan Ross took to coming in only once a morning, and then, after a time, he did not come in at all.",
-    "cite":"Reader, page 61" },
-
   { "type":"pick", "p":"dissolved",
-    "q":"What did Wilson find pinned to the office door?",
-    "opts":["A card saying the Red-Headed League is dissolved","A note asking him to come back again on Monday morning","A bill for eight weeks of rent","A letter of thanks and a final payment"],
+    "q":"What did Wilson find pinned to the office door after eight weeks?",
+    "opts":["A card saying the Red-Headed League is dissolved","A note asking him to come back again on Monday morning","A bill for eight weeks of rent on the room","A letter of thanks and a final week’s payment"],
     "a":0,
     "why":"Dated and final, with no explanation and nobody to ask. Whatever the League was for, it was finished — which is a fact about timing, and Holmes will use it.",
     "hi":"The Red-Headed League is Dissolved. Oct. 9, 1890.",
-    "cite":"Reader, page 63" },
-
-  { "type":"pick", "p":"dissolved",
-    "q":"What did the landlord say about the red-headed man in Room No. 4?",
-    "opts":["His name was William Morris, and the room was temporary","He had rented that room steadily for the past ten years","He had never in his life let a room to any red-headed man","He was a clerk at the bank just around the corner"],
-    "a":0,
-    "why":"A different name, a temporary room, and an address that turns out to be a maker of artificial kneecaps. Every thread Wilson pulls comes away in his hand.",
-    "hi":"his name was William Morris. He was an attorney, and he was using my room as a temporary convenience until his new offices were ready.",
-    "cite":"Reader, page 64" }
+    "cite":"Reader, page 63" }
  ]
 },
 
 {
- "slug": "sherlock-redheaded-4",
+ "slug": "sherlock-redheaded-3",
  "title": "Holmes Goes and Looks",
- "pages": "65–72",
+ "pages": "64–75",
  "bigQuestion": "What is Holmes actually looking for in Saxe-Coburg Square?",
  "mission": {
-   "name": "Pages 65 to 72",
-   "tag": "5 questions · about 4 minutes",
+   "name": "Pages 64 to 75",
+   "tag": "6 questions · about 5 minutes",
    "blurb": "A quick check that the reading landed — not a test."
  },
  "passages": {
+  "landlord": {
+   "title": "What the landlord said",
+   "cite": "Reader, page 64",
+   "text": [
+    "“Oh,” said he, “his name was William Morris. He was an attorney, and he was using my room as a temporary convenience until his new offices were ready. He moved out yesterday.”",
+    "“But when I got to that address it was a maker of artificial kneecaps, and no one in it had ever heard of either Mr. William Morris or Mr. Duncan Ross.”"
+   ]
+  },
   "assistant": {
    "title": "Questions about the assistant",
    "cite": "Reader, page 66",
@@ -277,7 +238,7 @@
   },
   "square": {
    "title": "A knock at the pawnbroker’s door",
-   "cite": "Reader, page 70",
+   "cite": "Reader, pages 70–71",
    "text": [
     "Finally he returned to the pawnbroker’s, and, having thumped upon the pavement with his walking stick two or three times, he went up to the door and knocked. It was opened by a bright-looking, clean-shaven young fellow, who asked him in.",
     "“I am sure you inquired your way merely in order that you might see him.” “Not him.” “What, then?” “The knees of his trousers.” “And what did you see?” “What I expected to see.” “Why did you beat the pavement?”",
@@ -290,16 +251,40 @@
    "text": [
     "“Let me see,” said Holmes, standing at the corner, “I should like just to remember the order of the houses here. It is a hobby of mine to have an exact knowledge of London. There is Mortimer’s, the tobacconist, the little newspaper shop, the Coburg branch of the City and Suburban Bank, the Vegetarian Restaurant, and McFarlane’s carriage depot. That carries us right on to the other block.”"
    ]
+  },
+  "warning": {
+   "title": "There may be some danger",
+   "cite": "Reader, page 73",
+   "text": [
+    "“This business at Coburg Square is serious. A considerable crime is being contemplated. I believe that we shall be in time to stop it. But today being Saturday complicates matters. I shall want your help tonight.”",
+    "“Very well. And, I say, Doctor! There may be some danger, so kindly put your revolver in your pocket.”"
+   ]
   }
  },
  "items": [
+  { "type":"pick", "p":"landlord",
+    "q":"What did the landlord say about the red-headed man in Room No. 4?",
+    "opts":["His name was William Morris, and the room was temporary","He had rented that room steadily for the past ten years","He had never in his life let a room to any red-headed man","He was a clerk at the bank just around the corner"],
+    "a":0,
+    "why":"A different name, a temporary room, and an address that turns out to be a maker of artificial kneecaps. Every thread Wilson pulls comes away in his hand.",
+    "hi":"his name was William Morris. He was an attorney, and he was using my room as a temporary convenience until his new offices were ready.",
+    "cite":"Reader, page 64" },
+
   { "type":"pick", "p":"assistant",
     "q":"Wilson describes his assistant. Which detail makes Holmes sit up in excitement?",
-    "opts":["A white splash upon his forehead","That he is small and stocky","That he has no hair on his face","That he is at least thirty"],
+    "opts":["A white splash upon his forehead","That he is small and stocky","That he has no hair on his face","That he is at least thirty years old"],
     "a":0,
     "why":"A mark on the forehead and pierced ears are how you know one particular man again. Holmes sits up because he has just realised who Wilson has been employing.",
     "hi":"He has a white splash upon his forehead.",
     "cite":"Reader, page 66" },
+
+  { "type":"pick", "p":"bizarre",
+    "q":"What is Holmes’s rule about strange-looking cases?",
+    "opts":["The more bizarre a thing is, the less mysterious it proves to be","The strangest cases are always the hardest of all to solve","A strange-looking case nearly always turns out to be a hoax","Bizarre crimes are best left to the official police force"],
+    "a":0,
+    "why":"An odd crime leaves odd traces, and odd traces are easy to follow. It is the ordinary crime, with nothing about it to catch hold of, that Holmes finds difficult.",
+    "hi":"the more bizarre a thing is, the less mysterious it proves to be",
+    "cite":"Reader, page 67" },
 
   { "type":"pick", "p":"square",
     "q":"Holmes knocks on the pawnbroker’s door and asks the way to the Strand. What did he really want to see?",
@@ -309,56 +294,40 @@
     "hi":"The knees of his trousers.",
     "cite":"Reader, page 70" },
 
-  { "type":"pick", "p":"square",
-    "q":"Watson asks why Holmes beat the pavement with his stick. What does Holmes answer?",
-    "opts":["That this is a time for observation, not talk","That he was testing the weight of his walking stick","That he wanted someone inside to come and let him in","Nothing at all — he changes the subject completely"],
+  { "type":"pick", "p":"behind",
+    "q":"Holmes stops at the corner and names the buildings in the street behind the square. Which is among them?",
+    "opts":["The Coburg branch of the City and Suburban Bank","The head office of the Bank of England","A police station, and a fire station beside it","The Fleet Street post and sorting office"],
     "a":0,
-    "why":"Holmes will not explain while he is still working. Watson is left with the same puzzle the reader has, which is the point — you are given every clue Holmes is given.",
-    "hi":"My dear Doctor, this is a time for observation, not talk.",
+    "why":"Holmes calls it a hobby, remembering the order of the houses. One of the five he lists backs onto the pawnbroker’s shop, and that is the whole reason he walked round the corner.",
+    "hi":"the Coburg branch of the City and Suburban Bank",
     "cite":"Reader, page 71" },
 
-  { "type":"selectall", "p":"behind",
-    "q":"Holmes names the buildings in the street behind Saxe-Coburg Square. Which does he name? Select every correct answer.",
-    "opts":[["Mortimer’s, the tobacconist",1],["A little newspaper shop",1],["The Coburg branch of the City and Suburban Bank",1],["The Vegetarian Restaurant",1],["McFarlane’s carriage depot",1],["A police station",0],["A baker’s shop",0]],
-    "why":"Holmes calls it a hobby, remembering the order of the houses. One of these five backs onto the pawnbroker’s shop, and that is the whole reason he walked round the corner.",
-    "hi":"There is Mortimer’s, the tobacconist, the little newspaper shop, the Coburg branch of the City and Suburban Bank, the Vegetarian Restaurant, and McFarlane’s carriage depot.",
-    "cite":"Reader, page 71" },
-
-  { "type":"pick", "p":"bizarre",
-    "q":"What is Holmes’s rule about strange-looking cases?",
-    "opts":["The more bizarre a thing is, the less mysterious it proves to be","The strangest cases are always the hardest of all to solve","A strange-looking case nearly always turns out to be a hoax","Bizarre crimes are best left to the official police force"],
+  { "type":"pick", "p":"warning",
+    "q":"What does Holmes tell Watson to bring that night, and why?",
+    "opts":["His revolver, because there may be some danger","A lantern, because the cellar will be pitch dark","A notebook, to write down all that is said","Nothing at all — only himself, and on time"],
     "a":0,
-    "why":"An odd crime leaves odd traces, and odd traces are easy to follow. It is the ordinary crime, with nothing about it to catch hold of, that Holmes finds difficult.",
-    "hi":"the more bizarre a thing is, the less mysterious it proves to be",
-    "cite":"Reader, page 67" }
+    "why":"Holmes has been calm and amused all day. The moment he asks Watson to come armed, the reader knows how serious he thinks this is.",
+    "hi":"There may be some danger, so kindly put your revolver in your pocket.",
+    "cite":"Reader, page 73" }
  ]
 },
 
 {
- "slug": "sherlock-redheaded-5",
- "title": "Bring Your Revolver",
- "pages": "73–80",
- "bigQuestion": "What does Holmes expect to happen tonight, and how has he prepared for it?",
+ "slug": "sherlock-redheaded-4",
+ "title": "The Trap in the Cellar",
+ "pages": "75–86",
+ "bigQuestion": "How did Holmes work the whole thing out before it happened?",
  "mission": {
-   "name": "Pages 73 to 80",
-   "tag": "5 questions · about 4 minutes",
+   "name": "Pages 75 to 86",
+   "tag": "6 questions · about 5 minutes",
    "blurb": "A quick check that the reading landed — not a test."
  },
  "passages": {
-  "warning": {
-   "title": "There may be some danger",
-   "cite": "Reader, page 73",
-   "text": [
-    "“This business at Coburg Square is serious. A considerable crime is being contemplated. I believe that we shall be in time to stop it. But today being Saturday complicates matters. I shall want your help tonight.”",
-    "“Very well. And, I say, Doctor! There may be some danger, so kindly put your revolver in your pocket.”"
-   ]
-  },
-  "party": {
-   "title": "Jones, Merryweather and John Clay",
+  "clay": {
+   "title": "The man Jones has never set eyes on",
    "cite": "Reader, pages 75–76",
    "text": [
-    "“John Clay, the murderer, thief, and forger,” Mr. Jones replied. “I would rather have handcuffs on him than on any criminal in London. He’s a remarkable man. His grandfather was a Duke, and he himself has been to Oxford. He is cunning, and though we meet signs of him at every turn, we never know where to find the man himself.”",
-    "“This fellow Merryweather is a bank director and personally interested in the matter. I thought it as well to have Jones with us also.”"
+    "“John Clay, the murderer, thief, and forger,” Mr. Jones replied. “I would rather have handcuffs on him than on any criminal in London. He’s a remarkable man. His grandfather was a Duke, and he himself has been to Oxford. He is cunning, and though we meet signs of him at every turn, we never know where to find the man himself.”"
    ]
   },
   "gold": {
@@ -368,76 +337,12 @@
     "“It is our French gold,” whispered Merryweather. “We have had several warnings that an attempt might be made upon it. We had occasion some months ago to strengthen our resources, and we borrowed thirty thousand napoleons from the Bank of France. It has become known that we never unpacked the money, and that it is still lying in our cellar. The crate upon which I sit contains two thousand napoleons.”"
    ]
   },
-  "trap": {
-   "title": "Setting the trap",
-   "cite": "Reader, pages 78–80",
-   "text": [
-    "Mr. Merryweather perched on a crate, with an injured expression on his face, while Holmes fell upon his knees, and, with the lantern and magnifying lens, began to examine the cracks between the stones.",
-    "“I shall stand behind this crate, and you conceal yourself behind those. Then, when I flash upon them, close in swiftly. If they fire, Watson, shoot them down.”",
-    "I placed my revolver, cocked, upon the top of the wooden case behind which I crouched. Holmes extinguished his lantern, leaving us in pitch darkness.",
-    "“They have one retreat,” whispered Holmes, “back through the house into Saxe-Coburg Square. I hope you have done what I asked you, Jones?” “An inspector and two officers wait at the front door.”"
-   ]
-  }
- },
- "items": [
-  { "type":"pick", "p":"warning",
-    "q":"What does Holmes tell Watson to bring, and why?",
-    "opts":["His revolver, because there may be some danger","A lantern, because the cellar will be pitch dark","A notebook, to write down what is said","Nothing at all, only himself"],
-    "a":0,
-    "why":"Holmes has been calm and amused all day. The moment he asks Watson to come armed, the reader knows how serious he thinks this is.",
-    "hi":"There may be some danger, so kindly put your revolver in your pocket.",
-    "cite":"Reader, page 73" },
-
-  { "type":"pick", "p":"party",
-    "q":"Who is John Clay?",
-    "opts":["A murderer, thief and forger the police can never find","A director of the City and Suburban Bank in Coburg","A red-headed clerk from Pope’s Court","The landlord of the office in Fleet Street"],
-    "a":0,
-    "why":"Jones has been after him for years and has never once set eyes on him. Grandson of a Duke, educated at Oxford, and at the head of his profession — which is exactly why the plan was so elaborate.",
-    "hi":"John Clay, the murderer, thief, and forger",
-    "cite":"Reader, page 75" },
-
-  { "type":"pick", "p":"gold",
-    "q":"What is in the cellar that the criminals want?",
-    "opts":["Thirty thousand napoleons of French gold, still in their crates","The bank’s ledgers and every account book it owns","A collection of jewels left with the bank for safekeeping","Nothing — the cellar is empty"],
-    "a":0,
-    "why":"Borrowed from the Bank of France, never unpacked, and it has become known that it is down there. Merryweather is sitting on two thousand of them while he complains about missing his card game.",
-    "hi":"we borrowed thirty thousand napoleons from the Bank of France",
-    "cite":"Reader, page 79" },
-
-  { "type":"selectall", "p":"trap",
-    "q":"How does Holmes set the trap? Select every correct answer.",
-    "opts":[["He examines the cracks between the stones",1],["He puts out the lantern and leaves them in the dark",1],["He posts himself and the others behind crates",1],["Jones has an inspector and two officers at the front door",1],["He tells Watson to shoot if the men fire",1],["He sends for more police from Scotland Yard",0],["He opens a crate of gold as bait",0]],
-    "why":"Every hole is stopped before anyone arrives. Holmes even knows which way the men will run — back through the house into Saxe-Coburg Square — and has put officers there.",
-    "hi":"They have one retreat,",
-    "cite":"Reader, page 80" },
-
-  { "type":"pick", "p":"trap",
-    "q":"Merryweather strikes the stone floor with his stick and says it sounds hollow. Why does Holmes scold him?",
-    "opts":["The noise could warn the men working underneath","The stick could break the stone","Merryweather is standing in the wrong place","Holmes wanted to strike the floor himself"],
-    "a":0,
-    "why":"Holmes says he has already imperiled the whole success of the expedition. The men are close enough to hear — which is itself a clue about how near the tunnel already is.",
-    "hi":"Mr. Merryweather perched on a crate, with an injured expression on his face",
-    "cite":"Reader, page 78" }
- ]
-},
-
-{
- "slug": "sherlock-redheaded-6",
- "title": "The Hand in the Floor",
- "pages": "81–86",
- "bigQuestion": "How did Holmes work the whole thing out before it happened?",
- "mission": {
-   "name": "Pages 81 to 86",
-   "tag": "5 questions · about 4 minutes",
-   "blurb": "A quick check that the reading landed — not a test."
- },
- "passages": {
   "hand": {
    "title": "A light on the stone floor",
    "cite": "Reader, pages 80–81",
    "text": [
     "At first it was a small spark upon the stone pavement. Then it lengthened until it became a yellow line, and then a gash seemed to open and a hand appeared, a white, almost womanly hand. For a minute or more, its writhing fingers protruded out of the floor.",
-    "With a tearing sound, one of the broad stones turned over upon its side, and left a square, gaping hole, through which streamed the light of a lantern. Over the edge peeped a clean-cut, boyish face, which looked keenly about it, and then with a hand on either side of the opening, drew itself up."
+    "With a tearing sound, one of the broad stones turned over upon its side, and left a square, gaping hole, through which streamed the light of a lantern."
    ]
   },
   "object": {
@@ -451,7 +356,7 @@
    "title": "The knees of his trousers",
    "cite": "Reader, page 85",
    "text": [
-    "“I surprised you by beating upon the pavement with my stick. I was checking to see whether the cellar stretched out in front or behind. It was not in front. Then I rang the bell, and, as I had hoped, the assistant answered it. We have had some skirmishes, but we had never set eyes on each other before. His knees were what I wished to see. You must have seen how worn, wrinkled and stained they were. It was from those hours of burrowing.”",
+    "“I surprised you by beating upon the pavement with my stick. I was checking to see whether the cellar stretched out in front or behind. It was not in front. Then I rang the bell, and, as I had hoped, the assistant answered it. His knees were what I wished to see. You must have seen how worn, wrinkled and stained they were. It was from those hours of burrowing.”",
     "“The only remaining point was what they were burrowing for. I walked round the corner, saw that the City and Suburban Bank bordered on our friend’s shop, and felt that I had solved my problem.”"
    ]
   },
@@ -464,9 +369,25 @@
   }
  },
  "items": [
+  { "type":"pick", "p":"clay",
+    "q":"Who is John Clay?",
+    "opts":["A murderer, thief and forger the police can never find","A director of the City and Suburban Bank in Coburg","A red-headed clerk from the office in Pope’s Court","The landlord of the office building in Fleet Street"],
+    "a":0,
+    "why":"Jones has been after him for years and has never once set eyes on him. Grandson of a Duke, educated at Oxford, and at the head of his profession — which is exactly why the plan was so elaborate.",
+    "hi":"John Clay, the murderer, thief, and forger",
+    "cite":"Reader, page 75" },
+
+  { "type":"pick", "p":"gold",
+    "q":"What is in the bank cellar that the criminals want?",
+    "opts":["Thirty thousand napoleons of French gold, still in their crates","The bank’s ledgers and every account book it owns","A collection of jewels left with the bank for safekeeping","Nothing at all — the cellar has stood empty for years"],
+    "a":0,
+    "why":"Borrowed from the Bank of France, never unpacked, and it has become known that it is down there. Merryweather is sitting on two thousand of them while he complains about missing his card game.",
+    "hi":"we borrowed thirty thousand napoleons from the Bank of France",
+    "cite":"Reader, page 79" },
+
   { "type":"pick", "p":"hand",
     "q":"What comes up through the cellar floor first?",
-    "opts":["A hand, white and almost womanly","A lantern on a pole","A chisel and two empty bags","A voice calling out a name"],
+    "opts":["A hand, white and almost womanly","A lantern hung on the end of a pole","A chisel and two empty canvas bags","A voice, calling out somebody’s name"],
     "a":0,
     "why":"Watson has been lying in pitch darkness for what feels like hours. A spark, then a yellow line, then a hand coming out of the floor — told slowly, so the reader waits in the dark too.",
     "hi":"a hand appeared, a white, almost womanly hand",
@@ -474,23 +395,15 @@
 
   { "type":"pick", "p":"object",
     "q":"What was the whole point of the Red-Headed League?",
-    "opts":["To get Wilson out of his shop every morning","To find the reddest hair in London","To make Wilson copy out the encyclopedia","To collect a rich American’s fortune"],
+    "opts":["To get Wilson out of his shop every morning","To find the reddest head of hair in London","To make Wilson copy out the encyclopedia","To hand out a rich American’s fortune"],
     "a":0,
     "why":"The League, the advertisement and the copying are all one thing: four empty hours a day above the tunnel. Four pounds a week was cheap, Holmes says, for men playing for thousands.",
     "hi":"must be to get this pawnbroker out of the way",
     "cite":"Reader, page 84" },
 
   { "type":"pick", "p":"knees",
-    "q":"Why did Holmes beat the pavement with his stick outside the shop?",
-    "opts":["To find whether the cellar ran in front or behind","To make the assistant come out to the door and be seen","To test how thick the paving stones were at that spot","To signal to the police who were waiting round the corner"],
-    "a":0,
-    "why":"This is the answer to the question Holmes refused to give Watson two sections ago. It was not in front — so the digging had to be going the other way, towards whatever was behind.",
-    "hi":"I was checking to see whether the cellar stretched out in front or behind. It was not in front.",
-    "cite":"Reader, page 85" },
-
-  { "type":"pick", "p":"knees",
     "q":"What did the knees of the assistant’s trousers tell Holmes?",
-    "opts":["That he had spent hours a day burrowing","That he was poor and could not buy new clothes","That he had been kneeling in a church","That he had fallen in the street"],
+    "opts":["That he had spent hours a day burrowing","That he was too poor to buy new clothes","That he had been kneeling in a church","That he had taken a fall in the street"],
     "a":0,
     "why":"Worn, wrinkled and stained. A man who develops photographs does not wear his trousers out at the knee; a man digging a tunnel on his hands and knees for months does.",
     "hi":"You must have seen how worn, wrinkled and stained they were. It was from those hours of burrowing.",
