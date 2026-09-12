@@ -17,6 +17,7 @@ sys.path.insert(0, os.path.join(ROOT, "_build"))
 MINE = sys.argv[1:]
 sys.argv = ["x"]
 import build_theme as B
+import vocabspec
 
 
 def data_span(html):
@@ -52,6 +53,7 @@ def main():
         raise SystemExit("could not strip the theme off %s" % shell_dir)
 
     spec = json.load(io.open(os.path.join(SCRATCH, spec_name), encoding="utf-8"))
+    vocabspec.check(spec)
     senses = spec["senses"]
     ROUNDS = [(r["id"], r["name"], r["blurb"], r["words"]) for r in spec["rounds"]]
 

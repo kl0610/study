@@ -113,6 +113,59 @@ for (const t of TESTS) {
     ok(`${form.id}: a perfect paper scores ${right}/${n}`, right === n && n > 0);
   }
 
+  /* The final's own blurb says every meaning on the list, once each. It did not.
+     Each item was keyed on its headword rather than on its own word form, so a
+     derived form shared a key with the root's first sense and the final — which
+     dedups on that key — dropped it. Five of List 3's meanings and six of List
+     2's never appeared in the run that calls itself comprehensive, and they were
+     the derived forms, which are the whole reason those words are on the list.
+     So: a form that claims to cover everything has to prove it. */
+  {
+    const final = D.forms.find(f => f.id === "final");
+    if (final && /every meaning/i.test(String(final.blurb))) {
+      const meanings = [...new Set(D.pool.filter(p => p.type === "def").map(p => p.k))];
+      const asked = new Set(final.items.map(k => D.pool[k])
+                                       .filter(p => p.type === "def").map(p => p.k));
+      const skipped = meanings.filter(k => !asked.has(k));
+      ok(`the final says every meaning, and asks all ${meanings.length} of them`,
+         !skipped.length, skipped.join(", "));
+      /* And the key has to tell two word forms apart, or the count above is
+         blind to the very collision it exists to catch. */
+      const byKey = {}, collided = [];
+      D.pool.filter(p => p.type === "def").forEach(p => {
+        (byKey[p.k] = byKey[p.k] || new Set()).add(p.w);
+      });
+      Object.keys(byKey).forEach(k => {
+        if (byKey[k].size > 1) collided.push(k + " = " + [...byKey[k]].join("/"));
+      });
+      ok("...and no two word forms share a meaning key", !collided.length,
+         collided.join(", "));
+    }
+  }
+
+  /* The warm-up is one word at a time, one per headword. A headword with no
+     first meaning would drop out of Sunday without anyone noticing. */
+  {
+    const warm = D.forms.find(f => f.id === "warm");
+    if (warm) {
+      const items = warm.items.map(k => D.pool[k]);
+      ok(`the warm-up is ${items.length} words, one each and all first meanings`,
+         items.every(p => p.type === "def" && p.first) &&
+         new Set(items.map(p => p.head || p.w)).size === items.length,
+         items.filter(p => !p.first).map(p => p.w).join(", "));
+    }
+  }
+
+  /* A blank item hides "____" and nothing else, so a word left anywhere else in
+     the sentence is the answer printed beside the question. */
+  {
+    const leaks = D.pool.filter(p => p.type === "blank")
+      .filter(p => strip(p.q).toLowerCase().includes(String(p.w).toLowerCase()))
+      .map(p => p.w);
+    ok("no sentence question contains the word it is asking for", !leaks.length,
+       [...new Set(leaks)].join(", "));
+  }
+
   ok("every answer index is inside the option list",
      D.pool.every(it => shellKey(it) >= 0 && shellKey(it) < it.opts.length));
   ok("no item repeats an option",

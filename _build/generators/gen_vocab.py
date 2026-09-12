@@ -22,6 +22,7 @@ sys.path.insert(0, os.path.join(ROOT, "_build"))
 MINE = sys.argv[1:]
 sys.argv = ["x"]
 import build_theme as B
+import vocabspec
 
 RNG = random.Random(20260830)   # deterministic build; the app shuffles at render
 
@@ -107,6 +108,7 @@ def main():
         raise SystemExit("could not strip the theme off %s" % shell_dir)
 
     spec = json.load(io.open(os.path.join(SCRATCH, spec_name), encoding="utf-8"))
+    vocabspec.check(spec)
     senses = spec["senses"]
     CITE = spec["cite"]
     WRITTEN = "Written for this practice; the meaning it turns on is the book\u2019s."
@@ -116,7 +118,13 @@ def main():
 
     pool = []
     for n, s in enumerate(senses):
-        key = "%s:%d" % (s["head"], s.get("s", 0))
+        # One key per meaning, and a derived form is a meaning of its own.
+        # This was head:s, so abundance and abundant were the same key, and
+        # inhabitant and inhabit, and splendid and splendor. The final dedups
+        # on it, so five of List 3's twenty-four meanings never appeared in
+        # the run that calls itself comprehensive -- and they were the derived
+        # forms, which are the whole reason those words are on the list.
+        key = "%s:%d" % (s["w"], s.get("s", 0))
         sibling_defs = [x["def"] for x in senses if x["head"] == s["head"]]
 
         # def — the word, choose its meaning
@@ -127,7 +135,8 @@ def main():
         qv_def = ["<b>%s</b> <span class='pos'>(%s)</span>" % (s["w"], s["pos"]),
                   "What does <b>%s</b> mean here? <span class='pos'>(%s)</span>" % (s["w"], s["pos"]),
                   "Choose the meaning of <b>%s</b>. <span class='pos'>(%s)</span>" % (s["w"], s["pos"])]
-        pool.append({"k": key, "w": s["w"], "s": s.get("s", 0), "type": "def",
+        pool.append({"k": key, "w": s["w"], "head": s["head"],
+                     "s": s.get("s", 0), "type": "def",
                      "q": qv_def[0], "qv": qv_def,
                      "opts": opts, "a": ai,
                      "why": "<b>%s</b> (%s) &mdash; %s" % (s["w"], s["pos"], s["def"]),
@@ -139,7 +148,8 @@ def main():
         qv_rev = ["Which word means: <span class='def'>(%s) %s</span>" % (s["pos"], s["def"]),
                   "Which word fits this meaning? <span class='def'>(%s) %s</span>" % (s["pos"], s["def"]),
                   "Find the word for: <span class='def'>(%s) %s</span>" % (s["pos"], s["def"])]
-        pool.append({"k": key, "w": s["w"], "s": s.get("s", 0), "type": "rev",
+        pool.append({"k": key, "w": s["w"], "head": s["head"],
+                     "s": s.get("s", 0), "type": "rev",
                      "q": qv_rev[0], "qv": qv_rev,
                      "opts": opts, "a": ai,
                      "why": "<b>%s</b> &mdash; (%s) %s" % (s["w"], s["pos"], s["def"]),
@@ -149,7 +159,8 @@ def main():
         blanked = s["sent"].replace("____", "<u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u>")
         d = pick_distractors(all_words, s["w"], 3)
         opts, ai = balance([s["w"]] + d, 0)
-        pool.append({"k": key, "w": s["w"], "s": s.get("s", 0), "type": "blank",
+        pool.append({"k": key, "w": s["w"], "head": s["head"],
+                     "s": s.get("s", 0), "type": "blank",
                      "q": blanked, "opts": opts, "a": ai,
                      "why": "<b>%s</b> &mdash; (%s) %s" % (s["w"], s["pos"], s["def"]),
                      "cite": WRITTEN, "first": bool(s.get("first"))})
@@ -160,7 +171,8 @@ def main():
             qv_ant = ["Which word is most nearly the <b>opposite</b> of <b>%s</b>?" % s["w"],
                       "Which word means the <b>opposite</b> of <b>%s</b>?" % s["w"],
                       "<b>%s</b> is closest to the opposite of which word?" % s["w"]]
-            pool.append({"k": key, "w": s["w"], "s": s.get("s", 0), "type": "ant",
+            pool.append({"k": key, "w": s["w"], "head": s["head"],
+                         "s": s.get("s", 0), "type": "ant",
                          "q": qv_ant[0], "qv": qv_ant,
                          "opts": opts, "a": ai,
                          "why": "<b>%s</b> means %s So its opposite is <b>%s</b>."
@@ -203,7 +215,9 @@ def main():
     # Sunday warm-up: one per headword, meanings only, first sense only
     warm = []
     for h in spec["headwords"]:
-        cand = [p for p in pool if p["type"] == "def" and p["first"] and p["k"].startswith(h + ":")]
+        cand = [p for p in pool if p["type"] == "def" and p["first"] and p["head"] == h]
+        if not cand:
+            raise SystemExit("no first meaning to warm up on for %s" % h)
         warm.append(cand[0])
     RNG.shuffle(warm)
 
