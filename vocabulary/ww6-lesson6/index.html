@@ -71,6 +71,9 @@ h1 em{font-style:normal;color:var(--violet)}
 .postag[data-p="n"]{background:var(--teal);color:#fff}
 .postag[data-p="v"]{background:var(--amber);color:var(--ink)}
 .postag[data-p="adj"]{background:var(--violet);color:#fff}
+.postag[data-p="adv"]{background:#6E7FA8;color:#fff}
+.chip .postag,.placed .postag{margin:0 0 0 6px;padding:1px 5px;font-size:10px}
+.placed .postag{background:rgba(255,255,255,.24);color:#fff}
 
 .bar{position:fixed;left:0;right:0;bottom:0;z-index:25;background:rgba(35,27,46,.96);
   border-top:1px solid var(--line);padding:10px 16px calc(10px + env(safe-area-inset-bottom))}
@@ -1618,7 +1621,7 @@ window.__MC_SFX__={"tool": "data:audio/mpeg;base64,//OAxAAAAAAAAAAAAFhpbmcAAAAPA
   <header>
     <div class="eyebrow" style="margin-top:12px">Wordly Wise 3000 &middot; Book 6</div>
     <h1>Word <em>List 6</em></h1>
-    <p class="sub">Every meaning from the list is below. Drag each word onto its meaning, Each meaning is already labelled as a noun, a verb, or an adjective — use that as your clue. Words with more than one meaning appear more than once.</p>
+    <p class="sub">Every meaning from the list is below, with nothing on it to say what kind of word it wants. The label is on the word instead — so a word that is both a noun and a verb is in the tray twice, once each way, and the two do not go in the same place.</p>
     <button class="listbtn" id="showlist">Study the word list first</button>
   </header>
 
@@ -1628,7 +1631,7 @@ window.__MC_SFX__={"tool": "data:audio/mpeg;base64,//OAxAAAAAAAAAAAAFhpbmcAAAAPA
   </div>
 
   <div class="defs" id="defs"></div>
-  <footer>Definitions are from Wordly Wise 3000, Book 6, Lesson 1, for personal study use.</footer>
+  <footer>Definitions are from Wordly Wise 3000, Book 6, Lesson 6, for personal study use.</footer>
 </div>
 
 <div id="done" class="wrap hide">
@@ -1658,7 +1661,7 @@ window.__MC_SFX__={"tool": "data:audio/mpeg;base64,//OAxAAAAAAAAAAAAFhpbmcAAAAPA
 </div>
 
 <script>
-/* Wordly Wise 3000, Book 6 — Lesson 1 Word List.
+/* Wordly Wise 3000, Book 6 — Lesson 6 Word List.
    Definitions transcribed verbatim from the printed word list.
    pos: n = noun, v = verb, adj = adjective. */
 const DATA = {
@@ -1669,7 +1672,7 @@ const DATA = {
    "w": "apparel",
    "entries": [
     [
-     "n.",
+     "n",
      "The things that are worn by a person; clothing."
     ]
    ]
@@ -1678,11 +1681,11 @@ const DATA = {
    "w": "appreciate",
    "entries": [
     [
-     "v.",
+     "v",
      "To see the worth or quality of."
     ],
     [
-     "v.",
+     "v",
      "To increase in value."
     ]
    ]
@@ -1691,7 +1694,7 @@ const DATA = {
    "w": "continuous",
    "entries": [
     [
-     "adj.",
+     "adj",
      "Going on without stopping."
     ]
    ]
@@ -1700,11 +1703,11 @@ const DATA = {
    "w": "dissolve",
    "entries": [
     [
-     "v.",
+     "v",
      "To make or become liquid."
     ],
     [
-     "v.",
+     "v",
      "To bring or to come to an end."
     ]
    ]
@@ -1713,7 +1716,7 @@ const DATA = {
    "w": "domesticate",
    "entries": [
     [
-     "v.",
+     "v",
      "To tame; to bring plants or animals under human control."
     ]
    ]
@@ -1722,7 +1725,7 @@ const DATA = {
    "w": "domesticated",
    "entries": [
     [
-     "adj.",
+     "adj",
      "Brought under human control; tamed or cultivated."
     ]
    ]
@@ -1731,11 +1734,11 @@ const DATA = {
    "w": "emerge",
    "entries": [
     [
-     "v.",
+     "v",
      "To come into view; to appear."
     ],
     [
-     "v.",
+     "v",
      "To become known."
     ]
    ]
@@ -1744,15 +1747,15 @@ const DATA = {
    "w": "fiber",
    "entries": [
     [
-     "n.",
+     "n",
      "A thin, threadlike part of animal hair or plant tissue; also, an artificial thread that resembles this."
     ],
     [
-     "n.",
+     "n",
      "An arrangement of body cells that forms muscles and nerves."
     ],
     [
-     "n.",
+     "n",
      "A food substance that provides bulk but is not digested."
     ]
    ]
@@ -1761,15 +1764,15 @@ const DATA = {
    "w": "function",
    "entries": [
     [
-     "v.",
+     "v",
      "To serve a purpose."
     ],
     [
-     "n.",
+     "n",
      "The special purpose something is used for."
     ],
     [
-     "n.",
+     "n",
      "An important ceremony or gathering."
     ]
    ]
@@ -1778,15 +1781,15 @@ const DATA = {
    "w": "hatch",
    "entries": [
     [
-     "v.",
+     "v",
      "To come or to bring forth from an egg."
     ],
     [
-     "v.",
+     "v",
      "To think up."
     ],
     [
-     "n.",
+     "n",
      "A small opening with a door or cover."
     ]
    ]
@@ -1795,7 +1798,7 @@ const DATA = {
    "w": "inhibit",
    "entries": [
     [
-     "v.",
+     "v",
      "To prevent from doing something or to prevent from happening."
     ]
    ]
@@ -1804,7 +1807,7 @@ const DATA = {
    "w": "inhibited",
    "entries": [
     [
-     "adj.",
+     "adj",
      "Held back because of shyness."
     ]
    ]
@@ -1813,7 +1816,7 @@ const DATA = {
    "w": "minute",
    "entries": [
     [
-     "adj.",
+     "adj",
      "Very small; tiny."
     ]
    ]
@@ -1822,15 +1825,15 @@ const DATA = {
    "w": "motion",
    "entries": [
     [
-     "n.",
+     "n",
      "Movement."
     ],
     [
-     "n.",
+     "n",
      "A suggestion on which members at a meeting must vote."
     ],
     [
-     "v.",
+     "v",
      "To signal."
     ]
    ]
@@ -1839,7 +1842,7 @@ const DATA = {
    "w": "motionless",
    "entries": [
     [
-     "adj.",
+     "adj",
      "Not moving; stationary."
     ]
    ]
@@ -1848,7 +1851,7 @@ const DATA = {
    "w": "sheathe",
    "entries": [
     [
-     "v.",
+     "v",
      "To cover with something that protects."
     ]
    ]
@@ -1857,19 +1860,19 @@ const DATA = {
    "w": "shed",
    "entries": [
     [
-     "v.",
+     "v",
      "To lose; to give up."
     ],
     [
-     "v.",
+     "v",
      "To cause to flow."
     ],
     [
-     "v.",
+     "v",
      "To throw off water without letting it soak through."
     ],
     [
-     "v.",
+     "v",
      "To send out or give off."
     ]
    ]
@@ -1878,15 +1881,15 @@ const DATA = {
    "w": "transfer",
    "entries": [
     [
-     "v.",
+     "v",
      "To move, carry, send, or change from one person or place to another."
     ],
     [
-     "n.",
+     "n",
      "The act of transferring."
     ],
     [
-     "n.",
+     "n",
      "A ticket used for transferring from one bus or train to another."
     ]
    ]
@@ -1900,27 +1903,27 @@ const DATA = {
    "items": [
     [
      "apparel",
-     "n.",
+     "n",
      "The things that are worn by a person; clothing."
     ],
     [
      "sheathe",
-     "v.",
+     "v",
      "To cover with something that protects."
     ],
     [
      "fiber",
-     "n.",
+     "n",
      "A thin, threadlike part of animal hair or plant tissue; also, an artificial thread that resembles this."
     ],
     [
      "fiber",
-     "n.",
+     "n",
      "An arrangement of body cells that forms muscles and nerves."
     ],
     [
      "fiber",
-     "n.",
+     "n",
      "A food substance that provides bulk but is not digested."
     ]
    ]
@@ -1932,47 +1935,47 @@ const DATA = {
    "items": [
     [
      "emerge",
-     "v.",
+     "v",
      "To come into view; to appear."
     ],
     [
      "emerge",
-     "v.",
+     "v",
      "To become known."
     ],
     [
      "hatch",
-     "v.",
+     "v",
      "To come or to bring forth from an egg."
     ],
     [
      "hatch",
-     "v.",
+     "v",
      "To think up."
     ],
     [
      "hatch",
-     "n.",
+     "n",
      "A small opening with a door or cover."
     ],
     [
      "motion",
-     "n.",
+     "n",
      "Movement."
     ],
     [
      "motion",
-     "n.",
+     "n",
      "A suggestion on which members at a meeting must vote."
     ],
     [
      "motion",
-     "v.",
+     "v",
      "To signal."
     ],
     [
      "motionless",
-     "adj.",
+     "adj",
      "Not moving; stationary."
     ]
    ]
@@ -1984,47 +1987,47 @@ const DATA = {
    "items": [
     [
      "shed",
-     "v.",
+     "v",
      "To lose; to give up."
     ],
     [
      "shed",
-     "v.",
+     "v",
      "To cause to flow."
     ],
     [
      "shed",
-     "v.",
+     "v",
      "To throw off water without letting it soak through."
     ],
     [
      "shed",
-     "v.",
+     "v",
      "To send out or give off."
     ],
     [
      "transfer",
-     "v.",
+     "v",
      "To move, carry, send, or change from one person or place to another."
     ],
     [
      "transfer",
-     "n.",
+     "n",
      "The act of transferring."
     ],
     [
      "transfer",
-     "n.",
+     "n",
      "A ticket used for transferring from one bus or train to another."
     ],
     [
      "dissolve",
-     "v.",
+     "v",
      "To make or become liquid."
     ],
     [
      "dissolve",
-     "v.",
+     "v",
      "To bring or to come to an end."
     ]
    ]
@@ -2036,32 +2039,32 @@ const DATA = {
    "items": [
     [
      "inhibit",
-     "v.",
+     "v",
      "To prevent from doing something or to prevent from happening."
     ],
     [
      "inhibited",
-     "adj.",
+     "adj",
      "Held back because of shyness."
     ],
     [
      "domesticate",
-     "v.",
+     "v",
      "To tame; to bring plants or animals under human control."
     ],
     [
      "domesticated",
-     "adj.",
+     "adj",
      "Brought under human control; tamed or cultivated."
     ],
     [
      "continuous",
-     "adj.",
+     "adj",
      "Going on without stopping."
     ],
     [
      "minute",
-     "adj.",
+     "adj",
      "Very small; tiny."
     ]
    ]
@@ -2073,27 +2076,27 @@ const DATA = {
    "items": [
     [
      "appreciate",
-     "v.",
+     "v",
      "To see the worth or quality of."
     ],
     [
      "appreciate",
-     "v.",
+     "v",
      "To increase in value."
     ],
     [
      "function",
-     "v.",
+     "v",
      "To serve a purpose."
     ],
     [
      "function",
-     "n.",
+     "n",
      "The special purpose something is used for."
     ],
     [
      "function",
-     "n.",
+     "n",
      "An important ceremony or gathering."
     ]
    ]
@@ -2116,8 +2119,8 @@ function build(){
   MC.begin();
   tries=0; hinted=false; marks=new Set(); sel=null;
   slots=shuffle(ITEMS).map((it,n)=>({n,word:it.word,pos:it.pos,txt:it.txt,chip:null}));
-  chips=ITEMS.map((it,n)=>({id:"c"+n,word:it.word,at:null}))
-             .sort((a,b)=>a.word.localeCompare(b.word));
+  chips=ITEMS.map((it,n)=>({id:"c"+n,word:it.word,pos:it.pos,at:null}))
+             .sort((a,b)=>a.word.localeCompare(b.word)||a.pos.localeCompare(b.pos));
   $("fb").innerHTML=""; $("bar").classList.remove("hide");
   if($("hint")) $("hint").remove();
   $("sheet").classList.remove("hide"); $("done").classList.add("hide");
@@ -2130,7 +2133,7 @@ function draw(){
     ? free.length+" word"+(free.length>1?"s":"")+" left"
     : "ready to check";
   $("chips").innerHTML = free.length
-    ? chips.map(c=>`<button class="chip ${c.at!==null?"gone":""} ${sel===c.id?"sel":""}" data-c="${c.id}">${esc(c.word)}</button>`).join("")
+    ? chips.map(c=>`<button class="chip ${c.at!==null?"gone":""} ${sel===c.id?"sel":""}" data-c="${c.id}">${esc(c.word)}<span class="postag" data-p="${c.pos}">${c.pos}.</span></button>`).join("")
     : `<div class="alldone">All ${slots.length} words placed. Tap a placed word to send it back.</div>`;
 
   $("defs").innerHTML = slots.map(s=>{
@@ -2138,9 +2141,9 @@ function draw(){
     return `<div class="def ${marks.has(s.n)?"wrongmark":""}" data-s="${s.n}">
       <span class="num">${s.n+1}</span>
       <span class="mid">
-        <span class="txt"><span class="postag" data-p="${s.pos}">${s.pos}.</span>${esc(s.txt)}</span>
+        <span class="txt">${esc(s.txt)}</span>
         <span class="drop">
-          ${c?`<button class="placed ${marks.has(s.n)?"wrongmark":""}" data-pull="${s.n}">${esc(c.word)}</button>`
+          ${c?`<button class="placed ${marks.has(s.n)?"wrongmark":""}" data-pull="${s.n}">${esc(c.word)}<span class="postag" data-p="${c.pos}">${c.pos}.</span></button>`
              :`<span class="hole">DROP HERE</span>`}
         </span>
       </span>
@@ -2226,7 +2229,7 @@ function startDrag(e,chipId){
 
 const isDone  = s => !!s.chip;
 const isWrong = s => { const c=chips.find(x=>x.id===s.chip);
-                       return !c || c.word!==s.word; };
+                       return !c || c.word!==s.word || c.pos!==s.pos; };
 /* only lines he has actually finished are judged */
 const wrongSlots = () => slots.filter(s=>isDone(s) && isWrong(s)).map(s=>s.n);
 

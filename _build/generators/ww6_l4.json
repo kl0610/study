@@ -2,6 +2,7 @@
  "book": "Wordly Wise 3000, Book 6",
  "lesson": "Word List 4",
  "cite": "Wordly Wise 3000, Book 6, Word List 4",
+ "posOnWords": true,
 
  "bank": ["aloft","attain","buffet","elude","elusive","flammable","hover","inflate",
           "jeopardy","jeopardize","moor","mooring","plummet","pollute","pollution",

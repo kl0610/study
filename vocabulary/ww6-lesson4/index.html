@@ -71,6 +71,9 @@ h1 em{font-style:normal;color:var(--violet)}
 .postag[data-p="n"]{background:var(--teal);color:#fff}
 .postag[data-p="v"]{background:var(--amber);color:var(--ink)}
 .postag[data-p="adj"]{background:var(--violet);color:#fff}
+.postag[data-p="adv"]{background:#6E7FA8;color:#fff}
+.chip .postag,.placed .postag{margin:0 0 0 6px;padding:1px 5px;font-size:10px}
+.placed .postag{background:rgba(255,255,255,.24);color:#fff}
 
 .bar{position:fixed;left:0;right:0;bottom:0;z-index:25;background:rgba(35,27,46,.96);
   border-top:1px solid var(--line);padding:10px 16px calc(10px + env(safe-area-inset-bottom))}
@@ -1618,7 +1621,7 @@ window.__MC_SFX__={"tool": "data:audio/mpeg;base64,//OAxAAAAAAAAAAAAFhpbmcAAAAPA
   <header>
     <div class="eyebrow" style="margin-top:12px">Wordly Wise 3000 &middot; Book 6</div>
     <h1>Word <em>List 4</em></h1>
-    <p class="sub">Every meaning from the list is below. Drag each word onto its meaning, Each meaning is already labelled as a noun, a verb, or an adjective — use that as your clue. Words with more than one meaning appear more than once.</p>
+    <p class="sub">Every meaning from the list is below, with nothing on it to say what kind of word it wants. The label is on the word instead — so a word that is both a noun and a verb is in the tray twice, once each way, and the two do not go in the same place.</p>
     <button class="listbtn" id="showlist">Study the word list first</button>
   </header>
 
@@ -1628,7 +1631,7 @@ window.__MC_SFX__={"tool": "data:audio/mpeg;base64,//OAxAAAAAAAAAAAAFhpbmcAAAAPA
   </div>
 
   <div class="defs" id="defs"></div>
-  <footer>Definitions are from Wordly Wise 3000, Book 6, Lesson 1, for personal study use.</footer>
+  <footer>Definitions are from Wordly Wise 3000, Book 6, Lesson 4, for personal study use.</footer>
 </div>
 
 <div id="done" class="wrap hide">
@@ -1658,7 +1661,7 @@ window.__MC_SFX__={"tool": "data:audio/mpeg;base64,//OAxAAAAAAAAAAAAFhpbmcAAAAPA
 </div>
 
 <script>
-/* Wordly Wise 3000, Book 6 — Lesson 1 Word List.
+/* Wordly Wise 3000, Book 6 — Lesson 4 Word List.
    Definitions transcribed verbatim from the printed word list.
    pos: n = noun, v = verb, adj = adjective. */
 const DATA = {
@@ -1669,7 +1672,7 @@ const DATA = {
    "w": "aloft",
    "entries": [
     [
-     "adv.",
+     "adv",
      "Up in the air, especially in flight."
     ]
    ]
@@ -1678,11 +1681,11 @@ const DATA = {
    "w": "attain",
    "entries": [
     [
-     "v.",
+     "v",
      "To reach; to arrive at."
     ],
     [
-     "v.",
+     "v",
      "To achieve."
     ]
    ]
@@ -1691,15 +1694,15 @@ const DATA = {
    "w": "buffet",
    "entries": [
     [
-     "n.",
+     "n",
      "A piece of furniture with drawers and shelves for the storage and display of plates, dishes, and bowls."
     ],
     [
-     "n.",
+     "n",
      "A meal laid out for guests to help themselves."
     ],
     [
-     "v.",
+     "v",
      "To pound repeatedly; to batter."
     ]
    ]
@@ -1708,7 +1711,7 @@ const DATA = {
    "w": "elude",
    "entries": [
     [
-     "v.",
+     "v",
      "To escape by being quick or clever."
     ]
    ]
@@ -1717,11 +1720,11 @@ const DATA = {
    "w": "elusive",
    "entries": [
     [
-     "adj.",
+     "adj",
      "Hard to find or capture."
     ],
     [
-     "adj.",
+     "adj",
      "Hard to explain or make clear."
     ]
    ]
@@ -1730,7 +1733,7 @@ const DATA = {
    "w": "flammable",
    "entries": [
     [
-     "adj.",
+     "adj",
      "Able to catch fire easily."
     ]
    ]
@@ -1739,7 +1742,7 @@ const DATA = {
    "w": "hover",
    "entries": [
     [
-     "v.",
+     "v",
      "To remain in place over an object or location."
     ]
    ]
@@ -1748,7 +1751,7 @@ const DATA = {
    "w": "inflate",
    "entries": [
     [
-     "v.",
+     "v",
      "To fill with air or other gas."
     ]
    ]
@@ -1757,7 +1760,7 @@ const DATA = {
    "w": "jeopardy",
    "entries": [
     [
-     "n.",
+     "n",
      "Danger."
     ]
    ]
@@ -1766,7 +1769,7 @@ const DATA = {
    "w": "jeopardize",
    "entries": [
     [
-     "v.",
+     "v",
      "To put in danger of loss or injury."
     ]
    ]
@@ -1775,7 +1778,7 @@ const DATA = {
    "w": "moor",
    "entries": [
     [
-     "v.",
+     "v",
      "To hold in place with ropes or anchors."
     ]
    ]
@@ -1784,7 +1787,7 @@ const DATA = {
    "w": "mooring",
    "entries": [
     [
-     "n.",
+     "n",
      "A place to which a boat or aircraft can be moored."
     ]
    ]
@@ -1793,7 +1796,7 @@ const DATA = {
    "w": "plummet",
    "entries": [
     [
-     "v.",
+     "v",
      "To fall suddenly toward the earth or to a lower level; to plunge."
     ]
    ]
@@ -1802,7 +1805,7 @@ const DATA = {
    "w": "pollute",
    "entries": [
     [
-     "v.",
+     "v",
      "To make impure or dirty."
     ]
    ]
@@ -1811,7 +1814,7 @@ const DATA = {
    "w": "pollution",
    "entries": [
     [
-     "n.",
+     "n",
      "The action of polluting; the state of being polluted."
     ]
    ]
@@ -1820,7 +1823,7 @@ const DATA = {
    "w": "propel",
    "entries": [
     [
-     "v.",
+     "v",
      "To push or drive forward."
     ]
    ]
@@ -1829,11 +1832,11 @@ const DATA = {
    "w": "stationary",
    "entries": [
     [
-     "adj.",
+     "adj",
      "Not moving."
     ],
     [
-     "adj.",
+     "adj",
      "Not changing."
     ]
    ]
@@ -1842,7 +1845,7 @@ const DATA = {
    "w": "superb",
    "entries": [
     [
-     "adj.",
+     "adj",
      "Of the highest quality; grand; splendid."
     ]
    ]
@@ -1856,27 +1859,27 @@ const DATA = {
    "items": [
     [
      "aloft",
-     "adv.",
+     "adv",
      "Up in the air, especially in flight."
     ],
     [
      "hover",
-     "v.",
+     "v",
      "To remain in place over an object or location."
     ],
     [
      "inflate",
-     "v.",
+     "v",
      "To fill with air or other gas."
     ],
     [
      "plummet",
-     "v.",
+     "v",
      "To fall suddenly toward the earth or to a lower level; to plunge."
     ],
     [
      "propel",
-     "v.",
+     "v",
      "To push or drive forward."
     ]
    ]
@@ -1888,27 +1891,27 @@ const DATA = {
    "items": [
     [
      "jeopardy",
-     "n.",
+     "n",
      "Danger."
     ],
     [
      "jeopardize",
-     "v.",
+     "v",
      "To put in danger of loss or injury."
     ],
     [
      "flammable",
-     "adj.",
+     "adj",
      "Able to catch fire easily."
     ],
     [
      "pollute",
-     "v.",
+     "v",
      "To make impure or dirty."
     ],
     [
      "pollution",
-     "n.",
+     "n",
      "The action of polluting; the state of being polluted."
     ]
    ]
@@ -1920,37 +1923,37 @@ const DATA = {
    "items": [
     [
      "moor",
-     "v.",
+     "v",
      "To hold in place with ropes or anchors."
     ],
     [
      "mooring",
-     "n.",
+     "n",
      "A place to which a boat or aircraft can be moored."
     ],
     [
      "stationary",
-     "adj.",
+     "adj",
      "Not moving."
     ],
     [
      "stationary",
-     "adj.",
+     "adj",
      "Not changing."
     ],
     [
      "elude",
-     "v.",
+     "v",
      "To escape by being quick or clever."
     ],
     [
      "elusive",
-     "adj.",
+     "adj",
      "Hard to find or capture."
     ],
     [
      "elusive",
-     "adj.",
+     "adj",
      "Hard to explain or make clear."
     ]
    ]
@@ -1962,32 +1965,32 @@ const DATA = {
    "items": [
     [
      "attain",
-     "v.",
+     "v",
      "To reach; to arrive at."
     ],
     [
      "attain",
-     "v.",
+     "v",
      "To achieve."
     ],
     [
      "buffet",
-     "n.",
+     "n",
      "A piece of furniture with drawers and shelves for the storage and display of plates, dishes, and bowls."
     ],
     [
      "buffet",
-     "n.",
+     "n",
      "A meal laid out for guests to help themselves."
     ],
     [
      "buffet",
-     "v.",
+     "v",
      "To pound repeatedly; to batter."
     ],
     [
      "superb",
-     "adj.",
+     "adj",
      "Of the highest quality; grand; splendid."
     ]
    ]
@@ -2010,8 +2013,8 @@ function build(){
   MC.begin();
   tries=0; hinted=false; marks=new Set(); sel=null;
   slots=shuffle(ITEMS).map((it,n)=>({n,word:it.word,pos:it.pos,txt:it.txt,chip:null}));
-  chips=ITEMS.map((it,n)=>({id:"c"+n,word:it.word,at:null}))
-             .sort((a,b)=>a.word.localeCompare(b.word));
+  chips=ITEMS.map((it,n)=>({id:"c"+n,word:it.word,pos:it.pos,at:null}))
+             .sort((a,b)=>a.word.localeCompare(b.word)||a.pos.localeCompare(b.pos));
   $("fb").innerHTML=""; $("bar").classList.remove("hide");
   if($("hint")) $("hint").remove();
   $("sheet").classList.remove("hide"); $("done").classList.add("hide");
@@ -2024,7 +2027,7 @@ function draw(){
     ? free.length+" word"+(free.length>1?"s":"")+" left"
     : "ready to check";
   $("chips").innerHTML = free.length
-    ? chips.map(c=>`<button class="chip ${c.at!==null?"gone":""} ${sel===c.id?"sel":""}" data-c="${c.id}">${esc(c.word)}</button>`).join("")
+    ? chips.map(c=>`<button class="chip ${c.at!==null?"gone":""} ${sel===c.id?"sel":""}" data-c="${c.id}">${esc(c.word)}<span class="postag" data-p="${c.pos}">${c.pos}.</span></button>`).join("")
     : `<div class="alldone">All ${slots.length} words placed. Tap a placed word to send it back.</div>`;
 
   $("defs").innerHTML = slots.map(s=>{
@@ -2032,9 +2035,9 @@ function draw(){
     return `<div class="def ${marks.has(s.n)?"wrongmark":""}" data-s="${s.n}">
       <span class="num">${s.n+1}</span>
       <span class="mid">
-        <span class="txt"><span class="postag" data-p="${s.pos}">${s.pos}.</span>${esc(s.txt)}</span>
+        <span class="txt">${esc(s.txt)}</span>
         <span class="drop">
-          ${c?`<button class="placed ${marks.has(s.n)?"wrongmark":""}" data-pull="${s.n}">${esc(c.word)}</button>`
+          ${c?`<button class="placed ${marks.has(s.n)?"wrongmark":""}" data-pull="${s.n}">${esc(c.word)}<span class="postag" data-p="${c.pos}">${c.pos}.</span></button>`
              :`<span class="hole">DROP HERE</span>`}
         </span>
       </span>
@@ -2120,7 +2123,7 @@ function startDrag(e,chipId){
 
 const isDone  = s => !!s.chip;
 const isWrong = s => { const c=chips.find(x=>x.id===s.chip);
-                       return !c || c.word!==s.word; };
+                       return !c || c.word!==s.word || c.pos!==s.pos; };
 /* only lines he has actually finished are judged */
 const wrongSlots = () => slots.filter(s=>isDone(s) && isWrong(s)).map(s=>s.n);
 

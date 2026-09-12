@@ -71,6 +71,9 @@ h1 em{font-style:normal;color:var(--violet)}
 .postag[data-p="n"]{background:var(--teal);color:#fff}
 .postag[data-p="v"]{background:var(--amber);color:var(--ink)}
 .postag[data-p="adj"]{background:var(--violet);color:#fff}
+.postag[data-p="adv"]{background:#6E7FA8;color:#fff}
+.chip .postag,.placed .postag{margin:0 0 0 6px;padding:1px 5px;font-size:10px}
+.placed .postag{background:rgba(255,255,255,.24);color:#fff}
 
 .bar{position:fixed;left:0;right:0;bottom:0;z-index:25;background:rgba(35,27,46,.96);
   border-top:1px solid var(--line);padding:10px 16px calc(10px + env(safe-area-inset-bottom))}
@@ -1618,7 +1621,7 @@ window.__MC_SFX__={"tool": "data:audio/mpeg;base64,//OAxAAAAAAAAAAAAFhpbmcAAAAPA
   <header>
     <div class="eyebrow" style="margin-top:12px">Wordly Wise 3000 &middot; Book 6</div>
     <h1>Word <em>List 5</em></h1>
-    <p class="sub">Every meaning from the list is below. Drag each word onto its meaning, Each meaning is already labelled as a noun, a verb, or an adjective — use that as your clue. Words with more than one meaning appear more than once.</p>
+    <p class="sub">Every meaning from the list is below, with nothing on it to say what kind of word it wants. The label is on the word instead — so a word that is both a noun and a verb is in the tray twice, once each way, and the two do not go in the same place.</p>
     <button class="listbtn" id="showlist">Study the word list first</button>
   </header>
 
@@ -1628,7 +1631,7 @@ window.__MC_SFX__={"tool": "data:audio/mpeg;base64,//OAxAAAAAAAAAAAAFhpbmcAAAAPA
   </div>
 
   <div class="defs" id="defs"></div>
-  <footer>Definitions are from Wordly Wise 3000, Book 6, Lesson 1, for personal study use.</footer>
+  <footer>Definitions are from Wordly Wise 3000, Book 6, Lesson 5, for personal study use.</footer>
 </div>
 
 <div id="done" class="wrap hide">
@@ -1658,7 +1661,7 @@ window.__MC_SFX__={"tool": "data:audio/mpeg;base64,//OAxAAAAAAAAAAAAFhpbmcAAAAPA
 </div>
 
 <script>
-/* Wordly Wise 3000, Book 6 — Lesson 1 Word List.
+/* Wordly Wise 3000, Book 6 — Lesson 5 Word List.
    Definitions transcribed verbatim from the printed word list.
    pos: n = noun, v = verb, adj = adjective. */
 const DATA = {
@@ -1669,7 +1672,7 @@ const DATA = {
    "w": "antic",
    "entries": [
     [
-     "n.",
+     "n",
      "(usually plural) A playful or funny act."
     ]
    ]
@@ -1678,11 +1681,11 @@ const DATA = {
    "w": "attire",
    "entries": [
     [
-     "n.",
+     "n",
      "Clothes, especially fine and expensive clothes."
     ],
     [
-     "v.",
+     "v",
      "To dress up or be dressed up."
     ]
    ]
@@ -1691,7 +1694,7 @@ const DATA = {
    "w": "captivate",
    "entries": [
     [
-     "v.",
+     "v",
      "To please greatly; to win over by special charm."
     ]
    ]
@@ -1700,7 +1703,7 @@ const DATA = {
    "w": "deft",
    "entries": [
     [
-     "adj.",
+     "adj",
      "Quick and sure; skillful at handling."
     ]
    ]
@@ -1709,7 +1712,7 @@ const DATA = {
    "w": "diligent",
    "entries": [
     [
-     "adj.",
+     "adj",
      "Working with great care and effort."
     ]
    ]
@@ -1718,11 +1721,11 @@ const DATA = {
    "w": "eclipse",
    "entries": [
     [
-     "n.",
+     "n",
      "The total or partial hiding of one heavenly body by another."
     ],
     [
-     "v.",
+     "v",
      "To do or be better than; to outshine."
     ]
    ]
@@ -1731,7 +1734,7 @@ const DATA = {
    "w": "evolve",
    "entries": [
     [
-     "v.",
+     "v",
      "To develop and change gradually over time."
     ]
    ]
@@ -1740,7 +1743,7 @@ const DATA = {
    "w": "evolution",
    "entries": [
     [
-     "n.",
+     "n",
      "The changes that take place as something evolves."
     ]
    ]
@@ -1749,7 +1752,7 @@ const DATA = {
    "w": "innate",
    "entries": [
     [
-     "adj.",
+     "adj",
      "Having from birth; occurring naturally rather than being learned."
     ]
    ]
@@ -1758,7 +1761,7 @@ const DATA = {
    "w": "inscribe",
    "entries": [
     [
-     "v.",
+     "v",
      "To write, print, or etch into as a permanent record."
     ]
    ]
@@ -1767,7 +1770,7 @@ const DATA = {
    "w": "inscription",
    "entries": [
     [
-     "n.",
+     "n",
      "The act of inscribing or what is inscribed."
     ]
    ]
@@ -1776,11 +1779,11 @@ const DATA = {
    "w": "posture",
    "entries": [
     [
-     "n.",
+     "n",
      "The way one holds one’s body; a pose or position."
     ],
     [
-     "v.",
+     "v",
      "To assume a particular position, especially a pretended one."
     ]
    ]
@@ -1789,15 +1792,15 @@ const DATA = {
    "w": "shroud",
    "entries": [
     [
-     "n.",
+     "n",
      "Something that covers or hides from view."
     ],
     [
-     "n.",
+     "n",
      "Cloth used to wrap a dead body before burial."
     ],
     [
-     "v.",
+     "v",
      "To block from sight."
     ]
    ]
@@ -1806,11 +1809,11 @@ const DATA = {
    "w": "stifle",
    "entries": [
     [
-     "v.",
+     "v",
      "To cut off the air from; to smother."
     ],
     [
-     "v.",
+     "v",
      "To hold back; to check."
     ]
    ]
@@ -1819,7 +1822,7 @@ const DATA = {
    "w": "tentative",
    "entries": [
     [
-     "adj.",
+     "adj",
      "Not fully worked out or final; hesitating or uncertain."
     ]
    ]
@@ -1828,7 +1831,7 @@ const DATA = {
    "w": "tranquil",
    "entries": [
     [
-     "adj.",
+     "adj",
      "Calm; peaceful."
     ]
    ]
@@ -1837,7 +1840,7 @@ const DATA = {
    "w": "tranquility",
    "entries": [
     [
-     "n.",
+     "n",
      "The state of being tranquil."
     ]
    ]
@@ -1846,7 +1849,7 @@ const DATA = {
    "w": "versatile",
    "entries": [
     [
-     "adj.",
+     "adj",
      "Able to do many different things or to be used in many different ways."
     ]
    ]
@@ -1855,7 +1858,7 @@ const DATA = {
    "w": "versatility",
    "entries": [
     [
-     "n.",
+     "n",
      "The state or condition of being versatile."
     ]
    ]
@@ -1869,27 +1872,27 @@ const DATA = {
    "items": [
     [
      "deft",
-     "adj.",
+     "adj",
      "Quick and sure; skillful at handling."
     ],
     [
      "diligent",
-     "adj.",
+     "adj",
      "Working with great care and effort."
     ],
     [
      "innate",
-     "adj.",
+     "adj",
      "Having from birth; occurring naturally rather than being learned."
     ],
     [
      "versatile",
-     "adj.",
+     "adj",
      "Able to do many different things or to be used in many different ways."
     ],
     [
      "versatility",
-     "n.",
+     "n",
      "The state or condition of being versatile."
     ]
    ]
@@ -1901,32 +1904,32 @@ const DATA = {
    "items": [
     [
      "antic",
-     "n.",
+     "n",
      "(usually plural) A playful or funny act."
     ],
     [
      "attire",
-     "n.",
+     "n",
      "Clothes, especially fine and expensive clothes."
     ],
     [
      "attire",
-     "v.",
+     "v",
      "To dress up or be dressed up."
     ],
     [
      "captivate",
-     "v.",
+     "v",
      "To please greatly; to win over by special charm."
     ],
     [
      "posture",
-     "n.",
+     "n",
      "The way one holds one’s body; a pose or position."
     ],
     [
      "posture",
-     "v.",
+     "v",
      "To assume a particular position, especially a pretended one."
     ]
    ]
@@ -1938,37 +1941,37 @@ const DATA = {
    "items": [
     [
      "eclipse",
-     "n.",
+     "n",
      "The total or partial hiding of one heavenly body by another."
     ],
     [
      "eclipse",
-     "v.",
+     "v",
      "To do or be better than; to outshine."
     ],
     [
      "shroud",
-     "n.",
+     "n",
      "Something that covers or hides from view."
     ],
     [
      "shroud",
-     "n.",
+     "n",
      "Cloth used to wrap a dead body before burial."
     ],
     [
      "shroud",
-     "v.",
+     "v",
      "To block from sight."
     ],
     [
      "stifle",
-     "v.",
+     "v",
      "To cut off the air from; to smother."
     ],
     [
      "stifle",
-     "v.",
+     "v",
      "To hold back; to check."
     ]
    ]
@@ -1980,37 +1983,37 @@ const DATA = {
    "items": [
     [
      "evolve",
-     "v.",
+     "v",
      "To develop and change gradually over time."
     ],
     [
      "evolution",
-     "n.",
+     "n",
      "The changes that take place as something evolves."
     ],
     [
      "inscribe",
-     "v.",
+     "v",
      "To write, print, or etch into as a permanent record."
     ],
     [
      "inscription",
-     "n.",
+     "n",
      "The act of inscribing or what is inscribed."
     ],
     [
      "tentative",
-     "adj.",
+     "adj",
      "Not fully worked out or final; hesitating or uncertain."
     ],
     [
      "tranquil",
-     "adj.",
+     "adj",
      "Calm; peaceful."
     ],
     [
      "tranquility",
-     "n.",
+     "n",
      "The state of being tranquil."
     ]
    ]
@@ -2033,8 +2036,8 @@ function build(){
   MC.begin();
   tries=0; hinted=false; marks=new Set(); sel=null;
   slots=shuffle(ITEMS).map((it,n)=>({n,word:it.word,pos:it.pos,txt:it.txt,chip:null}));
-  chips=ITEMS.map((it,n)=>({id:"c"+n,word:it.word,at:null}))
-             .sort((a,b)=>a.word.localeCompare(b.word));
+  chips=ITEMS.map((it,n)=>({id:"c"+n,word:it.word,pos:it.pos,at:null}))
+             .sort((a,b)=>a.word.localeCompare(b.word)||a.pos.localeCompare(b.pos));
   $("fb").innerHTML=""; $("bar").classList.remove("hide");
   if($("hint")) $("hint").remove();
   $("sheet").classList.remove("hide"); $("done").classList.add("hide");
@@ -2047,7 +2050,7 @@ function draw(){
     ? free.length+" word"+(free.length>1?"s":"")+" left"
     : "ready to check";
   $("chips").innerHTML = free.length
-    ? chips.map(c=>`<button class="chip ${c.at!==null?"gone":""} ${sel===c.id?"sel":""}" data-c="${c.id}">${esc(c.word)}</button>`).join("")
+    ? chips.map(c=>`<button class="chip ${c.at!==null?"gone":""} ${sel===c.id?"sel":""}" data-c="${c.id}">${esc(c.word)}<span class="postag" data-p="${c.pos}">${c.pos}.</span></button>`).join("")
     : `<div class="alldone">All ${slots.length} words placed. Tap a placed word to send it back.</div>`;
 
   $("defs").innerHTML = slots.map(s=>{
@@ -2055,9 +2058,9 @@ function draw(){
     return `<div class="def ${marks.has(s.n)?"wrongmark":""}" data-s="${s.n}">
       <span class="num">${s.n+1}</span>
       <span class="mid">
-        <span class="txt"><span class="postag" data-p="${s.pos}">${s.pos}.</span>${esc(s.txt)}</span>
+        <span class="txt">${esc(s.txt)}</span>
         <span class="drop">
-          ${c?`<button class="placed ${marks.has(s.n)?"wrongmark":""}" data-pull="${s.n}">${esc(c.word)}</button>`
+          ${c?`<button class="placed ${marks.has(s.n)?"wrongmark":""}" data-pull="${s.n}">${esc(c.word)}<span class="postag" data-p="${c.pos}">${c.pos}.</span></button>`
              :`<span class="hole">DROP HERE</span>`}
         </span>
       </span>
@@ -2143,7 +2146,7 @@ function startDrag(e,chipId){
 
 const isDone  = s => !!s.chip;
 const isWrong = s => { const c=chips.find(x=>x.id===s.chip);
-                       return !c || c.word!==s.word; };
+                       return !c || c.word!==s.word || c.pos!==s.pos; };
 /* only lines he has actually finished are judged */
 const wrongSlots = () => slots.filter(s=>isDone(s) && isWrong(s)).map(s=>s.n);
 

@@ -39,6 +39,87 @@ def data_span(html):
 # file — and a round naming a word that is not on the list is caught below.
 
 
+def sub1(s, old, new, what):
+    """Replace exactly one occurrence, or stop."""
+    n = s.count(old)
+    if n != 1:
+        raise SystemExit("  patch %r matched %d times, wanted 1:\n    %s"
+                         % (what, n, old.split("\n")[0][:100]))
+    return s.replace(old, new, 1)
+
+
+def pos_on_words(out):
+    """Move the part of speech off the meaning and onto the word.
+
+    The sheet used to print "v. To dress up or be dressed up" on the line and
+    put a bare `attire` chip in the tray. A word with three meanings had three
+    identical chips, so any of them dropped into any of that word's lines was
+    marked right, and the label on the line was decoration: it told him the
+    answer instead of asking for it.
+
+    Now the label rides on the chip — `attire v.` and `attire n.` are different
+    chips — and the meaning is bare, so matching them means knowing which sense
+    is the verb. Where a word has two meanings that are the same part of speech
+    the chips really are identical and either order is right, which is correct:
+    nothing on the line distinguishes them and nothing should pretend to.
+    """
+    out = sub1(out,
+        '    <p class="sub">Every meaning from the list is below. Drag each word onto its'
+        ' meaning, Each meaning is already labelled as a noun, a verb, or an adjective'
+        ' — use that as your clue. Words with more than one meaning appear more'
+        ' than once.</p>',
+        '    <p class="sub">Every meaning from the list is below, with nothing on it to'
+        ' say what kind of word it wants. The label is on the word instead — so a'
+        ' word that is both a noun and a verb is in the tray twice, once each way, and'
+        ' the two do not go in the same place.</p>', "the instructions")
+
+    out = sub1(out,
+        '  chips=ITEMS.map((it,n)=>({id:"c"+n,word:it.word,at:null}))\n'
+        '             .sort((a,b)=>a.word.localeCompare(b.word));',
+        '  chips=ITEMS.map((it,n)=>({id:"c"+n,word:it.word,pos:it.pos,at:null}))\n'
+        '             .sort((a,b)=>a.word.localeCompare(b.word)'
+        '||a.pos.localeCompare(b.pos));', "chips carry their part of speech")
+
+    out = sub1(out,
+        '? chips.map(c=>`<button class="chip ${c.at!==null?"gone":""} '
+        '${sel===c.id?"sel":""}" data-c="${c.id}">${esc(c.word)}</button>`).join("")',
+        '? chips.map(c=>`<button class="chip ${c.at!==null?"gone":""} '
+        '${sel===c.id?"sel":""}" data-c="${c.id}">${esc(c.word)}'
+        '<span class="postag" data-p="${c.pos}">${c.pos}.</span></button>`).join("")',
+        "the chip shows its label")
+
+    out = sub1(out,
+        '        <span class="txt"><span class="postag" data-p="${s.pos}">${s.pos}.</span>'
+        '${esc(s.txt)}</span>',
+        '        <span class="txt">${esc(s.txt)}</span>', "the meaning loses its label")
+
+    out = sub1(out,
+        '${c?`<button class="placed ${marks.has(s.n)?"wrongmark":""}" '
+        'data-pull="${s.n}">${esc(c.word)}</button>`',
+        '${c?`<button class="placed ${marks.has(s.n)?"wrongmark":""}" '
+        'data-pull="${s.n}">${esc(c.word)}'
+        '<span class="postag" data-p="${c.pos}">${c.pos}.</span></button>`',
+        "a placed word keeps its label")
+
+    # The whole point: the placement is only right if the part of speech is too.
+    out = sub1(out,
+        '                       return !c || c.word!==s.word; };',
+        '                       return !c || c.word!==s.word || c.pos!==s.pos; };',
+        "the label is graded")
+
+    # adv. had no rule at all, so `aloft` on List 4 would have drawn its label as
+    # bare text in an invisible pill. And a label sitting after a word wants its
+    # margin on the other side.
+    out = sub1(out,
+        '.postag[data-p="adj"]{background:var(--violet);color:#fff}\n',
+        '.postag[data-p="adj"]{background:var(--violet);color:#fff}\n'
+        '.postag[data-p="adv"]{background:#6E7FA8;color:#fff}\n'
+        '.chip .postag,.placed .postag{margin:0 0 0 6px;padding:1px 5px;font-size:10px}\n'
+        '.placed .postag{background:rgba(255,255,255,.24);color:#fff}\n',
+        "the label's own styling")
+    return out
+
+
 def main():
     """usage: gen_sheet.py <spec.json> <out-dir> [shell-dir]"""
     if len(MINE) < 2:
@@ -63,7 +144,12 @@ def main():
         if s["w"] not in by_word:
             by_word[s["w"]] = []
             order.append(s["w"])
-        by_word[s["w"]].append([s["pos"], s["def"]])
+        # The page writes the full stop itself and keys its colours off the bare
+        # abbreviation, so the data holds "n" and not "n.". List 1 was written by
+        # hand and got this right; every generated sheet since has carried the
+        # spec's "n." through, printing "n.." and setting data-p="n.", which
+        # matches no rule — so the labels have had no colour at all since List 2.
+        by_word[s["w"]].append([s["pos"].rstrip("."), s["def"]])
 
     lst = [{"w": w, "entries": by_word[w]} for w in order]
 
@@ -107,6 +193,24 @@ def main():
     out, n = re.subn(r"<h1>.*?</h1>", h1, out, count=1, flags=re.S)
     if not n:
         raise SystemExit("the sheet's title is not where it was")
+
+    # The footer cites the lesson the definitions came from, and it has said
+    # Lesson 1 on every sheet ever built — six of them — because nothing
+    # substituted it. It is not caught by the "names only itself" check either,
+    # which looks for "List <n>" and this says "Lesson <n>".
+    out, n = re.subn(r"Book 6, Lesson \d+, for personal study use",
+                     "Book 6, Lesson %s, for personal study use"
+                     % (m.group(1) if m else "?"), out, count=1)
+    if not n:
+        raise SystemExit("the sheet's footer is not where it was")
+
+    # Same for the developer comment at the head of the data.
+    out = re.sub(r"/\* Wordly Wise 3000, Book 6 — Lesson \d+ Word List\.",
+                 "/* Wordly Wise 3000, Book 6 — Lesson %s Word List."
+                 % (m.group(1) if m else "?"), out, count=1)
+
+    if spec.get("posOnWords"):
+        out = pos_on_words(out)
 
     d = os.path.join(ROOT, "vocabulary", out_dir)
     os.makedirs(d, exist_ok=True)

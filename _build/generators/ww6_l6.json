@@ -2,6 +2,7 @@
  "book": "Wordly Wise 3000, Book 6",
  "lesson": "Word List 6",
  "cite": "Wordly Wise 3000, Book 6, Word List 6",
+ "posOnWords": true,
 
  "bank": ["apparel","appreciate","continuous","dissolve","domesticate","domesticated",
           "emerge","fiber","function","hatch","inhibit","inhibited","minute","motion",

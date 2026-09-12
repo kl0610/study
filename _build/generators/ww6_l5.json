@@ -2,6 +2,7 @@
  "book": "Wordly Wise 3000, Book 6",
  "lesson": "Word List 5",
  "cite": "Wordly Wise 3000, Book 6, Word List 5",
+ "posOnWords": true,
 
  "bank": ["antic","attire","captivate","deft","diligent","eclipse","evolve","evolution",
           "innate","inscribe","inscription","posture","shroud","stifle","tentative",
