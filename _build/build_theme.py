@@ -206,6 +206,33 @@ def vtest3(s):
     return Patcher(s, "vocabtest3")
 
 
+# Lists 4, 5 and 6 arrived together. Each is the same pair as every week before
+# it -- the sheet to study from and the five forms to practise on -- generated
+# from List 3's shells, so their call sites came across already patched.
+def vocab4(s):
+    return Patcher(s, "vocabulary4")
+
+
+def vtest4(s):
+    return Patcher(s, "vocabtest4")
+
+
+def vocab5(s):
+    return Patcher(s, "vocabulary5")
+
+
+def vtest5(s):
+    return Patcher(s, "vocabtest5")
+
+
+def vocab6(s):
+    return Patcher(s, "vocabulary6")
+
+
+def vtest6(s):
+    return Patcher(s, "vocabtest6")
+
+
 def hist4(s):
     """CKHG Chapter 4 — generated from Ch3's shell, so its call sites came
     across already patched. Config only, like hist2/hist3."""
@@ -374,6 +401,18 @@ APPS = {
     "vocabulary/ww6-lesson3":      (vocab3, dict(app="vocabulary3", shake="#sheet",
                                            lift=".bar", dragon=["sheet"])),
     "vocabulary/ww6-lesson3-test": (vtest3, dict(app="vocabtest3", shake=None, lift=None,
+                                           dragon=["final"], hud=False)),
+    "vocabulary/ww6-lesson4":      (vocab4, dict(app="vocabulary4", shake="#sheet",
+                                           lift=".bar", dragon=["sheet"])),
+    "vocabulary/ww6-lesson4-test": (vtest4, dict(app="vocabtest4", shake=None, lift=None,
+                                           dragon=["final"], hud=False)),
+    "vocabulary/ww6-lesson5":      (vocab5, dict(app="vocabulary5", shake="#sheet",
+                                           lift=".bar", dragon=["sheet"])),
+    "vocabulary/ww6-lesson5-test": (vtest5, dict(app="vocabtest5", shake=None, lift=None,
+                                           dragon=["final"], hud=False)),
+    "vocabulary/ww6-lesson6":      (vocab6, dict(app="vocabulary6", shake="#sheet",
+                                           lift=".bar", dragon=["sheet"])),
+    "vocabulary/ww6-lesson6-test": (vtest6, dict(app="vocabtest6", shake=None, lift=None,
                                            dragon=["final"], hud=False)),
     "recitation/the-eagle":   (recite2, dict(app="recite2",     shake="#card",   lift=None,
                                            dragon=["l5"], subject="Recitation")),

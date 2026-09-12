@@ -1,0 +1,2317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Word List 6 — all the meanings</title>
+<style>
+:root{
+  --bg:#231B2E; --panel:#2F2540; --line:#443657; --paper:#F8F4EE; --paper2:#EDE5DA;
+  --ink:#211A29; --dim:#A697B5;
+  --violet:#B07ACC; --teal:#2FA6A0; --amber:#E8A93C; --red:#E0685A; --green:#5CB47F;
+  --disp:"Avenir Next","Segoe UI Variable Display","Trebuchet MS",system-ui,sans-serif;
+  --body:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --mono:ui-monospace,"SF Mono","Cascadia Mono",Consolas,monospace;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+body{background:var(--bg);background-image:radial-gradient(circle at 12% -5%,#382B49 0%,transparent 55%);
+  background-attachment:fixed;color:var(--paper);font-family:var(--body);line-height:1.55;
+  padding:0 0 108px;overflow-x:hidden;-webkit-user-select:none;user-select:none}
+.wrap{max-width:760px;margin:0 auto;padding:0 16px}
+button{font:inherit;color:inherit;cursor:pointer;border:none;background:none}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--violet)}
+.hublink{display:inline-flex;align-items:center;gap:6px;margin:20px 0 0;padding:7px 13px;
+  border:1px solid var(--line);border-radius:20px;background:var(--panel);
+  font:700 11px var(--mono);letter-spacing:.11em;text-transform:uppercase;
+  color:var(--dim);text-decoration:none}
+.hublink:hover{color:var(--paper);border-color:var(--violet)}
+header{padding:12px 0 16px}
+h1{font-family:var(--disp);font-size:clamp(27px,7vw,38px);line-height:1.04;margin:9px 0 6px;
+  letter-spacing:-.02em;font-weight:800}
+h1 em{font-style:normal;color:var(--violet)}
+.sub{color:var(--dim);font-size:14.5px;margin:0;max-width:52ch}
+.listbtn{margin:13px 0 0;padding:9px 15px;border:1px solid var(--line);border-radius:11px;
+  background:var(--panel);font-size:14px;font-weight:650;color:var(--paper)}
+.listbtn:hover{border-color:var(--violet)}
+
+.tray{position:sticky;top:0;z-index:20;background:var(--bg);padding:11px 0;
+  border-bottom:1px solid var(--line);margin-bottom:16px;
+  box-shadow:0 10px 18px -8px rgba(20,12,28,.9)}
+.trayhead{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px;gap:10px}
+.trayhead .n{font:700 11px var(--mono);color:var(--amber);letter-spacing:.07em;white-space:nowrap}
+.chips{display:flex;flex-wrap:wrap;gap:6px;max-height:31vh;overflow-y:auto}
+.chip{background:var(--paper);color:var(--ink);border-radius:9px;padding:8px 12px;
+  font-size:14.5px;font-weight:700;box-shadow:0 3px 8px rgba(0,0,0,.25);touch-action:none;
+  transition:transform .12s,opacity .12s}
+.chip:active{transform:scale(.96)}
+.chip.sel{background:var(--violet);color:#fff;box-shadow:0 0 0 3px rgba(176,122,204,.32)}
+.chip.gone{display:none}
+.chip.ghost{position:fixed;z-index:999;pointer-events:none;transform:scale(1.08) rotate(-2deg);
+  box-shadow:0 14px 30px rgba(0,0,0,.45);margin:0;display:block}
+.alldone{font-size:13.5px;color:var(--green);font-weight:650;padding:8px 2px}
+
+.defs{display:grid;gap:9px}
+.def{background:var(--paper);color:var(--ink);border-radius:13px;padding:12px 13px;
+  display:flex;gap:11px;align-items:flex-start;outline:2px solid transparent;outline-offset:2px;
+  transition:outline-color .14s,box-shadow .14s}
+.def.over{outline-color:var(--violet);box-shadow:0 0 0 4px rgba(176,122,204,.2)}
+.def.wrongmark{outline-color:var(--red);background:#FCEFED}
+.def .num{flex:none;width:23px;height:23px;border-radius:7px;background:var(--paper2);
+  color:#7C6B8A;font:700 11px var(--mono);display:grid;place-items:center;margin-top:2px}
+.def .mid{flex:1;min-width:0}
+.def .txt{font-size:14.5px;line-height:1.45;color:#3A3145}
+.drop{margin-top:9px;display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.hole{min-width:112px;min-height:36px;border:2px dashed #CBBFD6;border-radius:10px;
+  display:grid;place-items:center;font:700 11px var(--mono);color:#A395B0;letter-spacing:.07em;padding:0 12px}
+.placed{background:var(--violet);color:#fff;border-radius:10px;padding:8px 12px;font-size:14.5px;font-weight:700}
+.placed.wrongmark{background:var(--red)}
+.postag{display:inline-block;border-radius:6px;padding:2px 7px;margin-right:7px;
+  font:800 11px var(--mono);letter-spacing:.05em;vertical-align:1px}
+.postag[data-p="n"]{background:var(--teal);color:#fff}
+.postag[data-p="v"]{background:var(--amber);color:var(--ink)}
+.postag[data-p="adj"]{background:var(--violet);color:#fff}
+
+.bar{position:fixed;left:0;right:0;bottom:0;z-index:25;background:rgba(35,27,46,.96);
+  border-top:1px solid var(--line);padding:10px 16px calc(10px + env(safe-area-inset-bottom))}
+.bar .in{max-width:760px;margin:0 auto;display:flex;gap:8px}
+.btn{border-radius:12px;padding:12px 14px;font-weight:750;font-size:15px;text-align:center;flex:1}
+.btn:disabled{opacity:.35;cursor:default}
+.btn.p{background:var(--violet);color:#fff}
+.btn.o{background:transparent;border:2px solid var(--line);color:var(--paper);flex:0 0 auto}
+.btn.h{background:transparent;border:2px solid var(--red);color:#F0A79C;flex:0 0 auto}
+#fb:empty{display:none}
+#fb{width:100%;margin-bottom:9px}
+.fb{border-radius:12px;padding:10px 12px;font-size:13.5px;line-height:1.45;
+  display:flex;align-items:flex-start;gap:10px;animation:pop .22s}
+.fb.no{background:#3E2832;border-left:4px solid var(--red);color:#F3C4BC}
+.fb.ok{background:#243C2E;border-left:4px solid var(--green);color:#B9E4C9}
+.fb .msg{flex:1;min-width:0}
+.fb strong{display:block;font-family:var(--disp);font-size:14.5px;margin-bottom:1px;color:#fff}
+.fb .jump{flex:none;align-self:center;border:1.5px solid currentColor;border-radius:8px;
+  padding:6px 10px;font:700 11px var(--mono);letter-spacing:.05em;white-space:nowrap}
+.hintnote{font:600 11.5px var(--mono);color:#F0A79C;margin:6px 0 0}
+@keyframes pop{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+.scrim{position:fixed;inset:0;background:rgba(12,8,18,.66);opacity:0;pointer-events:none;
+  transition:opacity .25s;z-index:40}
+.scrim.on{opacity:1;pointer-events:auto}
+.drawer{position:fixed;left:0;right:0;bottom:0;z-index:50;max-height:88vh;background:var(--paper);
+  color:var(--ink);border-radius:20px 20px 0 0;transform:translateY(101%);
+  transition:transform .3s cubic-bezier(.22,.9,.3,1);display:flex;flex-direction:column}
+.drawer.on{transform:none}
+.dhead{background:#12857F;color:#fff;border-radius:20px 20px 0 0;padding:15px 18px;flex:none;position:relative}
+.dhead h3{font-family:var(--disp);font-size:18px;margin:2px 0 0;font-weight:750}
+.dhead .eyebrow{color:#A8E5E1}
+.x{position:absolute;right:13px;top:13px;width:32px;height:32px;border-radius:9px;
+  background:rgba(255,255,255,.2);display:grid;place-items:center}
+.x svg{width:14px;height:14px;stroke:#fff;stroke-width:2.5}
+.dbody{overflow-y:auto;padding:14px 18px 22px;-webkit-overflow-scrolling:touch}
+.entry{background:#D9F0EE;border-radius:11px;padding:11px 13px;margin-bottom:9px}
+.entry .w{font-family:var(--disp);font-size:17px;font-weight:800;color:#0E6B66}
+.entry ol{margin:6px 0 0;padding-left:18px}
+.entry li{font-size:14px;margin-bottom:3px;color:#2C4442}
+.entry .p{font-family:var(--mono);font-size:11px;font-weight:700;color:#12857F;margin-right:5px}
+.dfoot{flex:none;padding:11px 18px calc(13px + env(safe-area-inset-bottom));
+  border-top:1px solid #DDD2E4;background:var(--paper)}
+.dfoot .btn{width:100%}
+
+.score{background:var(--paper);color:var(--ink);border-radius:18px;padding:24px 20px;text-align:center;margin-top:16px}
+.ring{font-family:var(--disp);font-size:56px;font-weight:800;line-height:1}
+.band{font:700 12px var(--mono);letter-spacing:.15em;text-transform:uppercase;margin-top:5px}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:18px 0 0;text-align:left}
+.stat{background:var(--paper2);border-radius:11px;padding:10px 12px}
+.stat b{display:block;font-family:var(--disp);font-size:21px;font-weight:750}
+.stat span{font:600 10px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:#7C6B8A}
+.review{margin:14px 0 0;text-align:left;background:#FBF0DC;border-radius:12px;padding:12px 14px;font-size:14px}
+.review b{display:block;margin-bottom:5px;font-family:var(--disp);font-size:15px}
+.score .act{display:grid;gap:8px;margin-top:16px}
+.score .btn{width:100%}
+footer{margin:34px 0 0;padding-top:15px;border-top:1px solid var(--line);color:#8C7C9B;
+  font-size:11.5px;text-align:center;line-height:1.6}
+.hide{display:none!important}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+<!-- MC-THEME-CSS: generated by build_theme.py, do not hand-edit -->
+<style>
+/* ===== Minecraft theme layer — shared source, injected into all apps =====
+   Everything is prefixed .mc- / #mc- so it cannot collide with app CSS.
+   z-index budget in the apps: content < 30, HUD 30, scrim 40, drawer 50.
+   Sprite bursts sit at 60 so they play over an auto-opening drawer.        */
+
+.mc-hud{
+  position:fixed; left:0; right:0; z-index:30;
+  bottom:var(--mc-lift, 0px);
+  display:flex; flex-direction:column; align-items:center; gap:3px;
+  padding:6px 8px calc(6px + env(safe-area-inset-bottom));
+  pointer-events:none;
+  background:linear-gradient(to top, rgba(0,0,0,.42), rgba(0,0,0,0));
+  transition:bottom .18s;
+}
+.mc-hud img{image-rendering:pixelated; display:block}
+
+.mc-hearts{
+  display:flex; gap:1px; align-self:center;
+  width:var(--mc-barw, 360px); box-sizing:border-box;
+}
+.mc-heart{width:var(--mc-hh,19px); height:auto}
+/* heart-empty is very faint on dark art — read the row as sockets waiting */
+.mc-heart[data-v="0"]{filter:drop-shadow(0 0 2px rgba(255,255,255,.5)) drop-shadow(0 0 5px rgba(0,0,0,.6)); opacity:.85}
+.mc-heart.mc-hit{animation:mc-hit .42s}
+@keyframes mc-hit{
+  0%{transform:scale(1.55)} 25%{transform:scale(1.1) rotate(-8deg)}
+  55%{transform:scale(1.25)} 100%{transform:none}
+}
+
+.mc-bar{display:flex; gap:0; width:var(--mc-barw,360px); box-sizing:border-box}
+.mc-slot{
+  position:relative; width:var(--mc-ss,38px); height:var(--mc-ss,38px);
+  flex:0 0 auto; background-size:100% 100%; background-repeat:no-repeat;
+}
+.mc-slot .mc-tool{
+  position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);
+  width:69%; height:69%; object-fit:contain;
+}
+/* tool-9 already has zero side margin in the source art — don't scale it up */
+.mc-slot[data-n="9"] .mc-tool{width:62%; height:62%}
+.mc-slot .mc-frame{position:absolute; inset:-2px; width:calc(100% + 4px); height:calc(100% + 4px); opacity:0}
+.mc-slot.mc-new .mc-frame{opacity:1; animation:mc-pulse 1.1s ease-in-out 3}
+.mc-slot.mc-new .mc-tool{animation:mc-drop .5s cubic-bezier(.2,1.5,.4,1)}
+@keyframes mc-pulse{0%,100%{opacity:.35}50%{opacity:1}}
+@keyframes mc-drop{from{transform:translate(-50%,-160%) scale(.4); opacity:0}}
+
+/* ---- sprite burst ---- */
+.mc-burst{
+  position:fixed; left:50%; top:44%; z-index:60; pointer-events:none;
+  width:var(--mc-burst,128px); height:var(--mc-burst,128px);
+  transform:translate(-50%,-50%);
+}
+.mc-burst img{width:100%; height:100%; object-fit:contain; image-rendering:pixelated}
+.mc-burst.mc-good{animation:mc-good 1.35s cubic-bezier(.18,1.3,.4,1) forwards}
+.mc-burst.mc-bad{animation:mc-bad 1.15s ease-out forwards}
+/* bad-2 creeper and bad-4 zombie carry ~30px of side margin; TNT and the
+   spider fill the frame. Nudge the narrow two up so misses land evenly. */
+.mc-burst.mc-bad[data-w="narrow"] img{transform:scale(1.17)}
+@keyframes mc-good{
+  0%{transform:translate(-50%,-50%) scale(.3) rotate(-12deg); opacity:0}
+  18%{transform:translate(-50%,-50%) scale(1.12) rotate(3deg); opacity:1}
+  30%{transform:translate(-50%,-50%) scale(1) rotate(0); opacity:1}
+  72%{transform:translate(-50%,-50%) scale(1) rotate(0); opacity:1}
+  100%{transform:translate(-50%,-80%) scale(1.05); opacity:0}
+}
+@keyframes mc-bad{
+  0%{transform:translate(-50%,-50%) scale(.55); opacity:0}
+  14%{transform:translate(-50%,-50%) scale(1.08); opacity:1}
+  26%{transform:translate(-50%,-50%) scale(1); opacity:1}
+  74%{transform:translate(-50%,-50%) scale(1); opacity:1}
+  100%{transform:translate(-50%,-44%) scale(.96); opacity:0}
+}
+
+.mc-shake{animation:mc-shake .34s}
+@keyframes mc-shake{
+  10%,90%{transform:translateX(-2px)} 20%,80%{transform:translateX(4px)}
+  30%,50%,70%{transform:translateX(-7px)} 40%,60%{transform:translateX(7px)}
+}
+
+/* ---- results chest ---- */
+.mc-chest{
+  display:flex; flex-direction:column; align-items:center; gap:8px;
+  padding:14px 10px 4px; margin:2px 0 6px;
+  position:relative;   /* the victory flourish anchors to the chest */
+}
+.mc-chest .mc-lid{width:120px; height:120px; object-fit:contain; image-rendering:pixelated;
+  transition:transform .2s; cursor:pointer}
+.mc-chest .mc-lid.mc-shut{animation:mc-nudge 1.5s ease-in-out infinite}
+@keyframes mc-nudge{0%,88%,100%{transform:none}92%{transform:translateY(-4px) rotate(-2deg)}96%{transform:translateY(-2px) rotate(2deg)}}
+.mc-loot{display:flex; gap:6px; justify-content:center; min-height:4px; flex-wrap:wrap}
+.mc-loot img{width:52px; height:52px; object-fit:contain; image-rendering:pixelated;
+  animation:mc-pop .5s cubic-bezier(.2,1.6,.4,1) both}
+.mc-loot img:nth-child(2){animation-delay:.09s}
+.mc-loot img:nth-child(3){animation-delay:.18s}
+.mc-loot img:nth-child(4){animation-delay:.27s}
+.mc-loot img:nth-child(5){animation-delay:.36s}
+@keyframes mc-pop{from{transform:translateY(26px) scale(.3); opacity:0}}
+.mc-tier{
+  font:800 19px ui-monospace,SFMono-Regular,Menlo,monospace; letter-spacing:.1em;
+  text-align:center; margin-top:2px;
+  animation:mc-pop .5s cubic-bezier(.2,1.6,.4,1) .3s both;
+}
+.mc-tier[data-t="dragon"]{color:#A855C8}
+.mc-tier[data-t="netherite"]{color:#6B5A6E}
+.mc-tier[data-t="diamond"]{color:#2AA7B8}
+.mc-tier[data-t="iron"]{color:#8A8A8A}
+.mc-tier[data-t="stone"]{color:#7A7A7A}
+.mc-tier[data-t="wood"]{color:#9A6B3F}
+.mc-tier[data-t="corrections"]{color:#4A8230}
+.mc-badges{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-top:4px}
+.mc-badge{
+  font:800 10.5px ui-monospace,SFMono-Regular,Menlo,monospace; letter-spacing:.07em;
+  background:#F0E6CF; color:#5A4A2E; border:2px solid #C7B48C; padding:4px 8px;
+  box-shadow:inset -2px -2px 0 rgba(0,0,0,.12), inset 2px 2px 0 rgba(255,255,255,.5);
+  animation:mc-pop .45s cubic-bezier(.2,1.6,.4,1) both;
+}
+.mc-badge:nth-child(2){animation-delay:.1s}
+.mc-badge:nth-child(3){animation-delay:.2s}
+.mc-cap{
+  font:700 12px ui-monospace,SFMono-Regular,Menlo,monospace; letter-spacing:.06em;
+  text-transform:uppercase; opacity:.72; text-align:center;
+}
+.mc-earned{
+  display:flex; align-items:center; gap:9px; justify-content:center;
+  font:700 13px ui-monospace,SFMono-Regular,Menlo,monospace;
+  animation:mc-pop .5s cubic-bezier(.2,1.6,.4,1) .45s both;
+}
+.mc-earned img{width:38px; height:38px; object-fit:contain; image-rendering:pixelated}
+
+.mc-boss{width:100%; max-width:256px; height:auto; image-rendering:pixelated;
+  animation:mc-pop .6s cubic-bezier(.2,1.5,.4,1) .3s both}
+/* fallback while boss-defeated.png is still outstanding */
+.mc-bossfall{
+  width:100%; max-width:280px; border-radius:12px; padding:13px 14px; text-align:center;
+  background:linear-gradient(140deg,#1D1526,#3A1F2E); color:#FFD98A;
+  border:2px solid #6B4A2E; box-shadow:0 6px 0 rgba(0,0,0,.25);
+  font:800 15px ui-monospace,SFMono-Regular,Menlo,monospace; letter-spacing:.05em;
+  animation:mc-pop .6s cubic-bezier(.2,1.5,.4,1) .3s both;
+}
+.mc-bossfall small{display:block; font-size:11px; opacity:.7; margin-top:4px; letter-spacing:.03em}
+
+@media (prefers-reduced-motion:reduce){
+  .mc-burst.mc-good,.mc-burst.mc-bad{animation-duration:.8s}
+  .mc-shake{animation:none}
+  .mc-chest .mc-lid.mc-shut{animation:none}
+}
+
+/* ---- level-picker status ----
+   The apps' own .badge sat in the bottom-right corner of a tall card, so
+   checking seven levels meant scanning seven different corners. Moved to the
+   top-right, level with each card's eyebrow, which gives one straight vertical
+   line to run your eye down. These sit later in the cascade at equal
+   specificity, so they win without editing app CSS. */
+.mc-best{
+  top:11px !important; right:12px !important; bottom:auto !important;
+  background:#E8A93C !important; color:#3A2A08 !important;
+  font-weight:800 !important; letter-spacing:.04em; white-space:nowrap;
+  padding:4px 9px !important; border-radius:3px;
+  box-shadow:inset -2px -2px 0 rgba(0,0,0,.16), inset 2px 2px 0 rgba(255,255,255,.35);
+}
+.mc-best.mc-done{background:#63A93E !important; color:#0F2216 !important}
+/* and mark the card itself, so status is legible even mid-scroll */
+.mc-cleared{box-shadow:inset 0 0 0 3px #63A93E !important}
+.mc-tried{box-shadow:inset 0 0 0 3px #E8A93C !important}
+
+/* ---- level chips (MC.picker) ----
+   For apps whose levels are parallel and equally valid — history's five
+   practice sets — so you can see and choose, not just be dealt one. */
+.mc-picker{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 12px}
+.mc-chip{
+  flex:1 1 auto; min-width:56px; min-height:44px; padding:5px 8px;
+  border:2px solid #C7B48C; background:#F0E6CF; color:#5A4A2E; cursor:pointer;
+  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:1px;
+  box-shadow:inset -2px -2px 0 rgba(0,0,0,.14), inset 2px 2px 0 rgba(255,255,255,.5);
+}
+.mc-chip:hover{filter:brightness(1.05)}
+.mc-chip:focus-visible{outline:3px solid #63A93E;outline-offset:2px}
+.mc-chip-l{font:800 13px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.04em}
+.mc-chip-s{font:700 10px ui-monospace,SFMono-Regular,Menlo,monospace;opacity:.7}
+.mc-chip.mc-cleared{background:#63A93E;border-color:#3F7028;color:#0F2216}
+.mc-chip.mc-tried{background:#E8A93C;border-color:#B07E18;color:#3A2A08}
+.mc-chip.mc-now{box-shadow:inset -2px -2px 0 rgba(0,0,0,.14),
+  inset 2px 2px 0 rgba(255,255,255,.5), 0 0 0 3px #2B79C2}
+
+/* ---------- the mine ---------- */
+.mc-ore{display:inline-flex;align-items:center;gap:5px;margin:3px 5px 3px 0;
+  font:800 11px ui-monospace,"SF Mono",Consolas,monospace;color:#E8E3D6}
+.mc-ore img{width:22px;height:22px;image-rendering:pixelated;display:block}
+.mc-ore.mc-noart::before{content:"";width:20px;height:20px;background:var(--ore);
+  box-shadow:inset -3px -3px 0 rgba(0,0,0,.34), inset 3px 3px 0 rgba(255,255,255,.22);
+  border:2px solid rgba(0,0,0,.45)}
+.mc-ore b{font-weight:800}
+.mc-ore.mc-dim{opacity:.42}
+.mc-haul,.mc-beacon{margin-top:10px;padding:9px 11px;background:rgba(0,0,0,.26);
+  border:2px solid rgba(255,255,255,.10);text-align:left}
+.mc-haullab{display:block;font:800 9.5px ui-monospace,Consolas,monospace;
+  letter-spacing:.14em;color:#9FB0AA;margin-bottom:5px}
+.mc-beacon small,.mc-shutportal small{display:block;margin-top:6px;
+  font:600 11px system-ui,sans-serif;color:#9FB0AA;line-height:1.45}
+.mc-beacon.mc-lit{border-color:#40D5D1;
+  box-shadow:0 0 0 2px rgba(64,213,209,.22), 0 0 22px rgba(64,213,209,.28)}
+.mc-shutportal{margin-top:10px;padding:10px 12px;background:#160E22;
+  border:2px solid #4B2E73;color:#C9A6F0;text-align:left;
+  font:800 11.5px ui-monospace,Consolas,monospace;letter-spacing:.1em}
+
+.mc-blk{display:inline-flex;flex-direction:column;align-items:center;gap:2px;
+  margin:4px 9px 2px 0;font:800 10px ui-monospace,Consolas,monospace;color:#C4CFCB}
+.mc-blk img{width:34px;height:34px;image-rendering:pixelated;display:block}
+.mc-blk.mc-noart::before{content:"";width:30px;height:30px;background:var(--ore);
+  box-shadow:inset -4px -4px 0 rgba(0,0,0,.34),inset 4px 4px 0 rgba(255,255,255,.22);
+  border:2px solid rgba(0,0,0,.45)}
+.mc-blk.mc-dim img{filter:grayscale(.15) brightness(.8)}
+.mc-blk.mc-dim{opacity:.75;color:#7C8A85}
+.mc-portal{float:right;width:46px;height:46px;margin:-2px 0 0 10px;image-rendering:pixelated;
+  filter:grayscale(1) brightness(.6)}
+.mc-egg{margin-top:10px;padding:8px 11px;background:rgba(0,0,0,.26);
+  border:2px solid rgba(255,255,255,.10);display:flex;align-items:center;gap:9px;
+  font:800 10.5px ui-monospace,Consolas,monospace;letter-spacing:.1em;color:#C9A6F0}
+.mc-egg img{width:30px;height:30px;image-rendering:pixelated}
+
+/* The purse, top-left of the HUD, opposite the sound switch. */
+.mc-purse{position:absolute;left:calc(8px + env(safe-area-inset-left));
+  bottom:calc(8px + env(safe-area-inset-bottom));
+  display:flex;align-items:center;gap:5px;pointer-events:none;
+  padding:3px 8px 3px 5px;border:2px solid #0D0D0F;background:rgba(20,20,22,.82);
+  font:800 13px/1 ui-monospace,"Cascadia Mono",Consolas,monospace;color:#FCFC54}
+.mc-coin{width:17px;height:17px;display:block;image-rendering:pixelated}
+/* stands in until the coin sprite exists, so this works before the art lands */
+.mc-coin-fb{border-radius:50%;background:radial-gradient(circle at 34% 30%,#FFE27A,#E0A83C 62%,#9C6F1E);
+  border:2px solid #6E4B10;box-shadow:inset -2px -2px 0 rgba(0,0,0,.28)}
+@media (max-width:400px){.mc-purse{font-size:12px;padding:2px 6px 2px 4px}
+  .mc-coin{width:15px;height:15px}}
+
+/* MC-TOGGLE-CSS-START — the hub borrows everything between these two
+   markers, because it has its own stylesheet and needs only this control. */
+/* The sound toggle: a real switch rather than a lettered button, so its state
+   reads without being learned. Blocky border, hard inner bevel and the grass
+   green of the banner, so it belongs to the same world as the hotbar. */
+.mc-mute{
+  position:fixed; z-index:60;
+  top:calc(10px + env(safe-area-inset-top));
+  right:calc(10px + env(safe-area-inset-right));
+  display:flex; align-items:center; gap:7px;
+  padding:5px 9px 5px 6px; border:3px solid #0D0D0F; background:#1F1F23;
+  cursor:pointer; opacity:.94;
+  box-shadow:inset -3px -3px 0 rgba(0,0,0,.4), inset 3px 3px 0 rgba(255,255,255,.06),
+             0 3px 0 rgba(0,0,0,.35);
+}
+.mc-mute:hover{opacity:1}
+.mc-mute:active{transform:translateY(2px); box-shadow:inset -3px -3px 0 rgba(0,0,0,.4),
+             inset 3px 3px 0 rgba(255,255,255,.06)}
+.mc-mute:focus-visible{opacity:1; outline:3px solid #FCFC54; outline-offset:2px}
+
+/* the track */
+.mc-sw{
+  position:relative; flex:none; width:50px; height:26px;
+  background:#63A93E; border:3px solid #0D0D0F;
+  box-shadow:inset 2px 2px 0 rgba(0,0,0,.28);
+  transition:background .16s steps(2);
+}
+.mc-mute.off .mc-sw{background:#5A5A60}
+
+/* the knob, carrying the speaker */
+.mc-knob{
+  position:absolute; top:-1px; left:22px; width:22px; height:22px;
+  display:grid; place-items:center;
+  background:#E9E6DE; color:#141416; border:2px solid #0D0D0F;
+  box-shadow:inset -2px -2px 0 rgba(0,0,0,.22);
+  transition:left .16s steps(3);
+}
+.mc-mute.off .mc-knob{left:-1px; background:#B9B5AC; color:#2A2A2E}
+.mc-spk{width:15px; height:15px; display:block}
+
+.mc-lbl{
+  font:800 11px/1 ui-monospace,"Cascadia Mono",Consolas,monospace;
+  letter-spacing:.1em; color:#63A93E; min-width:2.2em; text-align:left;
+}
+.mc-mute.off .mc-lbl{color:#8E8A82}
+
+@media (max-width:420px){
+  .mc-mute{gap:5px; padding:4px 7px 4px 5px}
+  .mc-sw{width:42px; height:23px}
+  .mc-knob{width:19px; height:19px; left:18px}
+  .mc-spk{width:13px; height:13px}
+  .mc-lbl{font-size:10px}
+}
+@media (prefers-reduced-motion:reduce){
+  .mc-sw,.mc-knob{transition:none}
+}
+/* MC-TOGGLE-CSS-END */
+
+/* MC-SKIN-CSS-START */
+/* ===== what he is wearing ===================================================
+   The engine stamps these on <html> as it loads, before first paint.
+   The attribute selector outranks an app's own :root whichever order the
+   stylesheets landed in. Overworld is the default and needs no rule. */
+
+html[data-mc-theme="deepslate"]{
+  --bg:#14171A; --gold:#93A7BC;
+  --mc-glow:#23272E;
+}
+html[data-mc-theme="cherry"]{
+  --bg:#2A1622; --gold:#F0A2BE;
+  --mc-glow:#46203A;
+}
+html[data-mc-theme="nether"]{
+  --bg:#1E0C0B; --gold:#FF9247;
+  --mc-glow:#3F1512;
+}
+html[data-mc-theme="end"]{
+  --bg:#0E0A18; --gold:#CFBAFF;
+  --mc-glow:#241A3A;
+}
+/* The apps paint their own radial wash from a hard-coded colour, so a themed
+   page re-paints it from the token. Bare :root keeps the original. */
+html[data-mc-theme]:not([data-mc-theme="overworld"]) body{
+  background-color:var(--bg);
+  background-image:radial-gradient(circle at 12% -6%, var(--mc-glow) 0%, transparent 55%);
+}
+
+/* ---------- the purse he carries ---------- */
+.mc-purse{transition:box-shadow .2s, border-color .2s}
+/* The hub runs with the HUD off and paints its own coin badge, so each skin
+   names both. Without this, a bought purse is invisible on the one page he
+   looks at most. */
+html[data-mc-purse="gold"] .purselink,
+html[data-mc-purse="gold"] .mc-purse{
+  border-color:#E0A83C; box-shadow:0 0 0 1px #E0A83C inset, 0 0 12px rgba(224,168,60,.5)}
+html[data-mc-purse="emerald"] .purselink,
+html[data-mc-purse="emerald"] .mc-purse{
+  border-color:#3FBF7F; box-shadow:0 0 0 1px #3FBF7F inset, 0 0 12px rgba(63,191,127,.5)}
+html[data-mc-purse="netherite"] .purselink,
+html[data-mc-purse="netherite"] .mc-purse{
+  border-color:#6B5F6B; background:#1B171B;
+  box-shadow:0 0 0 1px #8C7A96 inset, 0 0 14px rgba(140,122,150,.55)}
+html[data-mc-purse="netherite"] .purselink b,
+html[data-mc-purse="netherite"] .mc-purse b{color:#D8CBE4}
+
+/* ---------- the flourish over the chest ----------
+   Decorative only: it is added after the chest opens and removed a couple of
+   seconds later. `pointer-events:none` so it can never swallow a tap on the
+   buttons underneath, and it is skipped entirely for anyone who has asked their
+   machine for less movement. */
+.mc-fx{position:absolute; inset:0; overflow:hidden; pointer-events:none; z-index:2}
+.mc-fx i{position:absolute; top:44%; width:8px; height:8px; opacity:0;
+  animation:mc-fx-fall 1.5s ease-out forwards}
+.mc-fx-sparkle i{width:5px; height:5px; border-radius:50%; background:#FFE9A8;
+  box-shadow:0 0 6px #FFD166}
+.mc-fx-confetti i:nth-child(3n){background:#E0A83C}
+.mc-fx-confetti i:nth-child(3n+1){background:#3FBF7F}
+.mc-fx-confetti i:nth-child(3n+2){background:#5AA9E6}
+.mc-fx-firework i{width:6px; height:6px; border-radius:50%;
+  background:#FFF; box-shadow:0 0 10px 2px #FF9247}
+.mc-fx-firework i:nth-child(2n){box-shadow:0 0 10px 2px #CFBAFF}
+.mc-fx-ore i{width:9px; height:9px; border-radius:2px; background:#5AA9E6}
+.mc-fx-ore i:nth-child(4n){background:#3FBF7F}
+.mc-fx-ore i:nth-child(4n+1){background:#E0A83C}
+.mc-fx-ore i:nth-child(4n+2){background:#C4553F}
+@keyframes mc-fx-fall{
+  0%{opacity:0; transform:translate(0,0) scale(.4)}
+  12%{opacity:1}
+  100%{opacity:0; transform:translate(var(--mc-dx,0), -150px) scale(1) rotate(220deg)}
+}
+@media (prefers-reduced-motion: reduce){ .mc-fx{display:none} }
+
+/* ---------- the rank he is wearing ---------- */
+.mc-title{
+  display:inline-block; margin:0; padding:3px 10px; border-radius:999px;
+  border:1px solid var(--gold); color:var(--gold);
+  font:800 10.5px var(--mono,monospace); letter-spacing:.14em; text-transform:uppercase;
+  background:rgba(255,255,255,.05)}
+
+/* ---------- the character ----------
+   Blocks, not a sprite: it always renders, costs no download, and recolours
+   with whatever cape is on. Sizes are in em so the whole figure scales from one
+   font-size on .mc-hero. */
+.mc-hero{display:flex;flex-direction:column;align-items:center;gap:9px;
+  font-size:9px;padding:14px 10px 12px;position:relative}
+.mc-heroart{position:relative;width:9em;height:20em;flex:none}
+.mc-heroart i{position:absolute;display:block;image-rendering:pixelated}
+
+/* head, face, body, limbs — Steve's proportions, near enough */
+.mc-head{left:2em;top:0;width:5em;height:5em;background:#B5825C;
+  box-shadow:inset 0 -0.6em 0 rgba(0,0,0,.16)}
+.mc-face{position:absolute;left:0.6em;top:1.8em;width:3.8em;height:1.2em;
+  background:
+    linear-gradient(90deg,#3A2E24 0 0.8em,transparent 0.8em),
+    linear-gradient(90deg,transparent 0 2.4em,#3A2E24 2.4em 3.2em,transparent 3.2em);
+  background-repeat:no-repeat}
+.mc-head::before{content:"";position:absolute;left:0;top:0;width:5em;height:1.6em;
+  background:#3A2A1C}                       /* hair */
+.mc-body{left:2.5em;top:5em;width:4em;height:6em;background:#2F8F76;
+  box-shadow:inset -0.5em 0 0 rgba(0,0,0,.14)}
+.mc-arm{top:5em;width:1.6em;height:6em;background:#2F8F76}
+.mc-arm.l{left:0.9em}
+.mc-arm.r{left:6.5em;box-shadow:inset -0.4em 0 0 rgba(0,0,0,.14)}
+.mc-arm::after{content:"";position:absolute;left:0;bottom:0;width:1.6em;height:1.6em;
+  background:#B5825C}                       /* hands */
+/* a sliver between the legs, or the two read as one block */
+.mc-leg{top:11em;width:1.9em;height:6em;background:#3B5A9B}
+.mc-leg.l{left:2.5em}
+.mc-leg.r{left:4.6em;box-shadow:inset -0.4em 0 0 rgba(0,0,0,.16)}
+
+/* the cape, behind the shoulders. `none` is the plain figure. */
+.mc-cape{left:1.9em;top:4.6em;width:5.2em;height:8.4em;border-radius:0 0 0.4em 0.4em;
+  background:transparent;transition:background .18s}
+.mc-hero[data-cape="none"] .mc-cape{display:none}
+.mc-hero[data-cape="ender"]   .mc-cape{background:#4B2E83;box-shadow:inset -0.6em 0 0 rgba(0,0,0,.22)}
+.mc-hero[data-cape="scarlet"] .mc-cape{background:#9E2B25;box-shadow:inset -0.6em 0 0 rgba(0,0,0,.22)}
+.mc-hero[data-cape="forest"]  .mc-cape{background:#215E3C;box-shadow:inset -0.6em 0 0 rgba(0,0,0,.22)}
+.mc-hero[data-cape="frost"]   .mc-cape{background:#5E93B8;box-shadow:inset -0.6em 0 0 rgba(0,0,0,.22)}
+.mc-hero[data-cape="gilded"]  .mc-cape{background:#C89A34;
+  box-shadow:inset -0.6em 0 0 rgba(0,0,0,.2), inset 0 0 0 0.4em #F0D585}
+.mc-hero[data-cape="elytra"]  .mc-cape{background:#6E6A78;width:8em;left:0.5em;
+  border-radius:0.4em 0.4em 2.6em 2.6em;
+  box-shadow:inset -0.6em 0 0 rgba(0,0,0,.2), inset 0 0 0 0.35em #9B96A8}
+
+/* a real sprite, if one is ever dropped in, sits on exactly this markup */
+.mc-hero img.mc-skin{position:absolute;inset:0;width:100%;height:100%}
+
+.mc-heroname{font:800 10px var(--mono,monospace);letter-spacing:.14em;
+  text-transform:uppercase;color:var(--gold,#E0A83C);text-align:center}
+.mc-heropurse{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;
+  border:2px solid rgba(255,255,255,.18)}
+.mc-heropurse b{font:800 14px var(--mono,monospace);color:var(--gold,#E0A83C)}
+.mc-heropurse .mc-coin{width:15px;height:15px}
+@media (min-width:520px){ .mc-hero{font-size:11px} }
+
+/* ---------- what he has earned, on the figure ----------
+   The armour steps up as the tool set fills: plain cloth, then iron, then gold,
+   then diamond at all nine. Nothing here can be bought. */
+.mc-hero[data-kit="iron"]    .mc-body,.mc-hero[data-kit="iron"]    .mc-arm{background:#B6BBC2}
+.mc-hero[data-kit="iron"]    .mc-leg{background:#8B9099}
+.mc-hero[data-kit="gold"]    .mc-body,.mc-hero[data-kit="gold"]    .mc-arm{background:#DEB244}
+.mc-hero[data-kit="gold"]    .mc-leg{background:#A9822C}
+.mc-hero[data-kit="diamond"] .mc-body,.mc-hero[data-kit="diamond"] .mc-arm{background:#4FC3C7}
+.mc-hero[data-kit="diamond"] .mc-leg{background:#2E8E96}
+/* the hands stay skin whatever the armour is */
+.mc-hero .mc-arm::after{background:#B5825C}
+
+/* the newest tool, held at his side */
+.mc-held{position:absolute;left:7.4em;top:8.4em;width:4.4em;height:4.4em;
+  transform:rotate(18deg);filter:drop-shadow(0 1px 2px rgba(0,0,0,.5))}
+
+/* one mark per dragon, and there is rarely more than one */
+.mc-dragonmark{left:0;top:0.4em;width:2.2em;height:2.2em;border-radius:50%;
+  background:radial-gradient(circle at 35% 32%,#C9A6FF,#5B3A9E 62%,#2A1750);
+  box-shadow:0 0 0 0.25em rgba(0,0,0,.35), 0 0 10px rgba(160,110,255,.7)}
+
+.mc-herokit{font:700 10px var(--mono,monospace);letter-spacing:.06em;
+  color:var(--stone,#8A9490);text-align:center}
+
+/* the middle way out, between this app and the whole site */
+.hublink.subject{margin-left:14px}
+/* MC-SKIN-CSS-END */
+</style>
+<!-- /MC-THEME-CSS -->
+</head>
+<body>
+<!-- MC-THEME-JS: generated by build_theme.py, do not hand-edit -->
+<script>window.__MC_PREFIX__="../../assets/";
+window.__MC_HAS_BOSS__=true;
+window.__MC_SFX__={"tool": "data:audio/mpeg;base64,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", "correct": "data:audio/mpeg;base64,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", "wrong": "data:audio/mpeg;base64,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"};</script>
+<script>/* ===== Minecraft theme layer — shared source =====
+   Built once, injected into every app. Do not edit inside an app's
+   index.html; edit theme/mc.js and rebuild, or the four copies drift.
+
+   Contract:
+     MC.config({app, shake, lift, dragon})  once, before anything else
+     MC.begin(id)                           entering a level — refills hearts
+     MC.right()                             a correct answer
+     MC.wrong(missKey)                      a wrong answer — costs half a heart
+     MC.note(missKey)                       record a miss without spending one
+     MC.credit(missKey)                     count a fix without a burst
+     MC.clear(id, pct, {boss})              level finished — may award a tool
+     MC.chest(el, pct, {id})                paint the results reveal into el
+     MC.bests()                             {id: bestPct} for this app
+     MC.mute(on)                            sound off/on, remembered across apps
+     MC.ask(item)                           the wording to ask it in this run
+     MC.runs(id)                            every attempt at one activity
+     MC.picker(el, items, cur, onPick)       a strip of level chips
+     MC.state()                             read-only snapshot (used by the hub)
+
+   No death, no game over. Hearts only shrink the loot. A kid who is stuck
+   must never hit a wall — see HANDOFF.
+*/
+(function () {
+  "use strict";
+
+  var PREFIX = window.__MC_PREFIX__ || "../../assets/";
+  var INLINE = window.__MC_INLINE__ || null;
+  var HAS_BOSS = window.__MC_HAS_BOSS__ === true;
+  var url = function (n) { return INLINE ? (INLINE[n] || "") : PREFIX + n + ".png"; };
+
+  /* ---------- persistence (shared origin, so shared across all four apps) ---------- */
+  var KEY = "mc.study.v1";
+  var S;
+  try { S = JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) { S = {}; }
+  if (!S.cleared || typeof S.cleared !== "object") S.cleared = {};
+  if (!S.misses || typeof S.misses !== "object") S.misses = {};
+  if (typeof S.tool9 !== "boolean") S.tool9 = false;
+  if (!S.ore || typeof S.ore !== "object") S.ore = {};
+  if (!S.gem || typeof S.gem !== "object") S.gem = {};   // "app:id" -> diamond taken
+  if (typeof S.dragon !== "number") S.dragon = 0;
+  /* Every attempt, not just the best one: "app:id" -> [{p:pct, t:when, x:partial}].
+     `cleared` keeps the high score because that is what the game rewards, but a
+     parent wants the shape of the practice — three tries drifting down is worth
+     knowing about even when the best of them was 90. Capped so a year of daily
+     practice cannot fill localStorage. */
+  if (!S.runs || typeof S.runs !== "object") S.runs = {};
+  var RUNS_KEPT = 25;
+  if (typeof S.mute !== "boolean") S.mute = false;
+  /* Coins. The tools run out and the mine takes a while to open, so there was a
+     long middle stretch where a good run paid nothing. Coins pay on every run,
+     from the first one, scaled to how it went — a floor that never disappears
+     and a ceiling that never arrives. */
+  if (typeof S.coins !== "number" || !isFinite(S.coins)) S.coins = 0;
+
+  /* Two numbers, not one. `coins` is the spendable balance; `earned` is every
+     coin ever paid out and never goes down, so buying something does not shrink
+     the year's total — it moves it into things owned. Without this a shop would
+     break the one rule the whole design rests on: nothing earned is taken away.
+
+     Anyone who was here before the shop existed has earned at least what they
+     are holding, so that is where their total starts. */
+  if (typeof S.earned !== "number" || !isFinite(S.earned)) S.earned = S.coins;
+  if (S.earned < S.coins) S.earned = S.coins;
+  if (!S.owned || typeof S.owned !== "object") S.owned = {};
+  if (!S.equip || typeof S.equip !== "object") S.equip = {};
+
+  /* ---------- sound ----------
+     Every answer is heard: a coin when he is right, a soft glass note when he
+     is not, and an unlock when a tool is earned. The wrong note is deliberately
+     the gentlest of the three — it marks the moment without scolding, which is
+     the same reason hearts shrink the loot instead of ending the run.
+
+     All three arrive base64-inlined from the injector, like the sprites under
+     --inline, so an app is still one file you can open from anywhere. They are
+     small enough (about 18 KB of base64 between them) to inline on every build
+     rather than only when asked. */
+  var SFX = window.__MC_SFX__ || null;
+  var VOL = 0.32;                       // quiet by default; this is a study aid
+  /* The wrong note fires more often than either of the others, so it sits
+     lower — audible, but never the loudest thing in the room. */
+  var VOLS = { correct: 0.32, tool: 0.38, wrong: 0.20 };
+  var clips = null, primed = false;
+
+  function vol(k) { return VOLS[k] === undefined ? VOL : VOLS[k]; }
+
+  function build_clips() {
+    if (clips || !SFX) return;
+    clips = {};
+    for (var k in SFX) {
+      try {
+        var a = new Audio(SFX[k]);
+        a.preload = "auto";
+        a.volume = vol(k);
+        clips[k] = a;
+      } catch (e) { /* no Audio in this environment — stay silent */ }
+    }
+  }
+
+  /* Browsers refuse to play audio until the user has interacted with the page,
+     and the refusal is a rejected promise, not an error we would otherwise see.
+     So on the first touch or key we start each clip muted and immediately stop
+     it, which satisfies the policy and leaves them ready to fire instantly. */
+  function unlock() {
+    if (primed) return;
+    primed = true;
+    build_clips();
+    for (var k in clips) prime_one(clips[k], vol(k));
+    document.removeEventListener("pointerdown", unlock, true);
+    document.removeEventListener("keydown", unlock, true);
+  }
+  function prime_one(a, v) {
+    try {
+      a.volume = 0;
+      var p = a.play();
+      var settle = function () { try { a.pause(); a.currentTime = 0; } catch (e) {} a.volume = v; };
+      if (p && p.then) p.then(settle, settle); else settle();
+    } catch (e) { a.volume = v; }
+  }
+  if (typeof document !== "undefined" && document.addEventListener) {
+    document.addEventListener("pointerdown", unlock, true);
+    document.addEventListener("keydown", unlock, true);
+  }
+
+  function play(name) {
+    if (S.mute || !SFX) return;
+    build_clips();
+    var a = clips && clips[name];
+    if (!a) return;
+    try {
+      a.currentTime = 0;
+      a.volume = vol(name);
+      var p = a.play();
+      if (p && p.catch) p.catch(function () { /* still locked; next one will land */ });
+    } catch (e) { /* never let a missing speaker break a question */ }
+  }
+  function save() { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} }
+
+  var TOOLS = ["wooden pickaxe", "stone pickaxe", "iron pickaxe", "diamond pickaxe",
+               "sword", "torch", "shield", "bow", "elytra"];
+
+  /* Tools 1-8 come from how many activities have been cleared anywhere on the
+     site at 75%+. Tool 9, the elytra, only ever comes from spelling Challenge 2 —
+     the one level where he writes his own sentences. */
+  /* ---------- the mine ----------
+     The tool bar was the whole ladder, and with twenty-odd activities on the
+     site he fills it long before he runs out of work. So the tools are only
+     the first age. Once all nine are held the mine opens, and from then on
+     what a run is worth depends on how well it went rather than on whether it
+     was new. Coal through gold are repeatable, so there is always something to
+     dig; diamond is once per activity, so the only way to a pile of them is
+     breadth AND mastery; emerald comes from the dragon alone. */
+  var ORE = [
+    { k: "coal",     name: "coal",     hex: "#2C2C30" },
+    { k: "copper",   name: "copper",   hex: "#C1663F" },
+    { k: "iron",     name: "iron",     hex: "#C6C2BC" },
+    { k: "gold",     name: "gold",     hex: "#E4C04A" },
+    { k: "redstone", name: "redstone", hex: "#B4262A" },
+    { k: "lapis",    name: "lapis",    hex: "#2A5CB4" },
+    { k: "diamond",  name: "diamond",  hex: "#40D5D1" },
+    { k: "emerald",  name: "emerald",  hex: "#2FA84F" }
+  ];
+  var ORE_BY = {};
+  for (var _o = 0; _o < ORE.length; _o++) ORE_BY[ORE[_o].k] = ORE[_o];
+
+  /* A beacon is built from the four block types Minecraft actually accepts.
+     Nine of a mineral makes a block. */
+  var BEACON = ["iron", "gold", "diamond", "emerald"];
+
+  function oreCount(k) { return S.ore[k] || 0; }
+  function blocks(k) { return Math.floor(oreCount(k) / 9); }
+  function beaconLit() {
+    for (var i = 0; i < BEACON.length; i++) if (blocks(BEACON[i]) < 1) return false;
+    return true;
+  }
+
+  /* How many cleared activities each of the first eight tools costs.
+     It used to be one apiece, which was written when the site had about a dozen
+     activities. There are forty now, so the whole hotbar filled inside a
+     fortnight and the next thirty-odd runs paid nothing at all. Spread over a
+     term instead, steeply enough at the start that the first two still arrive
+     the same evening. */
+  var TOOL_GATE = [1, 2, 3, 5, 7, 10, 14, 18];
+
+  function clearedCount() {
+    var n = 0, k;
+    for (k in S.cleared) if (S.cleared[k] >= 75) n++;
+    return n;
+  }
+  /* The ninth tool used to hang on one specific level, spelling:l7. If that
+     level was never set as homework the mine could not open at all — he could
+     clear all forty activities and still be locked out. It now asks for breadth:
+     something cleared in every subject he has work in. That cannot strand him,
+     and it rewards the thing worth rewarding. */
+  function subjectsCleared() {
+    var seen = {}, k;
+    for (k in S.cleared) if (S.cleared[k] >= 75) seen[k.split(":")[0]] = 1;
+    var n = 0, a;
+    for (a in seen) n++;
+    return n;
+  }
+  function toolsFrom(n) {
+    var got = 0;
+    for (var i = 0; i < TOOL_GATE.length; i++) if (n >= TOOL_GATE[i]) got = i + 1;
+    return got;
+  }
+  function unlocked() {
+    var n = toolsFrom(clearedCount());
+    var nine = !!S.tool9 || subjectsCleared() >= ELYTRA_SUBJECTS;
+    return { count: n, nine: nine, all9: n >= 8 && nine,
+             cleared: clearedCount(), next: TOOL_GATE[n] || null };
+  }
+  var ELYTRA_SUBJECTS = 5;   // history, science, reading, spelling, vocabulary
+  function mineOpen() { return unlocked().all9; }
+  function has(slot) { var u = unlocked(); return slot === 9 ? u.nine : slot <= u.count; }
+
+  /* ---------- state ---------- */
+  var cfg = { app: "app", shake: null, lift: null, burst: 320, hud: true,
+              subject: null,   /* which subject this app belongs to */
+              /* Which activities can summon the dragon. null = any level in this
+                 app. An array restricts it to those ids — spelling passes ["l7"]
+                 so only Challenge 2, the hardest level of whatever week's list
+                 is loaded, can wake it. */
+              dragon: null };
+  var halves = 20;          // 10 hearts, tracked in halves
+  var missedHere = {};      // keys missed during this level
+  var fixedHere = 0;        // ...and later got right — the comeback count
+  var partialRun = false;   // a correction round over just the missed items
+  var hud, heartsEl, barEl, muteEl, purseEl, lastNew = 0;
+  var goodN = 0, badN = 0;  // cycle the sprites so it isn't the same one every time
+  var askSeq = 0, askPick = {};   // which wording each question is using this run
+
+  /* The sound toggle sits at the top of every page, on its own rather than
+     inside the HUD. Two reasons: the HUD lives at the bottom and only appears
+     once a level starts, and the two Wordly Wise tests run with hud:false — so
+     a toggle parented to the HUD left no way at all to mute a test. This mounts
+     on the hub as well, wherever the engine is present and there is sound. */
+  function mountMute() {
+    if (muteEl || !SFX || typeof document === "undefined" || !document.body) return;
+    muteEl = document.createElement("button");
+    muteEl.type = "button";
+    muteEl.id = "mc-mute";
+    muteEl.addEventListener("click", function () { MC.mute(!S.mute); });
+    document.body.appendChild(muteEl);
+    drawMute();
+  }
+  if (typeof document !== "undefined" && document.addEventListener) {
+    if (document.readyState === "loading")
+      document.addEventListener("DOMContentLoaded", mountMute);
+    else mountMute();
+  }
+
+  /* A speaker, drawn rather than set in type: a musical note said "sound" but
+     not "sound is on", and the note-with-a-stroke was too small a mark to read
+     at a glance. A crossed-out speaker is the sign everyone already knows. */
+  function speaker(off) {
+    var cone = '<path d="M3 9.5v5h3.2L11 18.5v-13L6.2 9.5H3z"/>';
+    var waves = off ? ""
+      : '<path d="M13.6 8.4a4.6 4.6 0 010 7.2" fill="none" stroke="currentColor"' +
+        ' stroke-width="1.9" stroke-linecap="round"/>' +
+        '<path d="M15.9 6a7.8 7.8 0 010 12" fill="none" stroke="currentColor"' +
+        ' stroke-width="1.9" stroke-linecap="round"/>';
+    var slash = off
+      ? '<path d="M13.2 8.6l6.4 6.8" fill="none" stroke="currentColor"' +
+        ' stroke-width="2.2" stroke-linecap="round"/>'
+      : "";
+    return '<svg class="mc-spk" viewBox="0 0 24 24" aria-hidden="true" focusable="false"' +
+           ' fill="currentColor">' + cone + waves + slash + '</svg>';
+  }
+
+  /* The purse. Deliberately on screen the whole time he is working, because the
+     point of a currency is that it is visibly going up. Falls back to a drawn
+     coin if the sprite is not there yet, so this works before the art lands. */
+  /* What he is wearing, stamped on the root element as the engine loads so a
+     plain CSS rule can pick it
+     up. `html[data-mc-theme=...]` outranks an app's own `:root`, so a theme
+     repaints every page whichever order the stylesheets landed in. */
+
+  /* ---------- a way back to the subject ----------
+     Leaving a chapter used to mean going out to the whole site and finding the
+     subject again. This sits between the two: back to the subject you are
+     working through, with its section already open.
+
+     Drawn by the engine so every app gets it without its own shell being
+     touched, and placed after whatever link is already there. The path comes
+     from the sprite prefix, which every page has to declare correctly anyway. */
+  function subjectLink() {
+    if (!cfg.subject) return;
+    if (document.getElementById("mc-tosubject")) return;
+    var first = document.querySelector(".hublink");
+    if (!first || !first.parentNode) return;
+    var hub = PREFIX.replace(/assets\/?$/, "index.html");
+    var a = document.createElement("a");
+    a.id = "mc-tosubject";
+    a.className = "hublink subject";
+    a.href = hub + "#" + cfg.subject.toLowerCase();
+    a.innerHTML = "&lsaquo; " + cfg.subject;
+    if (first.nextSibling) first.parentNode.insertBefore(a, first.nextSibling);
+    else first.parentNode.appendChild(a);
+  }
+
+  function skin() {
+    var r = document.documentElement;
+    /* Cosmetic, so it must never be the reason the engine fails to load. */
+    if (!r || !r.setAttribute) return;
+    r.setAttribute("data-mc-theme", S.equip.theme || "overworld");
+    r.setAttribute("data-mc-purse", S.equip.purse || "leather");
+    r.setAttribute("data-mc-cape", S.equip.cape || "none");
+  }
+
+  /* The flourish over the chest at the end of a set. Sparkle is the one
+     everybody starts with; the rest are bought. Purely decorative, and it
+     cleans up after itself so nothing accumulates in the DOM.
+
+     Named `flourish` and not `burst`, because there was a second function
+     called burst further down for the win/lose sprites. Two declarations of
+     one name in one scope is not an error: the later one simply wins, so the
+     chest was calling the sprite burst with a DOM node where it wanted a
+     sprite name, and painting a broken image over the results screen. This
+     one had never run at all, which is to say the flourishes on sale in the
+     shop had never once been drawn. */
+  function flourish(host) {
+    var kind = S.equip.effect || "sparkle";
+    var n = kind === "ore" ? 22 : kind === "firework" ? 18 : kind === "confetti" ? 16 : 10;
+    var box = document.createElement("div");
+    box.className = "mc-fx mc-fx-" + kind;
+    for (var i = 0; i < n; i++) {
+      var b = document.createElement("i");
+      b.style.left = (6 + Math.random() * 88).toFixed(2) + "%";
+      b.style.animationDelay = (Math.random() * 0.45).toFixed(2) + "s";
+      b.style.setProperty("--mc-dx", (Math.random() * 60 - 30).toFixed(1) + "px");
+      box.appendChild(b);
+    }
+    host.appendChild(box);
+    setTimeout(function () { if (box.parentNode) box.parentNode.removeChild(box); }, 2600);
+  }
+
+
+  /* ---------- the character ----------
+     Drawn from blocks so it always renders and always matches whatever is on.
+     `heroHosts` remembers where it has been drawn, so equipping something in
+     the shop redraws it there without the page having to ask. */
+  var heroHosts = [];
+
+  /* Which armour the figure is wearing is earned, not bought: it steps up as
+     the tool set fills. Nothing is ever taken away, so it only ever improves. */
+  function armourTier() {
+    var u = unlocked();
+    var n = u.count + (u.nine ? 1 : 0);
+    return n >= 9 ? "diamond" : n >= 6 ? "gold" : n >= 3 ? "iron" : "none";
+  }
+
+  function heroHTML(title) {
+    var u = unlocked();
+    var tools = u.count + (u.nine ? 1 : 0);
+    var cape = S.equip.cape || "none";
+    /* Tools come in order, and the ninth is separate — it is the one that
+       wants breadth rather than depth. has() knows the rule; this asks it. */
+    var newest = 0;
+    for (var t = 1; t <= 9; t++) if (has(t)) newest = t;
+    var held = newest ? url("tool-" + newest) : "";
+    var oreTotal = 0;
+    for (var k in S.ore) oreTotal += S.ore[k] || 0;
+
+    var line = tools >= 9
+      ? (S.dragon ? "Every tool, and the dragon" : "Every tool is yours")
+      : tools + " of 9 tools";
+    if (oreTotal) line += " \u00b7 " + oreTotal + " ore";
+
+    return '<div class="mc-hero" data-cape="' + cape + '" data-kit="' + armourTier() + '">' +
+             '<div class="mc-heroart">' +
+               '<i class="mc-cape"></i>' +
+               '<i class="mc-head"><i class="mc-face"></i></i>' +
+               '<i class="mc-arm l"></i><i class="mc-arm r"></i>' +
+               '<i class="mc-body"></i>' +
+               '<i class="mc-leg l"></i><i class="mc-leg r"></i>' +
+               (held ? '<img class="mc-held" alt="" src="' + held +
+                       '" onerror="this.remove()">' : "") +
+               (S.dragon ? '<i class="mc-dragonmark" title="Dragon slain"></i>' : "") +
+             '</div>' +
+             (title ? '<div class="mc-heroname">' + title + '</div>' : "") +
+             '<div class="mc-herokit mc-hero-kit">' + line + '</div>' +
+             '<div class="mc-heropurse">' +
+               (url("coin") ? '<img class="mc-coin" alt="" src="' + url("coin") +
+                              '" onerror="this.remove()">'
+                            : '<i class="mc-coin mc-coin-fb"></i>') +
+               "<b>" + S.coins + "</b></div>" +
+           "</div>";
+  }
+
+  function drawHeroes() {
+    for (var i = 0; i < heroHosts.length; i++) {
+      var h = heroHosts[i];
+      if (h.node && h.node.parentNode) h.node.innerHTML = heroHTML(h.title);
+    }
+  }
+
+  function drawCoins() {
+    if (!purseEl) return;
+    var src = url("coin");
+    purseEl.innerHTML = (src ? '<img class="mc-coin" alt="" src="' + src + '">'
+                             : '<i class="mc-coin mc-coin-fb"></i>') +
+                        '<b>' + S.coins + '</b>';
+  }
+
+  function drawMute() {
+    if (!muteEl) return;
+    muteEl.innerHTML =
+      '<span class="mc-sw"><span class="mc-knob">' + speaker(S.mute) + '</span></span>' +
+      '<span class="mc-lbl">' + (S.mute ? "OFF" : "ON") + '</span>';
+    muteEl.setAttribute("aria-label",
+      S.mute ? "Sound off — tap to turn sound on" : "Sound on — tap to mute");
+    muteEl.setAttribute("aria-pressed", S.mute ? "true" : "false");
+    muteEl.setAttribute("title", S.mute ? "Sound off" : "Sound on");
+    muteEl.className = "mc-mute" + (S.mute ? " off" : "");
+  }
+
+  /* ---------- HUD ---------- */
+  function build() {
+    if (hud || cfg.hud === false) return;
+    hud = document.createElement("div");
+    hud.className = "mc-hud";
+    hud.id = "mc-hud";
+    hud.innerHTML = '<div class="mc-purse" id="mc-purse"></div>' +
+                    '<div class="mc-hearts" id="mc-hearts"></div>' +
+                    '<div class="mc-bar" id="mc-bar"></div>';
+    document.body.appendChild(hud);
+    purseEl = hud.querySelector("#mc-purse");
+    drawCoins();
+    heartsEl = hud.querySelector("#mc-hearts");
+    barEl = hud.querySelector("#mc-bar");
+    drawBar();
+    drawHearts();
+    fit();
+    window.addEventListener("resize", fit);
+    // the app's own bar can grow when feedback appears — ride above it
+    if (cfg.lift && window.ResizeObserver) {
+      var t = document.querySelector(cfg.lift);
+      if (t) new ResizeObserver(function () { lift(); }).observe(t);
+    }
+    // the HUD is appended before the rest of the page parses, so its height
+    // is not final yet; re-measure once the document is up
+    if (document.readyState === "loading")
+      document.addEventListener("DOMContentLoaded", fit);
+    else setTimeout(fit, 0);
+    window.addEventListener("orientationchange", function () { setTimeout(fit, 120); });
+  }
+
+  /* The hotbar must never wrap and must never overflow. Size the slot from the
+     viewport and let the hearts follow it. Checked 300-1024px. */
+  function fit() {
+    if (!hud) return;
+    var vw = Math.max(280, document.documentElement.clientWidth || window.innerWidth);
+    var vh = Math.max(320, document.documentElement.clientHeight || window.innerHeight);
+    var bsz = Math.max(150, Math.min(cfg.burst, Math.round(vw * 0.55), Math.round(vh * 0.42)));
+    var avail = Math.min(430, vw - 16);
+    var ss = Math.max(24, Math.min(46, Math.floor(avail / 9)));
+    var barw = ss * 9;
+    hud.style.setProperty("--mc-ss", ss + "px");
+    hud.style.setProperty("--mc-barw", barw + "px");
+    hud.style.setProperty("--mc-hh", Math.max(13, Math.round(ss * 0.5)) + "px");
+    hud.style.setProperty("--mc-burst", bsz + "px");
+    document.documentElement.style.setProperty("--mc-burst", bsz + "px");
+    lift();
+    // keep app content clear of the HUD
+    var h = hud.offsetHeight || 70;
+    document.body.style.paddingBottom = (h + (cfg._liftpx || 0) + 10) + "px";
+  }
+
+  /* Only the vocabulary app has a persistent fixed bar of its own, and it grows
+     when feedback appears. Ride above whatever height it currently is. */
+  function lift() {
+    if (!cfg.lift || !hud) return;
+    var t = document.querySelector(cfg.lift);
+    var px = (t && t.offsetParent !== null) ? t.offsetHeight : 0;
+    cfg._liftpx = px;
+    hud.style.setProperty("--mc-lift", px + "px");
+  }
+
+  function drawHearts() {
+    if (!heartsEl) return;
+    var out = "", i, v;
+    for (i = 0; i < 10; i++) {
+      v = Math.max(0, Math.min(2, halves - i * 2));
+      out += '<img class="mc-heart" data-v="' + v + '" alt="" src="' +
+             url(v === 2 ? "heart-full" : v === 1 ? "heart-half" : "heart-empty") + '">';
+    }
+    heartsEl.innerHTML = out;
+  }
+
+  /* Renders a mineral. The coloured block is CSS, so this works before any
+     ore art exists; if the sprite is there it loads on top, and if it is not
+     the broken image removes itself rather than showing a torn-page icon. */
+  function oreChip(k, label, on) {
+    var o = ORE_BY[k];
+    return '<span class="mc-ore' + (on === false ? " mc-dim" : "") + '" title="' + o.name +
+           '" style="--ore:' + o.hex + '">' +
+           '<img alt="" src="' + url("ore-" + k) +
+           '" onerror="this.parentNode.classList.add(\'mc-noart\');this.remove()">' +
+           (label ? '<b>' + label + "</b>" : "") + "</span>";
+  }
+
+  /* A beacon slot. Earned slots show their block; an unearned one shows the
+     plain stone stand-in, so the row reads as a pyramid under construction
+     rather than as four mystery squares. Either falls back to a CSS block. */
+  function blockChip(b) {
+    var got = b.blocks >= 1;
+    return '<span class="mc-blk' + (got ? "" : " mc-dim") + '" title="' + b.name +
+           '" style="--ore:' + b.hex + '">' +
+           '<img alt="" src="' + url(got ? "block-" + b.k : "block-locked") +
+           '" onerror="this.parentNode.classList.add(\'mc-noart\');this.remove()">' +
+           "<b>" + b.blocks + "/1</b></span>";
+  }
+
+  function drawBar() {
+    if (!barEl) return;
+    var out = "", i, on;
+    for (i = 1; i <= 9; i++) {
+      on = has(i);
+      out += '<div class="mc-slot' + (i === lastNew ? " mc-new" : "") + '" data-n="' + i +
+             '" style="background-image:url(' + url("slot") + ')" title="' +
+             (on ? TOOLS[i - 1] : "locked") + '">' +
+             '<img class="mc-frame" alt="" src="' + url("slot-frame") + '">' +
+             (on ? '<img class="mc-tool" alt="' + TOOLS[i - 1] + '" src="' + url("tool-" + i) + '">' : "") +
+             "</div>";
+    }
+    barEl.innerHTML = out;
+  }
+
+  /* ---------- sprite bursts ---------- */
+  function burst(name, cls, narrow) {
+    var old = document.querySelector(".mc-burst");
+    if (old && old.parentNode) old.parentNode.removeChild(old);
+    var d = document.createElement("div");
+    d.className = "mc-burst " + cls;
+    if (narrow) d.setAttribute("data-w", "narrow");
+    d.innerHTML = '<img alt="" src="' + url(name) + '">';
+    document.body.appendChild(d);
+    setTimeout(function () { if (d.parentNode) d.parentNode.removeChild(d); }, 1600);
+  }
+
+  function shake() {
+    if (!cfg.shake) return;                 // science already shakes its own card
+    var t = document.querySelector(cfg.shake);
+    if (!t) return;
+    t.classList.remove("mc-shake");
+    void t.offsetWidth;
+    t.classList.add("mc-shake");
+    setTimeout(function () { t.classList.remove("mc-shake"); }, 400);
+  }
+
+  /* ---------- public ---------- */
+  var MC = {
+    config: function (o) {
+      for (var k in o) if (o.hasOwnProperty(k)) cfg[k] = o[k];
+      if (document.body) build(); else
+        document.addEventListener("DOMContentLoaded", build);
+      /* The header this hangs off is further down the document than the config
+         call, so it has to wait for the rest of the page even when body exists. */
+      if (document.readyState === "loading")
+        document.addEventListener("DOMContentLoaded", subjectLink);
+      else subjectLink();
+      return MC;
+    },
+
+    /* Entering a level. Pass {partial:true} for a correction round that
+       replays only the missed items — those must not overwrite a best score
+       or hand out the big rewards, since three words at 100% is not the same
+       achievement as twelve. */
+    begin: function (opts) {
+      halves = 20; lastNew = 0;
+      missedHere = {}; fixedHere = 0;
+      partialRun = !!(opts && opts.partial);
+      askPick = {};              // a new run gets new wordings
+      build(); drawHearts(); drawBar(); fit();
+    },
+
+    /* Credit a fix without any fanfare. The vocabulary sheet settles 26 words
+       on a single check — that is one burst, not twenty-six. */
+    credit: function (missKey) {
+      if (missKey && missedHere[missKey]) { fixedHere++; delete missedHere[missKey]; }
+    },
+
+    /* Pass the same key you passed to wrong()/note() and the correction is
+       counted — that is what earns the comeback badge. */
+    right: function (missKey) {
+      build();
+      MC.credit(missKey);
+      goodN = goodN % 4 + 1;
+      burst("win-" + goodN, "mc-good");
+      play("correct");
+    },
+
+    /* Record a miss without any cost. Used where one action covers several
+       items, or where the answer is revealed after the miss already landed. */
+    note: function (missKey) {
+      if (!missKey) return;
+      missedHere[missKey] = true;
+      var a = cfg.app;
+      if (!S.misses[a]) S.misses[a] = {};
+      S.misses[a][missKey] = (S.misses[a][missKey] || 0) + 1;
+      save();
+    },
+
+    wrong: function (missKey) {
+      build();
+      badN = badN % 4 + 1;
+      burst("bad-" + badN, "mc-bad", badN === 2 || badN === 4);
+      shake();
+      play("wrong");
+      if (halves > 0) {
+        halves--;                            // floors at zero — never a game over
+        drawHearts();
+        var i = Math.floor(halves / 2);
+        var h = heartsEl && heartsEl.children[Math.min(9, i)];
+        if (h) h.classList.add("mc-hit");
+      }
+      MC.note(missKey);
+    },
+
+    /* Records the score, may award a tool. Returns what happened so the
+       results screen can talk about it. */
+    /* Records the score, may award a tool, and works out what he earned.
+       Every band is a real Minecraft tier, because every one of them is a
+       tool you are glad to have — there is no booby prize here. */
+    clear: function (id, pct, opts) {
+      opts = opts || {};
+      pct = Math.round(pct);
+      var key = cfg.app + ":" + id;
+      var prev = S.cleared[key];
+      var before = unlocked();
+      var got = null;
+
+      /* Log the try itself before anything else, so it is recorded whether or
+         not it counted towards the game. A partial run is marked rather than
+         dropped: it is still practice a parent may want to see. */
+      if (!S.runs[key]) S.runs[key] = [];
+      var run = { p: pct, t: Date.now() };
+      if (partialRun) run.x = 1;
+      S.runs[key].push(run);
+      if (S.runs[key].length > RUNS_KEPT) S.runs[key] = S.runs[key].slice(-RUNS_KEPT);
+      save();
+
+      if (!partialRun) {
+        S.cleared[key] = Math.max(prev || 0, pct);
+        if (key === "spelling:l7" && pct >= 75) S.tool9 = true;
+        save();
+        var after = unlocked();
+        if (after.nine && !before.nine) got = 9;
+        else if (after.count > before.count) got = after.count;
+        lastNew = got || 0;
+        if (got) play("tool");             // a new tool is the one thing worth a fanfare
+        drawBar();
+        drawHeroes();
+      }
+
+      var clean = pct >= 100 && halves === 20;
+      var isBossLevel = cfg.dragon === null || cfg.dragon.indexOf(id) !== -1;
+      /* The End portal stays shut until the whole tool set is his. A perfect
+         run before that is still a perfect run — it just does not summon a
+         dragon, and the chest says what is still missing rather than going
+         quiet about it. */
+      var ready = unlocked().all9;
+      var dragon = clean && !partialRun && isBossLevel && ready;
+      var portalShut = clean && !partialRun && isBossLevel && !ready;
+      if (dragon) { S.dragon++; save(); }
+
+      /* Coins, every run, from the very first one. Finishing at all is worth
+         something — that is the floor, and it is deliberate: a child who had a
+         bad round should still walk away holding more than he arrived with.
+         Everything above the floor is earned. */
+      var coins = 3;
+      if (pct >= 75) coins += 3;
+      if (pct >= 85) coins += 3;
+      if (pct >= 95) coins += 4;
+      if (pct >= 100) coins += 5;
+      if (halves === 20) coins += 5;          // not a heart lost
+      if (fixedHere) coins += 2 * fixedHere;  // fixing a miss pays, and it should
+      if (dragon) coins += 40;
+      if (partialRun) coins = Math.max(2, Math.round(coins / 2));
+      S.coins += coins;
+      S.earned += coins;
+      save();
+      drawCoins();
+
+      /* What the run was worth at the rock face. Coal through gold repeat, so
+         there is always something to dig; diamond is once per activity, so a
+         pile of them needs breadth AND mastery; emerald comes only from the
+         dragon. Nothing is mined at all until the tool set is complete. */
+      var mined = [];
+      function dig(k, n) {
+        S.ore[k] = (S.ore[k] || 0) + n;
+        mined.push({ k: k, n: n, name: ORE_BY[k].name, hex: ORE_BY[k].hex });
+      }
+      if (mineOpen()) {
+        if (partialRun) {
+          if (pct >= 100) dig("lapis", 1);            // every miss put right
+        } else {
+          if (pct >= 75) dig("coal", 1);
+          if (pct >= 85) dig("copper", 1);
+          if (pct >= 95) dig("iron", 1);
+          if (pct >= 100) dig("gold", 1);
+          if (pct >= 75 && halves === 20) dig("redstone", 1);
+          if (clean && !S.gem[key]) { S.gem[key] = true; dig("diamond", 1); }
+        }
+        if (dragon) dig("emerald", 1);
+        if (mined.length) save();
+      }
+
+      var tier;
+      if (partialRun)   tier = ["CORRECTIONS", "You went back and fixed them. That is the part that sticks."];
+      else if (dragon)  tier = ["DRAGON SLAIN", "Perfect. Not one miss, not one heart."];
+      else if (clean)   tier = ["NETHERITE", "Every single one right."];
+      else if (pct >= 90) tier = ["DIAMOND", "So close to flawless."];
+      else if (pct >= 75) tier = ["IRON", "Solid work \u2014 this one is holding."];
+      else if (pct >= 50) tier = ["STONE", "You got through it. Now you know where to dig."];
+      else                tier = ["WOOD", "You finished it, and that is where everyone starts."];
+
+      /* Badges stack. They reward things accuracy alone does not see. */
+      var badges = [];
+      if (fixedHere)
+        badges.push(fixedHere === 1 ? "TURNED ONE AROUND" : "TURNED " + fixedHere + " AROUND");
+      if (!partialRun && prev != null && pct > prev)
+        badges.push("NEW BEST \u2014 BEAT " + prev + "%");
+      if (!partialRun && (prev == null || prev < 75) && pct >= 75)
+        badges.push("FIRST CLEAR");
+      if (halves > 0 && halves <= 4 && pct >= 50)
+        badges.push("STUCK IT OUT");
+
+      var bea = null;
+      if (mineOpen()) {
+        bea = { lit: beaconLit(), need: [] };
+        for (var bi = 0; bi < BEACON.length; bi++)
+          bea.need.push({ k: BEACON[bi], have: oreCount(BEACON[bi]),
+                          blocks: blocks(BEACON[bi]), name: ORE_BY[BEACON[bi]].name,
+                          hex: ORE_BY[BEACON[bi]].hex });
+      }
+
+      return {
+        mined: mined, beacon: bea, portalShut: portalShut,
+        toolsLeft: (8 - unlocked().count) + (S.tool9 ? 0 : 1),
+        mineOpen: mineOpen(), dragons: S.dragon,
+        tool: got,
+        toolName: got ? TOOLS[got - 1] : null,
+        loot: halves >= 20 ? 4 : halves >= 15 ? 3 : halves >= 8 ? 2 : 1,
+        hearts: halves / 2,
+        fixed: fixedHere,
+        partial: partialRun,
+        tier: tier[0], blurb: tier[1], badges: badges,
+        boss: dragon
+      };
+    },
+
+    /* Paints chest-closed, then opens it on tap or after a beat. */
+    chest: function (host, pct, opts) {
+      if (!host) return null;
+      var r = MC.clear(opts.id, pct, opts);
+      var box = document.createElement("div");
+      box.className = "mc-chest";
+      box.innerHTML = '<img class="mc-lid mc-shut" alt="Closed chest" src="' + url("chest-closed") + '">' +
+                      '<div class="mc-loot"></div>' +
+                      '<div class="mc-tier"></div>' +
+                      '<div class="mc-cap">Tap the chest</div>';
+      host.insertBefore(box, host.firstChild);
+      var lid = box.querySelector(".mc-lid"),
+          loot = box.querySelector(".mc-loot"),
+          tierEl = box.querySelector(".mc-tier"),
+          cap = box.querySelector(".mc-cap"),
+          opened = false;
+
+      function open() {
+        if (opened) return;
+        opened = true;
+        lid.classList.remove("mc-shut");
+        lid.src = url("chest-open");
+        flourish(box);   /* whatever he has on: sparkle by default, bought if bought */
+        lid.alt = "Open chest";
+        lid.style.cursor = "default";
+        var html = "", i;
+        for (i = 1; i <= r.loot; i++) html += '<img alt="" src="' + url("win-" + i) + '">';
+        loot.innerHTML = html;
+        tierEl.textContent = r.tier;
+        tierEl.setAttribute("data-t", r.tier.split(" ")[0].toLowerCase());
+        cap.textContent = r.blurb;
+        if (r.badges.length) {
+          box.insertAdjacentHTML("beforeend", '<div class="mc-badges">' +
+            r.badges.map(function (b) { return '<span class="mc-badge">' + b + "</span>"; })
+              .join("") + "</div>");
+        }
+        if (r.tool) {
+          box.insertAdjacentHTML("beforeend",
+            '<div class="mc-earned"><img alt="" src="' + url("tool-" + r.tool) + '">' +
+            "<span>NEW &middot; " + r.toolName.toUpperCase() + "</span></div>");
+        }
+        if (r.mined && r.mined.length) {
+          box.insertAdjacentHTML("beforeend",
+            '<div class="mc-haul"><span class="mc-haullab">MINED</span>' +
+            r.mined.map(function (m) { return oreChip(m.k, "+" + m.n); }).join("") +
+            "</div>");
+        }
+        if (r.portalShut) {
+          box.insertAdjacentHTML("beforeend",
+            '<div class="mc-shutportal"><img class="mc-portal" alt="" src="' + url("portal") +
+            '" onerror="this.remove()">THE PORTAL WILL NOT OPEN<small>A perfect run \u2014 ' +
+            'but the End stays shut until all nine tools are yours. ' +
+            (r.toolsLeft === 1 ? "One to go." : r.toolsLeft + " to go.") + "</small></div>");
+        }
+        if (r.beacon) {
+          box.insertAdjacentHTML("beforeend",
+            '<div class="mc-beacon' + (r.beacon.lit ? " mc-lit" : "") + '">' +
+            '<span class="mc-haullab">' + (r.beacon.lit ? "BEACON LIT" : "BEACON") + "</span>" +
+            r.beacon.need.map(function (b) { return blockChip(b); }).join("") +
+            "<small>" + (r.beacon.lit
+              ? "Iron, gold, diamond and emerald, a block of each. That is the whole pyramid."
+              : "Nine of a mineral makes a block. Four blocks light the beacon.") +
+            "</small></div>");
+        }
+        if (!r.boss && r.dragons > 0 && r.mineOpen) {
+          box.insertAdjacentHTML("beforeend",
+            '<div class="mc-egg"><img alt="" src="' + url("dragon-egg") +
+            '" onerror="this.remove()"><span>' +
+            (r.dragons === 1 ? "One dragon down" : r.dragons + " dragons down") +
+            "</span></div>");
+        }
+        if (r.boss) {
+          box.insertAdjacentHTML("beforeend", HAS_BOSS
+            ? '<img class="mc-boss" alt="Ender dragon defeated" src="' + url("boss-defeated") + '">'
+            : '<div class="mc-bossfall">DRAGON SLAIN<small>Perfect run \u2014 no misses, no hearts lost</small></div>');
+        }
+      }
+      lid.addEventListener("click", open);
+      setTimeout(open, 2600);                // opens itself if he doesn't tap
+      return r;
+    },
+
+    /* Best score per activity for THIS app, keyed by bare id — lets an app's
+       level picker show scores that survive a reload. The apps each kept their
+       own in-memory `best` object, which forgot everything on refresh. */
+    bests: function () {
+      var out = {}, pre = cfg.app + ":", k;
+      for (k in S.cleared) if (k.indexOf(pre) === 0) out[k.slice(pre.length)] = S.cleared[k];
+      return out;
+    },
+
+    /* A strip of level chips, each showing whether it has been cleared.
+       Reusable: any app with several parallel levels calls this rather than
+       rolling its own, so history, and anything added later, look the same.
+
+         MC.picker(hostEl, [{id:"set0", label:"1"}, ...], currentId, onPick)
+
+       Chips colour themselves from MC.bests(): green cleared, amber attempted,
+       plain untouched. Re-call it to repaint after a score changes. */
+    picker: function (host, items, current, onPick) {
+      if (!host) return;
+      var best = MC.bests();
+      host.className = "mc-picker";
+      host.innerHTML = items.map(function (it) {
+        var b = best[it.id];
+        var cls = b == null ? "" : (b >= 75 ? " mc-cleared" : " mc-tried");
+        if (it.id === current) cls += " mc-now";
+        return '<button type="button" class="mc-chip' + cls + '" data-id="' + it.id +
+               '" aria-pressed="' + (it.id === current) + '"' +
+               ' title="' + (b == null ? "not tried yet" : "best " + b + "%") + '">' +
+               '<span class="mc-chip-l">' + it.label + "</span>" +
+               '<span class="mc-chip-s">' + (b == null ? "&mdash;" : b + "%") + "</span>" +
+               "</button>";
+      }).join("");
+      var bs = host.querySelectorAll(".mc-chip");
+      for (var i = 0; i < bs.length; i++) {
+        bs[i].addEventListener("click", function () {
+          onPick(this.getAttribute("data-id"));
+        });
+      }
+    },
+
+    state: function () {
+      var u = unlocked();
+      return {
+        tools: u, toolNames: TOOLS,
+        ore: JSON.parse(JSON.stringify(S.ore)), oreKinds: ORE,
+        mineOpen: mineOpen(), dragons: S.dragon,
+        coins: S.coins, earned: S.earned,
+        owned: JSON.parse(JSON.stringify(S.owned)),
+        equip: JSON.parse(JSON.stringify(S.equip)),
+        gate: TOOL_GATE, elytraNeeds: ELYTRA_SUBJECTS,
+        subjectsCleared: subjectsCleared(),
+        gems: JSON.parse(JSON.stringify(S.gem)),
+        beacon: { needs: BEACON, lit: beaconLit(),
+                  blocks: BEACON.map(function (k) { return blocks(k); }) },
+        cleared: JSON.parse(JSON.stringify(S.cleared)),
+        misses: JSON.parse(JSON.stringify(S.misses)),
+        runs: JSON.parse(JSON.stringify(S.runs)),
+        url: url
+      };
+    },
+
+    /* Every attempt at one activity, oldest first. The hub's report reads this;
+       apps do not need it. */
+    runs: function (id) {
+      var key = cfg.app + ":" + id;
+      return (S.runs[key] || []).slice();
+    },
+
+    /* The wording to ask a question in.
+
+       An item may carry `qv`, a few phrasings of the same question. One is
+       chosen per run, so a second attempt at the same set does not read like a
+       memory test of the first — but it is fixed for the length of that run, so
+       the review screen shows the wording he was actually asked rather than a
+       third one. Items without `qv` just return `q`.
+
+       Options are already re-shuffled on every render; this is the same idea
+       applied to the stem. */
+    ask: function (it) {
+      if (!it) return "";
+      var v = it.qv;
+      if (!v || !v.length) return it.q;
+      if (it.__mcq === undefined) it.__mcq = ++askSeq;
+      if (askPick[it.__mcq] === undefined)
+        askPick[it.__mcq] = (Math.random() * v.length) | 0;
+      return v[askPick[it.__mcq]];
+    },
+
+    /* Sound off/on. Kept in the same saved state as everything else, so the
+       choice holds across every app and survives a reload. Call with no
+       argument to read it. */
+    mute: function (on) {
+      if (on === undefined) return !!S.mute;
+      S.mute = !!on;
+      save();
+      drawMute();
+      return S.mute;
+    },
+
+    /* ---------- the shop ----------
+       The catalogue lives in store/index.html, because what is for sale is
+       content and this is the engine. All the engine owns is the money and the
+       fact of ownership. */
+
+    /* Draws the character into `host` and keeps it up to date. `title` is
+       whatever the page wants written under it — the rank, usually. */
+    hero: function (host, title) {
+      if (!host) return;
+      heroHosts.push({ node: host, title: title || "" });
+      host.innerHTML = heroHTML(title || "");
+    },
+
+    /* Drop everything recorded about one app: its scores, its run history and
+       its miss log. For use when a grading fault means the numbers cannot be
+       trusted — there is no way to recompute a score after the fact, because
+       what was chosen is not kept, only the total.
+
+       Coins, tools, ore and anything worn are untouched. Those are not in
+       doubt, and nothing earned is ever taken away. */
+    forget: function (app) {
+      if (!app) return 0;
+      var gone = 0, k;
+      for (k in S.cleared) if (k.indexOf(app + ":") === 0) { delete S.cleared[k]; gone++; }
+      for (k in S.runs) if (k.indexOf(app + ":") === 0) delete S.runs[k];
+      for (k in S.misses) if (k.indexOf(app + "-") === 0 || k.indexOf(app + ":") === 0) delete S.misses[k];
+      for (k in S.gem) if (k.indexOf(app + ":") === 0) delete S.gem[k];
+      if (gone) { save(); drawBar(); drawHeroes(); }
+      return gone;
+    },
+
+    earned: function () { return S.earned; },
+
+    owns: function (id) { return !!S.owned[id]; },
+
+    /* Buys once and keeps it. Refuses rather than going overdrawn, and refuses
+       a second purchase of something already owned, so a double tap on a slow
+       connection cannot charge twice. */
+    buy: function (id, cost) {
+      cost = Math.max(0, Math.round(Number(cost) || 0));
+      if (!id || S.owned[id]) return false;
+      if (S.coins < cost) return false;
+      S.coins -= cost;
+      S.owned[id] = true;
+      save();
+      drawCoins();
+      drawHeroes();
+      return true;
+    },
+
+    /* Wearing costs nothing and can be undone. Passing null takes the slot back
+       to its default, so nothing bought can ever strand him in a look he has
+       gone off. Refuses to equip something not owned. */
+    equip: function (slot, id) {
+      if (!slot) return false;
+      if (id && !S.owned[id]) return false;
+      if (id) S.equip[slot] = id; else delete S.equip[slot];
+      save();
+      skin();
+      drawHeroes();
+      return true;
+    },
+
+    equipped: function (slot) { return S.equip[slot] || null; },
+
+    reset: function () {
+      S = { cleared: {}, misses: {}, tool9: false, ore: {}, gem: {}, dragon: 0,
+            runs: {}, coins: 0, earned: 0, owned: {}, equip: {},
+            mute: S.mute };  // muting is a preference, not progress
+      save(); drawBar(); drawCoins(); skin(); drawHeroes();
+    },
+    _relift: lift
+  };
+
+  skin();
+
+  window.MC = MC;
+})();
+</script>
+<script>MC.config({"app": "vocabulary6", "shake": "#sheet", "lift": ".bar", "dragon": ["sheet"], "subject": "Vocabulary"});</script>
+<!-- /MC-THEME-JS -->
+
+<div id="sheet" class="wrap">
+  <a class="hublink" href="../../index.html">&lsaquo; All subjects</a>
+  <header>
+    <div class="eyebrow" style="margin-top:12px">Wordly Wise 3000 &middot; Book 6</div>
+    <h1>Word <em>List 6</em></h1>
+    <p class="sub">Every meaning from the list is below. Drag each word onto its meaning, Each meaning is already labelled as a noun, a verb, or an adjective — use that as your clue. Words with more than one meaning appear more than once.</p>
+    <button class="listbtn" id="showlist">Study the word list first</button>
+  </header>
+
+  <div class="tray">
+    <div class="trayhead"><span class="eyebrow">Words</span><span class="n" id="left"></span></div>
+    <div class="chips" id="chips"></div>
+  </div>
+
+  <div class="defs" id="defs"></div>
+  <footer>Definitions are from Wordly Wise 3000, Book 6, Lesson 1, for personal study use.</footer>
+</div>
+
+<div id="done" class="wrap hide">
+  <a class="hublink" href="../../index.html">&lsaquo; All subjects</a>
+  <div class="score" id="scorebox"></div>
+</div>
+
+<div class="bar" id="bar">
+  <div class="in"><div id="fb"></div></div>
+  <div class="in">
+    <button class="btn o" id="reset">Clear</button>
+    <button class="btn p" id="go" disabled>Check my answers</button>
+  </div>
+</div>
+
+<div class="scrim" id="scrim"></div>
+<div class="drawer" id="drawer" role="dialog" aria-modal="true" aria-label="Word list">
+  <div class="dhead">
+    <div class="eyebrow">Wordly Wise 3000 &middot; Book 6</div>
+    <h3>Word List 6</h3>
+    <button class="x" id="dclose" aria-label="Close">
+      <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+  <div class="dbody" id="dbody"></div>
+  <div class="dfoot"><button class="btn p" id="dgo">Close</button></div>
+</div>
+
+<script>
+/* Wordly Wise 3000, Book 6 — Lesson 1 Word List.
+   Definitions transcribed verbatim from the printed word list.
+   pos: n = noun, v = verb, adj = adjective. */
+const DATA = {
+ "book": "Wordly Wise 3000, Book 6",
+ "lesson": "Word List 6",
+ "list": [
+  {
+   "w": "apparel",
+   "entries": [
+    [
+     "n.",
+     "The things that are worn by a person; clothing."
+    ]
+   ]
+  },
+  {
+   "w": "appreciate",
+   "entries": [
+    [
+     "v.",
+     "To see the worth or quality of."
+    ],
+    [
+     "v.",
+     "To increase in value."
+    ]
+   ]
+  },
+  {
+   "w": "continuous",
+   "entries": [
+    [
+     "adj.",
+     "Going on without stopping."
+    ]
+   ]
+  },
+  {
+   "w": "dissolve",
+   "entries": [
+    [
+     "v.",
+     "To make or become liquid."
+    ],
+    [
+     "v.",
+     "To bring or to come to an end."
+    ]
+   ]
+  },
+  {
+   "w": "domesticate",
+   "entries": [
+    [
+     "v.",
+     "To tame; to bring plants or animals under human control."
+    ]
+   ]
+  },
+  {
+   "w": "domesticated",
+   "entries": [
+    [
+     "adj.",
+     "Brought under human control; tamed or cultivated."
+    ]
+   ]
+  },
+  {
+   "w": "emerge",
+   "entries": [
+    [
+     "v.",
+     "To come into view; to appear."
+    ],
+    [
+     "v.",
+     "To become known."
+    ]
+   ]
+  },
+  {
+   "w": "fiber",
+   "entries": [
+    [
+     "n.",
+     "A thin, threadlike part of animal hair or plant tissue; also, an artificial thread that resembles this."
+    ],
+    [
+     "n.",
+     "An arrangement of body cells that forms muscles and nerves."
+    ],
+    [
+     "n.",
+     "A food substance that provides bulk but is not digested."
+    ]
+   ]
+  },
+  {
+   "w": "function",
+   "entries": [
+    [
+     "v.",
+     "To serve a purpose."
+    ],
+    [
+     "n.",
+     "The special purpose something is used for."
+    ],
+    [
+     "n.",
+     "An important ceremony or gathering."
+    ]
+   ]
+  },
+  {
+   "w": "hatch",
+   "entries": [
+    [
+     "v.",
+     "To come or to bring forth from an egg."
+    ],
+    [
+     "v.",
+     "To think up."
+    ],
+    [
+     "n.",
+     "A small opening with a door or cover."
+    ]
+   ]
+  },
+  {
+   "w": "inhibit",
+   "entries": [
+    [
+     "v.",
+     "To prevent from doing something or to prevent from happening."
+    ]
+   ]
+  },
+  {
+   "w": "inhibited",
+   "entries": [
+    [
+     "adj.",
+     "Held back because of shyness."
+    ]
+   ]
+  },
+  {
+   "w": "minute",
+   "entries": [
+    [
+     "adj.",
+     "Very small; tiny."
+    ]
+   ]
+  },
+  {
+   "w": "motion",
+   "entries": [
+    [
+     "n.",
+     "Movement."
+    ],
+    [
+     "n.",
+     "A suggestion on which members at a meeting must vote."
+    ],
+    [
+     "v.",
+     "To signal."
+    ]
+   ]
+  },
+  {
+   "w": "motionless",
+   "entries": [
+    [
+     "adj.",
+     "Not moving; stationary."
+    ]
+   ]
+  },
+  {
+   "w": "sheathe",
+   "entries": [
+    [
+     "v.",
+     "To cover with something that protects."
+    ]
+   ]
+  },
+  {
+   "w": "shed",
+   "entries": [
+    [
+     "v.",
+     "To lose; to give up."
+    ],
+    [
+     "v.",
+     "To cause to flow."
+    ],
+    [
+     "v.",
+     "To throw off water without letting it soak through."
+    ],
+    [
+     "v.",
+     "To send out or give off."
+    ]
+   ]
+  },
+  {
+   "w": "transfer",
+   "entries": [
+    [
+     "v.",
+     "To move, carry, send, or change from one person or place to another."
+    ],
+    [
+     "n.",
+     "The act of transferring."
+    ],
+    [
+     "n.",
+     "A ticket used for transferring from one bus or train to another."
+    ]
+   ]
+  }
+ ],
+ "rounds": [
+  {
+   "id": "r1",
+   "name": "Worn, woven, eaten",
+   "blurb": "Clothing, a covering, and the one word here that means three quite different threads.",
+   "items": [
+    [
+     "apparel",
+     "n.",
+     "The things that are worn by a person; clothing."
+    ],
+    [
+     "sheathe",
+     "v.",
+     "To cover with something that protects."
+    ],
+    [
+     "fiber",
+     "n.",
+     "A thin, threadlike part of animal hair or plant tissue; also, an artificial thread that resembles this."
+    ],
+    [
+     "fiber",
+     "n.",
+     "An arrangement of body cells that forms muscles and nerves."
+    ],
+    [
+     "fiber",
+     "n.",
+     "A food substance that provides bulk but is not digested."
+    ]
+   ]
+  },
+  {
+   "id": "r2",
+   "name": "Coming out and moving about",
+   "blurb": "Nine meanings across four words. Watch hatch and motion — each of them changes its job partway down.",
+   "items": [
+    [
+     "emerge",
+     "v.",
+     "To come into view; to appear."
+    ],
+    [
+     "emerge",
+     "v.",
+     "To become known."
+    ],
+    [
+     "hatch",
+     "v.",
+     "To come or to bring forth from an egg."
+    ],
+    [
+     "hatch",
+     "v.",
+     "To think up."
+    ],
+    [
+     "hatch",
+     "n.",
+     "A small opening with a door or cover."
+    ],
+    [
+     "motion",
+     "n.",
+     "Movement."
+    ],
+    [
+     "motion",
+     "n.",
+     "A suggestion on which members at a meeting must vote."
+    ],
+    [
+     "motion",
+     "v.",
+     "To signal."
+    ],
+    [
+     "motionless",
+     "adj.",
+     "Not moving; stationary."
+    ]
+   ]
+  },
+  {
+   "id": "r3",
+   "name": "Going, giving off, coming apart",
+   "blurb": "Shed alone does four jobs. Read all nine of these together and the pattern is easier than the list looks.",
+   "items": [
+    [
+     "shed",
+     "v.",
+     "To lose; to give up."
+    ],
+    [
+     "shed",
+     "v.",
+     "To cause to flow."
+    ],
+    [
+     "shed",
+     "v.",
+     "To throw off water without letting it soak through."
+    ],
+    [
+     "shed",
+     "v.",
+     "To send out or give off."
+    ],
+    [
+     "transfer",
+     "v.",
+     "To move, carry, send, or change from one person or place to another."
+    ],
+    [
+     "transfer",
+     "n.",
+     "The act of transferring."
+    ],
+    [
+     "transfer",
+     "n.",
+     "A ticket used for transferring from one bus or train to another."
+    ],
+    [
+     "dissolve",
+     "v.",
+     "To make or become liquid."
+    ],
+    [
+     "dissolve",
+     "v.",
+     "To bring or to come to an end."
+    ]
+   ]
+  },
+  {
+   "id": "r4",
+   "name": "Held back, or let loose",
+   "blurb": "Two roots with a second form each, plus a word for never stopping and a word for very small indeed.",
+   "items": [
+    [
+     "inhibit",
+     "v.",
+     "To prevent from doing something or to prevent from happening."
+    ],
+    [
+     "inhibited",
+     "adj.",
+     "Held back because of shyness."
+    ],
+    [
+     "domesticate",
+     "v.",
+     "To tame; to bring plants or animals under human control."
+    ],
+    [
+     "domesticated",
+     "adj.",
+     "Brought under human control; tamed or cultivated."
+    ],
+    [
+     "continuous",
+     "adj.",
+     "Going on without stopping."
+    ],
+    [
+     "minute",
+     "adj.",
+     "Very small; tiny."
+    ]
+   ]
+  },
+  {
+   "id": "r5",
+   "name": "What a thing is worth, and what it is for",
+   "blurb": "Two words, five meanings, and no overlap between them at all.",
+   "items": [
+    [
+     "appreciate",
+     "v.",
+     "To see the worth or quality of."
+    ],
+    [
+     "appreciate",
+     "v.",
+     "To increase in value."
+    ],
+    [
+     "function",
+     "v.",
+     "To serve a purpose."
+    ],
+    [
+     "function",
+     "n.",
+     "The special purpose something is used for."
+    ],
+    [
+     "function",
+     "n.",
+     "An important ceremony or gathering."
+    ]
+   ]
+  }
+ ]
+};
+
+
+const POS={n:"noun",v:"verb",adj:"adjective"};
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]];}return a;};
+
+const ITEMS=[];
+DATA.list.forEach(e=>e.entries.forEach(([p,d])=>ITEMS.push({word:e.w,pos:p,txt:d})));
+
+let chips=[], slots=[], sel=null, tries=0, hinted=false, marks=new Set();
+
+function build(){
+  MC.begin();
+  tries=0; hinted=false; marks=new Set(); sel=null;
+  slots=shuffle(ITEMS).map((it,n)=>({n,word:it.word,pos:it.pos,txt:it.txt,chip:null}));
+  chips=ITEMS.map((it,n)=>({id:"c"+n,word:it.word,at:null}))
+             .sort((a,b)=>a.word.localeCompare(b.word));
+  $("fb").innerHTML=""; $("bar").classList.remove("hide");
+  if($("hint")) $("hint").remove();
+  $("sheet").classList.remove("hide"); $("done").classList.add("hide");
+  draw(); window.scrollTo(0,0);
+}
+
+function draw(){
+  const free=chips.filter(c=>c.at===null);
+  $("left").textContent = free.length
+    ? free.length+" word"+(free.length>1?"s":"")+" left"
+    : "ready to check";
+  $("chips").innerHTML = free.length
+    ? chips.map(c=>`<button class="chip ${c.at!==null?"gone":""} ${sel===c.id?"sel":""}" data-c="${c.id}">${esc(c.word)}</button>`).join("")
+    : `<div class="alldone">All ${slots.length} words placed. Tap a placed word to send it back.</div>`;
+
+  $("defs").innerHTML = slots.map(s=>{
+    const c = s.chip ? chips.find(x=>x.id===s.chip) : null;
+    return `<div class="def ${marks.has(s.n)?"wrongmark":""}" data-s="${s.n}">
+      <span class="num">${s.n+1}</span>
+      <span class="mid">
+        <span class="txt"><span class="postag" data-p="${s.pos}">${s.pos}.</span>${esc(s.txt)}</span>
+        <span class="drop">
+          ${c?`<button class="placed ${marks.has(s.n)?"wrongmark":""}" data-pull="${s.n}">${esc(c.word)}</button>`
+             :`<span class="hole">DROP HERE</span>`}
+        </span>
+      </span>
+    </div>`;}).join("");
+
+  [...document.querySelectorAll(".chip")].forEach(b=>{
+    b.onclick=()=>{ if(b.classList.contains("gone"))return; sel = sel===b.dataset.c?null:b.dataset.c; draw(); };
+    b.addEventListener("pointerdown",e=>startDrag(e,b.dataset.c));
+  });
+  [...document.querySelectorAll(".def")].forEach(b=>b.onclick=e=>{
+    if(e.target.closest(".pos")||e.target.closest("[data-pull]"))return;
+    if(sel) place(sel,+b.dataset.s);
+  });
+  [...document.querySelectorAll("[data-pull]")].forEach(b=>b.onclick=e=>{ e.stopPropagation(); pull(+b.dataset.pull); });
+  const doneN = slots.filter(s=>s.chip).length;
+  $("go").disabled = doneN===0;
+  $("go").textContent = doneN===slots.length ? "Check my answers"
+                      : "Check the "+doneN+" I've done";
+}
+
+function wireJump(){
+  const j=$("jump"); if(!j) return;
+  j.onclick=()=>{
+    const first=[...marks].sort((a,b)=>a-b)[0];
+    const el=document.querySelector(`.def[data-s="${first}"]`);
+    if(el) el.scrollIntoView({behavior:"smooth",block:"center"});
+  };
+}
+function clearNotice(){ if($("fb").innerHTML) $("fb").innerHTML=""; }
+
+function place(chipId,slotN){
+  const s=slots[slotN];
+  if(s.chip){ const old=chips.find(c=>c.id===s.chip); if(old) old.at=null; }
+  const c=chips.find(x=>x.id===chipId); if(c) c.at=slotN;
+  s.chip=chipId; marks.delete(slotN); sel=null; clearNotice(); draw();
+}
+function pull(slotN){
+  const s=slots[slotN];
+  if(s.chip){ const c=chips.find(x=>x.id===s.chip); if(c) c.at=null; s.chip=null; }
+  marks.delete(slotN); clearNotice(); draw();
+}
+
+let drag=null;
+function startDrag(e,chipId){
+  const src=e.currentTarget;
+  if(src.classList.contains("gone"))return;
+  const r=src.getBoundingClientRect();
+  drag={id:chipId,x0:e.clientX,y0:e.clientY,dx:e.clientX-r.left,dy:e.clientY-r.top,el:null,moved:false};
+  const move=ev=>{
+    if(!drag)return;
+    if(!drag.moved && Math.hypot(ev.clientX-drag.x0,ev.clientY-drag.y0)<7)return;
+    if(!drag.moved){
+      drag.moved=true;
+      const g=src.cloneNode(true);
+      g.className="chip ghost"; g.style.width=r.width+"px";
+      document.body.appendChild(g); drag.el=g; src.style.opacity=".25";
+    }
+    drag.el.style.left=(ev.clientX-drag.dx)+"px";
+    drag.el.style.top =(ev.clientY-drag.dy)+"px";
+    const t=document.elementFromPoint(ev.clientX,ev.clientY);
+    document.querySelectorAll(".def.over").forEach(d=>d.classList.remove("over"));
+    const d=t&&t.closest&&t.closest(".def"); if(d) d.classList.add("over");
+    ev.preventDefault();
+  };
+  const up=ev=>{
+    document.removeEventListener("pointermove",move);
+    document.removeEventListener("pointerup",up);
+    document.removeEventListener("pointercancel",up);
+    if(drag&&drag.moved){
+      if(drag.el) drag.el.style.display="none";
+      const t=document.elementFromPoint(ev.clientX,ev.clientY);
+      const d=t&&t.closest&&t.closest(".def");
+      if(drag.el) drag.el.remove();
+      document.querySelectorAll(".def.over").forEach(x=>x.classList.remove("over"));
+      if(d) place(drag.id,+d.dataset.s); else src.style.opacity="";
+    }
+    drag=null;
+  };
+  document.addEventListener("pointermove",move,{passive:false});
+  document.addEventListener("pointerup",up);
+  document.addEventListener("pointercancel",up);
+}
+
+const isDone  = s => !!s.chip;
+const isWrong = s => { const c=chips.find(x=>x.id===s.chip);
+                       return !c || c.word!==s.word; };
+/* only lines he has actually finished are judged */
+const wrongSlots = () => slots.filter(s=>isDone(s) && isWrong(s)).map(s=>s.n);
+
+$("go").onclick=()=>{
+  const w=wrongSlots();
+  const done=slots.filter(isDone).length, all=slots.length;
+
+  if(!w.length && done===all){ slots.forEach(s=>MC.credit(s.word)); MC.right(); win(); return; }
+
+  if(!w.length){                       /* everything finished so far is right */
+    MC.right();
+    $("fb").innerHTML=`<div class="fb ok"><span class="msg"><strong>All good so far.</strong>${
+      done===1?"That one is right.":"All "+done+" lines you've finished are right."
+    } ${all-done} to go.</span></div>`;
+    return;                            /* checking correct work costs nothing */
+  }
+
+  tries++;
+  w.forEach(n=>{const s=slots.find(x=>x.n===n); if(s) MC.note(s.word);});
+  MC.wrong();
+  $("fb").innerHTML=`<div class="fb no"><span class="msg"><strong>Not yet.</strong>${
+    w.length===1?"One of the lines you've finished is wrong.":w.length+" of the "+done+" lines you've finished are wrong."
+  }${
+    done<all?" The "+(all-done)+" you haven't finished aren't being judged yet.":""
+  }</span>${marks.size?`<button class="jump" id="jump">FIND IT</button>`:""}</div>`;
+  wireJump();
+  if(!hinted && !$("hint")){
+    $("bar").querySelector(".in").insertAdjacentHTML("afterbegin",
+      `<button class="btn h" id="hint">Show wrong</button>`);
+    $("hint").onclick=()=>{ hinted=true; marks=new Set(wrongSlots()); $("hint").remove();
+      const m=$("fb").querySelector(".msg");
+      if(m) m.insertAdjacentHTML("beforeend",
+        `<p class="hintnote">Hint used \u2014 the red lines are wrong. This now scores 25%.</p>`);
+      if(!$("jump")) $("fb").querySelector(".fb").insertAdjacentHTML("beforeend",
+        `<button class="jump" id="jump">FIND IT</button>`);
+      wireJump(); draw(); };
+  }
+  draw();
+};
+
+$("reset").onclick=()=>{
+  chips.forEach(c=>c.at=null); slots.forEach(s=>{s.chip=null;});
+  marks=new Set(); sel=null; $("fb").innerHTML=""; draw(); window.scrollTo(0,0);
+};
+
+function win(){
+  const _t = Math.max(1, tries);
+  const pts = hinted?25:(_t===1?100:_t===2?75:_t===3?50:25);
+  const band = pts>=90?["Nailed it","#5CB47F"]:pts>=75?["Solid","#2FA6A0"]:pts>=50?["Getting there","#E8A93C"]:["Run it again","#E0685A"];
+  $("bar").classList.add("hide");
+  $("scorebox").innerHTML=`
+    <div class="ring" style="color:${band[1]}">${pts}%</div>
+    <div class="band" style="color:${band[1]}">${band[0]}</div>
+    <div class="stats">
+      <div class="stat"><b>${slots.length}</b><span>Meanings matched</span></div>
+      <div class="stat"><b>${tries}</b><span>Tries</span></div>
+    </div>
+    ${hinted?`<div class="review"><b>Hint used</b>Worth running the sheet again without it.</div>`:""}
+    <div class="review"><b>Say these out loud</b>Pick any three words and use each one in a sentence of your own.</div>
+    <div class="act">
+      <button class="btn p" id="again">Do the sheet again</button>
+      <button class="btn o" id="list2" style="border-color:#DDD2E4;color:#5A4E66">Look at the word list</button>
+    </div>`;
+  MC.chest($("scorebox"), pts, {id:"sheet", boss:true});
+  $("again").onclick=build;
+  $("list2").onclick=openList;
+  $("sheet").classList.add("hide"); $("done").classList.remove("hide");
+  window.scrollTo(0,0);
+}
+
+function openList(){
+  $("dbody").innerHTML = DATA.list.map(e=>`
+    <div class="entry">
+      <div class="w">${esc(e.w)}</div>
+      <ol>${e.entries.map(([p,d])=>`<li><span class="p">${p}.</span>${esc(d)}</li>`).join("")}</ol>
+    </div>`).join("");
+  $("dbody").scrollTop=0;
+  $("drawer").classList.add("on"); $("scrim").classList.add("on");
+}
+const closeD=()=>{ $("drawer").classList.remove("on"); $("scrim").classList.remove("on"); };
+$("dclose").onclick=closeD; $("scrim").onclick=closeD; $("dgo").onclick=closeD;
+$("showlist").onclick=openList;
+document.addEventListener("keydown",e=>{ if(e.key==="Escape") closeD(); });
+
+build();
+</script>
+</body>
+</html>

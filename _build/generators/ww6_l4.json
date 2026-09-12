@@ -1,0 +1,123 @@
+{
+ "book": "Wordly Wise 3000, Book 6",
+ "lesson": "Word List 4",
+ "cite": "Wordly Wise 3000, Book 6, Word List 4",
+
+ "bank": ["aloft","attain","buffet","elude","elusive","flammable","hover","inflate",
+          "jeopardy","jeopardize","moor","mooring","plummet","pollute","pollution",
+          "propel","stationary","superb"],
+
+ "headwords": ["aloft","attain","buffet","elude","flammable","hover","inflate",
+               "jeopardy","moor","plummet","pollute","propel","stationary","superb"],
+
+ "senses": [
+  { "w":"aloft", "head":"aloft", "first":true, "pos":"adv.",
+    "def":"Up in the air, especially in flight.",
+    "sent":"The gulls hung ____ over the harbour without ever seeming to move.",
+    "ant":["grounded","sideways","crowded","hollow"], "antA":0 },
+
+  { "w":"attain", "head":"attain", "first":true, "pos":"v.",
+    "def":"To reach; to arrive at.",
+    "sent":"It took four hours of climbing to ____ the ridge at the top." },
+  { "w":"attain", "head":"attain", "pos":"v.", "s":1,
+    "def":"To achieve.",
+    "sent":"After three attempts she finally managed to ____ her black belt.",
+    "ant":["fail","repeat","borrow","announce"], "antA":0 },
+
+  { "w":"buffet", "head":"buffet", "first":true, "pos":"n.",
+    "def":"A piece of furniture with drawers and shelves for the storage and display of plates, dishes, and bowls.",
+    "sent":"There were six drawers in the ____ and every one of them squeaked." },
+  { "w":"buffet", "head":"buffet", "pos":"n.", "s":1,
+    "def":"A meal laid out for guests to help themselves.",
+    "sent":"There were three kinds of rice at the ____ and nobody to say how much to take." },
+  { "w":"buffet", "head":"buffet", "pos":"v.", "s":2,
+    "def":"To pound repeatedly; to batter.",
+    "sent":"The gale would ____ the shed all night and rattle every loose board." },
+
+  { "w":"elude", "head":"elude", "first":true, "pos":"v.",
+    "def":"To escape by being quick or clever.",
+    "sent":"The fox managed to ____ every dog in the field and was gone in seconds." },
+  { "w":"elusive", "head":"elude", "pos":"adj.",
+    "def":"Hard to find or capture.",
+    "sent":"The ____ lynx has been filmed in that forest exactly twice in thirty years." },
+  { "w":"elusive", "head":"elude", "pos":"adj.", "s":1,
+    "def":"Hard to explain or make clear.",
+    "sent":"The reason the engine kept stalling stayed ____ for weeks.",
+    "ant":["obvious","costly","ancient","narrow"], "antA":0 },
+
+  { "w":"flammable", "head":"flammable", "first":true, "pos":"adj.",
+    "def":"Able to catch fire easily.",
+    "sent":"The label warned that the thinner was highly ____ and had to be kept outside.",
+    "ant":["fireproof","waterproof","weightless","spotless"], "antA":0 },
+
+  { "w":"hover", "head":"hover", "first":true, "pos":"v.",
+    "def":"To remain in place over an object or location.",
+    "sent":"The helicopter would ____ above the field while the rope was lowered." },
+
+  { "w":"inflate", "head":"inflate", "first":true, "pos":"v.",
+    "def":"To fill with air or other gas.",
+    "sent":"It took Jamal twenty minutes to ____ the paddling pool by mouth.",
+    "ant":["deflate","dismantle","polish","fasten"], "antA":0 },
+
+  { "w":"jeopardy", "head":"jeopardy", "first":true, "pos":"n.",
+    "def":"Danger.",
+    "sent":"One loose bolt on the bridge put every car crossing it in ____.",
+    "ant":["safety","silence","comfort","distance"], "antA":0 },
+  { "w":"jeopardize", "head":"jeopardy", "pos":"v.",
+    "def":"To put in danger of loss or injury.",
+    "sent":"Skipping the safety check would ____ everyone on board." },
+
+  { "w":"moor", "head":"moor", "first":true, "pos":"v.",
+    "def":"To hold in place with ropes or anchors.",
+    "sent":"They had to ____ the boat twice before the current stopped dragging it." },
+  { "w":"mooring", "head":"moor", "pos":"n.",
+    "def":"A place to which a boat or aircraft can be moored.",
+    "sent":"Every ____ in the harbour was taken by the time we arrived." },
+
+  { "w":"plummet", "head":"plummet", "first":true, "pos":"v.",
+    "def":"To fall suddenly toward the earth or to a lower level; to plunge.",
+    "sent":"We watched the hawk ____ out of the sky and pull up at the last second.",
+    "ant":["soar","drift","linger","wander"], "antA":0 },
+
+  { "w":"pollute", "head":"pollute", "first":true, "pos":"v.",
+    "def":"To make impure or dirty.",
+    "sent":"A single leaking drum can ____ a stream for miles downhill.",
+    "ant":["purify","conceal","measure","deepen"], "antA":0 },
+  { "w":"pollution", "head":"pollute", "pos":"n.",
+    "def":"The action of polluting; the state of being polluted.",
+    "sent":"The river was closed to swimmers because of the ____ upstream." },
+
+  { "w":"propel", "head":"propel", "first":true, "pos":"v.",
+    "def":"To push or drive forward.",
+    "sent":"One good kick of the legs will ____ you the length of the pool." },
+
+  { "w":"stationary", "head":"stationary", "first":true, "pos":"adj.",
+    "def":"Not moving.",
+    "sent":"The camera is ____ — it films the same square of pavement all day long.",
+    "ant":["moving","hollow","fragile","distant"], "antA":0 },
+  { "w":"stationary", "head":"stationary", "pos":"adj.", "s":1,
+    "def":"Not changing.",
+    "sent":"His height has been ____ since the day he started high school.",
+    "ant":["shifting","enormous","ancient","cheerful"], "antA":0 },
+
+  { "w":"superb", "head":"superb", "first":true, "pos":"adj.",
+    "def":"Of the highest quality; grand; splendid.",
+    "sent":"The pianist was ____, and the hall stood up before the last note had died.",
+    "ant":["dreadful","crowded","distant","narrow"], "antA":0 }
+ ],
+
+ "rounds": [
+  { "id":"r1", "name":"Off the ground",
+    "blurb":"Five words for getting into the air and back out of it again.",
+    "words":["aloft","hover","inflate","plummet","propel"] },
+  { "id":"r2", "name":"Danger and damage",
+    "blurb":"Two roots with a second form each, and what happens when something catches or leaks.",
+    "words":["jeopardy","jeopardize","flammable","pollute","pollution"] },
+  { "id":"r3", "name":"Held in place, or not",
+    "blurb":"Tied down, standing still, or slipping away. Two of these do two jobs apiece.",
+    "words":["moor","mooring","stationary","elude","elusive"] },
+  { "id":"r4", "name":"Getting there, and what it was like",
+    "blurb":"The two busiest words on the list — attain does two jobs and buffet does three — and one that simply means very good.",
+    "words":["attain","buffet","superb"] }
+ ]
+}

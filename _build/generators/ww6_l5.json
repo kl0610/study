@@ -1,0 +1,128 @@
+{
+ "book": "Wordly Wise 3000, Book 6",
+ "lesson": "Word List 5",
+ "cite": "Wordly Wise 3000, Book 6, Word List 5",
+
+ "bank": ["antic","attire","captivate","deft","diligent","eclipse","evolve","evolution",
+          "innate","inscribe","inscription","posture","shroud","stifle","tentative",
+          "tranquil","tranquility","versatile","versatility"],
+
+ "headwords": ["antic","attire","captivate","deft","diligent","eclipse","evolve",
+               "innate","inscribe","posture","shroud","stifle","tentative","tranquil",
+               "versatile"],
+
+ "senses": [
+  { "w":"antic", "head":"antic", "first":true, "pos":"n.",
+    "def":"(usually plural) A playful or funny act.",
+    "sent":"One more ____ from the back row and the whole class would have lost it." },
+
+  { "w":"attire", "head":"attire", "first":true, "pos":"n.",
+    "def":"Clothes, especially fine and expensive clothes.",
+    "sent":"The invitation said the evening called for formal ____." },
+  { "w":"attire", "head":"attire", "pos":"v.", "s":1,
+    "def":"To dress up or be dressed up.",
+    "sent":"The theatre would ____ every actor in black for the opening scene." },
+
+  { "w":"captivate", "head":"captivate", "first":true, "pos":"v.",
+    "def":"To please greatly; to win over by special charm.",
+    "sent":"The first three notes of the song were enough to ____ the whole hall.",
+    "ant":["bore","startle","puzzle","delay"], "antA":0 },
+
+  { "w":"deft", "head":"deft", "first":true, "pos":"adj.",
+    "def":"Quick and sure; skillful at handling.",
+    "sent":"One ____ twist of the wrist and the knot came apart in his hands.",
+    "ant":["clumsy","gentle","hollow","distant"], "antA":0 },
+
+  { "w":"diligent", "head":"diligent", "first":true, "pos":"adj.",
+    "def":"Working with great care and effort.",
+    "sent":"Ana is so ____ about her practice that she has not missed a morning all year.",
+    "ant":["careless","cheerful","ancient","narrow"], "antA":0 },
+
+  { "w":"eclipse", "head":"eclipse", "first":true, "pos":"n.",
+    "def":"The total or partial hiding of one heavenly body by another.",
+    "sent":"We stood in the yard with cardboard glasses waiting for the ____ to begin." },
+  { "w":"eclipse", "head":"eclipse", "pos":"v.", "s":1,
+    "def":"To do or be better than; to outshine.",
+    "sent":"One astonishing season would ____ everything the team had done in ten years." },
+
+  { "w":"evolve", "head":"evolve", "first":true, "pos":"v.",
+    "def":"To develop and change gradually over time.",
+    "sent":"The club began as four friends in a garage and would ____ into something far larger." },
+  { "w":"evolution", "head":"evolve", "pos":"n.",
+    "def":"The changes that take place as something evolves.",
+    "sent":"The ____ of the telephone from a box on the wall to a thing in your pocket took a century." },
+
+  { "w":"innate", "head":"innate", "first":true, "pos":"adj.",
+    "def":"Having from birth; occurring naturally rather than being learned.",
+    "sent":"She had an ____ sense of rhythm that no lesson had put there.",
+    "ant":["learned","sudden","hollow","distant"], "antA":0 },
+
+  { "w":"inscribe", "head":"inscribe", "first":true, "pos":"v.",
+    "def":"To write, print, or etch into as a permanent record.",
+    "sent":"The mason was paid to ____ the date across the base of the statue." },
+  { "w":"inscription", "head":"inscribe", "pos":"n.",
+    "def":"The act of inscribing or what is inscribed.",
+    "sent":"The ____ over the library door is in Latin and nobody can read it." },
+
+  { "w":"posture", "head":"posture", "first":true, "pos":"n.",
+    "def":"The way one holds one’s body; a pose or position.",
+    "sent":"Hours bent over a screen will wreck your ____ faster than anything else." },
+  { "w":"posture", "head":"posture", "pos":"v.", "s":1,
+    "def":"To assume a particular position, especially a pretended one.",
+    "sent":"He would ____ as an expert whenever anyone new came into the room." },
+
+  { "w":"shroud", "head":"shroud", "first":true, "pos":"n.",
+    "def":"Something that covers or hides from view.",
+    "sent":"A ____ of fog lay over the valley until nearly noon." },
+  { "w":"shroud", "head":"shroud", "pos":"n.", "s":1,
+    "def":"Cloth used to wrap a dead body before burial.",
+    "sent":"The museum has a plain woollen ____ from a burial two thousand years old." },
+  { "w":"shroud", "head":"shroud", "pos":"v.", "s":2,
+    "def":"To block from sight.",
+    "sent":"Low cloud would ____ the mountain for days at a time." },
+
+  { "w":"stifle", "head":"stifle", "first":true, "pos":"v.",
+    "def":"To cut off the air from; to smother.",
+    "sent":"Dust off the road was thick enough to ____ anyone walking behind the truck." },
+  { "w":"stifle", "head":"stifle", "pos":"v.", "s":1,
+    "def":"To hold back; to check.",
+    "sent":"She had to ____ a laugh when the speaker dropped all of his notes.",
+    "ant":["release","measure","announce","gather"], "antA":0 },
+
+  { "w":"tentative", "head":"tentative", "first":true, "pos":"adj.",
+    "def":"Not fully worked out or final; hesitating or uncertain.",
+    "sent":"Nothing is fixed yet — the whole plan is still ____.",
+    "ant":["definite","distant","cheerful","narrow"], "antA":0 },
+
+  { "w":"tranquil", "head":"tranquil", "first":true, "pos":"adj.",
+    "def":"Calm; peaceful.",
+    "sent":"The lake was so ____ that we could see every cloud lying in it.",
+    "ant":["stormy","crowded","ancient","costly"], "antA":0 },
+  { "w":"tranquility", "head":"tranquil", "pos":"n.",
+    "def":"The state of being tranquil.",
+    "sent":"A library keeps its ____ only because everybody agrees to keep it." },
+
+  { "w":"versatile", "head":"versatile", "first":true, "pos":"adj.",
+    "def":"Able to do many different things or to be used in many different ways.",
+    "sent":"A good pocket knife is ____ enough to handle most jobs on a camping trip.",
+    "ant":["limited","ancient","cheerful","sudden"], "antA":0 },
+  { "w":"versatility", "head":"versatile", "pos":"n.",
+    "def":"The state or condition of being versatile.",
+    "sent":"The ____ of a paper clip is remarkable for something that costs nothing." }
+ ],
+
+ "rounds": [
+  { "id":"r1", "name":"Doing it well",
+    "blurb":"Skill you were born with, skill you worked for, and skill that stretches to anything.",
+    "words":["deft","diligent","innate","versatile","versatility"] },
+  { "id":"r2", "name":"Dressed for the part",
+    "blurb":"Clothes, a pose, a bit of clowning, and winning a whole room over.",
+    "words":["antic","attire","captivate","posture"] },
+  { "id":"r3", "name":"Blocked from view",
+    "blurb":"Three words for covering something up — seven meanings between them, the most crowded round on the list.",
+    "words":["eclipse","shroud","stifle"] },
+  { "id":"r4", "name":"Changing, carved, or calm",
+    "blurb":"Two roots with a second form each, one word for a plan that is not settled, and one for perfect quiet.",
+    "words":["evolve","evolution","inscribe","inscription","tentative","tranquil","tranquility"] }
+ ]
+}
