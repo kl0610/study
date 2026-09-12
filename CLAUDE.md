@@ -267,10 +267,29 @@ And for any new content:
 - **Perfect-play simulation.** A few thousand runs; every item must grade clean.
 - **Scope test.** No distractor may reference material past the assigned pages.
 
+**Layout can be measured, not argued about.** Chrome and Edge are both on this
+machine, and a page served by `python -m http.server 8765` renders headlessly:
+
+```bash
+chrome --headless=new --window-size=1000,760 --virtual-time-budget=6000 \
+       --user-data-dir=<scratch> --dump-dom    http://127.0.0.1:8765/<app>/
+chrome --headless=new ...       --screenshot=<file.png>   http://...
+```
+
+Append a probe to a throwaway copy of the page that writes
+`getBoundingClientRect()`, a computed style, or `elementFromPoint()` into a div,
+and `--dump-dom` hands it back. That is how the HUD-over-the-bar bug was finally
+settled; reading the CSS had already produced two confident wrong answers.
+
 Bugs that have shipped before, worth guarding against:
 - **Falsy-zero** — `!chip.at` where `at` can legitimately be slot `0`.
 - **CSS specificity** — `#typed{opacity:0}` hid a second input sharing that id.
 - A definition truncated at 150 chars passed a 40-char prefix check. Compare full strings.
+- **`offsetParent` is null for `position:fixed`**, so it cannot answer "is this
+  element on screen". `getClientRects().length` can.
+- A DOM stub that gives every element a truthy `offsetParent`, or throws away
+  `style.setProperty`, cannot see either of the two bugs above. Stub the shape
+  of the thing being stood in for.
 
 ---
 

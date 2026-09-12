@@ -8,7 +8,12 @@ if (!MCJS) { console.log("cannot find mc.js"); process.exit(1); }
 
 function mkEl(tag) {
   const e = {
-    tagName: tag, children: [], _html: "", style: { setProperty(){}, },
+    tagName: tag, children: [], _html: "",
+    /* Custom properties are how the HUD is positioned, so a stub that throws
+       them away cannot see whether it was positioned. Recorded globally too:
+       only one element ever sets any given --mc- property. */
+    style: { _p:{}, setProperty(k, v){ this._p[k] = v;
+      (global.__props || (global.__props = {}))[k] = v; } },
     classList: { _s:new Set(),
       add(...c){c.forEach(x=>this._s.add(x));}, remove(...c){c.forEach(x=>this._s.delete(x));},
       contains(c){return this._s.has(c);}, toggle(){} },
@@ -494,6 +499,46 @@ console.log("\nno two functions in the engine share a name");
   ok("the chest's flourish and the sprite burst are two different things",
      /function flourish\(/.test(src) && /function burst\(/.test(src) &&
      /flourish\(box\)/.test(src));
+}
+
+/* The vocabulary sheet keeps a fixed bar of its own along the bottom — Clear and
+   Check my answers — and the HUD is supposed to ride above it. It never did. The
+   test for "is that bar on screen" was `offsetParent !== null`, and offsetParent
+   is null for every fixed-position element, which the bar is by definition. So
+   the lift was always zero and on all six sheets the hotbar sat across the bar
+   and covered Check my answers.
+
+   The old stub hid this too: mkEl gives every element a truthy offsetParent, so
+   the fake bar did not behave like the fixed bar it stood for. These use an
+   element shaped like a real one. */
+console.log("\nthe HUD rides above an app's own fixed bar");
+{
+  const bar = { offsetParent: null, offsetHeight: 76, getClientRects: () => [{}] };
+  fresh();
+  MC = load();
+  document.querySelector = sel => (sel === ".bar" ? bar : null);
+  global.__props = {};
+  MC.config({ app: "vocabulary", shake: "#sheet", lift: ".bar", dragon: ["sheet"] });
+  MC._relift();
+  ok("a fixed bar 76px tall lifts the HUD by 76px",
+     global.__props["--mc-lift"] === "76px", "got " + global.__props["--mc-lift"]);
+
+  /* On the results screen the app hides its bar, and the HUD has to come back
+     down or it floats over nothing. display:none means no client rects. */
+  bar.getClientRects = () => [];
+  MC._relift();
+  ok("and drops back to 0 once the app hides that bar",
+     global.__props["--mc-lift"] === "0px", "got " + global.__props["--mc-lift"]);
+
+  bar.getClientRects = () => [{}];
+  MC._relift();
+  ok("and rises again when it comes back", global.__props["--mc-lift"] === "76px");
+
+  document.querySelector = () => null;
+  const src = fs.readFileSync(MCJS, "utf8");
+  const liftFn = (src.match(/function lift\(\) \{[\s\S]*?\n  \}/) || [""])[0];
+  ok("lift() does not ask a fixed element for its offsetParent",
+     !!liftFn && !/offsetParent/.test(liftFn));
 }
 
 console.log(fails ? "\n" + fails + " FAILURES" : "\nall green");

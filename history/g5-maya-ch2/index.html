@@ -1193,11 +1193,20 @@ window.__MC_SFX__={"tool": "data:audio/mpeg;base64,//OAxAAAAAAAAAAAAFhpbmcAAAAPA
   }
 
   /* Only the vocabulary app has a persistent fixed bar of its own, and it grows
-     when feedback appears. Ride above whatever height it currently is. */
+     when feedback appears. Ride above whatever height it currently is.
+
+     The test used to be `t.offsetParent !== null`, which is the usual way to ask
+     whether an element is on screen — except that offsetParent is null for any
+     element whose position is fixed, and the bar this is measuring is fixed by
+     definition: that is why it needs riding above. So the answer was always 0,
+     the HUD never rose, and on all six vocabulary sheets the hotbar sat across
+     the app's own bar and covered "Check my answers". getClientRects() is empty
+     for a display:none element and has a rect for a fixed one, which is the
+     question actually being asked. */
   function lift() {
     if (!cfg.lift || !hud) return;
     var t = document.querySelector(cfg.lift);
-    var px = (t && t.offsetParent !== null) ? t.offsetHeight : 0;
+    var px = (t && t.getClientRects().length) ? t.offsetHeight : 0;
     cfg._liftpx = px;
     hud.style.setProperty("--mc-lift", px + "px");
   }
@@ -2489,6 +2498,7 @@ function rBuild(head){
     }
   };
 }
+
 
 
 
