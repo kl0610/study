@@ -252,6 +252,11 @@ def math7(s):
     return Patcher(s, "math7")
 
 
+def math1115(s):
+    """Lessons 11-15, built for the test on all five. Same shell, config only."""
+    return Patcher(s, "math1115")
+
+
 def spell3(s):
     """Spelling List 3 — generated from List 2's shell, so its call sites came
     across already patched. Config only."""
@@ -446,6 +451,12 @@ APPS = {
     # The dragon sits on s2, "Which Move?", because that is the set built from
     # the two misses that were the right idea with the wrong operation.
     "math/saxon-c2-l7":       (math7, dict(app="math7",      shake="#card",   lift=None,
+                                           dragon=["s2"])),
+    # Four sets rather than three, because the Property of Zero is a thing to
+    # remember rather than a move to practise and does not belong in with the
+    # undoing. The dragon sits on s2 again: naming the move is the easy half,
+    # and s2 is the four ways it still goes wrong afterwards.
+    "math/saxon-c2-l11-15":   (math1115, dict(app="math1115", shake="#card",   lift=None,
                                            dragon=["s2"])),
     # The Speckled Band, pages 1-44, cut into sections. Each is one mission, m1,
     # which is also its last — so every section can summon the dragon on a

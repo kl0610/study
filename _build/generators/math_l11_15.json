@@ -1,0 +1,456 @@
+{
+  "title": "Saxon Course 2 · Lessons 11–15 · finding the variable",
+  "lesson": 15,
+  "readCta": "Show me the three steps",
+  "readLabel": "The three steps",
+  "vocabLabel": "The way the book puts it",
+  "backLabel": "Lessons 11–15",
+  "bigQuestion": "1. Find the part you don’t like.   2. Undo it — on <u>both</u> sides.   3. Cross it out and solve.",
+  "eyebrow": "Saxon Math Course 2 &middot; Lessons 11–15 &middot; before tomorrow's test",
+  "h1": "Which Part Don't You <em>Like</em>?",
+  "ideaLabel": "The three steps",
+  "foot": "Practice questions written for this review. Every number is different from the homework's, and nothing from the textbook is reproduced here. Skills, method, vocabulary and lesson numbers follow Saxon Math, Course 2 (Stephen Hake).",
+  "note": "/* Built for the test on Lessons 11–15, from four problems that came back\n   wrong: Lesson 12 problem 14, and Lesson 14 problems 4, 8 and 12. Three of\n   the four are the same skill wearing different clothes — a variable with a\n   number stuck to it — so eight of the twelve questions ask which move undoes\n   the number rather than what the answer is. That is the step he is missing;\n   the arithmetic was never the problem. Two questions then solve one through\n   to the end, and two are the Property of Zero for Multiplication, which is\n   problem 8 and is simply a thing to remember.\n\n   \"Undo\" is the book's own word, not ours: Lesson 2 says addition and\n   subtraction are inverse operations and that we can \"undo\" an addition by\n   subtracting one addend from the sum. Every number here is different from\n   the homework's and from the book's worked examples. */",
+  "equations": [
+    {
+      "eq": "n - 1846 = 2375",
+      "undo": "add",
+      "by": 1846,
+      "value": 4221,
+      "seen": "4221"
+    },
+    {
+      "eq": "c + 268 = 900",
+      "undo": "subtract",
+      "by": 268,
+      "value": 632,
+      "seen": "632"
+    },
+    {
+      "eq": "14p = 3.36",
+      "undo": "divide",
+      "by": 14,
+      "value": 0.24,
+      "seen": "$0.24"
+    },
+    {
+      "eq": "m / 18 = 24",
+      "undo": "multiply",
+      "by": 18,
+      "value": 432,
+      "seen": "432"
+    },
+    {
+      "eq": "k + 85 = 240",
+      "undo": "subtract",
+      "by": 85,
+      "value": 155,
+      "seen": "155"
+    },
+    {
+      "eq": "b - 512 = 349",
+      "undo": "add",
+      "by": 512,
+      "value": 861,
+      "seen": "861"
+    },
+    {
+      "eq": "4 * 3g = 8400",
+      "undo": "divide",
+      "by": 12,
+      "value": 700,
+      "seen": "700"
+    },
+    {
+      "eq": "1.75 + q = 6.00",
+      "undo": "subtract",
+      "by": 1.75,
+      "value": 4.25,
+      "seen": "$4.25"
+    },
+    {
+      "eq": "w / 30 = 14",
+      "undo": "multiply",
+      "by": 30,
+      "value": 420,
+      "seen": "420"
+    },
+    {
+      "eq": "50 - h = 11.40",
+      "undo": "subtract from",
+      "by": 11.4,
+      "value": 38.6,
+      "seen": "$38.60"
+    },
+    {
+      "eq": "12t = 96",
+      "undo": "divide",
+      "by": 12,
+      "value": 8,
+      "seen": "t = 8"
+    }
+  ],
+  "sets": [
+    {
+      "id": "s1",
+      "c": "var(--gold)",
+      "tag": "Aimed at L12 #14 and L14 #4, #12",
+      "name": "Which Part Don't You Like?",
+      "blurb": "Four equations. Don't solve them — just name the move that undoes the number stuck to the variable.",
+      "items": [
+        {
+          "type": "pick",
+          "p": "steps",
+          "hi": "adding undoes subtracting",
+          "q": "<b>n &minus; 1846 = 2375</b><br>Which move undoes the 1846? <span class=\"qn\">Don't solve it — just name the move.</span>",
+          "opts": [
+            "Add 1846 to both sides",
+            "Subtract 1846 from both sides",
+            "Multiply both sides by 1846",
+            "Divide both sides by 1846"
+          ],
+          "a": 0,
+          "why": "The part you don't like is the − 1846. It was taken away from n, so adding 1846 puts it back — and it goes on both sides. That leaves n = 2375 + 1846 = 4221. Check it: 4221 − 1846 = 2375. ✓",
+          "cite": "Saxon Math Course 2, Lesson 3 — unknown numbers in subtraction",
+          "kind": "undo a subtraction"
+        },
+        {
+          "type": "pick",
+          "p": "steps",
+          "hi": "subtracting undoes adding",
+          "q": "<b>c + 268 = 900</b><br>Which move undoes the 268?",
+          "opts": [
+            "Subtract 268 from both sides",
+            "Add 268 to both sides",
+            "Divide both sides by 268",
+            "Multiply both sides by 268"
+          ],
+          "a": 0,
+          "why": "268 was added on, so subtracting 268 takes it back off — both sides. c = 900 − 268 = 632. Check it: 632 + 268 = 900. ✓",
+          "cite": "Saxon Math Course 2, Lesson 3 — unknown numbers in addition",
+          "kind": "undo an addition"
+        },
+        {
+          "type": "pick",
+          "p": "steps",
+          "hi": "dividing undoes multiplying",
+          "q": "<b>14p = $3.36</b><br>Which move undoes the 14?",
+          "opts": [
+            "Divide both sides by 14",
+            "Multiply both sides by 14",
+            "Subtract 14 from both sides",
+            "Add 14 to both sides"
+          ],
+          "a": 0,
+          "why": "14p means 14 times p, so the 14 is multiplying. Dividing by 14 undoes that, on both sides. p = $3.36 ÷ 14 = $0.24. Check it: 14 × $0.24 = $3.36. ✓ Nothing is being added here, so adding and subtracting cannot help.",
+          "cite": "Saxon Math Course 2, Lesson 3 — unknown factors",
+          "kind": "undo a multiplication"
+        },
+        {
+          "type": "pick",
+          "p": "steps",
+          "hi": "multiplying undoes dividing",
+          "q": "<b>m &divide; 18 = 24</b><br>Which move undoes the 18?",
+          "opts": [
+            "Multiply both sides by 18",
+            "Divide both sides by 18",
+            "Subtract 18 from both sides",
+            "Add 18 to both sides"
+          ],
+          "a": 0,
+          "why": "m was cut into 18 parts. Multiplying by 18 puts it back together, on both sides. m = 24 × 18 = 432. Check it: 432 ÷ 18 = 24. ✓ Dividing again is the commonest slip — it makes the variable smaller when it needs to get bigger.",
+          "cite": "Saxon Math Course 2, Lesson 3 — unknown numbers in division",
+          "kind": "undo a division"
+        }
+      ]
+    },
+    {
+      "id": "s2",
+      "c": "var(--sky)",
+      "tag": "Aimed at L14 #12 and #4",
+      "name": "Undo It on Both Sides",
+      "blurb": "Naming the move is half of it. These are the four ways it goes wrong afterwards.",
+      "items": [
+        {
+          "type": "pick",
+          "p": "both",
+          "hi": "If you take 85 off one side and not the other, the promise is broken",
+          "q": "Priya has <b>k + 85 = 240</b>. She crosses the 85 off the left side and writes <b>k = 240</b>. What went wrong?",
+          "opts": [
+            "She took the 85 off one side only",
+            "She should have added 85 to both sides",
+            "She should have divided both sides by 85",
+            "Nothing — k = 240 is the right answer"
+          ],
+          "a": 0,
+          "why": "Crossing out is the last step, not the first. The 85 only disappears because you subtracted it — and a subtraction has to happen on both sides or the equation stops being true. k = 240 − 85 = 155. Check it: 155 + 85 = 240. ✓ Her answer of 240 fails that check straight away: 240 + 85 = 325, not 240.",
+          "cite": "Saxon Math Course 2, Lesson 3 — unknown numbers in addition",
+          "kind": "both sides or it breaks"
+        },
+        {
+          "type": "pick",
+          "p": "both",
+          "hi": "if they do not, the undo went the wrong way",
+          "q": "Ana has <b>b &minus; 512 = 349</b>. She subtracts 512 from both sides. Is that the move?",
+          "opts": [
+            "No — 512 was taken away, so add it back",
+            "Yes — subtracting is how you clear a number",
+            "No — divide both sides by 512 instead",
+            "No — multiply both sides by 512 instead"
+          ],
+          "a": 0,
+          "why": "She did do it to both sides, which is right — but she did the same thing again instead of the opposite. The 512 is already being subtracted, so adding is what undoes it. b = 349 + 512 = 861. Check it: 861 − 512 = 349. ✓ Her way gives b = −163, and −163 − 512 is nowhere near 349.",
+          "cite": "Saxon Math Course 2, Lesson 3 — unknown numbers in subtraction",
+          "kind": "undo a subtraction"
+        },
+        {
+          "type": "pick",
+          "p": "steps",
+          "hi": "multiply those numbers together first so there is only one left to undo",
+          "q": "<b>4 &middot; 3g = 8400</b><br>Two numbers are multiplying g, so multiply them together first: 4 &middot; 3 is 12, and the equation is really <b>12g = 8400</b>.<br>Now — which move undoes the 12?",
+          "opts": [
+            "Divide both sides by 12",
+            "Multiply both sides by 12",
+            "Subtract 12 from both sides",
+            "Add 12 to both sides"
+          ],
+          "a": 0,
+          "why": "4 · 3g means 4 × 3 × g, and 4 × 3 is just 12 — so tidy that up first and there is one number stuck to g instead of two. The 12 is multiplying, so divide both sides by 12: g = 8400 ÷ 12 = 700. Check it: 4 · 3 · 700 = 8400. ✓",
+          "cite": "Saxon Math Course 2, Lesson 3 — unknown factors",
+          "kind": "undo a multiplication"
+        },
+        {
+          "type": "pick",
+          "p": "steps",
+          "hi": "Whatever you do, do it to both sides.",
+          "q": "Undo it and solve: <b>$1.75 + q = $6.00</b>",
+          "opts": [
+            "$4.25",
+            "$7.75",
+            "$4.75",
+            "$3.25"
+          ],
+          "a": 0,
+          "why": "$1.75 is added on, so subtract $1.75 from both sides: q = $6.00 − $1.75 = $4.25. Check it: $1.75 + $4.25 = $6.00. ✓ $7.75 is what you get by adding instead of subtracting — the right number, the wrong direction.",
+          "cite": "Saxon Math Course 2, Lesson 3 — unknown numbers in addition",
+          "kind": "undo an addition"
+        }
+      ]
+    },
+    {
+      "id": "s3",
+      "c": "var(--jade)",
+      "tag": "Aimed at L12 #14, and the kind that reads backwards",
+      "name": "Cross It Out and Solve",
+      "blurb": "All three steps, end to end — and the one shape where the rule is different.",
+      "items": [
+        {
+          "type": "pick",
+          "p": "steps",
+          "hi": "multiplying undoes dividing",
+          "q": "Undo it and solve: <b>w &divide; 30 = 14</b>",
+          "opts": [
+            "420",
+            "44",
+            "16",
+            "4200"
+          ],
+          "a": 0,
+          "why": "w is divided by 30, so multiply both sides by 30: w = 14 × 30 = 420. Check it: 420 ÷ 30 = 14. ✓ 44 comes from adding and 16 from subtracting — neither undoes a division.",
+          "cite": "Saxon Math Course 2, Lesson 3 — unknown numbers in division",
+          "kind": "undo a division"
+        },
+        {
+          "type": "pick",
+          "p": "minuend",
+          "hi": "To find an unknown subtrahend, subtract the difference from the minuend.",
+          "q": "Careful — here the variable is the part being taken away.<br><b>$50.00 &minus; h = $11.40</b><br>What is h?",
+          "opts": [
+            "$38.60",
+            "$61.40",
+            "$38.40",
+            "$48.60"
+          ],
+          "a": 0,
+          "why": "In b − 512 = 349 the variable is what you start with, so you add. Here it is the part being taken away — the subtrahend — so you subtract the difference from the minuend: $50.00 − $11.40 = $38.60. Check it: $50.00 − $38.60 = $11.40. ✓ $61.40 is adding out of habit, and it fails the check immediately.",
+          "cite": "Saxon Math Course 2, Lesson 3 — unknown numbers in subtraction",
+          "kind": "the variable is the part taken away"
+        }
+      ]
+    },
+    {
+      "id": "s4",
+      "c": "var(--red)",
+      "tag": "Aimed at L14 #8",
+      "name": "The Property of Zero",
+      "blurb": "Nothing to undo here. This one is simply a thing to remember, and its three neighbours are what make it easy to miss.",
+      "items": [
+        {
+          "type": "pick",
+          "p": "zero",
+          "hi": "there is a zero among the factors, so the product is zero",
+          "q": "Which property is shown by <b>6 &middot; 4 &middot; 3 &middot; 0 = 0</b>?",
+          "opts": [
+            "The Property of Zero for Multiplication",
+            "The Identity Property of Multiplication",
+            "The Identity Property of Addition",
+            "The Commutative Property of Multiplication"
+          ],
+          "a": 0,
+          "why": "One of the factors is zero, so the whole product is zero — you never have to multiply the 6, the 4 and the 3 at all. The book calls this the Property of Zero for Multiplication; other books call it the Zero Property of Multiplication, and they are the same rule.",
+          "cite": "Saxon Math Course 2, Lesson 2 — properties of operations",
+          "kind": "property of zero"
+        },
+        {
+          "type": "pick",
+          "p": "zero",
+          "hi": "The Identity Property of Multiplication is about one, not zero",
+          "q": "Which equation shows the <b>Property of Zero for Multiplication</b>?",
+          "opts": [
+            "7 · 0 = 0",
+            "7 · 1 = 7",
+            "7 + 0 = 7",
+            "7 · 2 = 2 · 7"
+          ],
+          "a": 0,
+          "why": "Multiplying by zero gives zero. The other three are its neighbours, and they are the ones worth telling apart: 7 · 1 = 7 is the Identity Property of Multiplication (about one), 7 + 0 = 7 is the Identity Property of Addition (zero, but added rather than multiplied), and 7 · 2 = 2 · 7 is the Commutative Property — the order of the factors.",
+          "cite": "Saxon Math Course 2, Lesson 2 — properties of operations",
+          "kind": "property of zero"
+        }
+      ]
+    }
+  ],
+  "build": {
+    "q": "Pick the <b>two</b> equations that are solved by <b>dividing both sides by 12</b>.",
+    "lead": "The move, and why",
+    "hit": "Both of those come undone by dividing by 12.",
+    "p": "steps",
+    "hi": "dividing undoes multiplying",
+    "tiles": [
+      {
+        "t": "12t = 96",
+        "a": true
+      },
+      {
+        "t": "4 · 3g = 8400",
+        "a": true
+      },
+      {
+        "t": "t − 12 = 96",
+        "a": false
+      },
+      {
+        "t": "t + 12 = 96",
+        "a": false
+      },
+      {
+        "t": "t ÷ 12 = 96",
+        "a": false
+      },
+      {
+        "t": "12 − t = 96",
+        "a": false
+      }
+    ],
+    "answer": "Dividing by 12 undoes multiplying by 12. 12t = 96 gives t = 8, and 4 · 3g = 8400 is 12g = 8400 once the factors are multiplied out, so g = 700. The others had something else done to the variable, so they come undone some other way: t − 12 = 96 has 12 added back, t + 12 = 96 has 12 subtracted, t ÷ 12 = 96 is multiplied by 12, and 12 − t = 96 has the variable as the part taken away.",
+    "cite": "Saxon Math Course 2, Lesson 3 — unknown numbers"
+  },
+  "passages": {
+    "steps": {
+      "title": "The three steps",
+      "cite": "Saxon Math Course 2, Lesson 3",
+      "book": "Lesson 3 works one equation of each kind, on pages 21 and 22.",
+      "text": [
+        "Step one. Look at the side the variable is on and find the part you do not like. It is the number stuck to the variable — added on to it, taken away from it, multiplying it, or dividing it. That number is the only thing standing between you and the answer.",
+        "Step two. Undo it. Addition and subtraction are inverse operations, so adding undoes subtracting and subtracting undoes adding. Multiplication and division are inverse operations too, so dividing undoes multiplying and multiplying undoes dividing. Whatever you do, do it to both sides.",
+        "Step three. Cross it out. The part you did not like has gone, the variable is standing on its own, and whatever is left on the other side is the answer. Then put that answer back into the equation you started with and check it.",
+        "One extra. If more than one number is multiplying the variable, as in 4 · 3g, multiply those numbers together first so there is only one left to undo."
+      ],
+      "vocab": [
+        [
+          "inverse operations",
+          "Two operations that undo each other. Addition and subtraction are a pair; multiplication and division are a pair."
+        ],
+        [
+          "addend",
+          "A number being added. An unknown addend is found by subtracting."
+        ],
+        [
+          "factor",
+          "A number being multiplied. An unknown factor is found by dividing the product by the known factor."
+        ]
+      ]
+    },
+    "both": {
+      "title": "Both sides, always",
+      "cite": "Saxon Math Course 2, Lesson 3",
+      "book": "Lesson 3 checks every answer this way; see the worked examples on page 21.",
+      "text": [
+        "An equation says that the two sides are equal, and the equals sign is a promise. If you take 85 off one side and not the other, the promise is broken and what is left is no longer true.",
+        "So an undo is never done to one side. It is done to both, at the same moment, with the same number. That is what keeps the two sides level while the part you did not like disappears.",
+        "Doing it to both sides is not the same as doing the same operation twice. If a number is being subtracted, you add it back; adding it to one side and subtracting it from the other is not balancing, it is two different moves.",
+        "The check is free and it catches everything. Put your answer back where the variable was and work the arithmetic out. If both sides come out the same, you are right; if they do not, the undo went the wrong way."
+      ],
+      "vocab": [
+        [
+          "equation",
+          "A statement that two amounts are equal."
+        ],
+        [
+          "balanced",
+          "Both sides changed the same way, so they stay equal."
+        ]
+      ]
+    },
+    "minuend": {
+      "title": "When the variable is the part taken away",
+      "cite": "Saxon Math Course 2, Lesson 3",
+      "book": "Lesson 3 names all three parts and works one of each, on page 21.",
+      "text": [
+        "A subtraction has three parts. The number you start with is the minuend, the number taken away is the subtrahend, and what is left over is the difference: minuend − subtrahend = difference.",
+        "Nearly all of the practice has an unknown minuend, like b − 512 = 349. The variable is the number you started with, some of it was taken away, and to get it back you add the other two numbers.",
+        "This one is the other kind. In $50.00 − h = $11.40 the variable is the subtrahend — it is the part being taken away, not the amount you started with. To find an unknown subtrahend, subtract the difference from the minuend.",
+        "The quickest way to tell them apart is to look at which side of the minus sign the variable is on. On the left it is the minuend, so add. On the right it is the subtrahend, so subtract. Either way, check by putting the answer back and doing the subtraction."
+      ],
+      "vocab": [
+        [
+          "minuend",
+          "The number you start with, on the left of the minus sign."
+        ],
+        [
+          "subtrahend",
+          "The number being taken away, on the right of the minus sign."
+        ],
+        [
+          "difference",
+          "What is left after the subtraction."
+        ]
+      ]
+    },
+    "zero": {
+      "title": "The Property of Zero for Multiplication",
+      "cite": "Saxon Math Course 2, Lesson 2",
+      "book": "Lesson 2 lists the properties side by side, on pages 14 and 15.",
+      "text": [
+        "The Property of Zero for Multiplication says that any number multiplied by zero is zero. The book writes it as a · 0 = 0. Other books call it the Zero Property of Multiplication; it is the same rule under a different name.",
+        "It does not matter how long the string of factors is. In 6 · 4 · 3 · 0 there is a zero among the factors, so the product is zero and the rest of the multiplying never has to be done.",
+        "The reason it is easy to miss is that it has three close neighbours. The Identity Property of Multiplication is about one, not zero: a · 1 = a. The Identity Property of Addition is about zero but adds it instead of multiplying: a + 0 = a. The Commutative Property is about the order of the factors: a · b = b · a.",
+        "So when a question shows an equation and asks for the property, read two things: which operation it is, and which number is doing the work — a zero or a one."
+      ],
+      "vocab": [
+        [
+          "product",
+          "The answer to a multiplication."
+        ],
+        [
+          "factor",
+          "A number being multiplied."
+        ],
+        [
+          "identity",
+          "The number that leaves another number unchanged: 0 for adding, 1 for multiplying."
+        ]
+      ]
+    }
+  }
+}

@@ -173,9 +173,108 @@ def arithmetic(spec):
     return bad
 
 
+# ------------------------------------------------- equations, solved from scratch
+#
+# The block above is Lesson 7's numbers, written out one by one. A night whose
+# misses are all "find the variable" would be a hundred lines of the same shape,
+# so those specs carry an `equations` list instead: the equation as the app
+# prints it, the move that undoes it, and the answer. Nothing there is trusted.
+# This parses the equation itself, works out which move undoes it and what the
+# variable is worth, and refuses to build if the spec disagrees. test_math.js
+# does the same again from the shipped file, sharing none of this code.
+
+VAR = r"[a-z]"
+EQ = [
+    # unknown addend: the number is added on, so take it off
+    (re.compile(r"^(%s)\s*\+\s*(\S+)\s*=\s*(\S+)$" % VAR), "v+b", "subtract"),
+    (re.compile(r"^(\S+)\s*\+\s*(%s)\s*=\s*(\S+)$" % VAR), "b+v", "subtract"),
+    # unknown minuend: something was taken away, so put it back
+    (re.compile(r"^(%s)\s*-\s*(\S+)\s*=\s*(\S+)$" % VAR), "v-b", "add"),
+    # unknown subtrahend: the odd one out — the variable is what was taken away
+    (re.compile(r"^(\S+)\s*-\s*(%s)\s*=\s*(\S+)$" % VAR), "b-v", "subtract from"),
+    # unknown factor, with the known factors multiplied out first
+    (re.compile(r"^(\d+(?:\.\d+)?)\s*\*\s*(\d+(?:\.\d+)?)(%s)\s*=\s*(\S+)$" % VAR),
+     "jkv", "divide"),
+    (re.compile(r"^(\d+(?:\.\d+)?)(%s)\s*=\s*(\S+)$" % VAR), "kv", "divide"),
+    # unknown dividend: it was cut up, so put it back together
+    (re.compile(r"^(%s)\s*/\s*(\S+)\s*=\s*(\S+)$" % VAR), "v/b", "multiply"),
+]
+
+
+def num(s):
+    """Money and whole numbers both. Kept exact to the cent."""
+    return round(float(str(s).replace("$", "").replace(",", "")), 2)
+
+
+def tidy(x):
+    return int(x) if float(x) == int(x) else round(x, 2)
+
+
+def solve_eq(eq):
+    """(move, the number moved, what the variable is worth) — or None."""
+    e = eq.replace("−", "-").replace("×", "*").replace("÷", "/")
+    e = e.replace("⋅", "*").replace("·", "*").strip()
+    for rx, shape, move in EQ:
+        m = rx.match(e)
+        if not m:
+            continue
+        g = m.groups()
+        if shape in ("v+b", "b+v"):
+            b, c = num(g[1] if shape == "v+b" else g[0]), num(g[2])
+            return move, tidy(b), tidy(c - b)
+        if shape == "v-b":
+            b, c = num(g[1]), num(g[2])
+            return move, tidy(b), tidy(c + b)
+        if shape == "b-v":
+            b, c = num(g[0]), num(g[2])
+            return move, tidy(c), tidy(b - c)
+        if shape == "jkv":
+            k, c = num(g[0]) * num(g[1]), num(g[3])
+            return move, tidy(k), tidy(c / k)
+        if shape == "kv":
+            k, c = num(g[0]), num(g[2])
+            return move, tidy(k), tidy(c / k)
+        if shape == "v/b":
+            b, c = num(g[1]), num(g[2])
+            return move, tidy(b), tidy(c * b)
+    return None
+
+
+def equations(spec):
+    """Work every equation in the spec out again, and insist the spec agrees."""
+    bad = []
+    # Everything except the claims themselves. Searching the whole spec made the
+    # last check below pass for free: the answer it was hunting for was sitting
+    # in the row that claimed it, so a `seen` of "9999" found "9999" and agreed
+    # with itself.
+    asked = {k: v for k, v in spec.items() if k != "equations"}
+    txt = json.dumps(asked, ensure_ascii=False)
+    for row in spec.get("equations", []):
+        got = solve_eq(row["eq"])
+        if not got:
+            bad.append("cannot read the equation %r" % row["eq"])
+            continue
+        move, by, value = got
+        if move != row["undo"]:
+            bad.append("%s: spec says undo by %r, worked out as %r"
+                       % (row["eq"], row["undo"], move))
+        if tidy(num(row["by"])) != by:
+            bad.append("%s: spec moves %s, worked out as %s" % (row["eq"], row["by"], by))
+        if tidy(num(row["value"])) != value:
+            bad.append("%s: spec says the answer is %s, worked out as %s"
+                       % (row["eq"], row["value"], value))
+        # and the answer has to be somewhere in the app, or it is a claim about
+        # nothing. `shown` opts a row out where the app deliberately stops at
+        # the move and never states the value.
+        if row.get("shown", True) and row["seen"] not in txt:
+            bad.append("%s: the app never says %r" % (row["eq"], row["seen"]))
+    return bad
+
+
 def check(spec):
     """The faults worth catching before a ten-year-old finds them."""
-    bad = arithmetic(spec)
+    bad = arithmetic(spec) if spec.get("lesson") == 7 else []
+    bad += equations(spec)
     P = spec.get("passages", {})
 
     for s in spec["sets"]:
@@ -193,6 +292,17 @@ def check(spec):
                 bad.append("%s: answer index out of range" % where)
             if not it.get("why") or not it.get("cite"):
                 bad.append("%s: missing why or cite" % where)
+            # The shell prints the question as HTML but escapes the options and
+            # the explanation, so a <b> or an &minus; in those two reaches the
+            # child as the characters <b> and &minus;. Which it did: the first
+            # build of this app explained an answer as "the &lt;b&gt;&amp;minus;
+            # 1846&lt;/b&gt;". Only the question may carry markup.
+            for field, val in ([("why", it["why"])] +
+                               [("option", o) for o in it["opts"]]):
+                if re.search(r"</?[a-z][^>]*>|&[a-z]+;", val):
+                    bad.append("%s: %s is escaped when it is printed, so markup "
+                               "reaches the screen as text: %r"
+                               % (where, field, val[:60]))
             # The tell that matters: a child who notices the right answer is
             # always the longest one stops reading the question.
             lens = [len(o) for o in it["opts"]]
@@ -220,6 +330,10 @@ def check(spec):
             bad.append("passage %r is missing title, cite or text" % key)
 
     b = spec["build"]
+    for field, val in ([("answer", b.get("answer", ""))] +
+                       [("tile", t["t"]) for t in b["tiles"]]):
+        if re.search(r"</?[a-z][^>]*>|&[a-z]+;", val):
+            bad.append("builder: %s is escaped when it is printed: %r" % (field, val[:60]))
     right = [t for t in b["tiles"] if t["a"]]
     if len(right) != 2:
         bad.append("builder: %d correct tiles, the prompt says two" % len(right))
