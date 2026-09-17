@@ -108,6 +108,22 @@ LISTS.forEach(L => {
      D.levels[6].input === "sentence" &&
      /"dragon":\s*\["l7"\]/.test(L.html));
 
+  /* ------------------------------------------------ nothing in a fixed order */
+  /* There are no options to shuffle here — every level is typed — so what has
+     to be mixed is the order the words come at him in, and the two halves of
+     the review screen. A word list practised in sheet order is learnt in sheet
+     order, and on Friday the teacher does not read them out in sheet order. */
+  ok("the words are shuffled at the start of every level, not taken in order",
+     /order = shuffle\(subset && subset\.length \? subset\.slice\(\) : DATA\.words\.map/
+       .test(L.html));
+  ok("...and the review screen shuffles the words and the meanings separately",
+     /rvChips = shuffle\(/.test(L.html) && /rvSlots = shuffle\(/.test(L.html));
+  /* Two independent shuffles, not one list used twice: if the same order drove
+     both columns, every word would sit on the line facing its own meaning. */
+  ok("...so the answers never line up with the meanings by accident",
+     !/rvSlots = rvChips/.test(L.html) &&
+     (L.html.match(/shuffle\(/g) || []).length >= 3);
+
   /* ------------------------------------------------------- a clean run */
   const perfect = W.map(() => points(1, false));
   ok("a flawless run scores 100 and takes the dragon",

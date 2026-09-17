@@ -268,6 +268,11 @@ def spell4(s):
     return Patcher(s, "spelling4")
 
 
+def spell5(s):
+    """Spelling List 5 — same again. Config only."""
+    return Patcher(s, "spelling5")
+
+
 def vocab2(s):
     """Word List 2 sheet — generated from the List 1 sheet's shell, so its call
     sites came across already patched. Config only."""
@@ -365,6 +370,8 @@ APPS = {
     "spelling/list3":         (spell3, dict(app="spelling3",  shake="#card",   lift=None,
                                            dragon=["l7"])),
     "spelling/list4":         (spell4, dict(app="spelling4",  shake="#card",   lift=None,
+                                           dragon=["l7"])),
+    "spelling/list5":         (spell5, dict(app="spelling5",  shake="#card",   lift=None,
                                            dragon=["l7"])),
     "vocabulary/ww6-lesson1": (vocab, dict(app="vocabulary", shake="#sheet",  lift=".bar",
                                            dragon=["sheet"])),

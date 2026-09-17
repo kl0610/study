@@ -1,0 +1,104 @@
+{
+ "title": "Spelling List 5",
+ "n": 5,
+ "rule": "silent vowels",
+ "ruleLine": "twelve of these fifteen words hide a vowel that is written down and never said.",
+ "weekLabel": "Week of Sep 14",
+ "test": "Friday, Sep 18",
+ "root": { "stem": "port", "means": "to carry" },
+ "chartBtn": "silent vowels side by side",
+ "chartSub": "The silent vowels in pink",
+ "chartTail": "silent vowels in pink",
+ "tips": {
+  "listen": " Listen for the vowel you never say — that is the rule this week.",
+  "boxes": " Remember the rule — one vowel in this word is written but not spoken.",
+  "reveal": "The silent vowel is in pink. That is the part the test is looking for.",
+  "plain": "No silent vowel in this one — every vowel here gets said out loud."
+ },
+ "chart": [
+  { "key": "a", "head": "The a you never say", "dot": "two",
+    "note": "ea and ai. The a is on the paper and nowhere in the sound." },
+  { "key": "u", "head": "The u you never say", "dot": "one",
+    "note": "ou. Every one of these is said uh, with no u anywhere in it." },
+  { "key": "end", "head": "Silent on the end", "dot": "one",
+    "note": "the e that finishes a word without being heard — and the ue that goes with it." },
+  { "key": "none", "head": "No silent vowel at all", "dot": "none",
+    "note": "port = to carry, and two the teacher chose. Say every vowel in these three." }
+ ],
+ "words": [
+  { "w": "measure", "syl": ["mea","sure"], "pos": "v",
+    "mark": [2,1], "group": "a",
+    "def": "to access size or quality",
+    "sent": "The tailor had to ___ his arm twice before cutting the cloth." },
+
+  { "w": "endeavor", "syl": ["en","deav","or"], "pos": "v",
+    "mark": [4,1], "group": "a",
+    "def": "to try hard to do or achieve something",
+    "sent": "Every runner will ___ to finish, even the ones who know they cannot win." },
+
+  { "w": "rehearsal", "syl": ["re","hear","sal"], "pos": "n",
+    "mark": [4,1], "group": "a",
+    "def": "a practice or trial performance of a play or other work, for a later public performance",
+    "sent": "The last ___ ran an hour late because the lights kept failing." },
+
+  { "w": "heard", "syl": ["heard"], "pos": "v",
+    "mark": [2,1], "group": "a",
+    "def": "perceived with the ear the sound made by someone or something",
+    "sent": "Nobody ___ the doorbell over the noise of the storm." },
+
+  { "w": "bargain", "syl": ["bar","gain"], "pos": "n",
+    "mark": [4,1], "group": "a",
+    "def": "something bought or offered for sale at a desirable price",
+    "sent": "The coat was such a ___ that Ana went back and bought a second one in blue." },
+
+  { "w": "porcelain", "syl": ["por","ce","lain"], "pos": "n",
+    "mark": [6,1], "group": "a",
+    "def": "a white, glassy, see-through ceramic; china",
+    "sent": "The cup was so thin that you could almost see the light through the ___." },
+
+  { "w": "southern", "syl": ["south","ern"], "pos": "adj",
+    "mark": [2,1], "group": "u",
+    "def": "situated in the south, or facing in the direction of the south",
+    "sent": "They drove until the accents changed and they knew they had reached the ___ half of the state." },
+
+  { "w": "youngster", "syl": ["young","ster"], "pos": "n",
+    "mark": [2,1], "group": "u",
+    "def": "a child, a young person, or a young animal",
+    "sent": "One ___ in the front row asked a question nobody on the panel could answer." },
+
+  { "w": "discourteous", "syl": ["dis","cour","te","ous"], "pos": "adj",
+    "mark": [5,1], "group": "u",
+    "def": "showing rudeness and a lack of consideration for other people",
+    "sent": "It is ___ to talk over somebody who has not finished a sentence." },
+
+  { "w": "discourage", "syl": ["dis","cour","age"], "pos": "v",
+    "mark": [5,1], "group": "u",
+    "def": "to take away somebody's hope or enthusiasm",
+    "sent": "One bad practice should not ___ anybody this early in the season." },
+
+  { "w": "portable", "syl": ["port","a","ble"], "pos": "adj",
+    "mark": [7,1], "group": "end", "root": true,
+    "def": "able to be carried, usually because it is small and light",
+    "sent": "The little ___ radio ran on batteries and went everywhere with him." },
+
+  { "w": "vague", "syl": ["vague"], "pos": "adj",
+    "mark": [3,2], "group": "end",
+    "def": "uncertain, indefinite, or unclear in meaning",
+    "sent": "His directions were so ___ that we ended up three streets away." },
+
+  { "w": "portfolio", "syl": ["port","fo","li","o"], "pos": "n",
+    "group": "none", "root": true,
+    "def": "a large, thin, flat case for loose sheets of paper such as drawings or maps",
+    "sent": "She carried her drawings flat in a black ___ so they would not crease." },
+
+  { "w": "vulnerability", "syl": ["vul","ner","a","bil","i","ty"], "pos": "n",
+    "group": "none",
+    "def": "the state of being open to attack or harm, in body or in feelings",
+    "sent": "Saying out loud that he did not know took more courage than hiding the ___." },
+
+  { "w": "monotonous", "syl": ["mo","not","o","nous"], "pos": "adj",
+    "group": "none",
+    "def": "dull and repetitive; lacking in variety and interest",
+    "sent": "The drive was so ___ that every mile looked exactly like the one before it." }
+ ]
+}
