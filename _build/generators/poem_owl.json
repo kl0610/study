@@ -45,28 +45,32 @@
    "mode": "last",
    "name": "Last words",
    "tag": "One blank at the end of each line",
-   "blurb": "The whole poem is in front of you. Only the last word of each line is missing — and they rhyme, which helps."
+   "blurb": "The whole poem is in front of you. Only the last word of each line is missing — and they rhyme, which helps.",
+   "art": "always"
   },
   {
    "id": "l2",
    "mode": "first",
    "name": "First words",
    "tag": "One blank at the start of each line",
-   "blurb": "Now the first word of each line is gone. Starting a line is the bit people get stuck on when they stand up to recite."
+   "blurb": "Now the first word of each line is gone. Starting a line is the bit people get stuck on when they stand up to recite.",
+   "art": "always"
   },
   {
    "id": "l3",
    "mode": "half",
    "name": "Half gone",
    "tag": "Every other word missing",
-   "blurb": "About half the words are away now, spread through the poem. The shape of it is still there to lean on."
+   "blurb": "About half the words are away now, spread through the poem. The shape of it is still there to lean on.",
+   "art": "always"
   },
   {
    "id": "l4",
    "mode": "line",
    "name": "Line by line",
    "tag": "Type a whole line",
-   "blurb": "One whole line at a time, with the rest of the poem still on the page around it."
+   "blurb": "One whole line at a time, with the rest of the poem still on the page around it.",
+   "art": "always"
   },
   {
    "id": "l5",

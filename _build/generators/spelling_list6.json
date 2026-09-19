@@ -1,0 +1,99 @@
+{
+ "title": "Spelling List 6",
+ "n": 6,
+ "rule": "the schwa sound",
+ "ruleLine": "the lazy <i>uh</i> at the heart of a word. Ten of these fourteen have the letter marked for you; the sheet leaves the last four to find.",
+ "weekLabel": "Week of Sep 21",
+ "test": "Friday, Sep 25",
+ "root": { "stem": "port", "means": "to carry" },
+ "chartBtn": "every way this list spells the schwa",
+ "chartSub": "The schwa letter in pink",
+ "chartTail": "the schwa in pink",
+ "tips": {
+  "listen": " Listen for the lazy uh in the middle — that is the schwa, and it is the rule this week.",
+  "boxes": " Remember the rule — one letter in this word is only saying uh.",
+  "reveal": "The schwa letter is in pink. That is the part the test is looking for.",
+  "plain": "The sheet leaves this one unmarked on purpose. The schwa is in there — finding it is the job."
+ },
+ "chart": [
+  { "key": "y", "head": "The schwa spelled y", "dot": "two",
+    "note": "this year's letter. A y doing the work a vowel usually does." },
+  { "key": "vowel", "head": "The schwa spelled a, e, i, o, u", "dot": "one",
+    "note": "one word for each of the five vowels, in order. Every one of them says uh." },
+  { "key": "ending", "head": "The schwa hiding in an ending", "dot": "one",
+    "note": "-al and -le. Two endings you have met before, both of them uh." },
+  { "key": "find", "head": "Find it yourself", "dot": "none",
+    "note": "port = to carry, and two the teacher chose. These four are not marked on the sheet — say each one slowly and listen for the uh." }
+ ],
+ "words": [
+  { "w": "adept", "syl": ["a","dept"], "pos": "adj",
+    "mark": [0,1], "group": "vowel",
+    "def": "very skilled at something",
+    "sent": "After one summer of lessons she was ___ enough to play without looking at her hands." },
+
+  { "w": "synthesis", "syl": ["syn","the","sis"], "pos": "n",
+    "mark": [5,1], "group": "vowel",
+    "def": "the combining of separate parts to form a whole",
+    "sent": "The report was a ___ of everything four different teams had found." },
+
+  { "w": "optimist", "syl": ["op","ti","mist"], "pos": "n",
+    "mark": [3,1], "group": "vowel",
+    "def": "a person who is hopeful and confident about how things will turn out",
+    "sent": "Only an ___ would pack shorts for a week in that weather." },
+
+  { "w": "harmony", "syl": ["har","mo","ny"], "pos": "n",
+    "mark": [4,1], "group": "vowel",
+    "def": "musical notes sounded together to make a pleasing effect",
+    "sent": "The two voices moved in ___ and the whole room went quiet." },
+
+  { "w": "medium", "syl": ["me","di","um"], "pos": "n",
+    "mark": [4,1], "group": "vowel",
+    "def": "a middle point between two extremes",
+    "sent": "Between shouting and whispering there is usually a sensible ___." },
+
+  { "w": "rhythm", "syl": ["rhy","thm"], "pos": "n",
+    "mark": [2,1], "group": "y",
+    "def": "a strong, repeated pattern of movement or sound",
+    "sent": "You could hear the ___ of the drums three streets away." },
+
+  { "w": "analysis", "syl": ["a","nal","y","sis"], "pos": "n",
+    "mark": [4,1], "group": "y",
+    "def": "a careful examination of the parts of something, or of how it is put together",
+    "sent": "His ___ of the game showed exactly where it had been lost." },
+
+  { "w": "syringe", "syl": ["sy","ringe"], "pos": "n",
+    "mark": [1,1], "group": "y",
+    "def": "a tube with a plunger and a needle, used to push fluid in or draw it out",
+    "sent": "The nurse filled the ___ and told him to look at the ceiling." },
+
+  { "w": "political", "syl": ["po","lit","i","cal"], "pos": "adj",
+    "mark": [7,2], "group": "ending",
+    "def": "having to do with the government or the public affairs of a country",
+    "sent": "The town meeting turned ___ the moment somebody mentioned the budget." },
+
+  { "w": "article", "syl": ["ar","ti","cle"], "pos": "n",
+    "mark": [5,2], "group": "ending",
+    "def": "a particular item or object",
+    "sent": "Every ___ in the museum case had a small number beside it." },
+
+  { "w": "deportation", "syl": ["de","por","ta","tion"], "pos": "n",
+    "group": "find", "root": true,
+    "def": "the act of forcing a foreigner to leave a country",
+    "sent": "The lawyer spent a year fighting the ___ of a family who had lived there for decades." },
+
+  { "w": "rapport", "syl": ["rap","port"], "pos": "n",
+    "group": "find", "root": true,
+    "def": "a close and easy relationship in which people understand each other and talk well together",
+    "sent": "The new coach built a ___ with the team faster than anyone expected." },
+
+  { "w": "symbolism", "syl": ["sym","bol","ism"], "pos": "n",
+    "group": "find",
+    "def": "the use of an object or an image to stand for something larger than itself",
+    "sent": "The ___ of the storm in that chapter is hard to miss." },
+
+  { "w": "protagonist", "syl": ["pro","tag","o","nist"], "pos": "n",
+    "group": "find",
+    "def": "the main figure in a story or a real situation; the champion of a cause",
+    "sent": "The ___ of a story is not always the one you like best." }
+ ]
+}

@@ -1867,28 +1867,32 @@ const DATA = {
    "mode": "last",
    "name": "Last words",
    "tag": "One blank at the end of each line",
-   "blurb": "The whole poem is in front of you. Only the last word of each line is missing — and hands, lands and stands all rhyme, which helps."
+   "blurb": "The whole poem is in front of you. Only the last word of each line is missing — and hands, lands and stands all rhyme, which helps.",
+   "art": "always"
   },
   {
    "id": "l2",
    "mode": "first",
    "name": "First words",
    "tag": "One blank at the start of each line",
-   "blurb": "Now the first word of each line is gone. Starting a line is the bit people get stuck on when they stand up to recite."
+   "blurb": "Now the first word of each line is gone. Starting a line is the bit people get stuck on when they stand up to recite.",
+   "art": "always"
   },
   {
    "id": "l3",
    "mode": "half",
    "name": "Half gone",
    "tag": "Every other word missing",
-   "blurb": "About half the words are away now, spread through the poem. The shape of it is still there to lean on."
+   "blurb": "About half the words are away now, spread through the poem. The shape of it is still there to lean on.",
+   "art": "always"
   },
   {
    "id": "l4",
    "mode": "line",
    "name": "Line by line",
    "tag": "Type a whole line",
-   "blurb": "One whole line at a time, with the rest of the poem still on the page around it."
+   "blurb": "One whole line at a time, with the rest of the poem still on the page around it.",
+   "art": "always"
   },
   {
    "id": "l5",
@@ -2238,6 +2242,22 @@ function paintArt(){
       const ln = DATA.lines[CUR];
       box.innerHTML = '<div class="artbox">' + (ART[ln.art] || "") +
         '<p class="artcap">Line ' + (CUR + 1) + "</p></div>";
+      return;
+    }
+    /* On every level before By heart the picture is a companion rather than a
+       hint: it stands beside the line being worked on from the first attempt,
+       not only after a miss. The point of the last level is that a drawing is
+       enough on its own to call a line back — which it can only be if the two
+       have been seen together all the way up. Levels ask for this with
+       art:"always"; By heart has its own branch above and does not. */
+    if (LVL().art === "always" && BL.length){
+      let li = -1;
+      for (let k = 0; k < BL.length; k++) if (!ST[k].done){ li = BL[k].li; break; }
+      if (li < 0) li = BL[BL.length - 1].li;
+      const cur = DATA.lines[li];
+      box.innerHTML = '<div class="artbox">' + (ART[cur.art] || "") +
+        '<p class="artcap">Line ' + (li + 1) + "</p>" +
+        (shownLine(li) ? '<p class="artline">' + esc(cur.t) + "</p>" : "") + "</div>";
       return;
     }
     box.innerHTML = "";

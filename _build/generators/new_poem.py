@@ -76,11 +76,59 @@ def check(spec, art):
     if sum(1 for l in spec.get("levels", []) if l.get("boss")) != 1:
         bad.append("exactly one level is the boss, and it should be the last")
 
+    for lv in spec.get("levels", []):
+        if lv.get("art") and lv["art"] != "always":
+            bad.append("%s: art is %r; the only setting is \"always\"" % (lv.get("id"), lv["art"]))
+        # By heart already shows the picture, and it is the only thing on the
+        # screen there. Asking for it twice is a spec that has not been read.
+        if lv.get("mode") == "heart" and lv.get("art"):
+            bad.append("%s is By heart, which shows the picture anyway" % lv.get("id"))
+
     for f in ("title", "plain", "eyebrow", "sub", "source"):
         if not spec.get(f):
             bad.append("no %s" % f)
     if bad:
         raise SystemExit("  refusing to build:\n    " + "\n    ".join(bad))
+
+
+OLD_ART = """    box.innerHTML = "";
+    return;
+  }
+  const ln = DATA.lines[SHOWART];"""
+
+NEW_ART = """    /* On every level before By heart the picture is a companion rather than a
+       hint: it stands beside the line being worked on from the first attempt,
+       not only after a miss. The point of the last level is that a drawing is
+       enough on its own to call a line back — which it can only be if the two
+       have been seen together all the way up. Levels ask for this with
+       art:"always"; By heart has its own branch above and does not. */
+    if (LVL().art === "always" && BL.length){
+      let li = -1;
+      for (let k = 0; k < BL.length; k++) if (!ST[k].done){ li = BL[k].li; break; }
+      if (li < 0) li = BL[BL.length - 1].li;
+      const cur = DATA.lines[li];
+      box.innerHTML = '<div class="artbox">' + (ART[cur.art] || "") +
+        '<p class="artcap">Line ' + (li + 1) + "</p>" +
+        (shownLine(li) ? '<p class="artline">' + esc(cur.t) + "</p>" : "") + "</div>";
+      return;
+    }
+    box.innerHTML = "";
+    return;
+  }
+  const ln = DATA.lines[SHOWART];"""
+
+
+def show_art_always(out):
+    """Teach the shell to keep a picture on screen through the early levels.
+
+    Idempotent: once a shell carries the new branch there is nothing to do, so
+    a poem generated from a poem that already has it is not patched twice.
+    """
+    if "LVL().art === \"always\"" in out:
+        return out, "already there"
+    if out.count(OLD_ART) != 1:
+        raise SystemExit("  paintArt is not the shape this patch expects")
+    return out.replace(OLD_ART, NEW_ART, 1), "patched in"
 
 
 def main():
@@ -114,6 +162,8 @@ def main():
             "%s: `%s`," % (k, own[k].strip()) for k in own) + "\n\n}"
         out = out[:ab] + drawn + out[ae:]
 
+    out, art_state = show_art_always(out)
+
     out = re.sub(r"<title>.*?</title>",
                  "<title>%s &mdash; Recitation</title>" % spec["plain"], out, count=1)
 
@@ -128,6 +178,9 @@ def main():
     unused = sorted(art - {ln["art"] for ln in spec["lines"]})
     if unused:
         print("    note: nothing uses %s" % ", ".join(unused))
+    early = [l["id"] for l in spec["levels"] if l.get("art") == "always"]
+    print("    picture always on screen for %s (%s)"
+          % (", ".join(early) if early else "no level", art_state))
     print("    next: add it to APPS in build_theme.py and to the hub, then rebuild")
 
 

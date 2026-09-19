@@ -157,7 +157,14 @@ G("level 1 — the last word of each line");
   ok("...and the word is now printed in the poem", /class="w got">owl</.test(P.card()));
   ok("...with the feedback surviving the redraw",
      /Yes, first go/.test(P.card()), "the card is rebuilt after every answer");
-  ok("...and no picture, because nothing went wrong", P.q(".artbox").length === 0);
+  /* The picture used to appear only on a miss, and this used to check that it
+     had not. It is a companion now rather than a telling-off: on every level
+     before By heart it stands beside the line being worked on from the first
+     go, so that a drawing can carry a line on its own by the time it has to. */
+  ok("...and the picture is still there, because it is not a punishment",
+     P.q(".artbox").length === 1);
+  ok("...and it has moved on to the line now being asked for",
+     /Line 2/.test(P.card()), (P.card().match(/Line \d+/) || ["none"])[0]);
   ok("...and the cursor has walked on to the next gap, not back to the top",
      P.q(".bl")[0].getAttribute("data-b") === "1");
 

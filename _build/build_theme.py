@@ -164,6 +164,11 @@ def recite2(s):
     return Patcher(s, "recite2")
 
 
+def recite3(s):
+    """The Arrow and the Song. Twelve lines, the longest so far. Config only."""
+    return Patcher(s, "recite3")
+
+
 def recite1(s):
     """A poem learnt a piece at a time. Written already calling the engine, so
     like every generated chapter this is config only."""
@@ -273,6 +278,11 @@ def spell5(s):
     return Patcher(s, "spelling5")
 
 
+def spell6(s):
+    """Spelling List 6 — same again. Config only."""
+    return Patcher(s, "spelling6")
+
+
 def vocab2(s):
     """Word List 2 sheet — generated from the List 1 sheet's shell, so its call
     sites came across already patched. Config only."""
@@ -373,6 +383,8 @@ APPS = {
                                            dragon=["l7"])),
     "spelling/list5":         (spell5, dict(app="spelling5",  shake="#card",   lift=None,
                                            dragon=["l7"])),
+    "spelling/list6":         (spell6, dict(app="spelling6",  shake="#card",   lift=None,
+                                           dragon=["l7"])),
     "vocabulary/ww6-lesson1": (vocab, dict(app="vocabulary", shake="#sheet",  lift=".bar",
                                            dragon=["sheet"])),
     "history/g5-maya-ch1":    (hist,  dict(app="history",    shake="#stela",  lift=None,
@@ -428,6 +440,9 @@ APPS = {
                                            dragon=["final"], hud=False)),
     "recitation/the-eagle":   (recite2, dict(app="recite2",     shake="#card",   lift=None,
                                            dragon=["l5"], subject="Recitation")),
+    "recitation/the-arrow-and-the-song": (recite3,
+                                     dict(app="recite3", shake="#card", lift=None,
+                                          dragon=["l5"], subject="Recitation")),
     # Recitation. Five levels over one poem, each giving a little less away;
     # l5 is saying it with nothing on the screen, so that is where the dragon
     # sits — the same place it sits on spelling's ladder.

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>A Wise Old Owl &mdash; Recitation</title>
+<title>The Arrow and the Song &mdash; Recitation</title>
 <style>
 :root{
   --ink:#20262B; --dim:#63727C; --line:#E2DED2; --bg:#F7F4EC; --card:#FFFFFF;
@@ -1648,7 +1648,7 @@ window.__MC_SFX__={"tool": "data:audio/mpeg;base64,//OAxAAAAAAAAAAAAFhpbmcAAAAPA
   window.MC = MC;
 })();
 </script>
-<script>MC.config({"app": "recite1", "shake": "#card", "lift": null, "dragon": ["l5"], "subject": "Recitation"});</script>
+<script>MC.config({"app": "recite3", "shake": "#card", "lift": null, "dragon": ["l5"], "subject": "Recitation"});</script>
 <!-- /MC-THEME-JS -->
 
 <!-- HOME -->
@@ -1693,105 +1693,152 @@ window.__MC_SFX__={"tool": "data:audio/mpeg;base64,//OAxAAAAAAAAAAAAFhpbmcAAAAPA
    ==================================================================== */
 const ART = {
 
-owl: `<svg viewBox="0 0 200 140" role="img" aria-label="An owl">
-  <ellipse cx="100" cy="128" rx="52" ry="6" fill="#E3DCCB"/>
-  <path d="M62 40 L74 20 L86 40 Z" fill="#8A6A4B"/>
-  <path d="M138 40 L126 20 L114 40 Z" fill="#8A6A4B"/>
-  <ellipse cx="100" cy="76" rx="46" ry="50" fill="#A67C52"/>
-  <ellipse cx="100" cy="92" rx="32" ry="32" fill="#D8C0A0"/>
-  <circle cx="82" cy="64" r="20" fill="#FFF8EC"/><circle cx="118" cy="64" r="20" fill="#FFF8EC"/>
-  <circle cx="82" cy="64" r="9" fill="#2C2118"/><circle cx="118" cy="64" r="9" fill="#2C2118"/>
-  <circle cx="85" cy="61" r="3" fill="#fff"/><circle cx="121" cy="61" r="3" fill="#fff"/>
-  <path d="M100 74 L108 86 L92 86 Z" fill="#E0A22C"/>
-  <path d="M70 108 q30 12 60 0" stroke="#8A6A4B" stroke-width="3" fill="none"/>
-</svg>`,
-
-oak: `<svg viewBox="0 0 200 140" role="img" aria-label="An oak tree with a hollow">
-  <ellipse cx="100" cy="132" rx="66" ry="6" fill="#E3DCCB"/>
-  <circle cx="70" cy="46" r="30" fill="#4E8A4A"/><circle cx="126" cy="42" r="32" fill="#5C9C56"/>
-  <circle cx="98" cy="30" r="28" fill="#69AC61"/><circle cx="100" cy="60" r="34" fill="#4E8A4A"/>
-  <path d="M88 132 L92 78 h16 l4 54 Z" fill="#8A6A4B"/>
-  <path d="M92 96 q-16 -8 -22 -22" stroke="#8A6A4B" stroke-width="6" fill="none" stroke-linecap="round"/>
-  <ellipse cx="100" cy="104" rx="12" ry="15" fill="#3E2C1C"/>
-  <circle cx="95" cy="102" r="4.5" fill="#FFF8EC"/><circle cx="106" cy="102" r="4.5" fill="#FFF8EC"/>
-  <circle cx="95" cy="102" r="2" fill="#2C2118"/><circle cx="106" cy="102" r="2" fill="#2C2118"/>
-  <ellipse cx="150" cy="86" rx="6" ry="8" fill="#8A6A4B"/><ellipse cx="150" cy="79" rx="7" ry="4" fill="#6B5136"/>
-</svg>`,
-
-saw: `<svg viewBox="0 0 200 140" role="img" aria-label="Wide open eyes, watching">
-  <circle cx="66" cy="70" r="30" fill="#FFF8EC" stroke="#A67C52" stroke-width="4"/>
-  <circle cx="134" cy="70" r="30" fill="#FFF8EC" stroke="#A67C52" stroke-width="4"/>
-  <circle cx="66" cy="70" r="14" fill="#2C2118"/><circle cx="134" cy="70" r="14" fill="#2C2118"/>
-  <circle cx="71" cy="65" r="5" fill="#fff"/><circle cx="139" cy="65" r="5" fill="#fff"/>
-  <path d="M40 34 q26 -14 52 0" stroke="#8A6A4B" stroke-width="5" fill="none" stroke-linecap="round"/>
-  <path d="M108 34 q26 -14 52 0" stroke="#8A6A4B" stroke-width="5" fill="none" stroke-linecap="round"/>
-  <g fill="#E0A22C">
-    <path d="M18 106 l4 9 10 1 -7 7 2 10 -9 -5 -9 5 2 -10 -7 -7 10 -1 Z"/>
-    <path d="M178 104 l4 9 10 1 -7 7 2 10 -9 -5 -9 5 2 -10 -7 -7 10 -1 Z"/>
-  </g>
-  <path d="M96 116 q4 -10 8 0" stroke="#4E8A4A" stroke-width="4" fill="none" stroke-linecap="round"/>
-</svg>`,
-
-quiet: `<svg viewBox="0 0 200 140" role="img" aria-label="A beak closed, saying nothing">
-  <ellipse cx="86" cy="76" rx="42" ry="46" fill="#A67C52"/>
-  <path d="M52 42 L62 24 L72 42 Z" fill="#8A6A4B"/>
-  <path d="M120 42 L110 24 L100 42 Z" fill="#8A6A4B"/>
-  <circle cx="70" cy="66" r="16" fill="#FFF8EC"/><circle cx="102" cy="66" r="16" fill="#FFF8EC"/>
-  <path d="M58 66 q12 -7 24 0" stroke="#2C2118" stroke-width="4" fill="none" stroke-linecap="round"/>
-  <path d="M90 66 q12 -7 24 0" stroke="#2C2118" stroke-width="4" fill="none" stroke-linecap="round"/>
-  <path d="M86 82 L93 93 L79 93 Z" fill="#E0A22C"/>
-  <path d="M74 100 h24" stroke="#6B5136" stroke-width="4" stroke-linecap="round"/>
-  <circle cx="160" cy="56" r="24" fill="#F1ECF9" stroke="#7A5CA8" stroke-width="3"/>
-  <path d="M143 39 L177 73" stroke="#C8452F" stroke-width="5" stroke-linecap="round"/>
-  <path d="M150 50 q6 -6 12 0 t12 0" stroke="#7A5CA8" stroke-width="3" fill="none" stroke-linecap="round"/>
-</svg>`,
-
-heard: `<svg viewBox="0 0 200 140" role="img" aria-label="Listening, sound coming in">
-  <ellipse cx="78" cy="76" rx="42" ry="46" fill="#A67C52"/>
-  <path d="M44 42 L54 24 L64 42 Z" fill="#8A6A4B"/>
-  <path d="M112 42 L102 24 L92 42 Z" fill="#8A6A4B"/>
-  <circle cx="62" cy="68" r="16" fill="#FFF8EC"/><circle cx="94" cy="68" r="16" fill="#FFF8EC"/>
-  <circle cx="62" cy="68" r="7" fill="#2C2118"/><circle cx="94" cy="68" r="7" fill="#2C2118"/>
-  <path d="M78 82 L85 93 L71 93 Z" fill="#E0A22C"/>
-  <g stroke="#7A5CA8" fill="none" stroke-width="5" stroke-linecap="round">
-    <path d="M132 76 q10 -14 0 -28"/>
-    <path d="M148 82 q18 -22 0 -44"/>
-    <path d="M164 88 q26 -30 0 -60"/>
-  </g>
-  <circle cx="126" cy="62" r="5" fill="#7A5CA8"/>
-</svg>`,
-
-why: `<svg viewBox="0 0 200 140" role="img" aria-label="A child wondering">
-  <ellipse cx="86" cy="132" rx="44" ry="6" fill="#E3DCCB"/>
-  <circle cx="86" cy="66" r="30" fill="#F3C79A"/>
-  <path d="M56 60 q6 -30 30 -30 t30 30 q-14 -12 -30 -8 t-30 8 Z" fill="#6B4A2E"/>
-  <circle cx="76" cy="68" r="4" fill="#2C2118"/><circle cx="97" cy="68" r="4" fill="#2C2118"/>
-  <path d="M77 82 q9 7 18 0" stroke="#2C2118" stroke-width="3.5" fill="none" stroke-linecap="round"/>
-  <path d="M60 100 q26 -10 52 0 l6 26 h-64 Z" fill="#5C9C56"/>
-  <g fill="#7A5CA8">
-    <path d="M143 30 q0 -14 14 -14 t14 14 q0 10 -10 14 -5 2 -5 9 h-10 q0 -13 8 -17 5 -3 5 -6 0 -5 -6 -5 t-6 5 Z"/>
-    <circle cx="157" cy="72" r="6"/>
+shoot: `<svg viewBox="0 0 200 140" role="img" aria-label="An arrow leaving a bow and climbing into the sky">
+  <rect width="200" height="140" fill="#DCEAF4"/>
+  <path d="M0 122 L200 114 L200 140 L0 140 Z" fill="#7FA663"/>
+  <path d="M36 120 q-24 -36 0 -72" stroke="#6B4A2E" stroke-width="6" fill="none" stroke-linecap="round"/>
+  <path d="M36 120 L36 48" stroke="#2C2118" stroke-width="2"/>
+  <path d="M62 94 L150 36" stroke="#54381F" stroke-width="4" stroke-linecap="round"/>
+  <path d="M150 36 L168 25 L153 47 Z" fill="#2C2118"/>
+  <g fill="#E8B03C">
+    <path d="M62 94 L53 90 L60 103 Z"/>
+    <path d="M71 88 L62 84 L69 97 Z"/>
   </g>
 </svg>`,
 
-bird: `<svg viewBox="0 0 200 140" role="img" aria-label="The wise old owl on its branch at night">
-  <circle cx="158" cy="30" r="16" fill="#F3E3A8"/>
-  <circle cx="151" cy="26" r="14" fill="#FBF9F4"/>
-  <g fill="#E0A22C">
-    <circle cx="30" cy="24" r="2.5"/><circle cx="54" cy="44" r="2"/><circle cx="182" cy="66" r="2"/>
-    <circle cx="18" cy="60" r="1.8"/><circle cx="120" cy="18" r="2"/>
+fell: `<svg viewBox="0 0 200 140" role="img" aria-label="An arrow dropping into long grass, its point already out of sight">
+  <rect width="200" height="140" fill="#DCEAF4"/>
+  <path d="M0 96 L200 88 L200 140 L0 140 Z" fill="#7FA663"/>
+  <path d="M124 34 L98 108" stroke="#54381F" stroke-width="4" stroke-linecap="round"/>
+  <g fill="#E8B03C">
+    <path d="M124 34 L133 31 L128 46 Z"/>
+    <path d="M130 42 L139 39 L134 54 Z"/>
   </g>
-  <path d="M12 106 q46 -12 176 -4" stroke="#6B5136" stroke-width="9" fill="none" stroke-linecap="round"/>
-  <path d="M60 104 q-14 -8 -22 -22" stroke="#6B5136" stroke-width="5" fill="none" stroke-linecap="round"/>
-  <ellipse cx="96" cy="72" rx="34" ry="38" fill="#8A6A4B"/>
-  <path d="M68 44 L77 28 L86 44 Z" fill="#6B5136"/>
-  <path d="M124 44 L115 28 L106 44 Z" fill="#6B5136"/>
-  <ellipse cx="96" cy="84" rx="23" ry="24" fill="#C3A87F"/>
-  <circle cx="83" cy="62" r="13" fill="#FFF8EC"/><circle cx="109" cy="62" r="13" fill="#FFF8EC"/>
-  <circle cx="83" cy="62" r="6" fill="#2C2118"/><circle cx="109" cy="62" r="6" fill="#2C2118"/>
-  <path d="M96 70 L102 80 L90 80 Z" fill="#E0A22C"/>
-  <path d="M88 104 v6 M104 104 v6" stroke="#E0A22C" stroke-width="4" stroke-linecap="round"/>
-</svg>`
+  <g stroke="#648A4C" stroke-width="3" stroke-linecap="round" fill="none">
+    <path d="M56 140 q-4 -26 4 -38"/><path d="M70 140 q6 -36 2 -50"/>
+    <path d="M86 140 q-4 -30 4 -44"/><path d="M104 140 q8 -34 2 -48"/>
+    <path d="M122 140 q-6 -28 2 -42"/><path d="M140 140 q6 -30 0 -44"/>
+    <path d="M156 140 q-5 -24 3 -34"/>
+  </g>
+</svg>`,
+
+swift: `<svg viewBox="0 0 200 140" role="img" aria-label="The arrow going so fast it is only a streak of air">
+  <rect width="200" height="140" fill="#DCEAF4"/>
+  <g stroke="#B7D2E8" stroke-width="5" stroke-linecap="round">
+    <path d="M10 82 L80 50"/><path d="M16 98 L92 64"/><path d="M30 114 L100 82"/>
+  </g>
+  <path d="M106 66 L152 44" stroke="#54381F" stroke-width="4" stroke-linecap="round"/>
+  <path d="M152 44 L170 36 L155 54 Z" fill="#2C2118"/>
+  <path d="M0 126 L200 120 L200 140 L0 140 Z" fill="#7FA663"/>
+</svg>`,
+
+lost: `<svg viewBox="0 0 200 140" role="img" aria-label="Someone looking up at a sky with nothing left in it">
+  <rect width="200" height="140" fill="#DCEAF4"/>
+  <g fill="#EAF4FB">
+    <ellipse cx="146" cy="32" rx="30" ry="12"/>
+    <ellipse cx="124" cy="38" rx="18" ry="9"/>
+    <ellipse cx="66" cy="24" rx="20" ry="8"/>
+  </g>
+  <path d="M0 122 L200 116 L200 140 L0 140 Z" fill="#7FA663"/>
+  <path d="M26 140 q8 -30 36 -30 q28 0 36 30 Z" fill="#4E6E8E"/>
+  <path d="M50 100 q12 11 24 0 q-3 14 -12 14 q-9 0 -12 -14 Z" fill="#E8C49A"/>
+  <circle cx="62" cy="86" r="20" fill="#4A3A28"/>
+</svg>`,
+
+sing: `<svg viewBox="0 0 200 140" role="img" aria-label="Someone singing, and the song going up into the air">
+  <rect width="200" height="140" fill="#F6EBD6"/>
+  <path d="M14 140 q8 -36 42 -36 q34 0 42 36 Z" fill="#4E6E8E"/>
+  <circle cx="56" cy="70" r="26" fill="#E8C49A"/>
+  <path d="M30 68 a26 26 0 0 1 52 0 q-26 -15 -52 0 Z" fill="#4A3A28"/>
+  <circle cx="46" cy="68" r="3" fill="#2C2118"/>
+  <circle cx="67" cy="68" r="3" fill="#2C2118"/>
+  <ellipse cx="57" cy="87" rx="8" ry="10" fill="#B4614F"/>
+<g transform="translate(110,76)" fill="#2F6E8C"><ellipse cx="0" cy="10.0" rx="7.0" ry="5.0"/><rect x="5.0" y="-10.0" width="3.0" height="20.0"/><path d="M8.0 -10.0 q10.0 4.0 10.0 12.0 q-4.0 -8.0 -10.0 -6.0 Z"/></g><g transform="translate(142,48)" fill="#2F6E8C"><ellipse cx="0" cy="8.6" rx="6.0" ry="4.3"/><rect x="4.3" y="-8.6" width="2.6" height="17.2"/><path d="M6.9 -8.6 q8.6 3.4 8.6 10.3 q-3.4 -6.9 -8.6 -5.2 Z"/></g><g transform="translate(170,22)" fill="#2F6E8C"><ellipse cx="0" cy="7.4" rx="5.2" ry="3.7"/><rect x="3.7" y="-7.4" width="2.2" height="14.8"/><path d="M5.9 -7.4 q7.4 3.0 7.4 8.9 q-3.0 -5.9 -7.4 -4.4 Z"/></g>
+</svg>`,
+
+keen: `<svg viewBox="0 0 200 140" role="img" aria-label="An eye opened wide, looking as hard as it can">
+  <rect width="200" height="140" fill="#DCEAF4"/>
+  <path d="M28 70 q72 -48 144 0 q-72 48 -144 0 Z" fill="#FBF6EC"
+        stroke="#2C2118" stroke-width="4" stroke-linejoin="round"/>
+  <circle cx="100" cy="70" r="22" fill="#3E7FA8"/>
+  <circle cx="100" cy="70" r="9" fill="#12161F"/>
+  <circle cx="93" cy="63" r="4" fill="#FFFFFF"/>
+  <g stroke="#2C2118" stroke-width="4" stroke-linecap="round">
+    <path d="M100 24 v-12"/><path d="M100 116 v12"/>
+    <path d="M42 34 l-10 -10"/><path d="M158 34 l10 -10"/>
+    <path d="M42 106 l-10 10"/><path d="M158 106 l10 10"/>
+  </g>
+</svg>`,
+
+songflight: `<svg viewBox="0 0 200 140" role="img" aria-label="The path of a song across the sky, fading as it goes">
+  <rect width="200" height="140" fill="#DCEAF4"/>
+  <path d="M22 100 q46 -66 90 -38 q34 22 70 -18" stroke="#9FC2DB" stroke-width="3"
+        stroke-dasharray="5 7" fill="none" stroke-linecap="round"/>
+<g transform="translate(28,84)" fill="#2F6E8C"><ellipse cx="0" cy="10.0" rx="7.0" ry="5.0"/><rect x="5.0" y="-10.0" width="3.0" height="20.0"/><path d="M8.0 -10.0 q10.0 4.0 10.0 12.0 q-4.0 -8.0 -10.0 -6.0 Z"/></g><g transform="translate(98,52)" fill="#2F6E8C" opacity=".6"><ellipse cx="0" cy="8.6" rx="6.0" ry="4.3"/><rect x="4.3" y="-8.6" width="2.6" height="17.2"/><path d="M6.9 -8.6 q8.6 3.4 8.6 10.3 q-3.4 -6.9 -8.6 -5.2 Z"/></g><g transform="translate(164,34)" fill="#2F6E8C" opacity=".3"><ellipse cx="0" cy="7.4" rx="5.2" ry="3.7"/><rect x="3.7" y="-7.4" width="2.2" height="14.8"/><path d="M5.9 -7.4 q7.4 3.0 7.4 8.9 q-3.0 -5.9 -7.4 -4.4 Z"/></g>
+  <path d="M0 126 L200 122 L200 140 L0 140 Z" fill="#7FA663"/>
+</svg>`,
+
+oak: `<svg viewBox="0 0 200 140" role="img" aria-label="A broad old oak tree">
+  <rect width="200" height="140" fill="#DCEAF4"/>
+  <path d="M0 124 L200 118 L200 140 L0 140 Z" fill="#7FA663"/>
+  <path d="M91 126 L91 76 L84 58 L98 68 L103 42 L109 68 L121 55 L112 78 L112 126 Z" fill="#6B4A2E"/>
+  <g fill="#5E8C4F">
+    <ellipse cx="101" cy="52" rx="47" ry="30"/>
+    <ellipse cx="64" cy="61" rx="26" ry="19"/>
+    <ellipse cx="139" cy="61" rx="26" ry="19"/>
+    <ellipse cx="101" cy="33" rx="30" ry="20"/>
+  </g>
+  <g fill="#4A7340">
+    <ellipse cx="78" cy="45" rx="15" ry="10"/>
+    <ellipse cx="126" cy="43" rx="14" ry="9"/>
+    <ellipse cx="101" cy="66" rx="17" ry="9"/>
+  </g>
+</svg>`,
+
+found: `<svg viewBox="0 0 200 140" role="img" aria-label="The arrow found again, still whole, buried in the trunk of the oak">
+  <rect width="200" height="140" fill="#DCEAF4"/>
+  <rect x="54" y="0" width="88" height="140" fill="#6B4A2E"/>
+  <g stroke="#54381F" stroke-width="3" fill="none" stroke-linecap="round">
+    <path d="M68 0 q7 40 0 76 q-6 34 2 64"/>
+    <path d="M100 0 q-7 46 2 84 q6 30 -2 56"/>
+    <path d="M130 0 q6 38 -2 74 q-7 36 2 66"/>
+  </g>
+  <path d="M104 72 L184 94" stroke="#F2E6CA" stroke-width="5" stroke-linecap="round"/>
+  <g fill="#E8B03C">
+    <path d="M186 94 L196 90 L191 105 Z"/>
+    <path d="M175 91 L185 87 L180 102 Z"/>
+  </g>
+</svg>`,
+
+whole: `<svg viewBox="0 0 200 140" role="img" aria-label="A song written out unbroken, from the first note to the last">
+  <rect width="200" height="140" fill="#F6EBD6"/>
+  <g stroke="#CBBDA2" stroke-width="2">
+    <path d="M12 46 H188"/><path d="M12 60 H188"/><path d="M12 74 H188"/>
+    <path d="M12 88 H188"/><path d="M12 102 H188"/>
+  </g>
+  <path d="M14 40 q7 34 0 68" stroke="#2F6E8C" stroke-width="5" fill="none" stroke-linecap="round"/>
+  <path d="M60 36 q44 -12 88 0" stroke="#2F6E8C" stroke-width="3" fill="none" stroke-linecap="round"/>
+<g transform="translate(48,58)" fill="#2F6E8C"><ellipse cx="0" cy="9.0" rx="6.3" ry="4.5"/><rect x="4.5" y="-9.0" width="2.7" height="18.0"/></g><g transform="translate(82,44)" fill="#2F6E8C"><ellipse cx="0" cy="9.0" rx="6.3" ry="4.5"/><rect x="4.5" y="-9.0" width="2.7" height="18.0"/></g><g transform="translate(116,72)" fill="#2F6E8C"><ellipse cx="0" cy="9.0" rx="6.3" ry="4.5"/><rect x="4.5" y="-9.0" width="2.7" height="18.0"/></g><g transform="translate(150,52)" fill="#2F6E8C"><ellipse cx="0" cy="9.0" rx="6.3" ry="4.5"/><rect x="4.5" y="-9.0" width="2.7" height="18.0"/></g>
+  <path d="M184 46 v56" stroke="#2F6E8C" stroke-width="4" stroke-linecap="round"/>
+</svg>`,
+
+friend: `<svg viewBox="0 0 200 140" role="img" aria-label="Two friends, with the song found again in a heart between them">
+  <rect width="200" height="140" fill="#F6EBD6"/>
+  <path d="M4 140 q6 -38 38 -38 q32 0 38 38 Z" fill="#4E6E8E"/>
+  <circle cx="42" cy="56" r="20" fill="#E8C49A"/>
+  <path d="M22 54 a20 20 0 0 1 40 0 q-20 -12 -40 0 Z" fill="#4A3A28"/>
+  <circle cx="35" cy="57" r="2.6" fill="#2C2118"/>
+  <circle cx="49" cy="57" r="2.6" fill="#2C2118"/>
+  <path d="M35 67 q7 6 14 0" stroke="#8A5A4A" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+  <path d="M120 140 q6 -38 38 -38 q32 0 38 38 Z" fill="#7C5A8C"/>
+  <circle cx="158" cy="56" r="20" fill="#D8A97E"/>
+  <path d="M138 54 a20 20 0 0 1 40 0 q-20 -12 -40 0 Z" fill="#2C2118"/>
+  <circle cx="151" cy="57" r="2.6" fill="#2C2118"/>
+  <circle cx="165" cy="57" r="2.6" fill="#2C2118"/>
+  <path d="M151 67 q7 6 14 0" stroke="#8A5A4A" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+  <path d="M100 128 q-33 -25 -33 -47 q0 -17 16 -17 q12 0 17 13 q5 -13 17 -13 q16 0 16 17 q0 22 -33 47 Z" fill="#C9587A"/>
+<g transform="translate(94,94)" fill="#FBF6EC"><ellipse cx="0" cy="11.5" rx="8.0" ry="5.8"/><rect x="5.8" y="-11.5" width="3.4" height="23.0"/><path d="M9.2 -11.5 q11.5 4.6 11.5 13.8 q-4.6 -9.2 -11.5 -6.9 Z"/></g>
+</svg>`,
 
 };
 </script>
@@ -1805,44 +1852,61 @@ bird: `<svg viewBox="0 0 200 140" role="img" aria-label="The wise old owl on its
    changes — see _build/generators/new_poem.py.
    ==================================================================== */
 const DATA = {
- "title": "A Wise Old <em>Owl</em>",
- "plain": "A Wise Old Owl",
+ "title": "The Arrow and the <em>Song</em>",
+ "plain": "The Arrow and the Song",
  "eyebrow": "Recitation · Poem of the fortnight",
- "sub": "Learn it a piece at a time. Every level gives you a little less, so by the last one you are saying it on your own.",
- "source": "Traditional. Sheet from sightwords.com.",
+ "sub": "Learn it a piece at a time. Every level gives you a little less, and the picture for the line you are on stays with you the whole way — so by the last level the picture alone is enough.",
+ "source": "Henry Wadsworth Longfellow, 1845.",
  "lines": [
   {
-   "t": "A wise old owl",
-   "art": "owl"
+   "t": "I shot an arrow into the air,",
+   "art": "shoot"
   },
   {
-   "t": "Lived in an oak.",
-   "art": "oak"
+   "t": "It fell to earth, I knew not where;",
+   "art": "fell"
   },
   {
-   "t": "The more he saw,",
-   "art": "saw"
+   "t": "For, so swiftly it flew, the sight",
+   "art": "swift"
   },
   {
-   "t": "The less he spoke.",
-   "art": "quiet",
+   "t": "Could not follow it in its flight.",
+   "art": "lost",
    "gap": true
   },
   {
-   "t": "The less he spoke,",
-   "art": "quiet"
+   "t": "I breathed a song into the air,",
+   "art": "sing"
   },
   {
-   "t": "The more he heard.",
-   "art": "heard"
+   "t": "It fell to earth, I knew not where;",
+   "art": "fell"
   },
   {
-   "t": "Why can’t we be",
-   "art": "why"
+   "t": "For who has sight so keen and strong,",
+   "art": "keen"
   },
   {
-   "t": "Like that wise old bird?",
-   "art": "bird"
+   "t": "That it can follow the flight of song?",
+   "art": "songflight",
+   "gap": true
+  },
+  {
+   "t": "Long, long afterward, in an oak",
+   "art": "oak"
+  },
+  {
+   "t": "I found the arrow, still unbroke;",
+   "art": "found"
+  },
+  {
+   "t": "And the song, from beginning to end,",
+   "art": "whole"
+  },
+  {
+   "t": "I found again in the heart of a friend.",
+   "art": "friend"
   }
  ],
  "levels": [
@@ -1850,33 +1914,33 @@ const DATA = {
    "id": "l1",
    "mode": "last",
    "name": "Last words",
+   "art": "always",
    "tag": "One blank at the end of each line",
-   "blurb": "The whole poem is in front of you. Only the last word of each line is missing — and they rhyme, which helps.",
-   "art": "always"
+   "blurb": "The whole poem is in front of you and only the last word of each line is missing. The picture for the line you are on sits underneath from the start, so the two begin to go together."
   },
   {
    "id": "l2",
    "mode": "first",
    "name": "First words",
+   "art": "always",
    "tag": "One blank at the start of each line",
-   "blurb": "Now the first word of each line is gone. Starting a line is the bit people get stuck on when they stand up to recite.",
-   "art": "always"
+   "blurb": "Now the first word of each line is gone. Starting a line is the bit people get stuck on when they stand up to recite — and the picture is still there beside you."
   },
   {
    "id": "l3",
    "mode": "half",
    "name": "Half gone",
+   "art": "always",
    "tag": "Every other word missing",
-   "blurb": "About half the words are away now, spread through the poem. The shape of it is still there to lean on.",
-   "art": "always"
+   "blurb": "About half the words are away now, spread through the poem. The shape of it is still there to lean on, and so is the picture."
   },
   {
    "id": "l4",
    "mode": "line",
    "name": "Line by line",
+   "art": "always",
    "tag": "Type a whole line",
-   "blurb": "One whole line at a time, with the rest of the poem still on the page around it.",
-   "art": "always"
+   "blurb": "One whole line at a time, with the rest of the poem still around it. Look at the picture first and see whether the line comes."
   },
   {
    "id": "l5",
@@ -1884,7 +1948,7 @@ const DATA = {
    "name": "By heart",
    "boss": true,
    "tag": "Nothing but the picture",
-   "blurb": "No words on the screen at all. A picture for each line, and you say it from memory."
+   "blurb": "No words on the screen at all — just the pictures you have had beside you the whole way up, one for each line, and you say it from memory."
   }
  ]
 };
