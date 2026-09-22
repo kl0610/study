@@ -542,6 +542,11 @@ APPS = {
     "reading/sherlock-redheaded-4": (reads("redheaded4"),
                                      dict(app="redheaded4", shake="#card", lift=None,
                                           dragon=["m1"])),
+    # The Engineer's Thumb, the next story. Tonight's reading is its first
+    # block, pages 87 to 94; more will follow as they are set.
+    "reading/sherlock-engineer-1": (reads("engineer1"),
+                                    dict(app="engineer1", shake="#card", lift=None,
+                                         dragon=["m1"])),
 }
 
 # ---------------------------------------------------------------- machinery

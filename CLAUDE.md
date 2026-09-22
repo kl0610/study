@@ -223,8 +223,21 @@ What gets committed is the questions built from them.
 They extract text with `pypdf` — quote the wording and cite the page from the
 PDF rather than from memory of the original work. Core Classics in particular is
 an abridgement: it cuts and rewords, so the original Doyle is not a safe source.
-Printed page numbers are offset from PDF page indices (in the Sherlock Reader,
-`printed = PDF − 13`); confirm the offset per book against a page you can match.
+Printed page numbers are offset from PDF page indices. Confirm the offset per
+book against a page you can match — and where the book prints its own page
+number, read it rather than counting:
+
+```
+Sherlock Reader   printed = PDF − 12   every page ends "… Page 87"
+CKSci G5 Unit 2   printed = PDF − 5    chapter 2 opens on 11, glossary on 53
+Saxon Course 2    printed = PDF − 21   confirmed at both ends
+CKHG / CKSci SR   printed = PDF − 6
+```
+
+This note said the Sherlock Reader was −13 for a while. It is −12: every page
+of that book carries a printer's mark at the foot giving its own number, and
+the apps built before the correction cite the right pages only because their
+text was located by searching rather than by arithmetic.
 
 **Math is Saxon Course 2, not Course 1.** Course 2 is normally a sixth-grade
 text — this is an accelerated placement, so pitch questions to **the book, not to

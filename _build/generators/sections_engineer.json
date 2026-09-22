@@ -1,0 +1,189 @@
+[
+ {
+  "slug": "sherlock-engineer-1",
+  "title": "The Thumb at the Door",
+  "pages": "87–94",
+  "bigQuestion": "A stranger arrives at Watson’s door before breakfast with his thumb cut off. What does he want, and why does Watson take him to Holmes?",
+  "mission": {
+   "name": "Pages 87 to 94",
+   "tag": "8 questions · about 7 minutes",
+   "blurb": "A quick check that tonight’s reading landed — not a test."
+  },
+  "passages": {
+   "practice": {
+    "title": "Watson, two years on",
+    "cite": "Reader, page 87",
+    "text": [
+     "Of all the problems submitted to Sherlock Holmes, that of Mr. Hatherley’s thumb was so strange as to rank among the more remarkable — even if it gave my friend fewer opportunities for those deductive methods of reasoning by which he achieved such remarkable results.",
+     "It was in the summer of ’89, not long after my marriage, that the events occurred that I am about to summarize. I had returned to my practice and had abandoned Holmes in his Baker Street rooms, although I continually visited him.",
+     "My practice had steadily increased, and as I happened to live close to Paddington Station, I got a few patients from among the officials. One of these, whom I had cured of a painful and lingering disease, was constantly advertising my virtues."
+    ]
+   },
+   "waiting": {
+    "title": "Two men from Paddington",
+    "cite": "Reader, page 88",
+    "text": [
+     "One morning, I was awakened by the maid tapping at the door, announcing that two men had come from Paddington and were waiting in the consulting room. I dressed hurriedly, for I knew by experience that railway cases were seldom trivial, and hastened downstairs.",
+     "“I’ve got him here,” he whispered, jerking his thumb over his shoulder. “He’s all right. I thought I’d bring him round myself; then he couldn’t slip away. There he is, all safe and sound.”",
+     "I entered my consulting-room and found a gentleman seated by the table. Round one of his hands he had a handkerchief wrapped, which was mottled all over with bloodstains. He was young, with a strong face, but he was exceedingly pale and looked like he was suffering from agitation."
+    ]
+   },
+   "card": {
+    "title": "The card, and the laugh",
+    "cite": "Reader, page 89",
+    "text": [
+     "I glanced at it. “Mr. Victor Hatherley, hydraulic engineer, 16A Victoria Street (3rd floor).”",
+     "“I regret that I have kept you waiting,” said I, sitting down. “A night journey is a monotonous occupation.” “My night could not be called monotonous,” said he. He laughed very heartily, with a ringing note, leaning back in his chair and shaking his sides. All my medical instincts rose up against that laugh.",
+     "It was useless, however. He was off in one of those hysterical outbursts that come upon a strong nature when some great crisis is over. Presently he came to himself, very weary and blushing hotly."
+    ]
+   },
+   "thumb": {
+    "title": "Where the thumb used to be",
+    "cite": "Reader, pages 90–91",
+    "text": [
+     "“And now, Doctor, perhaps you would kindly attend to my thumb, or rather to the place where my thumb used to be.” He unwound the handkerchief and held out his hand.",
+     "There were four fingers and a horrid red spongy surface where the thumb should have been. It had been hacked or torn right out from the roots.",
+     "“Yes, it did. I fainted when it was done; and I think I must have been senseless for a long time. When I came to, I found that it was still bleeding, so I tied one end of my handkerchief very tightly round the wrist and braced it up with a twig.” “Excellent! You should have been a surgeon.” “It is a question of hydraulics, you see, and came within my own specialty.”",
+     "“This has been done,” said I, examining the wound, “by a very heavy and sharp instrument.” “A thing like a cleaver,” said he. “An accident, I presume?” “By no means.” “What, a murderous attack!” “Very murderous indeed.”"
+    ]
+   },
+   "baker": {
+    "title": "To Baker Street",
+    "cite": "Reader, pages 92–94",
+    "text": [
+     "“I shall have to tell my tale to the police; but, if it were not for the evidence of this wound, I should be surprised if they believed my story, for it is very extraordinary, and I have not much proof with which to back it up. Even if they believe me, the clues I can give them are so vague that I doubt justice will ever be done.”",
+     "“If it is a problem that you desire to solve, I strongly recommend you come to my friend Mr. Sherlock Holmes before you go to the police.”",
+     "Sherlock Holmes was, as I expected, lounging about his sitting room in his dressing gown. He received us in his quietly genial fashion, ordered eggs, and joined us in a hearty meal. When it was concluded, he settled our new acquaintance upon the sofa and set a glass of brandy within his reach.",
+     "“I am an orphan and a bachelor, residing alone in lodgings in London. By profession I am a hydraulic engineer, with considerable experience during the seven years that I was apprenticed to Venner & Matheson, the well-known firm. Two years ago, having come into a fair sum of money through my poor father’s death, I decided to start in business for myself.”"
+    ]
+   }
+  },
+  "items": [
+   {
+    "type": "pick",
+    "p": "practice",
+    "hi": "I had returned to my practice and had abandoned Holmes in his Baker Street rooms",
+    "q": "By the summer of ’89 Watson is no longer living at Baker Street. Why not?",
+    "opts": [
+     "He had married, and had gone back to his own medical practice",
+     "He had quarrelled with Holmes over the ending of a case",
+     "Holmes had asked him to leave while he worked alone",
+     "He had gone abroad for a year and had only just returned"
+    ],
+    "a": 0,
+    "why": "It was the summer of ’89, not long after Watson’s marriage. He had returned to his practice and left Holmes in the Baker Street rooms — though he says he continually visited him, which is why he can still take a patient round there.",
+    "cite": "Reader, pages 87–94"
+   },
+   {
+    "type": "pick",
+    "p": "practice",
+    "hi": "as I happened to live close to Paddington Station, I got a few patients from among the officials",
+    "q": "Why did Watson have patients who worked for the railway?",
+    "opts": [
+     "He lived close to Paddington Station",
+     "He had once worked as a railway surgeon himself",
+     "The railway company paid him to treat its men",
+     "Holmes had sent the railway officials to him"
+    ],
+    "a": 0,
+    "why": "He lived close to Paddington Station, so he picked up a few patients from among the officials there. One of them, cured of a painful and lingering disease, was constantly advertising Watson’s virtues — which is how a railway guard came to bring Hatherley to his door.",
+    "cite": "Reader, pages 87–94"
+   },
+   {
+    "type": "pick",
+    "p": "waiting",
+    "hi": "I dressed hurriedly, for I knew by experience that railway cases were seldom trivial",
+    "q": "The maid says two men have come from Paddington. Why does Watson dress in a hurry rather than take his time?",
+    "opts": [
+     "He had learnt that railway cases were seldom trivial",
+     "The maid had told him that one of the men was bleeding",
+     "He was expecting Sherlock Holmes to call that morning",
+     "The guard had warned him that the man might slip away"
+    ],
+    "a": 0,
+    "why": "Watson dressed hurriedly because he knew by experience that railway cases were seldom trivial. He had not seen the man or heard anything about him yet — the guard’s remark about slipping away comes later, on the stairs.",
+    "cite": "Reader, pages 87–94"
+   },
+   {
+    "type": "pick",
+    "p": "card",
+    "hi": "Mr. Victor Hatherley, hydraulic engineer, 16A Victoria Street (3rd floor).",
+    "q": "What does the card the visitor left with the maid say he is?",
+    "opts": [
+     "A hydraulic engineer",
+     "A railway guard",
+     "A surgeon",
+     "A watchmaker"
+    ],
+    "a": 0,
+    "why": "The card reads: Mr. Victor Hatherley, hydraulic engineer, 16A Victoria Street (3rd floor). His trade matters twice over in these pages — it is how he explains his own first aid, and it is what the story turns on later.",
+    "cite": "Reader, pages 87–94"
+   },
+   {
+    "type": "pick",
+    "p": "card",
+    "hi": "He was off in one of those hysterical outbursts that come upon a strong nature when some great crisis is over.",
+    "q": "Watson says “A night journey is a monotonous occupation,” and Hatherley laughs until Watson shouts at him to stop. What does Watson say the laughing really was?",
+    "opts": [
+     "A hysterical outburst, after a great crisis",
+     "A sign that he had invented the whole story",
+     "The effect of the brandy Watson had given him",
+     "A joke he had been saving up for the doctor"
+    ],
+    "a": 0,
+    "why": "Watson calls it one of those hysterical outbursts that come upon a strong nature when some great crisis is over — so the laugh is evidence of what he has been through, not of high spirits. The brandy comes afterwards, to bring his colour back.",
+    "cite": "Reader, pages 87–94"
+   },
+   {
+    "type": "pick",
+    "p": "thumb",
+    "hi": [
+     "I tied one end of my handkerchief very tightly round the wrist and braced it up with a twig",
+     "It is a question of hydraulics, you see, and came within my own specialty."
+    ],
+    "q": "Hatherley fainted, and when he came round the wound was still bleeding. What had he done about it by the time he reached Watson?",
+    "opts": [
+     "Tied his handkerchief round the wrist, tightened with a twig",
+     "Held his hand above his head for the whole journey to London",
+     "Packed the wound with cloth torn from his own coat",
+     "Nothing at all, until the railway guard bound it for him"
+    ],
+    "a": 0,
+    "why": "He made a tourniquet: the handkerchief tied tightly round the wrist and braced up with a twig. Watson says he should have been a surgeon, and Hatherley answers that it is a question of hydraulics and came within his own specialty — he solved it as an engineer.",
+    "cite": "Reader, pages 87–94"
+   },
+   {
+    "type": "pick",
+    "p": "thumb",
+    "hi": [
+     "“An accident, I presume?” “By no means.” “What, a murderous attack!” “Very murderous indeed.”"
+    ],
+    "q": "Watson assumes the thumb was lost in an accident. What does Hatherley tell him?",
+    "opts": [
+     "That it was a murderous attack",
+     "That a machine had caught his hand",
+     "That it happened while he was asleep",
+     "That he cannot remember how it happened"
+    ],
+    "a": 0,
+    "why": "“An accident, I presume?” “By no means.” “What, a murderous attack!” “Very murderous indeed.” Watson had already worked out that the wound was made by a very heavy and sharp instrument, and Hatherley names it: a thing like a cleaver.",
+    "cite": "Reader, pages 87–94"
+   },
+   {
+    "type": "pick",
+    "p": "baker",
+    "hi": "the clues I can give them are so vague that I doubt justice will ever be done",
+    "q": "Hatherley means to go to the police as well as to Holmes. What is he afraid the police will not manage?",
+    "opts": [
+     "The clues he can give are too vague for justice to be done",
+     "They will blame him for bringing the injury on himself",
+     "They will stop him from going back to his own work",
+     "They will hand his name straight to the newspapers"
+    ],
+    "a": 0,
+    "why": "Without the wound he doubts they would believe him at all, and even if they do, the clues he can give are so vague that he doubts justice will ever be done. That is the gap Holmes is for — and Holmes settles him on the sofa with brandy and tells him to stop when he is tired.",
+    "cite": "Reader, pages 87–94"
+   }
+  ]
+ }
+]
