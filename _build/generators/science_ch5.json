@@ -22,7 +22,11 @@
    ],
    "a": 0,
    "why": "A mixture is different types of matter mixed together while each type stays unchanged, so it can be separated back into its original parts. You can take a salad apart and get the same ingredients you started with. You cannot take bread apart to get back flour, water and yeast — a chemical change happened in the baking.",
-   "cite": "Student Reader, page 27"
+   "cite": "Student Reader, page 27",
+   "hi": [
+    "When different types of matter mix but each type of matter remains unchanged, it is called a mixture.",
+    "A mixture can be separated back into its original parts."
+   ]
   },
   {
    "type": "match",
@@ -47,7 +51,11 @@
     ]
    ],
    "why": "These four are the chapter's Core Vocabulary, and every question in this review turns on one of them. A mixture keeps its parts; a chemical change makes something new that cannot easily be taken apart again.",
-   "cite": "Core Vocabulary, Student Reader pages 27–31"
+   "cite": "Core Vocabulary, Student Reader pages 27–31",
+   "hi": [
+    "When different types of matter mix but each type of matter remains unchanged, it is called a mixture.",
+    "The result is a chemical change."
+   ]
   },
   {
    "type": "pick",
@@ -61,7 +69,11 @@
    ],
    "a": 0,
    "why": "Water and oxygen in the air interact with the iron to form a new substance, rust. The material in a rusty chain cannot be changed back to iron from rust. We know this is a chemical change because the effect of the change is a new substance with new chemical properties.",
-   "cite": "Student Reader, page 28"
+   "cite": "Student Reader, page 28",
+   "hi": [
+    "Water and oxygen in the air interact with the iron to form a new substance, rust.",
+    "The material in a rusty chain cannot be changed back to iron from rust."
+   ]
   },
   {
    "type": "pick",
@@ -75,7 +87,8 @@
    ],
    "a": 0,
    "why": "A chemical change occurs when two or more types of matter interact to form a new substance that has new properties. That is the test: not heat, not speed, not a change of shape — a new substance.",
-   "cite": "Student Reader, page 28"
+   "cite": "Student Reader, page 28",
+   "hi": "A chemical change occurs when two or more types of matter interact to form a new substance that has new properties."
   },
   {
    "type": "selectall",
@@ -112,7 +125,8 @@
     ]
    ],
    "why": "Because the particles are too small to see, we have to look for evidence: a gas forming, a change of odour, a change of colour, a change of temperature, light, or a precipitate. Breaking something smaller or changing its shape is a physical change — the matter is still the same matter.",
-   "cite": "Student Reader, pages 29–31"
+   "cite": "Student Reader, pages 29–31",
+   "hi": "Since the particles of matter are too small to be seen, we have to look closely for evidence of a chemical change."
   },
   {
    "type": "pick",
@@ -126,7 +140,11 @@
    ],
    "a": 0,
    "why": "Bubbles form when a baker combines yeast and sugar, and the bubbles of gas make bread rise. A change in odour is evidence of a chemical change. Since the odour was not there to start with, we know there was a chemical change.",
-   "cite": "Student Reader, page 29"
+   "cite": "Student Reader, page 29",
+   "hi": [
+    "Another example of gas formation is when a baker combines yeast and sugar.",
+    "A change in odor is evidence of a chemical change."
+   ]
   },
   {
    "type": "pick",
@@ -140,7 +158,11 @@
    ],
    "a": 0,
    "why": "Shiny sterling silver metal changes color when it reacts with the air. The chemical change causes a new substance, commonly called tarnish. The change in properties, the change of color, is evidence that a new substance has formed.",
-   "cite": "Student Reader, page 30"
+   "cite": "Student Reader, page 30",
+   "hi": [
+    "Shiny sterling silver metal also changes color when it reacts with the air.",
+    "The chemical change causes a new substance, commonly called tarnish."
+   ]
   },
   {
    "type": "sort",
@@ -181,12 +203,13 @@
     ]
    ],
    "why": "The question is always whether a new substance has formed. Rust, heat from a match, a firefly's light and a precipitate all say yes. Melting, crushing and wearing down change the form of the matter and leave it the same matter.",
-   "cite": "Student Reader, pages 28–31"
+   "cite": "Student Reader, pages 28–31",
+   "hi": "Since the particles of matter are too small to be seen, we have to look closely for evidence of a chemical change."
   },
   {
    "type": "pick",
    "p": "precipitate",
-   "q": "What does <b>precipitate</b> mean?",
+   "q": "What does precipitate mean?",
    "opts": [
     "A solid formed from a chemical change",
     "A gas released when a liquid is heated",
@@ -195,7 +218,11 @@
    ],
    "a": 0,
    "why": "A precipitate is a solid formed from a chemical change — a solid that forms from the combination of two solutions. The solid is a new type of matter with new properties, and it cannot easily be changed back to its original chemicals.",
-   "cite": "Core Vocabulary, Student Reader page 31"
+   "cite": "Core Vocabulary, Student Reader page 31",
+   "hi": [
+    "A precipitate is a solid that forms from the combination of two solutions.",
+    "The precipitate cannot easily be changed back to its original chemicals."
+   ]
   },
   {
    "type": "pick",
@@ -209,7 +236,11 @@
    ],
    "a": 0,
    "why": "During chemical changes the types of matter change, but just like physical changes the total weight of matter does not change. If you measured the weight of all the chemicals before and after, you would find it is exactly the same. No matter is lost or gained in any chemical change.",
-   "cite": "Student Reader, page 32"
+   "cite": "Student Reader, page 32",
+   "hi": [
+    "You would have data that shows that the weight of all chemicals before and after a chemical change is exactly the same.",
+    "No matter is lost or gained in any chemical change."
+   ]
   },
   {
    "type": "mystery",
@@ -248,7 +279,8 @@
     "Matter is conserved"
    ],
    "why": "Rust cannot be undone, so a new substance formed. A salad comes apart, so nothing new formed. And the weight being unchanged is the rule that holds for every change, chemical or physical: no matter is lost or gained.",
-   "cite": "Student Reader, pages 27–32"
+   "cite": "Student Reader, pages 27–32",
+   "hi": "No matter is lost or gained in any chemical change."
   }
  ],
  "passages": {

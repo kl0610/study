@@ -1,0 +1,185 @@
+{
+ "chapter": "Chapter 5 — Ecosystems",
+ "title": "Ecosystems — Energy and Matter in Ecosystems, Chapter 5",
+ "eyebrow": "CKSci Grade 5 &middot; Energy and Matter in Ecosystems &middot; Chapter 5 &middot; Student Reader pp. 29–34",
+ "h1": "<em>Ecosystems</em>",
+ "bigQuestion": "What is an ecosystem, and what are some different types of ecosystems?",
+ "mission": {
+  "name": "Chapter 5 quiz",
+  "tag": "8 questions · about 7 minutes",
+  "blurb": "A quick check that the chapter landed — not a test."
+ },
+ "items": [
+  {
+   "type": "pick",
+   "p": "what",
+   "hi": "An ecosystem includes all the living and nonliving things that interact in a given area.",
+   "q": "What does the book say an ecosystem is?",
+   "opts": [
+    "All the living and nonliving things that interact in a given area",
+    "All the living things that interact in a given area, but not the nonliving ones",
+    "One geographic area, and the weather that it gets",
+    "The one place a particular kind of animal lives"
+   ],
+   "a": 0,
+   "why": "Living and nonliving, both. Leaving the nonliving things out is the commonest way to get this one wrong — the water, the soil, the sunlight and the shelter are as much part of an ecosystem as the organisms are.",
+   "cite": "Student Reader, page 29"
+  },
+  {
+   "type": "pick",
+   "p": "what",
+   "hi": "An environment is one geographic area.",
+   "q": "How does the book say an ecosystem is different from an environment?",
+   "opts": [
+    "An environment is one geographic area; an ecosystem adds the flow of energy and matter",
+    "An environment holds the living things; an ecosystem holds only the nonliving ones",
+    "An environment is one large area; an ecosystem is always a very small one",
+    "An environment happens naturally; an ecosystem is always made by people"
+   ],
+   "a": 0,
+   "why": "An environment is one geographic area. An ecosystem carries the extra sense of energy and matter flowing through it. Size is no help in telling them apart: an ecosystem can be a whole reef or a moss-covered rock.",
+   "cite": "Student Reader, page 29"
+  },
+  {
+   "type": "pick",
+   "p": "what",
+   "hi": "He found more than 1,200 different kinds of insects living there.",
+   "q": "Terry Erwin counted the kinds of insects living in one single tree. How many different kinds did he find?",
+   "opts": [
+    "More than 1,200",
+    "More than 120",
+    "More than 12,000",
+    "About ninety"
+   ],
+   "a": 0,
+   "why": "More than 1,200 different kinds, in one tree. That tree is an ecosystem in its own right — some of those insects never leave it — and it is also part of the much larger Central American forest ecosystem.",
+   "cite": "Student Reader, page 29"
+  },
+  {
+   "type": "pick",
+   "p": "nonliving",
+   "hi": "Factors such as temperature, rainfall, fog, wind, and sunlight all affect the ecosystem.",
+   "q": "Which of these does the book count as a nonliving part of an ecosystem?",
+   "opts": [
+    "Rainfall",
+    "Decomposers",
+    "Producers",
+    "Bacteria"
+   ],
+   "a": 0,
+   "why": "Rainfall. The nonliving factors the book lists are temperature, rainfall, fog, wind and sunlight, plus soil and shelter. Producers, decomposers and bacteria are all living.",
+   "cite": "Student Reader, page 31"
+  },
+  {
+   "type": "pick",
+   "p": "living",
+   "hi": "Finally, decomposers help break down matter and energy and return it to the earth. This helps new plants grow again.",
+   "q": "What does the book say the decomposers do for an ecosystem?",
+   "opts": [
+    "They break matter down and return it, so new plants can grow",
+    "They make food from sunlight for all the consumers to eat",
+    "They eat the producers before any of the consumers can",
+    "They hold the soil in place and keep it from washing away"
+   ],
+   "a": 0,
+   "why": "Decomposers break matter down and return it to the earth, and that is what helps new plants grow again. It makes the ecosystem a loop rather than a line.",
+   "cite": "Student Reader, page 30"
+  },
+  {
+   "type": "pick",
+   "p": "nonliving",
+   "hi": "The type of soil affects the types of plants that can take root and survive in a place.",
+   "q": "Why does the book say the type of soil matters in an ecosystem?",
+   "opts": [
+    "It changes how much water is held, and so which plants can grow",
+    "It is the material that plants take in to gain their weight",
+    "It decides how much sunlight can reach the producers",
+    "It is where the producers get the glucose they need"
+   ],
+   "a": 0,
+   "why": "Water drains out of sandy soil faster than out of soil with more organic material and clay, and that decides which plants can take root and survive. Plants still do not absorb the soil itself — that was Chapter 3.",
+   "cite": "Student Reader, page 32"
+  },
+  {
+   "type": "pick",
+   "p": "shelter",
+   "hi": "In fact, your own body is an ecosystem that supports millions of other organisms.",
+   "q": "The book gives one surprising example of an ecosystem. Which is it?",
+   "opts": [
+    "A person's mouth",
+    "A rain cloud",
+    "A pile of dry sand",
+    "A sealed glass jar with nothing in it"
+   ],
+   "a": 0,
+   "why": "Your own body is an ecosystem supporting millions of other organisms, and your mouth is an ecosystem for millions of harmless bacteria — it gives them shelter, moisture and food.",
+   "cite": "Student Reader, page 33"
+  },
+  {
+   "type": "pick",
+   "p": "size",
+   "hi": "The thing that large and small ecosystems have in common is that they both contain the things that are necessary for organisms to survive.",
+   "q": "The Great Barrier Reef is 14,300 miles long and a drop of pond water can be an ecosystem too. What does the book say they have in common?",
+   "opts": [
+    "Both hold what the organisms in them need to survive",
+    "Both are home to about the same number of organisms",
+    "Both were made by people rather than happening naturally",
+    "Both contain living things but no nonliving things"
+   ],
+   "a": 0,
+   "why": "Size is not what makes something an ecosystem. What large and small ones share is that each contains what the organisms in it need to survive. Think of three things: a well-defined area, the living things in it, and the nonliving things in it.",
+   "cite": "Student Reader, page 34"
+  }
+ ],
+ "passages": {
+  "what": {
+   "title": "What an ecosystem is",
+   "cite": "Student Reader, page 29",
+   "vocab": [
+    [
+     "ecosystem",
+     "all the living and nonliving things that interact in a given area"
+    ]
+   ],
+   "text": [
+    "A scientist, Terry Erwin, wondered how many insects live in the ecosystem of just one tree. He found more than 1,200 different kinds of insects living there.",
+    "An ecosystem includes all the living and nonliving things that interact in a given area. You can think of an ecosystem as a neighborhood of living things. So, how does the meaning of ecosystem differ from that of the words environment and habitat? An environment is one geographic area. Ecosystems also include a sense of the a flow of energy and matter. Ecosystems vary widely in size. An ecosystem may be as large as a huge lake or as small as a moss-covered rock."
+   ]
+  },
+  "living": {
+   "title": "Ecosystems contain living things",
+   "cite": "Student Reader, page 30",
+   "vocab": [],
+   "text": [
+    "Ecosystems are made up of many kinds of organisms, including producers, consumers, and decomposers. These organisms depend on one another for food and energy. In an ecosystem, producers make energy from the sun. Consumers eat the producers, and some consumers eat other consumers. Finally, decomposers help break down matter and energy and return it to the earth. This helps new plants grow again. A healthy ecosystem has many different types of living things in it."
+   ]
+  },
+  "nonliving": {
+   "title": "Ecosystems contain nonliving things",
+   "cite": "Student Reader, page 31",
+   "vocab": [],
+   "text": [
+    "The living things in an ecosystem also depend on the nonliving environment. Factors such as temperature, rainfall, fog, wind, and sunlight all affect the ecosystem.",
+    "Sunlight and the types of sediment in soil are important nonliving parts of ecosystems. Producers need sunlight to make food. Getting more sunlight means producers can make more food. Different textures of soil may hold water or allow it to drain away more quickly. The type of soil affects the types of plants that can take root and survive in a place."
+   ]
+  },
+  "shelter": {
+   "title": "Shelter, and the body as an ecosystem",
+   "cite": "Student Reader, page 33",
+   "vocab": [],
+   "text": [
+    "Living things need shelter to survive. They may depend on nonliving things such as rocks, burrows in the ground, or shells that their own bodies produce to make their home. Organisms may depend on other living things for shelter, such as a tree branch, a coral reef, or the mouth of an animal. In fact, your own body is an ecosystem that supports millions of other organisms. The human body contains many types of bacteria that are not only harmless, but also helpful to your health."
+   ]
+  },
+  "size": {
+   "title": "Ecosystems vary greatly",
+   "cite": "Student Reader, page 34",
+   "vocab": [],
+   "text": [
+    "Ecosystems can be any size. They can span from the very small, such as a small pond, to the very large, such as miles and miles of deep ocean. The Great Barrier Reef, in eastern Australia, is an ecosystem that is 14,300 miles (23,000 kilometers) long. An aquarium is an example of an artificial ecosystem that is very small. Even a single drop of pond water can be an ecosystem.",
+    "The thing that large and small ecosystems have in common is that they both contain the things that are necessary for organisms to survive. When you think of the word ecosystem, think of three things: a welldefined area, all the living things in it, and all the nonliving things that are a part of it."
+   ]
+  }
+ },
+ "videos": []
+}

@@ -1,0 +1,189 @@
+{
+ "chapter": "Chapter 6 — Food Chains and Food Webs",
+ "title": "Food Chains and Food Webs — Energy and Matter in Ecosystems, Chapter 6",
+ "eyebrow": "CKSci Grade 5 &middot; Energy and Matter in Ecosystems &middot; Chapter 6 &middot; Student Reader pp. 35–40",
+ "h1": "Food Chains and <em>Food Webs</em>",
+ "bigQuestion": "What are food chains and food webs?",
+ "mission": {
+  "name": "Chapter 6 quiz",
+  "tag": "8 questions · about 7 minutes",
+  "blurb": "A quick check that the chapter landed — not a test."
+ },
+ "items": [
+  {
+   "type": "pick",
+   "p": "chain",
+   "hi": "A food chain is a series of organisms listed in a way that shows which is a food source for another.",
+   "q": "What does the book say a food chain is?",
+   "opts": [
+    "A series of organisms showing which is food for another",
+    "All the living and nonliving things in one given area",
+    "A list of everything that one animal eats in a single day",
+    "The order in which the animals in an ecosystem die off"
+   ],
+   "a": 0,
+   "why": "A food chain is a series of organisms set out to show which one is food for the next, and it shows energy flowing through an ecosystem. Each organism is a link that passes energy and matter along.",
+   "cite": "Student Reader, page 35"
+  },
+  {
+   "type": "pick",
+   "p": "web",
+   "hi": "A food web is multiple connected food chains in an ecosystem.",
+   "q": "What does the book say a food web is?",
+   "opts": [
+    "Multiple connected food chains in an ecosystem",
+    "A food chain drawn with arrows instead of words",
+    "The food chain of the largest animal in an ecosystem",
+    "All the producers in one ecosystem"
+   ],
+   "a": 0,
+   "why": "A food web is multiple food chains connected together. Consumers and decomposers can get food from several sources, so the chains overlap and join up.",
+   "cite": "Student Reader, page 36"
+  },
+  {
+   "type": "pick",
+   "p": "web",
+   "hi": [
+    "ecosystems contain many food chains that connect in many ways",
+    "A food web is multiple connected food chains in an ecosystem."
+   ],
+   "q": "What is the difference between a food chain and a food web?",
+   "opts": [
+    "A chain is one path; a web is many chains joined together",
+    "A chain is used in water and a web is used on the land",
+    "A chain shows the producers and a web shows only the consumers",
+    "A chain is drawn with arrows and a web is drawn without them"
+   ],
+   "a": 0,
+   "why": "One path against many joined paths. If a corn plant is eaten by more than one consumer it is part of more than one chain at once, and that is what makes a web. Both use arrows, and both can describe anywhere.",
+   "cite": "Student Reader, page 36"
+  },
+  {
+   "type": "pick",
+   "p": "web",
+   "hi": "The arrows in the food web diagram point from the organism that is the food source toward the organism that eats each food.",
+   "q": "In a food web diagram, which way round do the arrows point?",
+   "opts": [
+    "From the food towards whatever eats it",
+    "From the eater towards what it eats",
+    "From the biggest animal down to the smallest",
+    "From the top consumer back to the sun"
+   ],
+   "a": 0,
+   "why": "Arrows point from the food source towards the organism that eats it — in other words, the arrow follows the energy. Getting this backwards turns every reading of the diagram inside out.",
+   "cite": "Student Reader, page 36"
+  },
+  {
+   "type": "pick",
+   "p": "web",
+   "hi": "Animals that have no arrow pointing away from them are the top consumers.",
+   "q": "How can you spot a top consumer in a food web?",
+   "opts": [
+    "No arrow points away from it, because nothing eats it",
+    "No arrow points towards it, because it eats nothing",
+    "It is the largest organism drawn",
+    "It is joined to every other organism"
+   ],
+   "a": 0,
+   "why": "Animals with no arrow pointing away from them are the top consumers: nothing eats them. They are usually drawn at the top and are often predators.",
+   "cite": "Student Reader, page 36"
+  },
+  {
+   "type": "pick",
+   "p": "chain",
+   "hi": "The food chain for any organism begins with the producer, which gets energy from the sun.",
+   "q": "What does every food chain begin with?",
+   "opts": [
+    "A producer",
+    "A herbivore",
+    "A decomposer",
+    "A top consumer"
+   ],
+   "a": 0,
+   "why": "Every food chain begins with the producer, which gets its energy from the sun. And a producer only becomes part of a chain once a consumer eats it.",
+   "cite": "Student Reader, page 35"
+  },
+  {
+   "type": "pick",
+   "p": "predict",
+   "hi": [
+    "With fewer otters, there would likely be more sea urchins.",
+    "This means more sea urchins would eat more kelp. As a result, the kelp forest would be smaller."
+   ],
+   "q": "Otters eat sea urchins, and sea urchins eat kelp. The book asks what would happen if there were fewer otters. What does it say?",
+   "opts": [
+    "More sea urchins, and a smaller kelp forest",
+    "Fewer sea urchins, and a bigger kelp forest",
+    "More sea urchins, and a bigger kelp forest",
+    "No change, because otters do not eat kelp"
+   ],
+   "a": 0,
+   "why": "Fewer otters means fewer urchins eaten, so more urchins. More urchins eat more kelp, so the kelp forest gets smaller — and the other animals that depend on the kelp forest are affected too, even though none of them ever met an otter. That is what a food web is for.",
+   "cite": "Student Reader, page 40"
+  },
+  {
+   "type": "pick",
+   "p": "trace",
+   "hi": "Tracing the path of the arrows backward in a food chain or web will lead to the producer.",
+   "q": "Follow the arrows in any food chain backwards, as far as they go. Where do you end up?",
+   "opts": [
+    "At a producer, whose energy came from the sun",
+    "At a decomposer, which returns the matter to the soil",
+    "At a top consumer, which nothing eats",
+    "At the soil the producer grew in"
+   ],
+   "a": 0,
+   "why": "Tracing the arrows backwards leads to the producer, and the energy in every common ecosystem traces back from there to the sun. Kelp to sea urchin to sea otter, run in reverse, ends at the kelp and then at sunlight.",
+   "cite": "Student Reader, page 38"
+  }
+ ],
+ "passages": {
+  "chain": {
+   "title": "Food chains",
+   "cite": "Student Reader, page 35",
+   "vocab": [
+    [
+     "food chain",
+     "a series of organisms listed in a way that shows which is a food source for another"
+    ]
+   ],
+   "text": [
+    "All living organisms are part of a food chain. A food chain is a series of organisms listed in a way that shows which is a food source for another. It shows a flow of energy through an ecosystem. It is called a food chain because each organism serves as an important link for transferring energy and matter.",
+    "The food chain for any organism begins with the producer, which gets energy from the sun. A producer then is food for a consumer. In this example, the first consumer is the mouse that eats the corn. The nextlevel consumer is the eagle that eats the mouse."
+   ]
+  },
+  "web": {
+   "title": "A food web shows related food chains",
+   "cite": "Student Reader, page 36",
+   "vocab": [
+    [
+     "food web",
+     "multiple connected food chains in an ecosystem"
+    ]
+   ],
+   "text": [
+    "Within an ecosystem, consumers and decomposers can get food from several sources. So, ecosystems contain many food chains that connect in many ways. Sometimes the food chains overlap. A food web is multiple connected food chains in an ecosystem.",
+    "The arrows in the food web diagram point from the organism that is the food source toward the organism that eats each food. Animals that have no arrow pointing away from them are the top consumers. This means that there is nothing that eats them. The top consumers are usually found at the top of a food web, and they are often predators."
+   ]
+  },
+  "trace": {
+   "title": "Following the matter and the energy",
+   "cite": "Student Reader, page 38",
+   "vocab": [],
+   "text": [
+    "Each food chain or web starts with the glucose and other chemicals in a producer. The producer must be eaten by a consumer to be part of a food chain. The movement of the matter—and its stored chemical energy—can be traced by following the arrow from one organism in the chain to the next.",
+    "Kelp are large brown algae that perform photosynthesis, so they are producers. Energy from the sun passes to the kelp. Matter, in the form of glucose and other chemicals, passes from the kelp to the sea urchin. Food material, and the energy stored in it, passes from the sea urchin to the sea otter. Energy in every common ecosystem can be traced back to the sun. Tracing the path of the arrows backward in a food chain or web will lead to the producer."
+   ]
+  },
+  "predict": {
+   "title": "What a food web can tell you",
+   "cite": "Student Reader, page 40",
+   "vocab": [],
+   "text": [
+    "Food chains and food webs can help people understand relationships between living things in an ecosystem. A food web can help you see which organisms depend on which organisms for food and survival.",
+    "With fewer otters, there would likely be more sea urchins. This is because otters eat sea urchins. Without otters, sea urchins would not be eaten. This means more sea urchins would eat more kelp. As a result, the kelp forest would be smaller. Other animals besides sea urchins depend on kelp forests to live in and to get food."
+   ]
+  }
+ },
+ "videos": []
+}

@@ -1,0 +1,179 @@
+{
+ "chapter": "Chapter 2 — Living Things Use Energy",
+ "title": "Living Things Use Energy — Energy and Matter in Ecosystems, Chapter 2",
+ "eyebrow": "CKSci Grade 5 &middot; Energy and Matter in Ecosystems &middot; Chapter 2 &middot; Student Reader pp. 11–14",
+ "h1": "Living Things <em>Use Energy</em>",
+ "bigQuestion": "How do organisms use energy that originally comes from the sun?",
+ "mission": {
+  "name": "Chapter 2 quiz",
+  "tag": "7 questions · about 6 minutes",
+  "blurb": "A quick check that the chapter landed — not a test."
+ },
+ "items": [
+  {
+   "type": "pick",
+   "p": "sugar",
+   "hi": "The materials called carbohydrates become sugars, from which the body gets energy.",
+   "q": "The book says a sugar is which of these?",
+   "opts": [
+    "A carbohydrate living things break down to get energy",
+    "A mineral the body stores in its bones for later",
+    "A gas that plants release into the air as waste",
+    "A protein the body uses to repair its damaged cells"
+   ],
+   "a": 0,
+   "why": "A sugar is a carbohydrate that living things break down to get energy. Carbohydrate, protein, fat, vitamins and minerals are all things food breaks down into — sugar is the carbohydrate one.",
+   "cite": "Student Reader, page 11"
+  },
+  {
+   "type": "pick",
+   "p": "sugar",
+   "hi": "Food is broken down into carbohydrates, protein, fat, vitamins, and minerals.",
+   "q": "Food breaks down into carbohydrates, protein, fat, vitamins and minerals. What does the book say the carbohydrates become?",
+   "opts": [
+    "Sugars, which the body gets its energy from",
+    "Minerals, which the body stores in its bones",
+    "Oxygen, which the blood carries around the body",
+    "Starch, which the body cannot break down"
+   ],
+   "a": 0,
+   "why": "Carbohydrates become sugars, and that is where the body gets energy. The word carbohydrate even carries parts of the words carbon and hydrogen, which is what sugars are made of — along with oxygen.",
+   "cite": "Student Reader, page 11"
+  },
+  {
+   "type": "pick",
+   "p": "photo",
+   "hi": "Photosynthesis occurs when plants combine carbon dioxide and water with energy from sunlight to make glucose and oxygen.",
+   "q": "In photosynthesis, what do plants put together to make glucose and oxygen?",
+   "opts": [
+    "Carbon dioxide and water, using energy from sunlight",
+    "Glucose and oxygen, using energy from sunlight",
+    "Oxygen and water, using energy from the soil",
+    "Carbon dioxide and soil, using energy from water"
+   ],
+   "a": 0,
+   "why": "Carbon dioxide and water, with energy from sunlight, make glucose and oxygen. Glucose and oxygen are what come out, not what goes in — that is the easy one to get backwards.",
+   "cite": "Student Reader, page 12"
+  },
+  {
+   "type": "pick",
+   "p": "photo",
+   "hi": "that light energy is transformed into the energy of the sugar glucose",
+   "q": "What does the book say glucose is?",
+   "opts": [
+    "A form of sugar plants make by photosynthesis",
+    "The green chemical in a plant's leaves",
+    "A gas plants take in through their leaves",
+    "The stored form of starch in a plant's roots"
+   ],
+   "a": 0,
+   "why": "Glucose is a form of sugar made by plants through photosynthesis. The green chemical is chlorophyll. And it is the other way round with starch: glucose is the sugar, and starch is often how the plant stores what it does not use.",
+   "cite": "Student Reader, page 12"
+  },
+  {
+   "type": "pick",
+   "p": "photo",
+   "hi": "The rest of the energy is stored in the producer, often as starch.",
+   "q": "A producer uses some of the energy it makes to stay alive. Where does the book say the rest of it goes?",
+   "opts": [
+    "It is stored in the producer, often as starch",
+    "It is released into the air as oxygen straight away",
+    "It is passed straight on to the nearest consumer",
+    "It is lost as heat and cannot be used at all"
+   ],
+   "a": 0,
+   "why": "The rest is stored in the producer, often as starch. That store is what a consumer gets at when it eats the plant.",
+   "cite": "Student Reader, page 12"
+  },
+  {
+   "type": "pick",
+   "p": "moving",
+   "hi": "Energy stored by the plant is passed from organism to organism.",
+   "q": "A cow eats grass, and people eat beef. Where did the energy in the beef start out?",
+   "opts": [
+    "In sunlight, which the grass turned into glucose",
+    "In the soil, which the grass took up through its roots",
+    "In the cow, which made its own food as it grew",
+    "In the water the grass was given"
+   ],
+   "a": 0,
+   "why": "All of the energy of life starts with the sun. Sunlight became glucose in the grass, the glucose became energy in the cow, and the cow became food for us. Energy stored by the plant is passed from organism to organism.",
+   "cite": "Student Reader, page 13"
+  },
+  {
+   "type": "pick",
+   "p": "metabolism",
+   "hi": [
+    "This ongoing energy use is known as metabolism.",
+    "They need to consume more than twice their body weight of food every day to stay alive."
+   ],
+   "q": "A hummingbird's metabolism is about a hundred times faster than an elephant's, and some snakes can go a year without eating. What does a fast metabolism mean?",
+   "opts": [
+    "Energy is released and used quickly, so it must eat far more often",
+    "The animal stores far more energy, so it can go much longer without food",
+    "The animal makes its own food instead of eating other living things",
+    "The animal grows more quickly but eats exactly the same amount"
+   ],
+   "a": 0,
+   "why": "Metabolism is the ongoing chemical reactions that release and use energy. Fast means the energy goes quickly: a hummingbird eats more than twice its own body weight every day and stores only enough to get through one night. A snake's metabolism is very slow, so it can last over a year.",
+   "cite": "Student Reader, page 14"
+  }
+ ],
+ "passages": {
+  "sugar": {
+   "title": "Sugar",
+   "cite": "Student Reader, page 11",
+   "vocab": [
+    [
+     "sugar",
+     "a carbohydrate that living things break down to get energy"
+    ]
+   ],
+   "text": [
+    "What happens to food after you chew and swallow it? It is broken down into nutrients that your body can take in for nutrition. Food is broken down into carbohydrates, protein, fat, vitamins, and minerals. The materials called carbohydrates become sugars, from which the body gets energy. Sugars exist in many chemical forms, such as glucose, sucrose, and fructose."
+   ]
+  },
+  "photo": {
+   "title": "Making and storing energy",
+   "cite": "Student Reader, page 12",
+   "vocab": [
+    [
+     "glucose",
+     "a form of sugar made by plants through the process of photosynthesis"
+    ],
+    [
+     "photosynthesis",
+     "the process used by producers to make glucose and oxygen from sunlight, water, and carbon dioxide"
+    ]
+   ],
+   "text": [
+    "Sunlight strikes the leaves of plants, and that light energy is transformed into the energy of the sugar glucose—the chemical energy of life.",
+    "Plants are producers that make food using the process of photosynthesis. Photosynthesis occurs when plants combine carbon dioxide and water with energy from sunlight to make glucose and oxygen. The transformation of sunlight into the chemical energy of glucose takes place most often in the leaves of plants. Some of this energy is used by producers to live. The rest of the energy is stored in the producer, often as starch."
+   ]
+  },
+  "moving": {
+   "title": "Moving stored energy among organisms",
+   "cite": "Student Reader, page 13",
+   "vocab": [],
+   "text": [
+    "Consumers get glucose when they eat producers or organisms that have eaten producers. A plant, such as grass, makes chemical energy from sunlight. A cow eats grass and uses the energy to grow. We eat beef and get some of the energy we need to grow. Energy stored by the plant is passed from organism to organism.",
+    "Inside living cells, oxygen and glucose undergo a chemical reaction. The process releases energy and carbon dioxide."
+   ]
+  },
+  "metabolism": {
+   "title": "Metabolism releases energy",
+   "cite": "Student Reader, page 14",
+   "vocab": [
+    [
+     "metabolism",
+     "the continuing chemical reactions in living things that release and use energy"
+    ]
+   ],
+   "text": [
+    "Chemical reactions are always happening inside living things. This ongoing energy use is known as metabolism. Different living things use energy to support their life processes at different rates.",
+    "The hummingbird has the fastest metabolism of all animals, about 100 times faster than that of an elephant! Tiny hummingbirds fly from flower to flower all day collecting nectar for food. They need to consume more than twice their body weight of food every day to stay alive. In contrast, many snakes can survive for over a year without eating. These animals use very little chemical energy to keep their bodies warm, and their metabolisms are very slow."
+   ]
+  }
+ },
+ "videos": []
+}

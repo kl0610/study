@@ -158,6 +158,16 @@ def sci6(s):
     return Patcher(s, "science6")
 
 
+# Book 2 of the grade's science, Energy and Matter in Ecosystems: eight chapters
+# with one quiz each. Generated from Chapter 4 of the matter unit's shell, so
+# their call sites came across already patched. Config only, all eight.
+def eco(n):
+    def go(s):
+        return Patcher(s, "eco%d" % n)
+    go.__name__ = "eco%d" % n
+    return go
+
+
 def recite2(s):
     """The Eagle — the second poem, built from the first one's shell with its own
     pictures. Config only, like every generated app."""
@@ -453,6 +463,22 @@ APPS = {
     "science/g5-matter-ch5":  (sci5,  dict(app="science5",   shake="#card",   lift=None,
                                            dragon=["m1"])),
     "science/g5-matter-ch6":  (sci6,  dict(app="science6",   shake="#card",   lift=None,
+                                           dragon=["m1"])),
+    "science/g5-eco-ch1":     (eco(1), dict(app="eco1", shake="#card", lift=None,
+                                           dragon=["m1"])),
+    "science/g5-eco-ch2":     (eco(2), dict(app="eco2", shake="#card", lift=None,
+                                           dragon=["m1"])),
+    "science/g5-eco-ch3":     (eco(3), dict(app="eco3", shake="#card", lift=None,
+                                           dragon=["m1"])),
+    "science/g5-eco-ch4":     (eco(4), dict(app="eco4", shake="#card", lift=None,
+                                           dragon=["m1"])),
+    "science/g5-eco-ch5":     (eco(5), dict(app="eco5", shake="#card", lift=None,
+                                           dragon=["m1"])),
+    "science/g5-eco-ch6":     (eco(6), dict(app="eco6", shake="#card", lift=None,
+                                           dragon=["m1"])),
+    "science/g5-eco-ch7":     (eco(7), dict(app="eco7", shake="#card", lift=None,
+                                           dragon=["m1"])),
+    "science/g5-eco-ch8":     (eco(8), dict(app="eco8", shake="#card", lift=None,
                                            dragon=["m1"])),
     # The Inca half of the unit. Same shell as the Maya and Aztec chapters, and
     # the dragon sits on the last set of each, where it does for those too.

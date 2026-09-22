@@ -1,0 +1,207 @@
+{
+ "chapter": "Chapter 3 — What Plants Need",
+ "title": "What Plants Need — Energy and Matter in Ecosystems, Chapter 3",
+ "eyebrow": "CKSci Grade 5 &middot; Energy and Matter in Ecosystems &middot; Chapter 3 &middot; Student Reader pp. 15–22",
+ "h1": "What Plants <em>Need</em>",
+ "bigQuestion": "Where do plants get the materials they need for growth?",
+ "mission": {
+  "name": "Chapter 3 quiz",
+  "tag": "9 questions · about 8 minutes",
+  "blurb": "A quick check that the chapter landed — not a test."
+ },
+ "items": [
+  {
+   "type": "pick",
+   "p": "helmont",
+   "hi": "His experiments showed that the plant weighed a lot more after growing for several years but that the weight of the soil remained the same.",
+   "q": "Jan van Helmont weighed a plant, and the soil it grew in, over several years. What did he find?",
+   "opts": [
+    "The plant weighed much more, and the soil weighed the same",
+    "The plant weighed much more, and the soil weighed much less",
+    "Both the plant and the soil weighed much more",
+    "The plant weighed the same, and the soil weighed less"
+   ],
+   "a": 0,
+   "why": "The plant gained a great deal of weight while the soil stayed the same. That is the whole point of the experiment: if the new material had come out of the soil, the soil would have got lighter, and it did not.",
+   "cite": "Student Reader, page 20"
+  },
+  {
+   "type": "pick",
+   "p": "helmont",
+   "hi": "He explained that plants increase in weight from the matter they take in from air.",
+   "q": "Van Helmont's plant gained weight without using up the soil. Where did he say the new material came from?",
+   "opts": [
+    "Matter the plant took in from the air",
+    "The soil the plant had been growing in",
+    "The sunlight the plant absorbed through its leaves",
+    "The pot the plant had been growing in"
+   ],
+   "a": 0,
+   "why": "He explained that plants increase in weight from the matter they take in from air. Sunlight is the odd one out of these: it is energy, not matter, so it cannot add weight to anything.",
+   "cite": "Student Reader, page 20"
+  },
+  {
+   "type": "pick",
+   "p": "helmont",
+   "hi": "Some farmers grow plants without soil. This is called hydroponics.",
+   "q": "What does the book say hydroponics is?",
+   "opts": [
+    "Growing plants without soil",
+    "Growing plants without sunlight",
+    "Growing plants only in a greenhouse",
+    "Watering plants from underneath"
+   ],
+   "a": 0,
+   "why": "Hydroponics is growing plants without soil — the word part hydro means water. The plants get sunlight and water with nutrients added, which is exactly what van Helmont's result predicts you could get away with.",
+   "cite": "Student Reader, page 20"
+  },
+  {
+   "type": "pick",
+   "p": "helmont",
+   "hi": "They use nutrients from the soil that dissolve in water, but they do not absorb the soil.",
+   "q": "Plants do not absorb soil. So what does the book say they do take from it?",
+   "opts": [
+    "Nutrients that dissolve in the water",
+    "The soil itself, which becomes part of the plant",
+    "Glucose made by other plants nearby",
+    "The oxygen they need to make their food"
+   ],
+   "a": 0,
+   "why": "They use nutrients from the soil that dissolve in water, but they do not absorb the soil. That is why hydroponic farming works: put those nutrients in the water and the soil is not needed.",
+   "cite": "Student Reader, page 20"
+  },
+  {
+   "type": "pick",
+   "p": "sunlight",
+   "hi": "It is the energy source plants use to start the chemical reaction to make glucose.",
+   "q": "The book says sunlight is not an ingredient in a plant's food. What does it say sunlight is instead?",
+   "opts": [
+    "The energy source that starts the reaction that makes glucose",
+    "One of the materials that the glucose is actually built out of",
+    "The waste product left over at the end of photosynthesis",
+    "What the plant stores away for use on cloudy days"
+   ],
+   "a": 0,
+   "why": "Sunlight is the energy source that starts the chemical reaction, not one of the ingredients. The ingredients are water and carbon dioxide. With too little sunlight the plant cannot finish the reaction, so it makes too little sugar and does not grow well.",
+   "cite": "Student Reader, page 16"
+  },
+  {
+   "type": "pick",
+   "p": "sunlight",
+   "hi": "The cells on the side of the stem that are not getting sunlight stretch out.",
+   "q": "A plant on a windowsill bends towards the window. What does the book say makes the stem bend?",
+   "opts": [
+    "The cells on the shaded side stretch out",
+    "The cells on the sunny side stretch out",
+    "The roots grow towards the light and pull the stem over",
+    "The leaves get heavier on the sunny side"
+   ],
+   "a": 0,
+   "why": "The cells on the side that is not getting sunlight stretch out, and that pushes the stem over so more leaves end up in direct sunlight. Plants are not as motionless as they look.",
+   "cite": "Student Reader, page 17"
+  },
+  {
+   "type": "pick",
+   "p": "water",
+   "hi": "The process by which water vapor is released by plants is called transpiration.",
+   "q": "What does the book say transpiration is?",
+   "opts": [
+    "The release of water vapour through tiny openings in leaves",
+    "The soaking up of water from the soil by a plant's roots",
+    "The movement of water from the roots up into the leaves",
+    "The use of water as one ingredient in photosynthesis"
+   ],
+   "a": 0,
+   "why": "Transpiration is water vapour going out through the tiny openings in the leaves. Put a plastic bag over a plant on a sunny day and the droplets that collect in it are transpiration. The other three are all real, but they are water going in or up, not out.",
+   "cite": "Student Reader, page 18"
+  },
+  {
+   "type": "pick",
+   "p": "air",
+   "hi": "When plants let air into their leaves, they use the carbon dioxide. They release oxygen as waste.",
+   "q": "Animals breathe in oxygen and breathe out carbon dioxide. What does the book say plants do with the air in their leaves?",
+   "opts": [
+    "They use the carbon dioxide and release oxygen",
+    "They use the oxygen and release carbon dioxide",
+    "They use both the oxygen and the carbon dioxide",
+    "They release both oxygen and carbon dioxide"
+   ],
+   "a": 0,
+   "why": "Plants take in carbon dioxide and let out oxygen — the opposite way round from an animal breathing. The plant uses the carbon dioxide to make food, and the oxygen is what is left over.",
+   "cite": "Student Reader, page 19"
+  },
+  {
+   "type": "pick",
+   "p": "important",
+   "hi": "Almost one-fourth of all medicines come from plants.",
+   "q": "About what share of all medicines does the book say comes from plants?",
+   "opts": [
+    "Almost one-fourth",
+    "Almost one-half",
+    "Almost three-fourths",
+    "Almost none"
+   ],
+   "a": 0,
+   "why": "Almost one-fourth of all medicines come from plants. Aspirin comes from the bark of a type of willow tree, and many of the ingredients in vitamins come from plants as well.",
+   "cite": "Student Reader, page 21"
+  }
+ ],
+ "passages": {
+  "helmont": {
+   "title": "Investigating the weight of plants",
+   "cite": "Student Reader, page 20",
+   "vocab": [
+    [
+     "hydroponics",
+     "the practice of growing plants without soil"
+    ]
+   ],
+   "text": [
+    "Jan van Helmont, a Dutch scientist, did a famous plant investigation almost 400 years ago. He measured the weight of a plant and the weight of the soil it grew in. His experiments showed that the plant weighed a lot more after growing for several years but that the weight of the soil remained the same. What did this mean? Plants do not increase in weight by taking in the soil. He explained that plants increase in weight from the matter they take in from air.",
+    "Plants do not need soil to live. They use nutrients from the soil that dissolve in water, but they do not absorb the soil. Some farmers grow plants without soil. This is called hydroponics. The word part hydro means water. In this kind of farming, plants grow with only sunlight and water with added nutrients."
+   ]
+  },
+  "sunlight": {
+   "title": "Plants need sunlight",
+   "cite": "Student Reader, page 16",
+   "vocab": [],
+   "text": [
+    "Though some plants can survive in shadier places, all plants need sunlight to live. Plants use sunlight to make glucose, their food. Sunlight is not a food ingredient, however. It is the energy source plants use to start the chemical reaction to make glucose. If a plant does not absorb enough sunlight, it cannot complete the chemical process to make sugar. With too little sugar, the plant does not grow well.",
+    "Plants must have sunlight to survive, so they can change positions to help them absorb the most sunlight possible. You may have seen a plant near a window bending toward the sun. The cells on the side of the stem that are not getting sunlight stretch out. This makes the plant stem bend so that more of the plants leaves are positioned in direct sunlight."
+   ]
+  },
+  "water": {
+   "title": "Plants need water",
+   "cite": "Student Reader, page 18",
+   "vocab": [
+    [
+     "transpiration",
+     "the release of water vapor through tiny openings in plants’ leaves"
+    ]
+   ],
+   "text": [
+    "Most plants soak up water from soil with their roots. Water absorbed by roots travels upward into the stem. From the stem, it moves into the leaves. In the leaves, water is one of the materials for photosynthesis.",
+    "Plants also sometimes release water. On a sunny day, put a plastic bag over a plant. Before long, tiny water droplets will collect in the bag. The process by which water vapor is released by plants is called transpiration."
+   ]
+  },
+  "air": {
+   "title": "Plants need air",
+   "cite": "Student Reader, page 19",
+   "vocab": [],
+   "text": [
+    "Leaves have many tiny, microscopic holes. These holes open to let air in and out. Importantly, plants take in carbon dioxide through these small openings. They release oxygen too. Plants use the carbon dioxide to help them make food. Oxygen is one result of the process. When animals breathe in air, they use the oxygen. They breathe out carbon dioxide as waste. When plants let air into their leaves, they use the carbon dioxide. They release oxygen as waste."
+   ]
+  },
+  "important": {
+   "title": "Plants are important to all life on Earth",
+   "cite": "Student Reader, page 21",
+   "vocab": [],
+   "text": [
+    "Plants are the basis for all animals’ food. Every food you eat either came from a plant or from something that ate plants.",
+    "Plants prevent erosion. Plants hold soil down with their roots. This keeps soil from blowing away. It also keeps it from washing away.",
+    "Plants provide medicine. People get medicine from some kinds of plants. Almost one-fourth of all medicines come from plants."
+   ]
+  }
+ },
+ "videos": []
+}

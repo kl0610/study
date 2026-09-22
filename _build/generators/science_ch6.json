@@ -13,7 +13,7 @@
   {
    "type": "pick",
    "p": "chemistry",
-   "q": "What does the book say <b>chemistry</b> is the science of?",
+   "q": "What does the book say chemistry is the science of?",
    "opts": [
     "What matter is made of and how matter changes",
     "How living things grow, feed and reproduce",
@@ -22,12 +22,13 @@
    ],
    "a": 0,
    "why": "Chemistry is the science of what matter is made of and how matter changes. And no one person thought it up — the ideas were shared and built on, from the ancient Greeks to today.",
-   "cite": "Student Reader, page 33"
+   "cite": "Student Reader, page 33",
+   "hi": "Chemistry is the science of what matter is made of and how matter changes."
   },
   {
    "type": "pick",
    "p": "chemistry",
-   "q": "Democritus and Leucippus built the word <b>atom</b> out of two Greek pieces. What did they mean by it?",
+   "q": "Democritus and Leucippus built the word atom out of two Greek pieces. What did they mean by it?",
    "opts": [
     "Not to cut — a particle that cannot be cut smaller",
     "Not to see — a particle too small for any eye",
@@ -36,7 +37,11 @@
    ],
    "a": 0,
    "why": "The Greek prefix a- means “not,” and temnein means “to cut.” Put them together and you get atomos — “not to cut.” Atoms became the new word for particles that could not be cut any smaller.",
-   "cite": "Student Reader, page 33"
+   "cite": "Student Reader, page 33",
+   "hi": [
+    "The Greek prefix a- means “not,” and temnein means “to cut.”",
+    "Atomos means “not to cut.”"
+   ]
   },
   {
    "type": "pick",
@@ -50,12 +55,16 @@
    ],
    "a": 0,
    "why": "The Greeks did not use a scientific process for examining ideas for supporting evidence — they did not determine whether their ideas were true or false. Dalton, unlike them, studied evidence from chemical reactions. It took about two thousand years before there was evidence to support the atomic theory.",
-   "cite": "Student Reader, page 34"
+   "cite": "Student Reader, page 34",
+   "hi": [
+    "They did not use a scientific process for examining ideas for supporting evidence.",
+    "Unlike the ancient Greeks, he studied evidence from chemical reactions."
+   ]
   },
   {
    "type": "pick",
    "p": "dalton",
-   "q": "What did Dalton <em>add</em> to Democritus’s idea?",
+   "q": "What did Dalton add to Democritus’s idea?",
    "opts": [
     "Some atoms are alike and some are different",
     "Atoms can be cut into still smaller pieces",
@@ -64,7 +73,8 @@
    ],
    "a": 0,
    "why": "Dalton's atomic theory was built upon the ideas of Democritus: that atoms are tiny particles that cannot be further cut. But Dalton added to this idea. Dalton said that some atoms are alike and some are different, and that when atoms join, they make up different types of matter.",
-   "cite": "Student Reader, page 34"
+   "cite": "Student Reader, page 34",
+   "hi": "Dalton said that some atoms are alike and some are different."
   },
   {
    "type": "match",
@@ -93,7 +103,11 @@
     ]
    ],
    "why": "These five are the chapter's Core Vocabulary. Everything else in the chapter is built out of them: atoms are the pieces, an element is matter made of one kind of piece, a bond is what holds pieces together, and a molecule is what you get when they are held together.",
-   "cite": "Core Vocabulary, Student Reader pages 33–36"
+   "cite": "Core Vocabulary, Student Reader pages 33–36",
+   "hi": [
+    "A chemical bond is a connection that holds atoms together.",
+    "a substance made of one or more kinds of atoms joined together by chemical bonds"
+   ]
   },
   {
    "type": "pick",
@@ -107,7 +121,8 @@
    ],
    "a": 0,
    "why": "When all the atoms in matter are the same, the matter is called an element. All of the glowing gas in a neon sign is made of one kind of atom — neon. In the same way, every atom in a gold nugget is an atom of the element gold.",
-   "cite": "Student Reader, page 35"
+   "cite": "Student Reader, page 35",
+   "hi": "When all the atoms in matter are the same, the matter is called an element."
   },
   {
    "type": "pick",
@@ -121,7 +136,11 @@
    ],
    "a": 0,
    "why": "When one or more kinds of atoms form chemical bonds with other atoms, they form molecules. Two hydrogen atoms often join with one oxygen atom — and when this happens, you get a molecule of a substance you use every day. Water. It is not an element, because the atoms are not all the same kind.",
-   "cite": "Student Reader, page 36"
+   "cite": "Student Reader, page 36",
+   "hi": [
+    "Two hydrogen atoms often join with one oxygen atom.",
+    "When this happens, you get a molecule of a substance you use every day."
+   ]
   },
   {
    "type": "sort",
@@ -154,7 +173,11 @@
     ]
    ],
    "why": "The test is whether the atoms are all the same kind. Neon and gold are elements — every atom in them is the same. Water, carbon dioxide and protein are molecules — different kinds of atoms bonded together.",
-   "cite": "Student Reader, pages 35–37"
+   "cite": "Student Reader, pages 35–37",
+   "hi": [
+    "When all the atoms in matter are the same, the matter is called an element.",
+    "Likewise, all of the atoms that make up a gold nugget are atoms of the element gold."
+   ]
   },
   {
    "type": "selectall",
@@ -183,7 +206,12 @@
     ]
    ],
    "why": "Proteins are large molecules. Bread, potatoes and pasta are made of complex molecules called carbohydrates, and another kind of complex molecule is fat. Neon and gold are elements, and neither is a food.",
-   "cite": "Student Reader, page 37"
+   "cite": "Student Reader, page 37",
+   "hi": [
+    "Proteins are large molecules.",
+    "Bread, potatoes, and pasta are made of complex molecules called carbohydrates.",
+    "Another kind of complex molecules are fats, such as plant oils and animal fats."
+   ]
   },
   {
    "type": "pick",
@@ -197,7 +225,8 @@
    ],
    "a": 0,
    "why": "When something in science is too big or too small to see, scientists use models. A visual model is another form of language shared by chemists — models help make things easier to understand.",
-   "cite": "Student Reader, page 38"
+   "cite": "Student Reader, page 38",
+   "hi": "When something in science is too big or too small to see, scientists use models."
   },
   {
    "type": "mystery",
@@ -236,7 +265,8 @@
     "An element"
    ],
    "why": "A model of carbon dioxide shows two atoms of oxygen and one atom of carbon bonded together. Water is two hydrogen atoms bonded to one oxygen atom. And matter made of a single type of atom, like the neon in a sign, is an element.",
-   "cite": "Student Reader, pages 35–38"
+   "cite": "Student Reader, pages 35–38",
+   "hi": "A model of carbon dioxide helps us to understand that it is made of two atoms of oxygen and one atom of carbon that are bonded together."
   }
  ],
  "passages": {

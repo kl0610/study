@@ -1,0 +1,185 @@
+{
+ "chapter": "Chapter 4 — Energy Relationships Among Organisms",
+ "title": "Energy Relationships Among Organisms — Energy and Matter in Ecosystems, Chapter 4",
+ "eyebrow": "CKSci Grade 5 &middot; Energy and Matter in Ecosystems &middot; Chapter 4 &middot; Student Reader pp. 23–28",
+ "h1": "Energy Relationships <em>Among Organisms</em>",
+ "bigQuestion": "Where do different organisms get their energy?",
+ "mission": {
+  "name": "Chapter 4 quiz",
+  "tag": "8 questions · about 7 minutes",
+  "blurb": "A quick check that the chapter landed — not a test."
+ },
+ "items": [
+  {
+   "type": "pick",
+   "p": "reef",
+   "hi": "These organisms that eat only producers are called herbivores.",
+   "q": "What does the book say a herbivore is?",
+   "opts": [
+    "An animal that eats plants to meet its energy needs",
+    "An animal that eats other animals to meet its energy needs",
+    "An animal that eats both plants and other animals",
+    "An animal that eats things that have already died"
+   ],
+   "a": 0,
+   "why": "A herbivore eats plants. The small fish and shrimp on the reef that eat only algae and seaweed are herbivores — the book says these are the organisms that eat only producers.",
+   "cite": "Student Reader, page 24"
+  },
+  {
+   "type": "pick",
+   "p": "reef",
+   "hi": "Animals that eat other animals are known as carnivores.",
+   "q": "What does the book say a carnivore is?",
+   "opts": [
+    "An animal that eats other animals",
+    "An animal that eats plants",
+    "An animal that makes its own food",
+    "An animal that breaks down what has died"
+   ],
+   "a": 0,
+   "why": "A carnivore eats other animals. On the reef, the bigger fish that eat smaller fish are the carnivores.",
+   "cite": "Student Reader, page 25"
+  },
+  {
+   "type": "pick",
+   "p": "river",
+   "hi": "Organisms that eat both plants and other animals are known as omnivores.",
+   "q": "What does the book say an omnivore is?",
+   "opts": [
+    "An animal that eats both plants and other animals",
+    "An animal that eats only plants",
+    "An animal that eats only other animals",
+    "An animal that eats only things already dead"
+   ],
+   "a": 0,
+   "why": "An omnivore eats both. The raccoon in the river example eats fish and mussels and also the plants growing nearby, and so do people.",
+   "cite": "Student Reader, page 27"
+  },
+  {
+   "type": "pick",
+   "p": "desert",
+   "hi": "Some lizards, such as the bearded dragon, are omnivores.",
+   "q": "A bearded dragon eats insects as well as plants. Which of the three words fits it?",
+   "opts": [
+    "Omnivore",
+    "Herbivore",
+    "Carnivore",
+    "Producer"
+   ],
+   "a": 0,
+   "why": "Both plants and animals makes it an omnivore. Only plants would be a herbivore, only animals a carnivore, and a producer does not eat at all — it makes its own food.",
+   "cite": "Student Reader, page 28"
+  },
+  {
+   "type": "pick",
+   "p": "desert",
+   "hi": "When animal food sources are scarce, the coyote adopts omnivorous habits and resorts to plant material for food.",
+   "q": "Coyotes mostly eat other animals. What does the book say they do when animal food is hard to find?",
+   "opts": [
+    "They eat plant material as well",
+    "They travel to a different desert",
+    "They stop eating until food returns",
+    "They eat only things that have already died"
+   ],
+   "a": 0,
+   "why": "When animal food sources are scarce the coyote takes on omnivorous habits and turns to plant material. Which shows the three words are about what an animal actually eats, and some animals can shift.",
+   "cite": "Student Reader, page 28"
+  },
+  {
+   "type": "pick",
+   "p": "flow",
+   "hi": "Energy flows from producers (plants) to the consumers that eat plants, to the consumers that eat animals.",
+   "q": "The book calls it energy flow. In what order does it say the energy moves?",
+   "opts": [
+    "From producers, to consumers that eat plants, to consumers that eat animals",
+    "From producers, to decomposers, and then to the consumers that eat animals",
+    "From the consumers that eat animals, back to producers, then to scavengers",
+    "From the soil, to the producers, to all of the consumers at the same time"
+   ],
+   "a": 0,
+   "why": "Energy flows from producers to the consumers that eat plants, and then to the consumers that eat animals. Decomposers come at the end, returning the matter, rather than in the middle.",
+   "cite": "Student Reader, page 23"
+  },
+  {
+   "type": "pick",
+   "p": "reef",
+   "hi": "Larger algae and tiny algae too small to be seen without a microscope are producers that use sunlight to make food.",
+   "q": "In the coral reef example, which organisms are the producers?",
+   "opts": [
+    "The algae, both large and too small to see",
+    "The coral that filters its food out of the water",
+    "The crabs that eat the dead algae and dead fish",
+    "The bacteria that break down what is left at the end"
+   ],
+   "a": 0,
+   "why": "The algae are the producers — they use sunlight to make food. The coral is a consumer that filters algae out of the water, the crabs are scavengers, and the bacteria are decomposers.",
+   "cite": "Student Reader, page 24"
+  },
+  {
+   "type": "pick",
+   "p": "flow",
+   "hi": "Energy passes from the sun to plants, to animals, and then to other animals.",
+   "q": "Trace any of the book's energy examples backwards, as far as it goes. What is always at the start?",
+   "opts": [
+    "The sun",
+    "The soil",
+    "A decomposer",
+    "A top consumer"
+   ],
+   "a": 0,
+   "why": "Energy passes from the sun to plants, to animals, and then to other animals. Every one of the book's examples — reef, river and desert — begins with producers using sunlight.",
+   "cite": "Student Reader, page 23"
+  }
+ ],
+ "passages": {
+  "flow": {
+   "title": "Energy flow",
+   "cite": "Student Reader, page 23",
+   "vocab": [],
+   "text": [
+    "Plants make the sugar glucose through photosynthesis. Plants need glucose to survive. Animals need glucose, too. They must consume food to get this energy. For survival, animals depend on other living things, such as plants and other animals.",
+    "Once plants make chemical energy, that energy flows through all the animals that eat the plants and other animals in a given area. This is called energy flow. Energy flows from producers (plants) to the consumers that eat plants, to the consumers that eat animals. Energy passes from the sun to plants, to animals, and then to other animals."
+   ]
+  },
+  "reef": {
+   "title": "Matter and energy flow in a coral reef",
+   "cite": "Student Reader, page 24",
+   "vocab": [
+    [
+     "herbivore",
+     "an animal that eats plants to meet its energy needs"
+    ],
+    [
+     "carnivore",
+     "an animal that eats other animals to meet its energy needs"
+    ]
+   ],
+   "text": [
+    "Larger algae and tiny algae too small to be seen without a microscope are producers that use sunlight to make food. Coral filters algae from the water. Small fish and crustaceans, such as shrimp, also eat the algae and seaweed to get energy. These organisms that eat only producers are called herbivores. Bigger fish eat smaller fish to get energy. Animals that eat other animals are known as carnivores.",
+    "Scavengers such as crabs get energy from eating dead algae and fish. Bacteria decompose the remaining material and return the last of the matter back to the ecosystem environment."
+   ]
+  },
+  "river": {
+   "title": "Matter and energy flow in a river",
+   "cite": "Student Reader, page 27",
+   "vocab": [
+    [
+     "omnivore",
+     "an animal that eats both plants and other animals to meet its energy needs"
+    ]
+   ],
+   "text": [
+    "Raccoons also get energy from eating fish and mussels. Raccoons also eat vegetation growing on the land nearby. Like raccoons, people can eat animals from the river environment, but they also eat plants. Organisms that eat both plants and other animals are known as omnivores."
+   ]
+  },
+  "desert": {
+   "title": "Matter and energy flow in a desert",
+   "cite": "Student Reader, page 28",
+   "vocab": [],
+   "text": [
+    "Sagebrush, cacti, and other plants use sunlight, air, and scarce water to make glucose. Jackrabbits and other rodents get energy from eating the leaves and flowers of the sagebrush and other plants. Some lizards, such as the bearded dragon, are omnivores. They consume other animals, such as insects, as well as plants. A brown snake gets energy from eating a lizard. Coyotes primarily get energy from eating other animals, such as the snake or jackrabbit. When animal food sources are scarce, the coyote adopts omnivorous habits and resorts to plant material for food."
+   ]
+  }
+ },
+ "videos": []
+}

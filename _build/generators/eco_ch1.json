@@ -1,0 +1,228 @@
+{
+ "chapter": "Chapter 1 — Producers, Consumers, and Decomposers",
+ "title": "Producers, Consumers, and Decomposers — Energy and Matter in Ecosystems, Chapter 1",
+ "eyebrow": "CKSci Grade 5 &middot; Energy and Matter in Ecosystems &middot; Chapter 1 &middot; Student Reader pp. 1–10",
+ "h1": "Producers, Consumers, and <em>Decomposers</em>",
+ "bigQuestion": "Where do organisms get the energy they need for living?",
+ "mission": {
+  "name": "Chapter 1 quiz",
+  "tag": "9 questions · about 8 minutes",
+  "blurb": "A quick check that the chapter landed — not a test."
+ },
+ "items": [
+  {
+   "type": "pick",
+   "p": "alive",
+   "hi": "living things, or organisms",
+   "q": "The book says an organism is which of these?",
+   "opts": [
+    "A single living thing",
+    "The smallest living part of a living thing",
+    "All the living things in one area",
+    "A living thing that makes its own food"
+   ],
+   "a": 0,
+   "why": "An organism is a single living thing. The smallest living part of an organism is a cell; all the living and nonliving things in an area make an ecosystem; and a living thing that makes its own food is a producer.",
+   "cite": "Student Reader, page 1"
+  },
+  {
+   "type": "pick",
+   "p": "alive",
+   "hi": "Is it made of cells?",
+   "q": "The book gives four questions for working out whether something is living. Which one is on its list?",
+   "opts": [
+    "Is it made of cells?",
+    "Can it move on its own?",
+    "Can it be seen without a microscope?",
+    "Does it have a heart?"
+   ],
+   "a": 0,
+   "why": "The four questions are: does it need food, does it grow, does it reproduce, and is it made of cells. Moving on its own is not one of them — barnacles and oysters stay in one place their whole adult lives and are still alive.",
+   "cite": "Student Reader, page 1"
+  },
+  {
+   "type": "pick",
+   "p": "producer",
+   "hi": "A producer is a living thing that makes its own food.",
+   "q": "What does the book say a producer is?",
+   "opts": [
+    "A living thing that makes its own food",
+    "A living thing that eats other living things",
+    "A living thing that breaks down what has died",
+    "A living thing made of only one cell"
+   ],
+   "a": 0,
+   "why": "A producer makes its own food. Plants, algae and some one-celled organisms are all producers, so being a producer is not about being big or small — it is about making your own food.",
+   "cite": "Student Reader, page 2"
+  },
+  {
+   "type": "pick",
+   "p": "makefood",
+   "hi": "To make food, a plant needs chlorophyll, sunlight, water, and carbon dioxide gas from air.",
+   "q": "To make food, the book says a plant needs chlorophyll, sunlight, water and one more thing. What is it?",
+   "opts": [
+    "Carbon dioxide gas from the air",
+    "Oxygen gas taken in from the air",
+    "Nitrogen dissolved in the soil",
+    "Sugar stored down in the soil"
+   ],
+   "a": 0,
+   "why": "Chlorophyll, sunlight, water and carbon dioxide from the air. Oxygen is not an ingredient — it is what the plant gives off afterwards.",
+   "cite": "Student Reader, page 3"
+  },
+  {
+   "type": "pick",
+   "p": "makefood",
+   "hi": "the producer releases oxygen back into the air",
+   "q": "When a producer makes its food, what does the book say it releases back into the air?",
+   "opts": [
+    "Oxygen",
+    "Carbon dioxide",
+    "Chlorophyll",
+    "Glucose"
+   ],
+   "a": 0,
+   "why": "Making glucose releases oxygen back into the air. Carbon dioxide goes the other way — the plant takes that in. The glucose it keeps, to use now or store for later.",
+   "cite": "Student Reader, page 3"
+  },
+  {
+   "type": "pick",
+   "p": "consumer",
+   "hi": "Consumers cannot make their own food like producers do.",
+   "q": "What is the difference between a producer and a consumer?",
+   "opts": [
+    "A producer makes its own food; a consumer eats other living things",
+    "A producer is always a plant; a consumer is always an animal",
+    "A producer stays in one place; a consumer moves about to find food",
+    "A producer eats plants; a consumer eats other animals"
+   ],
+   "a": 0,
+   "why": "The difference is where the food comes from, not what kind of thing it is. Algae are producers and they are not plants; an amoeba is a consumer and it is not an animal you would recognise. And barnacles are consumers that never move once they are grown.",
+   "cite": "Student Reader, page 4"
+  },
+  {
+   "type": "pick",
+   "p": "scavenger",
+   "hi": "Decomposers remove any chemical energy from what remains and return the remaining matter to the soil.",
+   "q": "Scavengers and decomposers both feed on things that have died. What does the book say decomposers do that scavengers do not?",
+   "opts": [
+    "They finish the breakdown and return the matter to the soil",
+    "They eat only the plants that have died, never the animals",
+    "They hunt down animals that are still alive and healthy",
+    "They make their own food from sunlight, as a plant does"
+   ],
+   "a": 0,
+   "why": "Scavengers take the first step, eating dead plant and animal material. Decomposers complete the breakdown: they take the last of the chemical energy out and return the remaining matter to the soil, which is what lets new plants grow.",
+   "cite": "Student Reader, page 7"
+  },
+  {
+   "type": "pick",
+   "p": "scavenger",
+   "hi": "Some decomposers that return matter from other living things to the soil are fungi and bacteria.",
+   "q": "Which pair does the book name as decomposers?",
+   "opts": [
+    "Fungi and bacteria",
+    "Shrimp and lobster",
+    "Stingrays and sea stars",
+    "Algae and amoebas"
+   ],
+   "a": 0,
+   "why": "Fungi and bacteria are the decomposers the book names. Shrimp and lobster are given as scavengers; stingrays and sea stars are consumers that hunt; and algae are producers.",
+   "cite": "Student Reader, page 7"
+  },
+  {
+   "type": "pick",
+   "p": "whyfood",
+   "hi": "Living things need energy for keeping warm, moving, repairing damage, and growing.",
+   "q": "The book lists four things living things need chemical energy for. Which one is on the list?",
+   "opts": [
+    "Repairing damage to their bodies",
+    "Cooling their bodies down in hot weather",
+    "Making their own chlorophyll",
+    "Turning sunlight into oxygen"
+   ],
+   "a": 0,
+   "why": "Keeping warm, moving, repairing damage, and growing. Repairing damage is the one on the list — a lizard growing a new tail is using chemical energy to do it.",
+   "cite": "Student Reader, page 8"
+  }
+ ],
+ "passages": {
+  "alive": {
+   "title": "What makes something living?",
+   "cite": "Student Reader, page 1",
+   "vocab": [
+    [
+     "organism",
+     "a single living thing"
+    ]
+   ],
+   "text": [
+    "Some scientists suggest that there are almost nine million different kinds of living things, or organisms, on Earth. But wait! How do you know if something is living? Ask yourself the following questions: Does it need food? Living things cannot survive without energy they get from food. Some living things make their own food. Some get food from other living things. Does it grow? All living things grow and change throughout their lives.",
+    "Does it reproduce? Living things reproduce to make offspring, more of their species. Is it made of cells? A cell is the smallest living part of an organism. Some organisms are made of only one cell that can do everything needed to stay alive. Most living things, such as plants and animals, are made of more than one cell."
+   ]
+  },
+  "producer": {
+   "title": "Producers",
+   "cite": "Student Reader, page 2",
+   "vocab": [
+    [
+     "producer",
+     "a living thing that makes its own food"
+    ]
+   ],
+   "text": [
+    "A producer is a living thing that makes its own food. Plants, algae, and some one-celled organisms are producers. Every producer, no matter how large or small, makes its own food. It transforms one kind of energy into the chemical energy it needs to live. Most producers need sunlight, water, and air to survive."
+   ]
+  },
+  "makefood": {
+   "title": "How producers make food",
+   "cite": "Student Reader, page 3",
+   "vocab": [],
+   "text": [
+    "To make food, a plant needs chlorophyll, sunlight, water, and carbon dioxide gas from air. The producer absorbs sunlight to make food. The type of food producers make is a kind of sugar called glucose. Producers can use the glucose right away as food or store the glucose for later. In the process of making glucose, the producer releases oxygen back into the air."
+   ]
+  },
+  "consumer": {
+   "title": "Consumers",
+   "cite": "Student Reader, page 4",
+   "vocab": [
+    [
+     "consumer",
+     "a living thing that gets energy by eating other organisms for food"
+    ]
+   ],
+   "text": [
+    "Consumers are living things that get energy from consuming, or eating, other living things. Consumers cannot make their own food like producers do.",
+    "A green alga is shown at the top. It is a producer. You can tell it contains chlorophyll because of the green color. An amoeba is shown in the bottom picture. Amoebas are consumers that move around in water and absorb the food they consume."
+   ]
+  },
+  "scavenger": {
+   "title": "Scavengers and decomposers",
+   "cite": "Student Reader, page 6",
+   "vocab": [
+    [
+     "scavenger",
+     "an animal that eats organisms that have already died"
+    ],
+    [
+     "decomposer",
+     "an organism that breaks down dead plant and animal matter and returns nutrients to the soil"
+    ]
+   ],
+   "text": [
+    "Scavengers are animals that feed on dead plant and animal material. Scavengers tend to live at the bottom of ecosystems, as this is where dead material tends to settle. In a forest, you can find scavengers such as earthworms and millipedes under pieces of bark or soil. Crab, shrimp, and lobster can be found at the bottom of bodies of water.",
+    "Decomposers are organisms that complete the breakdown of organic materials. Decomposers remove any chemical energy from what remains and return the remaining matter to the soil. Some decomposers that return matter from other living things to the soil are fungi and bacteria."
+   ]
+  },
+  "whyfood": {
+   "title": "Why living things need food",
+   "cite": "Student Reader, page 8",
+   "vocab": [],
+   "text": [
+    "Chemical energy is required for the processes in your body that keep you alive. Living things need energy for keeping warm, moving, repairing damage, and growing. Where do you get energy to do these things? From the food you eat!",
+    "Living things need chemical energy to repair damage to their bodies. The damage may be something you can see, such as a lizard that has a broken tail. Or the damage may be something you cannot see."
+   ]
+  }
+ },
+ "videos": []
+}

@@ -1,0 +1,184 @@
+{
+ "chapter": "Chapter 7 — Rain Forest Ecosystem Field Diary",
+ "title": "Rain Forest Ecosystem Field Diary — Energy and Matter in Ecosystems, Chapter 7",
+ "eyebrow": "CKSci Grade 5 &middot; Energy and Matter in Ecosystems &middot; Chapter 7 &middot; Student Reader pp. 41–46",
+ "h1": "Rain Forest <em>Field Diary</em>",
+ "bigQuestion": "What goes on in a rain forest ecosystem?",
+ "mission": {
+  "name": "Chapter 7 quiz",
+  "tag": "8 questions · about 7 minutes",
+  "blurb": "A quick check that the chapter landed — not a test."
+ },
+ "items": [
+  {
+   "type": "pick",
+   "p": "dawn",
+   "hi": "there are so many plants and trees that much of the sunlight does not shine through",
+   "q": "The sun is up, but it is dark on the rain forest floor. Why?",
+   "opts": [
+    "So many plants and trees block the sunlight on its way down",
+    "The rain forest gets very little sunlight all year round",
+    "The fog in the rain forest never lifts, even at midday",
+    "The sun does not rise very high in the sky over the Amazon"
+   ],
+   "a": 0,
+   "why": "There are so many plants and trees that much of the sunlight does not shine through. That is why you do not find grass thickly carpeting a forest floor — there is not enough light down there for it.",
+   "cite": "Student Reader, page 41"
+  },
+  {
+   "type": "pick",
+   "p": "dawn",
+   "hi": "As raindrops run down the tree’s trunk, the orchid’s roots soak it up.",
+   "q": "The orchid's roots never reach the soil. So where does it get its water?",
+   "opts": [
+    "From raindrops running down the tree's trunk",
+    "From the fog that rolls in at dawn",
+    "From the soil, through the mahogany tree's roots",
+    "It stores enough water to last the dry season"
+   ],
+   "a": 0,
+   "why": "The orchid's roots grab onto the tree's bark like fingers, and they soak up the raindrops that run down the trunk. It rains nearly every day, so there is plenty to catch.",
+   "cite": "Student Reader, page 41"
+  },
+  {
+   "type": "pick",
+   "p": "macaw",
+   "hi": "They love to eat fruit and seeds.",
+   "q": "The macaws eat fruit, seeds and even orchid flowers. Which word fits them?",
+   "opts": [
+    "Herbivores",
+    "Carnivores",
+    "Omnivores",
+    "Decomposers"
+   ],
+   "a": 0,
+   "why": "Everything on that list is a plant, so the macaws are herbivores. It would take an animal in their diet to make them omnivores.",
+   "cite": "Student Reader, page 42"
+  },
+  {
+   "type": "pick",
+   "p": "macaw",
+   "hi": "Ants, one of the scavengers of the rain forest, benefit from this.",
+   "q": "The diary calls the ants scavengers of the rain forest. What were they doing?",
+   "opts": [
+    "Carrying off the bits of fruit the monkeys dropped",
+    "Stripping all the leaves from the bamboo plants",
+    "Hunting the grasshoppers on the coconut tree trunk",
+    "Breaking down a fallen log into soil and nutrients"
+   ],
+   "a": 0,
+   "why": "The monkeys are messy eaters and drop bits of banana as they swing about, and an army of ants was carrying a piece back to the nest. A scavenger eats what is already dead or dropped rather than catching it.",
+   "cite": "Student Reader, page 42"
+  },
+  {
+   "type": "pick",
+   "p": "frog",
+   "hi": "Suddenly, it uncurled its long, sticky tongue and caught a grasshopper.",
+   "q": "The green tree frog shot out its tongue and caught a grasshopper. Which word fits the frog?",
+   "opts": [
+    "Carnivore",
+    "Herbivore",
+    "Producer",
+    "Scavenger"
+   ],
+   "a": 0,
+   "why": "It ate another animal, so it is a carnivore. A scavenger would have eaten a grasshopper that was already dead; this one caught its own.",
+   "cite": "Student Reader, page 43"
+  },
+  {
+   "type": "pick",
+   "p": "floor",
+   "hi": [
+    "Earthworms are decomposers.",
+    "Coral fungi are decomposers, too."
+   ],
+   "q": "Which pair does the diary call decomposers?",
+   "opts": [
+    "Earthworms and coral fungi",
+    "Millipedes and ants",
+    "Macaws and fruit bats",
+    "Pythons and leopards"
+   ],
+   "a": 0,
+   "why": "Earthworms are decomposers — they eat the dead plant matter and return nutrients to the soil when they eliminate waste — and the brightly coloured coral fungi on the rotting trunk are decomposers too.",
+   "cite": "Student Reader, page 44"
+  },
+  {
+   "type": "pick",
+   "p": "night",
+   "hi": "Like their name suggests, they drink the blood of other animals.",
+   "q": "The diary sees fruit bats feeding on fruit by day. What does it say the vampire bats were doing overnight?",
+   "opts": [
+    "Flying about searching for prey, to drink its blood",
+    "Roosting in a coconut tree and feeding on fruit",
+    "Hunting grasshoppers along the forest floor",
+    "Following the leopard to feed on what it left"
+   ],
+   "a": 0,
+   "why": "Vampire bats were heard screeching as they flew across the sky searching for prey, and they drink the blood of other animals. The fruit bats are the day-flying, fruit-eating ones — the same family of animal in two quite different places in the food web.",
+   "cite": "Student Reader, page 46"
+  },
+  {
+   "type": "pick",
+   "p": "night",
+   "hi": "The remains will eventually attract vultures.",
+   "q": "A leopard hunted near the camp and left the remains of an animal. The diary expects vultures. What does that make vultures?",
+   "opts": [
+    "Scavengers, because they eat what has already died",
+    "Carnivores, because they hunt and kill their own prey",
+    "Decomposers, because they return nutrients to the soil",
+    "Producers, because they start the food chain"
+   ],
+   "a": 0,
+   "why": "Vultures come for what is already dead, which makes them scavengers. The leopard did the hunting, so the leopard is the carnivore — and after the vultures, decomposers finish the job.",
+   "cite": "Student Reader, page 46"
+  }
+ ],
+ "passages": {
+  "dawn": {
+   "title": "Tuesday, 6:30 a.m.",
+   "cite": "Student Reader, page 41",
+   "vocab": [],
+   "text": [
+    "A new day has dawned here in the Amazon rain forest. The sun is rising, but there are so many plants and trees that much of the sunlight does not shine through. A misty fog has rolled in, and it feels quite dark down here beneath the canopy!",
+    "As I write this, I am sitting with my back against a tall mahogany tree. An orchid clings to its side. The orchid’s roots do not actually reach the soil on the forest floor. Instead, they grab like fingers onto the tree’s bark! As raindrops run down the tree’s trunk, the orchid’s roots soak it up."
+   ]
+  },
+  "macaw": {
+   "title": "Tuesday, 10:30 a.m.",
+   "cite": "Student Reader, page 42",
+   "vocab": [],
+   "text": [
+    "I hear macaws loudly calling to each other in the trees above me. They are communicating about where to find their morning meal. I have observed their bright blue feathers in the nearby banana trees. They love to eat fruit and seeds. I have even observed them eating the flowers of orchids!",
+    "I have noticed that monkeys are messy eaters! They drop bits of banana as they swing from branch to branch. Ants, one of the scavengers of the rain forest, benefit from this. I observed an army of them carrying one of the smaller pieces of dropped fruit back to the nest."
+   ]
+  },
+  "frog": {
+   "title": "Tuesday, 2:45 p.m.",
+   "cite": "Student Reader, page 43",
+   "vocab": [],
+   "text": [
+    "But after checking my field guide, I determined that it was a fruit bat. Fruit bats are one of the few species of bats that are active during the day. They eat fruit. This group was roosting and feeding in a coconut tree.",
+    "Grasshoppers crawled up and down its trunk. A species of green tree frog sat nearby, camouflaged in the thick leaves of a small plant. Suddenly, it uncurled its long, sticky tongue and caught a grasshopper."
+   ]
+  },
+  "floor": {
+   "title": "Tuesday, 4:00 p.m.",
+   "cite": "Student Reader, page 44",
+   "vocab": [],
+   "text": [
+    "The ground was covered in dead leaves and other plant material. Millipedes scurried away as I moved it aside. They seem to like eating the decaying material. I was not surprised to find several earthworms slithering around under the log. Earthworms are decomposers. They love to eat the dead and decaying plant matter on the forest floor. When they eliminate waste, they return nutrients to the soil. I also observed some brightly colored coral fungi on the decaying trunk. Coral fungi are decomposers, too."
+   ]
+  },
+  "night": {
+   "title": "Overnight, and Wednesday morning",
+   "cite": "Student Reader, page 46",
+   "vocab": [],
+   "text": [
+    "Up ahead, I could see something coiled around a tree branch. As I got closer, I realized it was a green tree python! Pythons are very large snakes. They feed on birds, reptiles, and small mammals. They can sense the body heat of other animals, even in the dark!",
+    "I could hear vampire bats screeching as they flew across the sky searching for prey. Like their name suggests, they drink the blood of other animals. When I emerged from my tent this morning, I found the remains of an animal beneath a nearby tree. I suspect that a leopard was hunting near the campsite overnight. The remains will eventually attract vultures."
+   ]
+  }
+ },
+ "videos": []
+}

@@ -207,6 +207,14 @@ summary:focus-visible{outline:2px solid var(--c);outline-offset:-3px}
 
 .subj h2{font-family:var(--disp);font-size:18.5px;margin:0;font-weight:750;line-height:1.2}
 
+.bookhead{list-style:none;margin:16px 0 6px;display:flex;align-items:baseline;
+  gap:8px;flex-wrap:wrap}
+.bookhead:first-child{margin-top:2px}
+.bookhead span{font:800 11.5px var(--mono);letter-spacing:.11em;
+  text-transform:uppercase;color:var(--ink)}
+.bookhead small{font-size:11.5px;color:var(--dim)}
+.bookhead::before{content:"";flex:none;width:18px;height:2px;border-radius:2px;
+  background:var(--c);opacity:.7}
 .book{font-size:12px;color:var(--dim);margin:2px 0 0;
 
   white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -1893,24 +1901,48 @@ const SUBJECTS = [
 
   { name:"Science", ore:"diamond", c:"var(--science)", app:"science",
 
-    book:"CKSci Grade 5 — Investigating Matter",
+    book:"CKSci Grade 5 — one section per book, chapters under each",
 
     chapters:[
 
-      { n:1, t:"Properties of Matter", note:"10 questions, about 9 minutes",
+      { book:"Book 2 — Energy and Matter in Ecosystems", of:"8 chapters · current" },
 
-        href:"science/g5-matter-ch1/", ids:["m1"] },
+      { n:1, t:"Producers, Consumers, and Decomposers", note:"9 questions, about 8 minutes",
+        href:"science/g5-eco-ch1/", app:"eco1", ids:["m1"] },
+
+      { n:2, t:"Living Things Use Energy", note:"7 questions, about 6 minutes",
+        href:"science/g5-eco-ch2/", app:"eco2", ids:["m1"] },
+
+      { n:3, t:"What Plants Need", note:"9 questions, about 8 minutes",
+        href:"science/g5-eco-ch3/", app:"eco3", ids:["m1"] },
+
+      { n:4, t:"Energy Relationships Among Organisms", note:"8 questions, about 7 minutes",
+        href:"science/g5-eco-ch4/", app:"eco4", ids:["m1"] },
+
+      { n:5, t:"Ecosystems", note:"8 questions, about 7 minutes",
+        href:"science/g5-eco-ch5/", app:"eco5", ids:["m1"] },
+
+      { n:6, t:"Food Chains and Food Webs", note:"8 questions, about 7 minutes",
+        href:"science/g5-eco-ch6/", app:"eco6", ids:["m1"] },
+
+      { n:7, t:"Rain Forest Ecosystem Field Diary", note:"8 questions, about 7 minutes",
+        href:"science/g5-eco-ch7/", app:"eco7", ids:["m1"] },
+
+      { n:8, t:"Changes in Ecosystems", note:"8 questions, about 7 minutes",
+        href:"science/g5-eco-ch8/", app:"eco8", ids:["m1"] },
+
+      { book:"Book 1 — Investigating Matter", of:"6 chapters · finished" },
+
+      { n:1, t:"Properties of Matter", note:"10 questions, about 9 minutes",
+        href:"science/g5-matter-ch1/", app:"science", ids:["m1"] },
 
       { n:2, t:"Applying Properties of Matter", note:"7 questions, about 6 minutes",
-
         href:"science/g5-matter-ch2/", app:"science2", ids:["m1"] },
 
       { n:3, t:"Too Small to Be Seen", note:"9 questions, about 8 minutes",
-
         href:"science/g5-matter-ch3/", app:"science3", ids:["m1"] },
 
       { n:4, t:"How Matter Changes", note:"9 questions, about 8 minutes",
-
         href:"science/g5-matter-ch4/", app:"science4", ids:["m1"] },
 
       { n:5, t:"Matter Can Change Chemically", note:"11 questions, about 8 minutes",
@@ -2249,7 +2281,7 @@ document.getElementById("subjects").innerHTML = SUBJECTS.map(s=>{
 
       </span>
 
-      <span class="tally">${live.length} of ${s.chapters.length}<small>${esc(s.ore)}</small></span>
+      <span class="tally">${live.length} of ${s.chapters.filter(c=>!c.book).length}<small>${esc(s.ore)}</small></span>
 
       <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"
 
@@ -2260,6 +2292,15 @@ document.getElementById("subjects").innerHTML = SUBJECTS.map(s=>{
     <div class="inner">
 
     <ol>${s.chapters.map(c=>{
+
+      /* A book heading, not a chapter. Science is on its second book now and
+         will be on more, and chapter 1 of one book is not chapter 1 of the
+         next, so the chapters are grouped under the book they belong to.
+         A heading is a row with a `book` and no `href`, which means every
+         filter that already skips unbuilt rows skips these too — progress,
+         the totals and the miss log all keep counting chapters only. */
+      if(c.book) return `<li class="bookhead"><span>${esc(c.book)}</span>
+        ${c.of?`<small>${esc(c.of)}</small>`:""}</li>`;
 
       /* A story-unit subject has no chapter number: the badge carries the page
 

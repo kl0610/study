@@ -55,6 +55,18 @@ def check(spec):
             bad.append("%s: no passage %r" % (where, it.get("p")))
         if not it.get("why"):
             bad.append("%s: no explanation" % where)
+        # The mission shell prints the question through esc(), so a <b> in it
+        # reaches the child as the four characters <b>. Chapter 5 shipped asking
+        # 'What does <b>precipitate</b> mean?' and Chapter 6 asked three
+        # questions the same way, tags and all, and nothing could see it: the
+        # data was exactly what was intended and the page escaped it. The
+        # options and the explanation go through esc() too.
+        for field, val in ([("question", it.get("q", "")), ("why", it.get("why", ""))] +
+                           [("option", o) for o in (it.get("opts") or [])
+                            if isinstance(o, str)]):
+            if re.search(r"</?[a-z][^>]*>|&[a-z]+;", val):
+                bad.append("%s: the %s is escaped when printed, so its markup "
+                           "reaches the screen as text: %r" % (where, field, val[:60]))
         if it["type"] == "pick":
             o = it.get("opts") or []
             if len(o) != 4:
@@ -130,7 +142,12 @@ def main():
         "chapter": spec["chapter"],
         "bigQuestion": spec["bigQuestion"],
         "passages": spec["passages"],
-        "videos": spec.get("videos") or old.get("videos", []),
+        # `or` treated an empty list as "not given" and fell back to the shell's,
+        # so eight chapters of an ecosystems unit shipped carrying Chapter 4 of
+        # the matter unit's videos: What Is Evidence?, Modeling and Prototypes,
+        # What's Matter?. A spec that says videos:[] means none, and a spec that
+        # omits the key entirely means keep whatever the shell had.
+        "videos": spec["videos"] if "videos" in spec else old.get("videos", []),
         "missions": [{
             "id": "m1",
             "name": spec["mission"]["name"],
@@ -158,6 +175,32 @@ def main():
                      lambda m: m.group(1) + spec["bigQuestion"] + m.group(2), out, count=1)
     if not n:
         raise SystemExit("the Big Question block is not where it was")
+
+    # The video shelf is markup, and its heading says "Three short videos"
+    # whatever is in the data. A chapter with no videos chosen would print that
+    # heading over an empty box; a chapter with two would print a lie. So the
+    # heading counts what is really there, and a chapter with none loses the
+    # shelf altogether rather than advertising an empty shelf.
+    SHELF = "\n".join([
+        '  <div class="shelf">',
+        '    <div class="eyebrow">Watch first, or watch after</div>',
+        '    <h2>Three short videos</h2>',
+        '    <p class="note">Each is about five minutes. They open on YouTube.</p>',
+        '    <div id="vids"></div>',
+        '  </div>',
+        ''])
+    if out.count(SHELF) != 1:
+        raise SystemExit("the video shelf is not the shape this expects")
+    vids = data["videos"]
+    if not vids:
+        # #vids still has to exist: the render writes into it unconditionally.
+        out = out.replace(SHELF, '  <div id="vids" hidden></div>\n', 1)
+    else:
+        WORD = {1: "One short video", 2: "Two short videos", 3: "Three short videos",
+                4: "Four short videos", 5: "Five short videos"}
+        out = out.replace(SHELF, SHELF.replace(
+            "<h2>Three short videos</h2>",
+            "<h2>%s</h2>" % WORD.get(len(vids), "%d short videos" % len(vids))), 1)
 
     d = os.path.join(ROOT, "science", out_dir)
     os.makedirs(d, exist_ok=True)

@@ -185,9 +185,20 @@ _source/history/  CKHG_G5_U2_MayaAztecInca_Teacher-Guide.pdf      110 pp
                       sequencing and for the hub's chapter titles
 _source/science/  CKSci_G5U1_Matter_TG.pdf                        173 pp
                   CKSci_G5U1_Matter_SR.pdf                         50 pp
+                    — Book 1, Investigating Matter. Chapters 1–6, all built.
+                  CKSci_G5U2_Ecosystems_TG.pdf                    180 pp
+                  CKSci_G5U2_Ecosystems_SR.pdf                     64 pp
+                    — Book 2, Energy and Matter in Ecosystems. Chapters 1–8,
+                      all built. `printed = PDF − 5`, confirmed at both ends.
 _source/reading/  CC_SherlockHolmes_Reader_W1.pdf                 228 pp
                   Core-Classics-Sherlock-Holmes-Teacher-Guide.pdf  92 pp
 ```
+
+**Science goes book by book, and there will be more books.** Each book is its
+own group on the hub: a row carrying a `book` and no `href` renders as a
+heading, and every filter that skips unbuilt rows skips those too. Chapter 1 of
+one book is not chapter 1 of the next, so never merge two books into one run of
+numbers. The newest book goes at the top of the section.
 
 `_source/spelling/` and `_source/vocabulary/` also exist and are **gitignored** —
 weekly worksheets are personal study use only.

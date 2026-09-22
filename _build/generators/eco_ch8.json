@@ -1,0 +1,195 @@
+{
+ "chapter": "Chapter 8 — Changes in Ecosystems",
+ "title": "Changes in Ecosystems — Energy and Matter in Ecosystems, Chapter 8",
+ "eyebrow": "CKSci Grade 5 &middot; Energy and Matter in Ecosystems &middot; Chapter 8 &middot; Student Reader pp. 47–52",
+ "h1": "Changes in <em>Ecosystems</em>",
+ "bigQuestion": "What happens when ecosystems are disrupted?",
+ "mission": {
+  "name": "Chapter 8 quiz",
+  "tag": "8 questions · about 7 minutes",
+  "blurb": "A quick check that the chapter landed — not a test."
+ },
+ "items": [
+  {
+   "type": "pick",
+   "p": "what",
+   "hi": "A change in an ecosystem that affects organisms is known as a disruption.",
+   "q": "What does the book say a disruption is?",
+   "opts": [
+    "A change in an ecosystem that affects its organisms",
+    "The death of every single organism in an ecosystem",
+    "A change that people make to an ecosystem on purpose",
+    "The way an ecosystem returns to health after a fire"
+   ],
+   "a": 0,
+   "why": "A disruption is a change in an ecosystem that affects organisms — a disturbance that interrupts a process. It need not be total, and it need not be caused by people: some disruptions are natural.",
+   "cite": "Student Reader, page 47"
+  },
+  {
+   "type": "pick",
+   "p": "fire",
+   "hi": "Some types of pine trees only release their seeds when a fire heats their cones.",
+   "q": "Forest fires are disruptive, but the book also gives a benefit. Which one?",
+   "opts": [
+    "Some pine trees release their seeds only when fire heats the cones",
+    "Fire kills off the invasive species and leaves the native ones",
+    "Fire adds water to the soil so that new plants can grow",
+    "Fire drives the animals to safer parts of the forest"
+   ],
+   "a": 0,
+   "why": "Some pines only let their seeds go when a fire heats the cones, and a fire can burn off dead brush to make room for new plants. In many ecosystems fire is part of a cycle that keeps the place healthy.",
+   "cite": "Student Reader, page 48"
+  },
+  {
+   "type": "pick",
+   "p": "weather",
+   "hi": "Drought slows the growth of plants in an ecosystem. Any animal that eats those plants for energy will be affected by having less food.",
+   "q": "How does a drought reach the animals of an ecosystem?",
+   "opts": [
+    "Plants grow less, so animals that eat them have less food",
+    "Animals cannot find any shelter from the heat",
+    "Animals lose their sense of direction without the rain",
+    "The soil blows away and buries the animals' burrows"
+   ],
+   "a": 0,
+   "why": "A drought slows the growth of plants, and any animal that eats those plants for energy then has less food. The disruption starts with the producers and travels up the food web from there.",
+   "cite": "Student Reader, page 49"
+  },
+  {
+   "type": "pick",
+   "p": "weather",
+   "hi": "Almost forty years later, the area around the mountain has a healthy ecosystem.",
+   "q": "A volcano blew the side off Mount St. Helens in 1980. What does the book say about that area now?",
+   "opts": [
+    "Almost forty years later it has a healthy ecosystem",
+    "Nothing has grown there at all since the eruption",
+    "It was rebuilt by people planting a new forest",
+    "It became a desert ecosystem instead of a forest"
+   ],
+   "a": 0,
+   "why": "Almost forty years later the area around the mountain has a healthy ecosystem. Sometimes an ecosystem recovers from a disruption and sometimes it is damaged for good — this one recovered on its own.",
+   "cite": "Student Reader, page 49"
+  },
+  {
+   "type": "pick",
+   "p": "prevent",
+   "hi": "We can help prevent forest fires, though.",
+   "q": "Some disruptions people can help prevent and some they cannot. Which one does the book say we can help prevent?",
+   "opts": [
+    "Forest fires",
+    "Earthquakes",
+    "Volcanic eruptions",
+    "Tsunamis"
+   ],
+   "a": 0,
+   "why": "There is little we can do about earthquakes, volcanoes or the tsunamis an earthquake sets off. Forest fires we can help prevent, and we can study diseases and help control them.",
+   "cite": "Student Reader, page 52"
+  },
+  {
+   "type": "pick",
+   "p": "overfish",
+   "hi": "More mussels means they would need to eat more plankton. Soon there would be less plankton as the mussels eat more plankton.",
+   "q": "In the book's food web, crabs are overfished. It follows the chain phytoplankton, mussel, crab, gull. What happens next?",
+   "opts": [
+    "More mussels survive, eat more plankton, and plankton gets scarce",
+    "Fewer mussels survive, so there is more plankton than before",
+    "The gulls have nothing left to eat and leave the area",
+    "Nothing changes, because crabs are not producers"
+   ],
+   "a": 0,
+   "why": "Take the crabs out and more mussels survive. More mussels eat more plankton, so soon there is less plankton — and that is one less producer adding oxygen and energy to the whole ecosystem. The gulls are fine; they eat other things.",
+   "cite": "Student Reader, page 50"
+  },
+  {
+   "type": "pick",
+   "p": "invasive",
+   "hi": "invasive species can thrive because they may have no predators or competition for resources",
+   "q": "Why does the book say an invasive species can do so well in a new place?",
+   "opts": [
+    "It may have no predators and nothing competing with it there",
+    "It is always larger than the species already living there",
+    "People look after it once they have brought it in",
+    "It can survive without water or sunlight"
+   ],
+   "a": 0,
+   "why": "Because it developed somewhere else, an invasive species may arrive with no predators and no competition for resources. Buckthorn was brought to the United States in the 1900s for hedges and now competes with native plants like oak for nutrients, light and moisture.",
+   "cite": "Student Reader, page 51"
+  },
+  {
+   "type": "pick",
+   "p": "prevent",
+   "hi": "Fish get oil in their gills, preventing them from getting oxygen.",
+   "q": "What does the book say spilled oil does to a fish?",
+   "opts": [
+    "It gets in the gills, so the fish cannot take in oxygen",
+    "It coats the fish's eggs so they do not hatch",
+    "It makes the water too warm for the fish",
+    "It kills the plants so the fish has nothing to eat"
+   ],
+   "a": 0,
+   "why": "Oil in the gills stops a fish getting oxygen. Oil stops plants taking in matter to make food, and birds cannot fly with it in their feathers — one spill reaches every part of the ecosystem at once.",
+   "cite": "Student Reader, page 52"
+  }
+ ],
+ "passages": {
+  "what": {
+   "title": "What a disruption is",
+   "cite": "Student Reader, page 47",
+   "vocab": [
+    [
+     "disruption",
+     "a disturbance that interrupts a process"
+    ]
+   ],
+   "text": [
+    "Ecosystems are homes to varieties of living things and include all the factors that organisms need to live. All parts of an ecosystem are linked to and affect other parts. A change in one part of an ecosystem can affect other parts of that ecosystem. These changes can affect every living thing in the system. A change in an ecosystem that affects organisms is known as a disruption."
+   ]
+  },
+  "fire": {
+   "title": "Fire",
+   "cite": "Student Reader, page 48",
+   "vocab": [],
+   "text": [
+    "Ecosystem disruptions may happen for many reasons. Some disruptions have natural causes. However, humans cause many ecosystem disruptions, too. People can try to slow down or stop such changes. Sometimes the ecosystem can recover, but sometimes it is forever damaged.",
+    "Forest fires, or wildfires, are disruptive to the organisms that live in the places where they burn. In many ecosystems, fire is a part of a cycle that keeps the ecosystem healthy. There are actually some benefits to fire. For example, a fire can burn dead brush and make room for new plants to grow. Some types of pine trees only release their seeds when a fire heats their cones."
+   ]
+  },
+  "weather": {
+   "title": "Weather, geologic events and disease",
+   "cite": "Student Reader, page 49",
+   "vocab": [],
+   "text": [
+    "A drought is a long period where no rain or snow falls. Drought slows the growth of plants in an ecosystem. Any animal that eats those plants for energy will be affected by having less food. Long periods of extreme heat or cold also have an effect on the growth of organisms in an ecosystem.",
+    "When a volcano erupts, it destroys the ecosystem in the immediate area and disrupts the ecosystem in a larger area. Earthquakes can cause tsunamis, large waves that cross the ocean. A volcanic eruption in 1980 blew the right side of Mount St. Helens apart. Almost forty years later, the area around the mountain has a healthy ecosystem."
+   ]
+  },
+  "overfish": {
+   "title": "Overfishing",
+   "cite": "Student Reader, page 50",
+   "vocab": [],
+   "text": [
+    "Humans can disrupt the ocean ecosystem by overfishing. This means removing enough of one species of a water-dwelling organism that it harms that species’ ability to continue.",
+    "One chain in this web is phytoplankton mussel crab gull. Now consider the effects if crab were overfished. The seagull would still get food from other sources. But what would happen to the mussels if more of them were surviving? There would then be more mussels. More mussels means they would need to eat more plankton. Soon there would be less plankton as the mussels eat more plankton. With less plankton, there is one less producer to add oxygen and energy to the ecosystem."
+   ]
+  },
+  "invasive": {
+   "title": "Deforestation and invasive species",
+   "cite": "Student Reader, page 51",
+   "vocab": [],
+   "text": [
+    "When people build houses, roads, or buildings, they often need to cut down trees to make room. Each tree can be home to many different types of living things.",
+    "Invasive species can occur naturally, but frequently, humans bring them to an area. Because they developed in another area, invasive species can thrive because they may have no predators or competition for resources. Buckthorn trees were brought to the United States in the 1900s to be used as hedges. Buckthorn competes with native plants such as oak trees for nutrients, light, and moisture."
+   ]
+  },
+  "prevent": {
+   "title": "Water pollution, and what can be avoided",
+   "cite": "Student Reader, page 52",
+   "vocab": [],
+   "text": [
+    "People drill into Earth’s crust under the oceans to get oil. When they do this, oil sometimes spills into water. Plants cannot take in matter to make food when they have oil on their leaves. Fish get oil in their gills, preventing them from getting oxygen. Birds cannot fly with oil in their feathers.",
+    "There is little humans can do to prevent natural ecosystem disruptions. We cannot stop an earthquake or volcano from happening. We can help prevent forest fires, though. And we can also investigate why diseases happen and help control the diseases."
+   ]
+  }
+ },
+ "videos": []
+}
