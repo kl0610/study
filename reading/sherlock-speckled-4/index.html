@@ -2133,19 +2133,63 @@ function home(){
 function show(w){ ["home","play","done"].forEach(x=>$(x).classList.toggle("hide",x!==w)); window.scrollTo(0,0); }
 
 /* ---------- mission ---------- */
+/* RUN holds indices into M.items: every one of them for a full run, a handful
+   for a correction round. RUNPART says which of the two this is. */
+let RUN = [], RUNPART = false;
+
+/* The run-up to a question. Two things count: whatever else was asked about the
+   same passage — the same scene — and the question immediately before it, which
+   is the step he was standing on when he fell. Sorted back into story order so
+   it plays forwards, and capped so a crowded scene cannot turn a correction
+   round back into the whole mission. */
+function leadUp(missed){
+  const want = new Set();
+  missed.forEach(i => {
+    want.add(i);
+    if (i > 0) want.add(i - 1);
+    M.items.forEach((x, j) => { if (x.p && x.p === M.items[i].p) want.add(j); });
+  });
+  let out = [...want];
+  if (out.length > 6) {
+    const near = j => Math.min(...missed.map(i => Math.abs(i - j)));
+    const keep = new Set(missed);
+    out.filter(j => !keep.has(j)).sort((a, b) => near(a) - near(b))
+       .slice(0, Math.max(0, 6 - keep.size)).forEach(j => keep.add(j));
+    out = [...keep];
+  }
+  return out.sort((a, b) => a - b);
+}
+
+/* Which questions did not go in cleanly: missed, hinted, or never answered. */
+function notClean(){
+  const out = [];
+  RUN.forEach((n, k) => {
+    const l = log[k];
+    if (!l || l.tries > 1 || l.hinted) out.push(n);
+  });
+  return out;
+}
+
+function startRun(list, partial){
+  RUN = list.slice(); RUNPART = !!partial;
+  idx=0; log=[]; snap=[]; triesAt=[]; forceFinish=false;
+  MC.begin(partial ? {partial:true} : undefined);
+  show("play"); render(); window.scrollTo(0,0);
+}
+
 function start(i){
-  M = DATA.missions[i]; idx=0; log=[]; snap=[]; triesAt=[]; forceFinish=false;
-  MC.begin();
+  M = DATA.missions[i];
   $("mname").textContent = M.name; $("mtag").textContent = M.tag;
-  show("play"); render();
+  startRun(M.items.map((_, n) => n), false);
 }
 function render(){
   tries=triesAt[idx]||0; sel=null; place={}; chosen=new Set();
   hintFn=null; hintMarks=new Set(); hinted=false;
-  $("dots").innerHTML = M.items.map((_,i)=>
+  $("dots").innerHTML = RUN.map((_,i)=>
     `<span class="dot ${i<idx?"done":i===idx?"now":""}"></span>`).join("");
-  const it = M.items[idx];
-  const head = `<div class="qnum">Question ${idx+1} of ${M.items.length}</div><div class="q">${esc(MC.ask(it))}</div>`;
+  const it = M.items[RUN[idx]];
+  const head = `<div class="qnum">Question ${idx+1} of ${RUN.length}${
+      RUNPART?" &middot; second look":""}</div><div class="q">${esc(MC.ask(it))}</div>`;
   const art  = it.art && ART[it.art] ? `<div class="artbox">${ART[it.art]}</div>` : "";
   $("card").innerHTML = head + art + `<div id="body"></div><div class="act" id="act"></div><div id="fb"></div>`;
   if(snap[idx]) replay(it);
@@ -2314,12 +2358,14 @@ function rMystery(it){
 
 /* ---------- feedback ---------- */
 function miss(it,msg){
-  MC.wrong(M.id+"-"+idx); triesAt[idx] = tries;
+  MC.wrong(M.id+"-"+RUN[idx]); triesAt[idx] = tries;
   $("card").classList.remove("shake"); void $("card").offsetWidth; $("card").classList.add("shake");
   $("fb").innerHTML = `<div class="fb no"><strong>Not yet.</strong>${esc(msg)}</div>`;
   if(!$("read")) $("act").insertAdjacentHTML("afterbegin", `<button class="btn o" id="read">Open the book again</button>`);
-  $("read").onclick=()=>drawer(it.p, M.id+"-"+idx, "retry", it.hi);
-  if(tries===1) setTimeout(()=>drawer(it.p, M.id+"-"+idx, "retry", it.hi), 420);
+  $("read").onclick=()=>drawer(it.p, M.id+"-"+RUN[idx], "retry", it.hi);
+  /* Auto-opened on the first miss of a question, in a correction round exactly
+     as in a full one: a retake starts every question's count at zero. */
+  if(tries===1) setTimeout(()=>drawer(it.p, M.id+"-"+RUN[idx], "retry", it.hi), 420);
   if(hintFn && !hinted && !$("hint"))
     $("act").insertAdjacentHTML("afterbegin",
       `<button class="btn h" id="hint">Show me which ones are wrong</button>`);
@@ -2346,11 +2392,11 @@ function navBar(){
     nav.id = "nav"; nav.className = "nav";
     card.appendChild(nav);
   }
-  const last = idx === M.items.length - 1;
+  const last = idx === RUN.length - 1;
   const answered = !!log[idx];
   nav.innerHTML =
     `<button class="navb" id="navback"${idx===0?" disabled":""}>&lsaquo; Back</button>` +
-    `<span class="navpos">${idx+1} of ${M.items.length}</span>` +
+    `<span class="navpos">${idx+1} of ${RUN.length}</span>` +
     `<button class="navb" id="navnext">` +
       (last ? "Finish &rsaquo;" : (answered ? "Next &rsaquo;" : "Skip &rsaquo;")) + `</button>`;
   $("navback").onclick = ()=>{ if(idx>0){ idx--; render(); window.scrollTo(0,0); } };
@@ -2391,20 +2437,20 @@ function replay(it){
   [...$("card").querySelectorAll("button")].forEach(b=>{ b.disabled = true; b.onclick = null; });
   const last = idx === M.items.length - 1;
   const r = $("read"), n = $("next");
-  if(r){ r.disabled = false; r.onclick = ()=>drawer(it.p, M.id+"-"+idx, "review", it.hi); }
+  if(r){ r.disabled = false; r.onclick = ()=>drawer(it.p, M.id+"-"+RUN[idx], "review", it.hi); }
   if(n){ n.disabled = false;
          n.onclick = ()=>{ if(last) tryFinish(); else { idx++; render(); window.scrollTo({top:0,behavior:"smooth"}); } }; }
 }
 function win(it){
-  MC.right(M.id+"-"+idx);
+  MC.right(M.id+"-"+RUN[idx]);
   const pts = hinted ? 25 : (tries===1?100:tries===2?75:tries===3?50:25);
-  log[idx] = {q:idx+1,tries,pts,p:it.p,hinted}; triesAt[idx] = tries;
+  log[idx] = {q:idx+1,i:RUN[idx],tries,pts,p:it.p,hinted}; triesAt[idx] = tries;
   const head = hinted ? "Got it \u2014 with a hint." : (tries===1?"Got it, first try.":"Got it.");
   $("fb").innerHTML = `<div class="fb yes"><strong>${head}</strong>${esc(it.why)}</div>`;
-  const last = idx===M.items.length-1;
+  const last = idx===RUN.length-1;
   $("act").innerHTML = `<button class="btn o" id="read">See the book page or watch the video</button>
                         <button class="btn g" id="next">${last?"See how I did":"Next question"}</button>`;
-  $("read").onclick=()=>drawer(it.p, M.id+"-"+idx, "review", it.hi);
+  $("read").onclick=()=>drawer(it.p, M.id+"-"+RUN[idx], "review", it.hi);
   $("next").onclick=()=>{ if(last) tryFinish(); else { idx++; render(); window.scrollTo({top:0,behavior:"smooth"}); } };
   navBar();
   snap[idx] = $("card").innerHTML;
@@ -2428,11 +2474,24 @@ function markUp(text, hi){
   });
   return out;
 }
+/* The part of the passage the answer is actually in: whichever paragraphs carry
+   this question's highlighted line. Built from the question's own passage, so it
+   cannot be another story's. */
+function excerptFor(key, hi){
+  const p = DATA.passages[key];
+  if(!p || !p.text) return null;
+  const marks = [].concat(hi === undefined || hi === null ? (drawerHi || []) : hi)
+                  .filter(Boolean);
+  if(!marks.length) return null;
+  const hit = p.text.filter(t => marks.some(h => t.indexOf(h) !== -1));
+  return hit.length ? hit : null;
+}
+
 function drawer(key, exKey, mode, hi){
   if(hi !== undefined) drawerHi = hi;
   const p  = DATA.passages[key];
-  const ex = DATA.excerpts[exKey];
-  const v  = DATA.vidFor[key];
+  const ex = excerptFor(key, hi !== undefined ? hi : drawerHi);
+  const v  = DATA.vidFor ? DATA.vidFor[key] : null;
   $("dtitle").textContent = p.title;
   $("dcite").textContent  = p.cite;
   $("dbody").innerHTML =
@@ -2448,7 +2507,7 @@ function drawer(key, exKey, mode, hi){
      </div>`:"") +
     `<div class="morepg">
        <div class="eyebrow">The whole page, for context</div>
-       ${p.vocab.length?`<div class="vbox" style="margin-top:10px"><span class="vh">Vocabulary</span>`+
+       ${(p.vocab||[]).length?`<div class="vbox" style="margin-top:10px"><span class="vh">Vocabulary</span>`+
          p.vocab.map(([w,d])=>`<div><dt>${esc(w)}</dt> <dd>${markUp(d, drawerHi)}</dd></div>`).join("")+`</div>`:""}
        ${p.text.map(t=>`<p>${markUp(t, drawerHi)}</p>`).join("")}
      </div>`;
@@ -2467,21 +2526,25 @@ function finish(){
   /* MC-NAV — a skipped question is a zero, so it divides by the number of
      questions asked rather than the number answered. */
   const done = log.filter(Boolean);
-  const skipped = M.items.length - done.length;
-  const pct = Math.round(done.reduce((s,l)=>s+l.pts,0)/M.items.length);
+  const skipped = RUN.length - done.length;
+  const pct = Math.round(done.reduce((s,l)=>s+l.pts,0)/RUN.length);
   const first = done.filter(l=>l.tries===1).length;
   const att = done.reduce((s,l)=>s+l.tries,0);
   const band = pct>=90?["Sharp work","#59B27C"]:pct>=75?["Solid","#3FB4CE"]:pct>=60?["Getting there","#EFB04A"]:["Worth another run","#E0685A"];
   const rough = done.filter(l=>l.tries>1);
   const hints = done.filter(l=>l.hinted).length;
   const pages = [...new Set(rough.map(l=>DATA.passages[l.p].cite))];
-  best[M.id] = Math.max(best[M.id]||0, pct);
+  const miss = notClean();
+  const lead = miss.length ? leadUp(miss) : [];
+  /* A correction round is three questions out of eight. It is worth doing and
+     it is not worth a best score. */
+  if(!RUNPART) best[M.id] = Math.max(best[M.id]||0, pct);
   $("dtag").textContent = M.name;
   $("scorebox").innerHTML = `
     <div class="ring" style="color:${band[1]}">${pct}%</div>
     <div class="band" style="color:${band[1]}">${band[0]}</div>
     <div class="stats">
-      <div class="stat"><b>${first} / ${M.items.length}</b><span>First try</span></div>
+      <div class="stat"><b>${first} / ${RUN.length}</b><span>First try</span></div>
       ${skipped?`<div class="stat"><b>${skipped}</b><span>Skipped \u2014 scored zero</span></div>`:""}
       <div class="stat"><b>${att}</b><span>Total tries</span></div>
       ${hints?`<div class="stat" style="grid-column:1/-1"><b>${hints}</b><span>Hint${hints>1?"s":""} used \u2014 worth rerunning without</span></div>`:""}
@@ -2493,11 +2556,19 @@ function finish(){
       <div class="eyebrow">Now say it out loud</div>
       <p>${esc(DATA.bigQuestion)}</p>
     </div>
+    ${miss.length?`<div class="review"><b>Two ways to go again</b>
+       <ul><li><b>Just those ${miss.length}</b> — the questions themselves, nothing else.</li>
+       <li><b>With the run-up</b> — ${lead.length} questions: those ones, and the
+       ones that lead into them, so you can see how you get there.</li></ul></div>`:""}
     <div class="act">
-      <button class="btn p" id="again">Run this mission again</button>
+      ${miss.length?`<button class="btn p" id="justmiss">Just the ${miss.length} I missed</button>`:""}
+      ${miss.length?`<button class="btn p" id="leadup">Those ${miss.length}, with the run-up (${lead.length})</button>`:""}
+      <button class="btn ${miss.length?"o":"p"}" id="again">Run the whole thing again</button>
       <button class="btn o" id="pick">Pick another mission</button>
     </div>`;
-  $("again").onclick=()=>{ idx=0; log=[]; snap=[]; triesAt=[]; forceFinish=false; show("play"); render(); };
+  if($("justmiss")) $("justmiss").onclick=()=>startRun(miss, true);
+  if($("leadup"))   $("leadup").onclick=()=>startRun(lead, true);
+  $("again").onclick=()=>startRun(M.items.map((_,n)=>n), false);
   MC.chest($("scorebox"), pct, {id:M.id,
     boss: DATA.missions.indexOf(M)===DATA.missions.length-1});
   $("pick").onclick=home;

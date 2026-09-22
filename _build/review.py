@@ -634,10 +634,50 @@ def unpatch(html):
         j = html.find("/* ---------- feedback ---------- */", i)
         if j > i:
             html = html[:i] + html[j:]
+            # H_MARKERS is inserted with a newline in front of its own comment,
+            # and the strip above starts *at* the comment — so that newline
+            # survived every cycle and the history apps grew a blank line on
+            # each --retheme. Nine of them accumulated in one afternoon. Put the
+            # seam back to the single blank line the shell has there.
+            html = _re.sub(r"\n{3,}(/\* ---------- feedback ---------- \*/)",
+                           r"\n\n\1", html, count=1)
     html = html.replace("let shown=false;\n", "")
     html = html.replace("  tries=0; picked=null; chosen=new Set(); shown=false;",
                         "  tries=0; picked=null; chosen=new Set();")
     html = html.replace(H_LOG_NEW, H_LOG_OLD)
+
+    # A file built while this revert did not exist yet carries the calc lines
+    # more than once, and only the first copy sits under the line that anchors
+    # them — so reverting the pair leaves the rest behind, and the file still
+    # declares `miss` twice. Collapse the repeats before reverting anything.
+    _one = ("  const miss = notClean();\n"
+            "  const lead = miss.length ? leadUp(miss) : [];\n")
+    while _one + _one in html:
+        html = html.replace(_one + _one, _one)
+
+    # The retake and excerpt layers, back out in the order they went in. Most of
+    # these undo themselves, because applying one removes the text the next pass
+    # would match. M_CALC_NEW does not: it keeps the line it anchors on, so a
+    # second pass appended a second `const miss` and every mission app stopped
+    # parsing. Reverting the lot is cheaper than reasoning about which need it.
+    for _new, _old in ((M_ACT_NEW, M_ACT_OLD),
+                       (M_CALC_NEW, M_CALC_OLD),
+                       (M_BEST_NEW, M_BEST_OLD),
+                       (M_FIRST_NEW, M_FIRST_OLD),
+                       (M_FINISH_NEW, M_FINISH_OLD),
+                       (M_WINLAST_NEW, M_WINLAST_OLD),
+                       (M_LOG_NEW, M_LOG_OLD),
+                       (M_NAV_NEW, M_NAV_OLD),
+                       (M_RENDER_NEW, M_RENDER_OLD),
+                       (M_RUN_STATE_NEW, M_RUN_STATE_OLD),
+                       (D_EX_NEW, D_EX_OLD),
+                       (K_MISS_NEW, K_MISS_OLD),
+                       (K_READ1_NEW, K_READ1_OLD),
+                       (K_REVIEW_NEW, K_REVIEW_OLD),
+                       (K_RIGHT_NEW, K_RIGHT_OLD),
+                       (K_READ2_NEW, K_READ2_OLD),
+                       (D_VOCAB_NEW, D_VOCAB_OLD)):
+        html = html.replace(_new, _old)
     # These two have grown a line at a time, so a file may still carry an older
     # shape of them. Reverting only the *current* shape left the earlier one in
     # place, and the next patch then found no anchor — silently skipping the very
@@ -786,6 +826,282 @@ def history1(html):
     return html.replace("function openReader(", H1_MARK + "function openReader(", 1)
 
 
+# ------------------------------------------------------------ retake (mission)
+#
+# Getting a question wrong and being told the answer is not the same as being
+# able to do it. Until now the only way back was "Run this mission again", all
+# eight questions of it, which is too blunt to use on one miss — so in practice
+# nothing was retried at all.
+#
+# Two ways back now. The first is the obvious one: just the questions he missed.
+# The second is the one worth having — those questions *with their run-up*. A
+# question rarely stands alone: it sits in a scene, and there is usually a
+# question just before it that sets up the thing it turns on. Retrying the miss
+# on its own tests whether he remembers being told. Retrying it after the two
+# questions that lead into it tests whether he can get there.
+#
+# Both are correction rounds: MC.begin({partial:true}), so neither can overwrite
+# a best score or pay out the full haul. Three questions at 100% is not the same
+# achievement as eight.
+#
+# All of it hangs off RUN, an array of indices into M.items. A full run is every
+# index in order; a correction round is a handful. Everything that indexed
+# M.items by idx now goes through RUN, so one mechanism covers both cases and
+# there is no second code path to keep in step.
+
+M_RUN_STATE_OLD = """/* ---------- mission ---------- */
+function start(i){
+  M = DATA.missions[i]; idx=0; log=[]; snap=[]; triesAt=[]; forceFinish=false;
+  MC.begin();
+  $("mname").textContent = M.name; $("mtag").textContent = M.tag;
+  show("play"); render();
+}"""
+
+M_RUN_STATE_NEW = """/* ---------- mission ---------- */
+/* RUN holds indices into M.items: every one of them for a full run, a handful
+   for a correction round. RUNPART says which of the two this is. */
+let RUN = [], RUNPART = false;
+
+/* The run-up to a question. Two things count: whatever else was asked about the
+   same passage — the same scene — and the question immediately before it, which
+   is the step he was standing on when he fell. Sorted back into story order so
+   it plays forwards, and capped so a crowded scene cannot turn a correction
+   round back into the whole mission. */
+function leadUp(missed){
+  const want = new Set();
+  missed.forEach(i => {
+    want.add(i);
+    if (i > 0) want.add(i - 1);
+    M.items.forEach((x, j) => { if (x.p && x.p === M.items[i].p) want.add(j); });
+  });
+  let out = [...want];
+  if (out.length > 6) {
+    const near = j => Math.min(...missed.map(i => Math.abs(i - j)));
+    const keep = new Set(missed);
+    out.filter(j => !keep.has(j)).sort((a, b) => near(a) - near(b))
+       .slice(0, Math.max(0, 6 - keep.size)).forEach(j => keep.add(j));
+    out = [...keep];
+  }
+  return out.sort((a, b) => a - b);
+}
+
+/* Which questions did not go in cleanly: missed, hinted, or never answered. */
+function notClean(){
+  const out = [];
+  RUN.forEach((n, k) => {
+    const l = log[k];
+    if (!l || l.tries > 1 || l.hinted) out.push(n);
+  });
+  return out;
+}
+
+function startRun(list, partial){
+  RUN = list.slice(); RUNPART = !!partial;
+  idx=0; log=[]; snap=[]; triesAt=[]; forceFinish=false;
+  MC.begin(partial ? {partial:true} : undefined);
+  show("play"); render(); window.scrollTo(0,0);
+}
+
+function start(i){
+  M = DATA.missions[i];
+  $("mname").textContent = M.name; $("mtag").textContent = M.tag;
+  startRun(M.items.map((_, n) => n), false);
+}"""
+
+M_RENDER_OLD = """  $("dots").innerHTML = M.items.map((_,i)=>
+    `<span class="dot ${i<idx?"done":i===idx?"now":""}"></span>`).join("");
+  const it = M.items[idx];
+  const head = `<div class="qnum">Question ${idx+1} of ${M.items.length}</div><div class="q">${esc(MC.ask(it))}</div>`;"""
+
+M_RENDER_NEW = """  $("dots").innerHTML = RUN.map((_,i)=>
+    `<span class="dot ${i<idx?"done":i===idx?"now":""}"></span>`).join("");
+  const it = M.items[RUN[idx]];
+  const head = `<div class="qnum">Question ${idx+1} of ${RUN.length}${
+      RUNPART?" &middot; second look":""}</div><div class="q">${esc(MC.ask(it))}</div>`;"""
+
+M_NAV_OLD = """  const last = idx === M.items.length - 1;
+  const answered = !!log[idx];
+  nav.innerHTML =
+    `<button class="navb" id="navback"${idx===0?" disabled":""}>&lsaquo; Back</button>` +
+    `<span class="navpos">${idx+1} of ${M.items.length}</span>` +"""
+
+M_NAV_NEW = """  const last = idx === RUN.length - 1;
+  const answered = !!log[idx];
+  nav.innerHTML =
+    `<button class="navb" id="navback"${idx===0?" disabled":""}>&lsaquo; Back</button>` +
+    `<span class="navpos">${idx+1} of ${RUN.length}</span>` +"""
+
+# The log entry has to remember which question it was, not only where it sat in
+# this run, or a correction round cannot be built out of a correction round.
+M_LOG_OLD = """  log[idx] = {q:idx+1,tries,pts,p:it.p,hinted}; triesAt[idx] = tries;"""
+M_LOG_NEW = """  log[idx] = {q:idx+1,i:RUN[idx],tries,pts,p:it.p,hinted}; triesAt[idx] = tries;"""
+
+M_WINLAST_OLD = """  const last = idx===M.items.length-1;
+  $("act").innerHTML = `<button class="btn o" id="read">See the book page or watch the video</button>"""
+M_WINLAST_NEW = """  const last = idx===RUN.length-1;
+  $("act").innerHTML = `<button class="btn o" id="read">See the book page or watch the video</button>"""
+
+M_FINISH_OLD = """  const done = log.filter(Boolean);
+  const skipped = M.items.length - done.length;
+  const pct = Math.round(done.reduce((s,l)=>s+l.pts,0)/M.items.length);"""
+M_FINISH_NEW = """  const done = log.filter(Boolean);
+  const skipped = RUN.length - done.length;
+  const pct = Math.round(done.reduce((s,l)=>s+l.pts,0)/RUN.length);"""
+
+M_FIRST_OLD = """      <div class="stat"><b>${first} / ${M.items.length}</b><span>First try</span></div>"""
+M_FIRST_NEW = """      <div class="stat"><b>${first} / ${RUN.length}</b><span>First try</span></div>"""
+
+M_BEST_OLD = """  best[M.id] = Math.max(best[M.id]||0, pct);"""
+M_BEST_NEW = """  /* A correction round is three questions out of eight. It is worth doing and
+     it is not worth a best score. */
+  if(!RUNPART) best[M.id] = Math.max(best[M.id]||0, pct);"""
+
+M_ACT_OLD = """    <div class="act">
+      <button class="btn p" id="again">Run this mission again</button>
+      <button class="btn o" id="pick">Pick another mission</button>
+    </div>`;
+  $("again").onclick=()=>{ idx=0; log=[]; snap=[]; triesAt=[]; forceFinish=false; show("play"); render(); };"""
+
+M_ACT_NEW = """    ${miss.length?`<div class="review"><b>Two ways to go again</b>
+       <ul><li><b>Just those ${miss.length}</b> \u2014 the questions themselves, nothing else.</li>
+       <li><b>With the run-up</b> \u2014 ${lead.length} questions: those ones, and the
+       ones that lead into them, so you can see how you get there.</li></ul></div>`:""}
+    <div class="act">
+      ${miss.length?`<button class="btn p" id="justmiss">Just the ${miss.length} I missed</button>`:""}
+      ${miss.length?`<button class="btn p" id="leadup">Those ${miss.length}, with the run-up (${lead.length})</button>`:""}
+      <button class="btn ${miss.length?"o":"p"}" id="again">Run the whole thing again</button>
+      <button class="btn o" id="pick">Pick another mission</button>
+    </div>`;
+  if($("justmiss")) $("justmiss").onclick=()=>startRun(miss, true);
+  if($("leadup"))   $("leadup").onclick=()=>startRun(lead, true);
+  $("again").onclick=()=>startRun(M.items.map((_,n)=>n), false);"""
+
+# `miss` and `lead` have to exist before the template literal that reads them.
+M_CALC_OLD = """  const pages = [...new Set(rough.map(l=>DATA.passages[l.p].cite))];"""
+M_CALC_NEW = """  const pages = [...new Set(rough.map(l=>DATA.passages[l.p].cite))];
+  const miss = notClean();
+  const lead = miss.length ? leadUp(miss) : [];"""
+
+
+def retake(html):
+    """Two ways back into the questions that did not go in cleanly."""
+    for old, new in ((M_RUN_STATE_OLD, M_RUN_STATE_NEW),
+                     (M_RENDER_OLD, M_RENDER_NEW),
+                     (M_NAV_OLD, M_NAV_NEW),
+                     (M_LOG_OLD, M_LOG_NEW),
+                     (M_WINLAST_OLD, M_WINLAST_NEW),
+                     (M_FINISH_OLD, M_FINISH_NEW),
+                     (M_FIRST_OLD, M_FIRST_NEW),
+                     (M_BEST_OLD, M_BEST_NEW),
+                     (M_CALC_OLD, M_CALC_NEW),
+                     (M_ACT_OLD, M_ACT_NEW)):
+        if old in html:
+            html = html.replace(old, new, 1)
+    return html
+
+
+# ---------------------------------------------------- the excerpt on a miss
+#
+# Getting a question wrong opens the book at the place the answer is, with the
+# line marked. That is the single most useful thing the app does, and in
+# twenty-three of the twenty-six apps it was showing the wrong story.
+#
+# The excerpt came from a stored table, DATA.excerpts, keyed "m1-0", "m1-1" and
+# so on. Every app is generated from another app's shell, and that table came
+# across with the shell — so The Engineer's Thumb quoted the Speckled Band's
+# inquest, all four Red-Headed League sections quoted it too, and seven of the
+# science chapters quoted a chapter of a different unit. Only the three apps
+# nobody had ever generated from were right. Nothing could see it: the table was
+# well formed, the keys all resolved, and the text was real text from a real
+# book.
+#
+# It is derived now. Every question already names the passage behind it and the
+# line in that passage that answers it — the highlight, which test_highlights.js
+# checks is really there for all 375 of them. The excerpt is simply the
+# paragraphs of that passage carrying that line. It cannot point at another
+# story, because it is built from the question's own passage; and it cannot go
+# stale, because there is nothing left to copy.
+
+D_EX_OLD = """function drawer(key, exKey, mode, hi){
+  if(hi !== undefined) drawerHi = hi;
+  const p  = DATA.passages[key];
+  const ex = DATA.excerpts[exKey];
+  const v  = DATA.vidFor[key];"""
+
+D_EX_NEW = """/* The part of the passage the answer is actually in: whichever paragraphs carry
+   this question's highlighted line. Built from the question's own passage, so it
+   cannot be another story's. */
+function excerptFor(key, hi){
+  const p = DATA.passages[key];
+  if(!p || !p.text) return null;
+  const marks = [].concat(hi === undefined || hi === null ? (drawerHi || []) : hi)
+                  .filter(Boolean);
+  if(!marks.length) return null;
+  const hit = p.text.filter(t => marks.some(h => t.indexOf(h) !== -1));
+  if(hit.length) return hit;
+  /* Some questions turn on a definition rather than on a sentence of the text,
+     and the line they mark is in the passage's vocabulary list. Quote that. */
+  const vocab = (p.vocab||[]).filter(v =>
+    marks.some(h => String(v[1]).indexOf(h) !== -1 || String(v[0]).indexOf(h) !== -1));
+  return vocab.length ? vocab.map(v => v[0] + " \\u2014 " + v[1]) : null;
+}
+
+function drawer(key, exKey, mode, hi){
+  if(hi !== undefined) drawerHi = hi;
+  const p  = DATA.passages[key];
+  const ex = excerptFor(key, hi !== undefined ? hi : drawerHi);
+  const v  = DATA.vidFor ? DATA.vidFor[key] : null;"""
+
+# The key that identifies a question to the engine has to be the question, not
+# where it happens to sit in this run. A correction round of three asks them at
+# positions 0, 1 and 2, so the miss log was filing them against whatever three
+# questions happened to open the full run.
+K_MISS_OLD = """  MC.wrong(M.id+"-"+idx); triesAt[idx] = tries;"""
+K_MISS_NEW = """  MC.wrong(M.id+"-"+RUN[idx]); triesAt[idx] = tries;"""
+
+K_READ1_OLD = """  $("read").onclick=()=>drawer(it.p, M.id+"-"+idx, "retry", it.hi);
+  if(tries===1) setTimeout(()=>drawer(it.p, M.id+"-"+idx, "retry", it.hi), 420);"""
+K_READ1_NEW = """  $("read").onclick=()=>drawer(it.p, M.id+"-"+RUN[idx], "retry", it.hi);
+  /* Auto-opened on the first miss of a question, in a correction round exactly
+     as in a full one: a retake starts every question's count at zero. */
+  if(tries===1) setTimeout(()=>drawer(it.p, M.id+"-"+RUN[idx], "retry", it.hi), 420);"""
+
+K_REVIEW_OLD = """  if(r){ r.disabled = false; r.onclick = ()=>drawer(it.p, M.id+"-"+idx, "review", it.hi); }"""
+K_REVIEW_NEW = """  if(r){ r.disabled = false; r.onclick = ()=>drawer(it.p, M.id+"-"+RUN[idx], "review", it.hi); }"""
+
+K_RIGHT_OLD = """  MC.right(M.id+"-"+idx);"""
+K_RIGHT_NEW = """  MC.right(M.id+"-"+RUN[idx]);"""
+
+K_READ2_OLD = """  $("read").onclick=()=>drawer(it.p, M.id+"-"+idx, "review", it.hi);"""
+K_READ2_NEW = """  $("read").onclick=()=>drawer(it.p, M.id+"-"+RUN[idx], "review", it.hi);"""
+
+# A reading passage has a title, a citation and its text. It has no vocabulary
+# list -- that is a science thing -- and the drawer read p.vocab.length without
+# checking, so opening the book threw a TypeError and the panel never appeared
+# at all. On all four Red-Headed League sections, on the Engineer's Thumb, and
+# on the passages of two science chapters that happen to have no vocabulary.
+# Which is to say: on the apps he has actually been reading, the one thing that
+# helps when he is stuck has been dead.
+D_VOCAB_OLD = """       ${p.vocab.length?`<div class="vbox" style="margin-top:10px"><span class="vh">Vocabulary</span>`+
+         p.vocab.map(([w,d])=>`<div><dt>${esc(w)}</dt> <dd>${markUp(d, drawerHi)}</dd></div>`).join("")+`</div>`:""}"""
+D_VOCAB_NEW = """       ${(p.vocab||[]).length?`<div class="vbox" style="margin-top:10px"><span class="vh">Vocabulary</span>`+
+         p.vocab.map(([w,d])=>`<div><dt>${esc(w)}</dt> <dd>${markUp(d, drawerHi)}</dd></div>`).join("")+`</div>`:""}"""
+
+
+def excerpt(html):
+    """Derive the excerpt from the question's own passage, and key by question."""
+    for old, new in ((D_EX_OLD, D_EX_NEW),
+                     (K_MISS_OLD, K_MISS_NEW),
+                     (K_READ1_OLD, K_READ1_NEW),
+                     (K_REVIEW_OLD, K_REVIEW_NEW),
+                     (K_RIGHT_OLD, K_RIGHT_NEW),
+                     (K_READ2_OLD, K_READ2_NEW),
+                     (D_VOCAB_OLD, D_VOCAB_NEW)):
+        if old in html:
+            html = html.replace(old, new, 1)
+    return html
+
+
 def patch(html):
     """Run every shell patch. Each is a no-op where its anchor is absent.
 
@@ -796,4 +1112,4 @@ def patch(html):
     to the bare shell and patching that means a rebuild always applies today's
     version rather than whatever was current when the file was last written.
     """
-    return hide_teacher_guide(history1(mission(history(unpatch(html)))))
+    return excerpt(retake(hide_teacher_guide(history1(mission(history(unpatch(html)))))))
