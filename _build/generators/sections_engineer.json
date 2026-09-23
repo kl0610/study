@@ -21,11 +21,12 @@
    },
    "waiting": {
     "title": "Two men from Paddington",
-    "cite": "Reader, page 88",
+    "cite": "Reader, pages 88–89",
     "text": [
      "One morning, I was awakened by the maid tapping at the door, announcing that two men had come from Paddington and were waiting in the consulting room. I dressed hurriedly, for I knew by experience that railway cases were seldom trivial, and hastened downstairs.",
      "“I’ve got him here,” he whispered, jerking his thumb over his shoulder. “He’s all right. I thought I’d bring him round myself; then he couldn’t slip away. There he is, all safe and sound.”",
-     "I entered my consulting-room and found a gentleman seated by the table. Round one of his hands he had a handkerchief wrapped, which was mottled all over with bloodstains. He was young, with a strong face, but he was exceedingly pale and looked like he was suffering from agitation."
+     "I entered my consulting-room and found a gentleman seated by the table. Round one of his hands he had a handkerchief wrapped, which was mottled all over with bloodstains. He was young, with a strong face, but he was exceedingly pale and looked like he was suffering from agitation.",
+     "“I am sorry to wake you, Doctor,” said he. “But I have had a very serious accident during the night. I came in by train this morning, and on inquiring as to where I might find a doctor, a worthy fellow escorted me here.”"
     ]
    },
    "card": {
@@ -54,6 +55,7 @@
      "“I shall have to tell my tale to the police; but, if it were not for the evidence of this wound, I should be surprised if they believed my story, for it is very extraordinary, and I have not much proof with which to back it up. Even if they believe me, the clues I can give them are so vague that I doubt justice will ever be done.”",
      "“If it is a problem that you desire to solve, I strongly recommend you come to my friend Mr. Sherlock Holmes before you go to the police.”",
      "Sherlock Holmes was, as I expected, lounging about his sitting room in his dressing gown. He received us in his quietly genial fashion, ordered eggs, and joined us in a hearty meal. When it was concluded, he settled our new acquaintance upon the sofa and set a glass of brandy within his reach.",
+     "“It is easy to see that your experience has been no common one, Mr. Hatherley,” said he. “Pray lie down there and make yourself at home. Tell us what you can, but stop when you are tired.”",
      "“I am an orphan and a bachelor, residing alone in lodgings in London. By profession I am a hydraulic engineer, with considerable experience during the seven years that I was apprenticed to Venner & Matheson, the well-known firm. Two years ago, having come into a fair sum of money through my poor father’s death, I decided to start in business for myself.”"
     ]
    }
@@ -102,6 +104,21 @@
     ],
     "a": 0,
     "why": "Watson dressed hurriedly because he knew by experience that railway cases were seldom trivial. He had not seen the man or heard anything about him yet — the guard’s remark about slipping away comes later, on the stairs.",
+    "cite": "Reader, pages 87–94"
+   },
+   {
+    "type": "pick",
+    "p": "waiting",
+    "hi": "I have had a very serious accident during the night. I came in by train this morning",
+    "q": "He was hurt during the night and came in by train this morning. What does that tell you about where it happened?",
+    "opts": [
+     "Well outside London, and hours before he found help",
+     "Somewhere in London, since he reached a doctor by the morning",
+     "At Paddington Station, which is why a railway guard brought him in",
+     "At his own lodgings, before he set out on the night train"
+    ],
+    "a": 0,
+    "why": "Nothing in these pages says where he was. But he was hurt in the night, he fainted and lay senseless a long time, and he still had a train journey in front of him — so it happened well outside London, and hours passed before anyone looked at the wound. Holmes will want both of those facts.",
     "cite": "Reader, pages 87–94"
    },
    {
@@ -155,6 +172,21 @@
    {
     "type": "pick",
     "p": "thumb",
+    "hi": "It is a question of hydraulics, you see, and came within my own specialty.",
+    "q": "Watson says he should have been a surgeon. Hatherley answers that it was “a question of hydraulics … within my own specialty.” What does he mean by that?",
+    "opts": [
+     "Stopping blood is the same problem as stopping flow in a pipe",
+     "He had been taught first aid as part of his engineering training",
+     "He had worked as a surgeon before he turned to engineering",
+     "He had read about tourniquets in an engineering journal once"
+    ],
+    "a": 0,
+    "why": "A hydraulic engineer’s whole trade is controlling something that flows through a narrow space under pressure. He did not need medical training to know that squeezing the pipe above the leak would stop it — he already knew the shape of that problem, and the shape is the same whether the pipe is a hose or an arm.",
+    "cite": "Reader, pages 87–94"
+   },
+   {
+    "type": "pick",
+    "p": "thumb",
     "hi": [
      "“An accident, I presume?” “By no means.” “What, a murderous attack!” “Very murderous indeed.”"
     ],
@@ -182,6 +214,24 @@
     ],
     "a": 0,
     "why": "Without the wound he doubts they would believe him at all, and even if they do, the clues he can give are so vague that he doubts justice will ever be done. That is the gap Holmes is for — and Holmes settles him on the sofa with brandy and tells him to stop when he is tired.",
+    "cite": "Reader, pages 87–94"
+   },
+   {
+    "type": "pick",
+    "p": "baker",
+    "hi": [
+     "he settled our new acquaintance upon the sofa and set a glass of brandy within his reach",
+     "Tell us what you can, but stop when you are tired."
+    ],
+    "q": "Holmes orders breakfast, settles Hatherley on the sofa with brandy, and tells him to stop when he is tired — all before hearing a word. Why go to that trouble first?",
+    "opts": [
+     "A steadied man tells it better, and Holmes wants the story straight",
+     "Holmes is hungry, and will not be interrupted before he has eaten",
+     "Holmes has already guessed the story and is in no hurry to hear it",
+     "Holmes is waiting for the police to arrive before anything is said"
+    ],
+    "a": 0,
+    "why": "This is the same man who was laughing hysterically at Watson’s door an hour ago. Holmes wants evidence, and evidence out of an exhausted witness comes out muddled — so he feeds him, lies him down, puts the brandy where he can reach it, and tells him he may stop. It looks like kindness, and it is, but it is also how you get a clean account.",
     "cite": "Reader, pages 87–94"
    }
   ]
