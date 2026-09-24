@@ -6,7 +6,7 @@
   "bigQuestion": "A stranger arrives at Watson’s door before breakfast with his thumb cut off. What does he want, and why does Watson take him to Holmes?",
   "mission": {
    "name": "Pages 87 to 94",
-   "tag": "8 questions · about 7 minutes",
+   "tag": "11 questions · about 9 minutes",
    "blurb": "A quick check that tonight’s reading landed — not a test."
   },
   "passages": {
@@ -233,6 +233,294 @@
     "a": 0,
     "why": "This is the same man who was laughing hysterically at Watson’s door an hour ago. Holmes wants evidence, and evidence out of an exhausted witness comes out muddled — so he feeds him, lies him down, puts the brandy where he can reach it, and tells him he may stop. It looks like kindness, and it is, but it is also how you get a clean account.",
     "cite": "Reader, pages 87–94"
+   }
+  ]
+ },
+ {
+  "slug": "sherlock-engineer-2",
+  "title": "Fifty Guineas and a Promise",
+  "pages": "95–103",
+  "bigQuestion": "Colonel Lysander Stark offers an hour’s work for fifty guineas. What is he really paying for — and what does Hatherley notice but go anyway?",
+  "mission": {
+   "name": "Pages 95 to 103",
+   "tag": "12 questions · about 9 minutes",
+   "blurb": "A quick check that tonight’s reading landed — not a test."
+  },
+  "passages": {
+   "den": {
+    "title": "Two years in a little den",
+    "cite": "Reader, page 96",
+    "vocab": [],
+    "text": [
+     "During two years I have had only three consultations and one small job. Every day, from nine in the morning until four in the afternoon, I waited in my little den, until my heart began to sink, and I came to think I should never have any practice at all.",
+     "“Yesterday, however, my clerk entered to say there was a gentleman waiting to see me upon business. He brought a card, too, with the name of ‘Colonel Lysander Stark’ engraved upon it. At his heels came the Colonel himself. I do not think that I have ever seen so thin a man. His whole face sharpened away into nose and chin. Yet this thinness seemed to be natural, and due to no disease, for his eye was bright, his step brisk, and his bearing assured. He was plainly but neatly dressed, and his age, I judge, would be near forty.”"
+    ]
+   },
+   "secret": {
+    "title": "The promise",
+    "cite": "Reader, pages 96–97",
+    "vocab": [],
+    "text": [
+     "“‘You have been recommended to me as a man who is not only proficient in his profession, but is also capable of preserving a secret.’”",
+     "“I bowed, feeling as flattered as any young man would at such a greeting. ‘May I ask who it was who gave me so good a reference?’ I asked. ‘Well, perhaps it is better that I should not tell you just at this moment. I have it from the same source that you are both an orphan and a bachelor, and you are residing alone in London.’”",
+     "“‘I have a professional commission for you, but absolute secrecy is essential – absolute secrecy, you understand, and of course we may expect that more from a man who lives alone than from one who lives in the bosom of his family.’”",
+     "“He looked hard at me as I spoke, and I have never seen so suspicious and questioning an eye. ‘Absolute and complete silence, before, during, and after? No reference to the matter at all, either in word or writing?’”"
+    ]
+   },
+   "offer": {
+    "title": "Fifty guineas",
+    "cite": "Reader, page 98",
+    "vocab": [],
+    "text": [
+     "“A feeling of repulsion and fear had begun to rise within me at the antics of this fleshless man.”",
+     "“‘How would fifty guineas for a night’s work suit you?’ he asked. ‘Most admirably.’ ‘I say a night’s work. But an hour’s would be nearer the mark. I simply want your opinion about a hydraulic stamping machine that has gotten out of gear. If you show us what is wrong, we shall set it right ourselves. What do you think?’ ‘The work appears to be light, and the pay generous.’”",
+     "“‘We shall want you to come tonight by the last train to Eyford, in Berkshire. It is a little place near the borders of Oxfordshire. There is a train from Paddington that would bring you in there at about eleven fifteen. I shall come down in a carriage to meet you.’”"
+    ]
+   },
+   "night": {
+    "title": "Why so late",
+    "cite": "Reader, page 99",
+    "vocab": [
+     [
+      "shakedown",
+      "A makeshift bed."
+     ]
+    ],
+    "text": [
+     "“‘Yes, our little place is in the country. It is a good seven miles from Eyford station.’ ‘Then we can hardly get there before midnight. I suppose there would be no chance of a train back. I should be forced to stop for the night.’ ‘Yes, we could easily give you a shakedown.’”",
+     "“‘We judge it best that you should come late. It is to recompense you for any inconvenience that we are paying you, an unknown man, a fee that would buy an opinion from the very heads of your profession. Of course, if you would like to get out of this business, there is time to do so.’”",
+     "“I thought of the fifty guineas, and of how very useful they would be to me. ‘Not at all,’ said I; ‘I should like, however, to understand a little more clearly what it is that you wish me to do.’”"
+    ]
+   },
+   "earth": {
+    "title": "Fuller’s earth",
+    "cite": "Reader, pages 100–101",
+    "vocab": [
+     [
+      "fuller’s earth",
+      "A clay used in manufacturing processes."
+     ]
+    ],
+    "text": [
+     "“‘You may be aware that fuller’s earth is a valuable product, and that it is only found in one or two places in England?’”",
+     "“‘Some little time ago I bought a small place within ten miles of Reading. I was fortunate to discover that there was a deposit of fuller’s earth in one of my fields. On examining it, however, I found that this deposit formed a link between two very much larger ones – both of them in the grounds of my neighbors. These good people did not know that their land contained that which was quite as valuable as a gold mine. Naturally, it was to my interest to buy their land before they discovered its true value; but I had no money by which I could do this.’”",
+     "“‘I took a few of my friends into the secret, however, and they suggested that we should secretly work our own little deposit, and in this way earn the money to buy the neighboring fields. This we have now been doing for some time, and to help us in our operations we erected a hydraulic press. This press, as I have already explained, has gotten out of order, and we wish your advice.’”"
+    ]
+   },
+   "press": {
+    "title": "A mere detail",
+    "cite": "Reader, page 101",
+    "vocab": [],
+    "text": [
+     "“‘The only point that I could not quite understand,’ said I, ‘was what use you could make of a hydraulic press in excavating fuller’s earth, which, as I understand, is dug out from a pit.’”",
+     "“‘Ah!’ said he carelessly, ‘we have our own process. We compress the earth into bricks, so as to remove them without revealing what they are. But that is a mere detail. I have taken you fully into my confidence, now, Mr. Hatherley, and I have shown you how I trust you.’ He rose as he spoke. ‘I shall expect you, then, at Eyford, at 11:15.’ ‘I shall certainly be there.’ ‘And not a word to a soul.’ He looked at me with a last long, questioning gaze, and then he hurried from the room.”"
+    ]
+   },
+   "weigh": {
+    "title": "Throwing his fears to the winds",
+    "cite": "Reader, page 103",
+    "vocab": [],
+    "text": [
+     "“On the one hand, of course, I was glad, for the fee was at least ten times what I should have asked had I set a price on my own services, and this order might lead to other ones. On the other hand, my patron had made an unpleasant impression upon me, and I could not think that his explanation was sufficient to explain the necessity for my coming at midnight, and his extreme anxiety least I should tell anyone of my errand.”",
+     "“However, I threw my fears to the winds, ate a hearty supper, drove to Paddington, and started off, having obeyed to the letter the order to hold my tongue.”"
+    ]
+   },
+   "arrival": {
+    "title": "The carriage at Eyford",
+    "cite": "Reader, page 103",
+    "vocab": [],
+    "text": [
+     "“I was in time for the last train to Eyford, and I reached the little station after eleven o’clock. I was the only passenger who got out there, and there was no one upon the platform. As I passed out the gate, however, I found my acquaintance of the morning waiting in the shadow. Without a word he grasped my arm and hurried me into a carriage. He drew up the windows on either side and away we went, as hard as the horse could go.”",
+     "“One horse?” interjected Holmes. “Yes, only one.” “Did you observe the color?” “Yes, it was a chestnut.”"
+    ]
+   }
+  },
+  "items": [
+   {
+    "type": "pick",
+    "p": "den",
+    "hi": "During two years I have had only three consultations and one small job",
+    "q": "Hatherley begins by telling Holmes how little work he has had in two years. Why start there?",
+    "opts": [
+     "It explains why he took a job he did not like the look of",
+     "It explains why he was still at his desk so late that evening",
+     "It explains why he had never heard of Colonel Lysander Stark",
+     "It explains why he had no clerk to send out on the errand"
+    ],
+    "a": 0,
+    "why": "Three consultations and one small job in two years, and a heart that sank a little further every afternoon. Fifty guineas is not a temptation to a busy man. Hatherley is telling Holmes what the money meant to him before he tells him what he did for it.",
+    "cite": "Reader, pages 95–103"
+   },
+   {
+    "type": "pick",
+    "p": "den",
+    "hi": "this thinness seemed to be natural, and due to no disease, for his eye was bright, his step brisk, and his bearing assured",
+    "q": "Hatherley says he never saw so thin a man, but that the thinness was natural and not from illness. What made him sure of that?",
+    "opts": [
+     "A bright eye, a brisk step and an assured bearing",
+     "The Colonel said so himself when he introduced his business",
+     "The good cut and quality of the clothes he was wearing",
+     "He was too young for any serious illness to have taken hold"
+    ],
+    "a": 0,
+    "why": "Hatherley is a careful observer, which is what makes him a good witness later. A sick man is dull-eyed and slow; this one was bright, brisk and assured, so the thinness had to be his ordinary build.",
+    "cite": "Reader, pages 95–103"
+   },
+   {
+    "type": "pick",
+    "p": "secret",
+    "hi": "we may expect that more from a man who lives alone than from one who lives in the bosom of his family",
+    "q": "Stark knows Hatherley is an orphan, a bachelor, and living alone. What reason does he give for caring about that?",
+    "opts": [
+     "A man who lives alone can keep a secret better than one with a family",
+     "A man who lives alone can travel at short notice without explaining",
+     "A man who lives alone will work for less than one with a family",
+     "A man who lives alone has no one to worry if he is out all night"
+    ],
+    "a": 0,
+    "why": "That is the reason he gives, and it sounds almost reasonable. Notice what sits either side of it: he will not say who recommended Hatherley, but that same unnamed source told him exactly who has nobody at home. He came knowing.",
+    "cite": "Reader, pages 95–103"
+   },
+   {
+    "type": "pick",
+    "p": "secret",
+    "hi": "Absolute and complete silence, before, during, and after? No reference to the matter at all, either in word or writing?",
+    "q": "Stark asks for silence “before, during, and after … either in word or writing.” Which part of that is the odd one?",
+    "opts": [
+     "After — once a machine is mended there is nothing left to hide",
+     "Before — nobody could tell a secret they had not yet been told",
+     "In word — a spoken promise cannot be checked either way",
+     "In writing — an engineer must keep notes to do the work at all"
+    ],
+    "a": 0,
+    "why": "Before and during protect a business secret, and a jealously guarded deposit is a fair thing to protect. Afterwards is different: once the press is mended there is nothing left to give away, unless what needs covering is not the fuller’s earth but the evening itself. And no reference in writing means no record anywhere that he ever went.",
+    "cite": "Reader, pages 95–103"
+   },
+   {
+    "type": "pick",
+    "p": "offer",
+    "hi": "I simply want your opinion about a hydraulic stamping machine that has gotten out of gear",
+    "q": "What is the work Stark actually asks for?",
+    "opts": [
+     "An opinion on a hydraulic stamping machine that is out of gear",
+     "The repair of a hydraulic press that has broken down",
+     "The design of a new machine for a business in the country",
+     "A survey of a field to value the clay lying under it"
+    ],
+    "a": 0,
+    "why": "An opinion, not a repair: “If you show us what is wrong, we shall set it right ourselves.” An hour’s work, by Stark’s own reckoning. Fifty guineas for an hour of talking is the first figure in this story that does not add up.",
+    "cite": "Reader, pages 95–103"
+   },
+   {
+    "type": "pick",
+    "p": "offer",
+    "hi": "There is a train from Paddington that would bring you in there at about eleven fifteen",
+    "q": "What travelling does Stark ask him to do?",
+    "opts": [
+     "The last train to Eyford, arriving about a quarter past eleven",
+     "The first train to Reading, arriving early the next morning",
+     "A carriage the whole way from London, leaving after supper",
+     "The last train to Oxford, where a carriage would be waiting"
+    ],
+    "a": 0,
+    "why": "Eyford, in Berkshire, on the last train from Paddington, in at about 11:15, with Stark meeting the train in a carriage. Hold on to the time and the place — Holmes will want both, and so will you.",
+    "cite": "Reader, pages 95–103"
+   },
+   {
+    "type": "pick",
+    "p": "night",
+    "hi": "Yes, we could easily give you a shakedown.",
+    "q": "Stark offers Hatherley a shakedown for the night. What is a shakedown?",
+    "opts": [
+     "A makeshift bed",
+     "A hot meal before the journey home",
+     "A ride back to the station at dawn",
+     "An extra payment for the trouble"
+    ],
+    "a": 0,
+    "why": "A makeshift bed — something thrown together on the floor rather than a proper guest room. Hatherley has just worked out that he cannot get back to London that night, and the offer is made easily, as though it had been expected.",
+    "cite": "Reader, pages 95–103"
+   },
+   {
+    "type": "pick",
+    "p": "night",
+    "hi": "We judge it best that you should come late.",
+    "q": "Hatherley asks whether he could come at a more convenient hour. What does Stark actually give as his reason for the late arrival?",
+    "opts": [
+     "None — he says only that they judge it best, then mentions the fee",
+     "That the machine can only be stopped once the day’s work is done",
+     "That the neighbours would see a stranger arriving in daylight",
+     "That the last train is the only one that stops at Eyford at all"
+    ],
+    "a": 0,
+    "why": "He gives no reason at all. “We judge it best that you should come late” — and then straight on to the money, and to the offer of a way out if he does not like it. The third answer above is a reason Stark could have given and did not; brushing past the question is the point.",
+    "cite": "Reader, pages 95–103"
+   },
+   {
+    "type": "pick",
+    "p": "earth",
+    "hi": "These good people did not know that their land contained that which was quite as valuable as a gold mine.",
+    "q": "Why does Stark say he wants to work his own small deposit of fuller’s earth in secret?",
+    "opts": [
+     "To buy his neighbours’ land before they learn its value",
+     "To avoid paying the tax that is owed on a working clay pit",
+     "To keep a rival company from opening a pit of its own nearby",
+     "To stop his friends from claiming a larger share of the profits"
+    ],
+    "a": 0,
+    "why": "Fuller’s earth is a clay used in manufacturing, and it is found in only one or two places in England. Stark’s field links two much larger deposits on either side, and the neighbours do not know what they are standing on. He tells this part readily enough, and it is not a flattering story to tell about himself.",
+    "cite": "Reader, pages 95–103"
+   },
+   {
+    "type": "pick",
+    "p": "press",
+    "hi": "was what use you could make of a hydraulic press in excavating fuller’s earth, which, as I understand, is dug out from a pit",
+    "q": "Hatherley asks what use a hydraulic press could be in digging clay out of a pit. Why is that such a good question?",
+    "opts": [
+     "A press squeezes things; it is no use for digging them up",
+     "A press would be far too expensive for so small a business",
+     "A press cannot be worked without a much larger water supply",
+     "A press would crack the clay and spoil it before it was sold"
+    ],
+    "a": 0,
+    "why": "It is the one question an engineer would ask and a liar would not expect, because the tool does not fit the job. Watch how it is answered: “Ah!” said he carelessly — bricks, to carry the stuff away unrecognised — “but that is a mere detail.” The only thing in the whole account that does not hold together is waved off as a detail, and Stark stands up and leaves before it can be asked again.",
+    "cite": "Reader, pages 95–103"
+   },
+   {
+    "type": "pick",
+    "p": "weigh",
+    "hi": [
+     "I could not think that his explanation was sufficient to explain the necessity for my coming at midnight",
+     "However, I threw my fears to the winds"
+    ],
+    "q": "By the end of the evening Hatherley has worked out for himself that the story does not hold. What does he do about it?",
+    "opts": [
+     "Nothing — he puts his fears aside and goes",
+     "He writes the address down and leaves it with his clerk",
+     "He decides to go, but to ask for half the fee in advance",
+     "He calls at the police station on his way to Paddington"
+    ],
+    "a": 0,
+    "why": "He lists the very doubts a reader has been collecting — the unpleasant impression, the midnight hour, the anxiety about his telling anyone — and then throws them to the winds, eats a hearty supper and catches the train. He also keeps the promise to the letter, so not one person knows where he has gone. That is the sentence to remember when you read on.",
+    "cite": "Reader, pages 95–103"
+   },
+   {
+    "type": "pick",
+    "p": "arrival",
+    "hi": [
+     "I was the only passenger who got out there, and there was no one upon the platform",
+     "He drew up the windows on either side and away we went"
+    ],
+    "q": "At Eyford, Stark takes his arm without a word and at once draws up the windows on both sides of the carriage. What is the likeliest reason?",
+    "opts": [
+     "So that Hatherley cannot see where he is being taken",
+     "So that the night air does not chill a tired traveller",
+     "So that nobody on the road can recognise the Colonel",
+     "So that the noise of the wheels does not drown their talk"
+    ],
+    "a": 0,
+    "why": "He was the only passenger to get off, the platform was empty, and Stark was waiting in the shadow rather than in the light. Then the windows go up before a word is spoken. A closed carriage on a dark road means Hatherley cannot say afterwards where he went — which is exactly why Holmes starts asking about the horse.",
+    "cite": "Reader, pages 95–103"
    }
   ]
  }

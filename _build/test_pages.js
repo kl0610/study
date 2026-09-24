@@ -246,6 +246,79 @@ group("no question has more options than there are letters for them");
      short.join(" | "));
 }
 
+/* The card over a mission says how many questions it holds. That number is
+   written by hand and the questions are not, so the two drift: the first block
+   of The Engineer's Thumb offered "8 questions" and asked eleven. */
+group("a mission asks as many questions as its card promises");
+{
+  const wrong = [];
+  FILES.forEach(f => {
+    const data = f.html.match(/const DATA = (\{[\s\S]*?\});\r?\n/);
+    if (!data) return;
+    let D;
+    try { D = JSON.parse(data[1]); } catch (e) { return; }
+    (D.missions || []).forEach(m => {
+      const said = /^\s*(\d+)\s+question/.exec(m.tag || "");
+      const asked = (m.items || []).length;
+      if (said && +said[1] !== asked)
+        wrong.push(f.rel + " " + m.id + ': says ' + said[1] + ', asks ' + asked);
+    });
+  });
+  ok("every mission tag counts its own questions", !wrong.length, wrong.join(" | "));
+}
+
+/* And the hub's note beside the link says the same number as the app it opens. */
+{
+  const hub = FILES.find(f => f.rel === "index.html");
+  const wrong = [];
+  if (hub) {
+    for (const m of hub.html.matchAll(
+        /href:"([^"]+\/)",\s*app:"[^"]*",\s*ids:\[([^\]]*)\]/g)) {
+      const app = FILES.find(f => f.rel === m[1] + "index.html");
+      if (!app) continue;
+      const before = hub.html.slice(0, m.index);
+      const note = /note:"(\d+) questions/.exec(before.slice(before.lastIndexOf("{ key:")));
+      if (!note) continue;
+      const data = app.html.match(/const DATA = (\{[\s\S]*?\});\r?\n/);
+      if (!data) continue;
+      let D;
+      try { D = JSON.parse(data[1]); } catch (e) { continue; }
+      const ids = m[2].split(",").map(x => x.trim().replace(/"/g, "")).filter(Boolean);
+      const asked = (D.missions || [])
+        .filter(x => !ids.length || ids.indexOf(x.id) !== -1)
+        .reduce((n, x) => n + (x.items || []).length, 0);
+      if (asked && +note[1] !== asked)
+        wrong.push(m[1] + ": hub says " + note[1] + ", app asks " + asked);
+    }
+  }
+  ok("...and the hub's note agrees with the app it opens", !wrong.length, wrong.join(" | "));
+}
+
+/* The mission shell escapes a question, its options and its explanation before
+   printing them, so a <b> in the data reaches the child as &lt;b&gt;. Science
+   chapters five and six went out that way. */
+group("no question shows its own markup");
+{
+  const tag = /<\/?[a-zA-Z]+ ?\/?>/;
+  const bad = [];
+  FILES.forEach(f => {
+    const data = f.html.match(/const DATA = (\{[\s\S]*?\});\r?\n/);
+    if (!data) return;
+    let D;
+    try { D = JSON.parse(data[1]); } catch (e) { return; }
+    (D.missions || []).forEach(m =>
+      (m.items || []).forEach((it, n) => {
+        const fields = [["q", it.q], ["why", it.why]]
+          .concat((it.opts || []).map(o => ["option", o]));
+        fields.forEach(([what, v]) => {
+          if (typeof v === "string" && tag.test(v))
+            bad.push(f.rel + " " + m.id + " q" + (n + 1) + " " + what);
+        });
+      }));
+  });
+  ok("every question is written in plain words", !bad.length, bad.slice(0, 6).join(", "));
+}
+
 console.log("");
 if (fails.length) {
   console.log(fails.length + " FAILED:");

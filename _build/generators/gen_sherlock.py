@@ -53,6 +53,21 @@ def main():
     videos = old["videos"]            # the reading-strategy videos carry over
 
     sections = json.load(io.open(os.path.join(SCRATCH, spec_name), encoding="utf-8"))
+
+    # The shell escapes every question, option and explanation before printing
+    # it, so markup written into a spec arrives on the screen as &lt;b&gt;
+    # rather than as bold. Refuse it here rather than find it in a screenshot.
+    tag = re.compile(r"</?[a-zA-Z]+ ?/?>")
+    bad = []
+    for s in sections:
+        for n, it in enumerate(s.get("items", []), 1):
+            fields = [("q", it.get("q", "")), ("why", it.get("why", ""))]
+            fields += [("option", o) for o in it.get("opts", []) if isinstance(o, str)]
+            for what, v in fields:
+                if isinstance(v, str) and tag.search(v):
+                    bad.append("%s q%d %s: %s" % (s["slug"], n, what, v[:60]))
+    if bad:
+        raise SystemExit("markup in text the shell escapes:\n  " + "\n  ".join(bad))
     for s in sections:
         data = {
             "chapter": "%s \u2014 pages %s" % (s["title"], s["pages"]),
