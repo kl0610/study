@@ -660,7 +660,12 @@ def unpatch(html):
     # would match. M_CALC_NEW does not: it keeps the line it anchors on, so a
     # second pass appended a second `const miss` and every mission app stopped
     # parsing. Reverting the lot is cheaper than reasoning about which need it.
-    for _new, _old in ((M_ACT_NEW, M_ACT_OLD),
+    for _new, _old in ((V_CARD_NEW, V_CARD_OLD),
+                       (V_BUMP_NEW, V_BUMP_OLD),
+                       (V_AGAIN_NEW, V_AGAIN_OLD),
+                       (V_RENDER_NEW, V_RENDER_OLD),
+                       (V_STATE_NEW, V_STATE_OLD),
+                       (M_ACT_NEW, M_ACT_OLD),
                        (M_CALC_NEW, M_CALC_OLD),
                        (M_BEST_NEW, M_BEST_OLD),
                        (M_FIRST_NEW, M_FIRST_OLD),
@@ -1102,6 +1107,99 @@ def excerpt(html):
     return html
 
 
+# ---------------------------------------------------------- five papers, not one
+#
+# `vs` on an item is a list of whole versions of that question: the wording, the
+# options, the answer index and the explanation. Everything the machinery around
+# a question needs -- which passage it is in (`p`), which line to mark (`hi`),
+# what type it is -- stays on the item itself, so leadUp(), the log, the excerpt
+# and the retake all carry on indexing M.items and know nothing about versions.
+#
+# One version for the whole run, advanced when a full run finishes. Mixing
+# versions within a run would be easier and worse: it would make "paper 3" mean
+# nothing, and there would be no way to say which questions he has actually met.
+
+V_STATE_OLD = """function start(i){
+  M = DATA.missions[i];
+  $("mname").textContent = M.name; $("mtag").textContent = M.tag;
+  startRun(M.items.map((_, n) => n), false);
+}"""
+
+V_STATE_NEW = """/* Which of the papers this run is set on. Kept per mission, so finishing
+   chapter one's paper 1 does not move chapter two along with it. */
+let VER = 0;
+const VKEY = "sc.paper";
+function verRead(){
+  try { return JSON.parse(localStorage.getItem(VKEY)) || {}; } catch(e){ return {}; }
+}
+function verWrite(o){
+  try { localStorage.setItem(VKEY, JSON.stringify(o)); } catch(e){}
+}
+/* How many papers this mission has: the shortest `vs` any question offers, so
+   VER is never an index some item has not got. An item with no `vs` at all is
+   the same question on every paper and does not limit the count. */
+function verCount(){
+  const lens = M.items.map(it => (it.vs || []).length).filter(n => n > 0);
+  return lens.length ? Math.min.apply(null, lens) : 1;
+}
+/* The question as this paper asks it. */
+function view(it){
+  if(!it || !it.vs || !it.vs.length) return it;
+  const out = Object.assign({}, it, it.vs[VER % it.vs.length]);
+  delete out.vs;
+  return out;
+}
+
+/* A full run always starts by reading which paper is due. "Run the whole thing
+   again" comes back through here rather than calling startRun itself, or the
+   rerun would be set on the paper that has just been finished. */
+function fullRun(){
+  VER = (verRead()[M.id] || 0) % verCount();
+  startRun(M.items.map((_, n) => n), false);
+}
+
+function start(i){
+  M = DATA.missions[i];
+  $("mname").textContent = M.name; $("mtag").textContent = M.tag;
+  fullRun();
+}"""
+
+V_RENDER_OLD = """  const it = M.items[RUN[idx]];"""
+V_RENDER_NEW = """  const it = view(M.items[RUN[idx]]);"""
+
+V_AGAIN_OLD = """  $("again").onclick=()=>startRun(M.items.map((_,n)=>n), false);"""
+V_AGAIN_NEW = """  $("again").onclick=fullRun;"""
+
+# Only a full run turns the page. A correction round is the same paper looked at
+# again, and it would be strange for three retried questions to use up a paper.
+V_BUMP_OLD = """  if(!RUNPART) best[M.id] = Math.max(best[M.id]||0, pct);"""
+V_BUMP_NEW = """  if(!RUNPART) best[M.id] = Math.max(best[M.id]||0, pct);
+  if(!RUNPART && verCount() > 1){
+    const _v = verRead(); _v[M.id] = (VER + 1) % verCount(); verWrite(_v);
+  }"""
+
+V_CARD_OLD = """    <div class="aloud">
+      <div class="eyebrow">Now say it out loud</div>"""
+V_CARD_NEW = """    ${verCount()>1?`<div class="review"><b>That was paper ${VER+1} of ${verCount()}</b>
+       Run the whole thing again and every question is asked a different way, with
+       different answers to choose between. Same story, same pages \u2014 so knowing
+       it is the only thing that carries over.</div>`:""}
+    <div class="aloud">
+      <div class="eyebrow">Now say it out loud</div>"""
+
+
+def versions(html):
+    """Let a question be asked five ways, one paper at a time."""
+    for old, new in ((V_STATE_OLD, V_STATE_NEW),
+                     (V_RENDER_OLD, V_RENDER_NEW),
+                     (V_AGAIN_OLD, V_AGAIN_NEW),
+                     (V_BUMP_OLD, V_BUMP_NEW),
+                     (V_CARD_OLD, V_CARD_NEW)):
+        if old in html:
+            html = html.replace(old, new, 1)
+    return html
+
+
 def patch(html):
     """Run every shell patch. Each is a no-op where its anchor is absent.
 
@@ -1112,4 +1210,4 @@ def patch(html):
     to the bare shell and patching that means a rebuild always applies today's
     version rather than whatever was current when the file was last written.
     """
-    return excerpt(retake(hide_teacher_guide(history1(mission(history(unpatch(html)))))))
+    return versions(excerpt(retake(hide_teacher_guide(history1(mission(history(unpatch(html))))))))

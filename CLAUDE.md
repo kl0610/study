@@ -228,16 +228,64 @@ book against a page you can match — and where the book prints its own page
 number, read it rather than counting:
 
 ```
-Sherlock Reader   printed = PDF − 12   every page ends "… Page 87"
+Sherlock Reader   printed = PDF − 13   PDF 116 is printed 103
 CKSci G5 Unit 2   printed = PDF − 5    chapter 2 opens on 11, glossary on 53
 Saxon Course 2    printed = PDF − 21   confirmed at both ends
 CKHG / CKSci SR   printed = PDF − 6
 ```
 
-This note said the Sherlock Reader was −13 for a while. It is −12: every page
-of that book carries a printer's mark at the foot giving its own number, and
-the apps built before the correction cite the right pages only because their
-text was located by searching rather than by arithmetic.
+The Sherlock offset has been written down wrong here in both directions — first
+−13, then "corrected" to −12, and it is −13. Do not reason about it; read it.
+Every page of that book states its own number twice, in the running head and
+again in the printer's mark at the foot, and the two agree:
+
+```python
+for i in (114, 115, 116):                     # 1-based PDF page
+    t = r.pages[i - 1].extract_text()
+    print(i, re.findall(r"Page (\d+)\s*$", t.strip()))     # 101 102 103
+```
+
+The apps built under either wrong offset still cite the right pages, because
+their text was located by searching for it rather than by arithmetic. Keep doing
+that: find the sentence, then read the page number off the page it landed on.
+
+### Five papers per mission
+
+An item in a mission spec may carry `vs`, a list of complete versions of itself:
+
+```json
+{"type": "pick", "p": "horse", "hi": ["fresh and glossy"],
+ "vs": [{"q": "...", "opts": ["...", "...", "...", "..."], "a": 0, "why": "..."},
+        ... four more ...]}
+```
+
+Rules that matter, all enforced by `_build/test_papers.js` and by the section's
+own builder:
+
+- **What the machinery needs stays on the item**, not in the version: `p`, `hi`,
+  `type`. `leadUp()`, the log, the retake and the excerpt all index `M.items`
+  and know nothing about versions, and they stay that way.
+- **One version for a whole run.** `verCount()` is the *shortest* `vs` in the
+  mission, so `VER` is never an index some item has not got. `view(it)` merges
+  `vs[VER]` over the item and deletes `vs`.
+- **Only a full run turns the page** (`if(!RUNPART && verCount() > 1)`). A
+  correction round is the same paper looked at again — the excerpt he has just
+  read answers *that* wording.
+- **"Run the whole thing again" must go through `fullRun()`**, which re-reads
+  the stored number. Calling `startRun()` directly reruns the paper that has
+  just been finished, and nothing else in the app would notice.
+- Five wordings that are actually different, five sets of wrong answers that are
+  actually different, an answer that does not sit in the same slot on all five,
+  and no version offering as a wrong answer what another version marks right.
+
+A mission app with no `vs` anywhere is unchanged: `verCount()` is 1, `VER` stays
+0, `view()` hands the item straight back.
+
+**Anything that reads a question must walk its versions.** `test_pages.js`
+checked `it.q` and `it.opts`, so on the first app with versions in it the markup
+check and the option-letter check both found nothing and passed — a hundred
+versions unexamined. Grep for `.opts` and `it.q` in `_build/test_*.js` before
+adding a spec shape.
 
 **Math is Saxon Course 2, not Course 1.** Course 2 is normally a sixth-grade
 text — this is an accelerated placement, so pitch questions to **the book, not to

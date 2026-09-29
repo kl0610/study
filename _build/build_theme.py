@@ -550,6 +550,10 @@ APPS = {
     "reading/sherlock-engineer-2": (reads("engineer2"),
                                     dict(app="engineer2", shake="#card", lift=None,
                                          dragon=["m1"])),
+    # Eighteen pages, so four chapters in one app rather than one long run.
+    "reading/sherlock-engineer-3": (reads("engineer3"),
+                                    dict(app="engineer3", shake="#card", lift=None,
+                                         dragon=["m1", "m2", "m3", "m4"])),
 }
 
 # ---------------------------------------------------------------- machinery

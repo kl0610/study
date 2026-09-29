@@ -2386,17 +2386,50 @@ function startRun(list, partial){
   show("play"); render(); window.scrollTo(0,0);
 }
 
+/* Which of the papers this run is set on. Kept per mission, so finishing
+   chapter one's paper 1 does not move chapter two along with it. */
+let VER = 0;
+const VKEY = "sc.paper";
+function verRead(){
+  try { return JSON.parse(localStorage.getItem(VKEY)) || {}; } catch(e){ return {}; }
+}
+function verWrite(o){
+  try { localStorage.setItem(VKEY, JSON.stringify(o)); } catch(e){}
+}
+/* How many papers this mission has: the shortest `vs` any question offers, so
+   VER is never an index some item has not got. An item with no `vs` at all is
+   the same question on every paper and does not limit the count. */
+function verCount(){
+  const lens = M.items.map(it => (it.vs || []).length).filter(n => n > 0);
+  return lens.length ? Math.min.apply(null, lens) : 1;
+}
+/* The question as this paper asks it. */
+function view(it){
+  if(!it || !it.vs || !it.vs.length) return it;
+  const out = Object.assign({}, it, it.vs[VER % it.vs.length]);
+  delete out.vs;
+  return out;
+}
+
+/* A full run always starts by reading which paper is due. "Run the whole thing
+   again" comes back through here rather than calling startRun itself, or the
+   rerun would be set on the paper that has just been finished. */
+function fullRun(){
+  VER = (verRead()[M.id] || 0) % verCount();
+  startRun(M.items.map((_, n) => n), false);
+}
+
 function start(i){
   M = DATA.missions[i];
   $("mname").textContent = M.name; $("mtag").textContent = M.tag;
-  startRun(M.items.map((_, n) => n), false);
+  fullRun();
 }
 function render(){
   tries=triesAt[idx]||0; sel=null; place={}; chosen=new Set();
   hintFn=null; hintMarks=new Set(); hinted=false;
   $("dots").innerHTML = RUN.map((_,i)=>
     `<span class="dot ${i<idx?"done":i===idx?"now":""}"></span>`).join("");
-  const it = M.items[RUN[idx]];
+  const it = view(M.items[RUN[idx]]);
   const head = `<div class="qnum">Question ${idx+1} of ${RUN.length}${
       RUNPART?" &middot; second look":""}</div><div class="q">${esc(MC.ask(it))}</div>`;
   const art  = it.art && ART[it.art] ? `<div class="artbox">${ART[it.art]}</div>` : "";
@@ -2748,6 +2781,9 @@ function finish(){
   /* A correction round is three questions out of eight. It is worth doing and
      it is not worth a best score. */
   if(!RUNPART) best[M.id] = Math.max(best[M.id]||0, pct);
+  if(!RUNPART && verCount() > 1){
+    const _v = verRead(); _v[M.id] = (VER + 1) % verCount(); verWrite(_v);
+  }
   $("dtag").textContent = M.name;
   $("scorebox").innerHTML = `
     <div class="ring" style="color:${band[1]}">${pct}%</div>
@@ -2761,6 +2797,10 @@ function finish(){
     ${skipped?`<div class="review"><b>${skipped} question${skipped>1?"s were":" was"} left unanswered</b>Those score zero. Run it again and they are worth full marks.</div>`:""}
     ${rough.length?`<div class="review"><b>Pages worth rereading</b><ul>${pages.map(p=>`<li>${esc(p)}</li>`).join("")}</ul></div>`
                   :(skipped?"":`<div class="review"><b>Nothing to reread.</b>Every question went in on the first try.</div>`)}
+    ${verCount()>1?`<div class="review"><b>That was paper ${VER+1} of ${verCount()}</b>
+       Run the whole thing again and every question is asked a different way, with
+       different answers to choose between. Same story, same pages — so knowing
+       it is the only thing that carries over.</div>`:""}
     <div class="aloud">
       <div class="eyebrow">Now say it out loud</div>
       <p>${esc(DATA.bigQuestion)}</p>
@@ -2777,7 +2817,7 @@ function finish(){
     </div>`;
   if($("justmiss")) $("justmiss").onclick=()=>startRun(miss, true);
   if($("leadup"))   $("leadup").onclick=()=>startRun(lead, true);
-  $("again").onclick=()=>startRun(M.items.map((_,n)=>n), false);
+  $("again").onclick=fullRun;
   MC.chest($("scorebox"), pct, {id:M.id,
     boss: DATA.missions.indexOf(M)===DATA.missions.length-1});
   $("pick").onclick=home;

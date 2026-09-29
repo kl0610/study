@@ -523,5 +523,1616 @@
     "cite": "Reader, pages 95–103"
    }
   ]
+ },
+ {
+  "slug": "sherlock-engineer-3",
+  "title": "The Machine and the Circle",
+  "pages": "103–120",
+  "bigQuestion": "Hatherley is warned twice and stays, and nearly dies for it. By the end, four men are pointing at four different places on a map — and Holmes says all four are wrong. What did Hatherley see that none of them have used yet?",
+  "passages": {
+   "horse": {
+    "title": "Holmes stops him to ask about the horse",
+    "cite": "Reader, pages 103–104",
+    "text": [
+     "Without a word he grasped my arm and hurried me into a carriage.",
+     "He drew up the windows on either side and away we went, as hard as the horse could go.",
+     "“One horse?” interjected Holmes.",
+     "“Yes, only one.”",
+     "“Did you observe the color?”",
+     "“Yes, it was a chestnut.”",
+     "“Tired-looking or fresh?”",
+     "“Oh, fresh and glossy.”",
+     "“Thank you. Pray continue your tale.”"
+    ]
+   },
+   "drive": {
+    "title": "An hour in the dark, and no way to see out",
+    "cite": "Reader, page 104",
+    "text": [
+     "We drove for at least an hour.",
+     "Colonel Stark had said that it was only seven miles, but I think that it must have been nearer twelve.",
+     "He sat in silence all the time, and I was aware that he was looking at me with great intensity.",
+     "I tried to look out of the windows to see something of where we were, but they were made of frosted glass, and I could make out nothing except an occasional blur of passing light.",
+     "Now and then I hazarded some remark to break the boredom of the journey, but the Colonel answered only in grunts."
+    ]
+   },
+   "porch": {
+    "title": "Straight out of the carriage and into the hall",
+    "cite": "Reader, page 104",
+    "text": [
+     "At last, however, the carriage came to a stand.",
+     "Colonel Lysander Stark sprang out, and, as I followed, pulled me swiftly on a porch in front of us.",
+     "We stepped, as it were, right out of the carriage and into the hall, so that I failed to catch even the most fleeting glance of the front of the house.",
+     "The instant that I had crossed the threshold the door slammed heavily behind us, and I heard faintly the rattle of the wheels as the carriage drove away.",
+     "It was pitch dark in the house."
+    ]
+   },
+   "books": {
+    "title": "German books, and a shutter across the window",
+    "cite": "Reader, page 105",
+    "text": [
+     "A woman appeared with a lamp in her hand, peering at us.",
+     "She spoke a few words in a foreign tongue as though asking a question, and when my companion answered gruffly, she gave such a start that the lamp nearly fell from her hand.",
+     "It was a little plain room, with a round table in the center, on which several German books were scattered.",
+     "I glanced at the books upon the table, and in spite of my ignorance of German, I could see that two of them were treatises on science, the other being poetry.",
+     "Then I walked across to the window, hoping that I might catch some glimpse of the countryside, but an oak shutter was folded across it."
+    ]
+   },
+   "warn": {
+    "title": "“There is no good for you to do”",
+    "cite": "Reader, page 106",
+    "text": [
+     "An uneasiness began to steal over me.",
+     "Who were these German people, and what were they doing living in this strange, out-of-the-way place?",
+     "And where was the place?",
+     "I was ten miles or so from Eyford, that was all I knew.",
+     "I could see that she was sick with fear, and the sight sent a chill to my own heart.",
+     "She held up one shaking finger to warn me to be silent, and she shot a few words of broken English at me, her eyes glancing back into the gloom behind her.",
+     "“I would go,” said she, trying hard to speak calmly. “There is no good for you to do.”",
+     "“It is not worth your while to wait,” she went on. “You can pass through the door; no one hinders.”"
+    ]
+   },
+   "plea": {
+    "title": "She asks a second time, and he stays anyway",
+    "cite": "Reader, page 108",
+    "text": [
+     "“For the love of Heaven!” she whispered, “get away before it is too late!”",
+     "But I am somewhat headstrong by nature.",
+     "I thought of my fifty-guinea fee, of my wearisome journey, and the unpleasant night that seemed to be before me.",
+     "Was it all for nothing?",
+     "Why should I slink away without having carried out my commission, and without the payment that was my due?",
+     "With a stout bearing, therefore, I declared my intention of remaining where I was."
+    ]
+   },
+   "door": {
+    "title": "The draught, and who opened the door",
+    "cite": "Reader, pages 108–109",
+    "text": [
+     "The newcomers were Colonel Lysander Stark and a short thick man with a beard growing out of his double chin, who was introduced to me as Mr. Ferguson.",
+     "“This is my secretary and manager,” said the Colonel.",
+     "“By the way, I was under the impression that I left this door shut. I fear that you have felt the draught.”",
+     "“On the contrary,” said I, “I opened the door myself, because I felt the room to be a little close.”",
+     "He shot one of his suspicious glances at me.",
+     "“Perhaps we had better proceed to business, then,” said he."
+    ]
+   },
+   "house": {
+    "title": "A machine indoors, and a house with nothing in it",
+    "cite": "Reader, page 109",
+    "text": [
+     "“I had better put my hat on, I suppose.”",
+     "“Oh no, it is in the house.”",
+     "“What, you dig fuller’s earth in the house?”",
+     "“No, no. This is only where we compress it.”",
+     "It was a mysterious old house, with passages, narrow winding staircases, and little low doors.",
+     "There were no carpets, no signs of any furniture above the ground floor, and plaster was peeling off the walls.",
+     "Ferguson seemed a gloomy, silent man, but I could see from the little he said that he was at least a fellow Englishman."
+    ]
+   },
+   "inside": {
+    "title": "“We are now actually within the hydraulic press”",
+    "cite": "Reader, page 110",
+    "text": [
+     "“We are now,” said he, “actually within the hydraulic press, and it would be particularly unpleasant for us if anyone were to turn it on.”",
+     "“The ceiling of this small chamber is really the end of the descending piston, and it comes down with the force of many tons upon this metal floor.”",
+     "When I pressed down the levers that controlled it, I knew at once by the whishing sound that there was a slight leakage.",
+     "An examination showed that one of the rubber bands around the end of a driving-rod had shrunk so as not quite to fill the socket along which it worked.",
+     "This was clearly the cause of the loss of power, and I pointed it out to my companions, who asked several practical questions as to how they should set it right."
+    ]
+   },
+   "trough": {
+    "title": "The crust in the iron trough, and one question too many",
+    "cite": "Reader, page 111",
+    "text": [
+     "It was obvious that the story of the fuller’s earth was a fabrication, for it would be absurd to suppose that so powerful an engine could be designed for so small a purpose.",
+     "The walls were of wood, but the floor consisted of a large iron trough, and I could see a crust of metallic deposit all over it.",
+     "I was scraping at it to see exactly what it was, when I heard an exclamation in German, and saw the ghostly face of the Colonel looking down at me.",
+     "“I think that I would be better able to advise you as to your machine,” said I, “if I knew what the exact purpose was for which it was used.”",
+     "The instant that I uttered the words I regretted the rashness of my speech.",
+     "A sinister light sprang up in his grey eyes.",
+     "“Very well,” said he, “you shall know all about the machine.”",
+     "He took a step backward, slammed the door, and turned the key in the lock."
+    ]
+   },
+   "ceiling": {
+    "title": "The ceiling comes down",
+    "cite": "Reader, page 113",
+    "text": [
+     "And then suddenly in the silence I heard the clank of the levers and the swish of the leaking cylinder.",
+     "He had set the engine at work.",
+     "By its light I saw that the black ceiling was coming down on me, slowly, jerkily, but, as none knew better than myself, with a force that must grind me to a shapeless pulp.",
+     "I begged the Colonel to let me out, but the remorseless clanking of the levers drowned my cries.",
+     "The ceiling was only a foot or two above my head, and with my hand I could feel its hard rough surface.",
+     "Already I was unable to stand erect, when my eye caught something that brought a gush of hope back."
+    ]
+   },
+   "panel": {
+    "title": "Iron above and below, wood at the sides",
+    "cite": "Reader, page 114",
+    "text": [
+     "Though the floor and ceiling were of iron, the walls were of wood.",
+     "As I gave a last hurried glance around, I saw a thin line of yellow light between two of the boards, which broadened as a small panel was pushed backwards.",
+     "I could hardly believe that here was indeed a door that led away from death.",
+     "I threw myself through it and lay half fainting upon the other side.",
+     "The panel had closed again behind me, but the clang of the two slabs of metal told me how narrow had been my escape."
+    ]
+   },
+   "elise": {
+    "title": "The friend whose warning he had rejected",
+    "cite": "Reader, page 114",
+    "text": [
+     "I was recalled to myself by a frantic plucking at my wrist.",
+     "A woman bent over me and tugged at me with her left hand, while she held a candle in her right.",
+     "It was the same friend whose warning I had so foolishly rejected.",
+     "“Come!” she cried breathlessly. “They will be here in a moment. They will see that you are not there. Do not waste precious time, but come!”",
+     "This time, I did not scorn her advice."
+    ]
+   },
+   "window": {
+    "title": "Thirty feet down, and a reason to wait",
+    "cite": "Reader, page 115",
+    "text": [
+     "Then she threw open a door to a bedroom, through the window of which the moon was shining brightly.",
+     "“It is your only chance,” said she. “It is high, but it may be that you can jump it.”",
+     "As she spoke, a light sprang into view at the further end of the passage, and I saw the lean figure of Colonel Lysander Stark rushing forward with a lantern in one hand and a butcher’s cleaver in the other.",
+     "How quiet and sweet and wholesome the garden looked in the moonlight, and it could not be more than thirty feet down.",
+     "I clambered out upon the sill, but I hesitated to jump, so I could hear what passed between my savior and the ruffian who pursued me.",
+     "If she were ill-used, then at any risk I was determined to go back to her assistance."
+    ]
+   },
+   "fritz": {
+    "title": "“Remember your promise after the last time”",
+    "cite": "Reader, pages 115–117",
+    "text": [
+     "She threw her arms round him and tried to hold him back.",
+     "“Fritz! Fritz!” she cried in English, “remember your promise after the last time. You said it would not happen again. He will be silent!”",
+     "“You are mad, Elise!” he shouted, struggling to break away from her. “You will be the ruin of us. He has seen too much.”",
+     "He dashed her to one side, and, rushing to the window, cut at me with his heavy weapon.",
+     "I was hanging with my hands across the sill when his blow fell.",
+     "I glanced at my hand, which was throbbing painfully, and, for the first time, saw that my thumb had been cut off."
+    ]
+   },
+   "hedge": {
+    "title": "Where he wakes up",
+    "cite": "Reader, pages 117–118",
+    "text": [
+     "It must have been a long time, for a bright morning was breaking when I came to myself.",
+     "My clothes were all wet with dew, and my coat-sleeve was drenched with blood.",
+     "But, to my astonishment, neither house nor garden were to be seen.",
+     "I had been lying in an angle of the hedge close by the road, and just a little lower down was the very train station at which I had arrived the previous night."
+    ]
+   },
+   "porter": {
+    "title": "Nobody there has heard of the Colonel",
+    "cite": "Reader, page 118",
+    "text": [
+     "Half dazed, I went into the station and asked about the morning train.",
+     "There would be one to Reading in less than an hour.",
+     "I asked the porter whether he had ever heard of Colonel Lysander Stark.",
+     "The name was strange to him.",
+     "Was there a police station nearby?",
+     "There was one about three miles off.",
+     "It was too far for me to go, weak as I was."
+    ]
+   },
+   "advert": {
+    "title": "The engineer who went out at ten o’clock and never came back",
+    "cite": "Reader, pages 118–119",
+    "text": [
+     "Then Sherlock Holmes pulled from the shelf one of the books in which he placed his newspaper cuttings.",
+     "“Here is an advertisement that will interest you,” said he. “It appeared in all the papers about a year ago.”",
+     "“Lost on the 9th inst., Mr. Jeremiah Hayling, aged 26, a hydraulic engineer. Left his lodgings at ten o’clock at night, and has not been heard of since.”",
+     "“Ha! That represents the last time the Colonel needed his machine overhauled, I fancy.”",
+     "“Good heavens!” cried my patient. “Then that explains what the girl said.”",
+     "“Undoubtedly. It is clear that the Colonel was a cool and desperate man, who was absolutely determined that nothing should stand in the way of his little game.”"
+    ]
+   },
+   "circle": {
+    "title": "Bradstreet draws a circle round Eyford",
+    "cite": "Reader, page 119",
+    "text": [
+     "There were Sherlock Holmes, the hydraulic engineer, Inspector Bradstreet of Scotland Yard, a plain-clothes officer, and myself.",
+     "Bradstreet had spread a map of the country out upon the seat and was busy with his compass drawing a circle with Eyford for its center.",
+     "“There you are,” said he. “That circle is drawn at a radius of ten miles from the village. The place we want must be somewhere near that line.”",
+     "“You said ten miles, I think, sir?”"
+    ]
+   },
+   "guesses": {
+    "title": "Four guesses, and Holmes says all four are wrong",
+    "cite": "Reader, page 120",
+    "text": [
+     "“I think I could lay my finger on it,” said Holmes quietly.",
+     "“I say it is south, for the country is more deserted there.”",
+     "“And I say east,” said my patient.",
+     "“I am for the west,” remarked the plain-clothes man. “There are quiet little villages up there.”",
+     "“And I am for the north,” said I; “because there are no hills there, and our friend says that he did not notice the carriage go up any.”",
+     "“You are all wrong.”",
+     "“But we can’t all be.”",
+     "“Oh, yes, you can.”"
+    ]
+   }
+  },
+  "missions": [
+   {
+    "id": "m1",
+    "name": "Chapter 1 — pages 103 to 107",
+    "tag": "5 questions · 5 papers · about 5 minutes",
+    "blurb": "The drive out, the dark house, and a warning he does not take",
+    "items": [
+     {
+      "type": "pick",
+      "p": "horse",
+      "hi": [
+       "fresh and glossy",
+       "as hard as the horse could go"
+      ],
+      "vs": [
+       {
+        "q": "Holmes interrupts the story to ask the horse’s colour and whether it looked tired. Why is that worth interrupting for?",
+        "opts": [
+         "A horse fresh and glossy cannot just have done a long drive",
+         "A chestnut horse would be easy for the police to trace",
+         "It shows which stable in Eyford the carriage was hired from",
+         "One horse means the household could not afford a second"
+        ],
+        "a": 0,
+        "why": "Holmes is not making conversation. Hatherley believes he was driven a long way; a horse that comes back fresh and glossy has not been driven a long way. It is the first crack in the story, and Holmes finds it before Hatherley has finished telling it."
+       },
+       {
+        "q": "Hatherley says the horse was a chestnut, fresh and glossy. What does that quietly contradict?",
+        "opts": [
+         "The Colonel’s claim to be short of ready money",
+         "The hour at which the train reached Eyford",
+         "The length of the drive he had just been taken on",
+         "The direction in which the carriage set off"
+        ],
+        "a": 2,
+        "why": "The drive is the thing it contradicts. Hatherley thinks he went nearer twelve miles; the horse says otherwise. Notice that Hatherley reports the fact without seeing what it means — he is a good witness and Holmes is a good listener."
+       },
+       {
+        "q": "Of everything so far, Holmes stops him only to ask about the horse. What does that show about the way Holmes listens?",
+        "opts": [
+         "He is more interested in horses than in the machine",
+         "He picks out the one detail that can be checked against another",
+         "He wants Hatherley to slow down so that Watson can take notes",
+         "He always asks about whatever came first in a story"
+        ],
+        "a": 1,
+        "why": "A story can be argued with; a tired horse cannot. Holmes reaches for the detail that can be tested against something else in the account, and lets the rest of the tale run on."
+       },
+       {
+        "q": "Which of Hatherley’s answers is the one Holmes was really fishing for?",
+        "opts": [
+         "That there was only one horse",
+         "That the horse was a chestnut",
+         "That they went as hard as the horse could go",
+         "That the horse was fresh and glossy"
+        ],
+        "a": 3,
+        "why": "The colour and the number are ordinary questions that make the last one sound ordinary too. Fresh and glossy is the answer that matters, and it is the one Holmes asks for last."
+       },
+       {
+        "q": "Suppose the horse had come back tired and lathered instead. What would Holmes have learned?",
+        "opts": [
+         "That the Colonel had borrowed the horse for the night",
+         "That the drive really had been long, and the house really far off",
+         "That the roads around Eyford were in poor repair",
+         "That the carriage must have stopped somewhere along the road"
+        ],
+        "a": 1,
+        "why": "Turn the clue round and you can see what it is worth. A tired horse would have supported Hatherley’s twelve miles. A fresh one denies it, and that is why Holmes asked."
+       }
+      ]
+     },
+     {
+      "type": "pick",
+      "p": "drive",
+      "hi": [
+       "nearer twelve",
+       "frosted glass",
+       "answered only in grunts"
+      ],
+      "vs": [
+       {
+        "q": "Stark had said the house was seven miles from the station. What did the drive actually feel like to Hatherley?",
+        "opts": [
+         "Rather less than seven miles, taken slowly",
+         "About seven miles, just as he had been told",
+         "At least an hour, and nearer twelve miles",
+         "Two hours or more, over very steep ground"
+        ],
+        "a": 2,
+        "why": "“We drove for at least an hour. Colonel Stark had said that it was only seven miles, but I think that it must have been nearer twelve.” Remember it: this estimate is the one thing everybody later builds on, and it is a guess made in the dark."
+       },
+       {
+        "q": "Why could Hatherley not see where he was being driven?",
+        "opts": [
+         "The windows were made of frosted glass",
+         "The Colonel had made him promise to keep his eyes shut",
+         "A blanket had been thrown over the carriage windows",
+         "It was too dark outside to make out anything at all"
+        ],
+        "a": 0,
+        "why": "Frosted glass — so he could see “nothing except an occasional blur of passing light.” It is not simply that the night was dark: the carriage was built so that a passenger could not look out of it."
+       },
+       {
+        "q": "How does the Colonel behave during the hour in the carriage?",
+        "opts": [
+         "He questions Hatherley closely about his family",
+         "He talks cheerfully to keep his guest at ease",
+         "He falls asleep almost as soon as they set off",
+         "He says almost nothing, and watches Hatherley closely"
+        ],
+        "a": 3,
+        "why": "He sat in silence, looking at Hatherley “with great intensity,” and answered attempts at conversation “only in grunts.” A man taking an engineer to a job does not need to watch him for an hour."
+       },
+       {
+        "q": "Hatherley’s guess of nearly twelve miles turns out to matter a great deal later. Why should you treat it carefully?",
+        "opts": [
+         "He was counting the miles aloud to himself as they drove along",
+         "The Colonel told him the distance twice over",
+         "It is a guess made in the dark with nothing to check it against",
+         "He had travelled the same road earlier that day"
+        ],
+        "a": 2,
+        "why": "He could not see out, he did not know the roads, and he was jolted about for an hour. Everything he says about the distance rests on how long it felt — which is exactly the sort of evidence Holmes does not trust."
+       },
+       {
+        "q": "Put the two facts together: an hour of jolting, and nothing to see. What was the drive designed to do?",
+        "opts": [
+         "Tire Hatherley out before he had to work",
+         "Leave him with no idea where the house was",
+         "Give the household time to hide the machine",
+         "Keep him from being seen by anyone on the road"
+        ],
+        "a": 1,
+        "why": "Frosted windows, an hour of silence and a driver going as hard as the horse could go. Whatever else the drive achieved, it made sure the passenger could never find the place again — or lead anyone back to it."
+       }
+      ]
+     },
+     {
+      "type": "pick",
+      "p": "porch",
+      "hi": [
+       "failed to catch even the most fleeting glance",
+       "pitch dark in the house"
+      ],
+      "vs": [
+       {
+        "q": "When the carriage stopped, what did Hatherley manage to see of the house?",
+        "opts": [
+         "The front door and the windows on either side of it",
+         "Nothing of the front of it at all",
+         "A long low building with a lamp burning upstairs",
+         "Only the porch, because the rest lay in shadow"
+        ],
+        "a": 1,
+        "why": "Stark pulled him straight from the carriage onto the porch and into the hall, “so that I failed to catch even the most fleeting glance of the front of the house.” Not one glimpse — and that cannot be an accident twice in one night."
+       },
+       {
+        "q": "Hatherley cannot describe the outside of the house afterwards. Whose doing is that?",
+        "opts": [
+         "His own — he was too tired to look about him",
+         "Nobody’s — the night was simply too dark",
+         "The driver’s, who set him down at the wrong door",
+         "Stark’s — he was hurried in before he could look"
+        ],
+        "a": 3,
+        "why": "“As I followed, pulled me swiftly on a porch in front of us.” Being hurried is the point. First the frosted windows, then the porch: two separate arrangements with the same purpose."
+       },
+       {
+        "q": "What happens the instant Hatherley is across the threshold?",
+        "opts": [
+         "The door slams and the carriage drives away",
+         "A lamp is lit and the Colonel introduces his wife",
+         "He is asked to hand over his hat and coat",
+         "The Colonel locks the door and pockets the key"
+        ],
+        "a": 0,
+        "why": "“The door slammed heavily behind us, and I heard faintly the rattle of the wheels as the carriage drove away.” His way home leaves without him, and he notices it — but still thinks about his fee."
+       },
+       {
+        "q": "What is the first thing Hatherley notices about the inside of the house?",
+        "opts": [
+         "A strong smell of oil and hot metal",
+         "That it was pitch dark",
+         "German voices somewhere above him",
+         "That there was no carpet on the floor"
+        ],
+        "a": 1,
+        "why": "“It was pitch dark in the house.” The Colonel then has to fumble about for matches — in his own house, at the hour he himself chose. Nobody was waiting up, and nothing had been made ready."
+       },
+       {
+        "q": "A man is fetched to a house at midnight and cannot afterwards say what the house looks like. What has the story achieved by this point?",
+        "opts": [
+         "He has been paid handsomely for very little work",
+         "He has been brought somewhere he could never find again",
+         "He has been frightened into keeping the secret",
+         "He has been kept from meeting anyone else in the house"
+        ],
+        "a": 1,
+        "why": "Add it up: a station with no other passengers, frosted windows, an hour of silence, a porch he was pulled across. Every step of the journey removes something he could later tell the police."
+       }
+      ]
+     },
+     {
+      "type": "pick",
+      "p": "books",
+      "hi": [
+       "several German books were scattered",
+       "an oak shutter was folded across it",
+       "a foreign tongue"
+      ],
+      "vs": [
+       {
+        "q": "What does Hatherley notice about the books on the round table?",
+        "opts": [
+         "They were account books, and all in one hand",
+         "They were German — two on science, one poetry",
+         "They were engineering manuals, and much used",
+         "They were all printed in the same year"
+        ],
+        "a": 1,
+        "why": "“In spite of my ignorance of German, I could see that two of them were treatises on science, the other being poetry.” He cannot read them and reports them anyway, which is what makes him worth listening to."
+       },
+       {
+        "q": "The woman with the lamp speaks, and the Colonel answers. What does Hatherley learn from that exchange?",
+        "opts": [
+         "That she is a servant rather than a member of the family",
+         "That she had been expecting a different visitor",
+         "That the household speaks a language that is not English",
+         "That the Colonel is angry with her for coming down"
+        ],
+        "a": 2,
+        "why": "“She spoke a few words in a foreign tongue.” Between that, the German books and the name Fritz that Elise uses later, the household is plainly German — which is why Hatherley starts asking himself who these people are."
+       },
+       {
+        "q": "He crosses to the window hoping to see the countryside. What stops him?",
+        "opts": [
+         "An oak shutter folded across it",
+         "The glass was frosted, as in the carriage",
+         "The window looked out onto a blank wall",
+         "Heavy curtains that he could not draw back"
+        ],
+        "a": 0,
+        "why": "An oak shutter — the third thing that night arranged so that he cannot see out. By now the pattern is unmistakable, and he notices the uneasiness before he works out the reason for it."
+       },
+       {
+        "q": "What made the woman start so violently that the lamp nearly fell from her hand?",
+        "opts": [
+         "The Colonel’s gruff answer to her question",
+         "Catching sight of a stranger in the hall",
+         "Hearing footsteps on the stairs behind her",
+         "The door slamming shut in the wind"
+        ],
+        "a": 0,
+        "why": "She asked something and “my companion answered gruffly” — and that answer was enough to shake her. Hatherley does not know what was said; he only sees what it did to her."
+       },
+       {
+        "q": "Three details in this room point the same way: German books, a foreign tongue, an oak shutter. What is Hatherley beginning to feel?",
+        "opts": [
+         "That he has been brought to the wrong house",
+         "That he is uneasy, without yet knowing why",
+         "That the fee is not going to be paid after all",
+         "That the family are hiding from the police"
+        ],
+        "a": 1,
+        "why": "“An uneasiness began to steal over me.” He is an honest narrator: he reports the feeling first and the reasons afterwards, and he still does not leave."
+       }
+      ]
+     },
+     {
+      "type": "pick",
+      "p": "warn",
+      "hi": [
+       "There is no good for you to do",
+       "no one hinders",
+       "sick with fear",
+       "ten miles or so from Eyford"
+      ],
+      "vs": [
+       {
+        "q": "The woman comes to the door of his room. What does she tell him to do?",
+        "opts": [
+         "To go, because there is no good for him to do there",
+         "To hide until the Colonel has gone to bed",
+         "To take the lamp and look at the upstairs rooms",
+         "To say nothing about having seen her at all"
+        ],
+        "a": 0,
+        "why": "“I would go... There is no good for you to do.” She says it in broken English, looking back into the dark behind her, shaking. She is risking a great deal to say it."
+       },
+       {
+        "q": "She adds, “You can pass through the door; no one hinders.” Why does she bother to say that?",
+        "opts": [
+         "To prove she has not locked him in herself",
+         "To show him she knows the house better than he does",
+         "To tell him the way out is open now and may not stay open",
+         "To make him think the Colonel has gone out"
+        ],
+        "a": 2,
+        "why": "She is not describing the door, she is offering him a chance. Nobody is watching the hall yet. In a few minutes the newcomers arrive on the stairs, and it is too late."
+       },
+       {
+        "q": "What does Hatherley notice about the woman herself as she speaks?",
+        "opts": [
+         "That she was angry with him for coming",
+         "That she was sick with fear",
+         "That she was dressed to leave the house",
+         "That she had been crying before she came in"
+        ],
+        "a": 1,
+        "why": "“I could see that she was sick with fear, and the sight sent a chill to my own heart.” The warning is frightening because of the state of the person giving it, and he feels that — then stays anyway."
+       },
+       {
+        "q": "He asks himself where he is. What is the only answer he can give?",
+        "opts": [
+         "Somewhere south of Reading",
+         "About seven miles from Eyford",
+         "Ten miles or so from Eyford, and nothing more",
+         "Within an hour’s walk of the police station"
+        ],
+        "a": 2,
+        "why": "“I was ten miles or so from Eyford, that was all I knew.” Hold on to that sentence. Every search later in the story is built on this one shaky guess of his."
+       },
+       {
+        "q": "She warns him at real risk to herself, and he stays. What does that tell you about him?",
+        "opts": [
+         "He does not believe a word she says",
+         "He thinks the Colonel will protect him",
+         "He is brave, and stubborn about finishing what he took on",
+         "He has not understood a single word of her broken English"
+        ],
+        "a": 2,
+        "why": "He understood her perfectly — he calls himself “somewhat headstrong” a page later and admits he rejected her warning foolishly. It is courage and obstinacy at once, and it nearly kills him."
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "id": "m2",
+    "name": "Chapter 2 — pages 108 to 111",
+    "tag": "5 questions · 5 papers · about 5 minutes",
+    "blurb": "Ferguson, the machine, and the one question he should not have asked",
+    "items": [
+     {
+      "type": "pick",
+      "p": "plea",
+      "hi": [
+       "For the love of Heaven",
+       "somewhat headstrong by nature",
+       "my fifty-guinea fee"
+      ],
+      "vs": [
+       {
+        "q": "She asks a second time, with her hands together: “get away before it is too late!” What does Hatherley do?",
+        "opts": [
+         "Promises to go as soon as he has seen the machine",
+         "Declares that he intends to stay where he is",
+         "Asks her to explain what the danger is",
+         "Goes out to the hall to look for the front door"
+        ],
+        "a": 1,
+        "why": "“With a stout bearing, therefore, I declared my intention of remaining where I was.” Not a moment of doubt on the outside — though he has just listed to himself all the reasons he is staying."
+       },
+       {
+        "q": "What reasons does Hatherley give himself for staying?",
+        "opts": [
+         "That the Colonel would come after him if he ran",
+         "That he had promised the doctor he would finish the job",
+         "That he could not find his way back in the dark",
+         "His fee, his long journey, and the work he had taken on"
+        ],
+        "a": 3,
+        "why": "“I thought of my fifty-guinea fee, of my wearisome journey, and the unpleasant night that seemed to be before me. Was it all for nothing?” The money is first on the list — he is honest about that."
+       },
+       {
+        "q": "How does Hatherley describe his own character at this moment?",
+        "opts": [
+         "As somewhat headstrong by nature",
+         "As slow to take fright",
+         "As a poor judge of people",
+         "As too polite to argue with a lady"
+        ],
+        "a": 0,
+        "why": "“But I am somewhat headstrong by nature.” He is telling this to Holmes after the event, so he already knows how it turned out, and he does not excuse himself."
+       },
+       {
+        "q": "What interrupts the woman before she can plead with him again?",
+        "opts": [
+         "A door slams and footsteps come up the stairs",
+         "The Colonel calls her name from the hall",
+         "The lamp on the table goes out",
+         "Someone begins knocking at the front door"
+        ],
+        "a": 0,
+        "why": "“A door slammed, and the sound of several footsteps was heard upon the stairs.” She listens, throws up her hands “with a despairing gesture,” and is gone. The chance she offered him closes in that instant."
+       },
+       {
+        "q": "Twice now she has told him to go, and twice he has refused. What is the story doing by repeating it?",
+        "opts": [
+         "Showing that she is not to be trusted",
+         "Making it clear that what happens next is his own choice",
+         "Hinting that she wants the fee for herself",
+         "Suggesting that she is only trying to delay him a little"
+        ],
+        "a": 1,
+        "why": "He is not tricked into the danger and he is not dragged into it. He is warned, plainly, twice, and walks in — which is why he calls his own advice-rejecting “foolish” when he looks back on it."
+       }
+      ]
+     },
+     {
+      "type": "pick",
+      "p": "door",
+      "hi": [
+       "I left this door shut",
+       "I opened the door myself",
+       "suspicious glances"
+      ],
+      "vs": [
+       {
+        "q": "Stark says he thought he had left the door shut, and hopes Hatherley has not felt the draught. What is he really doing?",
+        "opts": [
+         "Apologising for leaving a guest in a cold room",
+         "Finding out whether somebody has been in to see him",
+         "Explaining why the lamp had gone out",
+         "Making conversation while Ferguson catches up"
+        ],
+        "a": 1,
+        "why": "The remark sounds like politeness and is a test. An open door means a visitor. Hatherley answers that he opened it himself — and whether or not he meant to, he covers for the woman who warned him."
+       },
+       {
+        "q": "How does Hatherley answer the remark about the door?",
+        "opts": [
+         "He says a servant must have opened it",
+         "He says he had not noticed the door at all",
+         "He says he opened it himself, feeling the room close",
+         "He says the woman with the lamp must have left it open"
+        ],
+        "a": 2,
+        "why": "“On the contrary, I opened the door myself, because I felt the room to be a little close.” It is the most useful thing he does all evening, and there is no sign he knows it."
+       },
+       {
+        "q": "What does Stark do immediately after that answer?",
+        "opts": [
+         "Laughs, and says the house is always draughty",
+         "Shoots one of his suspicious glances at him",
+         "Sends Ferguson downstairs to check the hall",
+         "Asks whether he has seen anybody in the passage"
+        ],
+        "a": 1,
+        "why": "“He shot one of his suspicious glances at me.” The answer did not satisfy him. That look, and the words “one of,” tell you this is a man who has been watching Hatherley all evening."
+       },
+       {
+        "q": "Who is the short thick man with the beard growing out of his double chin?",
+        "opts": [
+         "Mr. Ferguson, the Colonel’s secretary and manager",
+         "Mr. Hayling, a hydraulic engineer",
+         "Inspector Bradstreet, who came down from Scotland Yard",
+         "The porter from the station at Eyford"
+        ],
+        "a": 0,
+        "why": "“This is my secretary and manager,” said the Colonel. Ferguson matters for one reason Hatherley notices at once: from the little he says, he is an Englishman, and everyone else in the house is not."
+       },
+       {
+        "q": "Hatherley says he opened the door himself, which is true. What does that answer do for the woman?",
+        "opts": [
+         "It puts the blame for the draught on her",
+         "It gives the Colonel no reason to suspect her",
+         "It makes the Colonel send her out of the house",
+         "It proves to the Colonel that she cannot be trusted"
+        ],
+        "a": 1,
+        "why": "An open door needed explaining, and he explained it without mentioning her. She is still free to come back for him later — which is the only reason he survives the night."
+       }
+      ]
+     },
+     {
+      "type": "pick",
+      "p": "house",
+      "hi": [
+       "you dig fuller’s earth in the house",
+       "only where we compress it",
+       "no signs of any furniture above the ground floor"
+      ],
+      "vs": [
+       {
+        "q": "Hatherley offers to fetch his hat. Why is the Colonel’s answer strange?",
+        "opts": [
+         "It means the machine is inside the house",
+         "It means they will not be going out until morning",
+         "It means the hat has already been taken away",
+         "It means the walk is shorter than he expected"
+        ],
+        "a": 0,
+        "why": "“Oh no, it is in the house.” Hatherley catches it at once: “What, you dig fuller’s earth in the house?” A clay pit is outdoors. Whatever is upstairs, it is not a mine."
+       },
+       {
+        "q": "How does the Colonel explain a hydraulic press being indoors?",
+        "opts": [
+         "That the machine is too valuable to leave outside",
+         "That the pit is in the cellar beneath the house",
+         "That the house is only where they compress the earth",
+         "That the neighbours must not see the machine at work"
+        ],
+        "a": 2,
+        "why": "“No, no. This is only where we compress it.” Then straight on: “But never mind that!” Every time Hatherley’s question lands, the Colonel answers quickly and changes the subject."
+       },
+       {
+        "q": "What does Hatherley notice as they climb the stairs?",
+        "opts": [
+         "Fresh paint on the walls and a new carpet on all the staircases",
+         "No carpets, no furniture above the ground floor, plaster peeling",
+         "Rooms full of packing cases and machinery",
+         "Doors standing open onto empty bedrooms"
+        ],
+        "a": 1,
+        "why": "A house with nothing in it above the ground floor is not a home. People are not living there — they are using it, and they are ready to leave it."
+       },
+       {
+        "q": "What one thing does Hatherley find reassuring about Ferguson?",
+        "opts": [
+         "That he is a gloomy, silent man",
+         "That he stays outside the little room",
+         "That he is a fellow Englishman",
+         "That he asks practical questions about the machine"
+        ],
+        "a": 2,
+        "why": "“I could see from the little he said that he was at least a fellow Englishman.” It reassures Hatherley and it should not. Ferguson is on the wrong side of the door when it is locked."
+       },
+       {
+        "q": "An engineer is brought to mend a clay-works machine and finds an empty house with the machine upstairs. What should he conclude?",
+        "opts": [
+         "That the business is a good deal smaller than he was told",
+         "That the pit must be some distance away",
+         "That the story he was told does not fit what he can see",
+         "That the family have only just moved in"
+        ],
+        "a": 2,
+        "why": "He does conclude it, a page later, in so many words: “the story of the fuller’s earth was a fabrication.” The evidence for that is here, in the hall and on the stairs, before he ever sees the press."
+       }
+      ]
+     },
+     {
+      "type": "pick",
+      "p": "inside",
+      "hi": [
+       "actually within the hydraulic press",
+       "the end of the descending piston",
+       "a slight leakage",
+       "had shrunk so as not quite to fill the socket"
+      ],
+      "vs": [
+       {
+        "q": "Where is Hatherley standing while the Colonel explains the machine?",
+        "opts": [
+         "In a gallery looking down on it",
+         "Inside the hydraulic press itself",
+         "In the corridor outside the little room",
+         "On a platform above the metal floor"
+        ],
+        "a": 1,
+        "why": "“We are now actually within the hydraulic press.” The room is the machine. Stark even says it would be “particularly unpleasant for us if anyone were to turn it on” — and twenty minutes later he turns it on himself."
+       },
+       {
+        "q": "What is the ceiling of the little room?",
+        "opts": [
+         "A trap door to the floor above",
+         "The end of the descending piston",
+         "A sheet of iron holding up the water tank",
+         "The underside of the main water columns"
+        ],
+        "a": 1,
+        "why": "“The ceiling of this small chamber is really the end of the descending piston, and it comes down with the force of many tons upon this metal floor.” Hatherley is told exactly how he is meant to die, as a piece of engineering."
+       },
+       {
+        "q": "How does Hatherley first know something is wrong with the machine?",
+        "opts": [
+         "A whishing sound when he pressed down the levers",
+         "The piston came down more slowly than it should",
+         "Water was standing on the metal floor",
+         "The levers would not move at all"
+        ],
+        "a": 0,
+        "why": "He hears it before he sees it — “I knew at once by the whishing sound that there was a slight leakage.” That leak comes back later: it is the swish he hears through the door when the engine is set at work."
+       },
+       {
+        "q": "What exactly had gone wrong with the press?",
+        "opts": [
+         "A driving-rod had bent out of true",
+         "The metal floor had cracked somewhere under the pressure",
+         "One of the water columns had sprung a leak",
+         "A rubber band had shrunk and no longer filled its socket"
+        ],
+        "a": 3,
+        "why": "“One of the rubber bands around the end of a driving-rod had shrunk so as not quite to fill the socket along which it worked.” A small fault, found in minutes. He really was worth his fee, which is part of what makes the evening so ugly."
+       },
+       {
+        "q": "Stark says it would be unpleasant for them if anyone turned the machine on while they stood in it. Why does that line matter so much later?",
+        "opts": [
+         "Because Ferguson is the one who works the levers",
+         "Because it is exactly what Stark does to him",
+         "Because it explains why the room is so small",
+         "Because it warns Hatherley to keep away from the levers"
+        ],
+        "a": 1,
+        "why": "It is said as a joke about their own safety. Within the hour Stark locks that door and sets the engine going with Hatherley inside — and Hatherley, who has just examined it, knows better than anyone what is coming down."
+       }
+      ]
+     },
+     {
+      "type": "pick",
+      "p": "trough",
+      "hi": [
+       "a crust of metallic deposit",
+       "was a fabrication",
+       "if I knew what the exact purpose was",
+       "turned the key in the lock"
+      ],
+      "vs": [
+       {
+        "q": "What convinces Hatherley that the fuller’s earth story is untrue?",
+        "opts": [
+         "The house had no clay anywhere in it",
+         "Ferguson admitted there was no pit",
+         "So powerful an engine could not be for so small a purpose",
+         "The Colonel could not say where the clay pit actually was"
+        ],
+        "a": 2,
+        "why": "“It would be absurd to suppose that so powerful an engine could be designed for so small a purpose.” He reasons it out from the machine itself, as an engineer would, and he is right."
+       },
+       {
+        "q": "What does he find on the floor of the machine?",
+        "opts": [
+         "A large iron trough with a crust of metallic deposit",
+         "Several pounds of pale clay, freshly dug",
+         "Scratches where something heavy had been dragged",
+         "A pool of oil leaking from the driving-rod"
+        ],
+        "a": 0,
+        "why": "Metal, not clay. He is scraping at the crust to see what it is when the Colonel appears above him — and the crust is the real answer to what the machine is for."
+       },
+       {
+        "q": "What does Hatherley say to the Colonel that he instantly regrets?",
+        "opts": [
+         "That the story about the fuller’s earth was a lie",
+         "That he would advise better if he knew the machine’s real purpose",
+         "That he intended to tell the police all about it in the morning",
+         "That the woman downstairs had warned him to leave"
+        ],
+        "a": 1,
+        "why": "He phrases it as an engineer being helpful and it is an accusation, and both men know it. “The instant that I uttered the words I regretted the rashness of my speech.”"
+       },
+       {
+        "q": "How does the Colonel answer that question?",
+        "opts": [
+         "By offering him double the fee in return for his silence",
+         "By calling Ferguson to take him downstairs",
+         "By telling him the truth about the machine",
+         "By saying he shall know all about it — and locking him in"
+        ],
+        "a": 3,
+        "why": "“Very well, you shall know all about the machine.” It is a promise and a sentence at the same time. Then: a step backward, the door slammed, the key turned."
+       },
+       {
+        "q": "Hatherley cannot help asking his question, even though he knows he should not. What does that say about him?",
+        "opts": [
+         "He has no idea how much danger he is in",
+         "He is more frightened of being thought a fool than of Stark",
+         "He would rather understand a thing than be safe",
+         "He believes the Colonel will not dare to hurt him"
+        ],
+        "a": 2,
+        "why": "He has just been warned twice, he has seen the empty house and the metal crust, and he asks anyway, because the machine does not make sense and he wants it to. It is the same trait that brought him there for fifty guineas."
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "id": "m3",
+    "name": "Chapter 3 — pages 113 to 117",
+    "tag": "5 questions · 5 papers · about 5 minutes",
+    "blurb": "The ceiling, the panel, the window and the cleaver",
+    "items": [
+     {
+      "type": "pick",
+      "p": "ceiling",
+      "hi": [
+       "the swish of the leaking cylinder",
+       "shapeless pulp",
+       "drowned my cries",
+       "a gush of hope"
+      ],
+      "vs": [
+       {
+        "q": "What does Hatherley hear through the locked door?",
+        "opts": [
+         "Ferguson arguing with the Colonel outside",
+         "The clank of the levers and the swish of the leaking cylinder",
+         "The woman calling his name from the stairs",
+         "A carriage being brought round to the front door of the house"
+        ],
+        "a": 1,
+        "why": "He hears the machine start, and he knows that sound: the swish is the leak he found himself half an hour before. The fault he was hired to diagnose is how he learns he is about to be killed."
+       },
+       {
+        "q": "Why is Hatherley, of all people, in the worst position to hope the ceiling will stop?",
+        "opts": [
+         "He is too weak from the journey to climb",
+         "He has no lamp and cannot see it coming",
+         "He had examined the press and knows its force",
+         "He is standing on the metal floor in the dark"
+        ],
+        "a": 2,
+        "why": "“As none knew better than myself, with a force that must grind me to a shapeless pulp.” He had put his hands on the piston. There is no comforting himself with not knowing."
+       },
+       {
+        "q": "Why does shouting for help do him no good?",
+        "opts": [
+         "The house is too far from any other building",
+         "The clanking of the levers drowns his cries",
+         "The Colonel had already left the house",
+         "The door is too thick for sound to pass through"
+        ],
+        "a": 1,
+        "why": "“The remorseless clanking of the levers drowned my cries.” The machine that is killing him is also the reason nobody can hear him — and the Colonel is the one working the levers."
+       },
+       {
+        "q": "What is Hatherley thinking about while the ceiling comes down?",
+        "opts": [
+         "Whether the panel in the wall will open",
+         "How he might jam the levers from inside",
+         "Which way to lie so that dying hurts less",
+         "Whether the woman will fetch help in time"
+        ],
+        "a": 2,
+        "why": "It is the most frightening paragraph in the story, and what makes it frightening is how practical he is: on his face the weight would come on his spine, and he shudders at “that dreadful snap.”"
+       },
+       {
+        "q": "The last sentence of the scene says his eye caught something that brought “a gush of hope” back. What had he seen?",
+        "opts": [
+         "The key still turning in the lock",
+         "A light between two of the wooden boards",
+         "The lamp burning where he had set it down",
+         "The levers moving on the far side of the wall"
+        ],
+        "a": 1,
+        "why": "A thin line of yellow light between two boards — which is to say, a gap. He is saved by noticing something small at the exact moment he can no longer stand up straight."
+       }
+      ]
+     },
+     {
+      "type": "pick",
+      "p": "panel",
+      "hi": [
+       "the floor and ceiling were of iron, the walls were of wood",
+       "a thin line of yellow light",
+       "the clang of the two slabs of metal"
+      ],
+      "vs": [
+       {
+        "q": "What saves Hatherley’s life?",
+        "opts": [
+         "The machine jamming before the ceiling reached him",
+         "The wooden walls, which had a panel in them",
+         "The woman stopping the engine from outside",
+         "The lamp setting fire to the boards"
+        ],
+        "a": 1,
+        "why": "“Though the floor and ceiling were of iron, the walls were of wood.” The part of the press that was not built to hold pressure is the part he gets out through."
+       },
+       {
+        "q": "Why does the difference between iron and wood matter so much here?",
+        "opts": [
+         "Wood muffles sound, so nobody heard him",
+         "Iron rusts, and the floor had worn thin",
+         "Wood burns, and he could have set it alight",
+         "Iron cannot be got through; wood can hide a door"
+        ],
+        "a": 3,
+        "why": "The floor and ceiling are the working faces of the press and they are iron. The sides only have to stand there, so they are boards — and a board can be pushed aside."
+       },
+       {
+        "q": "What tells Hatherley how close the escape had been?",
+        "opts": [
+         "The clang of the two slabs of metal behind him",
+         "The lamp going out as the panel closed",
+         "The sudden silence after the levers stopped",
+         "The pain in his hand as he fell through"
+        ],
+        "a": 0,
+        "why": "The panel shuts and he hears iron meet iron on the other side of it. He is lying half fainting in the corridor while the press closes on the space he was standing in."
+       },
+       {
+        "q": "Who pushed the panel open?",
+        "opts": [
+         "Ferguson, who had thought better of it",
+         "Nobody — the pressure forced the boards apart",
+         "Somebody outside the press, in the corridor",
+         "Hatherley himself, with the last of his strength"
+        ],
+        "a": 2,
+        "why": "The line of light “broadened as a small panel was pushed backwards” — pushed from the other side. He finds out who a moment later, when a hand plucks at his wrist."
+       },
+       {
+        "q": "Think about the machine as its owners built it. Why would a press like that have a panel in its wall at all?",
+        "opts": [
+         "So the men working it could get in and out quickly",
+         "So the piston could be reached for oiling and repair",
+         "So the room could be aired between uses",
+         "So water could be drained from the trough"
+        ],
+        "a": 0,
+        "why": "It is a workroom, not a trap — they used it every day to press metal, and a way in and out is ordinary. Stark locked the door and forgot what the men who work the machine rely on."
+       }
+      ]
+     },
+     {
+      "type": "pick",
+      "p": "elise",
+      "hi": [
+       "a frantic plucking at my wrist",
+       "the same friend whose warning I had so foolishly rejected",
+       "This time, I did not scorn her advice"
+      ],
+      "vs": [
+       {
+        "q": "Who is bending over Hatherley when he comes to himself in the corridor?",
+        "opts": [
+         "Ferguson, holding a lantern",
+         "The woman who had warned him twice",
+         "The porter from the station at Eyford",
+         "A servant he had not seen before"
+        ],
+        "a": 1,
+        "why": "“It was the same friend whose warning I had so foolishly rejected.” She had every reason to leave him to it, and she came back — which is the whole point of the scene."
+       },
+       {
+        "q": "How does Hatherley describe his own earlier behaviour now?",
+        "opts": [
+         "As foolish — he had rejected her warning",
+         "As reasonable, given what he had been told",
+         "As brave, and worth doing again",
+         "As unlucky rather than mistaken"
+        ],
+        "a": 0,
+        "why": "“So foolishly rejected.” He is telling the story afterwards and he does not dress it up. Watch the sentence that follows: “This time, I did not scorn her advice.”"
+       },
+       {
+        "q": "What is she carrying, and what does that tell you about the house?",
+        "opts": [
+         "A lamp — the one from the hall",
+         "A lantern taken from the Colonel",
+         "A candle, because the house has no proper light",
+         "Nothing at all — she found him lying there in the dark"
+        ],
+        "a": 2,
+        "why": "A candle in her right hand while she tugs at him with her left. It fits everything else about the place: no carpets, no furniture, no light — a house being used rather than lived in."
+       },
+       {
+        "q": "What is the hurry, in her own words?",
+        "opts": [
+         "The Colonel is coming up the stairs behind her",
+         "They will see that he is not there",
+         "The engine cannot be stopped once it is running",
+         "The carriage is waiting only a few minutes"
+        ],
+        "a": 1,
+        "why": "“They will be here in a moment. They will see that you are not there.” The moment the press comes up empty, they will start searching — and she knows it before he does."
+       },
+       {
+        "q": "“This time, I did not scorn her advice.” Why does the story bother to say so?",
+        "opts": [
+         "To show he has lost his nerve completely",
+         "To show that the danger is now over",
+         "To mark the moment he starts learning from his mistake",
+         "To show that he now trusts her more than he trusts Holmes"
+        ],
+        "a": 2,
+        "why": "It is a short sentence doing a lot of work. The headstrong man who stayed twice for his fifty guineas is the same man who now runs when she says run, and he says so himself."
+       }
+      ]
+     },
+     {
+      "type": "pick",
+      "p": "window",
+      "hi": [
+       "It is high, but it may be that you can jump it",
+       "a butcher’s cleaver",
+       "not be more than thirty feet down",
+       "I was determined to go back to her assistance"
+      ],
+      "vs": [
+       {
+        "q": "What is the only way out she can offer him?",
+        "opts": [
+         "The kitchen door at the back of the house",
+         "A bedroom window he may be able to jump from",
+         "The stairs down to the hall, while they search above",
+         "The panel he has just come through"
+        ],
+        "a": 1,
+        "why": "“It is your only chance. It is high, but it may be that you can jump it.” Running feet above them and below them: there is no other route left in the house."
+       },
+       {
+        "q": "What is Colonel Lysander Stark carrying when he appears at the end of the passage?",
+        "opts": [
+         "A revolver and a dark lantern",
+         "A lamp and the key to the press",
+         "A lantern in one hand and a butcher’s cleaver in the other",
+         "The cleaver alone, having left the lantern on the stairs"
+        ],
+        "a": 2,
+        "why": "A butcher’s cleaver. The word “butcher’s” is doing the work — it is not a weapon he has gone to fetch, it is a tool out of the kitchen, and that is worse."
+       },
+       {
+        "q": "Hatherley climbs out onto the sill and then hesitates instead of jumping. Why?",
+        "opts": [
+         "The drop looked further than thirty feet",
+         "He wanted to hear what passed between her and Stark",
+         "He had lost too much blood to trust his grip",
+         "He was waiting for the moon to go behind a cloud"
+        ],
+        "a": 1,
+        "why": "“I hesitated to jump, so I could hear what passed between my savior and the ruffian who pursued me.” He is halfway to safety and he stops to listen for her."
+       },
+       {
+        "q": "What had he decided to do if she were ill-used?",
+        "opts": [
+         "Shout for Ferguson to come and help her",
+         "Jump, and fetch the police from Eyford",
+         "Go back to her assistance at any risk",
+         "Give himself up so that she would be left alone"
+        ],
+        "a": 2,
+        "why": "“If she were ill-used, then at any risk I was determined to go back to her assistance.” He has been foolish all evening; here the same stubbornness looks like something else entirely."
+       },
+       {
+        "q": "Two details sit side by side: the moonlit garden looks “quiet and sweet and wholesome,” and a man is coming down the passage with a cleaver. Why put them together?",
+        "opts": [
+         "To show how far he still has to travel",
+         "To show that the night is nearly over",
+         "To show how near safety is while the danger is nearest",
+         "To suggest that he is imagining the whole thing by now"
+        ],
+        "a": 2,
+        "why": "Thirty feet of air between the worst moment of his life and an ordinary garden. The story lets him see exactly what he is reaching for at the moment he is most likely not to reach it."
+       }
+      ]
+     },
+     {
+      "type": "pick",
+      "p": "fritz",
+      "hi": [
+       "remember your promise after the last time",
+       "He will be silent",
+       "You are mad, Elise",
+       "my thumb had been cut off"
+      ],
+      "vs": [
+       {
+        "q": "Elise cries, “remember your promise after the last time. You said it would not happen again.” What does that tell you?",
+        "opts": [
+         "That Stark had promised to give up the machine",
+         "That something like this has happened before",
+         "That she had helped a prisoner escape once already",
+         "That Stark had promised her a share of the money"
+        ],
+        "a": 1,
+        "why": "There was a last time. She is not guessing what Stark will do — she has seen him do it, and she got a promise out of him afterwards. Holmes produces the proof a few pages later."
+       },
+       {
+        "q": "What reason does Stark give for not letting Hatherley go?",
+        "opts": [
+         "That he cannot be trusted to keep a promise",
+         "That the police are already looking for him",
+         "That he has seen too much",
+         "That he knows the way back to the station"
+        ],
+        "a": 2,
+        "why": "“You will be the ruin of us. He has seen too much.” It is the plainest thing Stark says all night, and it is the only true one."
+       },
+       {
+        "q": "What is the name Elise calls him by, and why is it worth noticing?",
+        "opts": [
+         "Lysander — so the rank is invented",
+         "Fritz — so Colonel Lysander Stark is not his real name",
+         "Ferguson — so the two men are brothers",
+         "Jeremiah — so he has taken a dead man’s name for himself"
+        ],
+        "a": 1,
+        "why": "She calls him Fritz, in English, in front of a stranger. “Colonel Lysander Stark” is a costume — which is exactly why the porter at Eyford has never heard the name."
+       },
+       {
+        "q": "Where was Hatherley when the blow fell?",
+        "opts": [
+         "Standing on the sill with his back to the room",
+         "Hanging by his hands from the sill",
+         "Already falling towards the garden",
+         "Halfway across the bedroom floor"
+        ],
+        "a": 1,
+        "why": "“I was hanging with my hands across the sill when his blow fell.” His hands were the only part of him left in the room — which is how the story gets its title."
+       },
+       {
+        "q": "When does Hatherley discover that his thumb has gone?",
+        "opts": [
+         "At the moment the cleaver struck",
+         "Not until the doctor in town dressed the wound for him",
+         "Only when he woke in the morning",
+         "While running through the bushes, when the dizziness came"
+        ],
+        "a": 3,
+        "why": "“For the first time, saw that my thumb had been cut off.” He felt a dull pain, fell, got up and ran; it took a fit of dizziness to make him look at his own hand. Fear does that, and Doyle knows it."
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "id": "m4",
+    "name": "Chapter 4 — pages 118 to 120",
+    "tag": "5 questions · 5 papers · about 5 minutes",
+    "blurb": "The hedge by the station, the advertisement, and Bradstreet’s circle",
+    "items": [
+     {
+      "type": "pick",
+      "p": "hedge",
+      "hi": [
+       "neither house nor garden were to be seen",
+       "the very train station at which I had arrived",
+       "drenched with blood"
+      ],
+      "vs": [
+       {
+        "q": "Where does Hatherley find himself when he wakes?",
+        "opts": [
+         "In a field some miles from any road",
+         "In the garden he had jumped down into the night before",
+         "In the hedge beside the road, close to the station",
+         "In a bedroom at the inn at Eyford"
+        ],
+        "a": 2,
+        "why": "“Just a little lower down was the very train station at which I had arrived the previous night.” Of everything in this chapter, remember this: he wakes up next to the station he started from."
+       },
+       {
+        "q": "What has become of the house and garden by morning?",
+        "opts": [
+         "They are locked up and deserted",
+         "They are not to be seen at all",
+         "They are burning, and the gang have gone",
+         "They are full of police from Reading"
+        ],
+        "a": 1,
+        "why": "“To my astonishment, neither house nor garden were to be seen.” He did not walk away from the house — he was carried away from it, and that is a strange amount of trouble for the gang to take."
+       },
+       {
+        "q": "He fainted in the bushes of a garden and woke in a hedge by the road. What must have happened in between?",
+        "opts": [
+         "He walked there himself without remembering",
+         "The woman dragged him clear of the house",
+         "He was carried there while unconscious",
+         "The garden was beside the road all along"
+        ],
+        "a": 2,
+        "why": "Bradstreet asks about it on the train, and Hatherley admits “a confused memory of being lifted and conveyed somewhere.” Somebody moved him — and did not kill him."
+       },
+       {
+        "q": "What condition is he in when he comes to himself?",
+        "opts": [
+         "Unhurt except for the missing thumb",
+         "Wet with dew, his coat-sleeve drenched with blood",
+         "Bandaged already, with his hand properly dressed",
+         "Too weak to stand or move at all"
+        ],
+        "a": 1,
+        "why": "Dew on his clothes tells you how long he lay there; the sleeve tells you how much he had bled. He had been out for most of the night in the open."
+       },
+       {
+        "q": "Waking next to the station is the most useful fact in the chapter. Why?",
+        "opts": [
+         "It shows the gang wanted him to be found",
+         "It proves the house cannot have been far from Eyford",
+         "It means he can catch the first train to London",
+         "It shows the police station was closer than he thought"
+        ],
+        "a": 1,
+        "why": "They carried an unconscious man back to the station. Nobody carries a body twelve miles. Put this beside the horse that was still fresh and glossy, and the “hour’s drive” starts to look like a performance."
+       }
+      ]
+     },
+     {
+      "type": "pick",
+      "p": "porter",
+      "hi": [
+       "The name was strange to him",
+       "police station",
+       "about three miles off",
+       "one to Reading in less than an hour"
+      ],
+      "vs": [
+       {
+        "q": "What happens when Hatherley asks the porter about Colonel Lysander Stark?",
+        "opts": [
+         "The porter says he left on the early train",
+         "The porter has never heard the name",
+         "The porter points out the road to the house",
+         "The porter says he is well known thereabouts"
+        ],
+        "a": 1,
+        "why": "“The name was strange to him.” A porter at a small country station knows the local gentry. If he has not heard of Colonel Lysander Stark, there is no such person to have heard of."
+       },
+       {
+        "q": "Why does Hatherley not go to the police straight away?",
+        "opts": [
+         "He was afraid that they would not believe his story",
+         "He had promised Stark to say nothing",
+         "The station was three miles from the nearest one",
+         "He wanted Holmes to hear the story first"
+        ],
+        "a": 2,
+        "why": "The police station is three miles off and he is too weak to walk it. So he decides to wait until he is back in town — which is how a case that should have gone to the Reading police arrives in Baker Street instead."
+       },
+       {
+        "q": "Which train does Hatherley take from Eyford?",
+        "opts": [
+         "The first up train to London",
+         "One to Reading, in less than an hour",
+         "The same last train he had come out on",
+         "A goods train, since no other was running"
+        ],
+        "a": 1,
+        "why": "“There would be one to Reading in less than an hour.” Reading is where the inspector says they had traced the gang to before and could get no further — the story keeps circling the same few miles of country."
+       },
+       {
+        "q": "The porter’s answer is a small moment. What does it actually establish?",
+        "opts": [
+         "That the gang have already left the district",
+         "That “Colonel Lysander Stark” is not a real local name",
+         "That the station is not the one he arrived at",
+         "That the house is a good deal further off than he thought"
+        ],
+        "a": 1,
+        "why": "It is the first outside confirmation of anything. Everything up to now is Hatherley’s word; this is somebody else telling him that the man who hired him does not exist under that name."
+       },
+       {
+        "q": "Put the porter’s answer beside what Elise shouted at the window. What do the two together tell you?",
+        "opts": [
+         "That Stark was once a soldier in Germany",
+         "That the gang have bribed the station staff",
+         "That Stark and Fritz are two different men",
+         "That “Colonel Lysander Stark” is an assumed name"
+        ],
+        "a": 3,
+        "why": "She called him Fritz; the porter has never heard of a Colonel Lysander Stark. Two facts from two people who have never met, pointing at one conclusion. That is how a case gets built."
+       }
+      ]
+     },
+     {
+      "type": "pick",
+      "p": "advert",
+      "hi": [
+       "Jeremiah Hayling",
+       "has not been heard of since",
+       "the last time the Colonel needed his machine overhauled",
+       "Then that explains what the girl said"
+      ],
+      "vs": [
+       {
+        "q": "What does Holmes take down from the shelf?",
+        "opts": [
+         "A railway timetable for the Reading line",
+         "A book of newspaper cuttings",
+         "A map of the country round Eyford",
+         "His index of London criminals"
+        ],
+        "a": 1,
+        "why": "One of the books in which he places his newspaper cuttings. Holmes’s filing is a kind of memory: he has been keeping this page for a year without knowing what it was for."
+       },
+       {
+        "q": "Who was Jeremiah Hayling?",
+        "opts": [
+         "A porter who vanished from Eyford station",
+         "A hydraulic engineer, aged 26, who disappeared",
+         "A clerk who once worked for the Colonel in London",
+         "The owner of the house before the gang took it"
+        ],
+        "a": 1,
+        "why": "“Lost on the 9th inst., Mr. Jeremiah Hayling, aged 26, a hydraulic engineer.” The same trade as Hatherley, and about the same age. The advertisement is a year old."
+       },
+       {
+        "q": "What does Holmes say the advertisement represents?",
+        "opts": [
+         "A rival gang working the same district",
+         "The reason the Colonel had to leave London in a hurry",
+         "The last time the Colonel needed his machine overhauled",
+         "The first crime the gang ever committed"
+        ],
+        "a": 2,
+        "why": "“That represents the last time the Colonel needed his machine overhauled, I fancy.” Said lightly, and it means that the last engineer who went out to mend the press never came back."
+       },
+       {
+        "q": "Hatherley cries, “Then that explains what the girl said.” What had she said?",
+        "opts": [
+         "That he should get away before it was too late",
+         "That the Colonel was not who he claimed to be",
+         "That there was no good for him to do there",
+         "Remember your promise after the last time"
+        ],
+        "a": 3,
+        "why": "Her promise makes sense the moment Hayling does. There had been a last time; she had made Stark swear it would not happen again; and Hatherley is standing in the place of a man who is still missing."
+       },
+       {
+        "q": "Why is it so bad for Hatherley that the advertisement is a whole year old?",
+        "opts": [
+         "It means the trail has gone cold since then",
+         "It means the police never managed to solve the first case",
+         "It means the gang have used the machine for years",
+         "It means the gang have done this before and got away with it"
+        ],
+        "a": 3,
+        "why": "A year has passed and nobody has found Jeremiah Hayling. Whatever happened to him, it worked — which is what Stark was counting on when he turned the levers."
+       }
+      ]
+     },
+     {
+      "type": "pick",
+      "p": "circle",
+      "hi": [
+       "a radius of ten miles",
+       "somewhere near that line",
+       "compass drawing a circle with Eyford for its center",
+       "Inspector Bradstreet of Scotland Yard"
+      ],
+      "vs": [
+       {
+        "q": "How is Inspector Bradstreet trying to find the house?",
+        "opts": [
+         "By asking at every station on the Reading line",
+         "By drawing a ten-mile circle round Eyford on a map",
+         "By searching the villages one after another",
+         "By tracing the carriage that met the train"
+        ],
+        "a": 1,
+        "why": "A map spread on the seat and a compass. It is a sensible method and it rests entirely on one number, which came from a man who could not see out of the carriage."
+       },
+       {
+        "q": "Where does Bradstreet expect the house to be?",
+        "opts": [
+         "Somewhere near the line of his circle",
+         "Anywhere inside the circle he has drawn",
+         "At one of the villages west of Eyford",
+         "Within three miles of the police station"
+        ],
+        "a": 0,
+        "why": "“The place we want must be somewhere near that line.” Near the line — ten miles out. Hold that against the fact that Hatherley woke up beside the station."
+       },
+       {
+        "q": "Whose evidence is Bradstreet’s circle built on?",
+        "opts": [
+         "Holmes’s reading of the newspaper advertisement",
+         "The porter’s account of the carriage",
+         "Hatherley’s guess at how far he had been driven",
+         "The timetable of the last train to Eyford"
+        ],
+        "a": 2,
+        "why": "“You said ten miles, I think, sir?” Every mile of that circle comes from a guess made in a dark carriage. The inspector is not careless — he simply trusts the witness further than the witness can be trusted."
+       },
+       {
+        "q": "Who is on the train down to Eyford?",
+        "opts": [
+         "Holmes, Watson and Hatherley only",
+         "Holmes, Hatherley, Bradstreet, a plain-clothes officer and Watson",
+         "Holmes, Watson and two officers from Reading",
+         "Holmes, Bradstreet, Watson and the doctor who dressed the wound"
+        ],
+        "a": 1,
+        "why": "Five of them, and Watson lists them all. Scotland Yard is taking this seriously: an inspector and a plain-clothes man for a house nobody can find."
+       },
+       {
+        "q": "What is the weakness in a method that starts by drawing a circle?",
+        "opts": [
+         "A circle is too large an area to search on foot",
+         "The map may not show every house in the district",
+         "Eyford may not be the right village to start from",
+         "It can only be as good as the distance it is drawn from"
+        ],
+        "a": 3,
+        "why": "The compass is exact; the number it is set to is a guess. Being precise about an uncertain figure does not make the figure any better — which is the mistake Holmes is about to point out."
+       }
+      ]
+     },
+     {
+      "type": "pick",
+      "p": "guesses",
+      "hi": [
+       "You are all wrong",
+       "I could lay my finger on it",
+       "no hills there",
+       "the country is more deserted there"
+      ],
+      "vs": [
+       {
+        "q": "Each of the four men picks a direction. What does Holmes say to all four?",
+        "opts": [
+         "That two of them may be right",
+         "That the south is the likeliest of them",
+         "That they are all wrong",
+         "That the map is too old to be trusted"
+        ],
+        "a": 2,
+        "why": "“You are all wrong.” “But we can’t all be.” “Oh, yes, you can.” They are arguing about which point on the circle to search; Holmes is telling them the circle itself is the mistake."
+       },
+       {
+        "q": "What is Watson’s reason for guessing north?",
+        "opts": [
+         "The roads are better that way",
+         "There are no hills, and the carriage went up none",
+         "There are quiet little villages up there",
+         "The country is more deserted in that direction"
+        ],
+        "a": 1,
+        "why": "Watson is reasoning from the evidence, and reasoning well — Hatherley never noticed the carriage climbing. It is a good argument built on the same bad number as everyone else’s."
+       },
+       {
+        "q": "Bradstreet says south, Watson north, the plain-clothes man west, Hatherley east. What do all four guesses have in common?",
+        "opts": [
+         "They all ignore what the porter said",
+         "They all assume the house is about ten miles out",
+         "They all rely on Bradstreet’s map being accurate",
+         "They all place the house near a village"
+        ],
+        "a": 1,
+        "why": "Four different directions and one shared assumption. Nobody questions the ten miles, so nobody can be right, whichever way they point."
+       },
+       {
+        "q": "Holmes says quietly that he could lay his finger on the place. What has he been working from?",
+        "opts": [
+         "The advertisement about Jeremiah Hayling",
+         "The map Bradstreet spread on the seat",
+         "Details in Hatherley’s own account",
+         "Information sent down from Scotland Yard"
+        ],
+        "a": 2,
+        "why": "He has been to no houses and interviewed nobody. Everything he has is what Hatherley told him in Baker Street — including the two things Hatherley did not know were important."
+       },
+       {
+        "q": "You have read the same pages Holmes has. Which two facts should make you doubt the ten miles?",
+        "opts": [
+         "The frosted windows, and the hour of the drive",
+         "The German books, and the empty upper rooms",
+         "The fresh horse, and waking up beside the station",
+         "The porter’s answer, and the cleaver in the passage"
+        ],
+        "a": 2,
+        "why": "A horse that had done twelve miles of heavy road would not be fresh and glossy, and nobody carries an unconscious man twelve miles to leave him by a station. Both facts are in your reading. Holmes has not been told anything you have not."
+       }
+      ]
+     }
+    ]
+   }
+  ]
  }
 ]

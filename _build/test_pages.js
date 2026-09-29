@@ -209,6 +209,13 @@ group("links");
   ok("no link names a directory rather than a file", !dirs.length, dirs.slice(0, 5).join("; "));
 }
 
+/* A question is either plain or has `vs`, a list of whole versions of itself
+   (its own wording, options and explanation). These read what a child actually
+   sees, so they have to look at every version and not only the item. */
+function forms(it) {
+  return [it].concat(it.vs || []).filter(f => f && (f.q !== undefined || f.opts));
+}
+
 group("the footer every borrowed page owes");
 {
   /* The footer is assembled from several JS string literals, so "Core Knowledge "
@@ -237,9 +244,10 @@ group("no question has more options than there are letters for them");
       : (keys[1].match(/"/g) || []).length / 2;
     let most = 0;
     (JSON.parse(data[1]).missions || []).forEach(m =>
-      (m.items || []).forEach(it => {
-        if (it.opts) most = Math.max(most, it.opts.length);
-      }));
+      (m.items || []).forEach(it =>
+        forms(it).forEach(form => {
+          if (form.opts) most = Math.max(most, form.opts.length);
+        })));
     if (most > n) short.push(f.rel + ": " + most + " options, " + n + " letters");
   });
   ok("every app has a letter for every option it offers", !short.length,
@@ -308,11 +316,14 @@ group("no question shows its own markup");
     try { D = JSON.parse(data[1]); } catch (e) { return; }
     (D.missions || []).forEach(m =>
       (m.items || []).forEach((it, n) => {
-        const fields = [["q", it.q], ["why", it.why]]
-          .concat((it.opts || []).map(o => ["option", o]));
-        fields.forEach(([what, v]) => {
-          if (typeof v === "string" && tag.test(v))
-            bad.push(f.rel + " " + m.id + " q" + (n + 1) + " " + what);
+        forms(it).forEach((form, v) => {
+          const fields = [["q", form.q], ["why", form.why]]
+            .concat((form.opts || []).map(o => ["option", o]));
+          fields.forEach(([what, val]) => {
+            if (typeof val === "string" && tag.test(val))
+              bad.push(f.rel + " " + m.id + " q" + (n + 1) +
+                       (it.vs ? " v" + (v + 1) : "") + " " + what);
+          });
         });
       }));
   });

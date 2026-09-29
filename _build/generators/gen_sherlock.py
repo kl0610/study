@@ -31,6 +31,28 @@ def data_span(html):
     raise SystemExit("unbalanced DATA")
 
 
+def missions_of(s):
+    """A section's missions, however it spells them.
+
+    A section covering one scene writes `mission` and `items`; one covering
+    several writes `missions`, a list. Both end up as the same list here, so
+    nothing downstream has to know which kind it was built from.
+    """
+    if "missions" in s:
+        return s["missions"]
+    m = s["mission"]
+    return [{"id": "m1", "name": m["name"], "tag": m["tag"],
+             "blurb": m["blurb"], "items": s["items"]}]
+
+
+def items_of(s):
+    """Every question in a section, across all of its missions."""
+    out = []
+    for m in missions_of(s):
+        out.extend(m["items"])
+    return out
+
+
 def main():
     """usage: gen_sherlock.py <sections.json> <story title> [shell-dir]
 
@@ -59,11 +81,18 @@ def main():
     # rather than as bold. Refuse it here rather than find it in a screenshot.
     tag = re.compile(r"</?[a-zA-Z]+ ?/?>")
     bad = []
+
+    def asked(it):
+        """Every string a child will read off this item, versions included."""
+        for who in [it] + list(it.get("vs", [])):
+            yield "q", who.get("q", "")
+            yield "why", who.get("why", "")
+            for o in who.get("opts", []):
+                yield "option", o
+
     for s in sections:
-        for n, it in enumerate(s.get("items", []), 1):
-            fields = [("q", it.get("q", "")), ("why", it.get("why", ""))]
-            fields += [("option", o) for o in it.get("opts", []) if isinstance(o, str)]
-            for what, v in fields:
+        for n, it in enumerate(items_of(s), 1):
+            for what, v in asked(it):
                 if isinstance(v, str) and tag.search(v):
                     bad.append("%s q%d %s: %s" % (s["slug"], n, what, v[:60]))
     if bad:
@@ -74,13 +103,7 @@ def main():
             "bigQuestion": s["bigQuestion"],
             "passages": s["passages"],
             "videos": videos,
-            "missions": [{
-                "id": "m1",
-                "name": s["mission"]["name"],
-                "tag": s["mission"]["tag"],
-                "blurb": s["mission"]["blurb"],
-                "items": s["items"],
-            }],
+            "missions": missions_of(s),
         }
         out = shell[:b] + json.dumps(data, ensure_ascii=False, indent=1) + shell[e:]
 
@@ -103,8 +126,12 @@ def main():
         d = os.path.join(ROOT, "reading", s["slug"])
         os.makedirs(d, exist_ok=True)
         io.open(os.path.join(d, "index.html"), "w", encoding="utf-8", newline="\r\n").write(out)
-        print("  %-28s %2d questions  %6.1f KB" %
-              (s["slug"], len(s["items"]), len(out) / 1024))
+        n = len(items_of(s))
+        papers = max([len(it.get("vs", [])) for it in items_of(s)] or [0])
+        print("  %-28s %2d questions in %d chapter%s%s  %6.1f KB" %
+              (s["slug"], n, len(missions_of(s)),
+               "" if len(missions_of(s)) == 1 else "s",
+               ", %d papers" % papers if papers else "", len(out) / 1024))
 
 
 main()
