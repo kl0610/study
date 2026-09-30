@@ -249,6 +249,27 @@ The apps built under either wrong offset still cite the right pages, because
 their text was located by searching for it rather than by arithmetic. Keep doing
 that: find the sentence, then read the page number off the page it landed on.
 
+### Ten minutes a section, and what that buys
+
+**A section is one night's homework and has to be answerable in ten minutes end
+to end** — not ten minutes a chapter. That works out at about twelve questions,
+which for a multi-chapter section is three or four per chapter and a two-minute
+sitting he can finish.
+
+This was the rule for science from the start and nobody carried it across to
+reading: The Engineer's Thumb and The Blue Carbuncle both shipped as four
+chapters of five minutes, twenty minutes each, because the figure on a chapter
+card is typed by hand and nothing added the cards up. `_build/test_pages.js` adds
+them up now, and also refuses a chapter whose claimed minutes do not match its
+question count — so the budget cannot be met by writing a smaller number.
+
+**Aim the cut at the questions that ask which detail it was.** What a section is
+for is the plot — what happened and what it cost — and the characters. Keep the
+turns, the decisions and the places where one character pushes back at another;
+drop the inventory. The section builders select from a `KEEP` table rather than
+deleting anything, so the unselected questions stay written and putting one back
+is one line.
+
 ### A new Sherlock story, or a new block of one
 
 One spec file per story, in `_build/generators/`: `sections_engineer.json`,

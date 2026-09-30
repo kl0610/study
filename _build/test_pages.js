@@ -330,6 +330,38 @@ group("no question shows its own markup");
   ok("every question is written in plain words", !bad.length, bad.slice(0, 6).join(", "));
 }
 
+/* A section is a night's homework and has to be answerable in ten minutes end to
+   end. Two apps shipped with four chapters of five minutes each -- twenty
+   minutes -- because the number on a chapter card is typed by hand and nothing
+   ever added the cards up. */
+group("no section takes more than ten minutes");
+{
+  const over = [], silly = [];
+  FILES.forEach(f => {
+    const data = f.html.match(/const DATA = (\{[\s\S]*?\});\r?\n/);
+    if (!data) return;
+    let D;
+    try { D = JSON.parse(data[1]); } catch (e) { return; }
+    let total = 0, claimed = false;
+    (D.missions || []).forEach(m => {
+      const mins = /about (\d+) minutes?/.exec(m.tag || "");
+      const n = (m.items || []).length;
+      if (!mins) return;
+      claimed = true;
+      total += +mins[1];
+      /* The tag has to be honest in both directions: a chapter cannot be squeezed
+         under the budget by writing a smaller number on it. */
+      const secs = +mins[1] * 60;
+      if (n && (secs < n * 20 || secs > n * 90))
+        silly.push(f.rel + " " + m.id + ": " + n + " questions in " + mins[1] + " min");
+    });
+    if (claimed && total > 10) over.push(f.rel + ": " + total + " min");
+  });
+  ok("every section fits in ten minutes", !over.length, over.join(", "));
+  ok("...and every chapter's minutes match its question count", !silly.length,
+     silly.slice(0, 6).join(" | "));
+}
+
 console.log("");
 if (fails.length) {
   console.log(fails.length + " FAILED:");
