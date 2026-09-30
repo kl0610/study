@@ -554,6 +554,11 @@ APPS = {
     "reading/sherlock-engineer-3": (reads("engineer3"),
                                     dict(app="engineer3", shake="#card", lift=None,
                                          dragon=["m1", "m2", "m3", "m4"])),
+    # The Blue Carbuncle, the next story. Four chapters over pages 126 to 136,
+    # which is the whole of the hat and none of what is in the goose.
+    "reading/sherlock-carbuncle-1": (reads("carbuncle1"),
+                                     dict(app="carbuncle1", shake="#card", lift=None,
+                                          dragon=["m1", "m2", "m3", "m4"])),
 }
 
 # ---------------------------------------------------------------- machinery

@@ -249,6 +249,43 @@ The apps built under either wrong offset still cite the right pages, because
 their text was located by searching for it rather than by arithmetic. Keep doing
 that: find the sentence, then read the page number off the page it landed on.
 
+### A new Sherlock story, or a new block of one
+
+One spec file per story, in `_build/generators/`: `sections_engineer.json`,
+`sections_carbuncle.json`. Build with the newest app as the shell, so the block
+inherits whatever the shell layer has learned since:
+
+```
+python _build/generators/gen_sherlock.py sections_carbuncle.json \
+    "The Adventure of the Blue Carbuncle" sherlock-engineer-3
+```
+
+Then register it in `build_theme.py` (`dragon` lists every mission id), add the
+hub row (`ids` lists them too), `--retheme`, and run the suites.
+
+**Each reading stops one page short of its own reveal, so each needs its own
+spoiler list.** Pages 103–120 end before Holmes explains the circle; 126–136 end
+before the goose is opened. A distractor that reaches past the reading answers a
+question he has not read yet, and one did. Both the section builder and the
+`AHEAD` table in `_build/test_papers.js` carry the list; the suite fails on a
+versioned app that has no entry, which is the reminder.
+
+**A suite that names one app goes quiet when the second arrives.** `test_papers.js`
+was written around `sherlock-engineer-3` and saw nothing of the next day's app
+— a hundred versions unchecked, for the second time in two days. It now finds
+versioned apps by looking for `vs`. When a check must read one app's copy of
+shell code, also assert the *shape* of that code in every app: the behaviour
+section lifts `verCount()` out of the first versioned app it finds, so breaking a
+different app's copy was invisible until a whole-site check was added.
+
+**Two things the PDF does that break verbatim checks on this story.** A sentence
+runs across a page break with the running head *and* an illustration caption
+wedged into the middle of it; and a caption is itself text you may want to quote.
+So check each sentence against two views of the pages — furniture stripped, and
+furniture intact — and accept it in either. Neither view can admit text that is
+not in the book. Keep the reader's own spellings: this edition prints
+*discolored*, *endeavored*, *odor*.
+
 ### Five papers per mission
 
 An item in a mission spec may carry `vs`, a list of complete versions of itself:

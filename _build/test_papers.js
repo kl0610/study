@@ -20,7 +20,9 @@
  * `hi` and `type` survive, that `vs` does not reach the renderer, and that five
  * full runs walk the five papers and come back round.
  *
- * The data, for the app that uses it: twenty questions in four chapters, five
+ * The data, for every app that has versions -- found by looking at the apps, not
+ * by naming one, because the first draft of this suite named one and saw nothing
+ * of the second: five
  * versions each, and every one of those hundred versions holding to the same
  * rules the single-version questions have always had -- four distinct options,
  * one answer, an explanation, and no length tell. Plus the rules only versions
@@ -138,12 +140,22 @@ G("the question is fetched through the paper, and the page is only turned once")
          .map(a => a.rel).join(", "));
   ok("...and a correction round still cannot overwrite a best score",
      APPS.every(a => /if\(!RUNPART\) best\[M\.id\] = Math\.max/.test(a.html)));
+
+  /* The behaviour section below lifts view() and verCount() out of one app,
+     because review.py writes the same code into all of them. That means a break
+     in a different app's copy would not be run -- so the shape of it is checked
+     here, in every app. Sabotaging Math.min to Math.max slipped through until
+     this line existed. */
+  ok("every app's verCount takes the shortest version list",
+     APPS.every(a => /return lens\.length \? Math\.min\.apply\(null, lens\) : 1;/.test(a.html)),
+     APPS.filter(a => !/Math\.min\.apply\(null, lens\)/.test(a.html))
+         .map(a => a.rel).join(", "));
 }
 
 /* ====================================================================== */
 G("what view() and verCount() actually do, run out of the built page");
 {
-  const a = APPS.find(x => x.rel === "reading/sherlock-engineer-3") || APPS[0];
+  const a = APPS.find(x => items(x).some(it => (it.vs || []).length)) || APPS[0];
   const src = [/function verCount\(\)\{[\s\S]*?\n\}/, /function view\(it\)\{[\s\S]*?\n\}/]
     .map(rx => (a.html.match(rx) || [])[0]);
   ok("both can be read out of " + a.rel, src.every(Boolean));
@@ -225,29 +237,35 @@ G("five full runs walk the five papers");
 }
 
 /* ====================================================================== */
-G("the app that uses it: pages 103 to 120");
-{
-  const a = APPS.find(x => x.rel === "reading/sherlock-engineer-3");
-  ok("the app is built", !!a);
-  if (a) {
+/* Every app that carries versions, found by looking rather than by being named.
+   The first version of this suite named reading/sherlock-engineer-3, and when
+   the next versioned app was built a day later none of the checks below saw a
+   line of it. */
+const PAPERED = APPS.filter(a => items(a).some(it => (it.vs || []).length));
+G("the apps that use it");
+ok("at least one app has versions: " + PAPERED.map(a => a.rel).join(", "),
+   PAPERED.length >= 1);
+
+for (const a of PAPERED) {
+  G("  " + a.rel);
+  {
     const M = a.DATA.missions || [];
-    ok("four chapters, so each can be sat on its own: " +
-       M.map(m => m.items.length).join(" + "), M.length === 4);
-    ok("twenty questions across them",
-       M.reduce((n, m) => n + m.items.length, 0) === 20);
+    ok("chapters that can each be sat on their own: " +
+       M.map(m => m.items.length).join(" + "), M.length >= 2);
     ok("every chapter names its pages",
        M.every(m => /pages \d+ to \d+/.test(m.name)), M.map(m => m.name).join(" | "));
     ok("every chapter says how many papers it has",
-       M.every(m => /5 papers/.test(m.tag)), M.map(m => m.tag).join(" | "));
-    ok("the app is gated on all four chapters",
-       /dragon:\["m1","m2","m3","m4"\]|"m1","m2","m3","m4"/.test(a.html) ||
-       /MC\.chest/.test(a.html));
+       M.every(m => /\d+ papers/.test(m.tag)), M.map(m => m.tag).join(" | "));
+    ok("every chapter of it is gated for the reward",
+       M.every(m => a.html.indexOf('"' + m.id + '"') !== -1));
 
     const all = items(a);
-    ok("every question has five versions",
-       all.every(it => (it.vs || []).length === 5),
-       all.filter(it => (it.vs || []).length !== 5).length + " do not");
-
+    const PAPERS = Math.min.apply(null,
+      all.map(it => (it.vs || []).length).filter(n => n > 0));
+    ok("every question has the same number of versions: " + PAPERS,
+       all.every(it => (it.vs || []).length === PAPERS),
+       all.filter(it => (it.vs || []).length !== PAPERS).length + " do not");
+    ok("...and that number is five", PAPERS === 5);
     /* Everything a single-version question has always had to hold to. */
     const bad = { opts: [], dupe: [], range: [], why: [], tell: [] };
     all.forEach((it, n) => {
@@ -264,7 +282,7 @@ G("the app that uses it: pages 103 to 120");
         }
       });
     });
-    ok("all 100 versions offer exactly four options", !bad.opts.length, bad.opts.join(" "));
+    ok("all " + all.length * PAPERS + " versions offer exactly four options", !bad.opts.length, bad.opts.join(" "));
     ok("...none of them repeating an option", !bad.dupe.length, bad.dupe.join(" "));
     ok("...each with exactly one answer, in range", !bad.range.length, bad.range.join(" "));
     ok("...each explaining itself", !bad.why.length, bad.why.join(" "));
@@ -311,13 +329,21 @@ G("the app that uses it: pages 103 to 120");
     ok("...and every one of those lines is in its own passage", !lost.length,
        lost.join(" | "));
 
-    /* Nothing from page 121 onwards: the reveal is past tonight's reading. */
+    /* Each of these readings stops one page short of its own reveal, and a
+       distractor that reaches past the reading answers a question he has not
+       read yet. One did, on the first section built this way. */
     const text = JSON.stringify(a.DATA).toLowerCase();
-    const early = ["counterfeit", "half-crown", "six out and six back",
-                   "centre of the circle", "center of the circle"]
-      .filter(w => text.indexOf(w) !== -1);
-    ok("nothing gives away the answer from the page after the reading", !early.length,
+    const AHEAD = {
+      "reading/sherlock-engineer-3": ["counterfeit", "half-crown",
+        "six out and six back", "centre of the circle", "center of the circle"],
+      "reading/sherlock-carbuncle-1": ["carbuncle", "countess", "morcar",
+        "diamond", "precious stone", "thousand pounds", "blue stone"],
+    };
+    const early = (AHEAD[a.rel] || []).filter(w => text.indexOf(w) !== -1);
+    ok("nothing gives away what is on the page after the reading", !early.length,
        early.join(", "));
+    ok("...and there is a list of what that would be for this app",
+       !!AHEAD[a.rel], "add " + a.rel + " to AHEAD in test_papers.js");
   }
 }
 
