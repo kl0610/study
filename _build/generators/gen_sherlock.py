@@ -128,7 +128,7 @@ def main():
         io.open(os.path.join(d, "index.html"), "w", encoding="utf-8", newline="\r\n").write(out)
         n = len(items_of(s))
         papers = max([len(it.get("vs", [])) for it in items_of(s)] or [0])
-        print("  %-28s %2d questions in %d chapter%s%s  %6.1f KB" %
+        print("  %-28s %2d questions in %d section%s%s  %6.1f KB" %
               (s["slug"], n, len(missions_of(s)),
                "" if len(missions_of(s)) == 1 else "s",
                ", %d papers" % papers if papers else "", len(out) / 1024))

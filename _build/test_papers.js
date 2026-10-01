@@ -338,6 +338,10 @@ for (const a of PAPERED) {
         "six out and six back", "centre of the circle", "center of the circle"],
       "reading/sherlock-carbuncle-1": ["carbuncle", "countess", "morcar",
         "diamond", "precious stone", "thousand pounds", "blue stone"],
+      /* 137-146 stops partway through the Alpha Inn: page 146 ends on "I was
+         speaking half an hour ago to Mr." and the landlord answers on 147. */
+      "reading/sherlock-carbuncle-2": ["breckinridge", "covent garden",
+        "not our geese", "salesman", "seven years", "two dozen"],
     };
     const early = (AHEAD[a.rel] || []).filter(w => text.indexOf(w) !== -1);
     ok("nothing gives away what is on the page after the reading", !early.length,

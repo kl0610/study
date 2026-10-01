@@ -964,5 +964,985 @@
     ]
    }
   ]
+ },
+ {
+  "slug": "sherlock-carbuncle-2",
+  "title": "The Stone in the Goose",
+  "pages": "137–146",
+  "bigQuestion": "A stone worth a fortune comes out of a goose, and a plumber is already going to trial for stealing it. Holmes says he cannot tell whether that man is innocent, but he is certain about Henry Baker. What made the difference?",
+  "passages": {
+   "stone": {
+    "title": "What Peterson’s wife found",
+    "cite": "Reader, page 137",
+    "text": [
+     "“See here, sir! See what my wife found in its throat!”",
+     "He held out his hand and displayed on his palm a brilliant blue stone.",
+     "It was smaller than a bean in size, but of such purity and radiance that it twinkled like an electric point.",
+     "“A diamond, sir! A precious stone!”",
+     "“It’s more than a precious stone. It’s the precious stone.”",
+     "“Not the Countess of Morcar’s blue carbuncle?” I blurted."
+    ]
+   },
+   "worth": {
+    "title": "A thousand pounds, and not a twentieth of the price",
+    "cite": "Reader, pages 137–138",
+    "text": [
+     "“I ought to know its size and shape, seeing that I have read about it in The Times every day lately.”",
+     "“It is absolutely unique, and its value can only be guessed at, but the reward offered of a thousand pounds is certainly not within a twentieth part of the market price.”",
+     "“A thousand pounds! Great Lord of mercy!”",
+     "The commissionaire plumped down into a chair and stared from one to the other of us.",
+     "“And I have reason to know that there are sentimental considerations that would induce the Countess to part with half her fortune if she could recover the gem.”"
+    ]
+   },
+   "accused": {
+    "title": "Lost five days ago, and a plumber under arrest",
+    "cite": "Reader, page 138",
+    "text": [
+     "“It was lost, if I remember correctly, at the Hotel Cosmopolitan,” I remarked.",
+     "“Precisely so, just five days ago.”",
+     "“John Horner, a plumber, was accused of having taken it from the lady’s jewel case.”",
+     "“The evidence against him was so strong that the case has been referred to the Superior Court.”",
+     "John Horner, 26, plumber, was brought up upon the charge of having stolen from the jewel case of the Countess of Morcar the valuable gem known as the blue carbuncle."
+    ]
+   },
+   "ryder": {
+    "title": "The only person who says what happened in that room",
+    "cite": "Reader, pages 138–139",
+    "text": [
+     "James Ryder, upper attendant at the hotel, testified that he had shown Horner up to the dressing room of the Countess of Morcar upon the day of the robbery, in order that he might solder the grate, which was loose.",
+     "He had remained with Horner a little while, but had finally been called away.",
+     "On returning he found that Horner had disappeared, that the bureau had been forced open, and that the small casket in which the Countess kept her jewel was lying empty on the table.",
+     "Ryder instantly gave the alarm, and Horner was arrested the same evening; but the stone could not be found."
+    ]
+   },
+   "court": {
+    "title": "What the police court made of it",
+    "cite": "Reader, pages 139–140",
+    "text": [
+     "Catherine Cusack, maid to the Countess, testified to hearing Ryder’s cry of dismay on discovering the robbery, and to having rushed into the room, where she found matters were as described by Ryder.",
+     "Inspector Bradstreet gave evidence as to the arrest of Horner, who struggled frantically, and protested his innocence.",
+     "Evidence of a previous conviction for robbery having been given against the prisoner, the magistrate refused to deal with the offense, but referred it to the Superior Court.",
+     "Horner, who had shown intense emotion during the proceedings, fainted away at the conclusion, and was carried out of court."
+    ]
+   },
+   "chain": {
+    "title": "From a jewel case at one end to a goose’s throat at the other",
+    "cite": "Reader, page 140",
+    "text": [
+     "“Hum! So much for the police court,” said Holmes thoughtfully, tossing aside his paper.",
+     "“The question for us now to solve is the sequence of events leading from a burglarized jewel case at one end to the throat of a goose at the other.”",
+     "“Watson, our little deductions have suddenly assumed a less innocent aspect.”",
+     "“Here is the stone; the stone came from the goose, and the goose came from Mr. Henry Baker, the gentleman with the bad hat and all the other characteristics with which I bored you.”",
+     "“So now we must set ourselves very seriously to finding this gentleman.”"
+    ]
+   },
+   "advert": {
+    "title": "The simplest means first",
+    "cite": "Reader, pages 140–141",
+    "text": [
+     "“To do this, we must try the simplest means first – an advertisement in all the evening papers.”",
+     "“Found at the corner of Goodge Street, a goose and a black felt hat. Mr. Henry Baker can have them back by visiting at six-thirty this evening at 221b Baker Street.”",
+     "“Very. But will he see it?”",
+     "“Well, he is sure to keep an eye on the papers, since, to a poor man, the loss was a heavy one.”",
+     "“And, Peterson, buy a goose on your way back and leave it here. We must have one to give to this gentleman in place of the one your family is devouring.”"
+    ]
+   },
+   "devil": {
+    "title": "“They are the devil’s baits”",
+    "cite": "Reader, pages 141–142",
+    "text": [
+     "“Of course it is a focus of crime. Every good stone is. They are the devil’s baits.”",
+     "“This stone is not yet twenty years old. It was found in China, and it is remarkable in having every characteristic of the carbuncle, except that it is blue, instead of ruby red.”",
+     "“It has already a sinister history. There have been two murders, a suicide, and several robberies brought about for the sake of this blue carbuncle.”",
+     "“I’ll lock it up in my strongbox and drop a line to the Countess to say that we have it.”"
+    ]
+   },
+   "innocent": {
+    "title": "“I cannot tell”",
+    "cite": "Reader, page 142",
+    "text": [
+     "“Do you think this man Horner is innocent?”",
+     "“I cannot tell.”",
+     "“Do you imagine that this other one, Henry Baker, had anything to do with the matter?”",
+     "“It is, I think, more likely that Henry Baker is an absolutely innocent man, who had no idea that the bird he was carrying was of more value than if it were made of gold.”",
+     "“That, however, I shall determine by a very simple test, if we have an answer to our advertisement.”"
+    ]
+   },
+   "baker": {
+    "title": "Henry Baker at last",
+    "cite": "Reader, pages 142–143",
+    "text": [
+     "As I approached the house I saw a tall man in a soft woolen cap, with a coat that was buttoned up to his chin, waiting outside.",
+     "He was a large man, with rounded shoulders, a massive head, and a broad, intelligent face with a grizzled brown beard.",
+     "His rusty black coat was buttoned up in front and his wrists protruded from his sleeves.",
+     "He spoke in a choppy fashion, choosing his words, and gave the impression of a man of learning who had had a run of bad luck.",
+     "“Money has not been so plentiful with me as it once was,” he remarked.",
+     "“I had no doubt that the thugs who assaulted me had carried off both my hat and the bird. I did not care to spend more money in a hopeless attempt at recovering them.”"
+    ]
+   },
+   "test": {
+    "title": "The very simple test",
+    "cite": "Reader, pages 143–144",
+    "text": [
+     "“By the way, about the bird – we were compelled to eat it.”",
+     "“To eat it!” Our visitor half rose from his chair in his excitement.",
+     "“But I presume that this other goose on the sideboard, which is about the same weight and fresh, will answer your purpose equally well?”",
+     "“Oh certainly, certainly!” answered Mr. Baker, with a sigh of relief.",
+     "“Of course, we still have the feathers, legs, throat, and so on of your bird, if you wish –”",
+     "“They might be useful to me as relics of my adventure,” said he, “but, no, sir, I think that, with your permission, I will confine my attentions to the excellent bird that I see upon the sideboard.”",
+     "Sherlock Holmes glanced sharply across at me with a slight shrug of his shoulders."
+    ]
+   },
+   "club": {
+    "title": "The goose club at the Alpha Inn",
+    "cite": "Reader, pages 144–146",
+    "text": [
+     "“By the way, would you tell me where you got the other one from? I am a fowl fancier, and I have seldom seen a better-grown goose.”",
+     "“There are a few of us who frequent the Alpha Inn near the museum.”",
+     "“This year our good host, Windigate by name, instituted a goose club, by which, for a few pence every week, we were to receive a bird for Christmas.”",
+     "“My pence were duly paid, and the rest is familiar to you.”",
+     "“So much for Mr. Henry Baker,” said Holmes. “It is certain that he knows nothing whatever about the matter.”",
+     "“Then I suggest that we turn our dinner into a supper and follow this clue while it is still hot.”"
+    ]
+   }
+  },
+  "missions": [
+   {
+    "id": "m1",
+    "name": "Section 1 — pages 137 to 138",
+    "tag": "3 questions · 5 papers · about 2 minutes",
+    "blurb": "What Peterson’s wife found in the goose, and what it is worth",
+    "items": [
+     {
+      "type": "pick",
+      "p": "stone",
+      "hi": [
+       "found in its throat",
+       "a brilliant blue stone",
+       "smaller than a bean in size",
+       "It’s the precious stone"
+      ],
+      "vs": [
+       {
+        "q": "What does Peterson bring to Baker Street, and where did it come from?",
+        "opts": [
+         "A card from the goose’s leg, found by his wife",
+         "A blue stone, found in the goose’s throat",
+         "A ring, found in the pocket of the hat",
+         "A letter, found pushed under his door"
+        ],
+        "a": 1,
+        "why": "His wife found it while preparing the bird. The goose Holmes gave away to be eaten turns out to have been carrying the thing the whole story is about."
+       },
+       {
+        "q": "How does the reader describe the stone itself?",
+        "opts": [
+         "As large and heavy, about the size of a walnut and dull",
+         "As dull until it was cleaned",
+         "As smaller than a bean, twinkling like an electric point",
+         "As a deep ruby red, cut into facets"
+        ],
+        "a": 2,
+        "why": "“Smaller than a bean in size, but of such purity and radiance that it twinkled like an electric point.” An electric point was a new and startling kind of brightness in 1890 — the comparison is doing real work."
+       },
+       {
+        "q": "Peterson says, “A diamond, sir! A precious stone!” What does Holmes correct him with?",
+        "opts": [
+         "That it is coloured glass, and worth nothing at all",
+         "That it is a ruby rather than a diamond",
+         "That it is not a diamond but a carbuncle",
+         "That it is not a precious stone but the precious stone"
+        ],
+        "a": 3,
+        "why": "“It’s more than a precious stone. It’s the precious stone.” One word of difference, and it turns a lucky find into the thing every newspaper in London has been writing about."
+       },
+       {
+        "q": "Who names the stone, and what does that tell you about him?",
+        "opts": [
+         "Watson — he has been following the case in the papers",
+         "Holmes — he had recognised it at once by its shape",
+         "Peterson — his wife had read about it",
+         "Nobody — Holmes has to send for a jeweller"
+        ],
+        "a": 0,
+        "why": "“Not the Countess of Morcar’s blue carbuncle?” I blurted. Watson gets there first, out loud, and is right. He is a better detective than he was given credit for two pages earlier."
+       },
+       {
+        "q": "Five pages ago Holmes said there was no crime in this business. What has changed?",
+        "opts": [
+         "Nothing — losing a goose is still not a crime",
+         "A stranger has turned out to be a thief",
+         "The object of a famous robbery has turned up in the evidence",
+         "Peterson has admitted that he kept the bird on purpose"
+        ],
+        "a": 2,
+        "why": "The hat and the goose were a puzzle about an unknown gentleman. One stone on a commissionaire’s palm turns the same facts into evidence in a robbery with a man already awaiting trial."
+       }
+      ]
+     },
+     {
+      "type": "pick",
+      "p": "worth",
+      "hi": [
+       "a thousand pounds",
+       "not within a twentieth part of the market price",
+       "half her fortune",
+       "read about it in The Times"
+      ],
+      "vs": [
+       {
+        "q": "What reward has been offered for the stone?",
+        "opts": [
+         "A hundred pounds",
+         "A thousand pounds",
+         "Half the Countess’s fortune",
+         "No reward has been offered at all"
+        ],
+        "a": 1,
+        "why": "A thousand pounds — and Holmes points out at once that it is “not within a twentieth part of the market price,” so the stone is worth more than twenty thousand. In 1890 that is a fortune."
+       },
+       {
+        "q": "What does Holmes say about the reward compared with what the stone is worth?",
+        "opts": [
+         "The reward is more than the stone could ever fetch",
+         "The reward is about what the stone is worth",
+         "The reward is less than a twentieth of its value",
+         "Nobody can say, because it has never been valued"
+        ],
+        "a": 2,
+        "why": "Which tells you something about the Countess as well as the stone: she is offering a very large sum and still getting a bargain, because no honest buyer could be found for a stolen carbuncle anyway."
+       },
+       {
+        "q": "How does Holmes come to know the stone’s size and shape without having seen it?",
+        "opts": [
+         "He had read about it in The Times every day lately",
+         "He had been consulted by the Countess herself",
+         "He had seen it in a jeweller’s window in London",
+         "Inspector Bradstreet had described it to him"
+        ],
+        "a": 0,
+        "why": "He has read about it in the paper every day. The crumpled newspapers beside his couch on the first page of the story turn out not to be idleness."
+       },
+       {
+        "q": "Besides money, what reason does Holmes give for the Countess wanting the stone back?",
+        "opts": [
+         "She needs it to settle a debt",
+         "She has promised it to a museum",
+         "There are sentimental considerations",
+         "She means to sell it and leave England"
+        ],
+        "a": 2,
+        "why": "“Sentimental considerations that would induce the Countess to part with half her fortune if she could recover the gem.” The stone matters to her for a reason that has nothing to do with its price."
+       },
+       {
+        "q": "How does Peterson react to the figure of a thousand pounds?",
+        "opts": [
+         "He asks Holmes whether he may claim it",
+         "He drops into a chair and stares at them",
+         "He laughs and says it cannot be true",
+         "He offers to take the stone to the police himself"
+        ],
+        "a": 1,
+        "why": "“Great Lord of mercy!” and he plumps down into a chair. He is an honest man who has just been told that the bird he took home was carrying a year’s wages many times over."
+       }
+      ]
+     },
+     {
+      "type": "pick",
+      "p": "accused",
+      "hi": [
+       "Hotel Cosmopolitan",
+       "just five days ago",
+       "John Horner, a plumber",
+       "referred to the Superior Court"
+      ],
+      "vs": [
+       {
+        "q": "Where and when was the carbuncle lost?",
+        "opts": [
+         "At the Alpha Inn, on Christmas morning",
+         "At the Hotel Cosmopolitan, five days ago",
+         "At the Countess’s own house, a week ago",
+         "In Goodge Street, on the night of the row"
+        ],
+        "a": 1,
+        "why": "The Hotel Cosmopolitan, five days before. Count forward: the robbery, then Christmas morning in Tottenham Court Road, then the second morning after Christmas in Baker Street. The dates matter."
+       },
+       {
+        "q": "Who has been accused of the robbery?",
+        "opts": [
+         "James Ryder, an attendant at the hotel",
+         "Catherine Cusack, the Countess’s maid",
+         "Henry Baker, who lost the goose",
+         "John Horner, a plumber"
+        ],
+        "a": 3,
+        "why": "John Horner, 26, a plumber, who had been working in the Countess’s dressing room that day. Hold on to the fact that he is a workman called in, and the only person in the room who did not belong to the hotel."
+       },
+       {
+        "q": "How far has the case against Horner already gone?",
+        "opts": [
+         "He has been questioned and released",
+         "He has been charged, but has not yet been arrested at all",
+         "The evidence was strong enough to send it to the Superior Court",
+         "He has already been tried and sentenced"
+        ],
+        "a": 2,
+        "why": "The magistrate would not deal with it himself and referred it on. Which means a trial is coming, and the clock is running on whatever Holmes is going to do about it."
+       },
+       {
+        "q": "What does Holmes do when Watson mentions the Hotel Cosmopolitan?",
+        "opts": [
+         "Sends out for the morning’s papers",
+         "Writes at once to Inspector Bradstreet",
+         "Finds the newspaper report among his own papers",
+         "Says he has heard nothing at all about the case"
+        ],
+        "a": 2,
+        "why": "He rummages among the papers he has been lying in all morning until he finds the paragraph, and reads it out. Everything he needs is already in the room."
+       },
+       {
+        "q": "Why does it matter that a man is already awaiting trial for this robbery?",
+        "opts": [
+         "It means the police will not listen to Holmes",
+         "It means that the stone must have been stolen twice over",
+         "It means Holmes’s puzzle now has somebody’s freedom in it",
+         "It means the Countess will withdraw her reward"
+        ],
+        "a": 2,
+        "why": "The hat was an exercise. Now the same chain of facts leads to a man in a cell who fainted in court, and the question of whether he put the stone where it was found."
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "id": "m2",
+    "name": "Section 2 — pages 138 to 140",
+    "tag": "3 questions · 5 papers · about 2 minutes",
+    "blurb": "The newspaper’s account of the robbery, and the chain Holmes sees in it",
+    "items": [
+     {
+      "type": "pick",
+      "p": "ryder",
+      "hi": [
+       "James Ryder, upper attendant at the hotel",
+       "solder the grate, which was loose",
+       "finally been called away",
+       "lying empty on the table"
+      ],
+      "vs": [
+       {
+        "q": "Why was Horner in the Countess’s dressing room at all?",
+        "opts": [
+         "He had been sent up with a message",
+         "He had been shown up to solder a loose grate",
+         "He was there to clean the chimney",
+         "He had come to the hotel to deliver the jewel case"
+        ],
+        "a": 1,
+        "why": "A plumber, shown up to mend a loose grate. He had a reason to be in the room and somebody else put him there — which is a strange way to begin a robbery."
+       },
+       {
+        "q": "Who showed Horner up to the room?",
+        "opts": [
+         "Catherine Cusack, the Countess’s maid",
+         "The Countess of Morcar herself",
+         "James Ryder, the upper attendant",
+         "Nobody — he went up on his own"
+        ],
+        "a": 2,
+        "why": "James Ryder, upper attendant at the hotel. Notice how much of this story is Ryder’s: he takes Horner up, he is the one who leaves, he is the one who comes back, and he is the one who raises the alarm."
+       },
+       {
+        "q": "According to Ryder, what happened while he was out of the room?",
+        "opts": [
+         "Horner disappeared, the bureau was forced, the casket left empty",
+         "Horner finished the grate and went away quietly",
+         "The Countess came in and took the jewel herself",
+         "Cusack found Horner standing at the bureau, and called out"
+        ],
+        "a": 0,
+        "why": "That is Ryder’s account of it. Read it again as what it is — testimony — rather than as what happened, because the only person who says the room was emptied while he was away is the person who was away."
+       },
+       {
+        "q": "Who raised the alarm?",
+        "opts": [
+         "Horner, when he found the casket empty",
+         "Ryder, the moment he came back",
+         "Catherine Cusack, from the passage",
+         "The Countess, on returning to dress"
+        ],
+        "a": 1,
+        "why": "“Ryder instantly gave the alarm.” Instantly. He is quick, and he is helpful, and everything the police know about the robbery begins with him."
+       },
+       {
+        "q": "Horner was arrested that same evening. What was never found?",
+        "opts": [
+         "The tools he had been working with",
+         "The casket the jewel had been kept in",
+         "The stone",
+         "The grate he had been sent up to mend"
+        ],
+        "a": 2,
+        "why": "“But the stone could not be found.” A man is going to trial for taking a stone nobody could find on him — and it turns up days later in a goose’s throat on the other side of London."
+       }
+      ]
+     },
+     {
+      "type": "pick",
+      "p": "court",
+      "hi": [
+       "hearing Ryder’s cry of dismay",
+       "struggled frantically, and protested his innocence",
+       "a previous conviction for robbery",
+       "fainted away at the conclusion"
+      ],
+      "vs": [
+       {
+        "q": "What does Catherine Cusack’s evidence actually add?",
+        "opts": [
+         "That she saw Horner at the bureau",
+         "That she heard Ryder’s cry and found things as he described",
+         "That the Countess had shown her the jewel that morning",
+         "That Horner had asked her about the jewel case"
+        ],
+        "a": 1,
+        "why": "Read it carefully: she heard Ryder shout, and she arrived to find matters as Ryder described. She is a witness to Ryder’s discovery, not to the robbery. Nobody saw the stone taken."
+       },
+       {
+        "q": "How did Horner behave when he was arrested?",
+        "opts": [
+         "He confessed at once and asked for mercy",
+         "He went quietly, saying nothing at all",
+         "He struggled frantically and protested his innocence",
+         "He ran for it, and had to be caught in the street outside"
+        ],
+        "a": 2,
+        "why": "Inspector Bradstreet’s evidence. A man fighting and shouting that he is innocent looks guilty to a court, and looks exactly the same whether he is or not."
+       },
+       {
+        "q": "What piece of evidence weighed heaviest against Horner?",
+        "opts": [
+         "That he was found with hotel property on him",
+         "That he could not say where he had gone",
+         "That he had been convicted of robbery before",
+         "That Ryder had seen him open the bureau"
+        ],
+        "a": 2,
+        "why": "“Evidence of a previous conviction for robbery.” It is why the magistrate sent the case up. Notice that it is not evidence about this robbery at all — it is evidence about who he is."
+       },
+       {
+        "q": "How did Horner take the proceedings?",
+        "opts": [
+         "He showed no feeling throughout",
+         "He laughed at the magistrate",
+         "He showed intense emotion and fainted at the end",
+         "He asked to give evidence himself and was refused"
+        ],
+        "a": 2,
+        "why": "“Fainted away at the conclusion, and was carried out of court.” The reader is given this and then nothing more about him for pages, which is part of what makes the case urgent."
+       },
+       {
+        "q": "Three people gave evidence. What does none of it establish?",
+        "opts": [
+         "That the stone was missing from the casket",
+         "That Horner had been in the room",
+         "That Horner was ever seen taking the stone",
+         "That Ryder had left the room for a time"
+        ],
+        "a": 2,
+        "why": "The casket was empty, Horner had been there and was gone, Ryder shouted and Cusack came running. Not one witness describes the theft. The whole case is what people found afterwards."
+       }
+      ]
+     },
+     {
+      "type": "pick",
+      "p": "chain",
+      "hi": [
+       "So much for the police court",
+       "a burglarized jewel case at one end to the throat of a goose at the other",
+       "a less innocent aspect",
+       "the goose came from Mr. Henry Baker"
+      ],
+      "vs": [
+       {
+        "q": "How does Holmes describe the problem now in front of them?",
+        "opts": [
+         "Deciding whether Horner is guilty or not",
+         "Returning the stone to the Countess as quickly as possible",
+         "The sequence of events from a jewel case to a goose’s throat",
+         "Finding out which of the hotel servants could have been bribed"
+        ],
+        "a": 2,
+        "why": "It is a beautiful way to put a problem: two ends that are known, and the whole middle missing. Everything he does for the rest of the story is filling in that middle."
+       },
+       {
+        "q": "What does Holmes mean by “our little deductions have suddenly assumed a less innocent aspect”?",
+        "opts": [
+         "That he no longer trusts what the hat told him",
+         "That the hat reasoning was a waste of time after all",
+         "That the same conclusions now bear on a crime",
+         "That Watson was right to call it a waste of energy"
+        ],
+        "a": 2,
+        "why": "Nothing he worked out about the hat has changed or been withdrawn. What has changed is what it is for: a portrait of a shabby gentleman is now a description of a man the police will want to talk to."
+       },
+       {
+        "q": "What is the chain Holmes lays out, in order?",
+        "opts": [
+         "Baker, then the goose, then the stone, then the hotel",
+         "The stone came from the goose, the goose from Henry Baker",
+         "The hotel, then Horner, then Peterson, then the hat",
+         "The goose came from the hotel, and the stone from Horner"
+        ],
+        "a": 1,
+        "why": "He works backwards from what he is holding: stone, goose, Baker. That is why finding Baker is the next job and not, say, going to the hotel — Baker is the nearest unknown link."
+       },
+       {
+        "q": "What does Holmes decide to do first?",
+        "opts": [
+         "Call on the Countess of Morcar",
+         "Visit Horner in his cell",
+         "Go down to the Hotel Cosmopolitan himself",
+         "Set himself seriously to finding Henry Baker"
+        ],
+        "a": 3,
+        "why": "“So now we must set ourselves very seriously to finding this gentleman.” Very seriously — the same man whose hat was a morning’s amusement is now the only lead there is."
+       },
+       {
+        "q": "Why is Henry Baker the right person to look for next, rather than anyone at the hotel?",
+        "opts": [
+         "The police are already working on the hotel",
+         "He is the last person known to have had the goose",
+         "He is the only suspect Holmes has",
+         "He lives nearer to Baker Street than the others"
+        ],
+        "a": 1,
+        "why": "The chain is broken between the hotel and the goose, and Baker is standing at the near end of the gap. Work from what you have towards what you do not — and nobody has suggested Baker is a suspect."
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "id": "m3",
+    "name": "Section 3 — pages 140 to 142",
+    "tag": "3 questions · 5 papers · about 2 minutes",
+    "blurb": "The advertisement, the stone’s history, and who might be innocent",
+    "items": [
+     {
+      "type": "pick",
+      "p": "advert",
+      "hi": [
+       "the simplest means first",
+       "corner of Goodge Street",
+       "221b Baker Street",
+       "to a poor man, the loss was a heavy one"
+      ],
+      "vs": [
+       {
+        "q": "What is the “simplest means” Holmes tries first?",
+        "opts": [
+         "Calling at every hat shop in London",
+         "An advertisement in all the evening papers",
+         "Asking the police to circulate a description",
+         "Waiting for Baker to come and ask for the hat"
+        ],
+        "a": 1,
+        "why": "An advertisement. Before anything clever, the obvious thing — and it works, which is why he tried it first."
+       },
+       {
+        "q": "What does the advertisement offer, and where?",
+        "opts": [
+         "A reward for news of a goose and a hat",
+         "A goose and a black felt hat, back at 221b Baker Street",
+         "The return of a lost hat, at the Alpha Inn",
+         "A thousand pounds for the stone, at Scotland Yard"
+        ],
+        "a": 1,
+        "why": "“Found at the corner of Goodge Street, a goose and a black felt hat… at six-thirty this evening at 221b Baker Street.” Notice what it does not say: nothing about a stone, and nothing about the police."
+       },
+       {
+        "q": "Watson asks whether Baker will even see the advertisement. Why is Holmes sure he will?",
+        "opts": [
+         "Baker is a man of learning who reads everything",
+         "The advertisement is to appear in every paper in London",
+         "To a poor man, losing a Christmas goose is a heavy loss",
+         "Baker lives close enough to see it posted in the street"
+        ],
+        "a": 2,
+        "why": "He is reasoning from the man, not from the newspaper. A poor man who has lost his Christmas dinner will be watching the papers — which is the same reasoning he did off the hat, used forwards."
+       },
+       {
+        "q": "What errand does Holmes add for Peterson besides the advertisement?",
+        "opts": [
+         "To fetch Inspector Bradstreet to Baker Street",
+         "To buy another goose and leave it there",
+         "To say nothing to his wife about the stone",
+         "To take the stone to the Countess at once"
+        ],
+        "a": 1,
+        "why": "“We must have one to give to this gentleman in place of the one your family is devouring.” A small courtesy — and the second goose turns out to be the whole of the test he sets Baker."
+       },
+       {
+        "q": "The advertisement mentions Goodge Street but not the stone. Why would Holmes leave that out?",
+        "opts": [
+         "Because the stone is not Baker’s to be given back",
+         "Because the police had asked him to keep it quiet",
+         "Because a guilty man would be warned off by it",
+         "Because the Countess had not yet been told it was found"
+        ],
+        "a": 2,
+        "why": "If Baker put the stone in the goose, an advertisement naming it is a warning to stay away. Mentioning only a hat and a bird is what makes the invitation safe to accept — and makes who turns up worth knowing."
+       }
+      ]
+     },
+     {
+      "type": "pick",
+      "p": "devil",
+      "hi": [
+       "a focus of crime",
+       "the devil’s baits",
+       "blue, instead of ruby red",
+       "two murders, a suicide, and several robberies"
+      ],
+      "vs": [
+       {
+        "q": "What does Holmes call every good stone?",
+        "opts": [
+         "A fortune waiting for an owner",
+         "A focus of crime, and the devil’s baits",
+         "A thing more trouble than it is worth",
+         "The one honest form of money"
+        ],
+        "a": 1,
+        "why": "“Of course it is a focus of crime. Every good stone is. They are the devil’s baits.” Not this stone in particular — all of them. It is a remark about people rather than about jewels."
+       },
+       {
+        "q": "What makes this stone unusual as a carbuncle?",
+        "opts": [
+         "It is larger than any other known",
+         "It was cut in China rather than in Europe",
+         "It is blue instead of ruby red",
+         "It is older than any other in England"
+        ],
+        "a": 2,
+        "why": "“Every characteristic of the carbuncle, except that it is blue, instead of ruby red.” That is where the story gets its title, and why the stone cannot be sold or mistaken for another."
+       },
+       {
+        "q": "What history does the stone already have?",
+        "opts": [
+         "It has been lost and found three times before",
+         "It has passed through six owners in twenty years",
+         "Two murders, a suicide and several robberies",
+         "It was taken from a temple and never recovered"
+        ],
+        "a": 2,
+        "why": "And it is not twenty years old. Holmes lays this out immediately after calling it the devil’s baits — the sinister history is his evidence for the remark, not decoration."
+       },
+       {
+        "q": "What does Holmes do with the stone, and what does he do about the Countess?",
+        "opts": [
+         "Sends it to her at once by a messenger",
+         "Locks it in his strongbox and writes to her",
+         "Gives it to Peterson to take to the police",
+         "Keeps it in his pocket until the case is done"
+        ],
+        "a": 1,
+        "why": "Strongbox, and a line to say that they have it. He does not hand it over, because he still needs the goose it came out of to lead somewhere — but he will not leave her wondering either."
+       },
+       {
+        "q": "Why does Holmes talk about the stone’s history at all, just here?",
+        "opts": [
+         "To explain why it is worth so much money",
+         "To show why it cannot be sold openly",
+         "To explain why he intends to keep it safely locked up",
+         "To say what such a stone does to the people near it"
+        ],
+        "a": 3,
+        "why": "He has a man in a cell, a stranger with a bad hat, and a robbery nobody saw. The remark about the devil’s baits is him saying what kind of story this is likely to turn out to be."
+       }
+      ]
+     },
+     {
+      "type": "pick",
+      "p": "innocent",
+      "hi": [
+       "I cannot tell",
+       "an absolutely innocent man",
+       "more value than if it were made of gold",
+       "a very simple test"
+      ],
+      "vs": [
+       {
+        "q": "Watson asks whether Horner is innocent. What does Holmes answer?",
+        "opts": [
+         "That he is certainly innocent",
+         "That he is almost certainly guilty",
+         "That he cannot tell",
+         "That the court has already decided the matter"
+        ],
+        "a": 2,
+        "why": "“I cannot tell.” Three words, and they are the most honest thing he says all evening. He has a stone and a goose and no idea yet how they met."
+       },
+       {
+        "q": "What does Holmes think about Henry Baker’s part in it?",
+        "opts": [
+         "That he is more likely an absolutely innocent man",
+         "That he is the thief and the goose was his hiding place",
+         "That he was paid by somebody else to carry the bird",
+         "That he cannot say until he has seen the man"
+        ],
+        "a": 0,
+        "why": "More likely innocent — a man with no idea “that the bird he was carrying was of more value than if it were made of gold.” A guess, offered as a guess, and he says how he means to check it."
+       },
+       {
+        "q": "How does Holmes say he will settle the question of Baker?",
+        "opts": [
+         "By questioning him closely about the goose",
+         "By asking Bradstreet to look into his record",
+         "By a very simple test",
+         "By watching the house to see who comes with him"
+        ],
+        "a": 2,
+        "why": "“A very simple test, if we have an answer to our advertisement.” Simple is the word to notice — what he actually does is offer the man a different goose and watch his face."
+       },
+       {
+        "q": "Holmes will not guess about Horner but will guess about Baker. What is the difference?",
+        "opts": [
+         "Baker has not been accused of anything",
+         "He has a way to check the guess about Baker",
+         "Horner has a previous conviction against him",
+         "Baker is a poor man and Horner is not"
+        ],
+        "a": 1,
+        "why": "A guess you can test is worth making; a guess you cannot is just an opinion. He has no way to test Horner, so he says “I cannot tell” and leaves it."
+       },
+       {
+        "q": "Watson says he will come back in the evening. What does that say about the state of the case?",
+        "opts": [
+         "Holmes has sent him away so he can work alone",
+         "Holmes expects to have solved it by then",
+         "There is nothing to be done until Baker answers",
+         "Watson has lost interest in the business"
+        ],
+        "a": 2,
+        "why": "“And you can do nothing until then?” “Nothing.” The whole investigation is waiting on one advertisement and one stranger choosing to turn up."
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "id": "m4",
+    "name": "Section 4 — pages 143 to 146",
+    "tag": "3 questions · 5 papers · about 2 minutes",
+    "blurb": "Henry Baker himself, the very simple test, and the goose club",
+    "items": [
+     {
+      "type": "pick",
+      "p": "baker",
+      "hi": [
+       "a soft woolen cap",
+       "a man of learning who had had a run of bad luck",
+       "Money has not been so plentiful with me as it once was",
+       "a hopeless attempt at recovering them"
+      ],
+      "vs": [
+       {
+        "q": "What is Henry Baker like when he finally appears?",
+        "opts": [
+         "A small nervous man who will not sit down",
+         "A large man with a massive head and a grizzled beard",
+         "A young man, well dressed and confident",
+         "An elderly man who can hardly walk without help"
+        ],
+        "a": 1,
+        "why": "Large, round-shouldered, massive head, broad intelligent face, grizzled brown beard. Hold it against the hat: a big head, greying hair, middle-aged. Holmes had him right."
+       },
+       {
+        "q": "Which of Holmes’s conclusions does Baker’s appearance bear out?",
+        "opts": [
+         "That he keeps no servant in the house",
+         "That his wife has ceased to love him",
+         "That he is out of shape entirely and goes out little",
+         "That he had money three years ago and has none now"
+        ],
+        "a": 3,
+        "why": "A rusty black coat buttoned to the chin, wrists out of the sleeves, and “the impression of a man of learning who had had a run of bad luck.” The decline Holmes read off the brim is standing in the room."
+       },
+       {
+        "q": "Why had Baker never advertised for his lost hat and goose?",
+        "opts": [
+         "He had not realised they were missing",
+         "He thought the thugs had taken them, and could not afford to try",
+         "He was ashamed of having broken the window",
+         "He had been too ill to go out of doors since Christmas Day"
+        ],
+        "a": 1,
+        "why": "“Money has not been so plentiful with me as it once was… I did not care to spend more money in a hopeless attempt at recovering them.” An advertisement costs money he has not got."
+       },
+       {
+        "q": "What does Baker’s reason for not advertising confirm?",
+        "opts": [
+         "That he had something to hide about the bird",
+         "That he had come down in the world",
+         "That he had not been in London at Christmas",
+         "That he blamed Peterson for taking them"
+        ],
+        "a": 1,
+        "why": "He gives it with “a rather shamefaced laugh,” which is the detail that makes it true. Nobody pretends to be too poor to place an advertisement."
+       },
+       {
+        "q": "How does the way Baker speaks fit what Holmes said about him?",
+        "opts": [
+         "He speaks roughly, so Holmes was wrong about his learning",
+         "He says almost nothing, so nothing can be told",
+         "He chooses his words, like an educated man fallen on hard times",
+         "He talks too much, which Holmes had not predicted"
+        ],
+        "a": 2,
+        "why": "“He spoke in a choppy fashion, choosing his words.” Holmes said highly intellectual on the strength of a hat size, which was bad reasoning — and he still turns out to have been right, which is a different thing from being right for a good reason."
+       }
+      ]
+     },
+     {
+      "type": "pick",
+      "p": "test",
+      "hi": [
+       "we were compelled to eat it",
+       "about the same weight and fresh",
+       "a sigh of relief",
+       "relics of my adventure"
+      ],
+      "vs": [
+       {
+        "q": "What does Holmes tell Baker about his goose?",
+        "opts": [
+         "That it is waiting for him downstairs",
+         "That it had to be given away to a neighbour",
+         "That they were compelled to eat it",
+         "That it had spoiled and was thrown out"
+        ],
+        "a": 2,
+        "why": "He says it straight out and then watches. The whole test is in what Baker does in the next few seconds."
+       },
+       {
+        "q": "How does Baker react when he hears the bird has been eaten?",
+        "opts": [
+         "He half rises from his chair in excitement",
+         "He says it does not matter in the least",
+         "He asks whether anything was found inside it",
+         "He accuses Holmes of having stolen it"
+        ],
+        "a": 0,
+        "why": "“To eat it!” Half out of his chair — and then entirely satisfied the moment another goose is offered. A man who knew what was in that bird would not be calmed by a fresh one."
+       },
+       {
+        "q": "What does Holmes offer him besides the fresh goose?",
+        "opts": [
+         "The feathers, legs and throat of the first bird",
+         "The thousand pounds of reward the stone would earn",
+         "A hat to replace the battered one",
+         "Payment for the bird that was eaten"
+        ],
+        "a": 0,
+        "why": "“The feathers, legs, throat, and so on of your bird.” Throat. Holmes puts the one part of the goose that matters in front of him, and Baker laughs it off as a relic."
+       },
+       {
+        "q": "What is Baker’s answer to that offer, and what does it prove?",
+        "opts": [
+         "He takes the remains, which shows he is looking for something",
+         "He takes both, which shows nothing either way",
+         "He refuses them and takes the fresh bird, so he knows nothing",
+         "He asks to be left alone with them, which makes Holmes suspicious"
+        ],
+        "a": 2,
+        "why": "He would rather have the good goose on the sideboard than the giblets of his own. Anybody who had hidden a stone in that throat would have taken the remains without hesitating."
+       },
+       {
+        "q": "Holmes glances at Watson with a shrug. What is he saying?",
+        "opts": [
+         "That he does not believe a word of it",
+         "That Baker is not the man they want",
+         "That Watson should keep quiet about the stone",
+         "That the test has failed and must be tried again"
+        ],
+        "a": 1,
+        "why": "The test is over and it is settled. No question was asked and no accusation made — Baker was offered two things and chose the one an innocent man would choose."
+       }
+      ]
+     },
+     {
+      "type": "pick",
+      "p": "club",
+      "hi": [
+       "I am a fowl fancier",
+       "the Alpha Inn near the museum",
+       "instituted a goose club",
+       "he knows nothing whatever about the matter"
+      ],
+      "vs": [
+       {
+        "q": "How does Holmes get Baker to say where the goose came from?",
+        "opts": [
+         "By telling him the bird may have been stolen",
+         "By offering him money for the information",
+         "By asking as one fowl fancier admiring a fine bird",
+         "By asking him directly where he had bought it"
+        ],
+        "a": 2,
+        "why": "“I am a fowl fancier, and I have seldom seen a better-grown goose.” A compliment, not a question — and Baker answers it happily on his way out of the door."
+       },
+       {
+        "q": "Where did Baker get his goose?",
+        "opts": [
+         "He bought it at a market on Christmas Eve",
+         "From a goose club at the Alpha Inn",
+         "It was a gift from his landlord",
+         "From a shop near the museum, on Christmas Eve"
+        ],
+        "a": 1,
+        "why": "A goose club run by Windigate, the host of the Alpha Inn: a few pence every week through the year and a bird at Christmas. That is how a poor man comes by a Christmas goose."
+       },
+       {
+        "q": "What is Holmes’s verdict on Henry Baker?",
+        "opts": [
+         "That he is hiding something after all",
+         "That he may be worth watching for a while",
+         "That he knows nothing whatever about the matter",
+         "That he should be questioned again tomorrow"
+        ],
+        "a": 2,
+        "why": "“So much for Mr. Henry Baker. It is certain that he knows nothing whatever about the matter.” Certain — a word he refused to use about Horner, and uses here because he has tested it."
+       },
+       {
+        "q": "What does Holmes decide to do instead of having dinner?",
+        "opts": [
+         "Write up his notes on the case so far",
+         "Go to the police with what he has found",
+         "Wait at Baker Street for news of Horner’s trial",
+         "Turn dinner into supper and follow the clue at once"
+        ],
+        "a": 3,
+        "why": "A bitter night, coats and scarves, and a quarter of an hour later they are at the Alpha Inn. He will not let the trail cool for the sake of a meal."
+       },
+       {
+        "q": "At the end of the reading, what has the investigation actually gained?",
+        "opts": [
+         "The name of the thief who took the stone",
+         "A link from the stone back to where the goose came from",
+         "Proof that John Horner is innocent",
+         "The reward of a thousand pounds from the Countess"
+        ],
+        "a": 1,
+        "why": "One more link, and no more: stone, goose, Baker, and now the place Baker got the bird. Horner is still in a cell and nobody knows who put the stone in the goose."
+       }
+      ]
+     }
+    ]
+   }
+  ]
  }
 ]

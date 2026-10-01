@@ -559,6 +559,11 @@ APPS = {
     "reading/sherlock-carbuncle-1": (reads("carbuncle1"),
                                      dict(app="carbuncle1", shake="#card", lift=None,
                                           dragon=["m1", "m2", "m3", "m4"])),
+    # Pages 137 to 146: the stone comes out of the goose and the case turns
+    # into a real one. Four sections, stopping partway through the Alpha Inn.
+    "reading/sherlock-carbuncle-2": (reads("carbuncle2"),
+                                     dict(app="carbuncle2", shake="#card", lift=None,
+                                          dragon=["m1", "m2", "m3", "m4"])),
 }
 
 # ---------------------------------------------------------------- machinery
