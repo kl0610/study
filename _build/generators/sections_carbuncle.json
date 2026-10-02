@@ -1944,5 +1944,992 @@
     ]
    }
   ]
+ },
+ {
+  "slug": "sherlock-carbuncle-3",
+  "title": "The Game’s Up",
+  "pages": "147–156",
+  "bigQuestion": "Holmes asks the salesman where his geese came from and is refused flat. He gets the answer anyway, out of a man who thought he was winning an argument — and by the end of the reading the man who has been chasing one particular goose across London is sitting by the fire at Baker Street. Who is he, and how much did Holmes know before he said a word?",
+  "passages": {
+   "alpha": {
+    "title": "“Them’s not our geese”",
+    "cite": "Reader, page 147",
+    "text": [
+     "“Ah! yes, I see. But, sir, them’s not our geese.”",
+     "“Indeed! Whose, then?”",
+     "“Well, I get the two dozen from a salesman in Covent Garden.”",
+     "“Indeed! I know some of them. Who was it?”",
+     "“Breckinridge is his name.”",
+     "“Ah! I don’t know him. Well, here’s to your good health, landlord. Good night.”"
+    ]
+   },
+   "stakes": {
+    "title": "Seven years at the other end of the chain",
+    "cite": "Reader, page 147",
+    "text": [
+     "“Remember, Watson, that though we have so homely a thing as a goose at one end of this chain, we have at the other a man who will get seven years in jail, unless we can establish his innocence.”",
+     "“It is possible that our inquiry may but confirm his guilt; but, in any case, we have a line of investigation that has been missed by the police, and which luck has placed in our hands.”",
+     "“Let us follow it out to the bitter end.”",
+     "We passed through a zigzag of slums to Covent Garden Market.",
+     "One of the largest stalls bore the name of Breckinridge, and the proprietor was helping a boy put up the shutters."
+    ]
+   },
+   "anger": {
+    "title": "One question too many for a salesman",
+    "cite": "Reader, page 148",
+    "text": [
+     "“Ah, but I was recommended to you.”",
+     "“Who by?”",
+     "“The landlord of the ‘Alpha.’”",
+     "“Ah, yes; I sent him a couple of dozen.”",
+     "“Fine birds they were, too. Where did you get them from?”",
+     "To my surprise the question provoked a burst of anger from the salesman.",
+     "“Now then, mister,” said he, “what are you driving at? Let’s have it straight, now.”",
+     "“Well, then, I shan’t tell you. So now!”"
+    ]
+   },
+   "pestered": {
+    "title": "“As pestered as I am”",
+    "cite": "Reader, page 149",
+    "text": [
+     "“Upset! You’d be as upset, maybe, if you were as pestered as I am.”",
+     "“When I pay good money for a good item, there should be an end of the business.”",
+     "“But it’s ‘Where are the geese?’ and ‘Who did you sell the geese to?’ and ‘What will you take for the geese?’”",
+     "“One would think they were the only geese in the world, for the fuss that is made over them.”",
+     "“Well, I have no connection with any other people who have been making inquiries,” said Holmes."
+    ]
+   },
+   "bet": {
+    "title": "A fiver on it, and then a sovereign",
+    "cite": "Reader, page 149",
+    "text": [
+     "“If you won’t tell us the bet is off, that is all.”",
+     "“But I’m always ready to back my opinion on a matter of fowls, and I have a fiver on it that the bird I ate is country bred.”",
+     "“Well, then, you’ve lost your fiver, for it’s town bred,” snapped the salesman.",
+     "“I don’t believe you.”",
+     "“D’you think you know more about fowls than I, who have handled them since I was a lad? I tell you, all those birds that went to the ‘Alpha’ were town bred.”",
+     "“It’s merely taking your money, for I know that I am right. But I’ll bet you a sovereign, just to teach you not to be stubborn.”"
+    ]
+   },
+   "books": {
+    "title": "The thin book and the great greasy ledger",
+    "cite": "Reader, page 150",
+    "text": [
+     "“Bring me the books, Bill,” said he.",
+     "The small boy brought round a small thin volume and a great greasy-backed one, laying them out together beneath the hanging lamp.",
+     "“That’s the list of the folk from whom I buy. D’you see? Well, then, here on this page are the country folk, and the numbers after their names are where their accounts are in the big ledger.”",
+     "“Now, then! You see this other page in red ink? Well, that is a list of my town suppliers. Now, look at that third name. Just read it out to me.”",
+     "“Mrs. Oakshott, 117 Brixton Road – 249,” read Holmes.",
+     "“‘December 22. Twenty-four geese. Sold to Mr. Windigate of the Alpha.’”"
+    ]
+   },
+   "wager": {
+    "title": "Why the bet worked",
+    "cite": "Reader, pages 151–152",
+    "text": [
+     "Sherlock Holmes looked deeply disappointed.",
+     "He drew a sovereign from his pocket and threw it down upon the slab, turning away with the air of a man whose disgust is too deep for words.",
+     "A few yards off he stopped under a lamp and laughed.",
+     "“I dare say that if I had put a hundred pounds down in front of him he would not have given me such complete information as was drawn from him by the idea that he was beating me on a wager,” said he.",
+     "“It is clear from what that surly fellow said that others besides ourselves are anxious about the matter.”"
+    ]
+   },
+   "hubbub": {
+    "title": "A little rat-faced fellow under the swinging lamp",
+    "cite": "Reader, pages 152–153",
+    "text": [
+     "His remarks were suddenly cut short by a loud hubbub that broke out from the stall that we had just left.",
+     "Turning round we saw a little rat-faced fellow standing under the swinging lamp, while Breckinridge the salesman was shaking his fists fiercely at the cringing figure.",
+     "“If you come pestering me any more with your silly talk I’ll set the dog at you,” he shouted.",
+     "“You bring Mrs. Oakshott here and I’ll answer her, but what have you to do with it? Did I buy the geese off you?”",
+     "“No, but one of them was mine all the same,” whined the little man.",
+     "“Well, then, ask Mrs. Oakshott for it.”",
+     "“She told me to ask you.”"
+    ]
+   },
+   "overtake": {
+    "title": "“It is my business to know what other people don’t know”",
+    "cite": "Reader, page 153",
+    "text": [
+     "“Ha, this may save us a visit to Brixton Road,” whispered Holmes.",
+     "He sprang around, and I could see in the lamp light that all the color had been driven from his face.",
+     "“Who are you, then? What do you want?” he asked in a quavering voice.",
+     "“You will excuse me,” said Holmes blandly, “but I could not help overhearing the questions that you put to the salesman just now. I think that I could be of assistance to you.”",
+     "“My name is Sherlock Holmes. It is my business to know what other people don’t know.”",
+     "“Excuse me, I know everything of it.”"
+    ]
+   },
+   "alias": {
+    "title": "“No, the real name”",
+    "cite": "Reader, page 155",
+    "text": [
+     "“Oh, sir, you are the very man whom I have longed to meet,” cried the little fellow.",
+     "“But pray tell me, before we go further, who it is that I have the pleasure of assisting.”",
+     "The man hesitated. “My name is John Robinson,” he answered, with a sidelong glance.",
+     "“No, the real name,” said Holmes sweetly. “It is always awkward doing business with an alias.”",
+     "A blush sprang to the white cheeks of the stranger. “My real name is James Ryder,” said he.",
+     "“Precisely so. Head attendant at the Hotel Cosmopolitan.”"
+    ]
+   },
+   "bird": {
+    "title": "One bird, white with a black bar across the tail",
+    "cite": "Reader, page 156",
+    "text": [
+     "“You look cold, Mr. Ryder. Pray take the basket chair. Now, then! You want to know what became of those geese?”",
+     "“Or rather, I fancy, of that goose. It was one bird, I imagine, in which you were interested – white, with a black bar across the tail.”",
+     "Ryder quivered with emotion.",
+     "“Oh, sir,” he cried, “can you tell me where it went to?”"
+    ]
+   },
+   "egg": {
+    "title": "“The prettiest little blue egg that ever was seen”",
+    "cite": "Reader, page 156",
+    "text": [
+     "“It came here. And I don’t wonder that you should take an interest in it.”",
+     "“It laid an egg after it was dead – the prettiest little blue egg that ever was seen. I have it here in my museum.”",
+     "Our visitor staggered to his feet and clutched the mantelpiece with his right hand.",
+     "Holmes unlocked his strong-box and held up the blue carbuncle, which shone like a star.",
+     "Ryder stood glaring, uncertain whether to claim or disown it.",
+     "“The game’s up, Ryder,” said Holmes quietly."
+    ]
+   }
+  },
+  "missions": [
+   {
+    "id": "m1",
+    "name": "Section 1 — pages 147 to 148",
+    "tag": "3 questions · 5 papers · about 2 minutes",
+    "blurb": "The landlord’s answer, what is at stake, and a salesman who will not say",
+    "items": [
+     {
+      "type": "pick",
+      "p": "alpha",
+      "hi": [
+       "them’s not our geese",
+       "a salesman in Covent Garden",
+       "Breckinridge is his name"
+      ],
+      "vs": [
+       {
+        "q": "What does the landlord of the Alpha say when Holmes praises his geese?",
+        "opts": [
+         "That he raises them himself behind the inn",
+         "That they are not his geese at all",
+         "That the goose club was his own idea",
+         "That he sold them all before Christmas Eve"
+        ],
+        "a": 1,
+        "why": "“But, sir, them’s not our geese.” One sentence, and the goose club stops being the answer and becomes one more link in the chain."
+       },
+       {
+        "q": "Where does the landlord get his birds?",
+        "opts": [
+         "From a farm out beyond Brixton",
+         "From a salesman in Covent Garden",
+         "From a poultry market near the museum",
+         "From a supplier who calls at the inn"
+        ],
+        "a": 1,
+        "why": "Two dozen from a salesman in Covent Garden — and he gives the name without being pressed, which is worth comparing with how the next man behaves."
+       },
+       {
+        "q": "What is the salesman’s name?",
+        "opts": [
+         "Windigate",
+         "Oakshott",
+         "Breckinridge",
+         "Robinson"
+        ],
+        "a": 2,
+        "why": "Breckinridge. Windigate is the landlord of the Alpha; the other two names belong further along. Keeping them straight is most of the work in this part of the story."
+       },
+       {
+        "q": "How much did Holmes have to do to get this out of the landlord?",
+        "opts": [
+         "He had to pay him for the information",
+         "He had to buy beer and admire his geese",
+         "He had to say he was working for the police",
+         "He had to come back a second time"
+        ],
+        "a": 1,
+        "why": "Two glasses of beer and a compliment: “Your beer should be excellent, if it is as good as your geese.” Holmes gets what he wants by letting a man talk about his own business."
+       },
+       {
+        "q": "Why does the landlord’s answer send Holmes further on rather than ending the inquiry?",
+        "opts": [
+         "Because the goose club list had been lost",
+         "Because the landlord could not remember Baker",
+         "Because the birds came from somewhere else again",
+         "Because the landlord refused to say any more"
+        ],
+        "a": 2,
+        "why": "Holmes is following the goose backwards: Baker, the club, the inn — and now the inn turns out to be a stop on the road rather than the start of it."
+       }
+      ]
+     },
+     {
+      "type": "pick",
+      "p": "stakes",
+      "hi": [
+       "seven years in jail",
+       "may but confirm his guilt",
+       "missed by the police",
+       "follow it out to the bitter end"
+      ],
+      "vs": [
+       {
+        "q": "What does Holmes say is at the other end of the chain from the goose?",
+        "opts": [
+         "A stone worth more than twenty thousand pounds",
+         "A thief who has got clean away with it",
+         "A man who will get seven years in jail",
+         "A countess who will pay a thousand pounds"
+        ],
+        "a": 2,
+        "why": "“A man who will get seven years in jail, unless we can establish his innocence.” He puts the goose and the sentence in the same sentence on purpose. That is what the chain is for."
+       },
+       {
+        "q": "Does Holmes claim the inquiry will clear Horner?",
+        "opts": [
+         "Yes — he is already certain Horner is innocent",
+         "No — he says it may well confirm his guilt instead",
+         "Yes — he says the police have got the wrong man",
+         "No — he says the question cannot be answered at all"
+        ],
+        "a": 1,
+        "why": "“It is possible that our inquiry may but confirm his guilt.” He is following the evidence rather than a side, and he says so before he starts, which is the honest way round."
+       },
+       {
+        "q": "What does Holmes say they have that the police have not?",
+        "opts": [
+         "A witness the police never found",
+         "The stone itself, locked in his strong-box",
+         "A line of investigation the police missed",
+         "The name of the man who sold the goose"
+        ],
+        "a": 2,
+        "why": "“A line of investigation that has been missed by the police, and which luck has placed in our hands.” Luck — he does not pretend he was clever to get it. The cleverness is in what he does with it."
+       },
+       {
+        "q": "What does Holmes mean by “follow it out to the bitter end”?",
+        "opts": [
+         "That they will keep going even if it harms Horner",
+         "That they will go on until the police stop them",
+         "That the work will be unpleasant but brief",
+         "That he expects the answer to be a bitter one"
+        ],
+        "a": 0,
+        "why": "He has just said the inquiry might confirm Horner’s guilt. Following it to the bitter end means taking the answer whichever way it falls, which is a different promise from promising to save the man."
+       },
+       {
+        "q": "What is the first thing the reader is told about Covent Garden Market?",
+        "opts": [
+         "That it was shut up for the night",
+         "That they reached it through a zigzag of slums",
+         "That it was crowded even at that hour",
+         "That the stalls were all lit by hanging gas flares"
+        ],
+        "a": 1,
+        "why": "“We passed through a zigzag of slums to Covent Garden Market.” The story keeps noting what the city is like on the way: frosty air, slums, a boy putting up shutters. It is a cold night and everything is closing."
+       }
+      ]
+     },
+     {
+      "type": "pick",
+      "p": "anger",
+      "hi": [
+       "I was recommended to you",
+       "Where did you get them from",
+       "a burst of anger",
+       "I shan’t tell you"
+      ],
+      "vs": [
+       {
+        "q": "How does Holmes open the conversation with the salesman?",
+        "opts": [
+         "By saying he had been recommended to him",
+         "By telling him he is investigating a robbery",
+         "By offering to buy five hundred geese",
+         "By asking straight out about Mrs. Oakshott"
+        ],
+        "a": 0,
+        "why": "He starts with the weather, then with being recommended by the Alpha’s landlord — a reason to be standing there that has nothing to do with what he wants."
+       },
+       {
+        "q": "Which question sets the salesman off?",
+        "opts": [
+         "Whether he had sold out of geese",
+         "Who had recommended him",
+         "Where he got the birds from",
+         "How many he had sent to the Alpha"
+        ],
+        "a": 2,
+        "why": "“Where did you get them from?” Everything before it is answered easily. The one question Holmes actually came to ask is the one that provokes “a burst of anger” — which is itself a piece of information."
+       },
+       {
+        "q": "What does the salesman say when Holmes asks plainly who sold him the geese?",
+        "opts": [
+         "That he cannot remember after so long",
+         "That he will not tell him",
+         "That he will tell him for a price",
+         "That the books have already been put away"
+        ],
+        "a": 1,
+        "why": "“Well, then, I shan’t tell you. So now!” Flat refusal. Asking straight has failed, and the next page is Holmes finding another way in."
+       },
+       {
+        "q": "Holmes says, “I don’t know why you should be so upset over such a trifle.” What is he doing?",
+        "opts": [
+         "Apologising for having annoyed him",
+         "Pretending the question hardly matters to him",
+         "Warning the man that he will go to the police",
+         "Admitting that he has come about the robbery"
+        ],
+        "a": 1,
+        "why": "He makes the question sound small, so that refusing it looks unreasonable rather than careful. The man takes the bait and starts explaining why he is upset — which is the first thing Holmes learns."
+       },
+       {
+        "q": "What has Holmes already learned from the salesman’s temper, before learning anything else?",
+        "opts": [
+         "That the man is hiding where the geese came from",
+         "That somebody else has been asking the same question",
+         "That the geese were not sold to the Alpha at all",
+         "That the man knows about the stolen stone"
+        ],
+        "a": 1,
+        "why": "An honest trader does not lose his temper over where his stock came from — unless he has been asked about it over and over. Holmes says as much a page later: others besides ourselves are anxious about the matter."
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "id": "m2",
+    "name": "Section 2 — pages 149 to 150",
+    "tag": "3 questions · 5 papers · about 2 minutes",
+    "blurb": "The wager, and the two books it opens",
+    "items": [
+     {
+      "type": "pick",
+      "p": "pestered",
+      "hi": [
+       "as pestered as I am",
+       "there should be an end of the business",
+       "the only geese in the world",
+       "no connection with any other people"
+      ],
+      "vs": [
+       {
+        "q": "What reason does the salesman give for being so short-tempered?",
+        "opts": [
+         "He has been cheated over a delivery",
+         "He has been pestered with questions about those geese",
+         "He has been working since before dawn",
+         "He has sold out of geese and can make no more money"
+        ],
+        "a": 1,
+        "why": "“You’d be as upset, maybe, if you were as pestered as I am.” He is not protecting anybody. He is sick of being asked — which tells Holmes that other people want to know too."
+       },
+       {
+        "q": "What sort of questions says he has been asked over and over?",
+        "opts": [
+         "Whether the geese were fresh, and what he paid",
+         "Where the geese are, who he sold them to, what he will take for them",
+         "Who raised the geese, and whether they were town bred or country",
+         "Why the geese cost so much this year"
+        ],
+        "a": 1,
+        "why": "Three questions, quoted. Put them beside the little man who turns up at the stall a page later and you can work out who has been doing the asking."
+       },
+       {
+        "q": "What does the salesman mean by “one would think they were the only geese in the world”?",
+        "opts": [
+         "That his geese were the best in the market",
+         "That he had sold more geese than anyone",
+         "That the fuss over this one lot makes no sense to him",
+         "That nobody had asked about any of his other stock"
+        ],
+        "a": 2,
+        "why": "To him it is a batch of birds he paid good money for and sold on. He has no idea why anyone should care, and that is exactly why he is useful: he is not hiding anything, he is just annoyed."
+       },
+       {
+        "q": "Why does Holmes say he has no connection with the other people who have been asking?",
+        "opts": [
+         "To make the salesman trust him and talk",
+         "Because it is the truth and he says so",
+         "To find out who the other people were",
+         "To warn him that those people were not honest"
+        ],
+        "a": 0,
+        "why": "He is separating himself from whoever has been making the man’s life a misery, so that his own question can start again from nothing. It is true, as it happens, and it is also useful."
+       },
+       {
+        "q": "What has Holmes learned that the salesman does not realise he has given away?",
+        "opts": [
+         "Where the geese came from",
+         "That somebody else is hunting the same geese",
+         "That the geese were town bred",
+         "That the landlord of the Alpha had lied to him"
+        ],
+        "a": 1,
+        "why": "The refusal gave him nothing; the complaint gave him a rival. By the end of the scene Holmes says plainly that others besides themselves are anxious about the matter — and within minutes one of them walks up to the stall."
+       }
+      ]
+     },
+     {
+      "type": "pick",
+      "p": "bet",
+      "hi": [
+       "I have a fiver on it",
+       "country bred",
+       "it’s town bred",
+       "I’ll bet you a sovereign"
+      ],
+      "vs": [
+       {
+        "q": "What does Holmes claim to have a bet on?",
+        "opts": [
+         "That the goose came from Covent Garden",
+         "That the bird he ate was country bred",
+         "That the salesman could not name his supplier",
+         "That the birds were sold before Christmas"
+        ],
+        "a": 1,
+        "why": "“I have a fiver on it that the bird I ate is country bred.” There is no bet and there is no fiver. It is a story invented on the spot to give the man something to win."
+       },
+       {
+        "q": "How does the salesman answer the claim?",
+        "opts": [
+         "He refuses to discuss his birds at all",
+         "He says he cannot tell one from the other",
+         "He says the birds were town bred, and he would know",
+         "He says the Alpha’s birds came from the country"
+        ],
+        "a": 2,
+        "why": "“All those birds that went to the ‘Alpha’ were town bred.” He has handled fowls since he was a lad, and being doubted about it is more than he can stand."
+       },
+       {
+        "q": "What does Holmes do when the salesman insists?",
+        "opts": [
+         "Says he is satisfied and drops the matter",
+         "Offers to bet him a sovereign on it",
+         "Asks to see the birds that are left",
+         "Says he will ask at another stall instead"
+        ],
+        "a": 1,
+        "why": "“But I’ll bet you a sovereign, just to teach you not to be stubborn.” The insult is part of the offer. He is making sure the man cannot walk away from it."
+       },
+       {
+        "q": "Why does Holmes argue about where the birds were bred rather than asking about them again?",
+        "opts": [
+         "Because he genuinely wanted to know their breed",
+         "Because the breed would prove who had the goose",
+         "Because the salesman had refused the real question",
+         "Because the salesman had offered to bet first"
+        ],
+        "a": 2,
+        "why": "Straight asking got “I shan’t tell you.” So he stops asking and starts disagreeing, and lets the man prove him wrong — which cannot be done without opening the books."
+       },
+       {
+        "q": "The bet is a trick. What does it rely on to work?",
+        "opts": [
+         "The salesman’s need for the money",
+         "The salesman’s pride in knowing his own trade",
+         "The salesman’s wish to be rid of them quickly",
+         "The salesman’s fear of the police"
+        ],
+        "a": 1,
+        "why": "Not greed — a sovereign is nothing to a man with five hundred geese coming in the morning. It is that he has handled fowls since he was a lad and will not be told he is wrong about them."
+       }
+      ]
+     },
+     {
+      "type": "pick",
+      "p": "books",
+      "hi": [
+       "Bring me the books, Bill",
+       "a great greasy-backed one",
+       "this other page in red ink",
+       "Mrs. Oakshott, 117 Brixton Road – 249"
+      ],
+      "vs": [
+       {
+        "q": "What does the salesman call for, to settle the bet?",
+        "opts": [
+         "The boy who had carried the birds",
+         "His books",
+         "The last of the geese on the stall",
+         "The landlord of the Alpha"
+        ],
+        "a": 1,
+        "why": "“Bring me the books, Bill.” He is going to prove it, and proving it means showing Holmes exactly what Holmes came for."
+       },
+       {
+        "q": "What are the two books the boy brings?",
+        "opts": [
+         "A ledger and a book of receipts",
+         "A thin volume and a great greasy-backed ledger",
+         "A day book and a long list of the club members",
+         "Two ledgers, one for each year"
+        ],
+        "a": 1,
+        "why": "A small thin volume of suppliers and a great greasy-backed ledger of accounts, laid out under the hanging lamp. The detail of the greasy backing is the sort of thing that makes a scene real."
+       },
+       {
+        "q": "How is the thin book arranged?",
+        "opts": [
+         "By the date each supplier was first used",
+         "Alphabetically, with the amounts owed",
+         "Country folk on one page, town suppliers in red ink",
+         "By the number of birds each supplier had sent him"
+        ],
+        "a": 2,
+        "why": "Two lists, and the red ink is for town suppliers. The salesman turns to the red page to prove his point — which is to say, to the half of the book Holmes needed."
+       },
+       {
+        "q": "Whose name does Holmes read out, and from where?",
+        "opts": [
+         "Mr. Windigate, of the Alpha",
+         "Mr. Breckinridge, of Covent Garden",
+         "Mrs. Oakshott, 117 Brixton Road",
+         "Mr. Henry Baker, of the goose club"
+        ],
+        "a": 2,
+        "why": "Third name on the red-ink page, with the number 249 pointing into the big ledger: “Mrs. Oakshott, 117 Brixton Road – 249.” An address, which is the next place to go."
+       },
+       {
+        "q": "What does the ledger entry under that number say?",
+        "opts": [
+         "That twelve geese were bought in November",
+         "That the account had not been settled",
+         "That twenty-four geese went to Mr. Windigate on December 22",
+         "That the geese had all been sold on to the Alpha’s goose club"
+        ],
+        "a": 2,
+        "why": "“December 22. Twenty-four geese. Sold to Mr. Windigate of the Alpha.” The chain now runs unbroken from Mrs. Oakshott to Henry Baker, and it was handed over by a man who thought he was winning an argument."
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "id": "m3",
+    "name": "Section 3 — pages 151 to 153",
+    "tag": "3 questions · 5 papers · about 2 minutes",
+    "blurb": "Why the wager worked, and the little man at the stall",
+    "items": [
+     {
+      "type": "pick",
+      "p": "wager",
+      "hi": [
+       "looked deeply disappointed",
+       "stopped under a lamp and laughed",
+       "a hundred pounds",
+       "beating me on a wager"
+      ],
+      "vs": [
+       {
+        "q": "What does Holmes do when the books prove him wrong?",
+        "opts": [
+         "Argues that the entry must be a mistake",
+         "Pays the sovereign and walks off looking disgusted",
+         "Asks to look at the rest of the ledger",
+         "Admits at once that he had been pretending all along"
+        ],
+        "a": 1,
+        "why": "He throws the coin down “with the air of a man whose disgust is too deep for words.” The performance runs to the last second, because the salesman is still watching."
+       },
+       {
+        "q": "What does Holmes do a few yards away from the stall?",
+        "opts": [
+         "Writes down the address in his notebook",
+         "Sends Watson back to buy a goose",
+         "Stops under a lamp and laughs",
+         "Hails a cab for Brixton Road at once"
+        ],
+        "a": 2,
+        "why": "He stops under a lamp and laughs — the first moment he is out of sight. The sovereign was the cheapest thing he bought all day."
+       },
+       {
+        "q": "What does Holmes say about offering money instead?",
+        "opts": [
+         "A hundred pounds would have bought the whole ledger outright",
+         "A hundred pounds would not have got him as much as the bet did",
+         "He had no money with him to offer",
+         "Offering money would have been dishonest"
+        ],
+        "a": 1,
+        "why": "“If I had put a hundred pounds down in front of him he would not have given me such complete information as was drawn from him by the idea that he was beating me on a wager.” Being paid makes a man careful. Winning makes him talk."
+       },
+       {
+        "q": "Why would paying the salesman have worked less well?",
+        "opts": [
+         "He would have asked for more than a hundred pounds",
+         "He would have told the other inquirers as well",
+         "A paid man gives you only what you asked for",
+         "He would have gone straight to the police"
+        ],
+        "a": 2,
+        "why": "Money buys an answer to the question you put. The bet made him produce two books and read out an address nobody had asked him for — complete information, as Holmes calls it."
+       },
+       {
+        "q": "What does Holmes conclude from the way the salesman behaved?",
+        "opts": [
+         "That the salesman had something to hide",
+         "That others besides themselves are anxious about the geese",
+         "That the geese must after all have come from the country",
+         "That the ledger entry had been altered"
+        ],
+        "a": 1,
+        "why": "“It is clear from what that surly fellow said that others besides ourselves are anxious about the matter.” He is weighing whether to go to Brixton Road tonight when the answer walks up to the stall behind him."
+       }
+      ]
+     },
+     {
+      "type": "pick",
+      "p": "hubbub",
+      "hi": [
+       "a little rat-faced fellow",
+       "I’ll set the dog at you",
+       "one of them was mine all the same",
+       "She told me to ask you"
+      ],
+      "vs": [
+       {
+        "q": "What interrupts Holmes in the middle of deciding what to do next?",
+        "opts": [
+         "A policeman asking their business",
+         "A row breaking out at the stall they have just left",
+         "The salesman calling them back",
+         "A carriage that nearly ran the two of them down"
+        ],
+        "a": 1,
+        "why": "“His remarks were suddenly cut short by a loud hubbub.” He was about to choose between tonight and tomorrow, and the choice is made for him."
+       },
+       {
+        "q": "Who is at the centre of the row?",
+        "opts": [
+         "A boy who had dropped a crate of birds",
+         "A little rat-faced fellow being shouted at",
+         "Mrs. Oakshott, come to collect her money",
+         "Another salesman from a rival stall"
+        ],
+        "a": 1,
+        "why": "A cringing little man under the swinging lamp, with Breckinridge shaking his fists at him. Everything about how he is described — rat-faced, cringing, whining — is doing work."
+       },
+       {
+        "q": "What does the little man want?",
+        "opts": [
+         "To be paid for geese he had delivered",
+         "To buy a goose before the stall shut",
+         "To get back one goose, which he says was his",
+         "To know who had bought the Alpha’s birds"
+        ],
+        "a": 2,
+        "why": "“No, but one of them was mine all the same.” One particular bird, out of two dozen — which is a very odd thing to want, and exactly what Holmes has been chasing."
+       },
+       {
+        "q": "Why does Breckinridge refuse to deal with him?",
+        "opts": [
+         "He had never sold the man anything",
+         "He had not bought the geese from him",
+         "He had already answered him twice",
+         "He did not believe the goose was his"
+        ],
+        "a": 1,
+        "why": "“Did I buy the geese off you?” He bought them from Mrs. Oakshott and will answer to her. It is a reasonable position, delivered with the offer to set a dog on him."
+       },
+       {
+        "q": "What does the little man say when told to ask Mrs. Oakshott?",
+        "opts": [
+         "That she will not speak to him",
+         "That he has not been able to find her",
+         "That she told him to ask here",
+         "That she has already sold the goose on"
+        ],
+        "a": 2,
+        "why": "“She told me to ask you.” He has been sent from one to the other, which is why he has been pestering the stall — and why Breckinridge has been losing his temper with strangers all week."
+       }
+      ]
+     },
+     {
+      "type": "pick",
+      "p": "overtake",
+      "hi": [
+       "save us a visit to Brixton Road",
+       "all the color had been driven from his face",
+       "a quavering voice",
+       "It is my business to know what other people don’t know"
+      ],
+      "vs": [
+       {
+        "q": "Why does Holmes go after the little man?",
+        "opts": [
+         "To warn him that Breckinridge means to do him harm",
+         "Because the man may save them a visit to Brixton Road",
+         "Because he recognised him from the hotel",
+         "To ask him who Mrs. Oakshott is"
+        ],
+        "a": 1,
+        "why": "“Ha, this may save us a visit to Brixton Road.” He was deciding whether to make that journey tonight. The man who has just been thrown out of the stall is a shorter road to the same place."
+       },
+       {
+        "q": "How does the little man react when his shoulder is touched?",
+        "opts": [
+         "He turns white and asks who they are",
+         "He shouts for the police at once",
+         "He tries to run back towards the stall",
+         "He refuses to speak to them at all"
+        ],
+        "a": 0,
+        "why": "“All the color had been driven from his face,” and he asks in a quavering voice. He is terrified before a word is said to him — which is not how an honest man behaves about a goose."
+       },
+       {
+        "q": "How does Holmes explain himself?",
+        "opts": [
+         "He says he is acting on behalf of the Countess of Morcar",
+         "He says he overheard the questions and may be able to help",
+         "He says he is from the police",
+         "He says he is a fowl fancier like the salesman"
+        ],
+        "a": 1,
+        "why": "Perfectly true, perfectly bland, and it offers the man exactly what he wants. Holmes does not tell a single lie in this conversation — which is worth noticing after the business of the fiver."
+       },
+       {
+        "q": "What does Holmes say his business is?",
+        "opts": [
+         "To find things that other people have lost",
+         "To know what other people don’t know",
+         "To put right what the police have got wrong",
+         "To ask the questions nobody else will ask"
+        ],
+        "a": 1,
+        "why": "“My name is Sherlock Holmes. It is my business to know what other people don’t know.” It is a boast, and in the next breath he proves it by reciting the whole chain of the geese."
+       },
+       {
+        "q": "What is the effect of Holmes reciting the chain from Mrs. Oakshott to Henry Baker?",
+        "opts": [
+         "It warns the man that he is suspected",
+         "It shows the man that Holmes is already ahead of him",
+         "It tells the man something he did not know",
+         "It proves Holmes had been following him all evening"
+        ],
+        "a": 1,
+        "why": "The man has spent days being sent from one person to another and getting nowhere. Holmes lays the whole route out from memory, and the man’s next words are that he is the very man he has longed to meet."
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "id": "m4",
+    "name": "Section 4 — pages 155 to 156",
+    "tag": "3 questions · 5 papers · about 2 minutes",
+    "blurb": "His real name, the bird with the black bar, and the strong-box",
+    "items": [
+     {
+      "type": "pick",
+      "p": "alias",
+      "hi": [
+       "the very man whom I have longed to meet",
+       "My name is John Robinson",
+       "doing business with an alias",
+       "Head attendant at the Hotel Cosmopolitan"
+      ],
+      "vs": [
+       {
+        "q": "How does the little man take Holmes’s offer of help?",
+        "opts": [
+         "He refuses it and hurries away",
+         "He asks what it is going to cost him",
+         "He says Holmes is the very man he has longed to meet",
+         "He pretends not to have understood the question at all"
+        ],
+        "a": 2,
+        "why": "Relief, not suspicion — and it is the relief of a man who has been stuck for days. He is so glad to be helped that he gets into a cab with two strangers."
+       },
+       {
+        "q": "What name does he give first?",
+        "opts": [
+         "James Ryder",
+         "John Robinson",
+         "John Horner",
+         "He refuses to give any name"
+        ],
+        "a": 1,
+        "why": "“My name is John Robinson,” he answers, “with a sidelong glance.” The glance is the tell, and Holmes does not even pause over it."
+       },
+       {
+        "q": "How does Holmes get the real name?",
+        "opts": [
+         "By saying it is awkward to do business with an alias",
+         "By telling him the police already know it",
+         "By asking Watson to look through the man’s papers",
+         "By naming the hotel he works at"
+        ],
+        "a": 0,
+        "why": "“No, the real name,” said Holmes sweetly. No threat and no evidence — he simply declines to accept it, and a blush does the rest."
+       },
+       {
+        "q": "Who is the little man?",
+        "opts": [
+         "Mr. Windigate, host of the Alpha Inn",
+         "John Horner, the plumber, out on bail",
+         "James Ryder, head attendant at the Hotel Cosmopolitan",
+         "A clerk sent round by the Countess of Morcar herself"
+        ],
+        "a": 2,
+        "why": "James Ryder. Think back to the newspaper report: Ryder is the man who showed Horner up to the room, was called away, came back and raised the alarm. The witness has turned up chasing a goose."
+       },
+       {
+        "q": "Why is it so important that the little man turns out to work at the Hotel Cosmopolitan?",
+        "opts": [
+         "It explains how he could afford to join a goose club",
+         "It means he knew Henry Baker already",
+         "It ties the goose to the place the stone was stolen",
+         "It shows he had been sent by the Countess"
+        ],
+        "a": 2,
+        "why": "Until this moment the chain ran from a stone to a goose to a market. The man hunting that goose works in the building the stone was taken from — and Holmes names his job before Ryder can explain anything."
+       }
+      ]
+     },
+     {
+      "type": "pick",
+      "p": "bird",
+      "hi": [
+       "take the basket chair",
+       "of that goose",
+       "white, with a black bar across the tail",
+       "quivered with emotion"
+      ],
+      "vs": [
+       {
+        "q": "How does Holmes treat Ryder when they reach Baker Street?",
+        "opts": [
+         "He locks the door and stands over him",
+         "He sits him by the fire and offers him a chair",
+         "He sends Watson out for a policeman",
+         "He accuses him the moment they are inside"
+        ],
+        "a": 1,
+        "why": "“You look cold, Mr. Ryder. Pray take the basket chair.” Cheerful, warm, hospitable — and a question about geese. Nothing in the room tells Ryder what is coming."
+       },
+       {
+        "q": "Holmes corrects himself: not those geese, but — what?",
+        "opts": [
+         "Not the geese at all, but the stone",
+         "That goose. One particular bird",
+         "The goose club at the Alpha",
+         "The two dozen sold on December 22"
+        ],
+        "a": 1,
+        "why": "“Or rather, I fancy, of that goose.” One word changed, and Ryder learns that Holmes knows he wants a single bird out of twenty-four. That is when he starts to quiver."
+       },
+       {
+        "q": "How does Holmes describe the bird?",
+        "opts": [
+         "Fat, and heavier than the rest",
+         "White, with a black bar across the tail",
+         "The largest bird in the whole lot",
+         "Grey, with one wing clipped"
+        ],
+        "a": 1,
+        "why": "A detail Ryder has never given him. Holmes has had the bird in the house, and can describe the one goose in two dozen that Ryder has been hunting across London."
+       },
+       {
+        "q": "How does Ryder react to being described his own goose?",
+        "opts": [
+         "He denies all knowledge of any bird",
+         "He asks how Holmes could possibly know",
+         "He quivers with emotion and asks where it went",
+         "He laughs and says that Holmes has it wrong"
+        ],
+        "a": 2,
+        "why": "“Oh, sir, can you tell me where it went to?” He is too far gone in wanting the bird to notice what it means that Holmes can describe it."
+       },
+       {
+        "q": "Holmes asks about geese and says nothing about a stone. Why?",
+        "opts": [
+         "He is not yet certain Ryder is the man",
+         "He wants Ryder to give himself away first",
+         "He is waiting for Watson to fetch help",
+         "He has promised the Countess to keep it quiet"
+        ],
+        "a": 1,
+        "why": "Compare the test on Henry Baker two nights ago: Holmes puts an object in front of a man and watches. Baker took the fresh goose. Ryder asks where that one particular bird went."
+       }
+      ]
+     },
+     {
+      "type": "pick",
+      "p": "egg",
+      "hi": [
+       "It laid an egg after it was dead",
+       "my museum",
+       "shone like a star",
+       "The game’s up, Ryder"
+      ],
+      "vs": [
+       {
+        "q": "What does Holmes say the goose did after it was dead?",
+        "opts": [
+         "Changed hands four times in a week",
+         "Laid the prettiest little blue egg that ever was seen",
+         "Went to the Alpha Inn and back again",
+         "Made a great deal of trouble for everyone who owned it"
+        ],
+        "a": 1,
+        "why": "“It laid an egg after it was dead — the prettiest little blue egg that ever was seen.” A joke, and a complete statement of the case. Ryder understands it immediately."
+       },
+       {
+        "q": "What does Holmes do next?",
+        "opts": [
+         "Sends for Inspector Bradstreet",
+         "Reads out the newspaper report of the robbery",
+         "Unlocks his strong-box and holds up the stone",
+         "Asks Ryder to turn out his pockets"
+        ],
+        "a": 2,
+        "why": "No accusation and no question — he opens the box and holds the thing up, and it “shone like a star.” The evidence does the talking."
+       },
+       {
+        "q": "How does Ryder stand when the stone is held up?",
+        "opts": [
+         "Quite still, and saying nothing at all to anybody",
+         "Glaring, unsure whether to claim it or deny it",
+         "With his hands over his face",
+         "Pointing at it and crying out"
+        ],
+        "a": 1,
+        "why": "“Uncertain whether to claim or disown it.” In that half-second he is still trying to work out which story to tell — which is itself the answer to the question of whether he is guilty."
+       },
+       {
+        "q": "What does Holmes say to him?",
+        "opts": [
+         "“You are under arrest, Ryder.”",
+         "“I know everything of it, Ryder.”",
+         "“The game’s up, Ryder.”",
+         "“Did you take it, Ryder?”"
+        ],
+        "a": 2,
+        "why": "“The game’s up, Ryder,” said Holmes quietly — quietly, and then straight on to catching him before he falls in the fire and getting brandy into him. Not triumph; just the end of it."
+       },
+       {
+        "q": "What has the reading established by the time the brandy is poured?",
+        "opts": [
+         "How the stone came to be inside the goose",
+         "That Horner has been released from jail",
+         "That Ryder is the man behind the whole business",
+         "That the Countess has paid out her reward"
+        ],
+        "a": 2,
+        "why": "The chain is complete and the man at the end of it is standing in the room. How the stone got into the bird, and what becomes of Horner, is where the story goes next."
+       }
+      ]
+     }
+    ]
+   }
+  ]
  }
 ]

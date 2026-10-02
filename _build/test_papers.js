@@ -342,6 +342,10 @@ for (const a of PAPERED) {
          speaking half an hour ago to Mr." and the landlord answers on 147. */
       "reading/sherlock-carbuncle-2": ["breckinridge", "covent garden",
         "not our geese", "salesman", "seven years", "two dozen"],
+      /* 147-156 stops on the brandy, with Ryder in the basket chair. How the
+         robbery was arranged and who helped him is page 157 onwards. */
+      "reading/sherlock-carbuncle-3": ["cusack", "confederate", "accomplice",
+        "leave the country", "sudden wealth", "small job"],
     };
     const early = (AHEAD[a.rel] || []).filter(w => text.indexOf(w) !== -1);
     ok("nothing gives away what is on the page after the reading", !early.length,

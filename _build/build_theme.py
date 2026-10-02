@@ -564,6 +564,11 @@ APPS = {
     "reading/sherlock-carbuncle-2": (reads("carbuncle2"),
                                      dict(app="carbuncle2", shake="#card", lift=None,
                                           dragon=["m1", "m2", "m3", "m4"])),
+    # Pages 147 to 156: Covent Garden, the wager, and "The game's up, Ryder."
+    # Stops on the brandy, before the confession.
+    "reading/sherlock-carbuncle-3": (reads("carbuncle3"),
+                                     dict(app="carbuncle3", shake="#card", lift=None,
+                                          dragon=["m1", "m2", "m3", "m4"])),
 }
 
 # ---------------------------------------------------------------- machinery
