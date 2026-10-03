@@ -272,6 +272,11 @@ is one line.
 
 ### A new Sherlock story, or a new block of one
 
+**Start at `_build/generators/sherlock/README.md`** — it holds the passages, the
+questions, the builders with all their checks, the browser probe, and the order of
+operations. Each builder reproduces its shipped spec byte for byte, so that is the
+first thing to run if anything there looks stale.
+
 One spec file per story, in `_build/generators/`: `sections_engineer.json`,
 `sections_carbuncle.json`. Build with the newest app as the shell, so the block
 inherits whatever the shell layer has learned since:

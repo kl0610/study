@@ -1,6 +1,82 @@
 # Handoff — Keith's study site
 
-Written 25 Aug 2026. Everything here is current as of the end of that session.
+**Read “Where things stand” first. Everything below it was written 25 Aug 2026,
+when the site was four apps, and is kept for the reasoning rather than the
+inventory.**
+
+---
+
+## Where things stand — 3 Oct 2026
+
+Clean tree, everything pushed. Last commit `6e94bea`, *The Blue Carbuncle, pages
+147 to 156, in four sections*. 23 test suites, all green. `CLAUDE.md` is the
+working guide and is current; this file is the narrative.
+
+```
+reading      17 apps   Sherlock — the nightly workload
+science      14        CKSci Matter (6 chapters) + Ecosystems (8)
+history       7        CKHG Maya / Aztec / Inca
+vocabulary   12        Wordly Wise Book 6, lists 1-6
+spelling      5        lists 2-6
+recitation    3        The Eagle, The Arrow and the Song
+math          3        Saxon Course 2 — Lessons 11-15 review
+```
+
+### The nightly loop
+
+Keith gives a page range from the Sherlock reader most evenings and wants a
+section built for it that night. It has run through the Speckled Band, The
+Red-Headed League, The Engineer's Thumb, and now The Blue Carbuncle.
+
+**Where the reading is up to: printed page 156. The next range starts at 157** —
+Ryder's confession, which is exactly where `sherlock-carbuncle-3` stops.
+
+Everything needed to build the next one — the rules it must satisfy and the order
+of operations — is in **`_build/generators/sherlock/README.md`**. Those files sat
+in a session scratch directory for the first few weeks; they are in the repo now
+because a scratch directory does not survive a restart, and the questions that
+were written but not selected existed nowhere else. Each builder reproduces its
+shipped `sections_*.json` byte for byte, which is the check to run if anything
+there looks stale.
+
+### What Keith has asked for, in his own words where it matters
+
+- **Sections, not chapters** — from pages 137–146 onward. He said to start there
+  and not go back and revise the earlier ones.
+- **Ten minutes a section, end to end** — not ten minutes apiece. Twelve
+  questions, four sections of three. He pushed back on twenty questions for
+  eleven pages: *“I just need enough for him to be able to understand the plot of
+  the story and understand the characters and their development.”*
+- **Four or five different sets**, so a rerun is not the same quiz. Every question
+  has five complete versions — its own wording, its own four options, its own
+  explanation.
+- **One correct answer per question**, never multi-select, and mix the answers up.
+- **Let him retake what he missed** — just the misses, or the misses with their
+  run-up.
+- **Show the excerpt when he gets one wrong**, in a panel that opens itself.
+
+### Habits that earned their place
+
+- **Verify the built artifact, never the exit code.** Every generator asserts its
+  patches landed and refuses to write otherwise.
+- **Render the page; do not reason about the CSS.** Headless Chrome caught the HUD
+  sitting over the Check button, the escaped markup, the wrong-story excerpts and
+  three bad SVGs. The suites caught none of them.
+- **An app generated from another app's shell inherits that app's content.** It
+  has bitten spelling, vocabulary, science, the excerpt tables, and a copied
+  section builder that arrived guarding the previous reading's spoilers.
+- **A suite that names one app goes quiet when the second arrives.** That happened
+  twice in two days with the versioned apps. Checks find their targets by looking,
+  not by being told.
+- **Sabotage every new check** before trusting it.
+
+### The one hard rule
+
+`_private/` holds a purchased Saxon textbook, and `_source/spelling/` and
+`_source/vocabulary/` hold material that is personal-use only. The repo is public
+and serves GitHub Pages. **Nothing from any of them is ever committed.** They are
+in `.gitignore`; check `git status` and `git ls-tree origin/main` before every
+push anyway.
 
 ---
 
