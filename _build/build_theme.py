@@ -293,6 +293,12 @@ def spell6(s):
     return Patcher(s, "spelling6")
 
 
+def spell8(s):
+    """Spelling List 8 — same again. Config only. There is no List 7: that
+    week's sheet never came, and the hub still shows it unbuilt."""
+    return Patcher(s, "spelling8")
+
+
 def vocab2(s):
     """Word List 2 sheet — generated from the List 1 sheet's shell, so its call
     sites came across already patched. Config only."""
@@ -394,6 +400,8 @@ APPS = {
     "spelling/list5":         (spell5, dict(app="spelling5",  shake="#card",   lift=None,
                                            dragon=["l7"])),
     "spelling/list6":         (spell6, dict(app="spelling6",  shake="#card",   lift=None,
+                                           dragon=["l7"])),
+    "spelling/list8":         (spell8, dict(app="spelling8",  shake="#card",   lift=None,
                                            dragon=["l7"])),
     "vocabulary/ww6-lesson1": (vocab, dict(app="vocabulary", shake="#sheet",  lift=".bar",
                                            dragon=["sheet"])),
@@ -569,6 +577,11 @@ APPS = {
     "reading/sherlock-carbuncle-3": (reads("carbuncle3"),
                                      dict(app="carbuncle3", shake="#card", lift=None,
                                           dragon=["m1", "m2", "m3", "m4"])),
+    # The Copper Beeches, a new story and a long reading: pages 165 to 183 in
+    # six sections. Stops mid-sentence on 183, before Mrs. Rucastle's sorrow.
+    "reading/sherlock-beeches-1": (reads("beeches1"),
+                                   dict(app="beeches1", shake="#card", lift=None,
+                                        dragon=["m1", "m2", "m3", "m4", "m5", "m6"])),
 }
 
 # ---------------------------------------------------------------- machinery

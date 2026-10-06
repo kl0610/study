@@ -346,6 +346,11 @@ for (const a of PAPERED) {
          robbery was arranged and who helped him is page 157 onwards. */
       "reading/sherlock-carbuncle-3": ["cusack", "confederate", "accomplice",
         "leave the country", "sudden wealth", "small job"],
+      /* 165-183 stops mid-sentence on 183. The child's cruelty is hinted at in
+         range -- Rucastle tells the cockroach story himself -- but the full
+         account of it, Mrs. Rucastle's tears and the Tollers are on 184. */
+      "reading/sherlock-beeches-1": ["toller", "secret sorrow", "savage fits",
+        "ill-natured", "colorless in mind", "giving pain", "spoilt"],
     };
     const early = (AHEAD[a.rel] || []).filter(w => text.indexOf(w) !== -1);
     ok("nothing gives away what is on the page after the reading", !early.length,

@@ -98,11 +98,25 @@ def check(spec):
         if not spec["tips"].get(k):
             bad.append("tips has no %r" % k)
 
+    # The button reads "See the " + chartBtn, so chartBtn has to be a phrase that
+    # follows an article. List 6 shipped reading "See the every way this list
+    # spells the schwa" because nothing checked.
+    first = spec["chartBtn"].split()[0].lower() if spec.get("chartBtn") else ""
+    if first in ("the", "a", "an", "every", "all", "each", "some", "this", "these"):
+        bad.append('chartBtn starts with %r, so the button would read '
+                   '"See the %s"' % (first, spec["chartBtn"]))
+
     groups = set()
     for g in spec["chart"]:
         if g["key"] in groups:
             bad.append("two chart groups keyed %r" % g["key"])
         groups.add(g["key"])
+        # chhead is written straight into the HTML; chnote goes through esc(),
+        # so a tag in a note arrives on the screen as &lt;i&gt;. Found by
+        # rendering the page, not by any test.
+        if re.search(r"</?[a-zA-Z]+ ?/?>", g.get("note", "")):
+            bad.append("chart group %r has markup in its note, which is escaped"
+                       % g["key"])
         if g["dot"] not in ("two", "one", "none"):
             bad.append("chart group %r has dot %r, which has no style"
                        % (g["key"], g["dot"]))
@@ -118,7 +132,11 @@ def check(spec):
             bad.append("%s: the sentence gives the word away" % s)
         if not w["def"] or not w["pos"]:
             bad.append("%s: missing definition or part of speech" % s)
-        if w["pos"] not in ("n", "v", "adj", "adv"):
+        # The pill has its own colour for v and adj; everything else falls back
+        # to the default sky pill, which is what n and adv have always used. A
+        # preposition is a real part of speech on these lists -- "toward" is one
+        # -- and refusing it only pushed the sheet into labelling it wrongly.
+        if w["pos"] not in ("n", "v", "adj", "adv", "prep", "pron", "conj"):
             bad.append("%s: part of speech %r has no pill style" % (s, w["pos"]))
         # The mark is what the page paints pink, so it has to land inside the
         # word. An off-by-one here paints the wrong letters and teaches the
@@ -134,6 +152,15 @@ def check(spec):
             bad.append("%s: paired with %r, which is not on this list" % (s, w["pair"]))
     if bad:
         raise SystemExit("  refusing to build:\n    " + "\n    ".join(bad))
+
+
+# A part of speech only has a pill if there is a rule painting it. n and adv
+# share the default sky pill; v and adj have their own. "toward" is a
+# preposition and the sheet says so, so prep gets one too rather than being
+# mislabelled as something it is not.
+POS_CSS_OLD = '.postag[data-p="adj"]{background:var(--rose)}'
+POS_CSS_NEW = ('.postag[data-p="adj"]{background:var(--rose)}\n'
+               '.postag[data-p="prep"]{background:var(--lime);color:var(--ink)}')
 
 
 def sub(s, old, new, what):
@@ -198,6 +225,12 @@ function chart(){
 
 def rule_layer(out, spec):
     n, N = spec["n"], len(spec["words"])
+
+    # Idempotent: the shell is List 2's, which has no prep on it, so this lands
+    # once. A list that is rebuilt from an already-patched shell would not match
+    # and sub() would say so rather than painting it twice.
+    if POS_CSS_NEW not in out:
+        out = sub(out, POS_CSS_OLD, POS_CSS_NEW, "the part-of-speech pills")
 
     out = sub(out,
               '    <div class="eyebrow" style="margin-top:14px">Spelling &middot; Week 2</div>\n'

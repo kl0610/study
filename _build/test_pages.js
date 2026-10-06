@@ -330,11 +330,12 @@ group("no question shows its own markup");
   ok("every question is written in plain words", !bad.length, bad.slice(0, 6).join(", "));
 }
 
-/* A section is a night's homework and has to be answerable in ten minutes end to
-   end. Two apps shipped with four chapters of five minutes each -- twenty
-   minutes -- because the number on a chapter card is typed by hand and nothing
-   ever added the cards up. */
-group("no section takes more than ten minutes");
+/* A section is a night's homework and has to be answerable in one sitting. Two
+   apps shipped with four parts of five minutes each -- twenty minutes -- because
+   the number on a card is typed by hand and nothing ever added the cards up.
+   Ten minutes is the usual budget and stays the target; fifteen is the ceiling,
+   set for a nineteen-page reading that would not fit in ten. */
+group("no section takes more than fifteen minutes");
 {
   const over = [], silly = [];
   FILES.forEach(f => {
@@ -355,10 +356,10 @@ group("no section takes more than ten minutes");
       if (n && (secs < n * 20 || secs > n * 90))
         silly.push(f.rel + " " + m.id + ": " + n + " questions in " + mins[1] + " min");
     });
-    if (claimed && total > 10) over.push(f.rel + ": " + total + " min");
+    if (claimed && total > 15) over.push(f.rel + ": " + total + " min");
   });
-  ok("every section fits in ten minutes", !over.length, over.join(", "));
-  ok("...and every chapter's minutes match its question count", !silly.length,
+  ok("every section fits in fifteen minutes", !over.length, over.join(", "));
+  ok("...and every part's minutes match its question count", !silly.length,
      silly.slice(0, 6).join(" | "));
 }
 

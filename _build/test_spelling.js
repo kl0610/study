@@ -86,9 +86,9 @@ LISTS.forEach(L => {
     if (w.sent.replace("___", "").toLowerCase().indexOf(w.w.toLowerCase()) !== -1)
       bad.push(w.w + ": the sentence gives the word away");
     if (!w.def || !w.pos) bad.push(w.w + ": no definition or part of speech");
-    /* Only these four have a pill style. Anything else renders as bare text on
+    /* Only these have a pill style. Anything else renders as bare text on
        a coloured chip that was never sized for it. */
-    if (["n", "v", "adj", "adv"].indexOf(w.pos) === -1)
+    if (["n", "v", "adj", "adv", "prep"].indexOf(w.pos) === -1)
       bad.push(w.w + ": part of speech " + w.pos + " has no pill style");
   });
   ok(N + " words, every one of them sound", !bad.length, bad.join(" | "));
