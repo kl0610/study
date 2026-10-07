@@ -582,6 +582,11 @@ APPS = {
     "reading/sherlock-beeches-1": (reads("beeches1"),
                                    dict(app="beeches1", shake="#card", lift=None,
                                         dragon=["m1", "m2", "m3", "m4", "m5", "m6"])),
+    # Pages 185 to 198: the dress, the mirror, the hair in the drawer and the
+    # barred door. Stops mid-sentence on 198, before Holmes answers her.
+    "reading/sherlock-beeches-2": (reads("beeches2"),
+                                   dict(app="beeches2", shake="#card", lift=None,
+                                        dragon=["m1", "m2", "m3", "m4"])),
 }
 
 # ---------------------------------------------------------------- machinery

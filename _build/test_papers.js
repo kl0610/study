@@ -351,6 +351,12 @@ for (const a of PAPERED) {
          account of it, Mrs. Rucastle's tears and the Tollers are on 184. */
       "reading/sherlock-beeches-1": ["toller", "secret sorrow", "savage fits",
         "ill-natured", "colorless in mind", "giving pain", "spoilt"],
+      /* 185-198 stops mid-sentence on 198 -- "I would send you a" -- and the
+         word is "wire". Holmes's plan for the evening is on 199. Toller is in
+         range here; "Mrs. Toller" is not, since the reading only ever calls
+         her Toller's wife. */
+      "reading/sherlock-beeches-2": ["wine cellar", "brave and sensible",
+        "seven o'clock", "alice", "mrs. toller", "give the alarm"],
     };
     const early = (AHEAD[a.rel] || []).filter(w => text.indexOf(w) !== -1);
     ok("nothing gives away what is on the page after the reading", !early.length,
