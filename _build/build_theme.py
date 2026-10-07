@@ -293,6 +293,11 @@ def spell6(s):
     return Patcher(s, "spelling6")
 
 
+def recite4(s):
+    """Fireflies in the Garden — generated from the owl's shell. Config only."""
+    return Patcher(s, "recite4")
+
+
 def spell8(s):
     """Spelling List 8 — same again. Config only. There is no List 7: that
     week's sheet never came, and the hub still shows it unbuilt."""
@@ -460,6 +465,9 @@ APPS = {
                                            dragon=["l5"], subject="Recitation")),
     "recitation/the-arrow-and-the-song": (recite3,
                                      dict(app="recite3", shake="#card", lift=None,
+                                          dragon=["l5"], subject="Recitation")),
+    "recitation/fireflies-in-the-garden": (recite4,
+                                     dict(app="recite4", shake="#card", lift=None,
                                           dragon=["l5"], subject="Recitation")),
     # Recitation. Five levels over one poem, each giving a little less away;
     # l5 is saying it with nothing on the screen, so that is where the dragon

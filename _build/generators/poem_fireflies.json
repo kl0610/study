@@ -1,0 +1,83 @@
+{
+ "title": "Fireflies in the <em>Garden</em>",
+ "plain": "Fireflies in the Garden",
+ "eyebrow": "Recitation · Poem of the fortnight",
+ "sub": "Learn it a piece at a time. Every level gives you a little less, and the picture for the line you are on stays with you the whole way — so by the last level the picture alone is enough.",
+ "source": "Robert Frost, from West-Running Brook, 1928.",
+ "lines": [
+  {
+   "t": "Here come real stars to fill the upper skies,",
+   "art": "stars"
+  },
+  {
+   "t": "And here on earth come emulating flies",
+   "art": "flies"
+  },
+  {
+   "t": "That, though they never equal stars in size",
+   "art": "size"
+  },
+  {
+   "t": "(And they were never really stars at heart),",
+   "art": "heart"
+  },
+  {
+   "t": "Achieve at times a very star-like start.",
+   "art": "start"
+  },
+  {
+   "t": "Only, of course, they can’t sustain the part.",
+   "art": "fade"
+  }
+ ],
+ "levels": [
+  {
+   "id": "l1",
+   "mode": "last",
+   "name": "Last words",
+   "art": "always",
+   "tag": "One blank at the end of each line",
+   "blurb": "The whole poem is in front of you and only the last word of each line is missing. The picture for the line you are on sits underneath from the start, so the two begin to go together."
+  },
+  {
+   "id": "l2",
+   "mode": "first",
+   "name": "First words",
+   "art": "always",
+   "tag": "One blank at the start of each line",
+   "blurb": "Now the first word of each line is gone. Starting a line is the bit people get stuck on when they stand up to recite — and the picture is still there beside you."
+  },
+  {
+   "id": "l3",
+   "mode": "half",
+   "name": "Half gone",
+   "art": "always",
+   "tag": "Every other word missing",
+   "blurb": "About half the words are away now, spread through the poem. The shape of it is still there to lean on, and so is the picture."
+  },
+  {
+   "id": "l4",
+   "mode": "line",
+   "name": "Line by line",
+   "art": "always",
+   "tag": "Type a whole line",
+   "blurb": "One whole line at a time, with the rest of the poem still around it. Look at the picture first and see whether the line comes."
+  },
+  {
+   "id": "l5",
+   "mode": "heart",
+   "name": "By heart",
+   "boss": true,
+   "tag": "Nothing but the picture",
+   "blurb": "No words on the screen at all — just the six pictures you have had beside you the whole way up, one for each line, and you say it from memory."
+  }
+ ],
+ "art": {
+  "stars": "<svg viewBox=\"0 0 200 140\" role=\"img\" aria-label=\"A night sky filling with stars above a dark garden\">\n  <rect width=\"200\" height=\"140\" fill=\"#22314C\"/>\n  <path d=\"M0 116 L200 110 L200 140 L0 140 Z\" fill=\"#1B2A20\"/>\n  <g fill=\"#F4F7FB\">\n    <path d=\"M40 15 L43.5 22.5 L51 26 L43.5 29.5 L40 37 L36.5 29.5 L29 26 L36.5 22.5 Z\"/>\n    <path d=\"M104 10 L106.6 15.4 L112 18 L106.6 20.6 L104 26 L101.4 20.6 L96 18 L101.4 15.4 Z\"/>\n    <path d=\"M158 26.5 L161 33 L167.5 36 L161 39 L158 45.5 L155 39 L148.5 36 L155 33 Z\"/>\n    <path d=\"M72 53 L74.3 57.7 L79 60 L74.3 62.3 L72 67 L69.7 62.3 L65 60 L69.7 57.7 Z\"/>\n    <path d=\"M132 63.5 L134.2 67.8 L138.5 70 L134.2 72.2 L132 76.5 L129.8 72.2 L125.5 70 L129.8 67.8 Z\"/>\n  </g>\n  <g fill=\"#C9D8EA\">\n    <circle cx=\"24\" cy=\"72\" r=\"1.8\"/><circle cx=\"90\" cy=\"40\" r=\"1.6\"/>\n    <circle cx=\"176\" cy=\"16\" r=\"1.8\"/><circle cx=\"56\" cy=\"92\" r=\"1.5\"/>\n    <circle cx=\"150\" cy=\"90\" r=\"1.5\"/><circle cx=\"188\" cy=\"58\" r=\"1.6\"/>\n    <circle cx=\"12\" cy=\"34\" r=\"1.4\"/><circle cx=\"118\" cy=\"96\" r=\"1.4\"/>\n  </g>\n</svg>",
+  "flies": "<svg viewBox=\"0 0 200 140\" role=\"img\" aria-label=\"Small glowing fireflies rising out of a dark garden, with a few far-off stars above them\">\n  <rect width=\"200\" height=\"140\" fill=\"#22314C\"/>\n  <g fill=\"#9FB6D2\">\n    <circle cx=\"36\" cy=\"16\" r=\"1.6\"/><circle cx=\"96\" cy=\"10\" r=\"1.4\"/>\n    <circle cx=\"160\" cy=\"20\" r=\"1.6\"/><circle cx=\"124\" cy=\"26\" r=\"1.3\"/>\n  </g>\n  <path d=\"M0 104 q28 -14 52 -2 q26 12 48 -4 q24 -16 50 0 q22 14 50 2 L200 140 L0 140 Z\" fill=\"#1E3326\"/>\n  <g stroke=\"#2C4A34\" stroke-width=\"4\" stroke-linecap=\"round\" fill=\"none\">\n    <path d=\"M22 138 q-4 -20 6 -32\"/><path d=\"M58 138 q4 -18 -4 -30\"/>\n    <path d=\"M112 138 q-5 -22 4 -34\"/><path d=\"M158 138 q6 -18 -2 -28\"/>\n  </g>\n  <g fill=\"#F2D06B\">\n    <circle cx=\"48\" cy=\"86\" r=\"8\" opacity=\"0.22\"/><circle cx=\"48\" cy=\"86\" r=\"3\"/>\n    <circle cx=\"92\" cy=\"66\" r=\"9\" opacity=\"0.22\"/><circle cx=\"92\" cy=\"66\" r=\"3.4\"/>\n    <circle cx=\"134\" cy=\"92\" r=\"7\" opacity=\"0.22\"/><circle cx=\"134\" cy=\"92\" r=\"2.6\"/>\n    <circle cx=\"170\" cy=\"74\" r=\"8\" opacity=\"0.22\"/><circle cx=\"170\" cy=\"74\" r=\"3\"/>\n    <circle cx=\"22\" cy=\"62\" r=\"7\" opacity=\"0.22\"/><circle cx=\"22\" cy=\"62\" r=\"2.6\"/>\n  </g>\n</svg>",
+  "size": "<svg viewBox=\"0 0 200 140\" role=\"img\" aria-label=\"A large star on one side and a tiny firefly on the other, to show how far apart in size they are\">\n  <rect width=\"200\" height=\"140\" fill=\"#22314C\"/>\n  <path d=\"M58 16 L70 54 L108 66 L70 78 L58 116 L46 78 L8 66 L46 54 Z\" fill=\"#F4F7FB\"/>\n  <g stroke=\"#49617F\" stroke-width=\"2\" stroke-dasharray=\"3 6\" stroke-linecap=\"round\">\n    <path d=\"M116 66 L140 66\"/>\n  </g>\n  <g fill=\"#F2D06B\">\n    <circle cx=\"158\" cy=\"66\" r=\"11\" opacity=\"0.18\"/>\n    <circle cx=\"158\" cy=\"66\" r=\"3.4\"/>\n  </g>\n  <ellipse cx=\"158\" cy=\"59\" rx=\"5\" ry=\"3.2\" fill=\"#46543C\"/>\n  <ellipse cx=\"153\" cy=\"57\" rx=\"2.2\" ry=\"2\" fill=\"#2B3728\"/>\n</svg>",
+  "heart": "<svg viewBox=\"0 0 200 140\" role=\"img\" aria-label=\"A firefly drawn large in profile with a small glowing heart at its tail, beside the dotted outline of the star it is not\">\n  <rect width=\"200\" height=\"140\" fill=\"#22314C\"/>\n  <path d=\"M156 26 L162 46 L182 52 L162 58 L156 78 L150 58 L130 52 L150 46 Z\" fill=\"none\" stroke=\"#49617F\" stroke-width=\"2.5\" stroke-dasharray=\"4 5\"/>\n  <g stroke=\"#2B3728\" stroke-width=\"2.5\" stroke-linecap=\"round\" fill=\"none\">\n    <path d=\"M34 72 q-8 -12 -2 -18\"/><path d=\"M41 70 q-4 -14 4 -18\"/>\n  </g>\n  <circle cx=\"40\" cy=\"80\" r=\"9\" fill=\"#2B3728\"/>\n  <ellipse cx=\"57\" cy=\"82\" rx=\"11\" ry=\"10\" fill=\"#374A30\"/>\n  <path d=\"M64 72 q30 -4 36 10 q-6 14 -36 10 q-6 -10 0 -20 Z\" fill=\"#5C7050\"/>\n  <path d=\"M67 82 q21 -2 32 0\" stroke=\"#3C4E33\" stroke-width=\"2\" fill=\"none\"/>\n  <circle cx=\"112\" cy=\"81\" r=\"18\" fill=\"#F2D06B\" opacity=\"0.18\"/>\n  <path d=\"M112 92 q-12 -8 -12 -15 q0 -6.5 6 -6.5 q4.4 0 6 4.3 q1.6 -4.3 6 -4.3 q6 0 6 6.5 q0 7 -12 15 Z\" fill=\"#F2D06B\"/>\n</svg>",
+  "start": "<svg viewBox=\"0 0 200 140\" role=\"img\" aria-label=\"A firefly with its lantern flaring, the light thrown out in rays so that for a moment it looks like a star\">\n  <rect width=\"200\" height=\"140\" fill=\"#22314C\"/>\n  <g stroke=\"#F2D06B\" stroke-width=\"3\" stroke-linecap=\"round\" opacity=\"0.7\">\n    <path d=\"M124 24 L124 42\"/><path d=\"M124 98 L124 116\"/>\n    <path d=\"M146 70 L164 70\"/>\n    <path d=\"M156 38 L142 52\"/><path d=\"M156 102 L142 88\"/>\n    <path d=\"M92 38 L106 52\"/><path d=\"M92 102 L106 88\"/>\n  </g>\n  <circle cx=\"124\" cy=\"70\" r=\"28\" fill=\"#F2D06B\" opacity=\"0.18\"/>\n  <circle cx=\"124\" cy=\"70\" r=\"17\" fill=\"#F2D06B\" opacity=\"0.35\"/>\n  <g stroke=\"#2B3728\" stroke-width=\"2.5\" stroke-linecap=\"round\" fill=\"none\">\n    <path d=\"M68 60 q-8 -11 -2 -17\"/><path d=\"M75 59 q-4 -13 4 -17\"/>\n  </g>\n  <circle cx=\"74\" cy=\"69\" r=\"8\" fill=\"#2B3728\"/>\n  <ellipse cx=\"89\" cy=\"70\" rx=\"11\" ry=\"9\" fill=\"#374A30\"/>\n  <path d=\"M96 61 q24 -3 28 9 q-4 12 -28 9 q-5 -9 0 -18 Z\" fill=\"#5C7050\"/>\n  <circle cx=\"124\" cy=\"70\" r=\"10\" fill=\"#FBEFC2\"/>\n</svg>",
+  "fade": "<svg viewBox=\"0 0 200 140\" role=\"img\" aria-label=\"The same firefly a moment later with its light gone out, while the stars above go on shining\">\n  <rect width=\"200\" height=\"140\" fill=\"#22314C\"/>\n  <g fill=\"#F4F7FB\">\n    <path d=\"M40 100 L42.6 105.4 L48 108 L42.6 110.6 L40 116 L37.4 110.6 L32 108 L37.4 105.4 Z\"/>\n    <path d=\"M170 24 L172.6 29.4 L178 32 L172.6 34.6 L170 40 L167.4 34.6 L162 32 L167.4 29.4 Z\"/>\n    <path d=\"M108 18 L110 22.4 L114.4 24 L110 25.6 L108 30 L106 25.6 L101.6 24 L106 22.4 Z\"/>\n  </g>\n  <g fill=\"#F2D06B\">\n    <circle cx=\"52\" cy=\"52\" r=\"11\" opacity=\"0.12\"/>\n    <circle cx=\"82\" cy=\"62\" r=\"8\" opacity=\"0.08\"/>\n    <circle cx=\"110\" cy=\"72\" r=\"5\" opacity=\"0.05\"/>\n  </g>\n  <path d=\"M48 50 q44 10 92 32\" stroke=\"#3E5473\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-dasharray=\"3 6\" fill=\"none\"/>\n  <g stroke=\"#44563C\" stroke-width=\"2.5\" stroke-linecap=\"round\" fill=\"none\">\n    <path d=\"M128 80 q-7 -9 -1 -14\"/><path d=\"M134 79 q-4 -11 3 -14\"/>\n  </g>\n  <circle cx=\"134\" cy=\"88\" r=\"7\" fill=\"#33422C\"/>\n  <ellipse cx=\"150\" cy=\"90\" rx=\"15\" ry=\"7.5\" fill=\"#44563C\"/>\n  <circle cx=\"164\" cy=\"91\" r=\"4.5\" fill=\"#6E6140\"/>\n</svg>"
+ }
+}
