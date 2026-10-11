@@ -1,0 +1,440 @@
+{
+ "chapter": "Chapter 5 — A Spanish Empire and Its Critics",
+ "title": "A Spanish Empire and Its Critics — The Age of Exploration, Chapter 5",
+ "eyebrow": "CKHG Grade 5 &middot; The Age of Exploration &middot; Chapter 5 &middot; Student Reader pp. 42&ndash;47",
+ "h1": "A Spanish Empire <em>and Its Critics</em>",
+ "bigQuestion": "How did European explorers and colonists treat the indigenous people of the Americas?",
+ "videos": [],
+ "missions": [
+  {
+   "id": "m1",
+   "name": "A Spanish Empire and Its Critics",
+   "tag": "12 questions · 2 papers · about 6 minutes",
+   "blurb": "One quiz for the whole chapter, with questions from each of its four headed sections and the Big Question at the end. Mostly what happened; a few on the words the chapter is built from. The card says which page answers it, and a wrong answer opens that page.",
+   "items": [
+    {
+     "type": "pick", "p": "after",
+     "hi": ["against which they had no immunities",
+            "the indigenous population had decreased to sixty thousand"],
+     "vs": [
+      {
+       "q": "The indigenous people had no immunities to European diseases. What is immunity?",
+       "opts": [
+        "The body's ability to stay free of an illness",
+        "A medicine given to somebody who is ill",
+        "A law protecting a person from punishment",
+        "The strength to recover quickly from a wound"
+       ],
+       "a": 0,
+       "why": "Having met an illness before, so your body can fight it. Europeans had met these diseases for generations; the people of the Americas never had."
+      },
+      {
+       "q": "What happened to the number of people living on Hispaniola?",
+       "opts": [
+        "It fell from hundreds of thousands to about six hundred",
+        "It doubled once the Spanish cattle ranches were set up",
+        "It stayed about the same for the whole century",
+        "It fell by about half and then slowly recovered again"
+       ],
+       "a": 0,
+       "why": "Hundreds of thousands when the Spanish arrived, sixty thousand by 1507, about six hundred by 1531. The chapter calls the effects devastating, and the numbers are why."
+      }
+     ]
+    },
+    {
+     "type": "pick", "p": "after",
+     "hi": ["Many of the Spaniards were ruthless colonists",
+            "died in large numbers in gold mines controlled by the Spanish"],
+     "vs": [
+      {
+       "q": "What does the chapter say about many of the Spanish colonists?",
+       "opts": [
+        "They were ruthless",
+        "They were homesick",
+        "They were badly paid",
+        "They were poor sailors"
+       ],
+       "a": 0,
+       "why": "The book says it plainly. As Spain grew stronger in the Americas, the situation of the indigenous peoples grew worse."
+      },
+      {
+       "q": "What two things killed indigenous people in the largest numbers?",
+       "opts": [
+        "Work in the gold mines, and European diseases",
+        "Hunger in the winter, and war between tribes",
+        "Long sea voyages, and the loss of their boats",
+        "Spanish taxes, and the closing of their markets"
+       ],
+       "a": 0,
+       "why": "Both at once. They were worked in mines the Spanish controlled, and thousands more died of diseases they had no immunity to."
+      }
+     ]
+    },
+    {
+     "type": "pick", "p": "sugar",
+     "hi": ["Sugar was a cash crop", "cattle ranches and sugar plantations"],
+     "vs": [
+      {
+       "q": "Sugar was a cash crop. What is a cash crop?",
+       "opts": [
+        "A crop that is grown to be sold",
+        "A crop that is eaten by the people who grow it",
+        "A crop that can be stored for many years",
+        "A crop that is paid for before it is planted"
+       ],
+       "a": 0,
+       "why": "Grown for money, not for the table. That is what made sugar worth planting on a large scale — and what made the owners want a large number of workers."
+      },
+      {
+       "q": "What is a plantation?",
+       "opts": [
+        "A large farm worked by many laborers for profit",
+        "A field a single family farms for its own food",
+        "A garden kept beside a settler's house",
+        "A piece of land given to a priest by the king"
+       ],
+       "a": 0,
+       "why": "A large farm growing crops for sale, worked by a large number of laborers. Who those laborers were is the question the rest of this chapter answers."
+      }
+     ]
+    },
+    {
+     "type": "pick", "p": "sugar",
+     "hi": ["the importation of enslaved people from Africa",
+            "created a labor shortage"],
+     "vs": [
+      {
+       "q": "What did the Spanish turn to when the gold mines became less profitable?",
+       "opts": [
+        "Cattle ranches and sugar plantations",
+        "Fishing fleets along the coast",
+        "Mining for silver in the mountains",
+        "Growing spices to sell back in Europe"
+       ],
+       "a": 0,
+       "why": "Gold ran down, so they farmed instead. Sugar in particular could make a plantation owner a great deal of money."
+      },
+      {
+       "q": "How was the labor shortage on the plantations filled by the sixteenth century?",
+       "opts": [
+        "By bringing enslaved people from Africa",
+        "By paying Spanish settlers to do the work",
+        "By bringing farm workers from Portugal",
+        "By using machines instead of workers"
+       ],
+       "a": 0,
+       "why": "The indigenous population had collapsed, and the plantations still wanted workers. This is where the Atlantic slave trade begins, and chapter 10 follows it."
+      }
+     ]
+    },
+    {
+     "type": "pick", "p": "conq",
+     "hi": ["Spanish conquistadors", "gained control of much of South and Central America"],
+     "vs": [
+      {
+       "q": "What is a conquistador?",
+       "opts": [
+        "The Spanish word for conqueror",
+        "The Spanish word for a sailor",
+        "The Spanish word for a landowner",
+        "The Spanish word for an explorer"
+       ],
+       "a": 0,
+       "why": "Conqueror. The word tells you what these men came to do, and it is not the same thing as exploring."
+      },
+      {
+       "q": "What did the Spanish conquistadors do between 1495 and 1535?",
+       "opts": [
+        "Gained control of much of South and Central America",
+        "Mapped the whole coastline of North America",
+        "Set up trading posts along the coast of Africa",
+        "Drove the Portuguese out of the Spice Islands"
+       ],
+       "a": 0,
+       "why": "Forty years, and most of two continents. Cortes destroyed the Aztec Empire in Mexico, and Pizarro invaded the Inca civilization in Peru."
+      }
+     ]
+    },
+    {
+     "type": "pick", "p": "balboa",
+     "hi": ["explored the Isthmus of Panama together",
+            "they learned about a great sea to the west"],
+     "vs": [
+      {
+       "q": "Balboa and Pizarro crossed the Isthmus of Panama. What is an isthmus?",
+       "opts": [
+        "A narrow strip of land joining two larger ones",
+        "A narrow channel of water between two seas",
+        "A mountain pass between two valleys",
+        "A chain of islands close to a coast"
+       ],
+       "a": 0,
+       "why": "A narrow neck of land. Panama is the famous one, and crossing it meant swamps, snakes, crocodiles, mosquitoes, jungle and mountains."
+      },
+      {
+       "q": "Why did Balboa organize his expedition in 1513?",
+       "opts": [
+        "He had heard of a great sea to the west",
+        "He had been ordered to find the Aztec capital",
+        "He wanted to reach Peru before Pizarro",
+        "He was looking for a river full of gold"
+       ],
+       "a": 0,
+       "why": "He and Pizarro had learned about it while exploring the isthmus. He picked a hundred and ninety of his toughest men and set out to find it."
+      }
+     ]
+    },
+    {
+     "type": "pick", "p": "balboa",
+     "hi": ["Today, we call it the Pacific Ocean",
+            "claimed all the lands washed by this sea"],
+     "vs": [
+      {
+       "q": "Balboa called the water he found the South Sea. What do we call it today?",
+       "opts": [
+        "The Pacific Ocean",
+        "The Caribbean Sea",
+        "The Atlantic Ocean",
+        "The Gulf of Mexico"
+       ],
+       "a": 0,
+       "why": "The Pacific. He walked down the mountain and tasted the water to be sure it really was the sea."
+      },
+      {
+       "q": "What did Balboa do once he reached the shore?",
+       "opts": [
+        "Claimed every land touched by that sea for Spain",
+        "Built a fort to guard the crossing",
+        "Sent his men home with the news",
+        "Made a treaty with the people living there"
+       ],
+       "a": 0,
+       "why": "All the lands washed by that sea, in the name of Spain — a sea he had seen from one mountaintop. The chapter adds, drily, that Europeans so often did this."
+      }
+     ]
+    },
+    {
+     "type": "pick", "p": "enc",
+     "hi": ["building an empire in the Americas required settlers",
+            "To encourage migration to these new lands"],
+     "vs": [
+      {
+       "q": "What is an empire?",
+       "opts": [
+        "Lands under the control of one ruler",
+        "A country with no ruler at all",
+        "A group of countries that trade freely",
+        "A colony that has broken away"
+       ],
+       "a": 0,
+       "why": "A group of countries or territories under one government or ruler. Spain was building one, and an empire needs people living in it."
+      },
+      {
+       "q": "Why did the Spanish set up the system of encomiendas?",
+       "opts": [
+        "To encourage settlers to move to the new lands",
+        "To pay back the money the king had borrowed",
+        "To protect the indigenous people from colonists",
+        "To stop the Portuguese settling in Brazil"
+       ],
+       "a": 0,
+       "why": "Building an empire required settlers, and settlers had to be tempted. What they were offered is the next question."
+      }
+     ]
+    },
+    {
+     "type": "pick", "p": "enc",
+     "hi": ["a large plot of land and a number of enslaved workers",
+            "led to the further enslavement of indigenous peoples"],
+     "vs": [
+      {
+       "q": "What did a Spanish settler get under the encomienda system?",
+       "opts": [
+        "A large plot of land and enslaved workers",
+        "A ship and a crew to sail it home",
+        "A share of all the gold from the mines",
+        "A title and a seat at the king's court"
+       ],
+       "a": 0,
+       "why": "Land and people, together. That is the whole system in one sentence."
+      },
+      {
+       "q": "What did the encomienda system lead to?",
+       "opts": [
+        "Further enslavement of indigenous peoples",
+        "Better treatment of indigenous peoples",
+        "The end of Spanish settlement overseas",
+        "A new treaty with Portugal over land"
+       ],
+       "a": 0,
+       "why": "It clearly benefited Spain and the Spanish settlers. The book puts the other half of that sentence immediately afterwards, and does not soften it."
+      }
+     ]
+    },
+    {
+     "type": "pick", "p": "lascasas",
+     "hi": ["some people spoke out against such cruelty",
+            "he was granted a large encomienda"],
+     "vs": [
+      {
+       "q": "Who spoke out against the cruelty to the indigenous people?",
+       "opts": [
+        "Bartolome de Las Casas",
+        "Vasco Nunez de Balboa",
+        "Francisco Pizarro",
+        "Amerigo Vespucci"
+       ],
+       "a": 0,
+       "why": "Las Casas, a priest in Hispaniola. Many Spaniards grew rich by conquering or enslaving people; he is the chapter's critic."
+      },
+      {
+       "q": "What had Las Casas himself been granted in Hispaniola?",
+       "opts": [
+        "A large encomienda, with enslaved workers",
+        "Command of a fleet of Spanish ships",
+        "The governorship of the whole island",
+        "A gold mine in the mountains inland"
+       ],
+       "a": 0,
+       "why": "This is what makes him interesting. He was inside the system, profiting from it, before he turned against it."
+      }
+     ]
+    },
+    {
+     "type": "pick", "p": "lascasas",
+     "hi": ["the encomienda system was wrong",
+            "wrote a book telling people in Spain what was happening"],
+     "vs": [
+      {
+       "q": "What did Las Casas eventually conclude?",
+       "opts": [
+        "That the encomienda system was wrong",
+        "That the colonies should be given up",
+        "That Spain should take more land",
+        "That the mines should be closed down"
+       ],
+       "a": 0,
+       "why": "He gave up his own encomienda's logic and began preaching against the enslavement of people."
+      },
+      {
+       "q": "What did Las Casas do to try to change things?",
+       "opts": [
+        "Went to the king, and wrote a book about it",
+        "Freed every enslaved person on Hispaniola",
+        "Led a rebellion against the Spanish settlers",
+        "Refused to let any more settlers land"
+       ],
+       "a": 0,
+       "why": "He returned to Spain to seek the king's support and wrote a book telling people at home what was really happening in the Americas."
+      }
+     ]
+    },
+    {
+     "type": "pick", "bq": true, "p": "after",
+     "hi": "the situation of the indigenous peoples grew worse",
+     "vs": [
+      {
+       "q": "How did European explorers and colonists treat the indigenous people of the Americas?",
+       "opts": [
+        "Harshly — forced labor, enslavement, and ruinous disease",
+        "As equals, trading with them on entirely fair terms",
+        "They mostly left them alone and kept to the coastline",
+        "They paid them wages to work in the gold mines"
+       ],
+       "a": 0,
+       "why": "This is the chapter's Big Question, and the chapter does not soften the answer: mines, encomiendas, enslavement, and diseases that emptied whole islands."
+      },
+      {
+       "q": "As Spain grew stronger in the Americas, what happened to the indigenous peoples?",
+       "opts": [
+        "Their situation grew worse",
+        "Their situation slowly improved",
+        "They were left to govern themselves",
+        "They were sent to settle in Spain"
+       ],
+       "a": 0,
+       "why": "The chapter's second sentence, and the shape of the whole chapter. The one voice raised against it is Las Casas."
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "passages": {
+  "after": {
+   "section": "After Columbus",
+   "title": "After Columbus — what happened to the people already there",
+   "cite": "Student Reader, page 42",
+   "vocab": [
+    ["immunity", "a body's ability to remain free of illness even after being exposed to the cause of the illness"]
+   ],
+   "text": [
+    "The Spanish continued to expand their lands in the Americas after Columbus died. As the Spanish grew stronger, the situation of the indigenous peoples grew worse. Many of the Spaniards were ruthless colonists.",
+    "Indigenous people died in large numbers in gold mines controlled by the Spanish. Thousands more died from European diseases against which they had no immunities . The effects were devastating.",
+    "When the Spanish first arrived in Hispaniola, it had hundreds of thousands of inhabitants. By 1507 , the indigenous population had decreased to sixty thousand. By 1531, there were only about six hundred native inhabitants left on the island."
+   ]
+  },
+  "sugar": {
+   "section": "After Columbus",
+   "title": "After Columbus — ranches, sugar, and a labor shortage",
+   "cite": "Student Reader, page 44",
+   "vocab": [
+    ["plantation", "a large farm where one or more crops were grown by a large number of laborers; these crops were sold for a profit by the plantation owner"],
+    ["cash crop", "a crop that is grown to be sold"]
+   ],
+   "text": [
+    "When the gold mines became less profitable, the Spanish introduced cattle ranches and sugar plantations. Sugar was a cash crop. This meant that the plantation owners could earn a lot of money growing and selling sugar.",
+    "But the rapid decline of the indigenous population created a labor shortage. By the sixteenth century, that shortage was being filled by the importation of enslaved people from Africa."
+   ]
+  },
+  "conq": {
+   "section": "The Conquistadors",
+   "title": "The Conquistadors — forty years, two continents",
+   "cite": "Student Reader, page 44",
+   "vocab": [
+    ["conquistador", "the Spanish word for conqueror"]
+   ],
+   "text": [
+    "Between 1495 and 1535, Spanish conquistadors (/kon*kees*tuh*dorz/) gained control of much of South and Central America."
+   ]
+  },
+  "balboa": {
+   "section": "The Conquistadors",
+   "title": "The Conquistadors — Balboa crosses Panama",
+   "cite": "Student Reader, pages 44–45",
+   "vocab": [
+    ["isthmus", "a narrow piece of land that connects two larger land masses"]
+   ],
+   "text": [
+    "Balboa and Pizarro explored the Isthmus of Panama together. During their explorations, they learned about a great sea to the west. In 1513, Balboa organized an expedition to find this sea. He chose one hundred ninety of his toughest men, including Pizarro, as well as men to carry equipment and supplies.",
+    "On September 25, 1513, they stood atop a mountain and looked out over a body of water Balboa called 'the South Sea.' Today, we call it the Pacific Ocean. Balboa marched down to the ocean and tasted the salt water, just to be sure. Then, as Europeans so often did, he claimed all the lands washed by this sea in the name of his homeland, Spain."
+   ]
+  },
+  "enc": {
+   "section": "Encomiendas",
+   "title": "Encomiendas — land, and the people on it",
+   "cite": "Student Reader, pages 45–46",
+   "vocab": [
+    ["empire", "a group of countries or territories under the control of one government or ruler"]
+   ],
+   "text": [
+    "Of course, building an empire in the Americas required settlers. To encourage migration to these new lands, the Spanish set up a system of encomiendas",
+    "This system meant that a Spanish settler was given a large plot of land and a number of enslaved workers. Encomiendas clearly benefited Spain and the Spanish settlers. They also led to the further enslavement of indigenous peoples."
+   ]
+  },
+  "lascasas": {
+   "section": "Bartolome de Las Casas",
+   "title": "Bartolome de Las Casas — the critic",
+   "cite": "Student Reader, pages 46–47",
+   "vocab": [
+    ["exploitation", "the practice of taking unfair advantage of a person or group"]
+   ],
+   "text": [
+    "Clearly many Spaniards became rich by conquering or enslaving the indigenous people of the Americas. However, some people spoke out against such cruelty.",
+    "Las Casas came from a family of explorers. His father and his uncle sailed with Christopher Columbus. In 1502, Las Casas sailed for the Americas himself. He settled in Hispaniola, where he became a priest and where he was granted a large encomienda , complete with enslaved workers.",
+    "came to the conclusion that the encomienda system was wrong. He began to preach against the enslavement of people.",
+    "Las Casas returned to Spain to seek the support of the king. He also wrote a book telling people in Spain what was happening in the Americas."
+   ]
+  }
+ }
+}

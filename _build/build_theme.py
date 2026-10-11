@@ -311,6 +311,24 @@ def ae3(s):
     return Patcher(s, "ae3")
 
 
+def ae4(s):
+    """The Age of Exploration chapter 4. Config only — the shell it is
+    built from already carries the retake, the excerpt and the papers."""
+    return Patcher(s, "ae4")
+
+
+def ae5(s):
+    """The Age of Exploration chapter 5. Config only — the shell it is
+    built from already carries the retake, the excerpt and the papers."""
+    return Patcher(s, "ae5")
+
+
+def ae6(s):
+    """The Age of Exploration chapter 6. Config only — the shell it is
+    built from already carries the retake, the excerpt and the papers."""
+    return Patcher(s, "ae6")
+
+
 def recite4(s):
     """Fireflies in the Garden — generated from the owl's shell. Config only."""
     return Patcher(s, "recite4")
@@ -530,6 +548,12 @@ APPS = {
     "history/g5-ae-ch2":     (ae2,    dict(app="ae2",        shake="#card",   lift=None,
                                            dragon=["m1"], subject="History")),
     "history/g5-ae-ch3":     (ae3,    dict(app="ae3",        shake="#card",   lift=None,
+                                           dragon=["m1"], subject="History")),
+    "history/g5-ae-ch4":     (ae4,    dict(app="ae4",        shake="#card",   lift=None,
+                                           dragon=["m1"], subject="History")),
+    "history/g5-ae-ch5":     (ae5,    dict(app="ae5",        shake="#card",   lift=None,
+                                           dragon=["m1"], subject="History")),
+    "history/g5-ae-ch6":     (ae6,    dict(app="ae6",        shake="#card",   lift=None,
                                            dragon=["m1"], subject="History")),
     # Practice is generated, and the child chooses how long a set is — so a
     # perfect run on a set of four would be trivial to arrange. Math therefore

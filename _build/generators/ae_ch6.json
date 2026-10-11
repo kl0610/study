@@ -1,0 +1,435 @@
+{
+ "chapter": "Chapter 6 — Magellan's Voyage",
+ "title": "Magellan's Voyage — The Age of Exploration, Chapter 6",
+ "eyebrow": "CKHG Grade 5 &middot; The Age of Exploration &middot; Chapter 6 &middot; Student Reader pp. 48&ndash;53",
+ "h1": "Magellan's <em>Voyage</em>",
+ "bigQuestion": "How important was it for explorers to have finally circumnavigated the globe?",
+ "videos": [],
+ "missions": [
+  {
+   "id": "m1",
+   "name": "Magellan's Voyage",
+   "tag": "12 questions · 2 papers · about 6 minutes",
+   "blurb": "One quiz for the whole chapter, with questions from both of its headed sections and the Big Question at the end. Mostly what happened; a couple on the words the chapter is built from. The card says which page answers it, and a wrong answer opens that page.",
+   "items": [
+    {
+     "type": "pick", "p": "magellan",
+     "hi": ["Magellan was born in Portugal", "Inspired by Columbus, Magellan went to sea"],
+     "vs": [
+      {
+       "q": "Where was Ferdinand Magellan born?",
+       "opts": [
+        "Portugal",
+        "Spain",
+        "Italy",
+        "England"
+       ],
+       "a": 0,
+       "why": "Portugal, during its great age of exploration. He served as a page in the Portuguese court as a boy and dreamed of life at sea."
+      },
+      {
+       "q": "Who inspired Magellan to go to sea?",
+       "opts": [
+        "Christopher Columbus",
+        "Bartolomeu Dias",
+        "Vasco da Gama",
+        "Prince Henry the Navigator"
+       ],
+       "a": 0,
+       "why": "Magellan was thirteen when Columbus sailed back to Spain full of stories about his westward voyage. That was enough."
+      }
+     ]
+    },
+    {
+     "type": "pick", "p": "magellan",
+     "hi": ["Magellan's temper eventually cost him the support",
+            "refused to send him on any more expeditions"],
+     "vs": [
+      {
+       "q": "What cost Magellan the support of the Portuguese crown?",
+       "opts": [
+        "His temper",
+        "A ship he lost",
+        "His poor navigation",
+        "A debt he could not pay"
+       ],
+       "a": 0,
+       "why": "The chapter calls him a hot-tempered fellow, usually in one kind of trouble or another. Eventually the king would send him nowhere."
+      },
+      {
+       "q": "What had Magellan done at sea before falling out with the king?",
+       "opts": [
+        "Sailed to trading centers in the East",
+        "Crossed the Atlantic with Columbus",
+        "Rounded the Cape of Good Hope alone",
+        "Mapped the whole coast of Brazil"
+       ],
+       "a": 0,
+       "why": "First as a crew member and later as a fleet commander in the Portuguese navy. He knew the eastern route well before he ever thought of going west."
+      }
+     ]
+    },
+    {
+     "type": "pick", "p": "johnlisbon",
+     "hi": ["He said he had come upon a strait",
+            "a water route through the middle of the South American continent"],
+     "vs": [
+      {
+       "q": "John of Lisbon said he had come upon a strait. What is a strait?",
+       "opts": [
+        "A narrow channel joining two larger waters",
+        "A narrow strip of land joining two larger ones",
+        "A wind that blows the same way all year",
+        "A bay with cliffs on three sides"
+       ],
+       "a": 0,
+       "why": "Water between waters. The second answer is an isthmus, which is the land version and turns up in chapter 5 — worth keeping the two apart."
+      },
+      {
+       "q": "What did John of Lisbon think his strait might lead to?",
+       "opts": [
+        "A water route through South America",
+        "A shorter way round the tip of Africa",
+        "A river full of gold in the interior",
+        "A chain of islands rich in spices"
+       ],
+       "a": 0,
+       "why": "A way through the continent instead of around it — which would have made trade, and wealth, far easier for Europe's merchants and kings."
+      }
+     ]
+    },
+    {
+     "type": "pick", "p": "johnlisbon",
+     "hi": ["Magellan turned his back on Portugal forever",
+            "make trade and the accumulation of wealth easier"],
+     "vs": [
+      {
+       "q": "What did Magellan do once he was given command of a Spanish expedition?",
+       "opts": [
+        "Turned his back on Portugal forever",
+        "Asked the Portuguese king to forgive him",
+        "Sold his ships and stayed at home",
+        "Sailed under both flags at once"
+       ],
+       "a": 0,
+       "why": "A Portuguese captain sailing for Spain. His own king had refused him, and a friend got him the Spanish command instead."
+      },
+      {
+       "q": "Why would a route through South America have mattered so much to Europe?",
+       "opts": [
+        "It would make trade and wealth easier to come by",
+        "It would let Spain settle the whole continent",
+        "It would keep the Portuguese out of the Pacific",
+        "It would shorten the voyage round Africa"
+       ],
+       "a": 0,
+       "why": "Easier trade meant more money, for explorers, traders, merchants, and of course the kings paying for it all."
+      }
+     ]
+    },
+    {
+     "type": "pick", "p": "voyage",
+     "hi": ["five ships carrying 277 men left port", "Magellan faced a mutiny"],
+     "vs": [
+      {
+       "q": "How many ships and men set out in September 1519?",
+       "opts": [
+        "Five ships and 277 men",
+        "Three ships and 90 men",
+        "Thirteen ships and 500 men",
+        "One ship and 60 men"
+       ],
+       "a": 0,
+       "why": "Remember these two numbers. What comes back at the end of the chapter is the whole point of the Big Question."
+      },
+      {
+       "q": "What went wrong in the first week of the voyage?",
+       "opts": [
+        "The crew mutinied, and Magellan held on to command",
+        "Two of the five ships were lost in a bad storm",
+        "The fleet ran out of fresh water at once",
+        "A fire destroyed most of the supplies"
+       ],
+       "a": 0,
+       "why": "The first of three mutinies in this chapter. The boats had also started leaking straight away."
+      }
+     ]
+    },
+    {
+     "type": "pick", "p": "voyage",
+     "hi": ["the strait did not provide a route through the continent",
+            "Instead it flowed into a bay"],
+     "vs": [
+      {
+       "q": "What did Magellan's crew find when they explored John of Lisbon's strait?",
+       "opts": [
+        "It flowed into a bay and went no farther",
+        "It led straight through to the Pacific",
+        "It was blocked by ice all year round",
+        "It did not exist at all"
+       ],
+       "a": 0,
+       "why": "A dead end. After a three-month voyage and a mutiny, the thing they had come for turned out to be a bay."
+      },
+      {
+       "q": "What problem did the ships have from the very start?",
+       "opts": [
+        "They started leaking",
+        "They had no charts aboard",
+        "Their sails were the wrong kind",
+        "They were too small to carry food"
+       ],
+       "a": 0,
+       "why": "Right away, the chapter says. A leaking fleet, an angry crew and a strait that led nowhere is how this voyage begins."
+      }
+     ]
+    },
+    {
+     "type": "pick", "p": "south",
+     "hi": ["Magellan decided to keep sailing south",
+            "Magellan faced his second mutiny"],
+     "vs": [
+      {
+       "q": "What did Magellan decide after talking it over with his officers?",
+       "opts": [
+        "To keep sailing south",
+        "To sail east to Africa and the Spice Islands",
+        "To turn back up the coast and wait out the winter",
+        "To return to Spain and start again"
+       ],
+       "a": 0,
+       "why": "The other two answers are what his officers wanted. He overruled them both, and then met high winds, rough seas and heavy snow."
+      },
+      {
+       "q": "Where did Magellan face his second mutiny?",
+       "opts": [
+        "In a harbor on the coast of what is now Argentina",
+        "In the middle of the Atlantic, out of sight of land",
+        "At the mouth of the strait he was looking for",
+        "On one of the islands of the Philippines"
+       ],
+       "a": 0,
+       "why": "Snow had stopped the fleet altogether, and he had led an angry crew into harbor to wait. Once again he regained control."
+      }
+     ]
+    },
+    {
+     "type": "pick", "p": "strait",
+     "hi": ["a storm blew his remaining ships into a narrow strait",
+            "violent tides threatened to smash the ships against the rocks"],
+     "vs": [
+      {
+       "q": "How did Magellan finally find the strait he was looking for?",
+       "opts": [
+        "A storm blew his ships into it",
+        "A map from John of Lisbon showed it",
+        "A local guide led the fleet to it",
+        "He sailed the coast until he saw it"
+       ],
+       "a": 0,
+       "why": "By accident, near the southern tip of South America, after losing a ship in rough seas. It had been there all along."
+      },
+      {
+       "q": "Why were the men afraid to sail through the strait?",
+       "opts": [
+        "Tall cliffs and violent tides could wreck them",
+        "They believed sea monsters lived in it",
+        "It was frozen over for most of the year round",
+        "Nobody aboard knew how to steer in it"
+       ],
+       "a": 0,
+       "why": "Cliffs on both sides and tides that threatened to smash the ships on the rocks. Many of the men felt that finding it was enough."
+      }
+     ]
+    },
+    {
+     "type": "pick", "p": "strait",
+     "hi": ["The crew of one ship mutinied and did turn back",
+            "more than a month for the fleet to pass through"],
+     "vs": [
+      {
+       "q": "What did the crew of one of Magellan's ships do at the strait?",
+       "opts": [
+        "Mutinied and turned back",
+        "Ran aground on the rocks",
+        "Sailed ahead to scout the way",
+        "Refused to leave the harbor"
+       ],
+       "a": 0,
+       "why": "The third mutiny, and the only one that worked. Three ships pressed on without them."
+      },
+      {
+       "q": "How long did it take the fleet to pass through the strait?",
+       "opts": [
+        "More than a month",
+        "A single day",
+        "About a week",
+        "Nearly a year"
+       ],
+       "a": 0,
+       "why": "More than a month in a channel that could have wrecked them at any point. It is now called the Straits of Magellan."
+      }
+     ]
+    },
+    {
+     "type": "pick", "p": "pacific",
+     "hi": ["he named the body of water the Pacific Ocean",
+            "Magellan did not know the size of the Pacific Ocean"],
+     "vs": [
+      {
+       "q": "Why did Magellan name the ocean the Pacific?",
+       "opts": [
+        "Its waters were so peaceful",
+        "It was named for his ship",
+        "It lay to the west of the strait",
+        "A Spanish king had asked for the name"
+       ],
+       "a": 0,
+       "why": "Pacific means peaceful. After a month in the strait, a vast calm ocean was worth kneeling down and giving thanks for."
+      },
+      {
+       "q": "What did Magellan badly misjudge about the Pacific?",
+       "opts": [
+        "How big it was",
+        "How cold it was",
+        "How deep it was",
+        "How stormy it was"
+       ],
+       "a": 0,
+       "why": "He thought his ships would reach Asia in a matter of days. The ocean was so large that supplies ran out long before they got there."
+      }
+     ]
+    },
+    {
+     "type": "pick", "p": "end",
+     "hi": ["Magellan was killed in a confrontation with island chieftains",
+            "nearly three years after they had begun the journey"],
+     "vs": [
+      {
+       "q": "What happened to Magellan himself?",
+       "opts": [
+        "He was killed in the Philippine Islands",
+        "He drowned off the tip of South America",
+        "He died of hunger crossing the Pacific",
+        "He went home to Spain with one ship"
+       ],
+       "a": 0,
+       "why": "His men wanted to head for the Spice Islands and home; he wanted to explore the Philippines. It was his last command, and he was killed in a confrontation with island chieftains."
+      },
+      {
+       "q": "Who brought the surviving crew home, and when?",
+       "opts": [
+        "Juan Sebastian del Cano, in September 1522",
+        "John of Lisbon, in September 1522",
+        "Juan Sebastian del Cano, in March 1520",
+        "Francisco Pizarro, in January 1523"
+       ],
+       "a": 0,
+       "why": "Nearly three years after they had set out. Magellan never finished the voyage that carries his name."
+      }
+     ]
+    },
+    {
+     "type": "pick", "bq": true, "p": "end",
+     "hi": ["Only one ship of the original five remained",
+            "Only eighteen of the original crew of 277 survived"],
+     "vs": [
+      {
+       "q": "How important was it for explorers to have finally circumnavigated the globe?",
+       "opts": [
+        "Hugely — it proved the world could be sailed right round",
+        "Barely — the route was far too hard ever to use again",
+        "Only to Spain, because the ship was Spanish",
+        "Not at all, because Magellan did not survive it"
+       ],
+       "a": 0,
+       "why": "This is the chapter's Big Question. To circumnavigate is to travel completely around something by water, and until this voyage nobody knew it could be done at all."
+      },
+      {
+       "q": "What did the voyage cost, for that achievement?",
+       "opts": [
+        "Four of five ships, and all but eighteen of 277 men",
+        "One ship and about half of the crew",
+        "Two ships, with every one of the men coming home",
+        "Every ship, with only Magellan surviving"
+       ],
+       "a": 0,
+       "why": "One ship and eighteen men came back. The Big Question is asking whether a thing that costs this much is worth it — and the chapter's answer is that they achieved a feat previously unheard of."
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "passages": {
+  "magellan": {
+   "section": "Ferdinand Magellan",
+   "title": "Ferdinand Magellan — a Portuguese captain in trouble",
+   "cite": "Student Reader, page 48",
+   "text": [
+    "Magellan was born in Portugal during the great age of Portuguese exploration. As a boy, he served as a page in the Portuguese court. He dreamed of life at sea. Magellan was thirteen when Columbus sailed back to Spain with tales of his westward travels. Inspired by Columbus, Magellan went to sea.",
+    "Magellan was a hot-tempered fellow, and he was usually in one kind of trouble or another. His first expeditions took him to trading centers in the East, first as a crew member and later as a fleet commander in the Portuguese navy. But Magellan's temper eventually cost him the support of the Portuguese crown. The time came when the king refused to send him on any more expeditions."
+   ]
+  },
+  "johnlisbon": {
+   "section": "Ferdinand Magellan",
+   "title": "Ferdinand Magellan — the rumour of a strait",
+   "cite": "Student Reader, pages 48–50",
+   "vocab": [
+    ["strait", "a narrow body of water that connects two larger bodies of water"]
+   ],
+   "text": [
+    "He said he had come upon a strait . He thought this new information might lead to the discovery of a water route through the middle of the South American continent.",
+    "If there was such a route, this would make trade and the accumulation of wealth easier for the European explorers, traders, and merchants, and of course for the kings of Europe. John of Lisbon fired up Magellan's imagination. When another friend helped him gain command of a Spanish expedition to explore this strait, Magellan turned his back on Portugal forever."
+   ]
+  },
+  "voyage": {
+   "section": "Ferdinand Magellan",
+   "title": "Ferdinand Magellan — a leaking fleet and a dead end",
+   "cite": "Student Reader, page 50",
+   "text": [
+    "In September 1519, five ships carrying 277 men left port for the three-month voyage to Brazil. Right away, the boats started leaking. A week into the voyage, Magellan faced a mutiny. But he held onto his command. In January 1520, the ships reached the waters that John of Lisbon had described.",
+    "Magellan was soon disappointed. The crew sent to explore the strait returned with news that the strait did not provide a route through the continent to the Pacific Ocean. Instead it flowed into a bay."
+   ]
+  },
+  "south": {
+   "section": "Ferdinand Magellan",
+   "title": "Ferdinand Magellan — south, against everybody's advice",
+   "cite": "Student Reader, page 51",
+   "text": [
+    "Magellan met with his officers to discuss their next steps. Some wanted to sail to Africa and on to the Spice Islands, following known routes. Others wanted to go back up the coast for the winter. Magellan decided to keep sailing south.",
+    "High winds and rough seas slowed and battered the fleet. In March, heavy snow finally stopped progress altogether. Magellan led his angry crew into a harbor on the coast of what is now Argentina. There in early April, Magellan faced his second mutiny. Once again, he was able to regain control of the crew."
+   ]
+  },
+  "strait": {
+   "section": "Finding the Strait",
+   "title": "Finding the Strait — a month between the cliffs",
+   "cite": "Student Reader, page 51",
+   "text": [
+    "Magellan resumed his search in October. He lost one ship in rough seas. Near the southern tip of South America, a storm blew his remaining ships into a narrow strait. This strait turned out to be the strait Magellan had been seeking all along. Unfortunately, it was very difficult to navigate. Tall cliffs loomed up on both sides, and violent tides threatened to smash the ships against the rocks.",
+    "Many of Magellan's men felt that discovering the strait was enough. They were afraid to sail through the strait. They urged Magellan to turn back. Magellan refused. The crew of one ship mutinied and did turn back. The other three ships pressed on. It took more than a month for the fleet to pass through what would eventually be called the Straits of Magellan."
+   ]
+  },
+  "pacific": {
+   "section": "Finding the Strait",
+   "title": "Finding the Strait — an ocean bigger than anyone thought",
+   "cite": "Student Reader, pages 51–52",
+   "text": [
+    "Finally, the fleet emerged into a vast and calm ocean. Magellan and his crew knelt down and recited a prayer of thanksgiving. Magellan also pointed out to his crew that they were now sailing upon unknown waters. Because the waters were so pleasantly peaceful, he named the body of water the Pacific Ocean.",
+    "Magellan did not know the size of the Pacific Ocean. He figured his ships would reach Asia in a matter of days. The ships made landfall at some of the Pacific Islands, but the ocean was so large that supplies ran out quickly."
+   ]
+  },
+  "end": {
+   "section": "Finding the Strait",
+   "title": "Finding the Strait — what came home",
+   "cite": "Student Reader, page 53",
+   "vocab": [
+    ["circumnavigate", "to travel completely around something (such as Earth), especially by water"]
+   ],
+   "text": [
+    "Magellan, however, wanted to explore the Philippine Islands. This decision proved to be Magellan's final command to his weary men. Magellan was killed in a confrontation with island chieftains.",
+    "They finally reached Spain in September 1522, nearly three years after they had begun the journey. Only one ship of the original five remained. Only eighteen of the original crew of 277 survived."
+   ]
+  }
+ }
+}

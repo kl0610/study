@@ -1,0 +1,489 @@
+{
+ "chapter": "Chapter 4 — Christopher Columbus",
+ "title": "Christopher Columbus — The Age of Exploration, Chapter 4",
+ "eyebrow": "CKHG Grade 5 &middot; The Age of Exploration &middot; Chapter 4 &middot; Student Reader pp. 30&ndash;41",
+ "h1": "Christopher <em>Columbus</em>",
+ "bigQuestion": "Why do you think Columbus kept a secret log?",
+ "videos": [],
+ "missions": [
+  {
+   "id": "m1",
+   "name": "Christopher Columbus",
+   "tag": "13 questions · 2 papers · about 6 minutes",
+   "blurb": "One quiz for the whole chapter, with questions from each of its six headed sections and the Big Question at the end. Mostly what happened; a few on the words the chapter is built from. The card says which page answers it, and a wrong answer opens that page.",
+   "items": [
+    {
+     "type": "pick", "p": "west",
+     "hi": ["He believed he could reach the East by sailing west",
+            "the world was smaller than people imagined"],
+     "vs": [
+      {
+       "q": "What did Columbus believe he could do?",
+       "opts": [
+        "Reach the East by sailing west",
+        "Sail around Africa faster than Dias",
+        "Find a passage through North America",
+        "Reach the Spice Islands overland"
+       ],
+       "a": 0,
+       "why": "Like most educated people of his day he knew the world was round. His new idea was that you need not go round Africa at all — just keep going west."
+      },
+      {
+       "q": "What else did Columbus believe, which turned out to be wrong?",
+       "opts": [
+        "That the world was smaller than people imagined",
+        "That the world was flat at its western edge",
+        "That Africa stretched much farther south",
+        "That the Atlantic had no winds to sail by"
+       ],
+       "a": 0,
+       "why": "He thought the East Indies could not be very far west of the Canary Islands. They were not where he thought, and two continents were in the way."
+      }
+     ]
+    },
+    {
+     "type": "pick", "p": "sponsor",
+     "hi": ["spent seven years trying to convince the rulers of Europe",
+            "they agreed to pay for an expedition"],
+     "vs": [
+      {
+       "q": "Who finally agreed to pay for Columbus's voyage west?",
+       "opts": [
+        "King Ferdinand and Queen Isabella of Spain",
+        "The Portuguese king",
+        "The French king",
+        "The merchants of Venice and other Italian cities"
+       ],
+       "a": 0,
+       "why": "In 1492, and only after turning him down at first. Portugal said no outright and France kept putting him off."
+      },
+      {
+       "q": "How long had Columbus spent trying to find somebody to pay for the voyage?",
+       "opts": [
+        "Seven years",
+        "Seven months",
+        "Two years",
+        "Twenty years"
+       ],
+       "a": 0,
+       "why": "Seven years of being turned down by one court after another. The rulers who paid told him to claim any new lands he found for Spain."
+      }
+     ]
+    },
+    {
+     "type": "pick", "p": "log",
+     "hi": ["they had covered fifteen leagues", "keeping the truth in a secret log"],
+     "vs": [
+      {
+       "q": "The crew were told they had sailed fifteen leagues. What is a league?",
+       "opts": [
+        "A distance of about three miles",
+        "A length of rope used to measure speed",
+        "The time a ship sails between two sunrises",
+        "A group of ships travelling together"
+       ],
+       "a": 0,
+       "why": "About three miles. That is why the difference between fifteen and eighteen leagues mattered — it is nine miles of ocean that the crew did not know they had crossed."
+      },
+      {
+       "q": "Columbus kept the truth in a secret log. What is a ship's log?",
+       "opts": [
+        "A written record of a ship's progress",
+        "A piece of wood towed to measure speed",
+        "A list of everything stored on board",
+        "A chart of the coast a ship is following"
+       ],
+       "a": 0,
+       "why": "The record of the voyage. Columbus kept two: a false one for the crew and a true one for himself."
+      }
+     ]
+    },
+    {
+     "type": "pick", "p": "log",
+     "hi": ["even though they had really traveled eighteen leagues",
+            "He did not want them to become afraid"],
+     "vs": [
+      {
+       "q": "On the first day, Columbus told the crew fifteen leagues. How far had they really sailed?",
+       "opts": [
+        "Eighteen leagues",
+        "Twelve leagues",
+        "Twenty-one leagues",
+        "Thirty leagues"
+       ],
+       "a": 0,
+       "why": "Eighteen. He kept it up for weeks: twenty-five became twenty, thirty-nine became thirty."
+      },
+      {
+       "q": "Why did Columbus tell his crew they had sailed less than they really had?",
+       "opts": [
+        "So they would not grow afraid of how far they had gone",
+        "So the Portuguese could not follow his exact route",
+        "Because his instruments were not accurate enough",
+        "Because the king had told him to keep the route secret"
+       ],
+       "a": 0,
+       "why": "Fear was the problem he was managing. Sailors who knew how far from home they were might refuse to go on — and in the end they nearly did anyway."
+      }
+     ]
+    },
+    {
+     "type": "pick", "p": "mutiny",
+     "hi": ["the sailors threatened a mutiny", "promising to turn slightly south"],
+     "vs": [
+      {
+       "q": "The sailors threatened a mutiny. What is a mutiny?",
+       "opts": [
+        "A crew rebelling against its captain",
+        "A ship turning back without orders",
+        "A fight between two ships at sea",
+        "A refusal to share out the food"
+       ],
+       "a": 0,
+       "why": "The crew turning on the captain. They told Columbus they would throw him overboard and say he had fallen in by accident."
+      },
+      {
+       "q": "How did Columbus avoid the mutiny?",
+       "opts": [
+        "He promised to turn south and to turn back soon",
+        "He put the ringleaders in chains below deck",
+        "He showed the crew his true secret log",
+        "He promised each sailor a share of the gold"
+       ],
+       "a": 0,
+       "why": "A risky promise — turn slightly south, and give up if no land appeared soon. A few days later they began seeing birds and a floating bush with berries still on it."
+      }
+     ]
+    },
+    {
+     "type": "pick", "p": "encounter",
+     "hi": ["He was actually in the Bahamas", "name the island he was on San Salvador"],
+     "vs": [
+      {
+       "q": "Columbus thought he had reached Asia. Where was he actually?",
+       "opts": [
+        "In the Bahamas, east of what is now Florida",
+        "On the north coast of South America",
+        "On an island off the western coast of Africa",
+        "At the mouth of a river in Mexico"
+       ],
+       "a": 0,
+       "why": "A group of islands just east of present-day Florida. The lush green land looked nothing like the Asia Marco Polo had described, and there were no silks or spices to be seen."
+      },
+      {
+       "q": "What did Columbus name the island he landed on?",
+       "opts": [
+        "San Salvador",
+        "Santo Domingo",
+        "Hispaniola",
+        "Vera Cruz"
+       ],
+       "a": 0,
+       "why": "San Salvador, meaning Holy Savior. He carried the royal standard ashore himself to claim the land for Spain."
+      }
+     ]
+    },
+    {
+     "type": "pick", "p": "encounter",
+     "hi": ["carried the royal standard ashore", "but members of the Taino"],
+     "vs": [
+      {
+       "q": "Columbus carried the royal standard ashore. What is a royal standard?",
+       "opts": [
+        "A flag that represents a king or queen",
+        "A written order signed by a monarch",
+        "A chest of gifts sent by a ruler",
+        "The rule a captain must obey at sea"
+       ],
+       "a": 0,
+       "why": "A flag. Carrying it ashore was how a captain claimed land for the monarch who had paid for the voyage."
+      },
+      {
+       "q": "Columbus called the people he met Indians. Who were they really?",
+       "opts": [
+        "Members of the Taino tribe",
+        "Members of the Aztec empire",
+        "Sailors from a Portuguese ship",
+        "Traders who had come from Africa"
+       ],
+       "a": 0,
+       "why": "The Taino, peaceful people who fished the waters around their island. The wrong name stuck even after later explorers proved he had not reached the East Indies."
+      }
+     ]
+    },
+    {
+     "type": "pick", "p": "return",
+     "hi": ["named him", "Among the biggest doubters were the Portuguese"],
+     "vs": [
+      {
+       "q": "How did Ferdinand and Isabella reward Columbus when he returned?",
+       "opts": [
+        "Money, land, and the title Admiral of the Ocean Sea",
+        "A fleet of thirty ships for the next voyage",
+        "A share of all the spices brought into Spain each year",
+        "The governorship of the whole of Spain"
+       ],
+       "a": 0,
+       "why": "He told the court he had met an Indian chieftain he called the great khan, and that Cuba was Japan. They rewarded him handsomely for it."
+      },
+      {
+       "q": "Who doubted most loudly that Columbus had found a western route to Asia?",
+       "opts": [
+        "The Portuguese",
+        "The Venetians",
+        "The Arab traders",
+        "The Taino"
+       ],
+       "a": 0,
+       "why": "They thought he had found part of the African coast or some unknown Atlantic islands. The Spanish were not sure either — but decided they wanted to go there anyway."
+      }
+     ]
+    },
+    {
+     "type": "pick", "p": "treaty",
+     "hi": ["Finally, diplomats from the two countries worked out an agreement",
+            "disregarded the indigenous peoples of the Americas"],
+     "vs": [
+      {
+       "q": "Diplomats from Spain and Portugal settled the dispute. What is a diplomat?",
+       "opts": [
+        "Someone who represents their government abroad",
+        "Someone who draws the border between countries",
+        "Someone who commands a country's warships",
+        "Someone who collects taxes at a seaport"
+       ],
+       "a": 0,
+       "why": "A government's representative in another country. The pope had tried to settle the quarrel and failed; the diplomats managed it."
+      },
+      {
+       "q": "The treaty disregarded the indigenous peoples. What does indigenous mean?",
+       "opts": [
+        "Native to a particular region",
+        "Living far from any coastline",
+        "Ruled by a foreign country",
+        "Moving from place to place"
+       ],
+       "a": 0,
+       "why": "The people already there. The chapter is blunt that they had kept sophisticated cultures for hundreds, if not thousands, of years before anyone drew a line through their land."
+      }
+     ]
+    },
+    {
+     "type": "pick", "p": "treaty",
+     "hi": ["an imaginary line from the North Pole to the South Pole",
+            "west of the treaty line under Spanish control"],
+     "vs": [
+      {
+       "q": "What did the Treaty of Tordesillas do?",
+       "opts": [
+        "Divided new land between Spain and Portugal by a line",
+        "Ended the spice trade between Venice and the Arabs",
+        "Gave the pope the right to rule all new land",
+        "Promised the Taino that their islands were safe"
+       ],
+       "a": 0,
+       "why": "An imaginary line from pole to pole, 370 leagues west of the Cape Verde Islands. West of it was Spain's; east of it was Portugal's."
+      },
+      {
+       "q": "Which country ended up with what is now Brazil?",
+       "opts": [
+        "Portugal",
+        "Spain",
+        "France",
+        "England"
+       ],
+       "a": 0,
+       "why": "Brazil fell on the eastern side of the line. That is why Brazilians learned Portuguese while millions elsewhere in the Americas learned Spanish."
+      }
+     ]
+    },
+    {
+     "type": "pick", "p": "later",
+     "hi": ["forced the indigenous people to work in gold mines",
+            "Columbus lost his position as governor of the colony"],
+     "vs": [
+      {
+       "q": "What did the Columbus brothers do on Hispaniola?",
+       "opts": [
+        "Forced the indigenous people to work in gold mines",
+        "Gave the indigenous people land of their own",
+        "Built a line of forts along the Brazilian coast",
+        "Sent the Spanish settlers home to Spain"
+       ],
+       "a": 0,
+       "why": "That, and favouring some Spanish settlers over others. Complaints about it eventually reached the Spanish court."
+      },
+      {
+       "q": "What happened to Columbus after his third voyage?",
+       "opts": [
+        "He lost his position as governor of the colony",
+        "He was made Admiral of the Ocean Sea",
+        "He was given a fourth of all Spanish gold",
+        "He was sent to govern Brazil instead"
+       ],
+       "a": 0,
+       "why": "He lost the governorship and his brothers were sent back to Spain. His search for gold in the Caribbean had been unsuccessful, and the fourth voyage was worse still."
+      }
+     ]
+    },
+    {
+     "type": "pick", "p": "america",
+     "hi": ["named after another explorer", "he labeled the new continent America"],
+     "vs": [
+      {
+       "q": "Who were the Americas named after?",
+       "opts": [
+        "Amerigo Vespucci",
+        "Christopher Columbus",
+        "Bartolomeu Dias",
+        "Pedro Alvares Cabral"
+       ],
+       "a": 0,
+       "why": "Vespucci explored the coast of South America for Portugal in 1501 and published letters about it. Columbus got there first and somebody else got the name."
+      },
+      {
+       "q": "Who actually put the name America onto a map?",
+       "opts": [
+        "A German mapmaker",
+        "Queen Isabella of Spain",
+        "A Portuguese sea captain",
+        "The diplomats at Tordesillas"
+       ],
+       "a": 0,
+       "why": "A German mapmaker, impressed by Vespucci's letters describing a densely populated continent he called the New World."
+      }
+     ]
+    },
+    {
+     "type": "pick", "bq": true, "p": "log",
+     "hi": "So he lied, while keeping the truth in a secret log",
+     "vs": [
+      {
+       "q": "Why do you think Columbus kept a secret log?",
+       "opts": [
+        "To hide from his crew how far from home they were",
+        "To keep his route hidden from the Portuguese",
+        "To prove to the king how far he had sailed",
+        "Because he could not read his own instruments"
+       ],
+       "a": 0,
+       "why": "This is the chapter's Big Question. He had a frightened crew a month out of sight of land, and the true numbers would only have made it worse. The false log was how he kept them sailing."
+      },
+      {
+       "q": "What problem was the secret log meant to solve?",
+       "opts": [
+        "A frightened crew who might refuse to go on",
+        "Ships that were running short of fresh water",
+        "A quarrel between Spain and Portugal",
+        "Instruments that gave the wrong latitude"
+       ],
+       "a": 0,
+       "why": "Fear, and what fear leads to. The crew threatened to throw him overboard in the end, so the worry was real — and the Big Question is really asking what Columbus was managing."
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "passages": {
+  "west": {
+   "section": "Sailing West to the East Indies",
+   "title": "Sailing West — a new idea about an old problem",
+   "cite": "Student Reader, page 30",
+   "text": [
+    "The ships were under the command of an Italian named Christopher Columbus. Columbus had read Marco Polo's account of the East Indies and was eager to find the sources of the spices Polo had described.",
+    "His approach was a new one, however. He believed that it was unnecessary to sail all the way around Africa, as Dias had done. Like most educated people of his day, Columbus knew that the world was round. He believed he could reach the East by sailing west. He also believed that the world was smaller than people imagined. Therefore he thought that the East Indies could not be very far west of the Canary Islands."
+   ]
+  },
+  "sponsor": {
+   "section": "Sailing West to the East Indies",
+   "title": "Sailing West — finding somebody to pay",
+   "cite": "Student Reader, page 32",
+   "text": [
+    "Columbus had spent seven years trying to convince the rulers of Europe to sponsor, or pay for, a westward expedition to the Indies. The king of Portugal told him no. The king of France kept putting him off. At first, King Ferdinand and Queen Isabella of Spain declined as well. However, in 1492, they agreed to pay for an expedition. They instructed Columbus to claim any new lands he discovered for Spain.",
+    "That September, they left the Canary Islands and headed west into waters quite unfamiliar to Europeans. According to some who sailed with Columbus, many sailors wept."
+   ]
+  },
+  "log": {
+   "section": "Sailing West to the East Indies",
+   "title": "Sailing West — the two logs",
+   "cite": "Student Reader, page 33",
+   "vocab": [
+    ["league", "a unit of distance equal to approximately three miles"],
+    ["log", "a written record of a ship's progress"]
+   ],
+   "text": [
+    "On the first day of the voyage, he calculated how far they had sailed. He told his crew that they had covered fifteen leagues , even though they had really traveled eighteen leagues. He did not want them to become afraid over time of how far they were sailing. So he lied, while keeping the truth in a secret log.",
+    "Columbus kept this up for weeks. If the ships traveled twenty-five leagues, he would tell his crew twenty. If they covered thirty-nine, he would say thirty. It was a clever strategy.",
+    "They had been sailing west for a month, without any sign of land. Many of the men feared they had traveled so far west that they would never find their way back to Europe."
+   ]
+  },
+  "mutiny": {
+   "section": "Sailing West to the East Indies",
+   "title": "Sailing West — the crew turns",
+   "cite": "Student Reader, pages 34–35",
+   "vocab": [
+    ["mutiny", "the rebellion of a ship's crew against the captain"]
+   ],
+   "text": [
+    "Eventually the sailors threatened a mutiny. They warned Columbus that if he did not turn back, they would throw him overboard and tell the authorities in Spain that he had fallen in by accident.",
+    "Columbus avoided a mutiny by promising to turn slightly south. He also promised to turn back if they did not see land soon.",
+    "This was a risky promise to make, but it paid off. A few days later, sailors began to see encouraging signs. They spotted birds that were known to live on land. They saw a bush floating in the ocean, with berries still clinging to the branches."
+   ]
+  },
+  "encounter": {
+   "section": "The First Encounter",
+   "title": "The First Encounter — San Salvador",
+   "cite": "Student Reader, page 35",
+   "vocab": [
+    ["royal standard", "a flag that represents a king or queen"]
+   ],
+   "text": [
+    "When the sun rose on that day, Columbus took a landing party ashore to meet the inhabitants of what he thought was Asia. He was actually in the Bahamas, a group of islands just east of what is now Florida. Columbus decided to name the island he was on San Salvador (Holy Savior). He personally carried the royal standard ashore to claim the land for Spain.",
+    "The lush green land did not look much like the Asia described by Marco Polo. There were no silks or spices to be seen. Columbus nevertheless was convinced that he had reached the East Indies.",
+    "The inhabitants of the island were not 'Indians,' but members of the Taino"
+   ]
+  },
+  "return": {
+   "section": "The Triumphant Return",
+   "title": "The Triumphant Return — and the doubters",
+   "cite": "Student Reader, pages 36–37",
+   "text": [
+    "King Ferdinand and Queen Isabella rewarded Columbus by giving him money and land. They also named him",
+    "News of Columbus's success quickly spread across Europe. However, not everyone was convinced that Columbus had found a westward route to Asia. Among the biggest doubters were the Portuguese. They thought that Columbus had explored part of the African coast or an unknown group of islands in the Atlantic."
+   ]
+  },
+  "treaty": {
+   "section": "The Treaty of Tordesillas",
+   "title": "The Treaty of Tordesillas — a line down the world",
+   "cite": "Student Reader, page 38",
+   "vocab": [
+    ["diplomat", "someone who represents the government of one country in another country"],
+    ["indigenous", "native to a particular region or environment"]
+   ],
+   "text": [
+    "It was inevitable that Spain and Portugal would become trading rivals. Various disputes broke out between the two countries. The pope tried but failed to settle the disagreements. Finally, diplomats from the two countries worked out an agreement.",
+    "In 1494, they drew an imaginary line from the North Pole to the South Pole, 370 leagues (1,185 miles or 1,907 kilometers) west of the Cape Verde Islands.",
+    "The agreement disregarded the indigenous peoples of the Americas, who had maintained sophisticated cultures for hundreds, if not thousands, of years. The treaty placed all of North and South America west of the treaty line under Spanish control. What is modern day Brazil was given to the Portuguese."
+   ]
+  },
+  "later": {
+   "section": "The Later Voyages of Columbus",
+   "title": "The Later Voyages — how it ended for him",
+   "cite": "Student Reader, pages 39–40",
+   "text": [
+    "Columbus made three more voyages to the Americas. On his second voyage, he mapped most of the islands of the Caribbean Sea and established the permanent colony of Santo Domingo on Hispaniola. He left his brothers Bartholomew and Diego in charge while he searched the Caribbean Sea for gold. His search was unsuccessful.",
+    "The Columbus brothers forced the indigenous people to work in gold mines, and favored some Spanish settlers over others. Eventually complaints reached the Spanish court. Columbus lost his position as governor of the colony, and his brothers were sent back to Spain."
+   ]
+  },
+  "america": {
+   "section": "The Final Blow",
+   "title": "The Final Blow — somebody else gets the name",
+   "cite": "Student Reader, page 41",
+   "text": [
+    "The Americas were actually named after another explorer, Amerigo Vespucci",
+    "He wrote letters about his voyage that were published. In his letters he described a densely populated continent. He also used the term 'New World' to describe this place. A German mapmaker was so impressed with Amerigo's revelations he labeled the new continent America on the map he was working on."
+   ]
+  }
+ }
+}
