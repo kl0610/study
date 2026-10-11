@@ -221,6 +221,11 @@ def main():
         # treat [] as absent, which is how eight ecosystems chapters shipped
         # carrying a matter chapter's videos.
         "videos": spec["videos"] if "videos" in spec else [],
+        # Name the page on every question card. These chapters are revised with
+        # the book open, and a quiz that says where to check is a study guide
+        # rather than a memory test -- which is what was asked for here and is
+        # deliberately not what the reading sections do.
+        "showCite": True,
         "missions": spec["missions"],
     }
     out = shell[:b] + json.dumps(data, ensure_ascii=False, indent=1) + shell[e:]

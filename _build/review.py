@@ -660,7 +660,10 @@ def unpatch(html):
     # would match. M_CALC_NEW does not: it keeps the line it anchors on, so a
     # second pass appended a second `const miss` and every mission app stopped
     # parsing. Reverting the lot is cheaper than reasoning about which need it.
-    for _new, _old in ((V_CARD_NEW, V_CARD_OLD),
+    for _new, _old in ((C_CSS_NEW, C_CSS_OLD),
+                       (C_HEAD_NEW, C_HEAD_OLD),
+                       (C_FN_NEW, C_FN_OLD),
+                       (V_CARD_NEW, V_CARD_OLD),
                        (V_BUMP_NEW, V_BUMP_OLD),
                        (V_AGAIN_NEW, V_AGAIN_OLD),
                        (V_RENDER_NEW, V_RENDER_OLD),
@@ -1200,6 +1203,56 @@ def versions(html):
     return html
 
 
+# ------------------------------------------------------ where to look it up
+#
+# The card says which page of the book answers the question. The excerpt has
+# always named the page, but only once the question has been missed, and a
+# quiz taken with the book open wants it up front.
+#
+# `showCite` is off unless the data says otherwise. On a reading the point is
+# to remember the story, and naming the pages beside every question would make
+# it a lookup instead; on a textbook chapter looking it up is the exercise.
+
+C_FN_OLD = """/* A full run always starts by reading which paper is due."""
+
+C_FN_NEW = """/* Which page of the book answers this question. Taken from the question's own
+   passage rather than from a field of its own, so it cannot drift away from
+   the page the excerpt opens at. Apps that do not set DATA.showCite get
+   nothing, which is every app that was built before this existed. */
+function citeOf(it){
+  if(!DATA.showCite) return "";
+  const p = it && it.p && DATA.passages ? DATA.passages[it.p] : null;
+  return p && p.cite ? ` &middot; <span class="qcite">${esc(p.cite)}</span>` : "";
+}
+
+/* A full run always starts by reading which paper is due."""
+
+C_HEAD_OLD = """  const head = `<div class="qnum">Question ${idx+1} of ${RUN.length}${
+      RUNPART?" &middot; second look":""}</div><div class="q">${esc(MC.ask(it))}</div>`;"""
+
+C_HEAD_NEW = """  const head = `<div class="qnum">Question ${idx+1} of ${RUN.length}${
+      RUNPART?" &middot; second look":""}${citeOf(it)}</div><div class="q">${esc(MC.ask(it))}</div>`;"""
+
+C_CSS_OLD = """.morepg mark.hl,.vbox mark.hl{background:#FFF1B8;box-shadow:0 0 0 2px #FFF1B8;
+  color:inherit;border-radius:2px}
+"""
+
+C_CSS_NEW = """.morepg mark.hl,.vbox mark.hl{background:#FFF1B8;box-shadow:0 0 0 2px #FFF1B8;
+  color:inherit;border-radius:2px}
+.qcite{color:var(--gold,#E0A83C);letter-spacing:.1em}
+"""
+
+
+def cites(html):
+    """Name the page on the card, for apps whose data asks for it."""
+    for old, new in ((C_FN_OLD, C_FN_NEW),
+                     (C_HEAD_OLD, C_HEAD_NEW),
+                     (C_CSS_OLD, C_CSS_NEW)):
+        if old in html and new not in html:
+            html = html.replace(old, new, 1)
+    return html
+
+
 def patch(html):
     """Run every shell patch. Each is a no-op where its anchor is absent.
 
@@ -1210,4 +1263,4 @@ def patch(html):
     to the bare shell and patching that means a rebuild always applies today's
     version rather than whatever was current when the file was last written.
     """
-    return versions(excerpt(retake(hide_teacher_guide(history1(mission(history(unpatch(html))))))))
+    return cites(versions(excerpt(retake(hide_teacher_guide(history1(mission(history(unpatch(html)))))))))

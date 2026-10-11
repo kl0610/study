@@ -363,6 +363,39 @@ group("no section takes more than fifteen minutes");
      silly.slice(0, 6).join(" | "));
 }
 
+/* A quiz taken with the book open says which page answers each question. The
+   page is read from the question's own passage, so the thing that can go wrong
+   is a passage with no citation to read -- the card would then say nothing and
+   nobody would notice until a child went looking. */
+group("a card that promises a page can find one");
+{
+  const noFn = [], noCite = [];
+  FILES.forEach(f => {
+    const data = f.html.match(/const DATA = (\{[\s\S]*?\});\r?\n/);
+    if (!data) return;
+    let D;
+    try { D = JSON.parse(data[1]); } catch (e) { return; }
+    if (!D.showCite) return;
+    if (f.html.indexOf("function citeOf(it){") === -1) noFn.push(f.rel);
+    (D.missions || []).forEach(m =>
+      (m.items || []).forEach((it, n) => {
+        const p = (D.passages || {})[it.p];
+        if (!p || !p.cite)
+          noCite.push(f.rel + " " + m.id + " q" + (n + 1));
+      }));
+  });
+  ok("every app that names pages has the code to do it", !noFn.length, noFn.join(", "));
+  ok("...and every question it asks has a page to name", !noCite.length,
+     noCite.slice(0, 6).join(", "));
+
+  /* It is off for readings on purpose: naming the pages beside a question about
+     a story turns remembering into looking up. */
+  const readings = FILES.filter(f => f.rel.indexOf("reading/") === 0)
+    .filter(f => /"showCite":\s*true/.test(f.html));
+  ok("no reading section names the pages beside its questions", !readings.length,
+     readings.map(f => f.rel).join(", "));
+}
+
 console.log("");
 if (fails.length) {
   console.log(fails.length + " FAILED:");
