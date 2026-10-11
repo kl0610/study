@@ -61,7 +61,7 @@ function grab(html, name, open) {
 }
 
 const APPS = [];
-for (const dir of ["reading", "science"]) {
+for (const dir of ["reading", "science", "history"]) {
   for (const d of fs.readdirSync(path.join(ROOT, dir))) {
     const rel = dir + "/" + d;
     const file = path.join(ROOT, rel, "index.html");
@@ -249,14 +249,18 @@ ok("at least one app has versions: " + PAPERED.map(a => a.rel).join(", "),
 for (const a of PAPERED) {
   G("  " + a.rel);
   {
+    const reading = a.rel.indexOf("reading/") === 0;
     const M = a.DATA.missions || [];
-    ok("chapters that can each be sat on their own: " +
+    ok("sections that can each be sat on their own: " +
        M.map(m => m.items.length).join(" + "), M.length >= 2);
-    ok("every chapter names its pages",
-       M.every(m => /pages \d+ to \d+/.test(m.name)), M.map(m => m.name).join(" | "));
-    ok("every chapter says how many papers it has",
+    /* A reading section is named for the pages it covers. A history chapter
+       is named for what it is about, so this is asked only of readings. */
+    if (reading)
+      ok("every section names its pages",
+         M.every(m => /pages \d+ to \d+/.test(m.name)), M.map(m => m.name).join(" | "));
+    ok("every section says how many papers it has",
        M.every(m => /\d+ papers/.test(m.tag)), M.map(m => m.tag).join(" | "));
-    ok("every chapter of it is gated for the reward",
+    ok("every section of it is gated for the reward",
        M.every(m => a.html.indexOf('"' + m.id + '"') !== -1));
 
     const all = items(a);
@@ -265,7 +269,11 @@ for (const a of PAPERED) {
     ok("every question has the same number of versions: " + PAPERS,
        all.every(it => (it.vs || []).length === PAPERS),
        all.filter(it => (it.vs || []).length !== PAPERS).length + " do not");
-    ok("...and that number is five", PAPERS === 5);
+    /* Five for a reading, two for a history chapter -- the retake round is
+       meant to be reworded, which is all two papers are for. Either way every
+       question in an app has to offer the same number. */
+    ok("...and it is five for a reading, two for a chapter",
+       PAPERS === (reading ? 5 : 2), String(PAPERS));
     /* Everything a single-version question has always had to hold to. */
     const bad = { opts: [], dupe: [], range: [], why: [], tell: [] };
     all.forEach((it, n) => {
@@ -310,19 +318,21 @@ for (const a of PAPERED) {
     });
     ok("no question is worded the same way on two papers", !same.q.length, same.q.join(" "));
     ok("...or offers the same wrong answers twice", !same.wrong.length, same.wrong.join(" "));
-    ok("...or keeps its answer in one place on all five", !same.slot.length, same.slot.join(" "));
+    ok("...or keeps its answer in the same slot on every paper",
+       !same.slot.length, same.slot.join(" "));
     ok("...or marks wrong on one paper what it marks right on another",
        !same.crossed.length, same.crossed.join(" "));
 
     /* The excerpt still has to land: the highlight lives on the item, not the
        version, so one miss on any paper opens the book at the same lines. */
-    const nohi = all.filter(it => !(it.hi || []).length);
+    const marks = it => [].concat(it.hi || []).filter(Boolean);
+    const nohi = all.filter(it => !marks(it).length);
     ok("every question still points at the lines that answer it", !nohi.length);
     const lost = [];
     all.forEach((it, n) => {
       const p = a.DATA.passages[it.p];
       const body = (p.text || []).join(" ");
-      (it.hi || []).forEach(h => {
+      marks(it).forEach(h => {
         if (body.indexOf(h) === -1) lost.push("q" + (n + 1) + ": " + h.slice(0, 30));
       });
     });
@@ -361,8 +371,11 @@ for (const a of PAPERED) {
     const early = (AHEAD[a.rel] || []).filter(w => text.indexOf(w) !== -1);
     ok("nothing gives away what is on the page after the reading", !early.length,
        early.join(", "));
-    ok("...and there is a list of what that would be for this app",
-       !!AHEAD[a.rel], "add " + a.rel + " to AHEAD in test_papers.js");
+    /* Only a reading stops partway through a story and so has a next page to
+       give away. A chapter of a textbook does not. */
+    if (reading)
+      ok("...and there is a list of what that would be for this app",
+         !!AHEAD[a.rel], "add " + a.rel + " to AHEAD in test_papers.js");
   }
 }
 

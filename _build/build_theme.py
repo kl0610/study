@@ -293,6 +293,12 @@ def spell6(s):
     return Patcher(s, "spelling6")
 
 
+def ae1(s):
+    """The Age of Exploration chapter 1 — built on the ecosystems shell, so it
+    arrives with the retake, the excerpt on a miss and the papers. Config only."""
+    return Patcher(s, "ae1")
+
+
 def recite4(s):
     """Fireflies in the Garden — generated from the owl's shell. Config only."""
     return Patcher(s, "recite4")
@@ -504,6 +510,11 @@ APPS = {
                                            dragon=["s3"])),
     "history/g5-inca-ch7":    (inca7, dict(app="inca7",      shake="#card",   lift=None,
                                            dragon=["s3"])),
+    # The Age of Exploration, the second history book. Built on the science
+    # chapter shell rather than the history one, so it has the retake round and
+    # the two papers; two sections per chapter, the content and the words.
+    "history/g5-ae-ch1":      (ae1,   dict(app="ae1",        shake="#card",   lift=None,
+                                           dragon=["m1", "m2"], subject="History")),
     # Practice is generated, and the child chooses how long a set is — so a
     # perfect run on a set of four would be trivial to arrange. Math therefore
     # earns coins, hearts and ore but is not a boss level: `dragon: []` means no
