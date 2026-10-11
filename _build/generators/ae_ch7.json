@@ -1,0 +1,503 @@
+{
+ "chapter": "Chapter 7 — England Explores and Colonizes",
+ "title": "England Explores and Colonizes — The Age of Exploration, Chapter 7",
+ "eyebrow": "CKHG Grade 5 &middot; The Age of Exploration &middot; Chapter 7 &middot; Student Reader pp. 54&ndash;65",
+ "h1": "England Explores <em>and Colonizes</em>",
+ "bigQuestion": "How did European exploration of the Americas lead to settlement and colonization?",
+ "videos": [],
+ "missions": [
+  {
+   "id": "m1",
+   "name": "England Explores and Colonizes",
+   "tag": "13 questions · 2 papers · about 6 minutes",
+   "blurb": "One quiz for the whole chapter, with questions from each of its six headed sections and the Big Question at the end. Mostly what happened; a few on the words the chapter is built from. The card says which page answers it, and a wrong answer opens that page.",
+   "items": [
+    {
+     "type": "pick", "p": "cabot",
+     "hi": ["a northwesterly route to the Spice Islands",
+            "No one wanted to hear Caboto's proposal"],
+     "vs": [
+      {
+       "q": "What route did Giovanni Caboto want to find?",
+       "opts": [
+        "A northwesterly route to the Spice Islands",
+        "A route around the southern tip of Africa",
+        "A land route across the whole of Asia",
+        "A southern route past the tip of America"
+       ],
+       "a": 0,
+       "why": "Up and over the top, rather than round Africa or straight west. Years as a Venetian spice trader had made him an expert seaman, and the spirit of exploration caught him."
+      },
+      {
+       "q": "Why would neither Portugal nor Spain back Caboto's plan?",
+       "opts": [
+        "Each believed it already had a route to the East",
+        "Each thought the northern seas were frozen solid",
+        "Neither had any ships left to spare him",
+        "Both had promised the pope not to sail north"
+       ],
+       "a": 0,
+       "why": "Portugal had its route round the Cape of Good Hope and Spain thought Columbus had found another. Nobody wanted to hear about a third."
+      }
+     ]
+    },
+    {
+     "type": "pick", "p": "cabot",
+     "hi": ["Giovanni Caboto changed his name to John Cabot",
+            "the port city of Bristol, England"],
+     "vs": [
+      {
+       "q": "What happened to Giovanni Caboto's name when he moved to England?",
+       "opts": [
+        "It became John Cabot",
+        "It became Juan Caboto",
+        "It stayed exactly the same",
+        "It became Giovanni Bristol"
+       ],
+       "a": 0,
+       "why": "An Italian from Venice, by way of Spain, who ends up sailing under an English flag with an English name."
+      },
+      {
+       "q": "Which English city did Caboto move his family to?",
+       "opts": [
+        "Bristol",
+        "London",
+        "Plymouth",
+        "Boston"
+       ],
+       "a": 0,
+       "why": "The port city of Bristol, where the English monarch Henry VII and the Bristol merchants were happy to back him — hoping he would bring them great wealth."
+      }
+     ]
+    },
+    {
+     "type": "pick", "p": "newfound",
+     "hi": ["only one ship and a crew of eighteen",
+            "Cabot and the other four ships were never seen again"],
+     "vs": [
+      {
+       "q": "What did Cabot sail with in 1497?",
+       "opts": [
+        "One ship and a crew of eighteen",
+        "Five ships and 164 crewmen",
+        "Three ships and ninety men",
+        "Thirteen ships and 500 men"
+       ],
+       "a": 0,
+       "why": "One ship, eighteen men, five weeks across the North Atlantic. They came back describing fish so thick they could be scooped out of the water in baskets."
+      },
+      {
+       "q": "What happened on Cabot's next voyage?",
+       "opts": [
+        "He and four of his five ships vanished",
+        "He reached the Spice Islands at last",
+        "He was captured by a Spanish fleet",
+        "He turned back after a week at sea"
+       ],
+       "a": 0,
+       "why": "One ship came home to Bristol after a storm. To this day nobody knows for certain what happened to Cabot and the rest."
+      }
+     ]
+    },
+    {
+     "type": "pick", "p": "nwp",
+     "hi": ["one of the first explorers to seek the Northwest Passage",
+            "set the stage for the colonization of the continent"],
+     "vs": [
+      {
+       "q": "What is the Northwest Passage?",
+       "opts": [
+        "A sea route over the top of North America",
+        "A land route across the middle of Canada",
+        "A channel at the tip of South America",
+        "The route the Vikings took to Vineland"
+       ],
+       "a": 0,
+       "why": "A sea route joining the Atlantic to the Pacific along the northern coast of North America. Cabot was one of the first to go looking; many followed, including his son Sebastian."
+      },
+      {
+       "q": "What is colonization?",
+       "opts": [
+        "Settling and controlling a land where people already live",
+        "Trading with a country without ever settling in it",
+        "Mapping a coastline for the first time",
+        "Sending explorers out to go and find a new sea route"
+       ],
+       "a": 0,
+       "why": "Bringing people from one country to control and settle an area that already has an indigenous population. The word carries that last part, and the chapter means it to."
+      }
+     ]
+    },
+    {
+     "type": "pick", "p": "nwp",
+     "hi": ["a continuous band of land blocking their way",
+            "their passage prevented by ice in the water"],
+     "vs": [
+      {
+       "q": "What stopped the explorers who went looking for the Northwest Passage?",
+       "opts": [
+        "Land to the south of them and ice to the north",
+        "Storms that wrecked most of their ships",
+        "Spanish warships guarding the northern seas",
+        "Crews that mutinied before they got there"
+       ],
+       "a": 0,
+       "why": "The eastern coast of North America is a continuous band of land, and farther north the water is ice. The chapter says they were literally stopped cold."
+      },
+      {
+       "q": "The searches all failed. What useful thing came out of them anyway?",
+       "opts": [
+        "Maps of the coast of North America",
+        "A new route to the Spice Islands",
+        "Peace between England and Spain",
+        "A large supply of gold and silver"
+       ],
+       "a": 0,
+       "why": "Northern explorers generally had almost nothing to show for their efforts — except the charts. Those maps set the stage for the colonization of the continent."
+      }
+     ]
+    },
+    {
+     "type": "pick", "p": "drake",
+     "hi": ["he took every opportunity to loot Spanish trade ships",
+            "made his name as a pirate"],
+     "vs": [
+      {
+       "q": "Drake looted Spanish trade ships. What does loot mean?",
+       "opts": [
+        "To steal or take something by force",
+        "To search a ship for hidden goods",
+        "To sink a ship after taking its crew",
+        "To trade goods without paying tax"
+       ],
+       "a": 0,
+       "why": "Taking by force. Drake's own ship had been attacked and robbed by the Spanish early on, and he spent much of his adult life getting even."
+      },
+      {
+       "q": "How did one of England's greatest explorers first make his name?",
+       "opts": [
+        "As a pirate robbing Spanish and Portuguese ships",
+        "As a mapmaker working for Queen Elizabeth",
+        "As the first Englishman to reach India",
+        "As the captain who found the Northwest Passage"
+       ],
+       "a": 0,
+       "why": "And he gave the treasure to Queen Elizabeth, which is why England called him a hero and Spain called him a thief."
+      }
+     ]
+    },
+    {
+     "type": "pick", "p": "golden",
+     "hi": ["embarking on a journey around the world",
+            "Drake had only fifty-eight men and one ship left"],
+     "vs": [
+      {
+       "q": "Drake set out in 1577 on what looked like a raiding voyage. What did it turn into?",
+       "opts": [
+        "A journey around the world",
+        "A search for the Northwest Passage",
+        "An invasion of the Spanish colonies",
+        "A trading voyage to India"
+       ],
+       "a": 0,
+       "why": "He followed Magellan's example, surprising his own crew. He crossed from the Atlantic to the Pacific through the Straits of Magellan."
+      },
+      {
+       "q": "What was Drake left with by the time he reached the west coast of South America?",
+       "opts": [
+        "Fifty-eight men and one ship, the Golden Hind",
+        "Three ships and most of his original crew",
+        "Two ships and a Portuguese pilot",
+        "One ship and eighteen men"
+       ],
+       "a": 0,
+       "why": "He had set out with five ships and 164 crewmen. In the Golden Hind he went on up the coast capturing ships and raiding ports anyway."
+      }
+     ]
+    },
+    {
+     "type": "pick", "p": "armada",
+     "hi": ["It put together an armada of ships loaded with heavy cannons",
+            "demanded that Queen Elizabeth return the stolen treasure"],
+     "vs": [
+      {
+       "q": "What is an armada?",
+       "opts": [
+        "A large fleet of ships",
+        "A heavy cannon used at sea",
+        "A fort guarding a harbor",
+        "A treaty between two navies"
+       ],
+       "a": 0,
+       "why": "A large fleet. Spain loaded one with heavy cannons and soldiers and sent it in 1588 to invade England and overthrow Queen Elizabeth."
+      },
+      {
+       "q": "What did the Spanish demand of Queen Elizabeth?",
+       "opts": [
+        "Return the treasure, and hang Drake",
+        "Hand over the whole of the Golden Hind",
+        "Give up England's colonies in America",
+        "Pay for the ships Drake had burned"
+       ],
+       "a": 0,
+       "why": "The Spanish ambassador is said to have called Drake the master-thief of the unknown world. The queen refused both demands."
+      }
+     ]
+    },
+    {
+     "type": "pick", "p": "armada",
+     "hi": ["They set small ships on fire and sent them into the Spanish battle formations",
+            "marked a change in the balance of sea power"],
+     "vs": [
+      {
+       "q": "How did the English break up the Spanish battle formations?",
+       "opts": [
+        "They sent small burning ships into them",
+        "They fired heavier cannons from farther off",
+        "They blocked the harbor the Spanish needed",
+        "They waited for a storm and attacked after it"
+       ],
+       "a": 0,
+       "why": "The Spanish broke formation for fear the little ships were full of gunpowder. Then England's smaller, more mobile ships ganged up on the lumbering battleships."
+      },
+      {
+       "q": "What did the defeat of the Spanish Armada change?",
+       "opts": [
+        "Sea power began to pass from Spain to England",
+        "Spain gave up its colonies in the Americas",
+        "England took over the Spanish spice trade",
+        "The Northwest Passage was finally found"
+       ],
+       "a": 0,
+       "why": "Only about half of the armada's more than 130 ships got home. The 1500s had belonged to Spain; over the next two centuries English ships came to rule the seas."
+      }
+     ]
+    },
+    {
+     "type": "pick", "p": "colonies",
+     "hi": ["called joint-stock companies, to build the colonies",
+            "The English kings and queens did not want to spend the money"],
+     "vs": [
+      {
+       "q": "What is a joint-stock company?",
+       "opts": [
+        "A company that raises money by selling shares",
+        "A company owned entirely by a king or queen",
+        "A company that may only trade in one colony",
+        "A company run by the sailors who work for it"
+       ],
+       "a": 0,
+       "why": "Many people put money in and own a share of it. That is how England paid for colonies without the crown paying for them."
+      },
+      {
+       "q": "Why did English kings and queens hand colony-building to companies and landowners?",
+       "opts": [
+        "They did not want to spend the money themselves",
+        "They were forbidden to own land overseas",
+        "They did not believe the colonies would last",
+        "Parliament had taken the decision away from them"
+       ],
+       "a": 0,
+       "why": "Building colonial settlements was expensive. Grants of land to well-to-do people or to joint-stock companies cost the crown nothing."
+      }
+     ]
+    },
+    {
+     "type": "pick", "p": "jamestown",
+     "hi": ["Jamestown was the first permanent English settlement in North America",
+            "taught the colonists how to grow tobacco"],
+     "vs": [
+      {
+       "q": "What was the first permanent English settlement in North America?",
+       "opts": [
+        "Jamestown, Virginia, in 1607",
+        "Roanoke Island, in 1585",
+        "Plymouth, in 1620",
+        "Boston, in 1630"
+       ],
+       "a": 0,
+       "why": "Started by a joint-stock company called the London Company. Roanoke came earlier but is remembered as the Lost Colony — everyone had vanished by 1590."
+      },
+      {
+       "q": "Who rescued the struggling Jamestown colony, and what did they teach the colonists?",
+       "opts": [
+        "The Powhatan Confederacy, who taught them tobacco",
+        "The London Company, who sent them more supplies",
+        "The Pilgrims, who taught them how to fish",
+        "Spanish settlers, who taught them to grow sugar"
+       ],
+       "a": 0,
+       "why": "About thirty Native American groups sharing the Algonquian language. Tobacco was native to North America, unknown in Europe, and quickly became the colonists' cash crop."
+      }
+     ]
+    },
+    {
+     "type": "pick", "p": "eic",
+     "hi": ["chose to base their operations in India",
+            "too dangerous and too expensive"],
+     "vs": [
+      {
+       "q": "Where did England's East India Company base its operations?",
+       "opts": [
+        "India",
+        "The Maluku Islands",
+        "The West Indies",
+        "The coast of China"
+       ],
+       "a": 0,
+       "why": "Settlements at Surat, Madras, Bombay and Calcutta. The company was also given authority to raise an army, which tells you where this was heading."
+      },
+      {
+       "q": "Why did the East India Company not base itself in the Spice Islands?",
+       "opts": [
+        "Sailing that far was too dangerous and too costly",
+        "The Dutch had already taken every island",
+        "The islands had stopped growing any spices at all",
+        "England had promised Portugal to stay away"
+       ],
+       "a": 0,
+       "why": "All the way from England was judged not worth it. So England built up India instead — and before long started permanent trading posts there."
+      }
+     ]
+    },
+    {
+     "type": "pick", "bq": true, "p": "colonies",
+     "hi": ["preferred to do so by setting up permanent settlements",
+            "colonies where people would farm, fish, cut timber"],
+     "vs": [
+      {
+       "q": "How did European exploration of the Americas lead to settlement and colonization?",
+       "opts": [
+        "Explorers mapped the coast, and settlers then came to stay",
+        "Explorers found gold, so nobody needed to settle",
+        "Explorers made treaties that handed the land over",
+        "Explorers brought colonists along with them on every voyage"
+       ],
+       "a": 0,
+       "why": "This is the chapter's Big Question. Hunting for a passage produced charts instead, and those charts set the stage for colonization; England then settled the coast on purpose."
+      },
+      {
+       "q": "What did the English want from their colonies, unlike the Spanish?",
+       "opts": [
+        "Permanent settlements where people farmed and fished",
+        "Gold and silver to be shipped straight back home again",
+        "Ports to repair ships on the way to Asia",
+        "Land to give away to Native American groups"
+       ],
+       "a": 0,
+       "why": "The main purpose of many Spanish colonies was to find precious metals and send them to Spain. The English wanted people living there, farming, fishing, cutting timber — which is what turned exploration into colonization."
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "passages": {
+  "cabot": {
+   "section": "John Cabot",
+   "title": "John Cabot — a third route nobody wanted",
+   "cite": "Student Reader, page 54",
+   "text": [
+    "Caboto wanted to form an expedition to search for a northwesterly route to the Spice Islands. Unfortunately, the monarchs of both Portugal and Spain had other plans.",
+    "The Portuguese had established their own route to the East around the Cape of Good Hope at the southern tip of Africa. When Christopher Columbus returned from his voyage, the Spanish believed that they had found another route. No one wanted to hear Caboto's proposal for still another route.",
+    "Caboto moved with his family to the port city of Bristol, England. There, Giovanni Caboto changed his name to John Cabot."
+   ]
+  },
+  "newfound": {
+   "section": "John Cabot",
+   "title": "John Cabot — new found land, and then nothing",
+   "cite": "Student Reader, pages 56–57",
+   "text": [
+    "After a failed first attempt in 1496, John Cabot set sail again in 1497 . He sailed under an English flag with only one ship and a crew of eighteen. The ship crossed the North Atlantic. After five weeks of travel, the crew spotted what they called 'new found land.'",
+    "The sailors did not have any spices or silks to show for their journey, but they were able to describe scooping fish out of the",
+    "The next time Cabot set sail, he had a fleet of five ships. One of his ships returned to Bristol after a storm. Cabot and the other four ships were never seen again. To this day, nobody knows for certain what happened to them."
+   ]
+  },
+  "nwp": {
+   "section": "The Northwest Passage",
+   "title": "The Northwest Passage — the way that was not there",
+   "cite": "Student Reader, page 57",
+   "vocab": [
+    ["Northwest Passage", "a sea route connecting the Atlantic Ocean and Pacific Ocean along the northern coast of North America"],
+    ["colonization", "the practice of bringing people from a different country to control and settle an area that already has an indigenous population"]
+   ],
+   "text": [
+    "John Cabot was one of the first explorers to seek the Northwest Passage to the Indies. He was not the last. Cabot's son Sebastian followed in his father's footsteps, as did many other explorers. For many years, all of these explorers were frustrated in their attempts.",
+    "Those who went south found a continuous band of land blocking their way-the eastern coast of North America. Explorers who went farther north were literally stopped cold, their passage prevented by ice in the water. The farther north explorers went, the fewer goods they could find to bring back home.",
+    "Even though the explorers failed to find a northwesterly shortcut to the Indies, their attempts did have some helpful results. Explorers looking for the passage made maps of the coast of North America and thus set the stage for the colonization of the continent."
+   ]
+  },
+  "drake": {
+   "section": "Sir Francis Drake",
+   "title": "Sir Francis Drake — the queen's pirate",
+   "cite": "Student Reader, page 58",
+   "vocab": [
+    ["loot", "to steal or take something by force"]
+   ],
+   "text": [
+    "Once the Age of Exploration was underway, the seas were crowded with European ships carrying valuable materials. Adventurous men could make a lot of money as pirates. Indeed, one of the greatest English explorers made his name as a pirate, robbing the Spanish and Portuguese ships and presenting that treasure to Queen Elizabeth. His name was Francis Drake, and he became one of the greatest sea captains in history.",
+    "During his early years on the ocean, Drake's ship was attacked and robbed by a Spanish ship. Drake never forgot these attacks. He spent much of his adult life seeking revenge on the Spaniards. As Drake crisscrossed the Atlantic, he took every opportunity to loot Spanish trade ships"
+   ]
+  },
+  "golden": {
+   "section": "Sir Francis Drake",
+   "title": "Sir Francis Drake — round the world in the Golden Hind",
+   "cite": "Student Reader, page 59",
+   "text": [
+    "In 1577 , Drake convinced a group of people to invest in one of his voyages. He set out with a fleet of five ships with 164 crewmen. At first, the voyage seemed to be nothing more than one of Drake's usual raiding parties. Instead, Drake followed Magellan's example by embarking on a journey around the world.",
+    "Drake's fleet crossed from the Atlantic Ocean to the Pacific Ocean through the Straits of Magellan.",
+    "By the time the expedition reached the west coast of South America, Drake had only fifty-eight men and one ship left. That ship was the Golden Hind."
+   ]
+  },
+  "armada": {
+   "section": "The Spanish Armada",
+   "title": "The Spanish Armada — 1588",
+   "cite": "Student Reader, pages 60–62",
+   "vocab": [
+    ["armada", "a large fleet of ships"]
+   ],
+   "text": [
+    "The Spaniards demanded that Queen Elizabeth return the stolen treasure and have Drake hanged. The queen refused.",
+    "Spain considered itself the strongest naval power in the world. Its rulers resented the attacks by English pirates and England's involvement in other Spanish affairs. It put together an armada of ships loaded with heavy cannons and soldiers. In 1588, the armada set sail to invade England and overthrow Queen Elizabeth.",
+    "The English knew that they could not fight the huge Spanish fleet as a unit. So Drake and other English sea captains used imaginative battle tactics. They set small ships on fire and sent them into the Spanish battle formations. The Spanish, afraid that the small ships were loaded with gunpowder, broke formation. The English had smaller, more mobile ships. They used these ships to gang up on the lumbering Spanish battleships, sinking many. As the Spanish ships retreated, a storm sank still more of the armada.",
+    "England had won a great victory. The defeat of the Spanish Armada also marked a change in the balance of sea power. The 1500s had belonged to Spain. Over the next two centuries, English ships would come to rule the seas."
+   ]
+  },
+  "colonies": {
+   "section": "Building Colonies",
+   "title": "Building Colonies — why England settled rather than mined",
+   "cite": "Student Reader, page 62",
+   "vocab": [
+    ["joint-stock company", "a company that raises money by selling shares, or interest in the company, in the form of stock"]
+   ],
+   "text": [
+    "In the 1500s, Spain conquered Mexico and Central and South America. The Spanish accumulated a great fortune in gold and silver from their American colonies. Indeed, the main purpose of many Spanish colonies was to find gold and silver and send these precious metals back to Spain.",
+    "The English were also interested in acquiring wealth, but preferred to do so by setting up permanent settlements. They wanted colonies where people would farm, fish, cut timber, and harvest the other resources of the region.",
+    "Building colonial settlements was expensive. The English kings and queens did not want to spend the money. Instead, they gave grants of land to well-to-do people or businesses, called joint-stock companies, to build the colonies."
+   ]
+  },
+  "jamestown": {
+   "section": "Building Colonies",
+   "title": "Building Colonies — Roanoke, Jamestown, Plymouth",
+   "cite": "Student Reader, pages 63–64",
+   "vocab": [
+    ["fishery", "an area of water where fish or other sea creatures are raised and caught"]
+   ],
+   "text": [
+    "But in 1590, a supply ship reached the colony and found that everyone had disappeared without a trace. All that was left was one word carved on a tree. The colony that Raleigh founded is remembered as the 'Lost Colony.'",
+    "In 1607 , a joint-stock company called the London Company started a colony at Jamestown, Virginia. Jamestown was the first permanent English settlement in North America. At first, the colony struggled. Then the Powhatan Confederacy, Native Americans indigenous to the area, came to the colony's rescue.",
+    "Members of the Powhatan Confederacy taught the colonists how to grow tobacco, a crop that was native to North America and unknown in Europe. Growing tobacco was a big success. Tobacco quickly became a cash crop for the colonists.",
+    "During the 1600s, the English settled on land along most of the Atlantic coast. This land belonged to various Native American groups, who were often forced to find new places to live."
+   ]
+  },
+  "eic": {
+   "section": "Pursuing the Spice Trade",
+   "title": "Pursuing the Spice Trade — England turns to India",
+   "cite": "Student Reader, page 65",
+   "text": [
+    "England successfully built colonies in North America, but it did not forget about the rest of the world. It also competed for a share of the spice trade in Asia.",
+    "England's East India Company decided that traveling all the way to the Spice Islands from England was too dangerous and too expensive. The company directors chose to base their operations in India. Before long, the East India Company had settlements in the Indian cities of Surat, Madras, Bombay, and Calcutta. The Company was also given the authority to raise an army."
+   ]
+  }
+ }
+}

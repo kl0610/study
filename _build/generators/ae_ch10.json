@@ -1,0 +1,549 @@
+{
+ "chapter": "Chapter 10 — Slavery",
+ "title": "Slavery — The Age of Exploration, Chapter 10",
+ "eyebrow": "CKHG Grade 5 &middot; The Age of Exploration &middot; Chapter 10 &middot; Student Reader pp. 82&ndash;95",
+ "h1": "<em>Slavery</em>",
+ "bigQuestion": "How did the Age of Exploration lead to the development of the slave trade?",
+ "videos": [],
+ "missions": [
+  {
+   "id": "m1",
+   "name": "Slavery",
+   "tag": "14 questions · 2 papers · about 6 minutes",
+   "blurb": "One quiz for the whole chapter, with questions from each of its seven headed sections and the Big Question at the end. This is the hardest chapter in the book, and the questions follow what it says rather than softening it. The card says which page answers it, and a wrong answer opens that page.",
+   "items": [
+    {
+     "type": "pick", "p": "ageold",
+     "hi": ["There had been enslaved people for many years prior",
+            "spread the practice of slavery on a vast scale"],
+     "vs": [
+      {
+       "q": "Was slavery something new in the Age of Exploration?",
+       "opts": [
+        "No, people had been enslaved for centuries before it",
+        "Yes, the Portuguese invented it in the 1400s",
+        "Yes, it began when Columbus reached the Caribbean",
+        "No, but it had only ever existed in Europe"
+       ],
+       "a": 0,
+       "why": "For centuries people all over the world had enslaved those they conquered. The chapter is careful to say so before it says what changed."
+      },
+      {
+       "q": "What did Europeans do that changed slavery so completely?",
+       "opts": [
+        "Used their power and wealth to spread it on a vast scale",
+        "Were the first people anywhere to practise it",
+        "Made it legal in countries where it had been banned",
+        "Began enslaving people from their own countries"
+       ],
+       "a": 0,
+       "why": "Scale is the answer the chapter gives. In doing so, it says, they dramatically changed the lives of millions of people."
+      }
+     ]
+    },
+    {
+     "type": "pick", "p": "ageold",
+     "hi": ["enslaved people could own property and marry",
+            "were not automatically also enslaved"],
+     "vs": [
+      {
+       "q": "In the Ashanti kingdom of West Africa, what could enslaved people do?",
+       "opts": [
+        "Own property, marry, and go free after a set time",
+        "Leave whenever they wished to",
+        "Hold any position in the kingdom",
+        "Refuse to work if they were not paid anything"
+       ],
+       "a": 0,
+       "why": "Slavery was part of African life before Europeans arrived, but it was not the same thing. Among some groups enslaved people had rights."
+      },
+      {
+       "q": "What does the chapter call the most important Ashanti difference?",
+       "opts": [
+        "Children of enslaved people were not enslaved too",
+        "Enslaved people were paid for their work",
+        "Nobody could be enslaved for more than a year",
+        "Only prisoners of war could be enslaved"
+       ],
+       "a": 0,
+       "why": "Slavery did not pass down to the next generation. That is the line between what African kingdoms practised and what the Atlantic trade became."
+      }
+     ]
+    },
+    {
+     "type": "pick", "p": "americas",
+     "hi": ["provided a cost-effective answer",
+            "this practice was incredibly inhumane"],
+     "vs": [
+      {
+       "q": "The book says enslaving Africans was a cost-effective answer for plantation owners. What does cost-effective mean?",
+       "opts": [
+        "Giving benefits without costing a great deal",
+        "Costing more than it is really worth",
+        "Paid for by a government rather than an owner",
+        "Costing the same every year, whatever happens"
+       ],
+       "a": 0,
+       "why": "The word describes how plantation owners thought about it. The chapter uses their word and then, in the very next sentence, gives its own."
+      },
+      {
+       "q": "The chapter calls the practice incredibly inhumane. What does inhumane mean?",
+       "opts": [
+        "Cruel and unacceptable",
+        "Unusual and hard to explain",
+        "Expensive and wasteful",
+        "Illegal in most countries"
+       ],
+       "a": 0,
+       "why": "Cruel, unacceptable. The book puts cost-effective and inhumane side by side on purpose: the first is what it was to the owners, the second is what it was."
+      }
+     ]
+    },
+    {
+     "type": "pick", "p": "americas",
+     "hi": ["disease and war, which had largely been brought to the islands by the Europeans",
+            "well-suited for growing sugar and other crops"],
+     "vs": [
+      {
+       "q": "Why did Caribbean plantation owners give up their plan to use local people as workers?",
+       "opts": [
+        "Disease and war brought by Europeans had killed many",
+        "The local people refused to grow sugar for them",
+        "Spanish law forbade them from being made to work",
+        "They had all moved inland away from the coast"
+       ],
+       "a": 0,
+       "why": "The same collapse as in chapter 5, now driving the next thing that happens. The chapter is clear about who brought the disease and the war."
+      },
+      {
+       "q": "The Caribbean islands had little gold or silver. What were they good for?",
+       "opts": [
+        "Growing sugar and other crops",
+        "Building ships from island timber",
+        "Catching and salting fish",
+        "Mining iron ore and copper"
+       ],
+       "a": 0,
+       "why": "Land and climate suited sugar, and experts came from the Canary Islands to help set the plantations up. Sugar is what drives this whole chapter."
+      }
+     ]
+    },
+    {
+     "type": "pick", "p": "trade10",
+     "hi": ["The Portuguese were the first Europeans involved in the Atlantic slave trade",
+            "The pirates traded these people for food"],
+     "vs": [
+      {
+       "q": "Which Europeans were first involved in the Atlantic slave trade?",
+       "opts": [
+        "The Portuguese",
+        "The Dutch",
+        "The English",
+        "The French"
+       ],
+       "a": 0,
+       "why": "Their explorations of the African coast had opened up the sources. When Portugal's power collapsed, the Dutch took over much of this trade along with the spice trade."
+      },
+      {
+       "q": "What happened in 1619 when a Dutch ship anchored in the James River in Virginia?",
+       "opts": [
+        "Captured Africans were traded for food",
+        "A new English colony was founded there",
+        "The first sugar plantation was started",
+        "A Spanish ship was sunk in the river"
+       ],
+       "a": 0,
+       "why": "Dutch pirates had taken a shipload of enslaved Africans from a Spanish vessel and needed supplies. This was the first arrival of Africans in the English North American colonies."
+      }
+     ]
+    },
+    {
+     "type": "pick", "p": "elmina",
+     "hi": ["one of the forts where captured Africans were imprisoned",
+            "transporting 2,500 enslaved people across the Atlantic each year"],
+     "vs": [
+      {
+       "q": "What did Elmina, on the west coast of Africa, become?",
+       "opts": [
+        "A fort where captured Africans were imprisoned",
+        "A sugar plantation run by the Dutch",
+        "A shipyard where the slave ships were built",
+        "A market where spices were exchanged"
+       ],
+       "a": 0,
+       "why": "It had been a Portuguese trade center for ivory and gold. As the slave trade grew it became a holding fort, and then the center of the Dutch slave trade."
+      },
+      {
+       "q": "By 1655, how many people were the Dutch transporting across the Atlantic each year?",
+       "opts": [
+        "About 2,500",
+        "About 250",
+        "About 25,000",
+        "About 500"
+       ],
+       "a": 0,
+       "why": "Every year. When England seized New Netherland there were five hundred Dutch-speaking Africans living in the colony."
+      }
+     ]
+    },
+    {
+     "type": "pick", "p": "triangle",
+     "hi": ["Ships carried items such as iron, guns, gunpowder",
+            "These ships carried timber, tobacco, grain, sugar, and rice"],
+     "vs": [
+      {
+       "q": "On the triangle of trade, what did ships carry from Europe to Africa?",
+       "opts": [
+        "Iron, guns, gunpowder, knives, cloth, and beads",
+        "Sugar, rice, and tobacco from the Americas",
+        "Spices, silk, porcelain, and tea",
+        "Gold, silver, ivory, and copper"
+       ],
+       "a": 0,
+       "why": "Goods on the first leg, people on the second, and plantation crops on the third. Each leg paid for the next, which is what made the trade so hard to stop."
+      },
+      {
+       "q": "What did the middle leg of the triangle carry?",
+       "opts": [
+        "People taken from Africa to the Americas",
+        "Spices brought from the Indian Ocean",
+        "Soldiers sent out to guard the colonies",
+        "Gold mined in Mexico and in Peru"
+       ],
+       "a": 0,
+       "why": "People. That is what the slave trade was inside this neat-sounding triangle, and the third leg carried home the timber, tobacco, grain, sugar and rice they were made to produce."
+      }
+     ]
+    },
+    {
+     "type": "pick", "p": "middle",
+     "hi": ["The trip across the Atlantic Ocean was known as the Middle Passage",
+            "treated like cargo, not people"],
+     "vs": [
+      {
+       "q": "What was the Middle Passage?",
+       "opts": [
+        "The voyage across the Atlantic",
+        "The march inland to a seaport",
+        "The sale at a market in the Americas",
+        "The journey from the coast to a plantation"
+       ],
+       "a": 0,
+       "why": "The middle leg of the triangle. The chapter calls it a terrible, dehumanizing experience, and the next questions are why."
+      },
+      {
+       "q": "Enslaved people were treated like cargo. What is cargo?",
+       "opts": [
+        "Goods carried by a ship or truck",
+        "The crew who sail a ship",
+        "The record kept of a voyage",
+        "The money paid for a voyage"
+       ],
+       "a": 0,
+       "why": "Goods. The book uses the word to make a point: they were treated like cargo, not people, chained on platforms where they could not even turn over."
+      }
+     ]
+    },
+    {
+     "type": "pick", "p": "middle",
+     "hi": ["a space about six feet long and sixteen inches wide",
+            "about fifteen percent of enslaved people did not survive the journey"],
+     "vs": [
+      {
+       "q": "How much space was each person given on a slave ship?",
+       "opts": [
+        "About six feet long and sixteen inches wide",
+        "About six feet long and six feet wide",
+        "About ten feet long and three feet wide",
+        "About three feet long and three feet wide"
+       ],
+       "a": 0,
+       "why": "Chained in place, unable to turn over, in a hold that rose above a hundred degrees in the tropics, fed rice and water twice a day, for two to four months."
+      },
+      {
+       "q": "About what share of people did not survive the Middle Passage?",
+       "opts": [
+        "About fifteen percent",
+        "About one percent",
+        "About fifty percent",
+        "About ninety percent"
+       ],
+       "a": 0,
+       "why": "Historians' estimate. The Atlantic slave trade lasted nearly three hundred years, and European slave traders made about fifty-four thousand voyages."
+      }
+     ]
+    },
+    {
+     "type": "pick", "p": "north",
+     "hi": ["began paying for indentured servants",
+            "the soil was not very good and the winters were cold"],
+     "vs": [
+      {
+       "q": "What is an indentured servant?",
+       "opts": [
+        "Someone owing set years of work for a benefit",
+        "Someone who works for wages paid each month",
+        "Someone born into a lifetime of service",
+        "Someone who owns a small share of a farm"
+       ],
+       "a": 0,
+       "why": "A contract for a number of years, in exchange for the passage across the ocean. Southern plantation owners paid for them before they turned to enslaved labor."
+      },
+      {
+       "q": "Why was there little demand for a large labor force in the northeastern colonies?",
+       "opts": [
+        "Poor soil and cold winters suited no cash crop",
+        "The Pilgrims and Puritans had banned slavery",
+        "The colonies there were too small to need workers",
+        "Settlers there lived by trading furs instead"
+       ],
+       "a": 0,
+       "why": "No cash crop, no demand for mass labor. The chapter still notes that slavery existed on a small scale in the northern colonies."
+      }
+     ]
+    },
+    {
+     "type": "pick", "p": "shift",
+     "hi": ["became more profitable and efficient than hiring indentured servants",
+            "Indigo and cotton cultivation also relied on the labor"],
+     "vs": [
+      {
+       "q": "Why did plantation owners move away from indentured servants?",
+       "opts": [
+        "Buying an enslaved workforce became more profitable",
+        "Indentured servants refused to come over any more",
+        "A law was passed forbidding the contracts",
+        "The servants demanded to be paid in land"
+       ],
+       "a": 0,
+       "why": "Healthier servants began living long enough to finish their contracts, and owners had to pay out freedom dues — food, clothing, money, livestock, sometimes land. Enslaving people cost less."
+      },
+      {
+       "q": "The chapter says cotton cultivation relied on enslaved labor. What is cultivation?",
+       "opts": [
+        "The planting, growing, and harvesting of crops",
+        "The clearing of forest to make new fields",
+        "The sale of a crop at a market",
+        "The storing of a crop over winter"
+       ],
+       "a": 0,
+       "why": "Growing crops, start to finish. Tobacco, then rice, then cotton and indigo — each new cash crop meant more demand for enslaved workers."
+      }
+     ]
+    },
+    {
+     "type": "pick", "p": "plantation10",
+     "hi": ["Families were frequently broken up",
+            "They could not testify in court"],
+     "vs": [
+      {
+       "q": "What frequently happened to families at the slave market?",
+       "opts": [
+        "They were broken up and sold separately",
+        "They were always kept together by law",
+        "They were sent back to Africa together",
+        "They were given land of their own"
+       ],
+       "a": 0,
+       "why": "Children were separated from their parents, and husbands from wives. Owners bid against each other for the people they thought would work best for them."
+      },
+      {
+       "q": "Why could a slaveholder mistreat an enslaved person and get away with it?",
+       "opts": [
+        "Enslaved people could not testify in court",
+        "There were no courts in the colonies",
+        "Owners were allowed to judge their own cases",
+        "The colonies had no laws about slavery"
+       ],
+       "a": 0,
+       "why": "No testimony, no case. Many colonies also made it illegal to teach enslaved people to read or write."
+      }
+     ]
+    },
+    {
+     "type": "pick", "p": "overseer",
+     "hi": ["watched by a person called an overseer",
+            "it survived until the end of the Civil War"],
+     "vs": [
+      {
+       "q": "Who watched enslaved people as they worked in the fields?",
+       "opts": [
+        "An overseer",
+        "A magistrate",
+        "A plantation clerk",
+        "A ship's captain"
+       ],
+       "a": 0,
+       "why": "Someone who supervises workers to make sure a job is done properly. Work ran from dawn to nightfall with an hour off in the midday heat."
+      },
+      {
+       "q": "Where and until when did slavery survive in North America?",
+       "opts": [
+        "In the American South, until the Civil War ended",
+        "In the northern states, until the Revolution",
+        "In Canada, until the end of the 1700s",
+        "In the Caribbean islands, until about 1800"
+       ],
+       "a": 0,
+       "why": "After the American Revolution slavery was abolished in most northern states, but it spread in the South and lasted until the end of the Civil War in the mid-1800s."
+      }
+     ]
+    },
+    {
+     "type": "pick", "bq": true, "p": "summing",
+     "hi": ["was better for some people than for others",
+            "both the heroism of the explorers and the tragedies"],
+     "vs": [
+      {
+       "q": "How did the Age of Exploration lead to the development of the slave trade?",
+       "opts": [
+        "New colonies grew crops that needed huge numbers of workers",
+        "Explorers were ordered by their kings to capture people",
+        "The Turks closed the Silk Road, so trade moved to Africa",
+        "Europeans ran out of workers for their farms at home"
+       ],
+       "a": 0,
+       "why": "This is the chapter's Big Question, and it is a chain. Exploration brought colonies; colonies grew sugar, tobacco, rice and cotton; those crops needed enormous labor; the indigenous population had collapsed; so Europeans built a trade in human beings to fill the gap."
+      },
+      {
+       "q": "How does the chapter say we should understand the Age of Exploration?",
+       "opts": [
+        "Both the heroism and the tragedies together",
+        "Mainly as the bravery of the explorers",
+        "Mainly as a story of trade and money",
+        "As something too long ago to judge"
+       ],
+       "a": 0,
+       "why": "The book's own last word. It says the image of a ship sailing proudly across the Atlantic is much less inspiring when we remember that many of these ships carried human cargo in inhumane conditions."
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "passages": {
+  "ageold": {
+   "section": "Age-Old Practice",
+   "title": "Age-Old Practice — what was old, and what was new",
+   "cite": "Student Reader, page 82",
+   "text": [
+    "There had been enslaved people for many years prior to the Age of Exploration. For centuries people throughout the world had enslaved those they had conquered. But Europeans used their power and wealth to spread the practice of slavery on a vast scale. In doing so, they dramatically changed the lives of millions of people.",
+    "Slavery was part of African life long before Europeans arrived.",
+    "But among some groups, enslaved people had rights. For example, in the Ashanti kingdom of West Africa, enslaved people could own property and marry, and they got their freedom after working for a set amount of time. Most importantly, children born to Ashanti-enslaved people were not automatically also enslaved."
+   ]
+  },
+  "americas": {
+   "section": "Slavery in the Americas",
+   "title": "Slavery in the Americas — sugar, and who was made to grow it",
+   "cite": "Student Reader, page 85",
+   "vocab": [
+    ["cost-effective", "providing benefits without costing a great deal of money"],
+    ["inhumane", "cruel, unacceptable"]
+   ],
+   "text": [
+    "The islands of the Caribbean were not rich in mineral wealth. The land and climate, however, were well-suited for growing sugar and other crops. Experts from the Canary Islands came to Hispaniola and other islands to help the Spanish set up sugar plantations.",
+    "These plantations needed an inexpensive labor force. At first, plantation owners planned to use local people to work on the plantations. But disease and war, which had largely been brought to the islands by the Europeans, killed many indigenous people.",
+    "As had been the case in the Azores and the Canary Islands, enslaved people from Africa provided a cost-effective answer. However, this practice was incredibly inhumane, and caused much suffering."
+   ]
+  },
+  "trade10": {
+   "section": "The Slave Trade",
+   "title": "The Slave Trade — who ran it, and how it reached Virginia",
+   "cite": "Student Reader, pages 85–86",
+   "text": [
+    "The Portuguese were the first Europeans involved in the Atlantic slave trade. Their explorations of the African coast had opened",
+    "up new sources for people they could enslave. When Portugal's power collapsed and the Dutch took over the spice trade, they took over much of the Atlantic slave trade as well.",
+    "In 1619, a Dutch ship sailed into the mouth of the James River in the English colony of Virginia in North America and dropped anchor. On board were Dutch pirates who had been attacking other ships on the high seas. They had captured a shipload of enslaved Africans from a Spanish vessel heading for the Caribbean. Now the Dutch sailors were traveling north and needed supplies. The pirates traded these people for food. This was the first arrival of Africans in the English North American colonies."
+   ]
+  },
+  "elmina": {
+   "section": "The Slave Trade",
+   "title": "The Slave Trade — Elmina",
+   "cite": "Student Reader, pages 86–87",
+   "text": [
+    "One of the trade centers the Dutch had taken from the Portuguese was Elmina on the west coast of Africa (in present-day Ghana). For years, Elmina had been a Portuguese trade center where ivory",
+    "and gold were exchanged. As the slave trade increased, Elmina became one of the forts where captured Africans were imprisoned before being transported to Europe or to the Americas. Before long, Elmina was the center of the Dutch slave trade.",
+    "By 1655, the Dutch were transporting 2,500 enslaved people across the Atlantic each year. When England seized control of New Netherland, there were five hundred Dutch-speaking Africans in the colony."
+   ]
+  },
+  "triangle": {
+   "section": "The Slave Trade",
+   "title": "The Slave Trade — the three legs of the triangle",
+   "cite": "Student Reader, pages 87–88",
+   "text": [
+    "The slave trade was one side of a trading triangle. One segment of the triangle carried goods from Europe to Africa. Ships carried items such as iron, guns, gunpowder, knives, cloth, and beads. Another segment transported people from Africa to the Caribbean islands and later to the English colonies in North America.",
+    "And another segment of the triangle made a return trip to Europe. These ships carried timber, tobacco, grain, sugar, and rice from the plantations of the Americas."
+   ]
+  },
+  "middle": {
+   "section": "Middle Passage",
+   "title": "Middle Passage — the crossing",
+   "cite": "Student Reader, pages 88–89",
+   "vocab": [
+    ["cargo", "goods transported by a ship, plane, or truck"]
+   ],
+   "text": [
+    "The trip across the Atlantic Ocean was known as the Middle Passage. It was a terrible, dehumanizing experience.",
+    "ships usually carried between 150 and six hundred Africans. Enslaved people were treated like cargo, not people. They were chained on platforms. Each person had a space about six feet long and sixteen inches wide. Because they were chained in place, they could not even turn over.",
+    "The trip across the ocean took between two and four months depending on the weather and the destination. Illness and death were common occurrences. With people packed in close quarters, disease spread easily. Historians estimate that about fifteen percent of enslaved people did not survive the journey."
+   ]
+  },
+  "north": {
+   "section": "The Growth of Slavery in the Colonies",
+   "title": "The Growth of Slavery in the Colonies — north and south",
+   "cite": "Student Reader, pages 89–90",
+   "vocab": [
+    ["indentured servant", "a person who owes an employer a certain amount of work for a certain amount of time in exchange for some benefit"],
+    ["export", "to send goods to sell in another country"]
+   ],
+   "text": [
+    "In the colonies of North America, the demand for enslaved people came later in the slave trade. The Pilgrims and Puritans settled the colonies in the Northeast where the soil was not very good and the winters were cold. These conditions were not ideal for growing cash crops, so there was no need for a large labor force. Even so, slavery did exist on a small scale in these northern colonies.",
+    "In the South, the situation was different. Plantation owners who lived in the southern colonies grew tobacco to export to Europe. They needed many workers to run these plantations. To find a supply of workers, plantation owners began paying for indentured servants to come to the colonies from Europe. In return, the servants agreed to work for a certain number of years."
+   ]
+  },
+  "shift": {
+   "section": "The Growth of Slavery in the Colonies",
+   "title": "The Growth of Slavery in the Colonies — why it changed",
+   "cite": "Student Reader, page 91",
+   "vocab": [
+    ["cultivation", "the planting, growing, and harvesting of crops"]
+   ],
+   "text": [
+    "Freedom dues were what a servant received for completing his or her contract. According to the contract, an indentured servant was given food, clothing, money, and some livestock. Those who were given land could finish their contracts and start farming next door.",
+    "Before long, buying an enslaved workforce from Africa became more profitable and efficient than hiring indentured servants. Slavery spread in the 1700s. Millions of acres were planted with tobacco. Planters also introduced a new cash crop, rice, which needed lots of labor to plant and harvest.",
+    "In the late 1700s and 1800s, cotton became a third cash crop grown in the American South. Indigo and cotton cultivation also relied on the labor of enslaved people."
+   ]
+  },
+  "plantation10": {
+   "section": "Plantation Life",
+   "title": "Plantation Life — what the law allowed",
+   "cite": "Student Reader, pages 91–92",
+   "text": [
+    "The life of an enslaved person was very hard. People were sold as slaves at a market where owners bid against each other. Slaveholders bought the people they thought would work best for them. Families were frequently broken up; children were separated from their parents, and husbands from wives.",
+    "On the plantation, enslaved people had no freedom. They had to do what their masters told them to do and could not travel",
+    "anywhere without permission. They could not testify in court, so an owner could mistreat an enslaved person and get away with it. Many colonies also had laws that made it illegal to teach enslaved people to read or write."
+   ]
+  },
+  "overseer": {
+   "section": "Plantation Life",
+   "title": "Plantation Life — the work, and how long it lasted",
+   "cite": "Student Reader, page 93",
+   "vocab": [
+    ["overseer", "someone who supervises workers to make sure a job is done properly"]
+   ],
+   "text": [
+    "Enslaved people worked from dawn to nightfall, with an hour off midday in the heat. The work was hard. They worked in the cotton, rice, indigo, and tobacco fields. They chopped wood, built fences, cleared roads, and dug wells. All the while, they were watched by a person called an overseer.",
+    "Not all Africans in the colonies were enslaved. Some managed to gain their freedom. A few slaveholders even gave freedom to their enslaved workers. Free Africans in the colonies made their living as farmers and crafts workers. After the American Revolution, slavery was abolished in most of the northern states. But slavery spread in the American South, where it survived until the end of the Civil War in the mid-nineteenth century."
+   ]
+  },
+  "summing": {
+   "section": "Summing Up the Age of Exploration",
+   "title": "Summing Up — both halves of the story",
+   "cite": "Student Reader, pages 93–94",
+   "text": [
+    "To have a full and well-balanced understanding of the Age of Exploration, we have to recognize that this age, like most ages, was better for some people than for others. Some people made their fortunes; others did not survive perilous journeys.",
+    "But for many people, the Age of Exploration was a time of great hardship. Contact with Europeans devastated the indigenous peoples of the Americas. Many died in battle, and disease killed millions more. For millions of Africans, contact with Europeans meant a lifetime of slavery. The image of a ship sailing proudly across the Atlantic becomes much less inspiring when we remember that many of these ships carried human cargo in inhumane conditions. An understanding of the age must include both the heroism of the explorers and the tragedies that resulted from exploration."
+   ]
+  }
+ }
+}

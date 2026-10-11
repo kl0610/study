@@ -1,0 +1,454 @@
+{
+ "chapter": "Chapter 9 — Dutch Trade",
+ "title": "Dutch Trade — The Age of Exploration, Chapter 9",
+ "eyebrow": "CKHG Grade 5 &middot; The Age of Exploration &middot; Chapter 9 &middot; Student Reader pp. 74&ndash;81",
+ "h1": "Dutch <em>Trade</em>",
+ "bigQuestion": "How did the death of a king affect the Spice Trade?",
+ "videos": [],
+ "missions": [
+  {
+   "id": "m1",
+   "name": "Dutch Trade",
+   "tag": "12 questions · 2 papers · about 6 minutes",
+   "blurb": "One quiz for the whole chapter, with questions from each of its four headed sections and the Big Question at the end. Mostly what happened; a couple on the words the chapter is built from. The card says which page answers it, and a wrong answer opens that page.",
+   "items": [
+    {
+     "type": "pick", "p": "portugal",
+     "hi": ["the Portuguese controlled the spice trade",
+            "In 1580, King Henry of Portugal died"],
+     "vs": [
+      {
+       "q": "Who controlled the spice trade at the start of this chapter?",
+       "opts": [
+        "The Portuguese",
+        "The Dutch",
+        "The Spanish",
+        "The English"
+       ],
+       "a": 0,
+       "why": "From the Cape of Good Hope to the far shores of the Indian Ocean, with settlements along the African coast and a main trade center at Goa in India."
+      },
+      {
+       "q": "What happened in 1580 that changed the history of the spice trade?",
+       "opts": [
+        "The king of Portugal died",
+        "The Dutch reached the Spice Islands",
+        "Spain discovered gold in the Americas",
+        "The Portuguese lost their base at Goa"
+       ],
+       "a": 0,
+       "why": "King Henry of Portugal. The chapter's whole argument is that one death at the top can change a trade that spans the world."
+      }
+     ]
+    },
+    {
+     "type": "pick", "p": "portugal",
+     "hi": ["Henry had no adult son to take over the throne",
+            "brought together under the rule of the Spanish King Philip II"],
+     "vs": [
+      {
+       "q": "Why did King Henry's death cause so much trouble in Portugal?",
+       "opts": [
+        "He had no adult son, and seven men claimed the throne",
+        "He had left the country deeply in debt to Spain",
+        "He had promised the throne to England",
+        "He died while at sea on a voyage east"
+       ],
+       "a": 0,
+       "why": "A king's death creates political unrest when it is unclear who should follow him. Seven different people presented themselves as the rightful next king."
+      },
+      {
+       "q": "Who ended up ruling Portugal as well as Spain?",
+       "opts": [
+        "King Philip II",
+        "King Henry",
+        "Queen Elizabeth",
+        "King Francis I"
+       ],
+       "a": 0,
+       "why": "Philip II of Spain, who was related to Henry on his mother's side. After some conflict the two countries came under one crown."
+      }
+     ]
+    },
+    {
+     "type": "pick", "p": "armada9",
+     "hi": ["a good part of the profits went to the king of Spain",
+            "The defeat crippled Spain as a sea power"],
+     "vs": [
+      {
+       "q": "At first, what did the union of Spain and Portugal change about the spice trade?",
+       "opts": [
+        "Much of the profit now went to the king of Spain",
+        "Portuguese ships were no longer allowed to sail",
+        "The spice trade moved to the Americas",
+        "Spices became far cheaper in Europe"
+       ],
+       "a": 0,
+       "why": "Little else changed at first. The Spanish navy was the most powerful in the world and could protect Portuguese ships going to Asia."
+      },
+      {
+       "q": "What did the defeat of the Spanish Armada in 1588 do to Spain?",
+       "opts": [
+        "It crippled Spain as a sea power",
+        "It cost Spain its American colonies",
+        "It forced Spain to give Portugal back",
+        "It ended Spain's war with the Dutch"
+       ],
+       "a": 0,
+       "why": "The same battle as in chapter 7, seen from the other end. Spain was at war with the Dutch at the time, and as Spanish power fell the Dutch saw their chance."
+      }
+     ]
+    },
+    {
+     "type": "pick", "p": "linschoten",
+     "hi": ["looking for a northeastern route to the Spice Islands",
+            "keeping long and detailed notes about the Eastern traders"],
+     "vs": [
+      {
+       "q": "What did Jan van Linschoten spend his life as a sailor looking for?",
+       "opts": [
+        "A northeastern route to the Spice Islands",
+        "The Northwest Passage over North America",
+        "A strait through the middle of Africa",
+        "The southern tip of Australia"
+       ],
+       "a": 0,
+       "why": "A route that did not exist. He is in the chapter for what he did afterwards, not for what he found."
+      },
+      {
+       "q": "What did Linschoten do that really helped the Dutch enter the spice trade?",
+       "opts": [
+        "Kept detailed notes on the traders he worked with",
+        "Captured a Portuguese ship full of charts",
+        "Founded the first Dutch settlement on Java",
+        "Drew the first accurate map of the Indian Ocean"
+       ],
+       "a": 0,
+       "why": "He stopped exploring, went to work in India, and wrote down everything about the Eastern traders around him. Information turned out to be worth more than the route."
+      }
+     ]
+    },
+    {
+     "type": "pick", "p": "batavia",
+     "hi": ["The company received a charter from the government",
+            "They named the community Batavia"],
+     "vs": [
+      {
+       "q": "The Dutch East India Company received a charter. What is a charter?",
+       "opts": [
+        "A document from an authority granting certain rights",
+        "A ship hired for one single trading voyage east",
+        "A list of the goods a company may carry",
+        "A tax a company pays to its government"
+       ],
+       "a": 0,
+       "why": "A document that grants rights. This one granted an enormous one, which is the next question."
+      },
+      {
+       "q": "Where did the Dutch set up their main trade center?",
+       "opts": [
+        "On the island of Java",
+        "On the coast of India",
+        "At the Cape of Good Hope",
+        "On the island of Tasmania"
+       ],
+       "a": 0,
+       "why": "A community they named Batavia — today Jakarta, the capital of Indonesia. Far from the Portuguese on the African coast, and close to the nutmeg, mace and cloves."
+      }
+     ]
+    },
+    {
+     "type": "pick", "p": "batavia",
+     "hi": ["giving it a monopoly on all trade stretching east",
+            "to the Straits of Magellan in South America"],
+     "vs": [
+      {
+       "q": "What did the Dutch East India Company's charter give it?",
+       "opts": [
+        "A monopoly on trade across half the world",
+        "The right to raise taxes in the Netherlands",
+        "Ownership of every Portuguese settlement",
+        "Permission to settle the coast of Australia"
+       ],
+       "a": 0,
+       "why": "All trade stretching east from the Cape of Good Hope in Africa to the Straits of Magellan in South America — granted on one piece of paper."
+      },
+      {
+       "q": "What is the Dutch community of Batavia called today?",
+       "opts": [
+        "Jakarta",
+        "Cape Town",
+        "Goa",
+        "Albany"
+       ],
+       "a": 0,
+       "why": "Jakarta, the capital city of Indonesia. The Dutch chose the spot for the spices, and a capital grew on it."
+      }
+     ]
+    },
+    {
+     "type": "pick", "p": "control",
+     "hi": ["they traveled throughout the East gathering up goods to trade",
+            "they would destroy supplies of it to prevent the price"],
+     "vs": [
+      {
+       "q": "The Netherlands had few goods of its own. So how did the Dutch trade?",
+       "opts": [
+        "They gathered goods around the East and traded those",
+        "They bought everything with silver sent from home",
+        "They took what they wanted by force",
+        "They grew spices in the Netherlands instead"
+       ],
+       "a": 0,
+       "why": "Silver from one place for cloth or tea from another, port after port from Africa to Japan, arranged so that spices ended up in Dutch hands for the voyage to Europe."
+      },
+      {
+       "q": "What did the Dutch do if too much of a spice was available in Europe?",
+       "opts": [
+        "Destroyed some of it to keep the price up",
+        "Sold it cheaply to get rid of it quickly",
+        "Stored it until the following year",
+        "Gave it away to win new customers"
+       ],
+       "a": 0,
+       "why": "They worked hard to control how much reached Europe. Burning your own cargo makes sense only when you control the whole supply."
+      }
+     ]
+    },
+    {
+     "type": "pick", "p": "capetown",
+     "hi": ["A storm-damaged Dutch ship managed to limp into Table Bay",
+            "Tasman proved that it was a huge island"],
+     "vs": [
+      {
+       "q": "How did the Dutch find the site for their halfway rest stop?",
+       "opts": [
+        "Largely by accident, after a ship limped into a bay",
+        "By sending out an expedition to search for one",
+        "By buying a harbor from the Portuguese",
+        "By following a map Linschoten had drawn"
+       ],
+       "a": 0,
+       "why": "A storm-damaged ship got into Table Bay and sank there. The survivors found a good harbor and a fair climate, and in 1657 the Dutch founded Cape Town on the spot."
+      },
+      {
+       "q": "What did Abel Tasman prove by sailing around Australia?",
+       "opts": [
+        "That it was a huge island joined to nothing",
+        "That it was part of the continent of Asia",
+        "That it had no safe harbors anywhere",
+        "That it lay east of the Spice Islands"
+       ],
+       "a": 0,
+       "why": "Dirk Hartog had come upon Australia sailing from Java; Tasman landed in 1643 on the island now named Tasmania and then sailed right round."
+      }
+     ]
+    },
+    {
+     "type": "pick", "p": "hudson",
+     "hi": ["hired an English explorer", "he changed his mind and headed west"],
+     "vs": [
+      {
+       "q": "Who hired Henry Hudson in 1609, and what was he to look for?",
+       "opts": [
+        "The Dutch East India Company, for a passage to Asia",
+        "The English crown, to settle the Hudson valley",
+        "The New Netherland Company, to trade in furs",
+        "The Dutch West India Company, to buy Manhattan"
+       ],
+       "a": 0,
+       "why": "An Englishman working for a Dutch company. Hudson wanted to be the man who finally found the Northwest Passage everyone was hunting."
+      },
+      {
+       "q": "Why did Hudson abandon his plan to sail over the North Pole?",
+       "opts": [
+        "The farther north he went, the colder and icier it got",
+        "His ship the Half Moon was far too small to go on",
+        "The Dutch company ordered him to turn back",
+        "He had run out of food after only a few weeks"
+       ],
+       "a": 0,
+       "why": "Conditions went from bad to worse and the crew began to grumble. He turned west and charted a course down the Atlantic coast of North America instead."
+      }
+     ]
+    },
+    {
+     "type": "pick", "p": "hudsonbay",
+     "hi": ["which he mistook for the Pacific Ocean",
+            "were forced off the ship and into a small boat"],
+     "vs": [
+      {
+       "q": "Hudson found a huge inland sea. What did he think it was?",
+       "opts": [
+        "The Pacific Ocean",
+        "The mouth of a great river",
+        "A bay on the coast of Norway",
+        "The entrance to the Spice Islands"
+       ],
+       "a": 0,
+       "why": "Today it is called Hudson Bay. He and his men quickly realised it was an inland sea, and by then the winter had come."
+      },
+      {
+       "q": "What happened to Hudson in the end?",
+       "opts": [
+        "His crew mutinied and set him adrift in a small boat",
+        "He froze to death waiting for the ice to melt",
+        "He sailed home and was rewarded by the Dutch",
+        "He was killed by the people living near the bay"
+       ],
+       "a": 0,
+       "why": "Hudson, his son and some loyal sailors were never heard from again. The crew of the Discovery made it back to England and were never punished for it."
+      }
+     ]
+    },
+    {
+     "type": "pick", "p": "newneth",
+     "hi": ["The company's first activity was fur trading",
+            "reluctant to leave their homeland to live in a distant wilderness"],
+     "vs": [
+      {
+       "q": "What was the New Netherland Company's first business?",
+       "opts": [
+        "Fur trading",
+        "Growing sugar",
+        "Catching fish",
+        "Mining silver"
+       ],
+       "a": 0,
+       "why": "A trading post at Fort Orange — today Albany, New York — far up the river Hudson had explored. The fur trading went well and the merchants prospered."
+      },
+      {
+       "q": "Why did the company fail to get colonists to the new land?",
+       "opts": [
+        "People would not leave home for a distant wilderness",
+        "The Dutch king forbade anybody to emigrate",
+        "English settlers had already taken all of the land",
+        "The voyage cost more than most could pay"
+       ],
+       "a": 0,
+       "why": "The Netherlands was a small country and its people were reluctant to go. The Dutch West India Company eventually took over, and in 1626 its head came to the island of Manhattan."
+      }
+     ]
+    },
+    {
+     "type": "pick", "bq": true, "p": "portugal",
+     "hi": "His death changed the history of the spice trade",
+     "vs": [
+      {
+       "q": "How did the death of a king affect the Spice Trade?",
+       "opts": [
+        "Portugal fell to Spain, Spain fell at sea, the Dutch took over",
+        "The spice trade stopped completely for twenty years",
+        "Portugal and Spain agreed to share the trade out equally",
+        "The price of spices in Europe fell to almost nothing"
+       ],
+       "a": 0,
+       "why": "This is the chapter's Big Question, and it is a chain: Henry of Portugal dies with no heir, Philip II of Spain takes both crowns, the Armada is beaten in 1588, and the Dutch step into the gap."
+      },
+      {
+       "q": "Whose death set that whole chain of events going?",
+       "opts": [
+        "King Henry of Portugal, in 1580",
+        "King Philip II of Spain, in 1588",
+        "Queen Elizabeth of England, in 1603",
+        "King Francis I of France, in 1547"
+       ],
+       "a": 0,
+       "why": "One king, with no adult son, in 1580. Everything the Dutch build in this chapter follows from that."
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "passages": {
+  "portugal": {
+   "section": "Control of the Spice Trade",
+   "title": "Control of the Spice Trade — a throne with nobody on it",
+   "cite": "Student Reader, page 74",
+   "text": [
+    "For many years, the Portuguese controlled the spice trade from the Cape of Good Hope to the most distant shores of the Indian Ocean. They had settlements up and down the African coast and a main trade center at Goa, on the west coast of India.",
+    "In 1580, King Henry of Portugal died. His death changed the history of the spice trade. A king's death could create political unrest when it was unclear who should succeed him. That's what happened in Portugal. Henry had no adult son to take over the throne. Seven different people presented themselves as having the right to be the next king of Portugal. One of them was King Philip II of Spain.",
+    "After some conflict, Portugal and Spain were brought together under the rule of the Spanish King Philip II."
+   ]
+  },
+  "armada9": {
+   "section": "Control of the Spice Trade",
+   "title": "Control of the Spice Trade — 1588, and the gap it left",
+   "cite": "Student Reader, page 76",
+   "text": [
+    "At first there was little effect on the spice trade. The Spanish navy was the most powerful in the world. It could protect Portuguese ships sailing to Asia. Only now a good part of the profits went to the king of Spain.",
+    "In 1588, the defeat of the Spanish Armada tipped the balance of sea power in the world. The defeat crippled Spain as a sea power. At the time, Spain was at war with the Dutch. As Spanish power declined, the Dutch saw an opportunity for their country, the Netherlands, to take control of the spice trade."
+   ]
+  },
+  "linschoten": {
+   "section": "Control of the Spice Trade",
+   "title": "Control of the Spice Trade — the notes that mattered",
+   "cite": "Student Reader, page 76",
+   "text": [
+    "The Dutch were excellent sailors and merchants, and they had a developing interest in the spice trade. A Dutch seaman named Jan van Linschoten",
+    "As a sailor, Linschoten spent his life looking for a northeastern route to the Spice Islands, a route that did not exist. When he stopped exploring, Linschoten worked in India, keeping long and detailed notes about the Eastern traders he worked with. The information he gathered was a great help to the Dutch as they entered the spice trade."
+   ]
+  },
+  "batavia": {
+   "section": "Control of the Spice Trade",
+   "title": "Control of the Spice Trade — Batavia, and a charter",
+   "cite": "Student Reader, pages 76–77",
+   "vocab": [
+    ["charter", "a document issued by an authority giving a group certain rights"]
+   ],
+   "text": [
+    "The Dutch set up their main trade center on the island of Java in present-day Indonesia. They named the community Batavia. (Today it is called Jakarta and is the capital city of Indonesia.) It was far away from the Portuguese on the African coast but close to the nutmeg, mace, and cloves found in the Spice Islands.",
+    "In the early 1600s, Dutch merchants formed a joint-stock company called the Dutch East India Company. The company received a charter from the government",
+    "giving it a monopoly on all trade stretching east from the Cape of Good Hope in Africa to the Straits of Magellan in South America. Dutch power and control of the spice trade grew."
+   ]
+  },
+  "control": {
+   "section": "Control of the Spice Trade",
+   "title": "Control of the Spice Trade — how the Dutch worked it",
+   "cite": "Student Reader, page 77",
+   "text": [
+    "Because the Netherlands is a very small country without many resources of its own, the Dutch did not have many goods to trade from their home ports. Instead, they traveled throughout the East gathering up goods to trade. Dutch ships called at ports all over Africa, India, and other Asian countries. They voyaged into the Persian Gulf and all the way to Japan. They traded silver from one place for cloth or tea from another. The trades were set up so that, in the end, spices ended up in the hands of the Dutch for transport to Europe.",
+    "The Dutch worked hard to control the amount of spices available in Europe. For example, if there was too much of one spice available, they would destroy supplies of it to prevent the price of that spice from falling."
+   ]
+  },
+  "capetown": {
+   "section": "A Stopover Colony",
+   "title": "A Stopover Colony — Table Bay, and a look at Australia",
+   "cite": "Student Reader, page 78",
+   "text": [
+    "Traveling from Java to the Netherlands took a very long time. The Dutch needed a rest stop along the way. They found a location for just such a stop, largely by accident. A storm-damaged Dutch ship managed to limp into Table Bay on the southern tip of Africa, where it sank. The surviving sailors found that Table Bay had everything needed for a supply station, including a good harbor and a fair climate. In 1657 , the Dutch founded the colony of Cape Town there.",
+    "Over the years, many Dutch explorers set out across the Pacific to find new trade centers. Sailing from southeast Java, Dirk Hartog came upon Australia. In 1643, Abel Tasman landed on the island now named Tasmania, off Australia's southeastern coast. By sailing around Australia, Tasman proved that it was a huge island unconnected to any other land."
+   ]
+  },
+  "hudson": {
+   "section": "Henry Hudson",
+   "title": "Henry Hudson — north, then west",
+   "cite": "Student Reader, pages 78–79",
+   "text": [
+    "In 1609, the Dutch East India Company hired an English explorer named Henry Hudson. Hudson wanted to be the explorer who found the Northwest Passage that everyone was seeking.",
+    "Hudson took a small crew on a small ship called the Half Moon . He sailed north, following the coast of Norway. The farther north the Half Moon traveled, the colder and icier it got. The crew began to grumble. Conditions on the ship went from bad to worse. Hudson had planned to find a passage that would take him over the North Pole and down to the Malay Archipelago. Instead, he changed his mind and headed west.",
+    "At the mouth of what is now the Hudson River, he claimed land for the Netherlands."
+   ]
+  },
+  "hudsonbay": {
+   "section": "Henry Hudson",
+   "title": "Henry Hudson — the inland sea, and the small boat",
+   "cite": "Student Reader, pages 79–80",
+   "text": [
+    "The next year, Hudson returned to North America, this time on an English ship, the Discovery. Hudson was sure he would have to sail north to find the Northwest Passage. He discovered a huge inland sea, which he mistook for the Pacific Ocean. Today that Canadian body of water is called Hudson Bay.",
+    "Hudson and his men quickly realized they were in an inland sea. Winter came rapidly. The ship got stuck in the ice, and food ran low. The crew grew angry and mutinied. Hudson, his son, and some loyal sailors were forced off the ship and into a small boat. They were never heard from again. Sailors on the Discovery made it back to England. They were never punished for the mutiny."
+   ]
+  },
+  "newneth": {
+   "section": "New Netherland",
+   "title": "New Netherland — furs, and nobody to send",
+   "cite": "Student Reader, pages 80–81",
+   "text": [
+    "Dutch merchants were eager to make money from the land claimed by Hudson. In 1614, a group of these merchants formed a joint-stock company called the New Netherland Company.",
+    "The company's first activity was fur trading. A trading post was built at Fort Orange (today, Albany, New York) far up the river explored by Hudson. The fur trading went well, and merchants prospered. But the company was unsuccessful in getting colonists to this new land.",
+    "people in the Netherlands, a small country, were reluctant to leave their homeland to live in a distant wilderness."
+   ]
+  }
+ }
+}

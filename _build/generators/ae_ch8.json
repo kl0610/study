@@ -1,0 +1,458 @@
+{
+ "chapter": "Chapter 8 — France and the Fur Trade",
+ "title": "France and the Fur Trade — The Age of Exploration, Chapter 8",
+ "eyebrow": "CKHG Grade 5 &middot; The Age of Exploration &middot; Chapter 8 &middot; Student Reader pp. 66&ndash;73",
+ "h1": "France and the <em>Fur Trade</em>",
+ "bigQuestion": "The French and the English had different approaches to settlement in North America. In what ways were they different?",
+ "videos": [],
+ "missions": [
+  {
+   "id": "m1",
+   "name": "France and the Fur Trade",
+   "tag": "12 questions · 2 papers · about 6 minutes",
+   "blurb": "One quiz for the whole chapter, with questions from each of its four headed sections and the Big Question at the end. Mostly what happened; a few on the words the chapter is built from. The card says which page answers it, and a wrong answer opens that page.",
+   "items": [
+    {
+     "type": "pick", "p": "joins",
+     "hi": ["did not want to be left behind", "a cartographer, sailed with him"],
+     "vs": [
+      {
+       "q": "Why did King Francis I of France send out an expedition in 1524?",
+       "opts": [
+        "He did not want France to be left behind",
+        "He had been promised a share of the spice trade",
+        "He wanted to attack the Spanish colonies",
+        "He had been asked to by the pope in Rome"
+       ],
+       "a": 0,
+       "why": "Spain was mining gold and silver in Mexico and Peru, Portugal ruled the spice trade, and England had already sent Cabot looking for the Northwest Passage. France had nothing."
+      },
+      {
+       "q": "Verrazano's brother was a cartographer. What is a cartographer?",
+       "opts": [
+        "A mapmaker",
+        "A ship's doctor",
+        "A fur trader",
+        "A translator"
+       ],
+       "a": 0,
+       "why": "North America had not been mapped by Europeans, and one goal of the expedition was accurate maps of the Atlantic coast. You take a mapmaker along for that."
+      }
+     ]
+    },
+    {
+     "type": "pick", "p": "verrazano",
+     "hi": ["the first European to sail up the Atlantic coast",
+            "it was a deep-water harbor"],
+     "vs": [
+      {
+       "q": "What was Verrazano the first European to do?",
+       "opts": [
+        "Sail up the Atlantic coast of what is now the United States",
+        "Reach the Mississippi River from the north",
+        "Sail all the way round the whole island of Newfoundland",
+        "Build a French settlement on the St. Lawrence"
+       ],
+       "a": 0,
+       "why": "From North Carolina up to Newfoundland. He never got home — he was killed on an island in the Caribbean."
+      },
+      {
+       "q": "What did Verrazano notice about New York Bay?",
+       "opts": [
+        "It was a deep-water harbor",
+        "It froze over every winter",
+        "It was the mouth of a great river",
+        "It had no safe place to anchor"
+       ],
+       "a": 0,
+       "why": "A deep-water harbor is one big ships can use. The entrance to New York Harbor is spanned today by the Verrazano-Narrows Bridge, named for him."
+      }
+     ]
+    },
+    {
+     "type": "pick", "p": "cartier",
+     "hi": ["a rich fishing ground", "the mouth of a mighty river"],
+     "vs": [
+      {
+       "q": "What did Cartier find off the coast of Newfoundland in 1534?",
+       "opts": [
+        "English and Spanish fishing fleets",
+        "A French colony already settled there",
+        "The entrance to the Northwest Passage",
+        "A Native American village on an island"
+       ],
+       "a": 0,
+       "why": "The waters there were a rich fishing ground, and other countries had got there first. Those fisheries matter later — they are how the fur trade starts."
+      },
+      {
+       "q": "What did Cartier fail to realise about the Gulf of St. Lawrence?",
+       "opts": [
+        "It was the mouth of a mighty river",
+        "It was already claimed by England",
+        "It was frozen for half the year",
+        "It was not connected to the sea"
+       ],
+       "a": 0,
+       "why": "He claimed the land around the gulf and went home. He came back a year later and sailed up the river he had missed."
+      }
+     ]
+    },
+    {
+     "type": "pick", "p": "scurvy",
+     "hi": ["He climbed a hill and named it Mount Royal",
+            "taught the French how to brew a drink made from evergreen trees"],
+     "vs": [
+      {
+       "q": "Cartier climbed a hill and named it Mount Royal. What is on that site today?",
+       "opts": [
+        "The Canadian city of Montreal",
+        "The Canadian city of Quebec",
+        "The American city of New York",
+        "The port of St. John's"
+       ],
+       "a": 0,
+       "why": "Mount Royal, Montreal. He had sailed up the St. Lawrence and visited a Native American village on an island in the river."
+      },
+      {
+       "q": "What saved Cartier's men when they fell sick with scurvy?",
+       "opts": [
+        "A drink brewed from evergreen trees",
+        "Supplies that arrived from France",
+        "Moving the camp farther south",
+        "Fish caught through holes in the ice"
+       ],
+       "a": 0,
+       "why": "Native Americans taught them how to make it, and it cured them. We now know such a brew is rich in vitamin C, which is exactly what scurvy is a lack of."
+      }
+     ]
+    },
+    {
+     "type": "pick", "p": "prisoners",
+     "hi": ["the king released prisoners from jail",
+            "That colony was doomed from the start"],
+     "vs": [
+      {
+       "q": "How did the French king try to find settlers for his colony?",
+       "opts": [
+        "He released prisoners from jail and sent them",
+        "He paid farming families to cross the Atlantic",
+        "He ordered his soldiers to stay and settle",
+        "He invited settlers from England and Spain"
+       ],
+       "a": 0,
+       "why": "French people could not easily be persuaded to settle in a cold, distant land. So the king emptied some jails instead."
+      },
+      {
+       "q": "Why was that colony doomed from the start?",
+       "opts": [
+        "The settlers would not work, and supplies came late",
+        "The land turned out to be owned by England",
+        "A disease killed most of the settlers",
+        "The king changed his mind and recalled them all"
+       ],
+       "a": 0,
+       "why": "The prisoners were happy to be out of jail but not eager to work in such difficult conditions. Cartier gave up and went home, and France ignored the land for sixty years."
+      }
+     ]
+    },
+    {
+     "type": "pick", "p": "fur",
+     "hi": ["The French wanted to trade furs, particularly beaver skins",
+            "in great demand in Europe for making men's hats"],
+     "vs": [
+      {
+       "q": "What did the French want from the Native Americans?",
+       "opts": [
+        "Furs, especially beaver skins",
+        "Gold and silver from inland mines",
+        "Land for building large farms",
+        "Timber for building ships"
+       ],
+       "a": 0,
+       "why": "Beaver above all. This is the trade the whole chapter is named for, and it grew out of French fishing boats off Newfoundland."
+      },
+      {
+       "q": "Why were beaver skins in such demand in Europe?",
+       "opts": [
+        "They were used for making men's hats",
+        "They were used to line winter boots",
+        "They were burned as a kind of fuel",
+        "They were used to make writing paper"
+       ],
+       "a": 0,
+       "why": "Hats. An entire North American empire grew out of what was fashionable on European heads."
+      }
+     ]
+    },
+    {
+     "type": "pick", "p": "fur",
+     "hi": ["eager to have tools and other metal goods",
+            "an explorer named Samuel de Champlain"],
+     "vs": [
+      {
+       "q": "What did the Native Americans want in exchange?",
+       "opts": [
+        "Tools and other metal goods",
+        "Horses and cattle",
+        "Guns and gunpowder",
+        "Cloth and glass beads"
+       ],
+       "a": 0,
+       "why": "Metal goods. Trade relationships grew slowly, out of French fishermen meeting local people on the same coast year after year."
+      },
+      {
+       "q": "Who was the key figure in the settlement of New France?",
+       "opts": [
+        "Samuel de Champlain",
+        "Jacques Cartier",
+        "Giovanni da Verrazano",
+        "Louis Jolliet"
+       ],
+       "a": 0,
+       "why": "Champlain. The fur trade made colonies worth having, and he is the one who built them."
+      }
+     ]
+    },
+    {
+     "type": "pick", "p": "quebec",
+     "hi": ["Farming was difficult because the growing season was so short",
+            "moved the settlement to the site of Quebec City"],
+     "vs": [
+      {
+       "q": "Farming was hard in New France because the growing season was short. What is a growing season?",
+       "opts": [
+        "The days in a year for planting and harvesting",
+        "The months when a river is free of ice",
+        "The time it takes a single crop to ripen",
+        "The part of the year when furs are best"
+       ],
+       "a": 0,
+       "why": "How many days a year you can actually farm. With long hard winters there were not many, which is a large part of why so few settlers came."
+      },
+      {
+       "q": "Where did Champlain move his settlement in 1608?",
+       "opts": [
+        "To the site of Quebec City",
+        "To the island of Montreal",
+        "To the coast of Maine",
+        "To the Gulf of Mexico"
+       ],
+       "a": 0,
+       "why": "On the banks of the St. Lawrence, at a point where the river narrows, with the town built on the heights looking over the water."
+      }
+     ]
+    },
+    {
+     "type": "pick", "p": "quebec",
+     "hi": ["At first very few settlers came to New France",
+            "Champlain sailed to New France for the first time"],
+     "vs": [
+      {
+       "q": "Why did very few settlers come to New France at first?",
+       "opts": [
+        "The winters were long and farming was hard",
+        "The king would not allow families to go",
+        "The Native Americans drove them out",
+        "There was no way to make any money there"
+       ],
+       "a": 0,
+       "why": "Long hard winters and a short growing season. New France grew quite differently from the English colonies to the south."
+      },
+      {
+       "q": "When did Champlain first sail to New France?",
+       "opts": [
+        "1603",
+        "1524",
+        "1534",
+        "1682"
+       ],
+       "a": 0,
+       "why": "1603, exploring the coasts of Maine and Nova Scotia, where he founded his first settlement before moving it to Quebec five years later."
+      }
+     ]
+    },
+    {
+     "type": "pick", "p": "differently",
+     "hi": ["Fur traders canoed and portaged farther and farther",
+            "an expedition led by Jacques Marquette"],
+     "vs": [
+      {
+       "q": "Fur traders canoed and portaged into the wilderness. What does portage mean?",
+       "opts": [
+        "To carry boats and supplies overland",
+        "To paddle upstream against a current",
+        "To trade goods at a riverside post",
+        "To map a river from its mouth upward"
+       ],
+       "a": 0,
+       "why": "Carrying the canoe between one waterway and the next. It is how the fur trade pushed deeper into North America than any map went."
+      },
+      {
+       "q": "Which expedition first reached the Mississippi River, and when?",
+       "opts": [
+        "Marquette and Jolliet, in 1673",
+        "Cartier and Champlain, in 1608",
+        "La Salle and Verrazano, in 1524",
+        "Champlain and Jolliet, in 1603"
+       ],
+       "a": 0,
+       "why": "The first European expedition to get there, and it got there because of furs. Exploration followed the trade, not the other way round."
+      }
+     ]
+    },
+    {
+     "type": "pick", "p": "lasalle",
+     "hi": ["claimed all the land drained by the Mississippi",
+            "a sizable empire with hardly any settlers"],
+     "vs": [
+      {
+       "q": "What did La Salle claim for the king of France in 1682?",
+       "opts": [
+        "All the land drained by the Mississippi",
+        "Every island in the Gulf of Mexico",
+        "The whole of the St. Lawrence valley",
+        "The fisheries off Newfoundland"
+       ],
+       "a": 0,
+       "why": "He sailed the Mississippi down to the Gulf of Mexico and claimed everything its waters touched — an enormous claim made by one man in a boat."
+      },
+      {
+       "q": "By 1700, what was strange about New France?",
+       "opts": [
+        "It was a huge empire with hardly any settlers",
+        "It had more settlers than the English colonies",
+        "It had been handed over to England",
+        "It had no trade with Europe at all"
+       ],
+       "a": 0,
+       "why": "About ten thousand Europeans in the whole of it. Compare that with the English colonies filling up the Atlantic coast, and the Big Question answers itself."
+      }
+     ]
+    },
+    {
+     "type": "pick", "bq": true, "p": "differently",
+     "hi": ["English colonists forcefully pushed Native Americans off land",
+            "had focused on trade"],
+     "vs": [
+      {
+       "q": "In what ways were the French and English approaches to settlement different?",
+       "opts": [
+        "The French came to trade; the English came to take land",
+        "The French came to farm; the English came to fish",
+        "The French sent soldiers; the English sent priests",
+        "The French built cities; the English built forts"
+       ],
+       "a": 0,
+       "why": "This is the chapter's Big Question. English colonists forcefully pushed Native Americans off land they had lived on for generations. The French had not tried to conquer them, but had focused on trade."
+      },
+      {
+       "q": "What kind of people mostly settled in New France?",
+       "opts": [
+        "Rugged adventurers, and not many of them",
+        "Whole families looking for farmland",
+        "Soldiers sent out by the French king",
+        "Fishermen who stayed on after the season"
+       ],
+       "a": 0,
+       "why": "That suited the French government for a while: the colony made a profit and its few settlers needed little supervision. The English colonies filled up with families instead, which is the other half of the difference."
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "passages": {
+  "joins": {
+   "section": "France Joins In",
+   "title": "France Joins In — late to the race",
+   "cite": "Student Reader, page 66",
+   "vocab": [
+    ["cartographer", "a mapmaker"]
+   ],
+   "text": [
+    "In the early 1500s, Spain was mining gold and silver in Mexico and Peru. Portugal ruled the spice trade in the Indian Ocean. England had sent John Cabot to look for the Northwest Passage. The king of France, Francis I, did not want to be left behind.",
+    "Verrazano's brother, a cartographer, sailed with him. North America was new to the Europeans and had not been mapped. One of the goals of Verrazano's expedition was to create accurate maps of the Atlantic coast."
+   ]
+  },
+  "verrazano": {
+   "section": "France Joins In",
+   "title": "France Joins In — Verrazano's coast",
+   "cite": "Student Reader, page 68",
+   "text": [
+    "Verrazano was the first European to sail up the Atlantic coast of the present-day United States, from North Carolina to Newfoundland. When he sailed into New York Bay, he noted that it was a deep-water harbor. Today the entrance to New York Harbor is spanned by the Verrazano-Narrows Bridge, named in his honor.",
+    "Verrazano did not make it back to Europe. He was killed on an island in the Caribbean."
+   ]
+  },
+  "cartier": {
+   "section": "Jacques Cartier",
+   "title": "Jacques Cartier — the river he sailed past",
+   "cite": "Student Reader, page 68",
+   "text": [
+    "In 1534 France's king asked Jacques Cartier, a French sea captain, to explore the coast of North America. Cartier sailed to Newfoundland, where he encountered English and Spanish fishing fleets. This area of water off the coast of Newfoundland was a rich fishing ground.",
+    "Cartier continued his voyage, exploring the coast of Labrador and the Gulf of St. Lawrence. At the time, Cartier did not realize that the Gulf of St. Lawrence was in fact the mouth of a mighty river. Instead of exploring further, he claimed the land around the gulf for France and returned to Europe."
+   ]
+  },
+  "scurvy": {
+   "section": "Jacques Cartier",
+   "title": "Jacques Cartier — a hard winter, and a cure",
+   "cite": "Student Reader, page 69",
+   "text": [
+    "Cartier visited a Native American village on an island in the St. Lawrence. He climbed a hill and named it Mount Royal. This site eventually became part of the Canadian city of Montreal.",
+    "During the winter, Cartier's men became sick with scurvy. The snow was four-feet deep. Many of Cartier's men died from the cold and sickness. Cartier gave up hope of ever returning to France.",
+    "The friendship between Cartier and the Native Americans saved him and his men. The Native Americans taught the French how to brew a drink made from evergreen trees. (Today we know that such a brew is rich in vitamin C.) It cured the French explorers of their scurvy."
+   ]
+  },
+  "prisoners": {
+   "section": "Jacques Cartier",
+   "title": "Jacques Cartier — a colony made of prisoners",
+   "cite": "Student Reader, page 70",
+   "text": [
+    "Cartier returned on a third voyage to what is now Canada. The French king wanted a colony in North America. But French people could not be easily persuaded to become settlers in this cold, distant land. Instead, the king released prisoners from jail and sent them to settle in North America.",
+    "That colony was doomed from the start. The prisoners were happy to get out of jail but not eager to work in such difficult conditions. Supply ships were late in arriving. Jacques Cartier was forced to give up and return to France."
+   ]
+  },
+  "fur": {
+   "section": "Champlain and New France",
+   "title": "Champlain and New France — where the fur trade came from",
+   "cite": "Student Reader, page 70",
+   "text": [
+    "During the 1500s, French ships did venture to the waters off Newfoundland to fish. As a result, trade relationships slowly developed between the French fishermen and the local Native Americans. The Native Americans were eager to have tools and other metal goods. The French wanted to trade furs, particularly beaver skins, which were in great demand in Europe for making men's hats.",
+    "The development of a fur trade in North America led to a renewed effort by the French to establish colonies in the land they called New France. The key figure in the settlement of New France was an explorer named Samuel de Champlain."
+   ]
+  },
+  "quebec": {
+   "section": "Champlain and New France",
+   "title": "Champlain and New France — Quebec, and a short summer",
+   "cite": "Student Reader, page 71",
+   "vocab": [
+    ["growing season", "the days available in a year to plant and harvest crops"]
+   ],
+   "text": [
+    "In 1603, Champlain sailed to New France for the first time. He explored the coast of Maine and Nova Scotia. He founded his first settlement in Nova Scotia. In 1608, Champlain moved the settlement to the site of Quebec City, on the banks of the St. Lawrence River. At a point where the river narrows, Champlain built a town on the heights with a view of the river.",
+    "New France grew differently than the English colonies. At first very few settlers came to New France. The winters were long and hard. Farming was difficult because the growing season was so short."
+   ]
+  },
+  "differently": {
+   "section": "Champlain and New France",
+   "title": "Champlain and New France — trade instead of conquest",
+   "cite": "Student Reader, page 72",
+   "vocab": [
+    ["portage", "to carry boats and supplies overland from one waterway to another"]
+   ],
+   "text": [
+    "Those who did settle in New France were mostly rugged adventurers. For a while that suited the French government. The colony made a profit, and for the most part the colony's few settlers did not need a great deal of supervision.",
+    "It is probably true to say that the settlers in New France also dealt with the Native Americans living nearby somewhat differently than the English did in the colonies to the south. English colonists forcefully pushed Native Americans off land they had lived on for generations. In New France, the relationship between the fur traders and the Native American tribes was more peaceful. The French had not tried to conquer the Native Americans, but instead had focused on trade.",
+    "The fur trade also resulted in further exploration. Fur traders canoed and portaged farther and farther into the North American wilderness. In 1673, an expedition led by Jacques Marquette"
+   ]
+  },
+  "lasalle": {
+   "section": "The Mississippi River",
+   "title": "The Mississippi River — an empire with nobody in it",
+   "cite": "Student Reader, pages 72–73",
+   "text": [
+    "La Salle claimed all the land drained by the Mississippi for the king of France.",
+    "By 1700, New France was a sizable empire with hardly any settlers. There were only about ten thousand Europeans in the entire area."
+   ]
+  }
+ }
+}

@@ -329,6 +329,30 @@ def ae6(s):
     return Patcher(s, "ae6")
 
 
+def ae7(s):
+    """The Age of Exploration chapter 7. Config only — the shell it is
+    built from already carries the retake, the excerpt and the papers."""
+    return Patcher(s, "ae7")
+
+
+def ae8(s):
+    """The Age of Exploration chapter 8. Config only — the shell it is
+    built from already carries the retake, the excerpt and the papers."""
+    return Patcher(s, "ae8")
+
+
+def ae9(s):
+    """The Age of Exploration chapter 9. Config only — the shell it is
+    built from already carries the retake, the excerpt and the papers."""
+    return Patcher(s, "ae9")
+
+
+def ae10(s):
+    """The Age of Exploration chapter 10. Config only — the shell it is
+    built from already carries the retake, the excerpt and the papers."""
+    return Patcher(s, "ae10")
+
+
 def recite4(s):
     """Fireflies in the Garden — generated from the owl's shell. Config only."""
     return Patcher(s, "recite4")
@@ -554,6 +578,14 @@ APPS = {
     "history/g5-ae-ch5":     (ae5,    dict(app="ae5",        shake="#card",   lift=None,
                                            dragon=["m1"], subject="History")),
     "history/g5-ae-ch6":     (ae6,    dict(app="ae6",        shake="#card",   lift=None,
+                                           dragon=["m1"], subject="History")),
+    "history/g5-ae-ch7":     (ae7,    dict(app="ae7",        shake="#card",   lift=None,
+                                           dragon=["m1"], subject="History")),
+    "history/g5-ae-ch8":     (ae8,    dict(app="ae8",        shake="#card",   lift=None,
+                                           dragon=["m1"], subject="History")),
+    "history/g5-ae-ch9":     (ae9,    dict(app="ae9",        shake="#card",   lift=None,
+                                           dragon=["m1"], subject="History")),
+    "history/g5-ae-ch10":    (ae10,   dict(app="ae10",       shake="#card",   lift=None,
                                            dragon=["m1"], subject="History")),
     # Practice is generated, and the child chooses how long a set is — so a
     # perfect run on a set of four would be trivial to arrange. Math therefore
