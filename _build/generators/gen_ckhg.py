@@ -45,6 +45,11 @@ import build_theme as B          # noqa: E402
 TAG = re.compile(r"</?[a-z][^>]*>|&[a-z]+;")
 
 
+def bare(t):
+    """Letters only, for comparing what an option says against what the book says."""
+    return re.sub(r"[^a-z]", "", t.lower())
+
+
 def data_span(html):
     i = html.index("const DATA = ")
     b = html.index("{", i)
@@ -120,6 +125,24 @@ def check(spec):
                         bad.append("%s: the %s is escaped when printed, so its "
                                    "markup reaches the screen as text: %r"
                                    % (spot, field, val[:50]))
+                # The fault that shipped: a wrong answer lifted out of the same
+                # sentence the right one came from. "Which islands did Europeans
+                # call the Spice Islands?" offered Sumatra and Java, which the
+                # page calls spice-bearing islands two lines earlier -- so the
+                # question came down to which island is most famous, and three of
+                # four answers were defensible. If the book says it in the very
+                # passage the question points at, it is not a wrong answer.
+                if it.get("p") in keys:
+                    page = bare(" ".join(spec["passages"][it["p"]]["text"]) + " " +
+                               " ".join(w + " " + d for w, d in
+                                        spec["passages"][it["p"]].get("vocab", [])))
+                    for i, o in enumerate(v.get("opts") or []):
+                        if i == v.get("a") or not isinstance(o, str):
+                            continue
+                        if len(bare(o)) >= 12 and bare(o) in page:
+                            bad.append("%s: the passage says %r, so offering it as "
+                                       "a wrong answer gives the question two "
+                                       "defensible answers" % (spot, o[:50]))
                 o = v.get("opts") or []
                 if len(o) != 4:
                     bad.append("%s: %d options, want 4" % (spot, len(o)))
