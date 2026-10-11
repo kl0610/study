@@ -95,13 +95,18 @@ def check(spec):
                 bad.append("%s: no passage %r" % (where, it.get("p")))
             else:
                 # A highlight that is not in its own passage opens the book at
-                # nothing, which is worse than not opening it at all.
+                # nothing, which is worse than not opening it at all. It has to
+                # be in the passage TEXT, not in the vocabulary beside it:
+                # excerptFor() picks the lines of `text` that contain the
+                # highlight, so a highlight that only exists in `vocab` finds no
+                # line and the drawer opens with no excerpt at all. A definition
+                # question therefore marks the sentence the word appears in --
+                # the vocabulary box is shown underneath regardless.
                 body = " ".join(spec["passages"][it["p"]]["text"])
-                vocab = " ".join(w + " " + d
-                                 for w, d in spec["passages"][it["p"]].get("vocab", []))
                 for h in ([it["hi"]] if isinstance(it.get("hi"), str) else it.get("hi") or []):
-                    if h not in body and h not in vocab:
-                        bad.append("%s: highlight %r is not in passage %r"
+                    if h not in body:
+                        bad.append("%s: highlight %r is not in the text of passage "
+                                   "%r, so the excerpt would come up empty"
                                    % (where, h[:40], it["p"]))
 
             vs = forms(it)
@@ -177,6 +182,26 @@ def check(spec):
     for k, P in spec["passages"].items():
         if not P.get("title") or not P.get("cite") or not P.get("text"):
             bad.append("passage %r is missing title, cite or text" % k)
+        if not P.get("section"):
+            bad.append("passage %r does not say which headed section it is from" % k)
+
+    # Each chapter is built of a few sections under purple headings, and each
+    # heading is a main idea the teacher can test. A quiz that covers four of
+    # five headings looks complete and is not, so the headings are named on the
+    # passages and every one of them has to be asked about.
+    asked = {spec["passages"][it["p"]].get("section")
+             for it in items_of(spec) if it.get("p") in keys}
+    for sec in sorted({P.get("section") for P in spec["passages"].values()} - asked):
+        if sec:
+            bad.append("no question asks about the section %r" % sec)
+
+    # The Big Question is printed at the top of the chapter and the teacher
+    # tests on it, so it is asked outright -- and on every paper, which falls
+    # out of marking the item rather than one of its versions.
+    bq = [it for it in items_of(spec) if it.get("bq")]
+    if len(bq) != 1:
+        bad.append("%d questions are marked as the Big Question, and there is one"
+                   % len(bq))
 
     # A chapter is a short sitting. Five or six minutes is what was asked for.
     mins = sum(int(mm.group(1))
