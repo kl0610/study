@@ -8,11 +8,12 @@ quoted from the book. So this is gen_science.py's job with three differences,
 each of which is why it is a separate file rather than a flag:
 
   * it writes into history/ rather than science/;
-  * a chapter may have more than one section. The Age of Exploration chapters
-    carry a dozen core vocabulary words each, and burying them among the content
-    questions tests them by accident. Each chapter gets a short "what happened"
-    section and a shorter "the words" section, which the child can fail and
-    retake separately;
+  * a chapter may have more than one section, though these do not use it: a
+    chapter is one sitting of five or six minutes, and the vocabulary is asked
+    inside that quiz rather than in a section beside it. The dozen core words
+    are carried by the second paper of each question -- paper one asks what
+    happened, paper two asks what the word means or what it is doing here -- so
+    they are tested without adding a question;
   * an item may carry `vs`, the two papers. The retake round is meant to look
     different from the first run -- "mix up the questions again and the wrong
     answers so that the questions would look slightly different" -- and the

@@ -8,12 +8,12 @@
  "missions": [
   {
    "id": "m1",
-   "name": "What happened",
-   "tag": "6 questions · 2 papers · about 4 minutes",
-   "blurb": "One question for each of the ideas this chapter is built on. The card says which page of the book answers it, and a wrong answer opens that page.",
+   "name": "The Spice Islands",
+   "tag": "9 questions · 2 papers · about 6 minutes",
+   "blurb": "One quiz for the whole chapter. Every highlighted word in the chapter is in here — what it means on one paper, what it is doing in the chapter on the other. The card says which page answers it, and a wrong answer opens that page.",
    "items": [
     {
-     "type": "pick", "p": "why", "hi": "but also as a way to preserve it",
+     "type": "pick", "p": "why", "hi": ["but also as a way to preserve it", "medieval"],
      "vs": [
       {
        "q": "Besides adding flavor, what did medieval Europeans need spices for?",
@@ -21,21 +21,21 @@
         "Keeping food from going rotten before it was eaten",
         "Making the cloth dyes that colored their clothes",
         "Keeping away the diseases that spread in the towns",
-        "Feeding the animals that were kept through the winter"
+        "Feeding the animals kept through the winter months"
        ],
        "a": 0,
        "why": "There was no refrigeration of any kind, so food had to be preserved some other way. That is why spices were worth so much trouble: not taste, but keeping meat safe to eat."
       },
       {
-       "q": "Why did medieval Europeans need spices in a way that we do not?",
+       "q": "This chapter is set in medieval Europe. What does medieval mean?",
        "opts": [
-        "They grew nothing else that would season food",
-        "They had no refrigerators or other cold storage",
-        "They were not allowed to salt their own meat",
-        "They had no ovens, so food was eaten raw"
+        "Relating to the Middle Ages in Europe",
+        "Living in the countryside rather than a town",
+        "Belonging to a time before anyone could write",
+        "Having to do with ships and sailing"
        ],
-       "a": 1,
-       "why": "We keep food cold; they could not. Spices extended the time meat and other foods could be stored and still safely eaten, which is a job we now give to a machine."
+       "a": 0,
+       "why": "The Middle Ages, roughly the 400s to the 1400s. The word is in the chapter's first sentence because everything in the chapter depends on this being a time with no way to keep food cold."
       }
      ]
     },
@@ -43,31 +43,32 @@
      "type": "pick", "p": "cost", "hi": "spices were very expensive",
      "vs": [
       {
-       "q": "The chapter says spices were very expensive in Europe. Why?",
+       "q": "The chapter says spices were very expensive. Why?",
        "opts": [
-        "European rulers put a heavy tax on every spice sold",
-        "The plants had almost died out and were nearly gone",
         "They grew in faraway Asia, and the trip was dangerous",
+        "The plants had almost died out and were nearly gone",
+        "European rulers put a heavy tax on every spice sold",
         "Only a few cooks in Europe knew how to use them"
        ],
-       "a": 2,
-       "why": "Distance and danger, not scarcity of the plants themselves. The spices grew in quantity — they were simply a very long and risky journey away, and everything that journey cost ended up in the price."
+       "a": 0,
+       "why": "Distance and danger, not scarcity of the plants. The spices grew in quantity — they were simply a long and risky journey away, and everything that journey cost ended up in the price."
       },
       {
-       "q": "What does the author say Europe's desire for cheaper spices set off?",
+       "q": "What does the author say Europe's wish for cheaper spices set off?",
        "opts": [
-        "The end of the Middle Ages across Europe",
-        "A long war between Venice and the Arab traders",
+        "The Age of Exploration and the settling of the Americas",
         "The building of the first ships that could cross oceans",
-        "The Age of Exploration and the settling of the Americas"
+        "A long war between Venice and the Arab traders",
+        "The end of the Middle Ages across Europe"
        ],
-       "a": 3,
-       "why": "This is the Big Question in one sentence. Wanting the same spices for less money is what sent Europeans out across the oceans — and the author traces the settling of the Americas back to it."
+       "a": 0,
+       "why": "This is the Big Question in one sentence. Wanting the same spices for less money is what sent Europeans out across the oceans, and the author traces the settling of the Americas back to it."
       }
      ]
     },
     {
-     "type": "pick", "p": "islands", "hi": "the islands of present-day Indonesia",
+     "type": "pick", "p": "islands",
+     "hi": ["the islands of present-day Indonesia", "Indonesia is an archipelago"],
      "vs": [
       {
        "q": "Where are the Spice Islands?",
@@ -81,131 +82,69 @@
        "why": "Indonesia, on the far side of Asia from Europe. Everything else in the chapter follows from how far away that is."
       },
       {
-       "q": "The Malay Archipelago stretches between which two places?",
+       "q": "The book calls Indonesia an archipelago. What is an archipelago?",
        "opts": [
-        "From Arabia to the coast of Egypt",
-        "From the Malay Peninsula to Australia",
-        "From India across to eastern Africa",
-        "From southern China to the islands of Japan"
+        "A chain of islands",
+        "A sea that is almost closed in by land",
+        "A country made up of many languages",
+        "A long stretch of coast with no harbors"
        ],
-       "a": 1,
-       "why": "A chain of more than thirteen thousand islands running from the Malay Peninsula in Southeast Asia all the way down to Australia. The Spice Islands are a small part of it."
+       "a": 0,
+       "why": "A chain of islands. The one the chapter means is the Malay Archipelago, which runs from the Malay Peninsula down to Australia and holds more than thirteen thousand islands — the Spice Islands being a few of them."
       }
      ]
     },
     {
-     "type": "pick", "p": "fire", "hi": "an arc of volcanoes that",
+     "type": "pick", "p": "fire", "hi": "On the rain shadow sides",
      "vs": [
       {
-       "q": "What is the Ring of Fire?",
+       "q": "What is a rain shadow?",
        "opts": [
-        "A belt of hot, dry desert along the equator",
-        "A warm ocean current that circles the Pacific",
-        "An arc of volcanoes around the Pacific Ocean",
-        "The yearly sailing route used by Arab traders"
+        "The protected side of a mountain, which gets less rain",
+        "A cloud that sits over an island without raining",
+        "The time of year when no rain falls at all",
+        "The shade cast by the forest on a mountain slope"
        ],
-       "a": 2,
-       "why": "An arc of volcanoes right around the Pacific. The Spice Islands sit on it because they lie where two sections of Earth's crust meet."
+       "a": 0,
+       "why": "Rain falls on the side of the mountain the weather hits, and the far side sits in its shadow. These islands get as much as 320 inches a year on the forested slopes and under twenty on the rain shadow sides."
       },
       {
-       "q": "What does sitting on the Ring of Fire do for the Spice Islands?",
+       "q": "Why do the Spice Islands grow such exceptional spice crops?",
        "opts": [
-        "It keeps them cool enough to grow spices all year",
-        "It gives them volcanoes, earthquakes, and rich soil",
-        "It makes the sea around them too rough for ships",
-        "It gives them a long dry season every single year"
+        "Heat, heavy rainfall, and rich soil",
+        "Cool nights and a long dry season",
+        "Gentle rain spread evenly all year",
+        "Sandy soil that drains after every storm"
        ],
-       "a": 1,
-       "why": "Volcanic soil is rich soil. Put that together with the heat and the heavy rainfall near the equator and you get the exceptional spice crops the whole chapter is about."
+       "a": 0,
+       "why": "Three things together, and the chapter names all three. It is why these particular islands were worth crossing the world for rather than any others."
       }
      ]
     },
     {
-     "type": "pick", "p": "route", "hi": "sold the spices to merchants",
+     "type": "pick", "p": "secret", "hi": "ships and navigational skills suited",
      "vs": [
       {
-       "q": "How did spices actually get from the Spice Islands to Europe?",
+       "q": "The book says European navigational skills were not up to the voyage. What does navigational mean?",
        "opts": [
-        "Venetian merchants sailed east and bought them at the islands",
-        "European ships rounded Africa and collected them each year",
-        "Arab traders carried them west and sold them to Venetians",
-        "They were carried overland the whole way by Mongol riders"
-       ],
-       "a": 2,
-       "why": "Two separate journeys and two separate sets of people taking a profit. No European ship had yet gone round Africa, so no European bought at the source."
-      },
-      {
-       "q": "Where did the Arab traders hand the spices over to the Venetians?",
-       "opts": [
-        "In Egypt",
-        "At the Spice Islands",
-        "In Venice",
-        "On the coast of India"
+        "Related to steering and controlling a ship",
+        "Related to drawing maps of the coastline",
+        "Related to loading cargo into a ship",
+        "Related to repairing a damaged ship"
        ],
        "a": 0,
-       "why": "The Arab route ran round the Arabian Peninsula, up the Red Sea and north into Egypt. That is where the spices changed hands, and where the Arab traders took their huge profits."
-      }
-     ]
-    },
-    {
-     "type": "pick", "p": "polo", "hi": "inspired European mapmakers to update their maps",
-     "vs": [
-      {
-       "q": "How did Marco Polo's book change things for Europeans?",
-       "opts": [
-        "It gave sailing directions straight to the Spice Islands",
-        "It proved to Europeans that the Earth was round",
-        "It listed the prices the Arab traders were charging",
-        "It described Asian lands no European had written about before"
-       ],
-       "a": 3,
-       "why": "He was the first European to write about China, Thailand and the Malay Archipelago. Mapmakers redrew their maps because of it — which is a long way from giving directions, since the location of the Spice Islands was still a secret."
+       "why": "Controlling where a ship goes. The chapter uses the word to explain why Europeans could not simply go and fetch the spices themselves: they did not yet know how to steer a ship that far."
       },
       {
-       "q": "Who did the chapter say was inspired by Polo's book two hundred years later?",
+       "q": "Why could Europeans not simply sail to the Spice Islands themselves?",
        "opts": [
-        "Christopher Columbus",
-        "Kublai Khan",
-        "The merchants of Venice",
-        "The Arab traders of Egypt"
+        "Their ships and skills could not make such a voyage",
+        "The Arabs guarded the sea route with warships",
+        "Their rulers had forbidden such long voyages",
+        "They had no way to pay for such a long voyage"
        ],
        "a": 0,
-       "why": "An Italian sea captain reading a two-hundred-year-old book is the link the chapter draws between wanting spices and crossing the Atlantic. That is how the search for the islands ends up changing history."
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "id": "m2",
-   "name": "The words of the chapter",
-   "tag": "3 questions · 2 papers · about 2 minutes",
-   "blurb": "The three words this chapter is built on — what each one means, and what it is doing here. Miss one and the book opens at the word with its definition.",
-   "items": [
-    {
-     "type": "pick", "p": "why", "hi": "medieval",
-     "vs": [
-      {
-       "q": "The chapter keeps saying medieval Europe. What does medieval mean?",
-       "opts": [
-        "Relating to the Middle Ages in Europe",
-        "Living in the countryside rather than a town",
-        "Belonging to a time before anyone could write",
-        "Having to do with ships and sailing"
-       ],
-       "a": 0,
-       "why": "The Middle Ages, roughly the 400s to the 1400s. Every fact in this chapter sits inside that stretch of time, which is why the word turns up in the first sentence."
-      },
-      {
-       "q": "Why does it matter that this chapter is about medieval Europe and not Europe today?",
-       "opts": [
-        "Europe had no ships of any kind at that time",
-        "Nobody in Europe could read or write then",
-        "There was no way to keep food cold then",
-        "Europe and Asia were at war the whole time"
-       ],
-       "a": 2,
-       "why": "Change one thing — refrigeration — and the chapter stops making sense. Spices were worth a dangerous journey halfway round the world because there was no other way to keep food."
+       "why": "Two things were missing, not one: ships built for the distance, and the skill to navigate it. They also did not yet know the Atlantic reached as far south as the tip of Africa."
       }
      ]
     },
@@ -215,51 +154,105 @@
       {
        "q": "What is a monopoly?",
        "opts": [
+        "Complete control of the supply of a good",
         "A tax charged on goods brought into a country",
-        "Complete control of the supply of a good or service",
-        "An agreement between two countries to share a trade",
+        "An agreement to share a trade between two countries",
         "A place where people come to buy and sell goods"
        ],
-       "a": 1,
-       "why": "Complete control. The last answer is a trading center, which is a different word from this same chapter — worth keeping apart, because the Arab traders used trading centers to hold their monopoly."
+       "a": 0,
+       "why": "Complete control of the supply. The last answer is a trading center, a different word from this same chapter — worth keeping apart, because trading centers were how the Arab traders held their monopoly."
       },
       {
-       "q": "Arab traders told stories of monsters guarding the Spice Islands. How did that protect their monopoly?",
+       "q": "Arab traders told stories of monsters guarding the islands. How did that keep their monopoly?",
        "opts": [
-        "It explained to buyers why the spices cost so much",
-        "It frightened the Venetians into paying higher prices",
-        "If nobody else dared go, nobody else could supply the spices",
-        "It kept their own sailors from leaving to work elsewhere"
+        "If nobody dared go, nobody else could supply spices",
+        "It frightened the Venetians into paying more",
+        "It explained to buyers why spices cost so much",
+        "It kept their own sailors from leaving them"
        ],
-       "a": 2,
+       "a": 0,
        "why": "A monopoly lasts only while nobody else can reach the supply. For three hundred years the stories, and the secret location, did that job."
       }
      ]
     },
     {
-     "type": "pick", "p": "venice", "hi": "could set whatever prices and taxes they pleased",
+     "type": "pick", "p": "route", "hi": "trading centers in India",
      "vs": [
       {
-       "q": "This chapter calls the Arabs traders and the Venetians merchants. Which is right?",
+       "q": "The book says Arab traders sailed to trading centers. What is a trading center?",
        "opts": [
-        "The Venetians were the traders and the Arabs the merchants",
-        "Both words are used for the Arabs only",
-        "Both words are used for the Venetians only",
-        "The Arabs were the traders and the Venetians the merchants"
+        "A place where people buy and sell goods",
+        "A ship built to carry goods long distances",
+        "A tax office at the edge of a country",
+        "A storehouse where spices are kept dry"
        ],
-       "a": 3,
-       "why": "Both words mean somebody who buys and sells. The chapter gives one to each end of the route: Arab traders brought the spices as far as Egypt, and Venetian merchants took them on into Europe."
+       "a": 0,
+       "why": "A place where buying and selling happen. The chapter names three that the Arab traders sailed east to: India, Ceylon, and the Spice Islands themselves."
       },
       {
-       "q": "Once the Venetian merchants had the spices, what were they able to do?",
+       "q": "How did spices get from the islands to Europe?",
        "opts": [
-        "Sell them only to other merchants, never to families",
-        "Set whatever prices and taxes they pleased",
-        "Sell them only inside the city of Venice itself",
-        "Send any they could not sell back to the traders"
+        "Arab traders carried them west and sold them to Venetians",
+        "Venetian merchants sailed east and bought them at the islands",
+        "European ships rounded Africa and collected them yearly",
+        "Mongol riders carried them overland the whole way"
        ],
-       "a": 1,
-       "why": "Anyone in Europe who wanted spices had to come to Venice, so Venice named the price. That made the city very wealthy and, the chapter adds, very unpopular."
+       "a": 0,
+       "why": "Two separate journeys, and two separate sets of people taking a profit. No European ship had yet gone round Africa, so no European bought at the source."
+      }
+     ]
+    },
+    {
+     "type": "pick", "p": "venice", "hi": "negotiated with Arab traders to distribute spices",
+     "vs": [
+      {
+       "q": "The chapter calls the Arabs traders and the Venetians merchants. Which is right?",
+       "opts": [
+        "The Arabs were the traders and the Venetians the merchants",
+        "The Venetians were the traders and the Arabs the merchants",
+        "Both words are used for the Arabs only",
+        "Both words are used for the Venetians only"
+       ],
+       "a": 0,
+       "why": "Both words mean somebody who buys and sells, and the chapter gives one to each end of the route: Arab traders brought the spices as far as Egypt, and Venetian merchants took them on into Europe."
+      },
+      {
+       "q": "The Venetians negotiated with the Arab traders. What does negotiate mean?",
+       "opts": [
+        "To discuss the terms of an agreement",
+        "To carry goods from one port to another",
+        "To pay a price without arguing",
+        "To lend money at a high rate"
+       ],
+       "a": 0,
+       "why": "To talk terms. What the Venetians negotiated for was the right to distribute the spices through Europe, which is what let them charge whatever they pleased."
+      }
+     ]
+    },
+    {
+     "type": "pick", "p": "polo", "hi": ["on diplomatic missions", "porcelain"],
+     "vs": [
+      {
+       "q": "Kublai Khan sent Marco Polo on diplomatic missions. What is a diplomatic mission?",
+       "opts": [
+        "A trip to represent your government abroad",
+        "A trip made to carry letters to a king",
+        "A journey made to trade for spices",
+        "A voyage to map an unknown coast"
+       ],
+       "a": 0,
+       "why": "Going somewhere as your government's representative. It is why Polo saw so much of Asia: the Khan kept sending him across the empire, and he paid attention everywhere he went."
+      },
+      {
+       "q": "What did adventurers travel into Mongol-controlled Asia to trade for?",
+       "opts": [
+        "Silk, gems, porcelain, and tea",
+        "Gold, salt, ivory, and cloth",
+        "Spices, timber, and glass",
+        "Wool, wine, and silver"
+       ],
+       "a": 0,
+       "why": "Porcelain is fine pottery, and it travelled with silk, gems and tea. The Mongols had made the roads safe, so Asia was suddenly worth the journey — and spices were not the only thing Europe wanted from it."
       }
      ]
     }
@@ -296,18 +289,16 @@
    ],
    "text": [
     "Different spices come from different places. Many of the most desirable spices come from the islands of present-day Indonesia.",
-    "Indonesia is an archipelago , or chain of islands. It stretches from Southeast Asia's Malay Peninsula to the continent of Australia. This group, known as the Malay Archipelago, contains more than thirteen thousand islands.",
-    "Of all the spice-bearing islands, the Maluku Islands are probably the most famous. Indeed, for many years, Europeans referred to them as the Spice Islands."
+    "Indonesia is an archipelago , or chain of islands. It stretches from Southeast Asia's Malay Peninsula to the continent of Australia. This group, known as the Malay Archipelago, contains more than thirteen thousand islands."
    ]
   },
   "fire": {
-   "title": "Volcanoes, rain, and very good spices",
+   "title": "Rain on one side, and very good spices",
    "cite": "Student Reader, pages 4–5",
    "vocab": [
     ["rain shadow", "an area that gets less rain because it is on the protected side of a mountain"]
    ],
    "text": [
-    "The islands of the Malay Archipelago are special. They mark a boundary between two sections of Earth's crust. The ridge formed by those sections is noted for its volcanoes and earthquake activity. It is part of the Ring of Fire, an arc of volcanoes that surrounds the rim of the Pacific Ocean.",
     "Daytime temperatures are between 70 and 90 F year-round. Rainfall can be as much as 320 inches a year on the forested mountain slopes. On the rain shadow sides, it can be less than twenty inches a year.",
     "Heat, heavy rainfall, and rich soil result in exceptional spice crops."
    ]
@@ -346,12 +337,11 @@
    ],
    "text": [
     "The Venetians did well, too. They negotiated with Arab traders to distribute spices throughout Europe. Europeans wanting to purchase spices had to deal with Venice.",
-    "Once they had acquired the spices, the Venetian merchants could set whatever prices and taxes they pleased. This arrangement made Venice a very wealthy city. It also made the Venetians unpopular.",
-    "Wealthy Europeans had become used to exotic goods from the Venetian marketplace. At the same time, they resented the high cost of doing business with Venetian merchants."
+    "Once they had acquired the spices, the Venetian merchants could set whatever prices and taxes they pleased. This arrangement made Venice a very wealthy city. It also made the Venetians unpopular."
    ]
   },
   "polo": {
-   "title": "Marco Polo, and the book he told in prison",
+   "title": "Into Mongol Asia",
    "cite": "Student Reader, pages 8–9",
    "vocab": [
     ["Mongol", "a native of the Asian nation of Mongolia"],
@@ -360,9 +350,7 @@
    ],
    "text": [
     "At the time, the Mongols controlled much of Asia and part of Europe. The Mongols made the roads safe for travelers, and many adventurers were anxious to seek their fortunes. Some went to trade for silk, gems, porcelain , and tea.",
-    "Kublai Khan took a liking to Marco. He sent Marco to distant parts of his kingdom on diplomatic missions . Wherever he went, Marco observed, asked questions, and remembered what he had seen.",
-    "During his days in prison, Polo talked about his travels, and the writer wrote down what Marco said. Together, the two cellmates produced a book that helped change the world.",
-    "Polo was the first European to write about China, Thailand, the Malay Archipelago, and other Asian lands. His book inspired European mapmakers to update their maps. Almost two hundred years after it was written, this book inspired an Italian sea captain named Christopher Columbus."
+    "Kublai Khan took a liking to Marco. He sent Marco to distant parts of his kingdom on diplomatic missions . Wherever he went, Marco observed, asked questions, and remembered what he had seen."
    ]
   }
  }

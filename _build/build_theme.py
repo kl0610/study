@@ -514,7 +514,7 @@ APPS = {
     # chapter shell rather than the history one, so it has the retake round and
     # the two papers; two sections per chapter, the content and the words.
     "history/g5-ae-ch1":      (ae1,   dict(app="ae1",        shake="#card",   lift=None,
-                                           dragon=["m1", "m2"], subject="History")),
+                                           dragon=["m1"], subject="History")),
     # Practice is generated, and the child chooses how long a set is — so a
     # perfect run on a set of four would be trivial to arrange. Math therefore
     # earns coins, hearts and ore but is not a boss level: `dragon: []` means no

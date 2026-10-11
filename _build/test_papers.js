@@ -251,8 +251,11 @@ for (const a of PAPERED) {
   {
     const reading = a.rel.indexOf("reading/") === 0;
     const M = a.DATA.missions || [];
+    /* A reading is split into sections a child sits across a week. A chapter
+       of a textbook is one sitting, so one section is right for it -- and the
+       vocabulary belongs inside that quiz, not in a section of its own. */
     ok("sections that can each be sat on their own: " +
-       M.map(m => m.items.length).join(" + "), M.length >= 2);
+       M.map(m => m.items.length).join(" + "), M.length >= (reading ? 2 : 1));
     /* A reading section is named for the pages it covers. A history chapter
        is named for what it is about, so this is asked only of readings. */
     if (reading)
