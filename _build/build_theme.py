@@ -299,6 +299,18 @@ def ae1(s):
     return Patcher(s, "ae1")
 
 
+def ae2(s):
+    """The Age of Exploration chapter 2. Config only — the shell it is
+    built from already carries the retake, the excerpt and the papers."""
+    return Patcher(s, "ae2")
+
+
+def ae3(s):
+    """The Age of Exploration chapter 3. Config only — the shell it is
+    built from already carries the retake, the excerpt and the papers."""
+    return Patcher(s, "ae3")
+
+
 def recite4(s):
     """Fireflies in the Garden — generated from the owl's shell. Config only."""
     return Patcher(s, "recite4")
@@ -514,6 +526,10 @@ APPS = {
     # chapter shell rather than the history one, so it has the retake round and
     # the two papers; two sections per chapter, the content and the words.
     "history/g5-ae-ch1":      (ae1,   dict(app="ae1",        shake="#card",   lift=None,
+                                           dragon=["m1"], subject="History")),
+    "history/g5-ae-ch2":     (ae2,    dict(app="ae2",        shake="#card",   lift=None,
+                                           dragon=["m1"], subject="History")),
+    "history/g5-ae-ch3":     (ae3,    dict(app="ae3",        shake="#card",   lift=None,
                                            dragon=["m1"], subject="History")),
     # Practice is generated, and the child chooses how long a set is — so a
     # perfect run on a set of four would be trivial to arrange. Math therefore

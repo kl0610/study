@@ -1,0 +1,561 @@
+{
+ "chapter": "Chapter 3 — Portuguese Exploration",
+ "title": "Portuguese Exploration — The Age of Exploration, Chapter 3",
+ "eyebrow": "CKHG Grade 5 &middot; The Age of Exploration &middot; Chapter 3 &middot; Student Reader pp. 18&ndash;29",
+ "h1": "Portuguese <em>Exploration</em>",
+ "bigQuestion": "Why do you think Portugal is described as a seagoing pioneer?",
+ "videos": [],
+ "missions": [
+  {
+   "id": "m1",
+   "name": "Portuguese Exploration",
+   "tag": "13 questions · 2 papers · about 6 minutes",
+   "blurb": "One quiz for the whole chapter, with questions from each of its five headed sections and the Big Question at the end. Mostly what happened; a few on the words the chapter is built from. The card says which page answers it, and a wrong answer opens that page.",
+   "items": [
+    {
+     "type": "pick",
+     "p": "pioneer",
+     "hi": [
+      "none of these countries led the search",
+      "that became the seagoing pioneer"
+     ],
+     "vs": [
+      {
+       "q": "Which country led the search for a sea route to the East?",
+       "opts": [
+        "Portugal",
+        "England",
+        "France",
+        "Venice"
+       ],
+       "a": 0,
+       "why": "Portugal, which is the surprise the chapter opens with. The powerful governments of the 1400s were Castile and Aragon, France, England and the Italian city-states, and not one of them led the search."
+      },
+      {
+       "q": "What does the chapter say was unusual about the country that led the way?",
+       "opts": [
+        "It was small and relatively poor",
+        "It had no coastline of its own",
+        "It had never built a ship before",
+        "It was ruled from another country"
+       ],
+       "a": 0,
+       "why": "A small, relatively poor country went first while the rich and powerful ones did not. That is what makes it a pioneer rather than simply a winner."
+      }
+     ]
+    },
+    {
+     "type": "pick",
+     "p": "henry",
+     "hi": [
+      "Prince Henry, often called the Navigator",
+      "he supported the design of ships"
+     ],
+     "vs": [
+      {
+       "q": "Prince Henry of Portugal was given which nickname?",
+       "opts": [
+        "The Navigator",
+        "The Sailor King",
+        "The Mapmaker",
+        "The Lion of Lisbon"
+       ],
+       "a": 0,
+       "why": "The Navigator — although he never went on any expedition himself. Portuguese leadership in exploration was largely down to this one person."
+      },
+      {
+       "q": "What did Prince Henry do for exploration, though he never sailed on an expedition?",
+       "opts": [
+        "He backed better ships, maps, and instruments",
+        "He drew the first maps of the African coast",
+        "He commanded the fleet that rounded Africa",
+        "He made a treaty with the Arab traders"
+       ],
+       "a": 0,
+       "why": "He supported ship design and encouraged mapmaking, shipbuilding and instrument making — and, most importantly, talked his father King John I into paying for expensive expeditions."
+      }
+     ]
+    },
+    {
+     "type": "pick",
+     "p": "expeditions",
+     "hi": [
+      "sent dozens of expeditions down the west coast of Africa",
+      "stories about sea monsters and boiling waves"
+     ],
+     "vs": [
+      {
+       "q": "The chapter says Prince Henry sent dozens of expeditions. What is an expedition?",
+       "opts": [
+        "A journey taken by a group with a clear goal",
+        "A fleet of ships belonging to one country",
+        "A map of a coast nobody has sailed along",
+        "A payment made to a captain before sailing"
+       ],
+       "a": 0,
+       "why": "A journey with a purpose. Henry sent dozens of them down the west coast of Africa, each one going a little farther than the last."
+      },
+      {
+       "q": "Why was it hard for Portuguese captains to find crews willing to sail farther south?",
+       "opts": [
+        "Sailors told stories of sea monsters and boiling waves",
+        "The king would not pay the crews enough money for it",
+        "There was no room on board for enough food",
+        "The Moors had threatened to sink their ships"
+       ],
+       "a": 0,
+       "why": "The same trick the Arab traders used in chapter 1, except these sailors believed it. What they were really meeting was very rough water and creatures they had never seen."
+      }
+     ]
+    },
+    {
+     "type": "pick",
+     "p": "westafrica",
+     "hi": [
+      "gold, ivory, spices, and people, to be sold into slavery",
+      "challenged the Moors for leadership in West Africa"
+     ],
+     "vs": [
+      {
+       "q": "What did Prince Henry's explorers bring back from Africa?",
+       "opts": [
+        "Gold, ivory, spices, and people to be sold into slavery",
+        "Gold, silk, tea, and fine porcelain from the East",
+        "Spices, timber, and maps of the African interior",
+        "Iron, salt, and horses from the Sahara"
+       ],
+       "a": 0,
+       "why": "The chapter does not soften this. The first Africans to be sold arrived in Portugal in 1441 and were made servants and laborers; chapter 10 follows where this leads."
+      },
+      {
+       "q": "Who did Portuguese traders challenge for leadership in West Africa?",
+       "opts": [
+        "The Moors",
+        "The Venetians",
+        "The Spanish",
+        "The Turks"
+       ],
+       "a": 0,
+       "why": "The Moors, who were North African followers of Islam. The Portuguese set up trading posts along the coast and took them on."
+      }
+     ]
+    },
+    {
+     "type": "pick",
+     "p": "westafrica",
+     "hi": [
+      "to serve as interpreters and help set up trade agreements",
+      "challenged the Moors"
+     ],
+     "vs": [
+      {
+       "q": "Africans were taken on expeditions to serve as interpreters. What is an interpreter?",
+       "opts": [
+        "A person who translates one language into another",
+        "A person who guides a ship through a harbor",
+        "A person who keeps the record of a voyage",
+        "A person who trades on behalf of a king"
+       ],
+       "a": 0,
+       "why": "Somebody who turns one language into another. Without interpreters the Portuguese could not have set up trade agreements in ports where nobody spoke their language."
+      },
+      {
+       "q": "The chapter mentions the Moors. Who were they?",
+       "opts": [
+        "North African followers of Islam",
+        "Arab merchants who lived in Venice",
+        "Portuguese sailors who settled in Africa",
+        "A people who lived south of the Sahara"
+       ],
+       "a": 0,
+       "why": "North African Muslims of the Middle Ages, who already led trade in West Africa when the Portuguese arrived."
+      }
+     ]
+    },
+    {
+     "type": "pick",
+     "p": "dias",
+     "hi": [
+      "forced the fleet offshore",
+      "turned back to make landfall"
+     ],
+     "vs": [
+      {
+       "q": "What is a fleet?",
+       "opts": [
+        "Ships sailing together under one leader",
+        "The crew of a single very large ship",
+        "A harbor where warships are kept",
+        "The route a group of ships follows"
+       ],
+       "a": 0,
+       "why": "A group of ships with the same purpose under one commander. Dias had three; da Gama had four; Cabral had thirteen."
+      },
+      {
+       "q": "The ships turned back to make landfall. What does landfall mean?",
+       "opts": [
+        "Reaching land after a trip by sea",
+        "Running a ship aground on rocks",
+        "A storm that blows a ship towards shore",
+        "The first sight of a mountain from the sea"
+       ],
+       "a": 0,
+       "why": "Arriving at land. Dias looked for land to the east where it had been — and could not find it, which is how the discovery happened."
+      }
+     ]
+    },
+    {
+     "type": "pick",
+     "p": "dias",
+     "hi": [
+      "sailed around the southern tip of Africa without knowing it",
+      "the first European to find a route to the Indian Ocean"
+     ],
+     "vs": [
+      {
+       "q": "What had Dias's fleet done without realising it?",
+       "opts": [
+        "Sailed around the southern tip of Africa",
+        "Crossed the whole of the Indian Ocean",
+        "Landed on the coast of South America",
+        "Passed the ships of Vasco da Gama"
+       ],
+       "a": 0,
+       "why": "A storm blew them out to sea for days. When land reappeared it was on the wrong side of the ship, which could only mean they were already heading north up the east coast."
+      },
+      {
+       "q": "What was Bartolomeu Dias the first European to do?",
+       "opts": [
+        "Find a route to the Indian Ocean",
+        "Sail the whole way to India",
+        "Land on the coast of Brazil",
+        "Cross the Atlantic Ocean"
+       ],
+       "a": 0,
+       "why": "He showed his countrymen it could be done. He named the cape Cabo Tormentoso, the Cape of Storms; today it is the Cape of Good Hope."
+      }
+     ]
+    },
+    {
+     "type": "pick",
+     "p": "gama",
+     "hi": [
+      "rounded the Cape of Good Hope and headed northeast",
+      "intruding on their established businesses"
+     ],
+     "vs": [
+      {
+       "q": "Where did Vasco da Gama's fleet go after rounding the Cape of Good Hope?",
+       "opts": [
+        "Northeast along the east coast of Africa",
+        "West across the Atlantic towards Brazil",
+        "South towards the ice at the bottom of the world",
+        "Back north to Lisbon to report to the king"
+       ],
+       "a": 0,
+       "why": "Up the far side of Africa, stopping at the main trading centers along the way — Mombasa, Mozambique and Malindi."
+      },
+      {
+       "q": "Why did the Portuguese run into trouble at Mombasa and Mozambique?",
+       "opts": [
+        "Arab traders felt their business was being intruded on",
+        "The ports had already been taken by the Spanish",
+        "Their ships were too large to enter the harbors safely",
+        "They had no interpreters who spoke Swahili"
+       ],
+       "a": 0,
+       "why": "Those merchants had run the East African trading centers for hundreds of years. At several ports they tried to seize the Portuguese ships outright."
+      }
+     ]
+    },
+    {
+     "type": "pick",
+     "p": "calicut",
+     "hi": [
+      "the strong west winds known as the trade winds",
+      "crossed the Indian Ocean in twenty-three days"
+     ],
+     "vs": [
+      {
+       "q": "What is a trade wind?",
+       "opts": [
+        "A wind that almost always blows one way",
+        "A wind that only blows in the autumn",
+        "A wind that blows from land out to sea",
+        "A wind strong enough to tear a sail"
+       ],
+       "a": 0,
+       "why": "A wind you can count on. Sailors could plan a route around it, which is exactly what the Portuguese did crossing the Indian Ocean."
+      },
+      {
+       "q": "What got da Gama's fleet across the Indian Ocean in twenty-three days?",
+       "opts": [
+        "An experienced pilot and the trade winds",
+        "Four ships sailing day and night in turn",
+        "A new kind of sail fitted at Mombasa",
+        "A map the Zamorin had given them"
+       ],
+       "a": 0,
+       "why": "At Malindi the reception was friendly and the Portuguese were given a ship's pilot. His knowledge plus the trade winds got them safely to Calicut in India."
+      }
+     ]
+    },
+    {
+     "type": "pick",
+     "p": "calicut",
+     "hi": [
+      "not impressed with the ordinary items",
+      "demanded bright red fabric, coral, silver, and gold"
+     ],
+     "vs": [
+      {
+       "q": "Why would the Zamorin of Calicut not set up trade with da Gama?",
+       "opts": [
+        "The goods were ordinary and the Arabs would be angered",
+        "He had already promised the trade to the Spanish",
+        "He did not believe the Portuguese had really sailed there",
+        "His city traded in gems and pearls but not in spices"
+       ],
+       "a": 0,
+       "why": "Two reasons at once: what da Gama had brought was unimpressive, and the Zamorin did not want to upset the Arab merchants he already dealt with."
+      },
+      {
+       "q": "What did the Zamorin demand before he would do business?",
+       "opts": [
+        "Bright red fabric, coral, silver, and gold",
+        "Ships, sailors, and charts of the ocean",
+        "Pepper, cloves, ginger, and cinnamon",
+        "A share of every cargo sent to Portugal"
+       ],
+       "a": 0,
+       "why": "Those four. When the fleet tried to leave he attempted to seize its goods, and da Gama got away with his cargo and five hostages."
+      }
+     ]
+    },
+    {
+     "type": "pick",
+     "p": "swahili",
+     "hi": [
+      "break the long-standing Arab traders' monopoly",
+      "never able to gain full control of the African interior"
+     ],
+     "vs": [
+      {
+       "q": "What did the Portuguese manage to do along the East African coast?",
+       "opts": [
+        "Break the long-standing Arab traders' monopoly",
+        "Take over every city on the Swahili Coast",
+        "Stop the slave trade along the trade routes",
+        "Persuade the Swahili people to join Portugal"
+       ],
+       "a": 0,
+       "why": "The monopoly that chapter 1 began with is finally broken here. They built a network of trading posts along the Swahili Coast, in India, the East Indies and the Spice Islands."
+      },
+      {
+       "q": "What were the Portuguese never able to do in Africa?",
+       "opts": [
+        "Gain full control of the interior",
+        "Set up any trading posts on the coast",
+        "Ship gold back to Portugal",
+        "Sail as far north as Egypt"
+       ],
+       "a": 0,
+       "why": "They tried for decades and met strong resistance. Their expansion stayed limited to a number of small colonies on the coast."
+      }
+     ]
+    },
+    {
+     "type": "pick",
+     "p": "cabral",
+     "hi": [
+      "head southwest and sail out into the Atlantic Ocean",
+      "reached the coast of Brazil"
+     ],
+     "vs": [
+      {
+       "q": "Cabral set out for India in 1500. Where did he end up instead?",
+       "opts": [
+        "The coast of Brazil",
+        "The Cape Verde Islands",
+        "The mouth of the Congo River",
+        "The island of Madagascar"
+       ],
+       "a": 0,
+       "why": "He came upon land he did not know existed and claimed it for his king at once, naming it Vera Cruz, the Island of the True Cross."
+      },
+      {
+       "q": "Why did Cabral swing southwest out into the Atlantic?",
+       "opts": [
+        "Da Gama warned him the Gulf of Guinea was often calm",
+        "A storm drove his thirteen ships off their course",
+        "He had been ordered to look for new land to claim",
+        "His maps showed land lying to the southwest"
+       ],
+       "a": 0,
+       "why": "Advice from da Gama, who had shared his maps before Cabral left Lisbon: don't get stuck where there is little or no wind to move a ship."
+      }
+     ]
+    },
+    {
+     "type": "pick",
+     "bq": true,
+     "p": "pioneer",
+     "hi": "It was Portugal",
+     "vs": [
+      {
+       "q": "Why do you think Portugal is described as a seagoing pioneer?",
+       "opts": [
+        "It went first, where richer countries had not",
+        "It owned more ships than any other country",
+        "It was the only country facing the Atlantic",
+        "Its sailors were the only ones who could read maps"
+       ],
+       "a": 0,
+       "why": "A pioneer is the one who goes first. Portugal backed the ships and the instruments, pushed down the African coast expedition by expedition, rounded the Cape, reached India, and stumbled on Brazil — while Castile, France, England and Venice did not."
+      },
+      {
+       "q": "What does calling Portugal a pioneer mean, in this chapter?",
+       "opts": [
+        "It opened a way others could then follow",
+        "It fought off every country that tried to compete",
+        "It stayed out of the spice trade altogether",
+        "It built the very first ocean-going ship"
+       ],
+       "a": 0,
+       "why": "Dias showed the Cape could be rounded, and da Gama extended the route to India. Knowledge gained on one expedition laid the groundwork for the next — which is what pioneering is."
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "passages": {
+  "pioneer": {
+   "section": "Pioneers of the Sea",
+   "title": "Pioneers of the Sea — the unlikely country",
+   "cite": "Student Reader, page 18",
+   "text": [
+    "The most powerful European governments in the 1400s were the Spanish states of Castile and Aragon, France, England, and some of the city-states in Italy, such as Venice. But none of these countries led the search for a sea route to the East.",
+    "It was Portugal-a small, relatively poor country-that became the seagoing pioneer."
+   ]
+  },
+  "henry": {
+   "section": "Pioneers of the Sea",
+   "title": "Pioneers of the Sea — Prince Henry the Navigator",
+   "cite": "Student Reader, page 18",
+   "text": [
+    "Portuguese leadership in exploration was largely due to one person. Prince Henry, often called the Navigator, had a strong desire to explore the oceans. Although Henry never went on any expeditions himself, he supported the design of ships. He encouraged developments in mapmaking, shipbuilding, and instrument making.",
+    "Most importantly, he helped to convince his father, King John I, to pay for expensive expeditions in the name of Portugal. Like other Europeans, the Portuguese had a strong desire to set up trade routes, spread Christianity, and gain knowledge."
+   ]
+  },
+  "expeditions": {
+   "section": "Pioneers of the Sea",
+   "title": "Pioneers of the Sea — down the coast of Africa",
+   "cite": "Student Reader, page 20",
+   "vocab": [
+    [
+     "expedition",
+     "a special journey taken by a group that has a clear purpose or goal"
+    ]
+   ],
+   "text": [
+    "Prince Henry sent dozens of expeditions down the west coast of Africa. On these expeditions, Portugal's seafarers faced many challenges. Prior to this, no European had sailed very far from Europe.",
+    "Just as the Arab traders did, European sailors told hair-raising stories about sea monsters and boiling waves. Really, they were encountering extremely rough waters and sea creatures that they had never seen before. Such tales made it difficult for Portuguese captains to find crew members willing to sail farther south."
+   ]
+  },
+  "westafrica": {
+   "section": "Pioneers of the Sea",
+   "title": "Pioneers of the Sea — what came back from Africa",
+   "cite": "Student Reader, page 21",
+   "vocab": [
+    [
+     "interpreter",
+     "a person who translates from one language to another"
+    ],
+    [
+     "Moor",
+     "a North African follower of Islam during the Middle Ages"
+    ]
+   ],
+   "text": [
+    "Over the years, Prince Henry's explorers pushed farther south along the African coast. They brought back gold, ivory, spices, and people, to be sold into slavery. The first Africans to be sold arrived in Portugal in 1441. They became servants and laborers.",
+    "Africans were also taken along on expeditions to serve as interpreters and help set up trade agreements in new ports. Portuguese traders set up trading posts and challenged the Moors for leadership in West Africa."
+   ]
+  },
+  "dias": {
+   "section": "Bartolomeu Dias",
+   "title": "Bartolomeu Dias — round the Cape by accident",
+   "cite": "Student Reader, pages 21–22",
+   "vocab": [
+    [
+     "fleet",
+     "a group of ships sailing together with the same purpose and under the control of the same leader"
+    ],
+    [
+     "landfall",
+     "the reaching of land, after a trip by sea"
+    ]
+   ],
+   "text": [
+    "The fleet traveled far beyond where any European had ever sailed before. The ships stopped at various ports along the coast before stormy seas forced the fleet offshore. They did not see land for several days.",
+    "When the seas calmed, the ships turned back to make landfall. They looked for the land that had been to the east of them as they journeyed southward. They could not find it. Then, when the ships turned north, land was sighted. But it was on the west side of the ship, not the east. This could only mean one thing: The fleet was traveling north up the east coast of Africa. They had sailed around the southern tip of Africa without knowing it!",
+    "Dias was both excited by this discovery and concerned about being so far from Portugal. He turned his fleet around. As the fleet rounded the southern tip of Africa and headed north for home, Dias spotted what he called Cabo Tormentoso (Cape of Storms). Today we call it the Cape of Good Hope. Dias had shown his countrymen that it was possible to sail around Africa. He was the first European to find a route to the Indian Ocean."
+   ]
+  },
+  "gama": {
+   "section": "Vasco da Gama",
+   "title": "Vasco da Gama — up the far side of Africa",
+   "cite": "Student Reader, page 22",
+   "text": [
+    "When it came to exploration, the Portuguese always pushed forward. Knowledge gained on one expedition laid the groundwork for the next. Once Dias rounded the Cape of Good Hope, it was only a matter of time before other Portuguese extended the route.",
+    "The fleet rounded the Cape of Good Hope and headed northeast along the east coast of Africa. They stopped at the main trading centers along the way, including Mombasa, Mozambique, and Malindi.",
+    "In Mombasa and in Mozambique, the Portuguese ran into trouble with Arab traders. These merchants had controlled the trading centers along the coast of East Africa for hundreds of years. They felt the Portuguese were intruding on their established businesses. As a result, at several ports, Arab traders tried to seize the Portuguese ships."
+   ]
+  },
+  "calicut": {
+   "section": "Vasco da Gama",
+   "title": "Vasco da Gama — Calicut, and the Zamorin",
+   "cite": "Student Reader, page 24",
+   "vocab": [
+    [
+     "trade wind",
+     "a wind that almost always blows in a particular direction"
+    ],
+    [
+     "scurvy",
+     "a disease caused by a lack of vitamin C"
+    ]
+   ],
+   "text": [
+    "Farther north at Malindi, however, the reception was friendly. The Portuguese were given a ship's pilot to help them. The fleet crossed the Indian Ocean in twenty-three days. They made landfall at Calicut, India, known today as Kozhikode, India. The knowledge of the experienced pilot and the strong west winds known as the trade winds had enabled them to arrive safely.",
+    "Calicut was a major trading city and seaport on the southwest coast of India. The main trade items were spices, gems, and pearls.",
+    "The Zamorin was not impressed with the ordinary items that da Gama had brought to exchange. He also did not want to make the Arab merchants angry. The Zamorin demanded bright red fabric, coral, silver, and gold."
+   ]
+  },
+  "swahili": {
+   "section": "The Portuguese in East Africa",
+   "title": "The Portuguese in East Africa — the coast, not the interior",
+   "cite": "Student Reader, pages 26–27",
+   "vocab": [
+    [
+     "iron ore",
+     "rock from which iron can be obtained"
+    ]
+   ],
+   "text": [
+    "The Portuguese set up trading posts along the Swahili Coast in places like Beira and Maputo Bay.",
+    "Portugal was never able to gain full control of the African interior and their expansion was limited to a number of small colonies.",
+    "The Portuguese did manage to break the long-standing Arab traders' monopoly along the coast. They set up a network of trading posts, not only along the Swahili Coast but also in India, the East Indies, and the Spice Islands."
+   ]
+  },
+  "cabral": {
+   "section": "Pedro Alvares Cabral and Brazil",
+   "title": "Cabral and Brazil — a wrong turn that found a country",
+   "cite": "Student Reader, pages 27–28",
+   "text": [
+    "Da Gama had told Cabral not to get stuck in the Gulf of Guinea. The ocean there was frequently calm, with little or no wind to move a ship. He told Cabral to head southwest and sail out into the Atlantic Ocean instead. Cabral did so, and in April 1500, he sighted land. The expedition had reached the coast of Brazil.",
+    "The Portuguese explorer came upon land he did not know existed. He immediately claimed the territory for his king."
+   ]
+  }
+ }
+}

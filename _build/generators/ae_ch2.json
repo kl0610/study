@@ -1,0 +1,501 @@
+{
+ "chapter": "Chapter 2 — Motives and Means",
+ "title": "Motives and Means — The Age of Exploration, Chapter 2",
+ "eyebrow": "CKHG Grade 5 &middot; The Age of Exploration &middot; Chapter 2 &middot; Student Reader pp. 10&ndash;17",
+ "h1": "Motives and <em>Means</em>",
+ "bigQuestion": "What developments enabled Europeans to travel farther?",
+ "videos": [],
+ "missions": [
+  {
+   "id": "m1",
+   "name": "Motives and Means",
+   "tag": "13 questions · 2 papers · about 6 minutes",
+   "blurb": "One quiz for the whole chapter, with questions from each of its four headed sections and the Big Question at the end. Mostly what happened; a few on the words the chapter is built from. The card says which page answers it, and a wrong answer opens that page.",
+   "items": [
+    {
+     "type": "pick", "p": "value",
+     "hi": ["several motives for exploration", "the monopoly held by Arab traders"],
+     "vs": [
+      {
+       "q": "The chapter says Europeans had several motives for exploration. What is a motive?",
+       "opts": [
+        "The reason for taking a specific action",
+        "A map of a route nobody has sailed",
+        "An order given by a king to a captain",
+        "A share of the profit from a voyage"
+       ],
+       "a": 0,
+       "why": "A reason for doing something. The chapter's title is Motives and Means: the motives are why Europeans wanted to go, the means are what finally let them."
+      },
+      {
+       "q": "Why were spices so valuable throughout Europe?",
+       "opts": [
+        "Arab traders and Venetian merchants held a monopoly",
+        "The plants would only grow on one small island",
+        "European rulers had banned all but a few of them",
+        "They had to be ground by hand before they were sold"
+       ],
+       "a": 0,
+       "why": "The same monopoly from chapter 1. Anyone in Europe who wanted spices had to buy them from people who could name their own price."
+      }
+     ]
+    },
+    {
+     "type": "pick", "p": "value",
+     "hi": ["direct access to the spice-growing areas",
+            "peppercorns were used in place of coins"],
+     "vs": [
+      {
+       "q": "What does the chapter name as one of the Europeans' motives?",
+       "opts": [
+        "Direct access to the spice-growing areas",
+        "Finding new land to farm for their kings",
+        "Spreading the Crusades into Asia",
+        "Catching up with Chinese shipbuilders"
+       ],
+       "a": 0,
+       "why": "They wanted to reach the spice-growing areas themselves, the ones Marco Polo had described, instead of buying through the Arabs and the Venetians."
+      },
+      {
+       "q": "In some places, spices were so valuable that peppercorns were used in place of what?",
+       "opts": [
+        "Coins",
+        "Medicine",
+        "Salt",
+        "Seeds"
+       ],
+       "a": 0,
+       "why": "Money. Payments were counted out peppercorn by peppercorn, and spices by the pound paid fees, taxes, rents and ransoms."
+      }
+     ]
+    },
+    {
+     "type": "pick", "p": "food",
+     "hi": ["their food was not very tasty", "to cure the meat for long-term storage"],
+     "vs": [
+      {
+       "q": "Why were Europeans so enthusiastic about spices?",
+       "opts": [
+        "Their food was not very tasty",
+        "Their doctors said spices cured illness",
+        "Their religion asked them to eat spices",
+        "Their rulers gave spices out as gifts"
+       ],
+       "a": 0,
+       "why": "No potatoes, tomatoes, corn, bananas, chocolate, peanuts or pineapples, no sugar until late in the Middle Ages, and no coffee or tea. A pinch of pepper made a great deal of difference."
+      },
+      {
+       "q": "Europeans used salt to cure meat. What does cure mean here?",
+       "opts": [
+        "To preserve food by smoking, drying, or salting it",
+        "To make somebody well again after an illness",
+        "To cook meat slowly over a very low fire",
+        "To trade meat for something else of value"
+       ],
+       "a": 0,
+       "why": "Not curing an illness — curing food. Livestock was butchered in the fall and salted to keep, and after a few months it needed all the pepper and cloves it could get."
+      }
+     ]
+    },
+    {
+     "type": "pick", "p": "silkroad",
+     "hi": ["The Turks shut down the Silk Road", "needed a sea route to Asia"],
+     "vs": [
+      {
+       "q": "What happened in the fifteenth century that made getting spices even harder?",
+       "opts": [
+        "The Turks shut down the Silk Road",
+        "The Arabs stopped sailing to the islands",
+        "Venice refused to sell to northern Europe",
+        "A storm destroyed the Venetian fleet"
+       ],
+       "a": 0,
+       "why": "The Silk Road was the land route spices had come along from the East. With it closed, the overland way was gone."
+      },
+      {
+       "q": "Once the land route was closed, what did Europeans need?",
+       "opts": [
+        "A sea route to Asia",
+        "A treaty with the Turks",
+        "A new spice to grow at home",
+        "A larger army in the Middle East"
+       ],
+       "a": 0,
+       "why": "Nobody was sure a sea route even existed. The great kings of Europe started looking for explorers, shipbuilders and mapmakers who could find one."
+      }
+     ]
+    },
+    {
+     "type": "pick", "p": "crusades",
+     "hi": ["much more advanced than they had been led to believe",
+            "described the goods and cultures they had encountered"],
+     "vs": [
+      {
+       "q": "What did Europeans find when they reached the Middle East on the Crusades?",
+       "opts": [
+        "Islamic civilization was more advanced than they thought",
+        "The Holy Land had already been abandoned",
+        "The spice trade was being run from there",
+        "Their own ships were already the best in the whole world"
+       ],
+       "a": 0,
+       "why": "They had been led to believe otherwise. Seeing it for themselves is what changed things."
+      },
+      {
+       "q": "How did the Crusades help fuel exploration?",
+       "opts": [
+        "Crusaders came home describing what they had seen",
+        "Crusaders brought back maps of all of Asia",
+        "Crusaders captured ships that could cross oceans",
+        "The pope ordered Europe to find a route east"
+       ],
+       "a": 0,
+       "why": "Curiosity. Knights and soldiers came home talking about what was out there, and that added to European interest in the world beyond their borders."
+      }
+     ]
+    },
+    {
+     "type": "pick", "p": "ships",
+     "hi": ["a great deal about navigation and shipbuilding",
+            "long voyages across uncharted waters"],
+     "vs": [
+      {
+       "q": "What is navigation?",
+       "opts": [
+        "Planning and directing the movement of a ship",
+        "Building a ship strong enough for rough seas",
+        "Loading a ship so that it sits level in the water",
+        "Drawing the coastline of a country onto a map"
+       ],
+       "a": 0,
+       "why": "Working out where you are and steering where you mean to go. Arab traders had centuries of it; Europeans, at this point, did not."
+      },
+      {
+       "q": "The book says European ships could not manage uncharted waters. What does uncharted mean?",
+       "opts": [
+        "Never mapped",
+        "Too shallow to sail",
+        "Claimed by another country",
+        "Far from any trade route"
+       ],
+       "a": 0,
+       "why": "No chart, no map. Sailing water nobody had mapped is a different thing from sailing a coast you know, and European ships were built for the second."
+      }
+     ]
+    },
+    {
+     "type": "pick", "p": "ships",
+     "hi": ["staying near the coastline and watching for known landmarks",
+            "not well-suited to long voyages"],
+     "vs": [
+      {
+       "q": "How did European sailors usually find their way at this time?",
+       "opts": [
+        "By staying near the coast and watching for landmarks",
+        "By following the Arab traders' ships at a distance",
+        "By using the magnetic compass on every voyage",
+        "By counting the days since they had left port"
+       ],
+       "a": 0,
+       "why": "Short voyages in European waters, always in sight of something they recognised. That works until you lose sight of land."
+      },
+      {
+       "q": "What does the chapter say European ships were not well-suited to?",
+       "opts": [
+        "Long voyages across uncharted waters",
+        "Carrying heavy loads of trade goods",
+        "Sailing in the warm Mediterranean",
+        "Being handled by a very small crew"
+       ],
+       "a": 0,
+       "why": "Their skills were behind their competitors' and their ships were built for something else. Both had to change before anyone could sail to Asia."
+      }
+     ]
+    },
+    {
+     "type": "pick", "p": "ships",
+     "hi": ["large triangular sails, called lateen sails",
+            "hulls built with thick, overlapping planks"],
+     "vs": [
+      {
+       "q": "What kind of sails did ships built in southern Europe have?",
+       "opts": [
+        "Large triangular sails, called lateen sails",
+        "Small square sails set low on the mast",
+        "Round sails that could be turned by hand",
+        "Two short sails, one behind the other"
+       ],
+       "a": 0,
+       "why": "Lateen sails, which handled easily in the winds along the Mediterranean coast. Northern ships had square sails instead, better on the open ocean."
+      },
+      {
+       "q": "What is a ship's hull?",
+       "opts": [
+        "The sides and bottom of a boat",
+        "The deck a crew walks about on",
+        "The mast the sails are hung from",
+        "The rope that holds the anchor"
+       ],
+       "a": 0,
+       "why": "The body of the boat. Northern ships built theirs from thick, overlapping planks to stand up to the Baltic and the Atlantic."
+      }
+     ]
+    },
+    {
+     "type": "pick", "p": "caravel",
+     "hi": ["Portuguese shipbuilders combined features",
+            "the sturdiness of the northern ships"],
+     "vs": [
+      {
+       "q": "What was a caravel?",
+       "opts": [
+        "A ship with northern sturdiness and southern handling",
+        "A ship rowed by many men as well as being sailed",
+        "A ship built only to carry spices home",
+        "A ship with no deck, for shallow water"
+       ],
+       "a": 0,
+       "why": "The best of both designs in one hull, with lateen sails for easy handling and square sails for the open ocean. This is the chapter's great means."
+      },
+      {
+       "q": "Who combined the two kinds of ship to make the caravel?",
+       "opts": [
+        "Portuguese shipbuilders",
+        "Venetian merchants",
+        "Arab traders",
+        "English sailors"
+       ],
+       "a": 0,
+       "why": "Portuguese shipbuilders, in the 1400s. It is worth remembering, because the next chapter is about where Portugal then sailed."
+      }
+     ]
+    },
+    {
+     "type": "pick", "p": "sky",
+     "hi": ["the astrolabe and later the sextant", "they relied on the sky"],
+     "vs": [
+      {
+       "q": "What is an astrolabe?",
+       "opts": [
+        "A tool for finding the position of the sun or a star",
+        "A glass device that measures the passing of time",
+        "A pointer that always swings towards the north",
+        "A rope with knots tied along it at even spaces"
+       ],
+       "a": 0,
+       "why": "It measures how high the sun, moon or a star sits in the sky. The other three answers are the hourglass, the compass and the log line — all in this chapter too."
+      },
+      {
+       "q": "What is a sextant?",
+       "opts": [
+        "An instrument with a telescope, for finding latitude",
+        "A chart showing the depth of a harbor",
+        "A sail that can only be raised in a strong wind",
+        "A lamp hung at the top of a ship's mast"
+       ],
+       "a": 0,
+       "why": "A later and better instrument than the astrolabe, using a telescope and a scale to work out latitude and longitude."
+      }
+     ]
+    },
+    {
+     "type": "pick", "p": "sky",
+     "hi": ["to determine the ship's latitude",
+            "the sun's apparent movement across the sky from east to west"],
+     "vs": [
+      {
+       "q": "What did ship pilots use the astrolabe and the sextant to work out?",
+       "opts": [
+        "The ship's latitude",
+        "The ship's speed",
+        "The depth of the water",
+        "The strength of the wind"
+       ],
+       "a": 0,
+       "why": "How far north or south they were. They measured the height of the sun, moon and stars to get it — difficult on a bobbing ship."
+      },
+      {
+       "q": "During the day, how could sailors tell which direction they were heading?",
+       "opts": [
+        "From the sun's movement across the sky",
+        "From the direction the waves were running",
+        "From the colour of the water around them",
+        "From the way the sails filled with wind"
+       ],
+       "a": 0,
+       "why": "The sun crosses from east to west, so the sun setting on the right of the ship meant the ship was heading south."
+      }
+     ]
+    },
+    {
+     "type": "pick", "p": "tools",
+     "hi": ["Speed was measured using a log attached to a rope",
+            "The magnetic compass , a Chinese invention"],
+     "vs": [
+      {
+       "q": "How was a ship's speed measured?",
+       "opts": [
+        "By counting knots on a rope let out behind the ship",
+        "By timing how long the ship took to pass an island",
+        "By watching how fast the sand ran in the hourglass",
+        "By measuring how deep the ship sat in the water"
+       ],
+       "a": 0,
+       "why": "A log on a knotted rope. A sailor counted the knots slipping through his hands, and ship speed is still measured in knots today."
+      },
+      {
+       "q": "Where was the magnetic compass invented?",
+       "opts": [
+        "China",
+        "Portugal",
+        "Arabia",
+        "Venice"
+       ],
+       "a": 0,
+       "why": "A Chinese invention, already centuries old. Europeans used it to find direction, though the chapter says many captains did not understand how it worked."
+      }
+     ]
+    },
+    {
+     "type": "pick", "bq": true, "p": "ends",
+     "hi": ["building new ships, learning more about navigation, and updating their maps",
+            "observations made by the crew"],
+     "vs": [
+      {
+       "q": "What developments enabled Europeans to travel farther?",
+       "opts": [
+        "New ships, better navigation, and updated maps",
+        "Bigger crews and more food on board",
+        "Peace with the Turks and the Arab traders",
+        "Larger harbors along the European coast"
+       ],
+       "a": 0,
+       "why": "This is the chapter's Big Question, and the last paragraph answers it in one line. The caravel, the astrolabe, the compass and the hourglass are the means the title promised."
+      },
+      {
+       "q": "Besides instruments, what else did navigators use to work out where they were?",
+       "opts": [
+        "What the crew noticed around the ship",
+        "Letters sent ahead to the next port",
+        "The number of days since leaving home",
+        "Signals from other ships nearby"
+       ],
+       "a": 0,
+       "why": "Clouds, birds, waves and anything floating in the water. Put all of it together with new ships and new instruments and Europeans could finally think about sailing to far-flung parts of the world."
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "passages": {
+  "value": {
+   "section": "The Value of Spices",
+   "title": "The Value of Spices — why anyone bothered",
+   "cite": "Student Reader, page 10",
+   "vocab": [
+    ["motive", "the reason for taking a specific action"]
+   ],
+   "text": [
+    "By the mid-1400s, Europeans had several motives for exploration. For one thing, they wanted direct access to the spice-growing areas of the world described by Marco Polo.",
+    "Because of the monopoly held by Arab traders and Venetian merchants, spices were very valuable throughout Europe. In some places, spices were so valuable that peppercorns were used in place of coins. Payments were even counted out peppercorn by peppercorn."
+   ]
+  },
+  "food": {
+   "section": "The Value of Spices",
+   "title": "The Value of Spices — what Europeans were eating",
+   "cite": "Student Reader, page 12",
+   "vocab": [
+    ["cure", "to preserve meat, fish, or other food by smoking, drying, or salting it"]
+   ],
+   "text": [
+    "Europeans were so enthusiastic about spices because their food was not very tasty. At this time Europeans did not yet have any of the fruits and vegetables native to North and South America. Potatoes, tomatoes, corn, bananas, chocolate, peanuts, strawberries, blueberries, and pineapples were all unheard of.",
+    "Europeans typically butchered livestock in the fall. They used salt to cure the meat for long-term storage. After a few months, much of this meat was not very appetizing. A pinch of pepper, cloves, or ginger could make bad tasting or even spoiled meat much easier to eat."
+   ]
+  },
+  "silkroad": {
+   "section": "The Value of Spices",
+   "title": "The Value of Spices — the land route closes",
+   "cite": "Student Reader, page 13",
+   "text": [
+    "Then, in the fifteenth century, the quest for spices became even more problematic. The Turks shut down the Silk Road, an important land route, which had previously been used to transport spices from the East.",
+    "The Europeans needed a sea route to Asia. Nobody was sure that such a route existed. Everybody hoped one would be discovered. The great kings of Europe began looking for brave explorers, shipbuilders, mapmakers, and others who could help them with this quest."
+   ]
+  },
+  "crusades": {
+   "section": "The Crusades",
+   "title": "The Crusades — what the soldiers saw",
+   "cite": "Student Reader, page 13",
+   "text": [
+    "Exploration was also fueled by another series of events. In the Middle Ages, generations of European knights and soldiers went on Crusades to the Middle East to capture the Holy Land from Muslims.",
+    "When Europeans reached the Middle East, they saw that Islamic civilization was much more advanced than they had been led to believe. Crusaders returned home and described the goods and cultures they had encountered. This added to European curiosity about the world outside their borders."
+   ]
+  },
+  "ships": {
+   "section": "New Ships",
+   "title": "New Ships — what Europe had to start with",
+   "cite": "Student Reader, page 14",
+   "vocab": [
+    ["navigation", "the act of planning and directing the movement of a ship, plane, or other vehicle"],
+    ["uncharted", "never mapped"],
+    ["hull", "the sides and bottom of a boat"]
+   ],
+   "text": [
+    "Arab traders had been sailing across the Indian Ocean for centuries. Therefore, they had learned a great deal about navigation and shipbuilding. By comparison, Europeans generally made shorter voyages within European waters. European sailors navigated mostly by staying near the coastline and watching for known landmarks.",
+    "Their navigational skills were not as advanced as their competitors'. Their ships were not well-suited to long voyages across uncharted waters.",
+    "Generally, ships built in the Mediterranean shipyards of southern Europe had large triangular sails, called lateen sails . These sails provided easy handling in the winds that blew along the Mediterranean coast. Northern ships had square sails, which were more effective on the open ocean. They also had hulls built with thick, overlapping planks. These hulls were built to withstand the rougher waters of the Baltic Sea and the Atlantic Ocean."
+   ]
+  },
+  "caravel": {
+   "section": "New Ships",
+   "title": "New Ships — the caravel",
+   "cite": "Student Reader, pages 14–15",
+   "vocab": [
+    ["rig", "to prepare for sailing"]
+   ],
+   "text": [
+    "Both of these ship designs had advantages, but neither was ideal for long voyages on uncharted waters. Then, in the 1400s, Portuguese shipbuilders combined features from these two different kinds of ships. By doing this, they created new, more seaworthy vessels called caravels",
+    "Caravels had the sturdiness of the northern ships and the easy handling of the southern ships. Their masts were rigged with lateen sails so that the ships were easy to handle, but the caravels also had square sails to take advantage of strong winds that could send the ships across the open ocean. The ships had hulls sturdy enough to sail on rough seas."
+   ]
+  },
+  "sky": {
+   "section": "Finding Their Way",
+   "title": "Finding Their Way — steering by the sky",
+   "cite": "Student Reader, page 15",
+   "vocab": [
+    ["astrolabe", "a navigational tool used to determine the position of the sun, a star, or other object in the sky"],
+    ["sextant", "a navigational instrument that uses a telescope and scale to determine latitude and longitude"]
+   ],
+   "text": [
+    "Sailors needed ways to keep track of their location and direction when they were out of sight of land. To do this, they relied on the sky.",
+    "During the day, sailors could plot their direction in relation to the sun's apparent movement across the sky from east to west. For example, the sun setting on the right side of the ship would mean that the ship was heading south.",
+    "Ship pilots also had a variety of navigational tools to help keep their ships on course. Pilots used instruments such as the astrolabe and later the sextant to determine the ship's latitude."
+   ]
+  },
+  "tools": {
+   "section": "Finding Their Way",
+   "title": "Finding Their Way — speed, and direction",
+   "cite": "Student Reader, page 16",
+   "vocab": [
+    ["magnetic compass", "a device that uses a magnetized pointer to show direction"]
+   ],
+   "text": [
+    "Speed was measured using a log attached to a rope. The rope had knots tied along it at regular spaces. A sailor counted the knots as they slipped through his hands. The number of knots let out during a certain amount of time was used to calculate the speed. Today, ship speed is still measured in knots.",
+    "The magnetic compass , a Chinese invention, had been in use in other parts of the world for centuries. Europeans also relied on it to determine direction."
+   ]
+  },
+  "ends": {
+   "section": "Finding Their Way",
+   "title": "Finding Their Way — time, and what it all added up to",
+   "cite": "Student Reader, page 17",
+   "vocab": [
+    ["hourglass", "a glass device that measures time using the flow of sand"]
+   ],
+   "text": [
+    "To measure the passage of time, sailors used a sand hourglass. The ship's cabin boy turned the glass every half hour.",
+    "Navigators also made use of observations made by the crew. Information about the clouds, birds, waves, and anything floating in the water all helped to track a ship's position on the sea.",
+    "Europeans were building new ships, learning more about navigation, and updating their maps. Soon, they might really be able to sail to far-flung parts of the world."
+   ]
+  }
+ }
+}
