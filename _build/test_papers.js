@@ -370,6 +370,11 @@ for (const a of PAPERED) {
          her Toller's wife. */
       "reading/sherlock-beeches-2": ["wine cellar", "brave and sensible",
         "seven o'clock", "alice", "mrs. toller", "give the alarm"],
+      /* 198-209 is the end of the story and the end of the book: page 209 is
+         the last line of The Copper Beeches and 210 begins the life of Conan
+         Doyle. There is no next page of story to give away, so this list is
+         empty on purpose rather than by omission. */
+      "reading/sherlock-beeches-3": [],
     };
     const early = (AHEAD[a.rel] || []).filter(w => text.indexOf(w) !== -1);
     ok("nothing gives away what is on the page after the reading", !early.length,

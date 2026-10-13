@@ -2516,5 +2516,977 @@
     ]
    }
   ]
+ },
+ {
+  "slug": "sherlock-beeches-3",
+  "title": "The Empty Room",
+  "pages": "198–209",
+  "bigQuestion": "Violet Hunter has told Holmes everything she noticed, without knowing what any of it meant. By the end of tonight’s reading you know the whole plan — so who was really being kept at the Copper Beeches, why was Miss Hunter brought there, and who in that house was quietly working against Mr. Rucastle?",
+  "passages": {
+   "mastiff": {
+    "title": "The end of a sentence that began with a smile",
+    "cite": "Reader, page 198",
+    "text": [
+     "hardened into a grin of rage, and he glared down at me, “I’ll throw you to the mastiff.”",
+     "I was so terrified that I rushed past him into my room.",
+     "I remember nothing until I found myself lying on my bed trembling all over."
+    ]
+   },
+   "wire": {
+    "title": "Why she sent for Holmes",
+    "cite": "Reader, page 198",
+    "text": [
+     "I was frightened of the house, of the man, of the woman, of the servants, even of the child. They were all horrible to me.",
+     "Of course I might have fled, but my curiosity was almost as strong as my fears.",
+     "My mind was soon made up. I would send you a wire.",
+     "Mr. and Mrs. Rucastle are going on a visit and will be away all the evening, so that I must look after the child."
+    ]
+   },
+   "plan": {
+    "title": "Holmes asks his questions, and then asks a favor",
+    "cite": "Reader, page 199",
+    "text": [
+     "“Is Toller still drunk?” he asked.",
+     "“Is there a cellar with a good strong lock?”",
+     "“You seem to me to have acted all through this matter like a brave and sensible girl, Miss Hunter. Do you think that you could perform one more feat?”",
+     "We shall be at the Copper Beeches by seven o’clock.",
+     "If you could send her into the cellar, on some errand, and then turn the key upon her, you would facilitate matters immensely."
+    ]
+   },
+   "impersonate": {
+    "title": "What Holmes says is obvious",
+    "cite": "Reader, page 200",
+    "text": [
+     "You have been brought here to impersonate someone, and the real person is imprisoned in this chamber.",
+     "As to who the prisoner is, I have no doubt that it is the daughter, Miss Alice Rucastle, who was said to have gone to America.",
+     "You were chosen because you closely resemble her in height, figure, and the color of your hair.",
+     "The man in the road was, undoubtedly, some friend of hers - possibly her fiancé.",
+     "The dog is let loose at night to prevent him from communicating with her."
+    ]
+   },
+   "child": {
+    "title": "Why the child is the serious point",
+    "cite": "Reader, page 200",
+    "text": [
+     "The most serious point in the case is the disposition of the child.",
+     "My dear Watson, I frequently gain my first insight into the character of parents by studying their children.",
+     "This child is abnormally cruel.",
+     "Whether he derives this from his smiling father, as I suspect, or from his mother, it bodes evil for the poor girl who is in their power."
+    ]
+   },
+   "seven": {
+    "title": "Seven o’clock, and a thudding downstairs",
+    "cite": "Reader, page 201",
+    "text": [
+     "We were as good as our word, for it was just seven when we reached the Copper Beeches.",
+     "A loud thudding noise came from somewhere downstairs. “That is Mrs. Toller in the cellar,” said she.",
+     "Her husband lies snoring on the kitchen rug. Here are his keys.",
+     "We passed up the stair, unlocked the door, followed on down a passage, and found ourselves in front of the barricade that Miss Hunter had described."
+    ]
+   },
+   "empty": {
+    "title": "The room behind the barricade",
+    "cite": "Reader, page 202",
+    "text": [
+     "It was an old rickety door and gave at once before our united strength. Together we rushed into the room. It was empty.",
+     "There was no furniture except a little bed, a small table, and a basketful of linen. The skylight above was open, and the prisoner gone.",
+     "Rucastle has guessed Miss Hunter’s intentions and has carried his victim off.",
+     "here’s the end of a long ladder against the eaves. That is how he did it.",
+     "The ladder was not there when the Rucastles went away."
+    ]
+   },
+   "villain": {
+    "title": "A fat and burly man with a heavy stick",
+    "cite": "Reader, pages 203–204",
+    "text": [
+     "a man appeared at the door of the room, a very fat and burly man, with a heavy stick in his hand.",
+     "“Villain,” said he, “where’s your daughter?”",
+     "The fat man cast his eyes round, and then up at the open skylight.",
+     "“It is for me to ask you that,” he shrieked, “you thieves! Spies and thieves!”",
+     "“He’s gone for the dog!” cried Miss Hunter."
+    ]
+   },
+   "hound": {
+    "title": "The dog that had not been fed",
+    "cite": "Reader, pages 204–205",
+    "text": [
+     "We had hardly reached the hall when we heard the baying of a hound, and then a scream of agony.",
+     "Someone has loosed the dog. It’s not been fed for two days.",
+     "There was the huge famished brute, its black muzzle buried in Rucastle’s throat, while he writhed and screamed upon the ground.",
+     "Running up, I blew its brains out, and it fell over with its keen white teeth still meeting in the great creases of Rucastle’s neck.",
+     "With much labor we separated them and carried him, living but horribly mangled, into the house."
+    ]
+   },
+   "mrstoller": {
+    "title": "Mrs. Toller, who knows more than anyone",
+    "cite": "Reader, page 206",
+    "text": [
+     "Mr. Rucastle let me out when he came back, before he went up to you.",
+     "Ah, miss, it is a pity you didn’t let me know what you were planning, for I would have told you that your pains were wasted.",
+     "It is clear that Mrs. Toller knows more about this matter than anyone else.",
+     "you’ll remember that I was the one that stood your friend, and that I was Miss Alice’s friend too.",
+     "She was never happy at home, Miss Alice wasn’t, from the time that her father married again."
+    ]
+   },
+   "alice": {
+    "title": "The money, the paper, and the brain fever",
+    "cite": "Reader, page 207",
+    "text": [
+     "Miss Alice had rights of her own by will, but she was so quiet and patient that she never said a word about them, but just left everything in Mr. Rucastle’s hands.",
+     "when there was a chance of a husband coming forward, who would ask for all that the law could give him, then her father thought it time to put a stop to it.",
+     "He wanted her to sign a paper so that whether she married or not, he could use her money.",
+     "When she wouldn’t do it, he kept on worrying her until she got brain fever, and for six weeks was at death’s door.",
+     "Then she got better at last, all worn to a shadow, and with her beautiful hair cut off; but that didn’t make no change in her young man, and he stuck to her as true as man could be."
+    ]
+   },
+   "ending": {
+    "title": "How it ended for all of them",
+    "cite": "Reader, pages 208–209",
+    "text": [
+     "But Mr. Fowler, being a persevering man, succeeded by certain arguments, metallic and otherwise, in convincing you that your interests were the same as his.",
+     "And in this way he managed that your good man should have plenty to drink, and that a ladder should be ready at the moment when your master had gone out.",
+     "Mr. Rucastle survived, but was always a broken man, kept alive solely through the care of his devoted wife.",
+     "Mr. Fowler and Miss Rucastle were married in Southampton the day after their flight",
+     "As to Miss Violet Hunter, she is now the head of a private school at Walsall, where I believe that she has met with considerable success."
+    ]
+   }
+  },
+  "missions": [
+   {
+    "id": "m1",
+    "name": "Section 1 — pages 198 to 199",
+    "tag": "3 questions · 5 papers · about 2 minutes",
+    "blurb": "The end of the threat, the wire she sends, and the four things Holmes wants to know",
+    "items": [
+     {
+      "type": "pick",
+      "p": "mastiff",
+      "hi": [
+       "I’ll throw you to the mastiff.",
+       "I was so terrified that I rushed past him into my room",
+       "trembling all over"
+      ],
+      "vs": [
+       {
+        "q": "How does Rucastle finish the sentence he began while he was still smiling?",
+        "opts": [
+         "He threatens to throw her to the mastiff",
+         "He offers her a rise in wages",
+         "He tells her she may leave in the morning",
+         "He warns her the floor in there is unsafe"
+        ],
+        "a": 0,
+        "why": "The smile hardens into a grin of rage first. Every kind word he has said to her until now reads differently once you have heard this one."
+       },
+       {
+        "q": "What does Violet Hunter do the moment he says it?",
+        "opts": [
+         "She goes straight to find Mrs. Rucastle",
+         "She rushes past him into her room",
+         "She runs out of the house that night",
+         "She opens the forbidden door again"
+        ],
+        "a": 1,
+        "why": "She does not leave the house, and she does not argue. She gets away from him — and then remembers nothing for a while."
+       },
+       {
+        "q": "What is the first thing she remembers after that?",
+        "opts": [
+         "Standing alone in the empty wing",
+         "Walking down the road to the office",
+         "Lying on her bed, trembling all over",
+         "Sitting at the window in the blue dress"
+        ],
+        "a": 2,
+        "why": "Her memory simply stops. Doyle gives us the gap instead of the running, which tells you how frightened she was better than describing it would."
+       },
+       {
+        "q": "Rucastle has been all smiles up to this point. What does this moment show about him?",
+        "opts": [
+         "He is frightened of her now",
+         "He has never really been in charge of the house",
+         "The pleasantness is a manner he can drop",
+         "He is kinder than his wife is"
+        ],
+        "a": 2,
+        "why": "He is soothing and caressing her one second and threatening her with a starved dog the next. The manner is a tool. The grin of rage is the man."
+       },
+       {
+        "q": "What does the grin of rage replace?",
+        "opts": [
+         "His caressing, amiable smile",
+         "His usual silence",
+         "His habit of telling stories",
+         "His formal politeness"
+        ],
+        "a": 0,
+        "why": "He has been talking to her in the most coaxing way he can manage. The smile goes, the threat arrives — and a page later he is pleasant again as though nothing had happened."
+       }
+      ]
+     },
+     {
+      "type": "pick",
+      "p": "wire",
+      "hi": [
+       "I was frightened of the house, of the man, of the woman, of the servants, even of the child",
+       "my curiosity was almost as strong as my fears",
+       "I would send you a wire",
+       "will be away all the evening"
+      ],
+      "vs": [
+       {
+        "q": "Who and what is Violet Hunter afraid of by now?",
+        "opts": [
+         "Only Mr. Rucastle",
+         "The house, both Rucastles, the servants, and the child",
+         "The dog, and nothing else",
+         "Chiefly Toller, the servant who is so often drunk"
+        ],
+        "a": 1,
+        "why": "She lists them: the house, the man, the woman, the servants, even the child. “They were all horrible to me.” Not one person in that house is on her side."
+       },
+       {
+        "q": "She says she might have fled. Why does she stay?",
+        "opts": [
+         "Her curiosity is almost as strong as her fears",
+         "She has nowhere else in the whole world to go",
+         "She has given her word to stay a year",
+         "She is afraid the dog would catch her"
+        ],
+        "a": 0,
+        "why": "That sentence is the whole reason there is a story. A frightened person who is also curious stays and watches — and writes to a detective."
+       },
+       {
+        "q": "What does she decide to do?",
+        "opts": [
+         "Tell Mrs. Rucastle everything",
+         "Search the locked wing again",
+         "Take the child and leave",
+         "Send Holmes a wire"
+        ],
+        "a": 3,
+        "why": "Her mind was “soon made up.” She walks the half mile to the office, sends it, and comes back feeling very much easier."
+       },
+       {
+        "q": "Why must she be back at the Copper Beeches before three o’clock?",
+        "opts": [
+         "The Rucastles are going out and she must mind the child",
+         "Toller locks the gates at three and keeps the keys",
+         "The wire will be delivered then",
+         "Mrs. Rucastle has sent for her"
+        ],
+        "a": 0,
+        "why": "An ordinary household detail — except that it tells Holmes the house will be empty of Rucastles this evening, which is exactly what he needs."
+       },
+       {
+        "q": "What does she ask Holmes at the end of her account?",
+        "opts": [
+         "Whether she should go to the police",
+         "What it all means, and what she should do",
+         "Whether he will pay her fare home",
+         "Whether the child can be saved"
+        ],
+        "a": 1,
+        "why": "She does not ask him to rescue anyone. She asks what it means. She has gathered every fact in this story herself and cannot read them."
+       }
+      ]
+     },
+     {
+      "type": "pick",
+      "p": "plan",
+      "hi": [
+       "Is Toller still drunk?",
+       "Is there a cellar with a good strong lock?",
+       "brave and sensible girl",
+       "turn the key upon her"
+      ],
+      "vs": [
+       {
+        "q": "What are the first things Holmes wants to know?",
+        "opts": [
+         "Whether the child is at home, and where the dog sleeps at night",
+         "How far the house is from the railway station",
+         "Whether Toller is still drunk, and if the Rucastles go out tonight",
+         "What the barricaded door is made of"
+        ],
+        "a": 2,
+        "why": "Three short questions and he has the evening planned. Every one of them is about who will be able to stop him."
+       },
+       {
+        "q": "Why does Holmes ask whether there is a cellar with a good strong lock?",
+        "opts": [
+         "To shut Mrs. Toller in, so she cannot raise the alarm",
+         "To look for the prisoner down there",
+         "To hide in it until the Rucastles have left the house",
+         "To store the dog out of the way"
+        ],
+        "a": 0,
+        "why": "Toller will be drunk and the Rucastles out. Mrs. Toller is the only person left who could warn anybody, so Holmes removes her — politely, by asking a nineteen-year-old governess to do it."
+       },
+       {
+        "q": "What does Holmes call Miss Hunter?",
+        "opts": [
+         "A reckless young person",
+         "A brave and sensible girl",
+         "A most unreliable witness",
+         "A client like any other"
+        ],
+        "a": 1,
+        "why": "Holmes does not hand out praise often. He has just heard her describe a month of being watched, lied to and threatened, and she wrote nothing down wrong."
+       },
+       {
+        "q": "What does Holmes ask her to do before he arrives?",
+        "opts": [
+         "Unlock the barricaded door at the end of the passage",
+         "Take the child out of the house",
+         "Send Mrs. Toller into the cellar and turn the key on her",
+         "Give Toller more to drink"
+        ],
+        "a": 2,
+        "why": "On some errand, he says — so Mrs. Toller suspects nothing until the key turns. It is the one job only somebody already inside the house could do."
+       },
+       {
+        "q": "When do Holmes and Watson say they will come?",
+        "opts": [
+         "At seven o’clock",
+         "At first light",
+         "At midnight",
+         "The following afternoon"
+        ],
+        "a": 0,
+        "why": "After the Rucastles have gone and before they come back. The whole plan fits into one evening, which is all the time Miss Hunter can give him."
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "id": "m2",
+    "name": "Section 2 — pages 200 to 201",
+    "tag": "3 questions · 5 papers · about 2 minutes",
+    "blurb": "Holmes explains the whole thing, and seven o’clock comes",
+    "items": [
+     {
+      "type": "pick",
+      "p": "impersonate",
+      "hi": [
+       "brought here to impersonate someone",
+       "Miss Alice Rucastle, who was said to have gone to America",
+       "you closely resemble her in height, figure, and the color of your hair",
+       "to prevent him from communicating with her"
+      ],
+      "vs": [
+       {
+        "q": "What does Holmes say Violet Hunter was brought to the house to do?",
+        "opts": [
+         "Mind a difficult child",
+         "Impersonate someone who is imprisoned there",
+         "Keep house while Mrs. Rucastle was ill",
+         "Teach the daughter of the family"
+        ],
+        "a": 1,
+        "why": "Everything she has described — the dress, the chair at the window, the laughing, the reading aloud — was a performance for one person outside, and she was playing somebody else."
+       },
+       {
+        "q": "Who does Holmes believe the prisoner is?",
+        "opts": [
+         "Mrs. Toller’s sister",
+         "The first governess at the house",
+         "Alice Rucastle, the daughter",
+         "A woman from the village"
+        ],
+        "a": 2,
+        "why": "The daughter who was said to have gone to America. Said to — by the people who have her locked in a room with a barricaded door."
+       },
+       {
+        "q": "Why was Violet Hunter chosen for the post?",
+        "opts": [
+         "Because she came cheapest of all the applicants for the post",
+         "Because she had no family to ask after her",
+         "Because she had taught a small boy before",
+         "Because she so closely resembles Alice in height, figure and hair"
+        ],
+        "a": 3,
+        "why": "That is why the wages were so strange, why the dress fitted without altering, and above all why they made her cut off her hair before she came."
+       },
+       {
+        "q": "Who does Holmes think the man on the road was?",
+        "opts": [
+         "A friend of Alice’s, very possibly her fiancé",
+         "A policeman watching the house",
+         "A neighbour who was curious about the family",
+         "Toller’s brother, come for money"
+        ],
+        "a": 0,
+        "why": "She waved him away in Alice’s dress with Alice’s hair, laughing. He went off convinced the girl he loved was happy without him."
+       },
+       {
+        "q": "Why is the dog let loose at night?",
+        "opts": [
+         "To guard the silver",
+         "To keep the man away from the house",
+         "To frighten the servants into staying in",
+         "Because Toller forgets to chain it"
+        ],
+        "a": 1,
+        "why": "Not to protect the house but to seal it. A starved mastiff in the grounds means nobody reaches that skylight from outside after dark."
+       }
+      ]
+     },
+     {
+      "type": "pick",
+      "p": "child",
+      "hi": [
+       "The most serious point in the case is the disposition of the child",
+       "I frequently gain my first insight into the character of parents by studying their children",
+       "This child is abnormally cruel",
+       "it bodes evil for the poor girl who is in their power"
+      ],
+      "vs": [
+       {
+        "q": "Watson cannot see what the child has to do with it. What does Holmes say?",
+        "opts": [
+         "That the child will inherit the money",
+         "That the child saw the prisoner",
+         "That he reads parents by studying their children",
+         "That the child is the only honest person there"
+        ],
+        "a": 2,
+        "why": "It is one of the most quoted lines Holmes ever says, and it is really a method: when you cannot watch the adults, watch what they have raised."
+       },
+       {
+        "q": "What has Miss Hunter told them about the little boy?",
+        "opts": [
+         "That he is abnormally cruel",
+         "That he is frightened of his father",
+         "That he will not speak at all",
+         "That he is clever beyond his years"
+        ],
+        "a": 0,
+        "why": "Catching flies and mice and small birds. She reported it as an unpleasant detail of her job; Holmes treats it as evidence about the parents."
+       },
+       {
+        "q": "Where does Holmes suspect the child’s cruelty comes from?",
+        "opts": [
+         "From the servants he is left with",
+         "From his smiling father",
+         "From something he once saw in the locked wing",
+         "From being kept away from other children"
+        ],
+        "a": 1,
+        "why": "“As I suspect” — Holmes will not quite say it outright. The man who threatens a governess with a starved dog and then smiles again is the man he means."
+       },
+       {
+        "q": "Why does the child worry Holmes more than anything else he has heard?",
+        "opts": [
+         "Because it shows the family is poor",
+         "Because it shows what the prisoner is in the hands of",
+         "Because it means the boy cannot be left alone",
+         "Because it proves Mrs. Rucastle is not the mother"
+        ],
+        "a": 1,
+        "why": "He calls it the most serious point in the case. The cruelty is not the crime — it is a measurement of the people holding Alice, and it tells him there is no time."
+       },
+       {
+        "q": "What is Holmes really doing when he talks about the child?",
+        "opts": [
+         "Changing the subject to calm Miss Hunter",
+         "Showing off to Watson",
+         "Judging the parents by what the boy is like",
+         "Explaining why the post was advertised"
+        ],
+        "a": 2,
+        "why": "He never meets the Rucastles before this evening. He has read them off their son, and the reading turns out to be exactly right."
+       }
+      ]
+     },
+     {
+      "type": "pick",
+      "p": "seven",
+      "hi": [
+       "it was just seven when we reached the Copper Beeches",
+       "That is Mrs. Toller in the cellar",
+       "Her husband lies snoring on the kitchen rug",
+       "the barricade that Miss Hunter had described"
+      ],
+      "vs": [
+       {
+        "q": "What do they hear when they arrive at the house?",
+        "opts": [
+         "The dog baying somewhere in the grounds",
+         "A loud thudding from somewhere downstairs",
+         "The child crying upstairs",
+         "Nothing at all"
+        ],
+        "a": 1,
+        "why": "Mrs. Toller, shut in the wine cellar exactly as Holmes asked. Miss Hunter has done her part, and she reports it standing on the doorstep, smiling."
+       },
+       {
+        "q": "Where is Toller when they arrive?",
+        "opts": [
+         "Gone with the Rucastles",
+         "Locked in the cellar with his wife",
+         "Snoring on the kitchen rug",
+         "Waiting at the barricaded door"
+        ],
+        "a": 2,
+        "why": "Drunk and useless, as Holmes had checked he would be. Miss Hunter has taken his keys off him and hands them over at the door."
+       },
+       {
+        "q": "What has Miss Hunter done before they get there?",
+        "opts": [
+         "Shut Mrs. Toller in the cellar and taken Toller’s keys",
+         "Opened the barricaded door in the empty wing herself",
+         "Sent the child away to a neighbour",
+         "Told Mrs. Rucastle everything"
+        ],
+        "a": 0,
+        "why": "Every single thing Holmes asked for, done by a governess on her own in a house she is frightened of. Holmes cries out “You have done well indeed!”, which from him is a great deal."
+       },
+       {
+        "q": "What greets them at the Copper Beeches?",
+        "opts": [
+         "An empty, dark doorway",
+         "Rucastle, back early",
+         "Miss Hunter, standing smiling on the doorstep",
+         "The mastiff, loose in the drive and baying"
+        ],
+        "a": 2,
+        "why": "Smiling — after everything on the pages before. It is the last calm moment in the story."
+       },
+       {
+        "q": "What do they find at the end of the passage upstairs?",
+        "opts": [
+         "An open door",
+         "The barricade Miss Hunter had described",
+         "The child asleep",
+         "A second locked stair going up further"
+        ],
+        "a": 1,
+        "why": "The cord and the bar, exactly as she reported them weeks earlier. Holmes cuts the cord and lifts the bar, and then the keys begin to fail."
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "id": "m3",
+    "name": "Section 3 — pages 202 to 205",
+    "tag": "3 questions · 5 papers · about 2 minutes",
+    "blurb": "An empty room, a ladder against the eaves, and a dog that has not been fed",
+    "items": [
+     {
+      "type": "pick",
+      "p": "empty",
+      "hi": [
+       "Together we rushed into the room. It was empty.",
+       "The skylight above was open, and the prisoner gone",
+       "here’s the end of a long ladder against the eaves",
+       "The ladder was not there when the Rucastles went away"
+      ],
+      "vs": [
+       {
+        "q": "What do they find when they break the door down?",
+        "opts": [
+         "Alice Rucastle, asleep",
+         "An empty room",
+         "Mrs. Rucastle, waiting for them",
+         "A room full of furniture under sheets"
+        ],
+        "a": 1,
+        "why": "After all of it — the barricade, the keys, the shoulder to the door — nothing. The one moment the story has been building to is an empty room."
+       },
+       {
+        "q": "What was in the room?",
+        "opts": [
+         "A little bed, a small table, and a basketful of linen",
+         "Nothing whatever",
+         "Chains, and a barred window",
+         "Trunks standing packed ready for a long journey away"
+        ],
+        "a": 0,
+        "why": "Somebody had been living in there. The bed and the linen are what make it a prison rather than a storeroom — and they are what prove Holmes right."
+       },
+       {
+        "q": "How does Holmes work out the way the prisoner was taken?",
+        "opts": [
+         "He finds the keys in the lock",
+         "Mrs. Toller tells him",
+         "He sees the open skylight, climbs out and finds a ladder",
+         "He follows the footprints along the passage outside"
+        ],
+        "a": 2,
+        "why": "The skylight is open, so he goes up through it. The end of a long ladder is standing against the eaves, and nobody carries a ladder up to a roof for an innocent reason."
+       },
+       {
+        "q": "Why is the ladder so important to Miss Hunter?",
+        "opts": [
+         "Because it is the very one she used herself",
+         "Because it was not there when the Rucastles left",
+         "Because it belongs to the next farm",
+         "Because the dog is chained beside it"
+        ],
+        "a": 1,
+        "why": "Which means somebody came back and put it there. Holmes says it outright: Rucastle has guessed what she meant to do."
+       },
+       {
+        "q": "What does the empty room tell Holmes?",
+        "opts": [
+         "That there was never a prisoner",
+         "That the prisoner escaped unaided",
+         "That the victim has been carried off",
+         "That they came on the wrong night"
+        ],
+        "a": 2,
+        "why": "Not that he was wrong — that he was late. “There has been some villainy here,” he says, and then he is already on the roof looking for how."
+       }
+      ]
+     },
+     {
+      "type": "pick",
+      "p": "villain",
+      "hi": [
+       "a very fat and burly man, with a heavy stick in his hand",
+       "Villain,",
+       "you thieves! Spies and thieves!",
+       "He’s gone for the dog!"
+      ],
+      "vs": [
+       {
+        "q": "Who comes up the stairs while they are in the empty room?",
+        "opts": [
+         "Toller, carrying a lamp",
+         "Mrs. Toller, out of the cellar",
+         "Mr. Rucastle, with a heavy stick",
+         "The country surgeon"
+        ],
+        "a": 2,
+        "why": "Holmes hears the step and knows. He tells Watson to have his pistol ready one line before the door opens — he was expecting the man to come back, because the ladder told him so."
+       },
+       {
+        "q": "What does Holmes say to him?",
+        "opts": [
+         "“Villain, where’s your daughter?”",
+         "“You are under arrest, sir.”",
+         "“We have found your prisoner.”",
+         "“Stand aside and let us pass.”"
+        ],
+        "a": 0,
+        "why": "No deduction, no explanation — a straight accusation, and the word daughter in it. Holmes has decided he knows exactly who was behind that door."
+       },
+       {
+        "q": "How does Rucastle answer the accusation?",
+        "opts": [
+         "He admits everything at once",
+         "He calls them thieves and spies",
+         "He pretends not to understand",
+         "He blames the Tollers"
+        ],
+        "a": 1,
+        "why": "He looks round the room, then up at the open skylight — so he knows she is gone — and then he attacks them with words instead of answering."
+       },
+       {
+        "q": "What does Rucastle do after shouting at them?",
+        "opts": [
+         "He locks them in the room",
+         "He runs out to the ladder against the eaves",
+         "He clatters down the stairs to fetch the dog",
+         "He faints on the landing"
+        ],
+        "a": 2,
+        "why": "Miss Hunter understands it before Watson does: “He’s gone for the dog!” She has lived with that animal in the grounds for weeks."
+       },
+       {
+        "q": "What does Miss Hunter do when Rucastle appears?",
+        "opts": [
+         "She screams and shrinks against the wall",
+         "She runs down the stairs straight past him",
+         "She steps in front of Holmes",
+         "She goes to fetch Toller"
+        ],
+        "a": 0,
+        "why": "She has been steady all evening — locking up Mrs. Toller, taking the keys, standing smiling on the doorstep. This is the man himself, and that is different."
+       }
+      ]
+     },
+     {
+      "type": "pick",
+      "p": "hound",
+      "hi": [
+       "the baying of a hound, and then a scream of agony",
+       "It’s not been fed for two days",
+       "its black muzzle buried in Rucastle’s throat",
+       "living but horribly mangled"
+      ],
+      "vs": [
+       {
+        "q": "What happens when Rucastle looses the dog?",
+        "opts": [
+         "It runs off into the fields",
+         "It attacks Rucastle himself",
+         "It goes for Holmes first",
+         "It will not leave its kennel"
+        ],
+        "a": 1,
+        "why": "The one trap in the house that was always loaded, and it closes on the man who set it. He is the only person in the grounds when it comes out starving."
+       },
+       {
+        "q": "Why is the dog so dangerous that night?",
+        "opts": [
+         "It has been beaten by Toller",
+         "It has been trained to attack strangers",
+         "It has not been fed for two days",
+         "It has been shut in the dark for a week"
+        ],
+        "a": 2,
+        "why": "Toller says it, staggering out of a side door. Rucastle kept it hungry on purpose, so that it would be fierce — and then forgot that he would be out there with it."
+       },
+       {
+        "q": "Who comes staggering out to warn them?",
+        "opts": [
+         "Mrs. Toller",
+         "Miss Hunter",
+         "Mrs. Rucastle, come back early",
+         "Toller, the elderly servant"
+        ],
+        "a": 3,
+        "why": "Sobered up at last, red-faced and shaking. The drunk servant Holmes counted on being useless is the one who shouts the warning."
+       },
+       {
+        "q": "How does the attack end?",
+        "opts": [
+         "Holmes drives the dog off with his stick",
+         "Watson shoots the dog",
+         "Toller drags the dog away",
+         "The dog lets go by itself"
+        ],
+        "a": 1,
+        "why": "Watson has had his revolver ready since the stairs. It is one of the few times in these stories that his pistol actually decides anything."
+       },
+       {
+        "q": "What state is Rucastle in when they carry him inside?",
+        "opts": [
+         "Dead on the lawn",
+         "Shaken, but unhurt",
+         "Living, but horribly mangled",
+         "Able to walk with help"
+        ],
+        "a": 2,
+        "why": "They have to separate the dog’s teeth from his neck first. He survives this, and the last page tells you what the rest of his life was like."
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "id": "m4",
+    "name": "Section 4 — pages 206 to 209",
+    "tag": "3 questions · 5 papers · about 2 minutes",
+    "blurb": "Mrs. Toller tells the rest, and the story ends for everybody in it",
+    "items": [
+     {
+      "type": "pick",
+      "p": "mrstoller",
+      "hi": [
+       "Mr. Rucastle let me out when he came back",
+       "I would have told you that your pains were wasted",
+       "I was Miss Alice’s friend too",
+       "from the time that her father married again"
+      ],
+      "vs": [
+       {
+        "q": "How did Mrs. Toller get out of the cellar?",
+        "opts": [
+         "Miss Hunter unlocked it",
+         "Holmes let her out",
+         "Mr. Rucastle let her out when he came back",
+         "She broke the cellar lock open herself"
+        ],
+        "a": 2,
+        "why": "Which means Rucastle was in the house before he came up the stairs at them — time enough to put the ladder up and take Alice away."
+       },
+       {
+        "q": "Why does she say Miss Hunter’s pains were wasted?",
+        "opts": [
+         "Because the prisoner was already gone",
+         "Because Holmes was never coming",
+         "Because the door could not be opened",
+         "Because the Rucastles had been warned by Toller"
+        ],
+        "a": 0,
+        "why": "She knew the escape was arranged. If anyone had asked her, there would have been no breaking down of doors at all — and the story would have had no ending to watch."
+       },
+       {
+        "q": "What does Holmes say about Mrs. Toller once she speaks?",
+        "opts": [
+         "That she cannot be believed",
+         "That she knows more about this than anyone else",
+         "That she should be handed over to the police",
+         "That she is as guilty as her master"
+        ],
+        "a": 1,
+        "why": "He drops everything and asks her to sit down. He has just admitted there are several points he is still in the dark about, which he does not say often."
+       },
+       {
+        "q": "Whose side does Mrs. Toller say she was on?",
+        "opts": [
+         "Mr. Rucastle’s, who paid her",
+         "Her husband’s only",
+         "Nobody’s; she kept out of it",
+         "Miss Alice’s, and Miss Hunter’s"
+        ],
+        "a": 3,
+        "why": "And she wants it remembered if there is police court business over this. She is looking after herself — but she did help Alice, and she is the reason we learn the rest."
+       },
+       {
+        "q": "When did things begin to go wrong for Alice?",
+        "opts": [
+         "When her father married again",
+         "When Miss Hunter arrived",
+         "When she first fell ill",
+         "When the Tollers were engaged"
+        ],
+        "a": 0,
+        "why": "She was never happy at home from that day, Mrs. Toller says. Everything else in the story grows out of a second marriage and a will."
+       }
+      ]
+     },
+     {
+      "type": "pick",
+      "p": "alice",
+      "hi": [
+       "Miss Alice had rights of her own by will",
+       "He wanted her to sign a paper",
+       "he kept on worrying her until she got brain fever",
+       "with her beautiful hair cut off"
+      ],
+      "vs": [
+       {
+        "q": "What did Alice Rucastle have that her father wanted?",
+        "opts": [
+         "A house of her own, left to her in London",
+         "Money of her own, left to her by will",
+         "A position at a school",
+         "Her mother’s jewels"
+        ],
+        "a": 1,
+        "why": "She was quiet and patient and never asked for it, so he had the use of it. The whole crime begins the moment that arrangement is threatened."
+       },
+       {
+        "q": "Why did Mr. Fowler change everything?",
+        "opts": [
+         "He threatened to go straight to the police",
+         "He offered to buy the house",
+         "A husband could claim what the law allowed him",
+         "He was a lawyer himself"
+        ],
+        "a": 2,
+        "why": "While Alice stayed unmarried and silent, her father kept the money. A husband would ask — so the engagement, not the money, is what made him act."
+       },
+       {
+        "q": "What did Rucastle try to make his daughter do?",
+        "opts": [
+         "Leave for America",
+         "Give up Mr. Fowler, and say so in writing",
+         "Dismiss the Tollers",
+         "Sign a paper letting him use her money"
+        ],
+        "a": 3,
+        "why": "Married or not, he could go on using it. She refused, and refusing is what she was punished for."
+       },
+       {
+        "q": "What happened when she would not sign?",
+        "opts": [
+         "He turned her out of the house without a shilling",
+         "He kept on at her until she fell ill with brain fever",
+         "He stopped her allowance",
+         "He sent her away to relatives"
+        ],
+        "a": 1,
+        "why": "Six weeks at death’s door. The illness was not bad luck in this story — Mrs. Toller says plainly what brought it on."
+       },
+       {
+        "q": "Why was Alice’s hair cut off?",
+        "opts": [
+         "Because she had been so ill",
+         "Because her father ordered it",
+         "To disguise her from Mr. Fowler",
+         "She cut it off herself in protest"
+        ],
+        "a": 0,
+        "why": "And that is the detail the whole plot hangs from. Her hair was gone, so the girl hired to be seen in her place had to lose hers too — which is why Miss Hunter was asked such a strange thing at the interview."
+       }
+      ]
+     },
+     {
+      "type": "pick",
+      "p": "ending",
+      "hi": [
+       "certain arguments, metallic and otherwise",
+       "plenty to drink, and that a ladder should be ready",
+       "was always a broken man",
+       "head of a private school at Walsall"
+      ],
+      "vs": [
+       {
+        "q": "How did Mr. Fowler win Mrs. Toller over?",
+        "opts": [
+         "He threatened to report her",
+         "He promised her a place in his own household afterwards",
+         "With arguments metallic and otherwise — that is, money",
+         "He showed her Alice’s letters"
+        ],
+        "a": 2,
+        "why": "The book glosses the phrase for you at the foot of the page. Holmes says it drily, and Mrs. Toller answers only that Mr. Fowler was a kind-spoken, free-handed gentleman."
+       },
+       {
+        "q": "What two things did Mrs. Toller arrange on the night?",
+        "opts": [
+         "That the dog was chained and the gate left open",
+         "That her husband had plenty to drink and a ladder was ready",
+         "That the child was taken out and the house keys hidden",
+         "That Miss Hunter was sent to Winchester"
+        ],
+        "a": 1,
+        "why": "Holmes lays it out and she agrees: “You have it, sir, just as it happened.” Everything Holmes planned for that evening, somebody else had already planned too."
+       },
+       {
+        "q": "What became of Mr. Rucastle?",
+        "opts": [
+         "He was hanged for the crime",
+         "He went abroad and was never heard of",
+         "He recovered completely",
+         "He lived on, a broken man"
+        ],
+        "a": 3,
+        "why": "Kept alive by the care of his devoted wife — the silent, sad woman who sat with her hands in her lap while he told his funny stories. Doyle leaves that without comment."
+       },
+       {
+        "q": "What happened to Alice and Mr. Fowler?",
+        "opts": [
+         "They were married the day after her escape",
+         "They were never found",
+         "They returned to the Copper Beeches together",
+         "He went abroad without her"
+        ],
+        "a": 0,
+        "why": "Married at Southampton, and he now holds a government appointment in Mauritius — about as far from her father as the story can put her."
+       },
+       {
+        "q": "What becomes of Violet Hunter?",
+        "opts": [
+         "She stays on as governess",
+         "She marries and leaves England",
+         "She becomes head of a private school",
+         "She goes back to Miss Stoper’s agency"
+        ],
+        "a": 2,
+        "why": "At Walsall, with considerable success. The young woman who took a frightening job because she needed the work ends the story running her own school."
+       }
+      ]
+     }
+    ]
+   }
+  ]
  }
 ]

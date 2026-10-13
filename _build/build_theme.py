@@ -678,6 +678,11 @@ APPS = {
     "reading/sherlock-beeches-2": (reads("beeches2"),
                                    dict(app="beeches2", shake="#card", lift=None,
                                         dragon=["m1", "m2", "m3", "m4"])),
+    # Pages 198 to 209: the empty room, the ladder, the hound, and Mrs. Toller
+    # explaining the rest. This one finishes the story and the book.
+    "reading/sherlock-beeches-3": (reads("beeches3"),
+                                   dict(app="beeches3", shake="#card", lift=None,
+                                        dragon=["m1", "m2", "m3", "m4"])),
 }
 
 # ---------------------------------------------------------------- machinery
