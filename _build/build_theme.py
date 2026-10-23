@@ -364,6 +364,13 @@ def spell8(s):
     return Patcher(s, "spelling8")
 
 
+def wwtest5(s):
+    """Word List 5 test rehearsal — written fresh rather than grown from
+    another app's shell, because no app here had a lettered matching bank, a
+    type-the-word line or a written answer. Config only."""
+    return Patcher(s, "wwtest5")
+
+
 def spell10(s):
     """Spelling List 10 — in-/ir- meaning not, and the first list where a
     missed word costs three copies and a hidden retest before it lets go.
@@ -527,6 +534,12 @@ APPS = {
                                            lift=".bar", dragon=["sheet"])),
     "vocabulary/ww6-lesson5-test": (vtest5, dict(app="vocabtest5", shake=None, lift=None,
                                            dragon=["final"], hud=False)),
+    # The paper his teacher hands out, rehearsed in the shape it comes in:
+    # five parts, fifty points, and two of them asking him to write rather
+    # than tap. The dragon sits on Part V because that is the one no amount
+    # of multiple choice prepares you for.
+    "vocabulary/ww6-lesson5-exam": (wwtest5, dict(app="wwtest5", shake="#card", lift=None,
+                                           dragon=["p5"])),
     "vocabulary/ww6-lesson6":      (vocab6, dict(app="vocabulary6", shake="#sheet",
                                            lift=".bar", dragon=["sheet"])),
     "vocabulary/ww6-lesson6-test": (vtest6, dict(app="vocabtest6", shake=None, lift=None,

@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>TITLE_GOES_HERE</title>
+<meta name="theme-color" content="#1A2233">
+<style>
+:root{
+  --ink:#27313F; --soft:#6B7786; --line:#E2DED3; --paper:#FBF7EE; --card:#FFFDF8;
+  --rose:#E0709A; --lime:#63BE7B; --red:#E0685A; --amber:#E9B23C; --sky:#5AA9DB;
+  --vocab:#8E7CC3;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;background:#141C2A;color:var(--ink);
+  font:16px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+.wrap{max-width:720px;margin:0 auto;padding:16px 16px 40px}
+.hide{display:none !important}
+.hublink{display:inline-block;color:#9FB0C6;text-decoration:none;font-size:14px;margin-bottom:6px}
+.pagehead{display:flex;align-items:center;gap:12px;margin:6px 0 12px}
+.back{width:42px;height:42px;flex:none;border:none;border-radius:13px;background:#243149;
+  color:#CBD6E6;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.back svg{width:22px;height:22px}
+.pagehead .t strong{display:block;color:#F2F5FA;font-size:18px;line-height:1.2}
+.pagehead .t span{display:block;color:#8FA0B6;font-size:12px;letter-spacing:1.4px;
+  text-transform:uppercase;margin-top:3px;font-family:ui-monospace,Menlo,Consolas,monospace}
+.eyebrow{color:#8FA0B6;font-size:12px;letter-spacing:1.6px;text-transform:uppercase;
+  font-family:ui-monospace,Menlo,Consolas,monospace}
+h1{color:#F2F5FA;font-size:27px;margin:6px 0 8px;line-height:1.15}
+.sub{color:#A9B7C9;font-size:15px;margin:0 0 16px}
+.rule{background:#1E2940;border-left:4px solid var(--vocab);border-radius:0 12px 12px 0;
+  padding:11px 14px;color:#C6D2E2;font-size:14.5px;margin:0 0 18px}
+
+.partbtn{display:block;width:100%;text-align:left;background:var(--card);border:1.5px solid var(--line);
+  border-left:6px solid var(--c,var(--vocab));border-radius:15px;padding:13px 15px;margin-bottom:10px;
+  cursor:pointer;font:inherit;color:var(--ink)}
+.partbtn .tag{display:block;font-size:11.5px;letter-spacing:1.3px;text-transform:uppercase;
+  color:var(--soft);font-family:ui-monospace,Menlo,Consolas,monospace}
+.partbtn h3{margin:3px 0 3px;font-size:17px}
+.partbtn p{margin:0;font-size:13.5px;color:var(--soft)}
+.partbtn .go{display:block;margin-top:7px;font-size:13px;font-weight:700;color:var(--vocab)}
+.badge{display:inline-block;margin-top:7px;font-size:11.5px;font-weight:800;letter-spacing:.6px;
+  background:#EFEAF7;color:#6A5A98;border-radius:999px;padding:3px 9px}
+
+.listbtn{display:block;width:100%;background:#243149;color:#E7EDF6;border:none;border-radius:14px;
+  padding:14px;font:700 15px inherit;cursor:pointer;margin-top:4px}
+footer{color:#7E8DA2;font-size:13px;text-align:center;margin-top:18px}
+
+.dots{display:flex;gap:4px;margin-bottom:14px}
+.dot{height:5px;flex:1;border-radius:3px;background:#2C3A54}
+.dot.ok{background:var(--lime)} .dot.miss{background:var(--amber)} .dot.now{background:var(--rose)}
+
+.card{background:var(--card);border:1.5px solid var(--line);border-radius:18px;padding:16px}
+.meta{display:flex;gap:9px;align-items:center;flex-wrap:wrap;margin-bottom:11px}
+.qn{font-size:11.5px;letter-spacing:1.3px;text-transform:uppercase;color:var(--soft);
+  font-family:ui-monospace,Menlo,Consolas,monospace}
+.pts{font-size:11.5px;font-weight:800;background:#EFEAF7;color:#6A5A98;border-radius:999px;padding:2px 8px}
+.q{font-size:18px;line-height:1.45;margin:0 0 13px}
+.q b{color:#8E3C66}
+.bigword{font-size:30px;font-weight:800;text-align:center;margin:4px 0 14px;letter-spacing:.5px}
+
+.opt{display:flex;align-items:flex-start;gap:10px;width:100%;text-align:left;background:#FFF;
+  border:1.5px solid var(--line);border-radius:13px;padding:11px 13px;margin-bottom:8px;
+  font:inherit;color:var(--ink);cursor:pointer;line-height:1.35}
+.opt .k{flex:none;width:23px;height:23px;border-radius:7px;background:#EEE9DC;color:var(--soft);
+  font:800 12px ui-monospace,Menlo,Consolas,monospace;display:flex;align-items:center;justify-content:center}
+.opt.pick{border-color:var(--vocab);background:#F6F3FC}
+.opt.good{border-color:var(--lime);background:#E8F5E6}
+.opt.good .k{background:var(--lime);color:#FFF}
+.opt.bad{border-color:var(--red);background:#FBECEA}
+.opt.bad .k{background:var(--red);color:#FFF}
+.opt[disabled]{cursor:default;opacity:.95}
+.bank{max-height:none}
+
+.freein,.sayin{width:100%;border:none;border-bottom:2.5px solid var(--rose);background:transparent;
+  font:600 21px inherit;color:var(--ink);padding:7px 2px;text-align:center;outline:none}
+.sayin{border:1.5px solid var(--line);border-radius:13px;background:#FFF;font:16px inherit;
+  text-align:left;padding:11px;min-height:92px;resize:vertical}
+.freein.bad,.sayin.bad{border-color:var(--red)}
+.freein.good,.sayin.good{border-color:var(--lime)}
+
+.act{display:flex;flex-direction:column;gap:9px;margin-top:13px}
+.btn{width:100%;border:none;border-radius:14px;padding:14px;font:800 15.5px inherit;cursor:pointer}
+.btn.p{background:var(--vocab);color:#FFF} .btn.p[disabled]{background:#DCD4EE;color:#FFF;cursor:default}
+.btn.g{background:var(--lime);color:#FFF}
+.btn.o{background:#FFF;color:var(--ink);border:1.5px solid var(--line)}
+
+.fb{border-radius:13px;padding:11px 13px;margin-top:12px;font-size:14.5px;line-height:1.45}
+.fb strong{display:block;margin-bottom:3px}
+.fb.yes{background:#E8F5E6;color:#2F6B33;border-left:4px solid var(--lime)}
+.fb.no{background:#FBECEA;color:#9A3B30;border-left:4px solid var(--red)}
+.model{background:#F3F0E7;border-radius:13px;padding:11px 13px;margin-top:9px;font-size:15px;line-height:1.5}
+.model .cap{font-size:11.5px;letter-spacing:1.3px;text-transform:uppercase;color:var(--soft);
+  margin-bottom:4px;font-family:ui-monospace,Menlo,Consolas,monospace}
+
+.score{background:var(--card);border:1.5px solid var(--line);border-radius:18px;padding:20px 16px;text-align:center}
+.ring{font-size:54px;font-weight:800;line-height:1}
+.band{font-size:17px;font-weight:800;margin-top:4px}
+.outof{color:var(--soft);font-size:15px;margin-top:6px}
+.tbl{margin-top:16px;text-align:left}
+.trow{display:flex;justify-content:space-between;gap:10px;border-top:1px solid var(--line);
+  padding:9px 2px;font-size:14.5px}
+.trow:first-child{border-top:none}
+.trow b{font-weight:700}
+.trow .s{color:var(--soft);font-variant-numeric:tabular-nums}
+.review{background:#F3F0E7;border-radius:13px;padding:12px 14px;margin-top:14px;text-align:left;font-size:14.5px}
+.review b{display:block;margin-bottom:5px}
+.review ul{margin:0;padding-left:19px} .review li{margin:2px 0}
+</style>
+</head>
+<body>
+
+<div id="home" class="wrap">
+  <a class="hublink" href="../../index.html">&lsaquo; All subjects</a>
+  <div class="eyebrow" style="margin-top:14px">EYEBROW_GOES_HERE</div>
+  <h1>H1_GOES_HERE</h1>
+  <p class="sub" id="introline"></p>
+  <div class="rule" id="ruleline"></div>
+  <div id="parts"></div>
+  <button class="listbtn" id="runall">Sit the whole test &mdash; all five parts</button>
+  <footer id="foot"></footer>
+</div>
+
+<div id="play" class="wrap hide">
+  <div class="pagehead">
+    <button class="back" id="quit" aria-label="Back">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+    </button>
+    <div class="t"><strong id="pname"></strong><span id="pclue"></span></div>
+  </div>
+  <div class="dots" id="dots"></div>
+  <div class="card" id="card"></div>
+</div>
+
+<div id="done" class="wrap hide">
+  <a class="hublink" href="../../index.html">&lsaquo; All subjects</a>
+  <div class="score" id="scorebox" style="margin-top:16px"></div>
+</div>
+
+<script>
+const DATA = DATA_GOES_HERE;
+
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const COLORS = ["#8E7CC3","#5AA9DB","#63BE7B","#E9B23C","#E0709A"];
+
+/* Fisher-Yates. The order of the options a child sees must not be the order
+   they were authored in, or the answer drifts to wherever it was written. */
+function shuffle(a){ a = a.slice();
+  for (let i = a.length - 1; i > 0; i--){ const j = Math.random() * (i + 1) | 0;
+    [a[i], a[j]] = [a[j], a[i]]; } return a; }
+
+let PART = null, order = [], idx = 0, got = [], picked = null, tries = 0,
+    queue = [], earned = 0, possible = 0, missed = [];
+
+/* ---------- home ---------- */
+function home(){
+  const best = MC.bests();
+  $("introline").textContent = DATA.intro;
+  $("ruleline").innerHTML = "The real paper is <b>" + DATA.total + " points</b> over five parts. " +
+    "This one is marked the same way, so the number you see here is the number you would get.";
+  $("parts").innerHTML = DATA.parts.map((p, i) => `
+    <button class="partbtn" style="--c:${COLORS[i]}" data-p="${i}">
+      <span class="tag">${esc(p.name)} &middot; ${p.pts} point${p.pts === 1 ? "" : "s"}</span>
+      <h3>${esc(p.title)}</h3>
+      <p>${esc(p.how)}</p>
+      <span class="go">${p.items.length} question${p.items.length === 1 ? "" : "s"} &rsaquo;</span>
+      ${best[p.id] != null ? `<span class="badge">best ${best[p.id]}%</span>` : ""}
+    </button>`).join("");
+  [...document.querySelectorAll(".partbtn")].forEach(b =>
+    b.onclick = () => startQueue([+b.dataset.p]));
+  $("foot").textContent = DATA.cite;
+  show("home");
+}
+function show(w){ ["home","play","done"].forEach(x => $(x).classList.toggle("hide", x !== w));
+                  window.scrollTo(0, 0); }
+
+/* ---------- a run ---------- */
+function startQueue(list){
+  queue = list.slice(); earned = 0; possible = 0; missed = [];
+  MC.begin({partial: queue.length < DATA.parts.length});
+  nextPart();
+}
+function nextPart(){
+  if (!queue.length) return finish();
+  PART = DATA.parts[queue.shift()];
+  order = PART.items.map((_, i) => i);      /* the paper's order, not shuffled */
+  idx = 0; got = [];
+  $("pname").textContent = PART.name + " — " + PART.title;
+  $("pclue").textContent = PART.pts + " points · " + PART.each + " each";
+  show("play"); render();
+}
+
+function render(){
+  picked = null; tries = 0;
+  const it = PART.items[order[idx]];
+  $("dots").innerHTML = order.map((_, i) =>
+    `<span class="dot ${i === idx ? "now" : got[i] === undefined ? "" : got[i] ? "ok" : "miss"}"></span>`).join("");
+
+  let body = "";
+  if (PART.type === "match"){
+    body = `<div class="bigword">${esc(it.w)}</div>` +
+      shuffle(PART.defs).map(d =>
+        `<button class="opt" data-k="${d[0]}"><span class="k">${d[0]}</span><span>${esc(d[1])}</span></button>`).join("");
+  } else if (PART.type === "pick"){
+    body = `<p class="q">${esc(it.q)}</p>` +
+      shuffle(it.opts.map((t, i) => [t, i === it.a])).map((o, n) =>
+        `<button class="opt" data-k="${o[1] ? 1 : 0}"><span class="k">${"ABCD"[n]}</span><span>${esc(o[0])}</span></button>`).join("");
+  } else if (PART.type === "pos"){
+    body = `<p class="q">${it.q}</p>` +
+      shuffle(["noun","verb","adjective","adverb"]).map((t, n) =>
+        `<button class="opt" data-k="${t}"><span class="k">${"ABCD"[n]}</span><span>${t}</span></button>`).join("");
+  } else if (PART.type === "write"){
+    body = `<p class="q">${esc(it.q)}</p>
+      <input class="freein" id="typed" type="text" autocomplete="off" autocapitalize="off"
+             autocorrect="off" spellcheck="false" placeholder="write the word" aria-label="Write the word">`;
+  } else {
+    body = `<p class="q">${it.q}</p>
+      <textarea class="sayin" id="typed" rows="4" autocomplete="off" autocapitalize="sentences"
+                spellcheck="false" placeholder="Write a complete sentence…"></textarea>`;
+  }
+
+  $("card").innerHTML = `
+    <div class="meta">
+      <span class="qn">${PART.name} · ${idx + 1} of ${order.length}</span>
+      <span class="pts">${PART.each} point${PART.each === 1 ? "" : "s"}</span>
+    </div>
+    ${body}
+    <div class="act"><button class="btn p" id="go" disabled>Check it</button></div>
+    <div id="fb"></div>`;
+
+  if (PART.type === "write" || PART.type === "say"){
+    const t = $("typed");
+    t.addEventListener("input", () => {
+      $("go").disabled = PART.type === "say"
+        ? t.value.trim().split(/\s+/).filter(Boolean).length < 4
+        : t.value.trim().length < 2;
+      t.classList.remove("bad"); });
+    t.addEventListener("keydown", e => {
+      if (e.key === "Enter" && PART.type === "write" && !$("go").disabled){ e.preventDefault(); check(); } });
+    setTimeout(() => t.focus(), 80);
+  } else {
+    [...document.querySelectorAll(".opt")].forEach(b => b.onclick = () => {
+      [...document.querySelectorAll(".opt")].forEach(x => x.classList.remove("pick"));
+      b.classList.add("pick"); picked = b.dataset.k; $("go").disabled = false; });
+  }
+  $("go").onclick = check;
+  window.scrollTo(0, 0);
+}
+
+/* Part III accepts the word however he capitalises it, and ignores anything
+   that is not a letter -- a trailing full stop is not a spelling mistake. */
+const bare = s => String(s).toLowerCase().replace(/[^a-z]/g, "");
+
+function check(){
+  const it = PART.items[order[idx]];
+  tries++;
+  let right = false, say = "";
+
+  if (PART.type === "match"){ right = picked === it.a; say = it.a; }
+  else if (PART.type === "pick"){ right = picked === "1"; say = it.opts[it.a]; }
+  else if (PART.type === "pos"){ right = picked === it.a; say = it.a; }
+  else if (PART.type === "write"){
+    right = it.ok.some(o => bare(o) === bare($("typed").value)); say = it.ok[0];
+  } else {
+    return judgeSay(it);
+  }
+
+  if (PART.type !== "write"){
+    [...document.querySelectorAll(".opt")].forEach(b => {
+      const k = b.dataset.k;
+      const isAns = PART.type === "pick" ? k === "1" : k === it.a;
+      if (isAns) b.classList.add("good");
+      else if (k === picked) b.classList.add("bad");
+      b.classList.remove("pick"); b.disabled = true; });
+  } else {
+    $("typed").classList.add(right ? "good" : "bad"); $("typed").readOnly = true;
+  }
+  settle(right, it, say);
+}
+
+function settle(right, it, say){
+  if (right){ MC.right(key(it)); earned += PART.each; }
+  else { MC.wrong(key(it)); missed.push(label(it)); }
+  possible += PART.each;
+  got[idx] = right;
+
+  $("fb").innerHTML = `<div class="fb ${right ? "yes" : "no"}"><strong>${
+      right ? "Right." : "Not this time — " + esc(say) + "."
+    }</strong>${esc(it.why || "")}</div>`;
+  $("card").querySelector(".act").innerHTML =
+    `<button class="btn g" id="next">${last() ? "See the score" : "Next"}</button>`;
+  $("next").onclick = advance;
+}
+
+/* Part V cannot be marked by a machine and this does not pretend to. It checks
+   the three things a machine can see -- the word is used, it is a sentence,
+   it is punctuated -- then shows a model answer and asks him to mark his own
+   against it. The honest version of that is worth more than a fake score. */
+function judgeSay(it){
+  const t = $("typed").value.trim();
+  const low = " " + bare(t) + " ";
+  const miss = it.need.filter(w => bare(t).indexOf(bare(w)) === -1);
+  const words = t.split(/\s+/).filter(Boolean);
+  let problem = null;
+  if (miss.length) problem = "Your answer has to use " +
+      miss.map(w => "“" + w + "”").join(" and ") + ".";
+  else if (words.length < 6) problem = "That is too short to show you know what it means. Give it a full sentence.";
+  else if (!/[.!?]$/.test(t)) problem = "Finish it with a full stop, a question mark or an exclamation mark.";
+  else if (!/^[A-Z]/.test(t)) problem = "Start it with a capital letter.";
+
+  if (problem){
+    $("typed").classList.add("bad"); tries++;
+    $("fb").innerHTML = `<div class="fb no"><strong>Not yet.</strong>${esc(problem)}</div>`;
+    return;
+  }
+  $("typed").readOnly = true; $("typed").classList.add("good");
+  $("fb").innerHTML =
+    `<div class="fb yes"><strong>That works mechanically.</strong>It uses the word, it is a full sentence and it is punctuated. Now the part no machine can mark — read the model and decide whether yours says something true.</div>
+     <div class="model"><div class="cap">One answer that would score full marks</div>${esc(it.model)}</div>`;
+  $("card").querySelector(".act").innerHTML =
+    `<button class="btn g" id="y2">Mine says the same thing — 2 points</button>
+     <button class="btn o" id="y1">Half right — 1 point</button>
+     <button class="btn o" id="y0">Mine is wrong — 0 points</button>`;
+  const mark = n => () => {
+    earned += n; possible += PART.each; got[idx] = n === PART.each;
+    if (n === PART.each) MC.right(key(it)); else { MC.wrong(key(it)); missed.push(label(it)); }
+    advance();
+  };
+  $("y2").onclick = mark(2); $("y1").onclick = mark(1); $("y0").onclick = mark(0);
+}
+
+const key = it => PART.id + ":" + (it.w || it.q).slice(0, 40);
+const label = it => it.w || (it.q || "").replace(/<[^>]+>/g, "").slice(0, 60);
+const last = () => idx === order.length - 1;
+function advance(){ if (last()) nextPart(); else { idx++; render(); } }
+
+/* ---------- the score, marked the way the paper is ---------- */
+function finish(){
+  const pct = possible ? Math.round(earned / possible * 100) : 0;
+  const band = pct >= 90 ? ["Ready for the test", "#63BE7B"]
+             : pct >= 80 ? ["Nearly there", "#5AA9DB"]
+             : pct >= 65 ? ["Keep going", "#E9B23C"] : ["Run it again", "#E0685A"];
+  $("scorebox").innerHTML = `
+    <div class="ring" style="color:${band[1]}">${earned}<span style="font-size:26px;color:#6B7786">/${possible}</span></div>
+    <div class="band" style="color:${band[1]}">${band[0]}</div>
+    <div class="outof">${pct}% — the paper is marked out of ${DATA.total}</div>
+    ${missed.length ? `<div class="review"><b>The ${missed.length === 1 ? "one you missed" : missed.length + " you missed"}</b>
+       <ul>${missed.map(m => `<li>${esc(m)}</li>`).join("")}</ul></div>`
+     : `<div class="review"><b>Every one, first time.</b>Nothing left to fix on this run.</div>`}
+    <div class="act">
+      <button class="btn p" id="again">Run it again</button>
+      <button class="btn o" id="pick2">Pick a part</button>
+    </div>`;
+  MC.chest($("scorebox"), pct, {id: PART ? PART.id : "p1", boss: possible >= DATA.total});
+  $("again").onclick = () => startQueue(DATA.parts.map((_, i) => i));
+  $("pick2").onclick = home;
+  show("done");
+}
+
+$("quit").onclick = home;
+$("runall").onclick = () => startQueue(DATA.parts.map((_, i) => i));
+home();
+</script>
+</body>
+</html>
