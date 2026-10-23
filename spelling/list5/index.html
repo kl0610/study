@@ -2087,8 +2087,9 @@ const DATA = {
    "name": "Test day",
    "prompt": "none",
    "input": "free",
+   "drillNow": true,
    "tag": "Listen · nothing else",
-   "blurb": "Dictation, the way Friday works. Hear the word, spell it. Nothing else on screen."
+   "blurb": "Dictation, the way Friday works. Hear the word, spell it. Nothing else on screen. Miss one and the word comes up to be written out three times, and then you spell it again with it hidden."
   },
   {
    "id": "l6",
@@ -2358,6 +2359,21 @@ function checkNow(){
   if(typed===w.w){ good(); return; }
   const dbl=marked(w.w).size>0;
 
+  /* Test day has no boxes, no first letter and no sentence to lean on,
+     so "listen again and have another go" is an invitation to guess.
+     On that level the first miss goes straight to the word and the
+     write-outs, which is what the drill is for. */
+  if(LVL().drillNow){
+    MC.wrong(w.w);
+    log[idx]=false;
+    const t=$("typed"); t.classList.add("bad"); t.readOnly=true; t.blur();
+    $("card").querySelector(".act").innerHTML="";
+    $("fb").innerHTML=`<div class="fb no"><strong>Not quite.</strong>Here comes the word \u2014 write it out three times, then spell it again with it hidden.</div>`;
+    const advance=()=>{ if(idx===order.length-1) finish(); else { idx++; render(); window.scrollTo(0,0);} };
+    setTimeout(()=>drillStart(w,advance),1300);
+    return;
+  }
+
   if(free){
     MC.wrong(w.w);
     /* say nothing about length or position — that would hand him the shape */
@@ -2466,7 +2482,7 @@ function drillStart(w, done){
        not in the placeholder, nowhere. That was the point of hiding it. */
     $("card").innerHTML = `
       <div class="meta">
-        <span class="qn">Putting it right</span>
+        <span class="qn">Word ${idx + 1} of ${order.length}</span>
         <span class="qn" style="color:#E0709A">${copy ? "Write it out · " + (rep + 1) + " of " + DREPS
                                                       : "Now with it hidden"}</span>
       </div>

@@ -315,6 +315,25 @@ G("a missed word goes through the drill before the next one");
     if (a < 0 || b < 0 || b - a < 200) leaky.push(L.dir + ": branch not found");
     else if (L.html.slice(a, b).indexOf("w.w") !== -1) leaky.push(L.dir + ": prints the word");
   });
+  /* Test day is the one level with nothing on the screen to think again with,
+     so a second guess there is just a guess. Its miss goes straight to the
+     word and the write-outs. A flag nothing reads is how List 2's rule layer
+     survived into List 3, so the branch is checked too, not just the flag. */
+  const noFlag = [], noBranch = [], overFlagged = [];
+  LISTS.filter(L => L.gen).forEach(L => {
+    const now = L.DATA.levels.filter(l => l.drillNow).map(l => l.id);
+    if (now.length !== 1 || now[0] !== "l5") overFlagged.push(L.dir + ": " + now.join("/"));
+    const l5 = L.DATA.levels.find(l => l.id === "l5");
+    if (!l5 || !l5.drillNow) noFlag.push(L.dir);
+    if (!/if\(LVL\(\)\.drillNow\)\{/.test(L.html)) noBranch.push(L.dir);
+  });
+  ok("test day is the level that sends a miss straight to the drill", !noFlag.length,
+     noFlag.join(", "));
+  ok("...and it is the only one, so the hinted levels still give a second go",
+     !overFlagged.length, overFlagged.join(" | "));
+  ok("...and the page has a branch that reads the flag", !noBranch.length,
+     noBranch.join(", "));
+
   ok("every generated list carries the drill", !noDrill.length, noDrill.join(", "));
   ok("...and a missed word is routed into it", !noRoute.length, noRoute.join(", "));
   ok("...and the hidden go keeps the spelling off the screen", !leaky.length,

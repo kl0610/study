@@ -68,8 +68,22 @@ ok(M.items.every(i => ["pick", "selectall", "sort"].includes(i.type)),
 G("answer position is not guessable");
 /* the app shuffles at render: shuffle(it.opts.map((t,i)=>({t,ok:i===it.a}))),
    so the key is it.a, not a fixed slot -- prove the shuffle is even */
+/* Seeded, not Math.random. The run-length assertion below is a dice roll
+   against an unseeded shuffle: four positions, 2000 draws, so a run of nine
+   turns up by pure chance about once every thirty runs (2000 * (1/4)^8). It
+   did, on a day when nothing near it had changed, and a suite that cries wolf
+   one run in thirty is worse than no suite at all -- it trains you to re-run
+   until it goes green, which is exactly what you do on the day it is right.
+   The shuffle is still the app's own algorithm; only the source of the
+   randomness is fixed, so a biased shuffle fails every time and an even one
+   never does. */
+let seed = 0x9E3779B9;
+const rnd = () => { seed |= 0; seed = seed + 0x6D2B79F5 | 0;
+  let t = Math.imul(seed ^ seed >>> 15, 1 | seed);
+  t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+  return ((t ^ t >>> 14) >>> 0) / 4294967296; };
 const shuffle = a => { a = a.slice();
-  for (let i = a.length - 1; i > 0; i--) { const j = Math.random() * (i + 1) | 0;
+  for (let i = a.length - 1; i > 0; i--) { const j = rnd() * (i + 1) | 0;
     [a[i], a[j]] = [a[j], a[i]]; } return a; };
 const slot = [0, 0, 0, 0];
 const RUNS = 20000;

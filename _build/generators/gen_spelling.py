@@ -69,10 +69,17 @@ LEVELS = [
     {"id": "l4", "name": "Step up", "prompt": "both", "input": "free",
      "tag": "Listen \u00b7 meaning and sentence",
      "blurb": "Hear the word. Meaning and sentence to lean on, but no boxes and no letters."},
+    # The only level that sends a miss straight to the drill. Everywhere else
+    # there is something to think again with -- syllable boxes, a first letter,
+    # a sentence -- so a second go means something. Here there is nothing on
+    # the screen at all, so "listen again and have another go" is an
+    # invitation to guess, and guessing is what Friday punishes.
     {"id": "l5", "name": "Test day", "prompt": "none", "input": "free",
-     "tag": "Listen \u00b7 nothing else",
+     "drillNow": True, "tag": "Listen \u00b7 nothing else",
      "blurb": "Dictation, the way Friday works. Hear the word, spell it. "
-              "Nothing else on screen."},
+              "Nothing else on screen. Miss one and the word comes up to be "
+              "written out three times, and then you spell it again with it "
+              "hidden."},
     {"id": "l6", "name": "Challenge", "prompt": "none", "input": "free",
      "dictate": "def", "boss": True, "tag": "Hear the meaning \u00b7 name the word",
      "blurb": "You hear the definition read out loud \u2014 not the word \u2014 and you "
@@ -371,7 +378,7 @@ function drillStart(w, done){
        not in the placeholder, nowhere. That was the point of hiding it. */
     $("card").innerHTML = `
       <div class="meta">
-        <span class="qn">Putting it right</span>
+        <span class="qn">Word ${idx + 1} of ${order.length}</span>
         <span class="qn" style="color:#E0709A">${copy ? "Write it out · " + (rep + 1) + " of " + DREPS
                                                       : "Now with it hidden"}</span>
       </div>
@@ -491,15 +498,58 @@ def drill_layer(out):
 
     out = sub(out, "function finish(){", DRILL_JS + "function finish(){", "drill body")
 
+    # On a level flagged drillNow there is no second guess and no "show me the
+    # word" button: the first miss puts the word up and starts the write-outs.
+    out = sub(out,
+              "  if(free){\n"
+              "    MC.wrong(w.w);",
+              "  /* Test day has no boxes, no first letter and no sentence to lean on,\n"
+              "     so \"listen again and have another go\" is an invitation to guess.\n"
+              "     On that level the first miss goes straight to the word and the\n"
+              "     write-outs, which is what the drill is for. */\n"
+              "  if(LVL().drillNow){\n"
+              "    MC.wrong(w.w);\n"
+              "    log[idx]=false;\n"
+              "    const t=$(\"typed\"); t.classList.add(\"bad\"); t.readOnly=true; t.blur();\n"
+              "    $(\"card\").querySelector(\".act\").innerHTML=\"\";\n"
+              "    $(\"fb\").innerHTML=`<div class=\"fb no\"><strong>Not quite.</strong>"
+              "Here comes the word \\u2014 write it out three times, then spell it again "
+              "with it hidden.</div>`;\n"
+              "    const advance=()=>{ if(idx===order.length-1) finish();"
+              " else { idx++; render(); window.scrollTo(0,0);} };\n"
+              "    setTimeout(()=>drillStart(w,advance),1300);\n"
+              "    return;\n"
+              "  }\n"
+              "\n"
+              "  if(free){\n"
+              "    MC.wrong(w.w);",
+              "straight to the drill on test day")
+
     # The drill is the point of this build. A patch that lands in the wrong
     # order, or an anchor that has drifted, must stop the build rather than
     # ship a file where a missed word quietly walks on to the next one.
     # A function declaration is hoisted, so where the body sits relative to the
     # call does not matter. What does matter is that there is exactly one of
     # it, that good() routes into it, and that the hidden go is still hidden.
-    for need, n in (("function drillStart(", 1), ("drillStart(w,advance)", 1),
+    # Exactly one level asks for the straight-to-the-drill behaviour, and the
+    # branch that serves it has to exist. A flag in the data with no code
+    # reading it is how List 2's rule layer survived into List 3 for a week.
+    flagged = [l["id"] for l in LEVELS if l.get("drillNow")]
+    if len(flagged) != 1 or flagged[0] != "l5":
+        raise SystemExit("  drillNow is on %r, and it belongs on l5 alone" % flagged)
+    if "if(LVL().drillNow){" not in out:
+        raise SystemExit("  l5 is flagged drillNow but nothing in the page reads it")
+
+    # Two call sites, and they are different routes in. good() catches a word
+    # missed on a level that gave him a second go; the drillNow branch catches
+    # Test day, where the first miss is the only one. Counting the total would
+    # pass with both of them being the same route twice over, so each is named.
+    for need, n in (("function drillStart(", 1),
+                    ("if(missedIt) drillStart(w,advance)", 1),
+                    ("drillStart(w,advance),1300", 1),
+                    ("drillStart(", 3),
                     ("const missedIt", 1), ('id="dtyped"', 1),
-                    ('phase = "test"', 1)):
+                    ('phase = "test"', 1), ("if(LVL().drillNow){", 1)):
         if out.count(need) != n:
             raise SystemExit("  the drill did not land: %r appears %d times, wanted %d"
                              % (need, out.count(need), n))
