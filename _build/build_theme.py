@@ -364,6 +364,14 @@ def spell8(s):
     return Patcher(s, "spelling8")
 
 
+def spell10(s):
+    """Spelling List 10 — in-/ir- meaning not, and the first list where a
+    missed word costs three copies and a hidden retest before it lets go.
+    Config only. Lists 7 and 9 stay unbuilt: those sheets never came home, and
+    the hub shows both as gaps rather than quietly renumbering the weeks."""
+    return Patcher(s, "spelling10")
+
+
 def vocab2(s):
     """Word List 2 sheet — generated from the List 1 sheet's shell, so its call
     sites came across already patched. Config only."""
@@ -467,6 +475,8 @@ APPS = {
     "spelling/list6":         (spell6, dict(app="spelling6",  shake="#card",   lift=None,
                                            dragon=["l7"])),
     "spelling/list8":         (spell8, dict(app="spelling8",  shake="#card",   lift=None,
+                                           dragon=["l7"])),
+    "spelling/list10":        (spell10, dict(app="spelling10", shake="#card",  lift=None,
                                            dragon=["l7"])),
     "vocabulary/ww6-lesson1": (vocab, dict(app="vocabulary", shake="#sheet",  lift=".bar",
                                            dragon=["sheet"])),

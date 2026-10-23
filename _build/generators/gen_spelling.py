@@ -340,6 +340,188 @@ def rule_layer(out, spec):
     return out
 
 
+# ------------------------------------------------------------------- the drill
+# A missed word does not slide past any more. He writes it out three times with
+# the spelling in front of him, then once more with it hidden and only the word
+# read aloud. Copying with the eyes switched off is easy and teaches nothing, so
+# the hidden go is the part that counts: fail it and three fresh copies start
+# over. Nothing in here costs a heart. The miss was already paid for when it
+# happened, and charging twice for one mistake teaches a ten-year-old to dread
+# the round rather than to learn the word.
+DRILL_JS = r"""/* ---------- the correction drill ----------
+   Three copies with the word in view, then one go with it hidden. The copies
+   build the habit; the hidden go is the only part that proves anything, which
+   is why failing it sends him back to the copies rather than waving him
+   through. A right one at the end calls MC.right, so putting a miss straight
+   pays exactly as every other fix on the site pays. Miss the hidden go twice
+   and he is offered a way out, because a ten-year-old stuck in a loop at nine
+   at night has stopped learning. */
+const DREPS = 3;
+function drillStart(w, done){
+  let rep = 0, phase = "copy", fails = 0, val = "";
+
+  const pretty = () => { const d = marked(w.w); let i = 0;
+    return w.syl.map(s => [...s].map(ch => {
+      const p = i++; return d.has(p) ? `<b>${ch}</b>` : ch; }).join("")).join("<i>·</i>"); };
+
+  function renderD(){
+    val = "";
+    const copy = phase === "copy";
+    /* The word itself never appears on the hidden go -- not in the heading,
+       not in the placeholder, nowhere. That was the point of hiding it. */
+    $("card").innerHTML = `
+      <div class="meta">
+        <span class="qn">Putting it right</span>
+        <span class="qn" style="color:#E0709A">${copy ? "Write it out · " + (rep + 1) + " of " + DREPS
+                                                      : "Now with it hidden"}</span>
+      </div>
+      <div class="dots">${[0, 1, 2].map(i =>
+        `<span class="dot ${i < rep ? "ok" : (i === rep && copy ? "now" : "")}"></span>`).join("")}</div>
+      ${copy ? `<div class="reveal"><div class="word">${pretty()}</div>
+                  <div class="cap">copy it exactly · ${w.syl.length} syllables</div></div>`
+             : `<div class="listen">
+                  <button class="big" id="dsay" aria-label="Hear the word">
+                    <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M15.5 8.5a5 5 0 010 7"/><path d="M19 5a9 9 0 010 14"/></svg>
+                  </button>
+                  <span class="lab">Tap to hear it again</span>
+                </div>`}
+      <div class="freewrap">
+        <input class="freein" id="dtyped" type="text" inputmode="text" autocomplete="off"
+               autocapitalize="off" autocorrect="off" spellcheck="false"
+               placeholder="${copy ? "write it here" : "spell it from memory"}" aria-label="Type the word">
+      </div>
+      <div class="act"><button class="btn p" id="dgo" disabled>${copy ? "That is one" : "Check it"}</button></div>
+      <div id="dfb"></div>`;
+    const inp = $("dtyped");
+    inp.addEventListener("input", () => {
+      val = inp.value.toLowerCase().replace(/[^a-z]/g, "");
+      inp.value = val;
+      inp.classList.remove("bad");
+      $("dfb").innerHTML = "";
+      $("dgo").disabled = copy ? val.length !== w.w.length : val.length < 2;
+    });
+    inp.addEventListener("keydown", e => { if (e.key === "Enter" && !$("dgo").disabled) checkD(); });
+    $("dgo").onclick = checkD;
+    if (!copy){ $("dsay").onclick = () => speak(w.w); setTimeout(() => speak(w.w), 320); }
+    setTimeout(() => inp.focus(), 80);
+    window.scrollTo(0, 0);
+  }
+
+  function checkD(){
+    const inp = $("dtyped");
+    if (val === w.w){
+      if (phase === "copy"){
+        rep++;
+        if (rep < DREPS){ renderD(); return; }
+        phase = "test"; renderD(); return;
+      }
+      MC.right(w.w);
+      inp.readOnly = true; inp.classList.add("good"); inp.blur();
+      $("card").querySelector(".act").innerHTML =
+        `<button class="btn g" id="dnext">Got it — next word</button>`;
+      /* The last thing he sees is the spelling with the rule painted on it,
+         the same way every other right answer on the site ends. Leaving it at
+         what he typed means the prefix is never pointed at on the one word he
+         got wrong, which is the word that most needed it. */
+      $("dfb").innerHTML = `<div class="fb yes"><strong>That is the one.</strong>` +
+        `Three times with it in front of you, then once with nothing to look at. ` +
+        `That last one is the bit that sticks.</div>
+        <div class="reveal"><div class="word">${pretty()}</div>
+          <div class="cap">${DATA.tips.reveal}</div></div>`;
+      $("dnext").onclick = done;
+      return;
+    }
+
+    inp.classList.add("bad");
+    const off = val.length === w.w.length
+      ? [...val].filter((c, i) => c !== w.w[i]).length : 0;
+
+    if (phase === "copy"){
+      $("dfb").innerHTML = `<div class="fb no"><strong>Not a copy yet.</strong>` +
+        (off ? (off === 1 ? "One letter is different from the word above. "
+                          : off + " letters are different from the word above. ") : "") +
+        `Read it across, letter by letter.</div>`;
+      setTimeout(() => { val = ""; inp.value = ""; inp.classList.remove("bad");
+                         $("dgo").disabled = true; inp.focus(); }, 900);
+      return;
+    }
+
+    /* The hidden go, missed. No heart, no buzzer -- just round again. */
+    fails++;
+    $("dfb").innerHTML = `<div class="fb no"><strong>Not yet.</strong>` +
+      `Back to writing it out — three more, then try it hidden again.</div>`;
+    if (fails >= 2){
+      inp.readOnly = true; inp.blur();
+      $("card").querySelector(".act").innerHTML =
+        `<button class="btn p" id="dagain">Write it out again</button>
+         <button class="btn o" id="dlater">Come back to this one later</button>`;
+      $("dagain").onclick = () => { phase = "copy"; rep = 0; renderD(); };
+      $("dlater").onclick = done;
+      return;
+    }
+    phase = "copy"; rep = 0;
+    setTimeout(renderD, 1500);
+  }
+
+  renderD();
+}
+
+"""
+
+
+def drill_layer(out):
+    """Send every missed word through the drill before the next one."""
+    out = sub(out,
+              '  $("card").querySelector(".act").innerHTML=\n'
+              '    `<button class="btn g" id="next">'
+              '${idx===order.length-1?"See how I did":"Next word"}</button>`;',
+              '  const missedIt = log[idx]!==true;\n'
+              '  $("card").querySelector(".act").innerHTML=\n'
+              '    `<button class="btn g" id="next">${missedIt?"Write it out three times"\n'
+              '      :(idx===order.length-1?"See how I did":"Next word")}</button>`;',
+              "drill button label")
+
+    out = sub(out,
+              '  $("next").onclick=()=>{ if(idx===order.length-1) finish();'
+              ' else { idx++; render(); window.scrollTo(0,0);} };',
+              '  const advance=()=>{ if(idx===order.length-1) finish();'
+              ' else { idx++; render(); window.scrollTo(0,0);} };\n'
+              '  $("next").onclick=()=>{ if(missedIt) drillStart(w,advance); else advance(); };',
+              "drill routing")
+
+    out = sub(out, "function finish(){", DRILL_JS + "function finish(){", "drill body")
+
+    # The drill is the point of this build. A patch that lands in the wrong
+    # order, or an anchor that has drifted, must stop the build rather than
+    # ship a file where a missed word quietly walks on to the next one.
+    # A function declaration is hoisted, so where the body sits relative to the
+    # call does not matter. What does matter is that there is exactly one of
+    # it, that good() routes into it, and that the hidden go is still hidden.
+    for need, n in (("function drillStart(", 1), ("drillStart(w,advance)", 1),
+                    ("const missedIt", 1), ('id="dtyped"', 1),
+                    ('phase = "test"', 1)):
+        if out.count(need) != n:
+            raise SystemExit("  the drill did not land: %r appears %d times, wanted %d"
+                             % (need, out.count(need), n))
+    # The whole value of the hidden go is that the spelling is off the screen.
+    # Anything that prints w.w while phase is "test" quietly turns it back into
+    # a copying exercise, so the branch is read out and checked here.
+    # Both anchors are searched from inside the drill, not from the top of the
+    # file. The main card has a freewrap too, and it sits earlier, so searching
+    # from zero gave an empty slice -- a check that passed by inspecting
+    # nothing at all. It let a deliberate leak straight through once.
+    top = out.index("function drillStart(")
+    a = out.index('             : `<div class="listen">', top)
+    b = out.index('      <div class="freewrap">', a)
+    hidden = out[a:b]
+    if len(hidden) < 200:
+        raise SystemExit("  the hidden-go check is reading %d characters, so it "
+                         "is not reading the branch" % len(hidden))
+    if "w.w" in hidden:
+        raise SystemExit("  the hidden go prints the word: %r" % hidden[:160])
+    return out
+
+
 def main():
     spec_name = MINE[0] if MINE else "spelling_list4.json"
     out_dir = MINE[1] if len(MINE) > 1 else "list4"
@@ -371,6 +553,7 @@ def main():
                  "<title>%s \u2014 %s</title>" % (spec["title"], spec["rule"]),
                  out, count=1)
     out = rule_layer(out, spec)
+    out = drill_layer(out)
 
     d = os.path.join(ROOT, "spelling", out_dir)
     os.makedirs(d, exist_ok=True)
@@ -380,6 +563,8 @@ def main():
           % (out_dir, len(data["words"]), len(data["levels"]), len(out) / 1024))
     print("  rule: %s   root: %s = %s   test: %s"
           % (spec["rule"], spec["root"]["stem"], spec["root"]["means"], spec["test"]))
+    print("  miss a word and it costs %d copies plus one go with it hidden"
+          % 3)
     for g in spec["chart"]:
         ws = [w["w"] for w in spec["words"] if w.get("group") == g["key"]]
         print("    %-28s %s" % (g["head"], ", ".join(ws)))

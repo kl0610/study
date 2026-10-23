@@ -294,6 +294,34 @@ LISTS.forEach(L => {
 });
 
 /* ====================================================================== */
+/* A missed word is written out three times and then spelled again with the
+   spelling off the screen. It is the one part of these apps that is not
+   visible from the home screen, so a regeneration that quietly lost it would
+   look perfectly fine until the week it mattered. List 2 is the hand-written
+   shell and is not patched, so it is exempt. */
+G("a missed word goes through the drill before the next one");
+{
+  const noDrill = [], noRoute = [], leaky = [];
+  LISTS.filter(L => L.gen).forEach(L => {
+    if (!/function drillStart\(/.test(L.html)) { noDrill.push(L.dir); return; }
+    /* good() must actually route into it. The drill existing in the file and
+       nothing calling it is the failure that looks most like success. */
+    if (!/if\(missedIt\) drillStart\(w,advance\)/.test(L.html)) noRoute.push(L.dir);
+    /* The hidden go is the whole point. Anything printing w.w in that branch
+       turns it back into copying. */
+    const i = L.html.indexOf("function drillStart(");
+    const a = L.html.indexOf(': `<div class="listen">', i);
+    const b = L.html.indexOf('<div class="freewrap">', a);
+    if (a < 0 || b < 0 || b - a < 200) leaky.push(L.dir + ": branch not found");
+    else if (L.html.slice(a, b).indexOf("w.w") !== -1) leaky.push(L.dir + ": prints the word");
+  });
+  ok("every generated list carries the drill", !noDrill.length, noDrill.join(", "));
+  ok("...and a missed word is routed into it", !noRoute.length, noRoute.join(", "));
+  ok("...and the hidden go keeps the spelling off the screen", !leaky.length,
+     leaky.join(" | "));
+}
+
+/* ====================================================================== */
 G("every list is on the hub, and points at itself");
 {
   const hub = fs.readFileSync(path.join(ROOT, "index.html"), "utf8");

@@ -2401,8 +2401,10 @@ function good(revealed){
   const pretty = w.syl.map(s=>[...s].map(ch=>{
     const pos=i++; return d.has(pos)?`<b>${ch}</b>`:ch;
   }).join("")).join("<i>\u00b7</i>");
+  const missedIt = log[idx]!==true;
   $("card").querySelector(".act").innerHTML=
-    `<button class="btn g" id="next">${idx===order.length-1?"See how I did":"Next word"}</button>`;
+    `<button class="btn g" id="next">${missedIt?"Write it out three times"
+      :(idx===order.length-1?"See how I did":"Next word")}</button>`;
   $("fb").innerHTML=`<div class="fb ${revealed?"no":"yes"}"><strong>${
     revealed?"Here it is.":(tries===1?"Right, first try.":"Got it.")
   }</strong>${d.size?DATA.tips.reveal:DATA.tips.plain}</div>
@@ -2412,8 +2414,127 @@ function good(revealed){
   const t=$("typed");
   if(t){ if(LVL().input==="free"){ t.value=w.w; t.classList.remove("bad"); t.classList.add("good"); t.readOnly=true; }
          t.blur(); }
-  $("next").onclick=()=>{ if(idx===order.length-1) finish(); else { idx++; render(); window.scrollTo(0,0);} };
+  const advance=()=>{ if(idx===order.length-1) finish(); else { idx++; render(); window.scrollTo(0,0);} };
+  $("next").onclick=()=>{ if(missedIt) drillStart(w,advance); else advance(); };
   speak(w.w);
+}
+
+/* ---------- the correction drill ----------
+   Three copies with the word in view, then one go with it hidden. The copies
+   build the habit; the hidden go is the only part that proves anything, which
+   is why failing it sends him back to the copies rather than waving him
+   through. A right one at the end calls MC.right, so putting a miss straight
+   pays exactly as every other fix on the site pays. Miss the hidden go twice
+   and he is offered a way out, because a ten-year-old stuck in a loop at nine
+   at night has stopped learning. */
+const DREPS = 3;
+function drillStart(w, done){
+  let rep = 0, phase = "copy", fails = 0, val = "";
+
+  const pretty = () => { const d = marked(w.w); let i = 0;
+    return w.syl.map(s => [...s].map(ch => {
+      const p = i++; return d.has(p) ? `<b>${ch}</b>` : ch; }).join("")).join("<i>·</i>"); };
+
+  function renderD(){
+    val = "";
+    const copy = phase === "copy";
+    /* The word itself never appears on the hidden go -- not in the heading,
+       not in the placeholder, nowhere. That was the point of hiding it. */
+    $("card").innerHTML = `
+      <div class="meta">
+        <span class="qn">Putting it right</span>
+        <span class="qn" style="color:#E0709A">${copy ? "Write it out · " + (rep + 1) + " of " + DREPS
+                                                      : "Now with it hidden"}</span>
+      </div>
+      <div class="dots">${[0, 1, 2].map(i =>
+        `<span class="dot ${i < rep ? "ok" : (i === rep && copy ? "now" : "")}"></span>`).join("")}</div>
+      ${copy ? `<div class="reveal"><div class="word">${pretty()}</div>
+                  <div class="cap">copy it exactly · ${w.syl.length} syllables</div></div>`
+             : `<div class="listen">
+                  <button class="big" id="dsay" aria-label="Hear the word">
+                    <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M15.5 8.5a5 5 0 010 7"/><path d="M19 5a9 9 0 010 14"/></svg>
+                  </button>
+                  <span class="lab">Tap to hear it again</span>
+                </div>`}
+      <div class="freewrap">
+        <input class="freein" id="dtyped" type="text" inputmode="text" autocomplete="off"
+               autocapitalize="off" autocorrect="off" spellcheck="false"
+               placeholder="${copy ? "write it here" : "spell it from memory"}" aria-label="Type the word">
+      </div>
+      <div class="act"><button class="btn p" id="dgo" disabled>${copy ? "That is one" : "Check it"}</button></div>
+      <div id="dfb"></div>`;
+    const inp = $("dtyped");
+    inp.addEventListener("input", () => {
+      val = inp.value.toLowerCase().replace(/[^a-z]/g, "");
+      inp.value = val;
+      inp.classList.remove("bad");
+      $("dfb").innerHTML = "";
+      $("dgo").disabled = copy ? val.length !== w.w.length : val.length < 2;
+    });
+    inp.addEventListener("keydown", e => { if (e.key === "Enter" && !$("dgo").disabled) checkD(); });
+    $("dgo").onclick = checkD;
+    if (!copy){ $("dsay").onclick = () => speak(w.w); setTimeout(() => speak(w.w), 320); }
+    setTimeout(() => inp.focus(), 80);
+    window.scrollTo(0, 0);
+  }
+
+  function checkD(){
+    const inp = $("dtyped");
+    if (val === w.w){
+      if (phase === "copy"){
+        rep++;
+        if (rep < DREPS){ renderD(); return; }
+        phase = "test"; renderD(); return;
+      }
+      MC.right(w.w);
+      inp.readOnly = true; inp.classList.add("good"); inp.blur();
+      $("card").querySelector(".act").innerHTML =
+        `<button class="btn g" id="dnext">Got it — next word</button>`;
+      /* The last thing he sees is the spelling with the rule painted on it,
+         the same way every other right answer on the site ends. Leaving it at
+         what he typed means the prefix is never pointed at on the one word he
+         got wrong, which is the word that most needed it. */
+      $("dfb").innerHTML = `<div class="fb yes"><strong>That is the one.</strong>` +
+        `Three times with it in front of you, then once with nothing to look at. ` +
+        `That last one is the bit that sticks.</div>
+        <div class="reveal"><div class="word">${pretty()}</div>
+          <div class="cap">${DATA.tips.reveal}</div></div>`;
+      $("dnext").onclick = done;
+      return;
+    }
+
+    inp.classList.add("bad");
+    const off = val.length === w.w.length
+      ? [...val].filter((c, i) => c !== w.w[i]).length : 0;
+
+    if (phase === "copy"){
+      $("dfb").innerHTML = `<div class="fb no"><strong>Not a copy yet.</strong>` +
+        (off ? (off === 1 ? "One letter is different from the word above. "
+                          : off + " letters are different from the word above. ") : "") +
+        `Read it across, letter by letter.</div>`;
+      setTimeout(() => { val = ""; inp.value = ""; inp.classList.remove("bad");
+                         $("dgo").disabled = true; inp.focus(); }, 900);
+      return;
+    }
+
+    /* The hidden go, missed. No heart, no buzzer -- just round again. */
+    fails++;
+    $("dfb").innerHTML = `<div class="fb no"><strong>Not yet.</strong>` +
+      `Back to writing it out — three more, then try it hidden again.</div>`;
+    if (fails >= 2){
+      inp.readOnly = true; inp.blur();
+      $("card").querySelector(".act").innerHTML =
+        `<button class="btn p" id="dagain">Write it out again</button>
+         <button class="btn o" id="dlater">Come back to this one later</button>`;
+      $("dagain").onclick = () => { phase = "copy"; rep = 0; renderD(); };
+      $("dlater").onclick = done;
+      return;
+    }
+    phase = "copy"; rep = 0;
+    setTimeout(renderD, 1500);
+  }
+
+  renderD();
 }
 
 function finish(){

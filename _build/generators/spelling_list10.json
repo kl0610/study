@@ -1,0 +1,186 @@
+{
+ "title": "Spelling List 10",
+ "n": 10,
+ "rule": "the prefixes in- and ir- meaning not",
+ "ruleLine": "a prefix that flips the word behind it into its opposite. Thirteen of these fifteen words do exactly that — and two of them only look as though they do.",
+ "weekLabel": "Week of Oct 19",
+ "test": "Friday, Oct 23",
+ "root": {
+  "stem": "deli",
+  "means": "pleasant"
+ },
+ "chartBtn": "prefixes side by side",
+ "chartSub": "The prefix in pink",
+ "chartTail": "the prefix in pink",
+ "tips": {
+  "listen": " Listen to the front of the word. If the prefix is ir-, there are two r's there, not one.",
+  "boxes": " Remember the rule — in- and ir- both mean not, and ir- always leaves you with a double r.",
+  "reveal": "The prefix is in pink. That is the part the test is looking for.",
+  "plain": "No prefix marked on this one. Spell it the ordinary way."
+ },
+ "chart": [
+  {
+   "key": "irr",
+   "head": "ir- onto a word that already starts with <i>r</i>",
+   "dot": "two",
+   "note": "six words, and every one of them has a double r. The prefix brings one r and the word underneath already had its own. Take the ir- off and you get relevant, responsible, rational."
+  },
+  {
+   "key": "innot",
+   "head": "in- = not",
+   "dot": "two",
+   "note": "five words, and the n never doubles. Any letter you hear twice belongs to the word underneath, not to the prefix: appropriate, accurate, offensive."
+  },
+  {
+   "key": "influ",
+   "head": "in- that does not mean <i>not</i>",
+   "dot": "one",
+   "note": "the two the sheet warns you about. Here in- means in or into. An influx flows into a place, and an influence works on you from the inside. Neither word denies anything."
+  },
+  {
+   "key": "root",
+   "head": "deli = pleasant",
+   "dot": "one",
+   "note": "this week's word part, and the only two words on the list that are not about what something is not. Both start with the same four letters and both are about something that pleases."
+  }
+ ],
+ "words": [
+  {
+   "w": "inadequate",
+   "syl": ["in", "ad", "e", "quate"],
+   "pos": "adj",
+   "mark": [0, 2],
+   "group": "innot",
+   "def": "not enough, or not good enough, to meet a need",
+   "sent": "Two sandwiches between four of them was ___ for a walk that long, and they were hungry by noon."
+  },
+  {
+   "w": "influx",
+   "syl": ["in", "flux"],
+   "pos": "n",
+   "mark": [0, 2],
+   "group": "influ",
+   "def": "the arrival of many people or things into a place at once",
+   "sent": "The new mill brought such an ___ of families that the school had to open two more classrooms."
+  },
+  {
+   "w": "inappropriate",
+   "syl": ["in", "ap", "pro", "pri", "ate"],
+   "pos": "adj",
+   "mark": [0, 2],
+   "group": "innot",
+   "def": "not suitable or proper for the situation",
+   "sent": "Shorts and sandals were ___ for a funeral, and he knew it before he reached the gate."
+  },
+  {
+   "w": "inoffensive",
+   "syl": ["in", "of", "fen", "sive"],
+   "pos": "adj",
+   "mark": [0, 2],
+   "group": "innot",
+   "def": "not likely to upset, offend or bother anyone",
+   "sent": "The painting above the desk was pleasant and ___, which is another way of saying nobody ever looked at it twice."
+  },
+  {
+   "w": "influence",
+   "syl": ["in", "flu", "ence"],
+   "pos": "n",
+   "mark": [0, 2],
+   "group": "influ",
+   "def": "the power to affect how someone thinks, chooses or acts",
+   "sent": "His older sister had more ___ over him than either of his parents did."
+  },
+  {
+   "w": "irrelevant",
+   "syl": ["ir", "rel", "e", "vant"],
+   "pos": "adj",
+   "mark": [0, 3],
+   "group": "irr",
+   "def": "not related to the subject being discussed",
+   "sent": "The judge said his opinion of the weather was ___ and asked him to answer the question he had been given."
+  },
+  {
+   "w": "irreconcilable",
+   "syl": ["ir", "rec", "on", "cil", "a", "ble"],
+   "pos": "adj",
+   "mark": [0, 3],
+   "group": "irr",
+   "def": "so different or so opposed that no agreement can be reached",
+   "sent": "Their two accounts of the evening were ___, and after an hour the meeting broke up with nothing settled."
+  },
+  {
+   "w": "irrefutable",
+   "syl": ["ir", "ref", "u", "ta", "ble"],
+   "pos": "adj",
+   "mark": [0, 3],
+   "group": "irr",
+   "def": "impossible to prove wrong, because the evidence behind it is too strong",
+   "sent": "The photograph was ___ proof that he had been standing in that room on that night."
+  },
+  {
+   "w": "irresponsible",
+   "syl": ["ir", "re", "spon", "si", "ble"],
+   "pos": "adj",
+   "mark": [0, 3],
+   "group": "irr",
+   "def": "not showing proper care or good judgment; failing to do what you are meant to do",
+   "sent": "Walking away from a campfire still burning is ___, and in a dry summer it is a good deal worse than that."
+  },
+  {
+   "w": "irrevocable",
+   "syl": ["ir", "rev", "o", "ca", "ble"],
+   "pos": "adj",
+   "mark": [0, 3],
+   "group": "irr",
+   "def": "impossible to change, cancel or take back",
+   "sent": "Once the papers were signed the decision was ___, however much the family wished otherwise."
+  },
+  {
+   "w": "delicate",
+   "syl": ["del", "i", "cate"],
+   "pos": "adj",
+   "mark": [0, 4],
+   "group": "root",
+   "root": true,
+   "def": "easily damaged and needing gentle handling; or fine and soft in the way it looks or feels",
+   "sent": "The moth's wings were so ___ that one careless touch would have ruined them."
+  },
+  {
+   "w": "delightful",
+   "syl": ["de", "light", "ful"],
+   "pos": "adj",
+   "mark": [0, 4],
+   "group": "root",
+   "root": true,
+   "def": "very pleasant or enjoyable; causing happiness",
+   "sent": "It was a ___ afternoon, warm enough to eat outside and quiet enough to hear the river from the table."
+  },
+  {
+   "w": "inaccurate",
+   "syl": ["in", "ac", "cu", "rate"],
+   "pos": "adj",
+   "mark": [0, 2],
+   "group": "innot",
+   "def": "not correct or exact; containing mistakes",
+   "sent": "The map was forty years old and badly ___, so the road they wanted was not drawn on it at all."
+  },
+  {
+   "w": "inconsiderate",
+   "syl": ["in", "con", "sid", "er", "ate"],
+   "pos": "adj",
+   "mark": [0, 2],
+   "group": "innot",
+   "def": "not showing care for other people's feelings or needs",
+   "sent": "Playing the drums at that hour was ___, whatever he happened to think of the neighbours."
+  },
+  {
+   "w": "irrational",
+   "syl": ["ir", "ra", "tion", "al"],
+   "pos": "adj",
+   "mark": [0, 3],
+   "group": "irr",
+   "def": "not based on reason or clear thinking",
+   "sent": "A grown man's fear of butterflies is ___, as he would be the first to admit, and he had it all the same."
+  }
+ ]
+}
