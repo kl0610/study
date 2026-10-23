@@ -69,17 +69,10 @@ LEVELS = [
     {"id": "l4", "name": "Step up", "prompt": "both", "input": "free",
      "tag": "Listen \u00b7 meaning and sentence",
      "blurb": "Hear the word. Meaning and sentence to lean on, but no boxes and no letters."},
-    # The only level that sends a miss straight to the drill. Everywhere else
-    # there is something to think again with -- syllable boxes, a first letter,
-    # a sentence -- so a second go means something. Here there is nothing on
-    # the screen at all, so "listen again and have another go" is an
-    # invitation to guess, and guessing is what Friday punishes.
     {"id": "l5", "name": "Test day", "prompt": "none", "input": "free",
-     "drillNow": True, "tag": "Listen \u00b7 nothing else",
+     "tag": "Listen \u00b7 nothing else",
      "blurb": "Dictation, the way Friday works. Hear the word, spell it. "
-              "Nothing else on screen. Miss one and the word comes up to be "
-              "written out three times, and then you spell it again with it "
-              "hidden."},
+              "Nothing else on screen."},
     {"id": "l6", "name": "Challenge", "prompt": "none", "input": "free",
      "dictate": "def", "boss": True, "tag": "Hear the meaning \u00b7 name the word",
      "blurb": "You hear the definition read out loud \u2014 not the word \u2014 and you "
@@ -355,6 +348,24 @@ def rule_layer(out, spec):
 # over. Nothing in here costs a heart. The miss was already paid for when it
 # happened, and charging twice for one mistake teaches a ten-year-old to dread
 # the round rather than to learn the word.
+# The three write-outs are the instruction, so they are on the screen as three
+# things to be ticked off rather than as three thin bars he has to decode. A
+# bar that fills is a progress indicator; a list that says "First time done" is
+# a set of instructions, and that is what a ten-year-old needs here.
+CSS_OLD = '.chdot.none{background:#4E5D75}'
+DRILL_CSS = """
+.dtitle{font-weight:800;font-size:16.5px;color:var(--ink);margin:2px 0 9px;letter-spacing:.2px}
+.dsteps{display:flex;flex-direction:column;gap:7px;margin:0 0 15px}
+.dstep{display:flex;align-items:center;gap:11px;padding:10px 13px;border-radius:12px;
+  background:#F1EADB;color:#9A8F7A;font-weight:700;font-size:15.5px;line-height:1.2}
+.dstep .dnum{width:25px;height:25px;border-radius:50%;flex:none;display:flex;
+  align-items:center;justify-content:center;background:#D6CDBB;color:#FFF;
+  font-size:13.5px;font-weight:800}
+.dstep.done{background:#E4F2DF;color:#3E7A2D}
+.dstep.done .dnum{background:#63BE7B}
+.dstep.now{background:#FCE4ED;color:#AF3862}
+.dstep.now .dnum{background:#E0709A}"""
+
 DRILL_JS = r"""/* ---------- the correction drill ----------
    Three copies with the word in view, then one go with it hidden. The copies
    build the habit; the hidden go is the only part that proves anything, which
@@ -363,7 +374,8 @@ DRILL_JS = r"""/* ---------- the correction drill ----------
    pays exactly as every other fix on the site pays. Miss the hidden go twice
    and he is offered a way out, because a ten-year-old stuck in a loop at nine
    at night has stopped learning. */
-const DREPS = 3;
+const STEPS = ["First time", "Second time", "Third time"];
+const DREPS = STEPS.length;
 function drillStart(w, done){
   let rep = 0, phase = "copy", fails = 0, val = "";
 
@@ -382,8 +394,12 @@ function drillStart(w, done){
         <span class="qn" style="color:#E0709A">${copy ? "Write it out · " + (rep + 1) + " of " + DREPS
                                                       : "Now with it hidden"}</span>
       </div>
-      <div class="dots">${[0, 1, 2].map(i =>
-        `<span class="dot ${i < rep ? "ok" : (i === rep && copy ? "now" : "")}"></span>`).join("")}</div>
+      <div class="dtitle">${copy ? "Write it three times" : "Now spell it with it hidden"}</div>
+      <div class="dsteps">${STEPS.map((label, i) => {
+        const done = i < rep, here = i === rep && copy;
+        return `<div class="dstep ${done ? "done" : (here ? "now" : "")}">` +
+               `<span class="dnum">${done ? "✓" : (i + 1)}</span>` +
+               `${label}${done ? " done" : ""}</div>`; }).join("")}</div>
       ${copy ? `<div class="reveal"><div class="word">${pretty()}</div>
                   <div class="cap">copy it exactly · ${w.syl.length} syllables</div></div>`
              : `<div class="listen">
@@ -478,78 +494,70 @@ function drillStart(w, done){
 
 def drill_layer(out):
     """Send every missed word through the drill before the next one."""
-    out = sub(out,
-              '  $("card").querySelector(".act").innerHTML=\n'
-              '    `<button class="btn g" id="next">'
-              '${idx===order.length-1?"See how I did":"Next word"}</button>`;',
-              '  const missedIt = log[idx]!==true;\n'
-              '  $("card").querySelector(".act").innerHTML=\n'
-              '    `<button class="btn g" id="next">${missedIt?"Write it out three times"\n'
-              '      :(idx===order.length-1?"See how I did":"Next word")}</button>`;',
-              "drill button label")
-
-    out = sub(out,
-              '  $("next").onclick=()=>{ if(idx===order.length-1) finish();'
-              ' else { idx++; render(); window.scrollTo(0,0);} };',
-              '  const advance=()=>{ if(idx===order.length-1) finish();'
-              ' else { idx++; render(); window.scrollTo(0,0);} };\n'
-              '  $("next").onclick=()=>{ if(missedIt) drillStart(w,advance); else advance(); };',
-              "drill routing")
-
     out = sub(out, "function finish(){", DRILL_JS + "function finish(){", "drill body")
 
-    # On a level flagged drillNow there is no second guess and no "show me the
-    # word" button: the first miss puts the word up and starts the write-outs.
+    out = sub(out, CSS_OLD, CSS_OLD + DRILL_CSS, "drill styles")
+
+    # A miss ends the question. There is no second guess anywhere and no "show
+    # me the word" button left to press: the word comes up and he writes it
+    # out. This replaces the whole tail of checkNow, reveal button and all,
+    # rather than returning early in front of it -- code that can no longer be
+    # reached is code the next person has to work out is dead.
     out = sub(out,
-              "  if(free){\n"
-              "    MC.wrong(w.w);",
-              "  /* Test day has no boxes, no first letter and no sentence to lean on,\n"
-              "     so \"listen again and have another go\" is an invitation to guess.\n"
-              "     On that level the first miss goes straight to the word and the\n"
-              "     write-outs, which is what the drill is for. */\n"
-              "  if(LVL().drillNow){\n"
-              "    MC.wrong(w.w);\n"
-              "    log[idx]=false;\n"
-              "    const t=$(\"typed\"); t.classList.add(\"bad\"); t.readOnly=true; t.blur();\n"
-              "    $(\"card\").querySelector(\".act\").innerHTML=\"\";\n"
-              "    $(\"fb\").innerHTML=`<div class=\"fb no\"><strong>Not quite.</strong>"
-              "Here comes the word \\u2014 write it out three times, then spell it again "
-              "with it hidden.</div>`;\n"
-              "    const advance=()=>{ if(idx===order.length-1) finish();"
-              " else { idx++; render(); window.scrollTo(0,0);} };\n"
-              "    setTimeout(()=>drillStart(w,advance),1300);\n"
-              "    return;\n"
-              "  }\n"
-              "\n"
-              "  if(free){\n"
-              "    MC.wrong(w.w);",
-              "straight to the drill on test day")
+              '  const act=$("card").querySelector(".act");\n'
+              '  if(tries>=2 && !$("show")) act.insertAdjacentHTML("beforeend",\n'
+              '    `<button class="btn o" id="show">Show me the word</button>`);\n'
+              '  if($("show")) $("show").onclick=()=>{ shown=true; good(true); };\n'
+              '  setTimeout(()=>{ typed=""; const t=$("typed");'
+              ' if(t){ t.value=""; t.classList.remove("bad"); }\n'
+              '                   paint(); if(t) t.focus(); }, free?1400:900);',
+              '  /* One miss ends the question, on every level. Guessing again is\n'
+              '     the habit Friday punishes, so the word comes up instead and he\n'
+              '     writes it out. */\n'
+              '  log[idx]=false;\n'
+              '  const ti=$("typed"); if(ti){ ti.readOnly=true; ti.blur(); }\n'
+              '  $("card").querySelector(".act").innerHTML="";\n'
+              '  const advance=()=>{ if(idx===order.length-1) finish();'
+              ' else { idx++; render(); window.scrollTo(0,0);} };\n'
+              '  setTimeout(()=>drillStart(w,advance),1500);',
+              "one miss ends the question")
+
+    # Both wrong-answer messages now say what is about to happen instead of
+    # inviting another go. The rule tip stays: it is the last thing he reads
+    # before the word appears, and it is the reason the word looks as it does.
+    out = sub(out, "Not quite.</strong>Tap the speaker and listen again.",
+              "Not quite.</strong>Here comes the word to write out.",
+              "free miss message")
+    out = sub(out,
+              '    setTimeout(()=>speak(LVL().dictate==="def"?w.def:w.w),260);\n',
+              '', "re-speak on a miss")
+    out = sub(out,
+              '      wrong===1?"One letter is off.":wrong+" letters are off."\n'
+              '    }${dbl && tries===1?DATA.tips.boxes:""}</div>`;',
+              '      wrong===1?"One letter is off.":wrong+" letters are off."\n'
+              '    } Here comes the word to write out.'
+              '${dbl?DATA.tips.boxes:""}</div>`;',
+              "boxes miss message")
 
     # The drill is the point of this build. A patch that lands in the wrong
     # order, or an anchor that has drifted, must stop the build rather than
     # ship a file where a missed word quietly walks on to the next one.
-    # A function declaration is hoisted, so where the body sits relative to the
-    # call does not matter. What does matter is that there is exactly one of
-    # it, that good() routes into it, and that the hidden go is still hidden.
-    # Exactly one level asks for the straight-to-the-drill behaviour, and the
-    # branch that serves it has to exist. A flag in the data with no code
-    # reading it is how List 2's rule layer survived into List 3 for a week.
-    flagged = [l["id"] for l in LEVELS if l.get("drillNow")]
-    if len(flagged) != 1 or flagged[0] != "l5":
-        raise SystemExit("  drillNow is on %r, and it belongs on l5 alone" % flagged)
-    if "if(LVL().drillNow){" not in out:
-        raise SystemExit("  l5 is flagged drillNow but nothing in the page reads it")
-
-    # Two call sites, and they are different routes in. good() catches a word
-    # missed on a level that gave him a second go; the drillNow branch catches
-    # Test day, where the first miss is the only one. Counting the total would
-    # pass with both of them being the same route twice over, so each is named.
+    # One way in and one way only: a miss in checkNow. If the reveal button is
+    # still anywhere in the file then the old two-guesses path survived, which
+    # is the exact thing this build removes.
     for need, n in (("function drillStart(", 1),
-                    ("if(missedIt) drillStart(w,advance)", 1),
-                    ("drillStart(w,advance),1300", 1),
-                    ("drillStart(", 3),
-                    ("const missedIt", 1), ('id="dtyped"', 1),
-                    ('phase = "test"', 1), ("if(LVL().drillNow){", 1)):
+                    ("drillStart(w,advance),1500", 1),
+                    ("drillStart(", 2),
+                    ('id="dtyped"', 1), ('phase = "test"', 1),
+                    ("Show me the word", 0), ('id="show"', 0),
+                    ('tries>=2 && !$("show")', 0),
+                    # l7 writes a sentence rather than spelling a word, so its
+                    # second try and its worked example stay exactly as they
+                    # were. A bare count of tries>=2 would have called that a
+                    # leftover and sent someone deleting the wrong thing.
+                    ('tries>=2 && !$("egbtn")', 1),
+                    ("drillNow", 0),
+                    ('class="dsteps"', 1), ("First time", 1)):
         if out.count(need) != n:
             raise SystemExit("  the drill did not land: %r appears %d times, wanted %d"
                              % (need, out.count(need), n))

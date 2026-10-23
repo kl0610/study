@@ -200,6 +200,17 @@ footer{margin:32px 0 0;padding-top:15px;border-top:1px solid var(--line);color:#
 .chdot.two{background:var(--rose);box-shadow:0 0 0 3px rgba(224,112,154,.25)}
 .chdot.one{background:var(--rose);opacity:.6}
 .chdot.none{background:#4E5D75}
+.dtitle{font-weight:800;font-size:16.5px;color:var(--ink);margin:2px 0 9px;letter-spacing:.2px}
+.dsteps{display:flex;flex-direction:column;gap:7px;margin:0 0 15px}
+.dstep{display:flex;align-items:center;gap:11px;padding:10px 13px;border-radius:12px;
+  background:#F1EADB;color:#9A8F7A;font-weight:700;font-size:15.5px;line-height:1.2}
+.dstep .dnum{width:25px;height:25px;border-radius:50%;flex:none;display:flex;
+  align-items:center;justify-content:center;background:#D6CDBB;color:#FFF;
+  font-size:13.5px;font-weight:800}
+.dstep.done{background:#E4F2DF;color:#3E7A2D}
+.dstep.done .dnum{background:#63BE7B}
+.dstep.now{background:#FCE4ED;color:#AF3862}
+.dstep.now .dnum{background:#E0709A}
 .chgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(164px,1fr));gap:9px}
 .chw{background:var(--paper);border-radius:12px;padding:12px}
 .chword{font-family:var(--disp);font-size:clamp(16px,4.6vw,20px);font-weight:800;color:#12161F;
@@ -2087,9 +2098,8 @@ const DATA = {
    "name": "Test day",
    "prompt": "none",
    "input": "free",
-   "drillNow": true,
    "tag": "Listen · nothing else",
-   "blurb": "Dictation, the way Friday works. Hear the word, spell it. Nothing else on screen. Miss one and the word comes up to be written out three times, and then you spell it again with it hidden."
+   "blurb": "Dictation, the way Friday works. Hear the word, spell it. Nothing else on screen."
   },
   {
    "id": "l6",
@@ -2359,44 +2369,30 @@ function checkNow(){
   if(typed===w.w){ good(); return; }
   const dbl=marked(w.w).size>0;
 
-  /* Test day has no boxes, no first letter and no sentence to lean on,
-     so "listen again and have another go" is an invitation to guess.
-     On that level the first miss goes straight to the word and the
-     write-outs, which is what the drill is for. */
-  if(LVL().drillNow){
-    MC.wrong(w.w);
-    log[idx]=false;
-    const t=$("typed"); t.classList.add("bad"); t.readOnly=true; t.blur();
-    $("card").querySelector(".act").innerHTML="";
-    $("fb").innerHTML=`<div class="fb no"><strong>Not quite.</strong>Here comes the word \u2014 write it out three times, then spell it again with it hidden.</div>`;
-    const advance=()=>{ if(idx===order.length-1) finish(); else { idx++; render(); window.scrollTo(0,0);} };
-    setTimeout(()=>drillStart(w,advance),1300);
-    return;
-  }
-
   if(free){
     MC.wrong(w.w);
     /* say nothing about length or position — that would hand him the shape */
     $("typed").classList.add("bad");
-    $("fb").innerHTML=`<div class="fb no"><strong>Not quite.</strong>Tap the speaker and listen again.${
+    $("fb").innerHTML=`<div class="fb no"><strong>Not quite.</strong>Here comes the word to write out.${
       dbl && tries===1?DATA.tips.listen:""
     }</div>`;
-    setTimeout(()=>speak(LVL().dictate==="def"?w.def:w.w),260);
   } else {
     const wrong=[...typed].filter((c,i)=>c!==w.w[i]).length;
     MC.wrong(w.w);
     [...document.querySelectorAll(".tile")].forEach((t,i)=>{ if(typed[i]!==w.w[i]) t.classList.add("bad"); });
     $("fb").innerHTML=`<div class="fb no"><strong>Not quite.</strong>${
       wrong===1?"One letter is off.":wrong+" letters are off."
-    }${dbl && tries===1?DATA.tips.boxes:""}</div>`;
+    } Here comes the word to write out.${dbl?DATA.tips.boxes:""}</div>`;
   }
 
-  const act=$("card").querySelector(".act");
-  if(tries>=2 && !$("show")) act.insertAdjacentHTML("beforeend",
-    `<button class="btn o" id="show">Show me the word</button>`);
-  if($("show")) $("show").onclick=()=>{ shown=true; good(true); };
-  setTimeout(()=>{ typed=""; const t=$("typed"); if(t){ t.value=""; t.classList.remove("bad"); }
-                   paint(); if(t) t.focus(); }, free?1400:900);
+  /* One miss ends the question, on every level. Guessing again is
+     the habit Friday punishes, so the word comes up instead and he
+     writes it out. */
+  log[idx]=false;
+  const ti=$("typed"); if(ti){ ti.readOnly=true; ti.blur(); }
+  $("card").querySelector(".act").innerHTML="";
+  const advance=()=>{ if(idx===order.length-1) finish(); else { idx++; render(); window.scrollTo(0,0);} };
+  setTimeout(()=>drillStart(w,advance),1500);
 }
 
 function showExample(w,passed){
@@ -2441,10 +2437,8 @@ function good(revealed){
   const pretty = w.syl.map(s=>[...s].map(ch=>{
     const pos=i++; return d.has(pos)?`<b>${ch}</b>`:ch;
   }).join("")).join("<i>\u00b7</i>");
-  const missedIt = log[idx]!==true;
   $("card").querySelector(".act").innerHTML=
-    `<button class="btn g" id="next">${missedIt?"Write it out three times"
-      :(idx===order.length-1?"See how I did":"Next word")}</button>`;
+    `<button class="btn g" id="next">${idx===order.length-1?"See how I did":"Next word"}</button>`;
   $("fb").innerHTML=`<div class="fb ${revealed?"no":"yes"}"><strong>${
     revealed?"Here it is.":(tries===1?"Right, first try.":"Got it.")
   }</strong>${d.size?DATA.tips.reveal:DATA.tips.plain}</div>
@@ -2454,8 +2448,7 @@ function good(revealed){
   const t=$("typed");
   if(t){ if(LVL().input==="free"){ t.value=w.w; t.classList.remove("bad"); t.classList.add("good"); t.readOnly=true; }
          t.blur(); }
-  const advance=()=>{ if(idx===order.length-1) finish(); else { idx++; render(); window.scrollTo(0,0);} };
-  $("next").onclick=()=>{ if(missedIt) drillStart(w,advance); else advance(); };
+  $("next").onclick=()=>{ if(idx===order.length-1) finish(); else { idx++; render(); window.scrollTo(0,0);} };
   speak(w.w);
 }
 
@@ -2467,7 +2460,8 @@ function good(revealed){
    pays exactly as every other fix on the site pays. Miss the hidden go twice
    and he is offered a way out, because a ten-year-old stuck in a loop at nine
    at night has stopped learning. */
-const DREPS = 3;
+const STEPS = ["First time", "Second time", "Third time"];
+const DREPS = STEPS.length;
 function drillStart(w, done){
   let rep = 0, phase = "copy", fails = 0, val = "";
 
@@ -2486,8 +2480,12 @@ function drillStart(w, done){
         <span class="qn" style="color:#E0709A">${copy ? "Write it out · " + (rep + 1) + " of " + DREPS
                                                       : "Now with it hidden"}</span>
       </div>
-      <div class="dots">${[0, 1, 2].map(i =>
-        `<span class="dot ${i < rep ? "ok" : (i === rep && copy ? "now" : "")}"></span>`).join("")}</div>
+      <div class="dtitle">${copy ? "Write it three times" : "Now spell it with it hidden"}</div>
+      <div class="dsteps">${STEPS.map((label, i) => {
+        const done = i < rep, here = i === rep && copy;
+        return `<div class="dstep ${done ? "done" : (here ? "now" : "")}">` +
+               `<span class="dnum">${done ? "✓" : (i + 1)}</span>` +
+               `${label}${done ? " done" : ""}</div>`; }).join("")}</div>
       ${copy ? `<div class="reveal"><div class="word">${pretty()}</div>
                   <div class="cap">copy it exactly · ${w.syl.length} syllables</div></div>`
              : `<div class="listen">
