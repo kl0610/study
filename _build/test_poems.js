@@ -43,6 +43,35 @@ const POEMS = fs.readdirSync(path.join(ROOT, "recitation"))
 
 const MODES = "last,first,half,line,heart";
 
+/* Two shapes live in recitation/ now. A short poem is learnt in one sitting:
+   DATA.lines holds every line and DATA.levels is the l1..l5 ladder. A long
+   one is learnt over several evenings: DATA.poem holds every line, DATA.days
+   says which stanza is new on which night and what is run through with it,
+   and the ladder is built per group at the moment a level is opened. The
+   checks below are the same either way, so each poem is reduced to a common
+   view here rather than the suite skipping the shape it was not written for
+   -- skipping it is how an app stops being tested at all. */
+POEMS.forEach(P => {
+  P.LINES = P.DATA.poem || P.DATA.lines || [];
+  P.DAYS = P.DATA.days || null;
+  P.LADDER = [];
+  if (P.DAYS) {
+    /* Built the same way the app builds it when a level is opened, so what is
+       checked here is what he will actually be handed. */
+    P.DAYS.forEach(d => d.groups.forEach(g => g.modes.forEach((m, i) => {
+      const w = P.DATA.modes[m] || {};
+      P.LADDER.push({
+        id: g.id + "-l" + (i + 1),
+        mode: m,
+        boss: !!g.boss && i === g.modes.length - 1,
+        name: w.name, tag: w.tag, blurb: w.blurb
+      });
+    })));
+  } else {
+    P.LADDER = P.DATA.levels || [];
+  }
+});
+
 /* ====================================================================== */
 G("what is on the shelf");
 ok(POEMS.length + " poems built: " + POEMS.map(p => p.DATA.plain).join(", "),
@@ -55,31 +84,56 @@ POEMS.forEach(P => {
 
   ok("it carries everything the page prints",
      ["title", "plain", "eyebrow", "sub", "source"].every(k => D[k] && String(D[k]).trim()));
-  ok(D.lines.length + " lines, none of them empty",
-     D.lines.length >= 2 && D.lines.every(l => /[A-Za-z]/.test(l.t)));
+  ok(P.LINES.length + " lines, none of them empty",
+     P.LINES.length >= 2 && P.LINES.every(l => /[A-Za-z]/.test(l.t)));
   ok("the stanza breaks are marked on the line a stanza ends on",
-     D.lines.every(l => l.gap === undefined || l.gap === true) &&
-     !(D.lines[D.lines.length - 1] || {}).gap,
+     P.LINES.every(l => l.gap === undefined || l.gap === true) &&
+     !(P.LINES[P.LINES.length - 1] || {}).gap,
      "a gap on the last line would put space under nothing");
 
   G("...its pictures");
-  ok("every line names a picture", D.lines.every(l => !!l.art));
-  const missing = D.lines.filter(l => !P.ART[l.art]).map(l => l.art);
+  ok("every line names a picture", P.LINES.every(l => !!l.art));
+  const missing = P.LINES.filter(l => !P.ART[l.art]).map(l => l.art);
   ok("...and the app really holds every one of them", !missing.length, missing.join(", "));
   ok("every picture is an inline drawing, nothing fetched",
      Object.values(P.ART).every(s => /^<svg/.test(String(s).trim())) &&
      !/<image|https?:/.test(Object.values(P.ART).join("")));
-  const unused = Object.keys(P.ART).filter(k => !D.lines.some(l => l.art === k));
+  const unused = Object.keys(P.ART).filter(k => !P.LINES.some(l => l.art === k));
   /* The Eagle is not an owl. A poem built from the last one's shell that kept
      its pictures would be carrying six drawings of the wrong bird. */
   ok("no picture is left over from another poem", !unused.length, unused.join(", "));
 
   G("...its ladder");
-  ok("five levels, l1 to l5", D.levels.map(l => l.id).join() === "l1,l2,l3,l4,l5");
-  ok("the ladder runs " + MODES, D.levels.map(l => l.mode).join() === MODES);
-  ok("the last one is the boss, and only it",
-     D.levels[4].boss === true && !D.levels.slice(0, 4).some(l => l.boss));
-  ok("every level explains itself", D.levels.every(l => l.name && l.tag && l.blurb));
+  if (P.DAYS){
+    ok(P.DAYS.length + " evenings, " + P.LADDER.length + " levels between them",
+       P.DAYS.length >= 2 && P.LADDER.length >= P.DAYS.length);
+    ok("every level is one of " + MODES,
+       P.LADDER.every(l => MODES.split(",").indexOf(l.mode) !== -1));
+    ok("a stanza learnt fresh gets the whole ladder",
+       P.DAYS.every(d => d.groups.filter(g => g.from !== 0 || d.groups.length === 1)
+         .every(g => g.modes.join() === MODES)),
+       "the new stanza is where the easy levels belong");
+    /* The ask this was built for: each night after the first joins its new
+       stanza onto everything before it, and the last night is the whole poem. */
+    let reach = 0, cumulative = true;
+    P.DAYS.forEach((d, i) => {
+      const all = d.groups.filter(g => g.from === 0);
+      if (i === 0) { reach = d.groups[d.groups.length - 1].to; return; }
+      if (!all.length || all[all.length - 1].to <= reach) cumulative = false;
+      else reach = all[all.length - 1].to;
+    });
+    ok("every evening after the first runs the new stanza onto the old ones",
+       cumulative, "an evening that does not reach further than the last one");
+    ok("...and the last evening reaches the end of the poem",
+       reach === P.LINES.length, "stops at line " + reach + " of " + P.LINES.length);
+    ok("exactly one level is the boss", P.LADDER.filter(l => l.boss).length === 1);
+  } else {
+    ok("five levels, l1 to l5", P.LADDER.map(l => l.id).join() === "l1,l2,l3,l4,l5");
+    ok("the ladder runs " + MODES, P.LADDER.map(l => l.mode).join() === MODES);
+    ok("the last one is the boss, and only it",
+       P.LADDER[4].boss === true && !P.LADDER.slice(0, 4).some(l => l.boss));
+  }
+  ok("every level explains itself", P.LADDER.every(l => l.name && l.tag && l.blurb));
 
   G("...and it introduces itself as itself");
   const title = (P.html.match(/<title>([^<]*)<\/title>/) || [])[1] || "";
@@ -87,8 +141,10 @@ POEMS.forEach(P => {
   const others = POEMS.filter(o => o !== P).map(o => o.DATA.plain);
   const borrowed = others.filter(name => title.indexOf(name) !== -1);
   ok("...and not another poem's", !borrowed.length, borrowed.join(", "));
-  ok("the engine is configured, with the dragon on the last level",
-     /MC\.config\(/.test(P.html) && /"dragon":\s*\["l5"\]/.test(P.html) &&
+  const boss = (P.LADDER.filter(l => l.boss)[0] || {}).id || "l5";
+  ok("the engine is configured, with the dragon on the last level (" + boss + ")",
+     /MC\.config\(/.test(P.html) &&
+     new RegExp('"dragon":\\s*\\["' + boss + '"\\]').test(P.html) &&
      /"subject":\s*"Recitation"/.test(P.html));
   const app = (P.html.match(/"app":\s*"([^"]+)"/) || [])[1];
   ok("...under its own app key (" + app + ")", !!app);

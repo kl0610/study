@@ -14,7 +14,7 @@ Idempotent: re-running on already-themed files is a no-op for the injection and
 the patches are all exact-match, so a second run reports "already themed".
 """
 
-import base64, json, pathlib, re, sys
+import base64, io, json, pathlib, re, sys
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 import review
@@ -364,6 +364,12 @@ def spell8(s):
     return Patcher(s, "spelling8")
 
 
+def roadnot(s):
+    """The Road Not Taken — twenty lines over four evenings, grown from the
+    Fireflies shell with a day layer added. Config only."""
+    return Patcher(s, "roadnot")
+
+
 def wwtest5(s):
     """Word List 5 test rehearsal — written fresh rather than grown from
     another app's shell, because no app here had a lettered matching bank, a
@@ -552,6 +558,12 @@ APPS = {
     "recitation/fireflies-in-the-garden": (recite4,
                                      dict(app="recite4", shake="#card", lift=None,
                                           dragon=["l5"], subject="Recitation")),
+    # Twenty lines learnt over four evenings, so the levels are named per
+    # group rather than l1..l5. The dragon is the last one on the list: the
+    # whole poem, by heart, with nothing on the screen — which is Thursday.
+    "recitation/the-road-not-taken": (roadnot,
+                                     dict(app="roadnot", shake="#card", lift=None,
+                                          dragon=["d4a-l3"], subject="Recitation")),
     # Recitation. Five levels over one poem, each giving a little less away;
     # l5 is saying it with nothing on the screen, so that is where the dragon
     # sits — the same place it sits on spelling's ladder.
@@ -969,14 +981,14 @@ def math_modules():
     p = STUDY / "math" / "practice" / "index.html"
     if not p.exists():
         return "math/practice missing"
-    src = p.read_text(encoding="utf-8")
+    src = read_src(p)
     for name in ("MAP", "SKILLS", "EX"):
         f = THEME / ("math" + name.lower() + ".js")
         out = inline_module(src, name, f)
         if out is None:
             return "math/practice: nowhere to put %s" % f.name
         src = out
-    p.write_text(src, encoding="utf-8")
+    write_src(p, src)
     return None
 
 
@@ -1012,12 +1024,31 @@ def sprite_prefix(path, src):
     return src.replace("<body>\n", "<body>\n" + line, 1)
 
 
+def read_src(path):
+    """Read a file we are going to write back, without touching its newlines.
+
+    Path.read_text() translates every ending to \\n, and Path.write_text()
+    then writes the platform default, which on Windows is \\r\\n. So any
+    read-modify-write through those two silently converts an LF file to CRLF —
+    every line, every run. index.html is an LF file, and a --retheme put 2,842
+    carriage returns through it. That was diagnosed once as a slip in a helper
+    script and patched by stripping them out again; it was this, and it came
+    back the next time the hub was rebuilt. Read and write both preserve now,
+    so a file goes back the way it was authored.
+    """
+    return io.open(path, encoding="utf-8", newline="").read()
+
+
+def write_src(path, text):
+    path.write_text(text, encoding="utf-8", newline="")
+
+
 def page(path, tag, label):
     """The hub gets the engine inlined too, so it doesn't fetch from _build/
     at runtime — and it reads state only, with no HUD of its own."""
     if not path.exists():
         return "%-24s missing" % label
-    src = sprite_prefix(path, path.read_text(encoding="utf-8"))
+    src = sprite_prefix(path, read_src(path))
     js = (THEME / "mc.js").read_text(encoding="utf-8")
     if tag not in src:
         # No script tag can mean two very different things: the engine is already
@@ -1040,7 +1071,7 @@ def page(path, tag, label):
         src = sfx_line(src)
         src = mute_css(src)
         src = skin_css(src)
-        path.write_text(src, encoding="utf-8")
+        write_src(path, src)
         return "%-24s re-themed  %6.1f KB -> %6.1f KB" % (label, before/1024, len(src)/1024)
     if INLINE:
         head = "window.__MC_INLINE__=" + json.dumps(assets_map()) + ";"
@@ -1054,8 +1085,8 @@ def page(path, tag, label):
     src = sfx_line(src)
     src = mute_css(src)
     src = skin_css(src)
-    path.write_text(src, encoding="utf-8")
-    return "%-24s %6.1f KB -> %6.1f KB" % (label, len(path.read_text(encoding="utf-8"))/1024, len(src)/1024)
+    write_src(path, src)
+    return "%-24s %6.1f KB -> %6.1f KB" % (label, len(read_src(path))/1024, len(src)/1024)
 
 
 def main():
@@ -1068,7 +1099,7 @@ def main():
         sys.exit(trouble)
     for rel, (patch, cfg) in APPS.items():
         path = STUDY / rel / "index.html"
-        src  = path.read_text(encoding="utf-8")
+        src  = read_src(path)
 
         # An app that is already themed has had its call sites patched once and
         # for all; those edits live in the file. A retheme swaps the engine and
@@ -1086,7 +1117,7 @@ def main():
             continue
 
         if was_themed:
-            path.write_text(staged, encoding="utf-8")
+            write_src(path, staged)
             print("  %-24s re-themed  %6.1f KB -> %6.1f KB"
                   % (rel, len(src) / 1024, len(staged) / 1024))
             continue
@@ -1099,7 +1130,7 @@ def main():
                 print("        no anchor: %s" % m)
             continue
 
-        path.write_text(p.out, encoding="utf-8")
+        write_src(path, p.out)
         print("  %-24s %6.1f KB -> %6.1f KB" % (rel, len(src)/1024, len(p.out)/1024))
 
     print("  " + hub())
