@@ -30,7 +30,83 @@ MINE = sys.argv[1:]
 sys.argv = ["x"]
 import build_theme as B                                           # noqa: E402
 
+GLOSS = []            # the reader's Vocabulary terms, filled in at build time
 PAGES = (1, 99)          # the Student Reader's printed page range
+OFFSET = 6               # printed page = PDF page - 6, checked against the folios
+READER = os.path.join(ROOT, "_source", "history",
+                      "CKHG_G5_U3_AgeExploration_SR.pdf")
+
+# Ordinary English that happens to be capitalised in a sentence, or that the
+# book simply does not use. Anything else capitalised mid-sentence, and every
+# year, is a fact the hint is standing on and has to be on the page it cites.
+NOT_A_FACT = set("""He His She Her They Them The A An In On At For From With By It
+Its This That When Then There Before After And But Of To Both Five Three Two One
+Have Had Has Nobody Years Early Stormy Student Reader Give Native Americans
+Think Read Sailing Portuguese Spanish English French Dutch Venetian""".split())
+
+
+def reader_pages():
+    """The printed pages of the Student Reader, by folio number.
+
+    Without the book there is nothing to check a hint against, so a missing
+    reader is a refusal and not a shrug: shipping unverified hints is the
+    fault this whole check exists to stop.
+    """
+    if not os.path.exists(READER):
+        raise SystemExit("  the Student Reader is not at %s, so no hint can be "
+                         "checked against the book" % READER)
+    from pypdf import PdfReader
+    r = PdfReader(READER)
+    out = {}
+    for i, p in enumerate(r.pages):
+        try:
+            t = p.extract_text() or ""
+        except Exception:
+            t = ""
+        out[i + 1 - OFFSET] = re.sub(r"\s+", " ", t)
+    return out
+
+
+def cited(spread):
+    """The printed pages an item points at: "21-22" means both."""
+    if isinstance(spread, str):
+        a, b = re.split(r"[^0-9]+", spread.strip())[:2]
+        return list(range(int(a), int(b) + 1))
+    return [int(spread)]
+
+
+def glossary(book):
+    """The reader's own Vocabulary terms, pulled out of its margins.
+
+    A hint may paraphrase freely -- he is not being quizzed on wording -- but
+    if it reaches for one of the book's own terms, that term has to be on the
+    page it sends him to. This is what catches an invented fact rather than a
+    misplaced one: a hint once told him a strait was named after Hudson, and
+    the book names no such strait. "Strait" is a glossary word, it was not on
+    the page cited, and nothing noticed. The proper-noun check could not see
+    it because the word is lowercase.
+    """
+    blob = " ".join(book.values())
+    return sorted(set(m.group(1).lower() for m in
+                      re.finditer(r"Vocabulary ([a-zA-Z][a-zA-Z \-]{2,24}?), "
+                                  r"(?:n|v|adj|adv)\.", blob)))
+
+
+def off_page(text, pages_text):
+    """Which facts in this sentence are not on those pages.
+
+    Paraphrase is free -- he is not being quizzed on the book's wording. A
+    name, a place or a year is different: if the hint says Mombasa and the
+    page it sends him to has no Mombasa on it, the hint is pointing at the
+    wrong page, which is exactly the fault this was written for.
+    """
+    anchors = set(re.findall(r"\b1[0-9]{3}\b", text))
+    for m in re.finditer(r"(?<![.!?“]\s)(?<!^)\b([A-Z][a-zA-Zé’]+)\b", text):
+        if m.group(1) not in NOT_A_FACT:
+            anchors.add(m.group(1))
+    blob = " ".join(pages_text)
+    return sorted(a for a in anchors
+                  if not re.search(r"\b" + re.escape(a) + r"\b", blob, re.I))
 
 
 def bare(s):
@@ -61,6 +137,10 @@ def check(spec):
         if n != 2:
             bad.append("%s has %d explorer(s), and the brief is two from each" % (c, n))
 
+    book = reader_pages()
+    global GLOSS
+    GLOSS = glossary(book)
+
     for q in spec["quizzes"]:
         where = q["id"]
         asked = set()
@@ -71,6 +151,32 @@ def check(spec):
                 bad.append("%s: %r has no hint" % (where, stem[:40]))
             if not (PAGES[0] <= it.get("page", 0) <= PAGES[1]):
                 bad.append("%s: %r cites page %r" % (where, stem[:40], it.get("page")))
+            else:
+                # The hint has to be readable on the page it sends him to.
+                # This shipped once with eight hints pointing a page or two
+                # away from their own facts, and one naming a strait the book
+                # never mentions.
+                want = cited(it.get("span") or it["page"])
+                if it["page"] not in want:
+                    bad.append("%s: %r spans %s, which does not include page %d"
+                               % (where, stem[:40], it.get("span"), it["page"]))
+                text = [book.get(p, "") for p in want]
+                blob = " ".join(text).lower()
+                for field in ("hint", "why"):
+                    said = it.get(field, "")
+                    gone = off_page(said, text)
+                    if gone:
+                        bad.append("%s: the %s for %r names %s, which is not on "
+                                   "page %s" % (where, field, stem[:40],
+                                                ", ".join(gone),
+                                                it.get("span") or it["page"]))
+                    for term in GLOSS:
+                        if re.search(r"\b" + re.escape(term) + r"\b", said, re.I) \
+                                and term not in blob:
+                            bad.append("%s: the %s for %r uses the book's term %r, "
+                                       "which is not on page %s"
+                                       % (where, field, stem[:40], term,
+                                          it.get("span") or it["page"]))
             if not it.get("why"):
                 bad.append("%s: %r never says why" % (where, stem[:40]))
 

@@ -157,6 +157,7 @@ function shuffle(a){ a = a.slice();
   for (let i = a.length - 1; i > 0; i--){ const j = Math.random() * (i + 1) | 0;
     [a[i], a[j]] = [a[j], a[i]]; } return a; }
 
+const PG = it => it.span ? "pages " + it.span : "page " + it.page;
 const NAMES = DATA.explorers.map(e => e.name);
 let Q = null, idx = 0, got = [], tries = 0, missed = [];
 
@@ -254,7 +255,7 @@ function pick(btn, it){
     got[idx] = clean;
     if (clean) MC.right(key(it)); else MC.credit(key(it));
     $("fb").innerHTML = `<div class="fb yes"><strong>${clean ? "Right." : "Right — got there."}</strong>${esc(it.why)}</div>
-      <span class="pg">Student Reader, page ${it.page}</span>`;
+      <span class="pg">Student Reader, ${PG(it)}</span>`;
     $("act").innerHTML = `<button class="btn g" id="next">${
       idx === Q.items.length - 1 ? "See how I did" : "Next"}</button>`;
     $("next").onclick = advance;
@@ -272,7 +273,7 @@ function pick(btn, it){
     $("hintbtn").onclick = () => {
       $("hintbtn").remove();
       $("fb").insertAdjacentHTML("beforeend",
-        `<div class="hintbox">${esc(it.hint)}<br><span class="pg">Student Reader, page ${it.page}</span></div>`);
+        `<div class="hintbox">${esc(it.hint)}<br><span class="pg">Student Reader, ${PG(it)}</span></div>`);
     };
   }
   /* Three wrong is enough. Show it, say where to read it, and move on. */
@@ -283,7 +284,7 @@ function pick(btn, it){
     $("act").innerHTML = `<button class="btn g" id="next">${
       idx === Q.items.length - 1 ? "See how I did" : "Next"}</button>`;
     $("fb").innerHTML = `<div class="fb no"><strong>It was ${esc(want)}.</strong>${esc(it.why)}</div>
-      <span class="pg">Read it again — Student Reader, page ${it.page}</span>`;
+      <span class="pg">Read it again — Student Reader, ${PG(it)}</span>`;
     $("next").onclick = advance;
   }
 }
@@ -309,7 +310,7 @@ function finish(){
        ${missed.map(m => `<div class="mrow">
          <div class="w">${esc(answerOf(m.q))}</div>
          <div class="r">${esc(m.q.q)}</div>
-         <span class="pg">page ${m.q.page}</span></div>`).join("")}</div>`
+         <span class="pg">${PG(m.q)}</span></div>`).join("")}</div>`
      : `<div class="review"><b>Every one, first time.</b>Nothing to go back over.</div>`}
     <div class="act">
       <button class="btn p" id="again">Run it again</button>
