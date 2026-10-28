@@ -60,9 +60,21 @@ ok(`${withPassages.length} apps ship passages`, withPassages.length >= 16);
   /* Named rather than counted, so a chapter losing its passages shows up as
      that chapter and not as a number quietly going down by one. History 2 and 3
      were the last two without any; they have them now. */
+  /* What this is really protecting is that a missed question can be traced
+     back to the book. Quoting the passage in a drawer is one way; citing the
+     printed page on every single question is another, and the explorer
+     review does the second. So the rule is "he can get back to the source",
+     not "the app holds passages" -- a suite that insists on the mechanism
+     rather than the guarantee just gets switched off for the next app that
+     meets it differently. */
+  const citesEvery = a => {
+    const D = readData(a.html);
+    if (!D || !D.quizzes) return false;
+    return D.quizzes.every(q => q.items.every(it => it.page > 0));
+  };
   const missing = APPS.filter(a => !withPassages.includes(a) && /MC\.chest\(/.test(a.html)
-                                   && a.rel !== "math/practice");
-  ok("every app that runs a level has passages behind it",
+                                   && a.rel !== "math/practice" && !citesEvery(a));
+  ok("every app that runs a level can send him back to the book",
      !missing.length, missing.map(a => a.rel).join(", "));
 }
 

@@ -370,6 +370,12 @@ def roadnot(s):
     return Patcher(s, "roadnot")
 
 
+def aeexp(s):
+    """The Age of Exploration explorer review — ten explorers, two rounds,
+    every question carrying the page it came from. Config only."""
+    return Patcher(s, "aeexp")
+
+
 def wwtest5(s):
     """Word List 5 test rehearsal — written fresh rather than grown from
     another app's shell, because no app here had a lettered matching bank, a
@@ -544,6 +550,11 @@ APPS = {
     # five parts, fifty points, and two of them asking him to write rather
     # than tap. The dragon sits on Part V because that is the one no amount
     # of multiple choice prepares you for.
+    # Two from each country, which is what the test asks for. The dragon
+    # sits on the "who said it" round: naming the man from the deed is the
+    # thing the multiple choice cannot prove he can do.
+    "history/ae-explorers":        (aeexp, dict(app="aeexp", shake="#card", lift=None,
+                                           dragon=["match"])),
     "vocabulary/ww6-lesson5-exam": (wwtest5, dict(app="wwtest5", shake="#card", lift=None,
                                            dragon=["p5"])),
     "vocabulary/ww6-lesson6":      (vocab6, dict(app="vocabulary6", shake="#sheet",
