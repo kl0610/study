@@ -166,27 +166,16 @@ function home(){
   const best = MC.bests();
   $("subline").textContent = DATA.sub;
   $("ruleline").textContent = DATA.note;
-  const cards = DATA.groups.map((g, gi) => {
-    const n = DATA.items.filter(it => it.group === gi).length;
-    const b = best["g" + gi];
-    return '<button class="qbtn" style="--c:' + COLORS[gi % COLORS.length] + '" data-g="' + gi + '">' +
-      '<span class="tag">' + esc(g.name) + ' &middot; ' + n + ' questions</span>' +
-      "<h3>" + esc(g.sub) + "</h3><p>" + esc(g.blurb) + "</p>" +
-      '<span class="go">' + (b != null ? "Again" : "Start") + " &rsaquo;</span>" +
-      (b != null ? '<span class="badge">best ' + b + "%</span>" : "") + "</button>";
-  }).join("");
-  const ball = best["all"];
-  $("quizzes").innerHTML = cards +
-    '<button class="qbtn" style="--c:#63BE7B" data-g="all">' +
-    '<span class="tag">Everything &middot; ' +
-    DATA.items.filter(it => !DATA.groups[it.group].optional).length +
-    ' questions</span>' +
-    "<h3>Part 1 and Part 2 together</h3>" +
-    "<p>Everything your guide asks for tonight, shuffled. Under ten minutes.</p>" +
-    '<span class="go">' + (ball != null ? "Again" : "Start") + " &rsaquo;</span>" +
-    (ball != null ? '<span class="badge">best ' + ball + "%</span>" : "") + "</button>";
-  [...document.querySelectorAll("#quizzes .qbtn")].forEach(b =>
-    b.onclick = () => start(b.dataset.g));
+  const b = best["all"];
+  $("quizzes").innerHTML =
+    '<button class="qbtn" style="--c:#5AA9DB" data-g="all">' +
+    '<span class="tag">Tonight &middot; ' + DATA.items.length + ' questions</span>' +
+    "<h3>Pages 1 to 12</h3>" +
+    "<p>Everything your reading guide asks you to look for. Under ten minutes.</p>" +
+    '<span class="go">' + (b != null ? "Again" : "Start") + " &rsaquo;</span>" +
+    (b != null ? '<span class="badge">best ' + b + "%</span>" : "") + "</button>";
+  [...document.querySelectorAll("#quizzes .qbtn")].forEach(x =>
+    x.onclick = () => start("all"));
   $("foot").innerHTML = esc(DATA.cite) +
     "<br>Based on an original work of the Core Knowledge Foundation " +
     "(coreknowledge.org), used under CC BY-NC-SA 4.0. This does not imply " +
@@ -202,7 +191,7 @@ function studySheet(){
   const P = DATA.source.pages;
   /* The evidence table first. Every Round 2 question is already a row of it:
      a page, what he believed, and what was really there. He needs three. */
-  const ev = DATA.items.filter(it => it.group === 1 && it.src !== "guide");
+  const ev = DATA.items.filter(it => it.evidence);
   const table =
     '<div class="rule" style="margin-bottom:14px"><b>Your big question</b><br>' +
     esc(DATA.bigq) + "</div>" +
@@ -229,16 +218,14 @@ function studySheet(){
 /* ---------- a run ---------- */
 function start(which){
   runId = which;
-  RUN = which === "all"
-    ? DATA.items.filter(it => !DATA.groups[it.group].optional)
-    : DATA.items.filter(it => it.group === +which);
+  RUN = DATA.items.slice();
   /* Questions shuffled as well as options, so running it twice is not the
      same quiz twice and the order itself cannot be memorised. Every card
      prints its own page number, so he never loses his place in the book. */
   order = shuffle(RUN.map((_, i) => i));
   idx = 0; got = []; missed = [];
   MC.begin({partial: which !== "all"});
-  $("qname").textContent = which === "all" ? "Pages 1 to 12" : DATA.groups[+which].name;
+  $("qname").textContent = "Pages 1 to 12";
   $("qclue").textContent = RUN.length + " questions";
   show("play"); render();
 }

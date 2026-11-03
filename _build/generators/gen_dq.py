@@ -43,7 +43,7 @@ def words(s):
 
 def check(spec, src):
     bad = []
-    for f in ("title", "sub", "cite", "note", "groups", "items"):
+    for f in ("title", "sub", "cite", "note", "items"):
         if not spec.get(f):
             bad.append("no %s" % f)
     if bad:
@@ -89,9 +89,6 @@ def check(spec, src):
             bad.append("%r has no hint" % stem[:40])
         if not it.get("why"):
             bad.append("%r never says why" % stem[:40])
-        if not (0 <= it.get("group", -1) < len(spec["groups"])):
-            bad.append("%r sits in group %r, which does not exist"
-                       % (stem[:40], it.get("group")))
 
         # The answer and the explanation have to be about what is on that page.
         # Only for the book: the guide is not transcribed here, and checking a
@@ -110,14 +107,18 @@ def check(spec, src):
                            "page %s" % (field, stem[:40], pg))
 
     # Ten minutes was asked for explicitly, so the build enforces it rather
-    # than trusting whoever adds the next question to keep count. The optional
-    # round does not count: he is not asked to do it.
-    core = [it for it in spec["items"]
-            if not spec["groups"][it["group"]].get("optional")]
-    mins = len(core) * 0.45
+    # than trusting whoever adds the next question to keep count.
+    mins = len(spec["items"]) * 0.45
     if mins > 10:
-        bad.append("the run he is asked to do is %d questions, about %.0f minutes, "
-                   "and ten was the limit" % (len(core), mins))
+        bad.append("%d questions is about %.0f minutes, and ten was the limit"
+                   % (len(spec["items"]), mins))
+
+    # The evidence rows are what he will draw on for Friday. Too few and the
+    # sheet cannot offer him a choice of three.
+    ev = [it for it in spec["items"] if it.get("evidence")]
+    if len(ev) < 3:
+        bad.append("only %d questions are marked as evidence, and Friday needs "
+                   "three examples" % len(ev))
 
     if len(spread) < 3:
         bad.append("the answers only ever sit at %s, which is a pattern he will "
@@ -156,21 +157,11 @@ def main():
             newline="\r\n").write(out)
 
     print("  reading/%s  %.1f KB" % (out_dir, len(out) / 1024))
-    for gi, g in enumerate(spec["groups"]):
-        n = [it for it in spec["items"] if it["group"] == gi]
-        # Say which book those page numbers belong to. "pages 2-2" meaning the
-        # RACES toolkit and "pages 2-2" meaning Cervantes look identical, and
-        # that ambiguity is what this whole file exists to stop.
-        g_ = sum(1 for i in n if i.get("src") == "guide")
-        where = "guide" if g_ == len(n) else "book" if g_ == 0 else "mixed"
-        print("    %-9s %-25s %2d questions, %s pages %d\u2013%d"
-              % (g["name"], g["sub"], len(n), where,
-                 min(i["page"] for i in n), max(i["page"] for i in n)))
-    core = [it for it in spec["items"]
-            if not spec["groups"][it["group"]].get("optional")]
-    print("    %d questions in the run he is asked to do, about %d minutes"
-          % (len(core), round(len(core) * 0.45)))
-    print("    %d more in the optional round" % (len(spec["items"]) - len(core)))
+    print("    %d questions, about %d minutes"
+          % (len(spec["items"]), round(len(spec["items"]) * 0.45)))
+    ev = [it for it in spec["items"] if it.get("evidence")]
+    print("    %d of them collect on the sheet for Friday: pages %s"
+          % (len(ev), ", ".join(str(i["page"]) for i in ev)))
     print("    every page from %s to %s is asked about"
           % (min(src["pages"], key=int), max(src["pages"], key=int)))
 
