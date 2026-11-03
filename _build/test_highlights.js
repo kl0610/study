@@ -69,8 +69,14 @@ ok(`${withPassages.length} apps ship passages`, withPassages.length >= 16);
      meets it differently. */
   const citesEvery = a => {
     const D = readData(a.html);
-    if (!D || !D.quizzes) return false;
-    return D.quizzes.every(q => q.items.every(it => it.page > 0));
+    if (!D) return false;
+    /* Two shapes cite pages: several rounds each holding items, or one flat
+       list of them. Checking only the first shape failed the Don Quixote
+       quiz, which cites a page on every single question. */
+    const lists = D.quizzes ? D.quizzes.map(q => q.items)
+                : Array.isArray(D.items) ? [D.items] : [];
+    if (!lists.length) return false;
+    return lists.every(items => items.length && items.every(it => it.page > 0));
   };
   const missing = APPS.filter(a => !withPassages.includes(a) && /MC\.chest\(/.test(a.html)
                                    && a.rel !== "math/practice" && !citesEvery(a));

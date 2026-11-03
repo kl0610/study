@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>TITLE_GOES_HERE</title>
+<meta name="theme-color" content="#1A2233">
+<style>
+:root{
+  --ink:#27313F; --soft:#6B7786; --line:#E2DED3; --card:#FFFDF8;
+  --rose:#E0709A; --lime:#63BE7B; --red:#E0685A; --amber:#E9B23C; --sky:#5AA9DB;
+  --hist:#C98A3C;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;background:#141C2A;color:var(--ink);
+  font:16px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+.wrap{max-width:720px;margin:0 auto;padding:16px 16px 40px}
+.hide{display:none !important}
+.hublink{display:inline-block;color:#9FB0C6;text-decoration:none;font-size:14px;margin-bottom:6px}
+.pagehead{display:flex;align-items:center;gap:12px;margin:6px 0 12px}
+.back{width:42px;height:42px;flex:none;border:none;border-radius:13px;background:#243149;
+  color:#CBD6E6;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.back svg{width:22px;height:22px}
+.pagehead .t strong{display:block;color:#F2F5FA;font-size:18px;line-height:1.2}
+.pagehead .t span{display:block;color:#8FA0B6;font-size:12px;letter-spacing:1.4px;
+  text-transform:uppercase;margin-top:3px;font-family:ui-monospace,Menlo,Consolas,monospace}
+.eyebrow{color:#8FA0B6;font-size:12px;letter-spacing:1.6px;text-transform:uppercase;
+  font-family:ui-monospace,Menlo,Consolas,monospace}
+h1{color:#F2F5FA;font-size:27px;margin:6px 0 8px;line-height:1.15}
+.sub{color:#A9B7C9;font-size:15px;margin:0 0 16px}
+.rule{background:#1E2940;border-left:4px solid var(--hist);border-radius:0 12px 12px 0;
+  padding:11px 14px;color:#C6D2E2;font-size:14.5px;margin:0 0 18px}
+
+.qbtn{display:block;width:100%;text-align:left;background:var(--card);border:1.5px solid var(--line);
+  border-left:6px solid var(--c,var(--hist));border-radius:15px;padding:13px 15px;margin-bottom:10px;
+  cursor:pointer;font:inherit;color:var(--ink)}
+.qbtn .tag{display:block;font-size:11.5px;letter-spacing:1.3px;text-transform:uppercase;
+  color:var(--soft);font-family:ui-monospace,Menlo,Consolas,monospace}
+.qbtn h3{margin:3px 0 3px;font-size:17px}
+.qbtn p{margin:0;font-size:13.5px;color:var(--soft)}
+.qbtn .go{display:block;margin-top:7px;font-size:13px;font-weight:700;color:var(--hist)}
+.badge{display:inline-block;margin-top:7px;font-size:11.5px;font-weight:800;letter-spacing:.6px;
+  background:#F7EFE3;color:#8A5E24;border-radius:999px;padding:3px 9px}
+footer{color:#7E8DA2;font-size:13px;text-align:center;margin-top:18px}
+
+.sheet{background:var(--card);border:1.5px solid var(--line);border-radius:16px;padding:4px 14px;margin-bottom:10px}
+.srow{border-top:1px solid var(--line);padding:11px 0}
+.srow:first-child{border-top:none}
+.srow b{display:block;font-size:16px}
+.srow .c{display:inline-block;font-size:11.5px;font-weight:800;letter-spacing:.5px;
+  background:#EFEAF7;color:#5F5190;border-radius:999px;padding:2px 8px;margin:4px 0}
+.srow p{margin:3px 0 0;font-size:14px;color:var(--soft);line-height:1.5}
+.srow .pg{font-size:12px;color:var(--hist);font-weight:700}
+
+.dots{display:flex;gap:3px;margin-bottom:14px;flex-wrap:wrap}
+.dot{height:5px;flex:1 1 10px;border-radius:3px;background:#2C3A54}
+.dot.ok{background:var(--lime)} .dot.miss{background:var(--amber)} .dot.now{background:var(--rose)}
+
+.card{background:var(--card);border:1.5px solid var(--line);border-radius:18px;padding:16px}
+.meta{display:flex;gap:9px;align-items:center;flex-wrap:wrap;margin-bottom:11px}
+.qn{font-size:11.5px;letter-spacing:1.3px;text-transform:uppercase;color:var(--soft);
+  font-family:ui-monospace,Menlo,Consolas,monospace}
+.q{font-size:18.5px;line-height:1.45;margin:0 0 14px}
+
+.opt{display:flex;align-items:flex-start;gap:10px;width:100%;text-align:left;background:#FFF;
+  border:1.5px solid var(--line);border-radius:13px;padding:11px 13px;margin-bottom:8px;
+  font:inherit;color:var(--ink);cursor:pointer;line-height:1.35}
+.opt .k{flex:none;width:23px;height:23px;border-radius:7px;background:#EEE9DC;color:var(--soft);
+  font:800 12px ui-monospace,Menlo,Consolas,monospace;display:flex;align-items:center;justify-content:center}
+.opt.good{border-color:var(--lime);background:#E8F5E6}
+.opt.good .k{background:var(--lime);color:#FFF}
+.opt.bad{border-color:var(--red);background:#FBECEA}
+.opt.bad .k{background:var(--red);color:#FFF}
+.opt[disabled]{cursor:default}
+
+.act{display:flex;flex-direction:column;gap:9px;margin-top:13px}
+.btn{width:100%;border:none;border-radius:14px;padding:14px;font:800 15.5px inherit;cursor:pointer}
+.btn.p{background:var(--hist);color:#FFF}
+.btn.g{background:var(--lime);color:#FFF}
+.btn.o{background:#FFF;color:var(--ink);border:1.5px solid var(--line)}
+
+.fb{border-radius:13px;padding:11px 13px;margin-top:12px;font-size:14.5px;line-height:1.45}
+.fb strong{display:block;margin-bottom:3px}
+.fb.yes{background:#E8F5E6;color:#2F6B33;border-left:4px solid var(--lime)}
+.fb.no{background:#FBECEA;color:#9A3B30;border-left:4px solid var(--red)}
+.hintbox{background:#FBF3E4;border-left:4px solid var(--amber);border-radius:0 13px 13px 0;
+  padding:11px 13px;margin-top:9px;font-size:14.5px;line-height:1.5;color:#6E5424}
+.pg{display:inline-block;margin-top:6px;font:800 12.5px ui-monospace,Menlo,Consolas,monospace;
+  letter-spacing:.4px;color:#8A5E24;background:#F3E6D0;border-radius:999px;padding:3px 10px}
+
+.score{background:var(--card);border:1.5px solid var(--line);border-radius:18px;padding:20px 16px;text-align:center}
+.ring{font-size:52px;font-weight:800;line-height:1}
+.band{font-size:17px;font-weight:800;margin-top:4px}
+.outof{color:var(--soft);font-size:15px;margin-top:6px}
+.review{background:#F3F0E7;border-radius:13px;padding:12px 14px;margin-top:14px;text-align:left;font-size:14.5px}
+.review b{display:block;margin-bottom:7px}
+.mrow{border-top:1px solid #E2DED3;padding:8px 0}
+.mrow:first-of-type{border-top:none}
+.mrow .w{font-weight:700}
+.mrow .r{color:var(--soft);font-size:13.5px}
+</style>
+</head>
+<body>
+
+<div id="home" class="wrap">
+  <a class="hublink" href="../../index.html">&lsaquo; All subjects</a>
+  <div class="eyebrow" style="margin-top:14px">Reading · Core Classics</div>
+  <h1>H1_GOES_HERE</h1>
+  <p class="sub" id="subline"></p>
+  <div class="rule" id="ruleline"></div>
+  <div id="quizzes"></div>
+  <button class="qbtn" id="studybtn" style="--c:#5AA9DB">
+    <span class="tag">If you get stuck</span>
+    <h3>What is on each page</h3>
+    <p>A short note on every page from 1 to 12, so you can find anything you missed.</p>
+    <span class="go">Open the page notes &rsaquo;</span>
+  </button>
+  <footer id="foot"></footer>
+</div>
+
+<div id="study" class="wrap hide">
+  <div class="pagehead">
+    <button class="back" id="sback" aria-label="Back">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+    </button>
+    <div class="t"><strong>Page notes</strong><span>Pages 1 to 12</span></div>
+  </div>
+  <div id="sheet"></div>
+</div>
+
+<div id="play" class="wrap hide">
+  <div class="pagehead">
+    <button class="back" id="quit" aria-label="Back">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+    </button>
+    <div class="t"><strong id="qname"></strong><span id="qclue"></span></div>
+  </div>
+  <div class="dots" id="dots"></div>
+  <div class="card" id="card"></div>
+</div>
+
+<div id="done" class="wrap hide">
+  <a class="hublink" href="../../index.html">&lsaquo; All subjects</a>
+  <div class="score" id="scorebox" style="margin-top:16px"></div>
+</div>
+
+<script>
+const DATA = DATA_GOES_HERE;
+
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const COLORS = ["#5AA9DB","#C98A3C"];
+
+/* Fisher-Yates. Options are shuffled at render, so an answer never stays in
+   the slot it was written in. */
+function shuffle(a){ a = a.slice();
+  for (let i = a.length - 1; i > 0; i--){ const j = Math.random() * (i + 1) | 0;
+    [a[i], a[j]] = [a[j], a[i]]; } return a; }
+
+const PG = it => "page " + it.page;
+let RUN = null, order = [], idx = 0, got = [], tries = 0, missed = [], runId = "all";
+
+/* ---------- home ---------- */
+function home(){
+  const best = MC.bests();
+  $("subline").textContent = DATA.sub;
+  $("ruleline").textContent = DATA.note;
+  const cards = DATA.groups.map((g, gi) => {
+    const n = DATA.items.filter(it => it.group === gi).length;
+    const b = best["g" + gi];
+    return '<button class="qbtn" style="--c:' + COLORS[gi % COLORS.length] + '" data-g="' + gi + '">' +
+      '<span class="tag">' + esc(g.name) + ' &middot; ' + n + ' questions</span>' +
+      "<h3>" + esc(g.sub) + "</h3><p>Just this part, on its own.</p>" +
+      '<span class="go">' + (b != null ? "Again" : "Start") + " &rsaquo;</span>" +
+      (b != null ? '<span class="badge">best ' + b + "%</span>" : "") + "</button>";
+  }).join("");
+  const ball = best["all"];
+  $("quizzes").innerHTML = cards +
+    '<button class="qbtn" style="--c:#63BE7B" data-g="all">' +
+    '<span class="tag">Everything &middot; ' + DATA.items.length + ' questions</span>' +
+    "<h3>Pages 1 to 12, straight through</h3>" +
+    "<p>The whole chapter, in the order you read it. About ten minutes.</p>" +
+    '<span class="go">' + (ball != null ? "Again" : "Start") + " &rsaquo;</span>" +
+    (ball != null ? '<span class="badge">best ' + ball + "%</span>" : "") + "</button>";
+  [...document.querySelectorAll("#quizzes .qbtn")].forEach(b =>
+    b.onclick = () => start(b.dataset.g));
+  $("foot").innerHTML = esc(DATA.cite) +
+    "<br>Based on an original work of the Core Knowledge Foundation " +
+    "(coreknowledge.org), used under CC BY-NC-SA 4.0. This does not imply " +
+    "that the Core Knowledge Foundation endorses this work.";
+  show("home");
+}
+function show(w){ ["home","study","play","done"].forEach(x => $(x).classList.toggle("hide", x !== w));
+                  window.scrollTo(0, 0); }
+
+/* The page notes. Not the book itself -- a short record of what each page
+   holds, so a miss sends him somewhere real instead of to a bare number. */
+function studySheet(){
+  const P = DATA.source.pages;
+  $("sheet").innerHTML = Object.keys(P).sort((a, b) => a - b).map(n => {
+    const pg = P[n], gl = pg.glossary || {};
+    return '<div class="sheet"><div class="srow"><b>Page ' + n + "</b>" +
+      Object.keys(gl).map(k => '<span class="c">' + esc(k) + "</span>").join("") +
+      "<p>" + pg.facts.map(f => esc(f)).join("<br>") + "</p>" +
+      Object.keys(gl).map(k => '<p style="margin-top:6px"><b>' + esc(k) +
+        "</b> \u2014 " + esc(gl[k]) + "</p>").join("") +
+      "</div></div>";
+  }).join("");
+  show("study");
+}
+
+/* ---------- a run ---------- */
+function start(which){
+  runId = which;
+  RUN = which === "all" ? DATA.items : DATA.items.filter(it => it.group === +which);
+  order = RUN.map((_, i) => i);          /* the order of the book, not shuffled */
+  idx = 0; got = []; missed = [];
+  MC.begin({partial: which !== "all"});
+  $("qname").textContent = which === "all" ? "Pages 1 to 12" : DATA.groups[+which].name;
+  $("qclue").textContent = RUN.length + " questions";
+  show("play"); render();
+}
+
+function render(){
+  tries = 0;
+  const it = RUN[order[idx]];
+  const opts = shuffle(it.opts.map((t, i) => [t, i === it.a]));
+  $("dots").innerHTML = order.map((_, i) =>
+    '<span class="dot ' + (i === idx ? "now" : got[i] === undefined ? "" : got[i] ? "ok" : "miss") +
+    '"></span>').join("");
+  $("card").innerHTML =
+    '<div class="meta"><span class="qn">' + (idx + 1) + " of " + order.length + "</span>" +
+    '<span class="qn" style="color:#C98A3C">' + esc(PG(it)) + "</span></div>" +
+    '<p class="q">' + it.q + "</p>" +
+    opts.map((o, n) => '<button class="opt" data-k="' + (o[1] ? 1 : 0) + '">' +
+      '<span class="k">' + "ABCD"[n] + "</span><span>" + esc(o[0]) + "</span></button>").join("") +
+    '<div class="act" id="act"></div><div id="fb"></div>';
+  [...document.querySelectorAll(".opt")].forEach(b => b.onclick = () => pick(b, it));
+  window.scrollTo(0, 0);
+}
+
+function pick(btn, it){
+  tries++;
+  if (btn.dataset.k === "1"){
+    btn.classList.add("good");
+    [...document.querySelectorAll(".opt")].forEach(b => b.disabled = true);
+    const clean = tries === 1;
+    got[idx] = clean;
+    if (clean) MC.right(key(it)); else MC.credit(key(it));
+    $("fb").innerHTML = '<div class="fb yes"><strong>' +
+      (clean ? "Right." : "Right \u2014 got there.") + "</strong>" + esc(it.why) + "</div>" +
+      '<span class="pg">Book, ' + esc(PG(it)) + "</span>";
+    $("act").innerHTML = '<button class="btn g" id="next">' +
+      (idx === order.length - 1 ? "See how I did" : "Next") + "</button>";
+    $("next").onclick = advance;
+    return;
+  }
+
+  /* Wrong: mark it, offer a hint rather than forcing one on him, and let him
+     have another go. Three wrong is enough, and then it shows the answer. */
+  btn.classList.add("bad"); btn.disabled = true;
+  if (tries === 1){ MC.wrong(key(it)); missed.push(it); got[idx] = false; }
+  $("fb").innerHTML = '<div class="fb no"><strong>Not that one.</strong>' +
+    "Have another go \u2014 or take the hint.</div>";
+  if (!$("hintbtn")){
+    $("act").innerHTML = '<button class="btn o" id="hintbtn">Give me a hint</button>';
+    $("hintbtn").onclick = () => {
+      $("hintbtn").remove();
+      $("fb").insertAdjacentHTML("beforeend",
+        '<div class="hintbox">' + esc(it.hint) + '<br><span class="pg">Look at ' +
+        esc(PG(it)) + "</span></div>");
+    };
+  }
+  if (tries >= 3){
+    [...document.querySelectorAll(".opt")].forEach(b => {
+      if (b.dataset.k === "1") b.classList.add("good");
+      b.disabled = true; });
+    $("fb").innerHTML = '<div class="fb no"><strong>It was: ' + esc(it.opts[it.a]) +
+      "</strong>" + esc(it.why) + "</div>" +
+      '<span class="pg">Read it again \u2014 ' + esc(PG(it)) + "</span>";
+    $("act").innerHTML = '<button class="btn g" id="next">' +
+      (idx === order.length - 1 ? "See how I did" : "Next") + "</button>";
+    $("next").onclick = advance;
+  }
+}
+
+const key = it => "dq:" + it.page + ":" + it.q.slice(0, 30);
+function advance(){ if (idx === order.length - 1) finish(); else { idx++; render(); } }
+
+function finish(){
+  const right = got.filter(x => x === true).length;
+  const n = order.length;
+  const pct = Math.round(right / n * 100);
+  const band = pct >= 90 ? ["Ready for the quiz", "#63BE7B"]
+             : pct >= 75 ? ["Nearly there", "#5AA9DB"]
+             : pct >= 50 ? ["Go back over the misses", "#E9B23C"]
+                         : ["Read the chapter again", "#E0685A"];
+  /* Gather the pages he missed, so he re-reads two pages and not twelve. */
+  const pages = [...new Set(missed.map(m => m.page))].sort((a, b) => a - b);
+  $("scorebox").innerHTML =
+    '<div class="ring" style="color:' + band[1] + '">' + right +
+      '<span style="font-size:26px;color:#6B7786">/' + n + "</span></div>" +
+    '<div class="band" style="color:' + band[1] + '">' + band[0] + "</div>" +
+    '<div class="outof">' + pct + "% first time</div>" +
+    (missed.length
+      ? '<div class="review"><b>Read ' + (pages.length === 1 ? "page " : "pages ") +
+        pages.join(", ") + " again</b>" +
+        missed.map(m => '<div class="mrow"><div class="w">' + esc(m.opts[m.a]) + "</div>" +
+          '<div class="r">' + esc(m.q.replace(/<[^>]+>/g, "")) + "</div>" +
+          '<span class="pg">' + esc(PG(m)) + "</span></div>").join("") + "</div>"
+      : '<div class="review"><b>Every one, first time.</b>Nothing to go back over.</div>') +
+    '<div class="act">' +
+      '<button class="btn p" id="again">Run it again</button>' +
+      '<button class="btn o" id="sheet2">Open the page notes</button>' +
+      '<button class="btn o" id="pick2">Back to the start</button></div>';
+  MC.chest($("scorebox"), pct, {id: runId === "all" ? "all" : "g" + runId,
+                                boss: runId === "all"});
+  $("again").onclick = () => start(runId);
+  $("sheet2").onclick = studySheet;
+  $("pick2").onclick = home;
+  show("done");
+}
+
+$("quit").onclick = home;
+$("sback").onclick = home;
+$("studybtn").onclick = studySheet;
+home();
+</script>
+</body>
+</html>

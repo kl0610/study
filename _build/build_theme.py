@@ -370,6 +370,14 @@ def roadnot(s):
     return Patcher(s, "roadnot")
 
 
+def dqp1(s):
+    """Don Quixote pages 1-12. The Core Classics reader is a scan with no text
+    layer, so its pages were rendered and read by eye; the transcription lives
+    in dq_pages_1_12.json and the generator checks every question against it.
+    Config only."""
+    return Patcher(s, "dqp1")
+
+
 def aeexp(s):
     """The Age of Exploration explorer review — ten explorers, two rounds,
     every question carrying the page it came from. Config only."""
@@ -553,6 +561,10 @@ APPS = {
     # Two from each country, which is what the test asks for. The dragon
     # sits on the "who said it" round: naming the man from the deed is the
     # thing the multiple choice cannot prove he can do.
+    # Read before the quiz rather than after: he sees what to look for, then
+    # reads. The dragon is the full run through all twelve pages.
+    "reading/dq-p1-12":            (dqp1,  dict(app="dqp1", shake="#card", lift=None,
+                                           dragon=["all"])),
     "history/ae-explorers":        (aeexp, dict(app="aeexp", shake="#card", lift=None,
                                            dragon=["match"])),
     "vocabulary/ww6-lesson5-exam": (wwtest5, dict(app="wwtest5", shake="#card", lift=None,
