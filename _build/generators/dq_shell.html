@@ -178,9 +178,11 @@ function home(){
   const ball = best["all"];
   $("quizzes").innerHTML = cards +
     '<button class="qbtn" style="--c:#63BE7B" data-g="all">' +
-    '<span class="tag">Everything &middot; ' + DATA.items.length + ' questions</span>' +
-    "<h3>Pages 1 to 12, straight through</h3>" +
-    "<p>The whole chapter, in the order you read it. About ten minutes.</p>" +
+    '<span class="tag">Everything &middot; ' +
+    DATA.items.filter(it => !DATA.groups[it.group].optional).length +
+    ' questions</span>' +
+    "<h3>Part 1 and Part 2 together</h3>" +
+    "<p>Everything your guide asks for tonight, shuffled. Under ten minutes.</p>" +
     '<span class="go">' + (ball != null ? "Again" : "Start") + " &rsaquo;</span>" +
     (ball != null ? '<span class="badge">best ' + ball + "%</span>" : "") + "</button>";
   [...document.querySelectorAll("#quizzes .qbtn")].forEach(b =>
@@ -227,8 +229,13 @@ function studySheet(){
 /* ---------- a run ---------- */
 function start(which){
   runId = which;
-  RUN = which === "all" ? DATA.items : DATA.items.filter(it => it.group === +which);
-  order = RUN.map((_, i) => i);          /* the order of the book, not shuffled */
+  RUN = which === "all"
+    ? DATA.items.filter(it => !DATA.groups[it.group].optional)
+    : DATA.items.filter(it => it.group === +which);
+  /* Questions shuffled as well as options, so running it twice is not the
+     same quiz twice and the order itself cannot be memorised. Every card
+     prints its own page number, so he never loses his place in the book. */
+  order = shuffle(RUN.map((_, i) => i));
   idx = 0; got = []; missed = [];
   MC.begin({partial: which !== "all"});
   $("qname").textContent = which === "all" ? "Pages 1 to 12" : DATA.groups[+which].name;

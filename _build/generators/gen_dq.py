@@ -109,6 +109,16 @@ def check(spec, src):
                 bad.append("the %s for %r shares nothing with what was read on "
                            "page %s" % (field, stem[:40], pg))
 
+    # Ten minutes was asked for explicitly, so the build enforces it rather
+    # than trusting whoever adds the next question to keep count. The optional
+    # round does not count: he is not asked to do it.
+    core = [it for it in spec["items"]
+            if not spec["groups"][it["group"]].get("optional")]
+    mins = len(core) * 0.45
+    if mins > 10:
+        bad.append("the run he is asked to do is %d questions, about %.0f minutes, "
+                   "and ten was the limit" % (len(core), mins))
+
     if len(spread) < 3:
         bad.append("the answers only ever sit at %s, which is a pattern he will "
                    "find before he finds the story" % sorted(spread))
@@ -156,8 +166,11 @@ def main():
         print("    %-9s %-25s %2d questions, %s pages %d\u2013%d"
               % (g["name"], g["sub"], len(n), where,
                  min(i["page"] for i in n), max(i["page"] for i in n)))
-    print("    %d questions, about %d minutes"
-          % (len(spec["items"]), round(len(spec["items"]) * 0.45)))
+    core = [it for it in spec["items"]
+            if not spec["groups"][it["group"]].get("optional")]
+    print("    %d questions in the run he is asked to do, about %d minutes"
+          % (len(core), round(len(core) * 0.45)))
+    print("    %d more in the optional round" % (len(spec["items"]) - len(core)))
     print("    every page from %s to %s is asked about"
           % (min(src["pages"], key=int), max(src["pages"], key=int)))
 
