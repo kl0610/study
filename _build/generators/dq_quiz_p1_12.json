@@ -1,187 +1,461 @@
 {
- "title": "Don Quixote, pages 1–12",
- "sub": "Chapter I — An Old-School Gentleman Gone Mad. Twenty questions, about ten minutes, all of it straight from the pages you read.",
+ "title": "Don Quixote — Week 1",
+ "sub": "The windmill mystery. Four rounds built around Ms. Santos's big question: is Don Quixote simply imagining adventures, or does he believe they are real?",
  "cite": "Don Quixote by Miguel de Cervantes, Core Classics abridged for young readers",
- "note": "Read the question, then pick. Get one wrong and you can take a hint, which tells you the page to look at. Nothing here comes from any other version of the story.",
+ "note": "Everything here comes from pages 1–12, the part you have read. Get one wrong and a hint tells you the page — that page number is what goes in the Cite column of your evidence table.",
  "from": "dq_pages_1_12.json",
-
+ "bigq": "Is Don Quixote simply imagining adventures, or does he believe they are real? Use three examples from the reading and explain your judgment.",
  "groups": [
-  {"name": "Pages 1–6", "sub": "What you read in class"},
-  {"name": "Pages 7–12", "sub": "Tonight's homework"}
+  {
+   "name": "Round 1",
+   "sub": "What actually happened",
+   "blurb": "Straight comprehension of pages 1 to 12, so the facts are solid before you argue anything."
+  },
+  {
+   "name": "Round 2",
+   "sub": "Believed it — or really?",
+   "blurb": "Every question here is a ready-made row for your evidence table: what he believed, what was really there, and the page."
+  },
+  {
+   "name": "Round 3",
+   "sub": "RACES and citing",
+   "blurb": "The rules on the toolkit page. What C means, when to use quotation marks, and what counts as a theme."
+  },
+  {
+   "name": "Round 4",
+   "sub": "Words for the journey",
+   "blurb": "Chivalry, squire and irony — the three words on your Week 1 page."
+  }
  ],
-
  "items": [
-  {"page": 1, "group": 0,
+  {
+   "page": 1,
+   "group": 0,
    "q": "Where does the gentleman live?",
-   "opts": ["In a village in the province of La Mancha, in Spain",
-            "In the city of Seville, on the southern coast of Spain",
-            "In a castle in the mountains above a village in Spain",
-            "On a farm in the hills of Portugal, close to the border"], "a": 0,
+   "opts": [
+    "In a village in the province of La Mancha, in Spain",
+    "In the city of Seville, on the southern coast of Spain",
+    "In a castle in the mountains above a village in Spain",
+    "On a farm in the hills of Portugal, close to the border"
+   ],
+   "a": 0,
    "hint": "The very first sentence names the province. He keeps an ancient lance and shield hung up in his hall there.",
-   "why": "“Once upon a time there lived in a village in Spain, in the province of La Mancha.” Later he puts that name into his own."},
-
-  {"page": 2, "group": 0,
+   "why": "“Once upon a time there lived in a village in Spain, in the province of La Mancha.” Later he puts that name into his own."
+  },
+  {
+   "page": 2,
+   "group": 0,
    "q": "What was his name at the start of the story, before he changed it?",
-   "opts": ["Amadis", "Rocinante", "Quixania", "Caraculiambro"], "a": 2,
+   "opts": [
+    "Amadis",
+    "Rocinante",
+    "Quixania",
+    "Caraculiambro"
+   ],
+   "a": 2,
    "hint": "One short sentence gives it, right after the book says he was about fifty and a great lover of hunting.",
-   "why": "“His name was Quixania.” He invents Don Quixote for himself later on."},
-
-  {"page": 2, "group": 0,
+   "why": "“His name was Quixania.” He invents Don Quixote for himself later on."
+  },
+  {
+   "page": 2,
+   "group": 0,
    "q": "What was he like at the beginning of the story?",
-   "opts": ["A wealthy young lord with a large household of servants, horses and dogs",
-            "About fifty, thin but tough, an early riser and a great lover of hunting",
-            "A young and strong man who had already been trained as a knight",
-            "A soldier who had fought in many real battles for the king"], "a": 1,
+   "opts": [
+    "A wealthy young lord with a large household of servants, horses and dogs",
+    "About fifty, thin but tough, an early riser and a great lover of hunting",
+    "A young and strong man who had already been trained as a knight",
+    "A soldier who had fought in many real battles for the king"
+   ],
+   "a": 1,
    "hint": "He was thin, with a lean face, and he was a very early riser.",
-   "why": "“Our gentleman was about fifty, thin, but tough of body, with a lean face, a very early riser, and a great lover of hunting.”"},
-
-  {"page": 2, "group": 0,
-   "q": "The book explains the word <b>chivalry</b> in a grey circle. What does it mean?",
-   "opts": ["The armor, weapons and horses that a knight owned and looked after",
-            "The ceremony in which a young man was made a knight by his lord",
-            "The ideals of medieval knights — gallantry, honor and courtesy",
-            "A long journey taken on horseback in search of adventure and fame"], "a": 2,
-   "hint": "It is about how knights behaved, especially toward women. The stories about them were called romances.",
-   "why": "“The ideals of medieval knights that emphasized gallantry, honor and courtesy, especially toward women.”"},
-
-  {"page": 2, "group": 0,
+   "why": "“Our gentleman was about fifty, thin, but tough of body, with a lean face, a very early riser, and a great lover of hunting.”"
+  },
+  {
+   "page": 2,
+   "group": 0,
    "q": "What did he sell so that he could buy more books?",
-   "opts": ["His best suit of clothes for Sundays and holidays",
-            "The ancient lance and shield from his hall",
-            "His hunting dog and his riding horse",
-            "Several acres of good cropland"], "a": 3,
+   "opts": [
+    "His best suit of clothes for Sundays and holidays",
+    "The ancient lance and shield from his hall",
+    "His hunting dog and his riding horse",
+    "Several acres of good cropland"
+   ],
+   "a": 3,
    "hint": "He gave up part of the very land his income came from, to buy as many books as he could lay his hands on.",
-   "why": "“He even sold several acres of good cropland in order to buy as many books about chivalry as he could.”"},
-
-  {"page": 2, "group": 0,
+   "why": "“He even sold several acres of good cropland in order to buy as many books about chivalry as he could.” A useful piece of evidence: he is already acting on what he reads."
+  },
+  {
+   "page": 2,
+   "group": 0,
    "q": "What did all that reading finally do to him?",
-   "opts": ["It made him a better hunter than he had ever been before",
-            "His brain became agitated and his judgment warped",
-            "It made him want to write a book of romances of his own",
-            "It made him famous among the gentlemen of his village"], "a": 1,
+   "opts": [
+    "It made him a better hunter than he had ever been before",
+    "His brain became agitated and his judgment warped",
+    "It made him want to write a book of romances of his own",
+    "It made him famous among the gentlemen of his village"
+   ],
+   "a": 1,
    "hint": "He lost interest in hunting and neglected his daily concerns. The book says what happened to his judgment.",
-   "why": "“His brain became so agitated and his judgment so warped, that he resolved to become a knight himself.”"},
-
-  {"page": 2, "group": 0,
-   "q": "What did he decide to become?",
-   "opts": ["A writer of romances about knights and their adventures",
-            "A soldier in the king's army, fighting in real battles",
-            "A knight, riding about the world setting wrongs right",
-            "A farmer with far more cropland than he had before"], "a": 2,
-   "hint": "He wanted to do what the men in his books did, and go out seeking adventures.",
-   "why": "He resolved “to become a knight himself and ride about the world setting wrongs right and seeking adventures.”"},
-
-  {"page": 3, "group": 0,
-   "q": "When he polished up his ancestors' old armor, what was missing?",
-   "opts": ["A sword, so he had to borrow one from a neighbor",
-            "A shield, which had been lost many years before",
-            "Gloves, without which he could not hold his lance",
-            "A helmet — he had only a simple steel cap"], "a": 3,
-   "hint": "One piece only half did the job, so he invented the rest of it himself out of cardboard.",
-   "why": "“There was no helmet, only a simple steel cap,” so he made a visor to go with it."},
-
-  {"page": 3, "group": 0,
+   "why": "“His brain became so agitated and his judgment so warped, that he resolved to become a knight himself.”"
+  },
+  {
+   "page": 3,
+   "group": 0,
    "q": "What happened when he tested his new cardboard visor?",
-   "opts": ["His sword broke in half against the hard cardboard",
-            "He destroyed it with one stroke of his sword",
-            "It held up perfectly well and he was delighted",
-            "He decided it was too risky and did not test it"], "a": 1,
+   "opts": [
+    "His sword broke in half against the hard cardboard",
+    "He destroyed it with one stroke of his sword",
+    "It held up perfectly well and he was delighted",
+    "He decided it was too risky and did not test it"
+   ],
+   "a": 1,
    "hint": "He wanted to know whether it would resist cuts, so he drew his sword and struck it.",
-   "why": "“He made a stroke at it and in one instant demolished” the work of a whole week."},
-
-  {"page": 4, "group": 0,
+   "why": "“He made a stroke at it and in one instant demolished” the work of a whole week."
+  },
+  {
+   "page": 4,
+   "group": 0,
    "q": "What did he name his horse, and how long did it take him to decide?",
-   "opts": ["Bucephalus, after a single day", "Rocinante, after four days",
-            "Dulcinea, after eight whole days", "Amadis, after a whole week"], "a": 1,
+   "opts": [
+    "Bucephalus, after a single day",
+    "Rocinante, after four days",
+    "Dulcinea, after eight whole days",
+    "Amadis, after a whole week"
+   ],
+   "a": 1,
    "hint": "The animal was only skin and bone, but he thought it finer than the famous horse of Alexander.",
-   "why": "“He spent four days considering” the matter and “at last fixed on Rocinante.”"},
-
-  {"page": 5, "group": 0,
+   "why": "“He spent four days considering” the matter and “at last fixed on Rocinante.”"
+  },
+  {
+   "page": 5,
+   "group": 0,
    "q": "What name did he finally give himself?",
-   "opts": ["Don Belianis of the Steel Cap", "Don Quixote de la Mancha",
-            "Don Quixote of Toboso", "Don Amadis of Gaul and Spain"], "a": 1,
+   "opts": [
+    "Don Belianis of the Steel Cap",
+    "Don Quixote de la Mancha",
+    "Don Quixote of Toboso",
+    "Don Amadis of Gaul and Spain"
+   ],
+   "a": 1,
    "hint": "It took him eight days more. He copied the valiant Amadis, who added the name of his country to his own.",
-   "why": "He enlarged it to Don Quixote de la Mancha, so he “made clear his origin and honored his country.”"},
-
-  {"page": 6, "group": 0,
-   "q": "Who was the lady he called Dulcinea del Toboso?",
-   "opts": ["A princess he had once met at the court of the king of Spain",
-            "A good-looking farmer's daughter named Aldonza Lorenzo",
-            "A lady who had written to him about the books he loved",
-            "His niece, who was under twenty and lived in his house"], "a": 1,
-   "hint": "She lived in his own neighborhood, and she did not seem to know or care anything about him.",
-   "why": "Aldonza Lorenzo. He renamed her Dulcinea del Toboso because she was a native of Toboso."},
-
-  {"page": 6, "group": 0,
+   "why": "He enlarged it to Don Quixote de la Mancha, so he “made clear his origin and honored his country.”"
+  },
+  {
+   "page": 6,
+   "group": 0,
    "q": "When did he set out on his first journey?",
-   "opts": ["At noon in the middle of a cold winter, with snow on the ground",
-            "One morning before daybreak, on one of the hottest days in July",
-            "On a cool evening in spring, just as the sun was going down",
-            "At midnight, during one of the worst storms of the year"], "a": 1,
+   "opts": [
+    "At noon in the middle of a cold winter, with snow on the ground",
+    "One morning before daybreak, on one of the hottest days in July",
+    "On a cool evening in spring, just as the sun was going down",
+    "At midnight, during one of the worst storms of the year"
+   ],
+   "a": 1,
    "hint": "He went out through a private gate of his yard, so that nobody would see him leave.",
-   "why": "“One morning before daybreak, on one of the hottest days in July, he donned his armor, mounted Rocinante.”"},
-
-  {"page": 7, "group": 1,
+   "why": "“One morning before daybreak, on one of the hottest days in July, he donned his armor, mounted Rocinante.”"
+  },
+  {
+   "page": 7,
+   "group": 0,
    "q": "Which road did Don Quixote take?",
-   "opts": ["The widest and busiest road that he could find",
-            "The road leading back toward his own village",
-            "The road that led south in the direction of Seville",
-            "Whichever road his horse chose"], "a": 3,
+   "opts": [
+    "The widest and busiest road that he could find",
+    "The road leading back toward his own village",
+    "The road that led south in the direction of Seville",
+    "Whichever road his horse chose"
+   ],
+   "a": 3,
    "hint": "He thought that letting it happen this way was the true spirit of adventure.",
-   "why": "“He allowed his horse to follow whatever road it pleased, considering this to be the true spirit of adventure.”"},
-
-  {"page": 8, "group": 1,
-   "q": "He reached an inn just before nightfall. What did he think it was?",
-   "opts": ["A monastery where the monks would give him food and a bed for the night",
-            "A castle with four towers, silver spires, a drawbridge and a moat",
-            "A shepherd's hut of the kind he had been looking for all day",
-            "The great stone house of a giant he would have to fight"], "a": 1,
-   "hint": "Everything he saw was changed by his books. He waited at the door for a dwarf or a page to announce him.",
-   "why": "He “at once pictured this inn as a castle with four towers, spires of polished silver, a drawbridge and moat.”"},
-
-  {"page": 8, "group": 1,
-   "q": "A pig-driver blew his horn to call his herd. What did Don Quixote think it was?",
-   "opts": ["A warning that robbers were somewhere near",
-            "A bell calling the guests in to their supper",
-            "A trumpet announcing his arrival",
-            "A church bell ringing in a village nearby"], "a": 2,
-   "hint": "He had been waiting at the door of what he thought was a castle, expecting exactly this from the battlements.",
-   "why": "“At once Don Quixote recognized this as the signal of his arrival,” and approached the ladies with great self-satisfaction."},
-
-  {"page": 9, "group": 1,
-   "q": "Why did the innkeeper agree to make Don Quixote a knight?",
-   "opts": ["He was frightened of what the madman might do to him",
-            "He had been a knight himself when he was a young man",
-            "He hoped to be paid a great deal of money for doing it",
-            "He wanted to amuse himself and his guests"], "a": 3,
-   "hint": "He worked out straight away what kind of madness his guest had, and he knew the romances of knights-errant well.",
-   "why": "The host “could not resist the chance to play along with the folly of Don Quixote in order to amuse himself and his guests.”"},
-
-  {"page": 10, "group": 1,
+   "why": "“He allowed his horse to follow whatever road it pleased, considering this to be the true spirit of adventure.”"
+  },
+  {
+   "page": 10,
+   "group": 0,
    "q": "Don Quixote wanted to lay his armor before the altar in the chapel. Why did he not?",
-   "opts": ["There was no chapel anywhere near the inn, and never had been",
-            "The chapel had been demolished so that it could be rebuilt",
-            "The innkeeper told him that knights never really did that",
-            "He changed his mind and chose the stable instead"], "a": 1,
+   "opts": [
+    "There was no chapel anywhere near the inn, and never had been",
+    "The chapel had been demolished so that it could be rebuilt",
+    "The innkeeper told him that knights never really did that",
+    "He changed his mind and chose the stable instead"
+   ],
+   "a": 1,
    "hint": "The host had an answer ready, and said such a thing was allowed in cases of necessity.",
-   "why": "The chapel “had recently been demolished so that it might be rebuilt,” so he put his armor in a trough in the yard."},
-
-  {"page": 11, "group": 1,
-   "q": "What happened when a mule driver came to move the armor out of the trough?",
-   "opts": ["Don Quixote politely asked him to leave it alone",
-            "The innkeeper came out and sent the driver away",
-            "Don Quixote was asleep and did not notice him",
-            "Don Quixote knocked him out with his lance"], "a": 3,
-   "hint": "The driver only wanted to fetch water for his mules. A second one came along later and got exactly the same.",
-   "why": "“The vigilant Don Quixote gave him such a thwack on the head with his lance that he was knocked out.”"},
-
-  {"page": 12, "group": 1,
-   "q": "The last page of tonight's reading is a full-page picture. What does it show?",
-   "opts": ["Don Quixote fighting off the angry mule drivers with his shield",
-            "Don Quixote kneeling as the innkeeper dubs him a knight",
-            "Don Quixote marching up and down in the bright moonlight",
-            "Don Quixote riding away from the inn at first light"], "a": 2,
+   "why": "The chapel “had recently been demolished so that it might be rebuilt,” so he put his armor in a trough in the yard."
+  },
+  {
+   "page": 12,
+   "group": 0,
+   "q": "The last page of this week's first reading is a full-page picture. What does it show?",
+   "opts": [
+    "Don Quixote fighting off the angry mule drivers with his shield",
+    "Don Quixote kneeling as the innkeeper dubs him a knight",
+    "Don Quixote marching up and down in the bright moonlight",
+    "Don Quixote riding away from the inn at first light"
+   ],
+   "a": 2,
    "hint": "Look at the caption printed under the picture. He is guarding something, all night long.",
-   "why": "The caption reads: “For hours he marched up and down in the bright moonlight.” He is watching his armor."}
+   "why": "The caption reads: “For hours he marched up and down in the bright moonlight.” He is watching his armor."
+  },
+  {
+   "page": 4,
+   "group": 1,
+   "q": "His horse was only skin and bone, with as many points as a mariner's compass. What did Don Quixote believe it was?",
+   "opts": [
+    "An ordinary farm horse that would have to do",
+    "A charger finer than the Bucephalus of Alexander",
+    "A horse he would have to sell before setting out",
+    "A hack that had been worn out by hard work"
+   ],
+   "a": 1,
+   "hint": "The book tells you the plain truth about the animal and then tells you what it “appeared to him” to be. Those are two different things.",
+   "why": "Believed: a charger superior to Alexander the Great's famous horse. Really: skin and bone. A clean evidence row for your table — page 4."
+  },
+  {
+   "page": 6,
+   "group": 1,
+   "q": "Who was Aldonza Lorenzo really, and what did Don Quixote make of her?",
+   "opts": [
+    "A princess he had met at court, whom he renamed for her beauty",
+    "His niece, whom he renamed so she would sound grander",
+    "A lady who wrote to him, whom he renamed Dulcinea del Toboso",
+    "A farmer's daughter, whom he renamed Dulcinea del Toboso"
+   ],
+   "a": 3,
+   "hint": "She did not seem to know or care anything about him. He needed a lady because a knight-errant without one was like a body without a soul.",
+   "why": "Really: a good-looking farmer's daughter who barely knew him. Believed: the lady of his heart, worth a princess's name. Page 6."
+  },
+  {
+   "page": 8,
+   "group": 1,
+   "q": "He reached an inn just before nightfall. What did he believe he was seeing?",
+   "opts": [
+    "A monastery where the monks would give him food and a bed for the night",
+    "A castle with four towers, silver spires, a drawbridge and a moat",
+    "A shepherd's hut of the kind he had been looking for all day",
+    "The great stone house of a giant he would have to fight"
+   ],
+   "a": 1,
+   "hint": "Everything he saw was tinted and transformed by the nonsense he had gathered from his books.",
+   "why": "Believed: a castle out of a romance. Really: an ordinary roadside inn. This is the strongest single row you can put in the table — page 8."
+  },
+  {
+   "page": 8,
+   "group": 1,
+   "q": "A pig-driver blew his horn to call his herd in from a field. What did Don Quixote make of it?",
+   "opts": [
+    "A warning that robbers were somewhere near",
+    "A bell calling the guests in to their supper",
+    "A trumpet announcing his arrival",
+    "A church bell ringing in a village nearby"
+   ],
+   "a": 2,
+   "hint": "He had been waiting at the door of what he thought was a castle, expecting a dwarf or a page to do exactly this from the battlements.",
+   "why": "Believed: his herald. Really: a pig-driver calling pigs. He did not pause to check — he “at once” recognized it as his signal. Page 8."
+  },
+  {
+   "page": 8,
+   "group": 1,
+   "q": "Two young women were standing by the door of the inn. What did he take them for?",
+   "opts": [
+    "Servants he could send to announce him",
+    "Two beautiful damsels",
+    "Prisoners of the lord of the castle",
+    "Travellers he ought to warn about robbers"
+   ],
+   "a": 1,
+   "hint": "They were on their way to Seville and stopping for the night. He spoke to them as though they were highborn ladies.",
+   "why": "Believed: damsels at a castle gate. Really: two travellers who were alarmed by him. Page 8."
+  },
+  {
+   "page": 9,
+   "group": 1,
+   "q": "What did the landlord actually understand about his guest?",
+   "opts": [
+    "That he was a real knight travelling the roads in disguise",
+    "That he was a rich man who would pay very well for a good room",
+    "That he was dangerous and should be turned away at once",
+    "He readily made out the kind of madness the stranger suffered"
+   ],
+   "a": 3,
+   "hint": "The host knew a great deal about the romances of knights-errant, and he had guests to entertain.",
+   "why": "This is your counter-evidence. Everyone else can see what is really going on — which makes Don Quixote's belief stand out all the more. Page 9."
+  },
+  {
+   "page": 11,
+   "group": 1,
+   "q": "A mule driver came to the trough to move the armor. What did Don Quixote do, and why?",
+   "opts": [
+    "He asked him to wait until morning, because the vigil was nearly over",
+    "He knocked him out with his lance, because the armor was under guard",
+    "He let him take it, because he had finished his watch",
+    "He called for the landlord, because he was not allowed to fight"
+   ],
+   "a": 1,
+   "hint": "The driver only wanted to fetch water for his mules. A second one came along later and got exactly the same treatment.",
+   "why": "He was not pretending. He was keeping a real vigil over real armor and struck a real blow. Strong evidence that he believes it — page 11."
+  },
+  {
+   "page": 11,
+   "group": 1,
+   "q": "Which of these would be the strongest evidence that Don Quixote truly believes his adventures are real?",
+   "opts": [
+    "He gave his horse a grand name after thinking about it for four days",
+    "He knocked a man out cold to protect armor he was guarding",
+    "He read a great many books about knights and chivalry",
+    "He chose a new and more impressive name for himself"
+   ],
+   "a": 1,
+   "hint": "Think about the mule driver he knocked out with his lance. Which choice costs somebody something real?",
+   "why": "He knocked a man out with his lance to guard his armor. Acting on a belief, at real cost to a real person, is far stronger evidence than liking the idea of knights. That is the reasoning the Explain column wants."
+  },
+  {
+   "page": 2,
+   "group": 2,
+   "q": "In RACES, what does the <b>C</b> step ask you to do?",
+   "opts": [
+    "Compare this book with another story that you have read",
+    "Give specific evidence and the printed page numbers",
+    "Check your spelling and your punctuation carefully",
+    "Copy out the question at the top of your answer"
+   ],
+   "a": 1,
+   "hint": "Look at the toolkit table on page 2 of your guide. It is the step that puts numbers in your answer.",
+   "why": "Cite: “Give specific evidence and printed page numbers. Include the number of examples requested.”",
+   "src": "guide"
+  },
+  {
+   "page": 2,
+   "group": 2,
+   "q": "The big question asks for three examples. How many do you have to cite?",
+   "opts": [
+    "One good one is enough if you explain it well",
+    "Two, with the third saved for the final essay",
+    "Three",
+    "As many as you can fit on the page"
+   ],
+   "a": 2,
+   "hint": "The Cite row says to include the number of examples requested. The evidence table has exactly that many rows.",
+   "why": "Three. The guide says to include the number of examples requested, and the evidence table gives you three rows for them.",
+   "src": "guide"
+  },
+  {
+   "page": 2,
+   "group": 2,
+   "q": "When should you use quotation marks?",
+   "opts": [
+    "Whenever you mention something that happened in the book",
+    "Only when you copy the author's exact words",
+    "Every time you give a page number",
+    "Whenever you are writing about a character's speech"
+   ],
+   "a": 1,
+   "hint": "Your detective habits say this in one line, just after the part about paraphrasing.",
+   "why": "“Use quotation marks only when you copy the author's exact words.”",
+   "src": "guide"
+  },
+  {
+   "page": 2,
+   "group": 2,
+   "q": "You put something from the book into your own words. Do you still need a page number?",
+   "opts": [
+    "No, page numbers are only needed for direct quotations",
+    "Only if the detail comes from the home reading",
+    "Only if your teacher asks for one",
+    "Yes — a paraphrase still needs a page citation"
+   ],
+   "a": 3,
+   "hint": "This is the line directly before the one about quotation marks.",
+   "why": "“A paraphrase needs a page citation.” Putting it in your own words does not make it yours.",
+   "src": "guide"
+  },
+  {
+   "page": 2,
+   "group": 2,
+   "q": "Which of these is a <b>theme</b>, rather than just a topic?",
+   "opts": [
+    "Imagination, and what it can do to a person's mind",
+    "Believing something strongly does not make it true",
+    "The adventures of a man who reads too many books",
+    "Knights, and the stories people tell about them"
+   ],
+   "a": 1,
+   "hint": "Your guide says a theme is a complete message about life, not a single word.",
+   "why": "A theme is “a complete message about life, rather than a single topic word.” The others are topics or a plot summary — none of them says anything about life.",
+   "src": "guide"
+  },
+  {
+   "page": 2,
+   "group": 2,
+   "q": "Your detective habits tell you to explain a detail. What does that mean?",
+   "opts": [
+    "Retell what happened in as much detail as you possibly can",
+    "Say what it shows, rather than only saying what happened",
+    "Describe what the picture on the page looks like",
+    "Write down every word that the character said"
+   ],
+   "a": 1,
+   "hint": "The guide puts it as a contrast: explain a detail instead of doing one other thing.",
+   "why": "“Explain a detail instead of only retelling it.” That is exactly what the third column of the evidence table is for.",
+   "src": "guide"
+  },
+  {
+   "page": 3,
+   "group": 3,
+   "q": "Your Week 1 page defines <b>chivalry</b>. What is it?",
+   "opts": [
+    "A code of conduct associated with knights",
+    "The armor and weapons a knight carried into battle",
+    "A long journey made on horseback in search of adventure",
+    "The ceremony in which a man is made a knight"
+   ],
+   "a": 0,
+   "hint": "Your guide gives it in a few words under “Words for the journey.” The book's grey circle on page 2 says much the same thing.",
+   "why": "Your guide: “chivalry = a code of conduct associated with knights.” The book calls it the ideals of medieval knights — gallantry, honor and courtesy.",
+   "src": "guide"
+  },
+  {
+   "page": 3,
+   "group": 3,
+   "q": "Your Week 1 page defines <b>squire</b>. What is one?",
+   "opts": [
+    "A knight who has won many battles",
+    "A nobleman who owns a great deal of land",
+    "A knight's helper",
+    "A horse trained to carry a knight in armor"
+   ],
+   "a": 2,
+   "hint": "You have not met one yet in pages 1 to 12. Watch for the man who takes this job once Don Quixote has set out properly.",
+   "why": "Your guide: “squire = a knight's helper.” Sancho Panza takes that role later on.",
+   "src": "guide"
+  },
+  {
+   "page": 3,
+   "group": 3,
+   "q": "Your Week 1 page defines <b>irony</b>. What is it?",
+   "opts": [
+    "A meaningful contrast between expectation and reality",
+    "A funny remark made at somebody else's expense in a story",
+    "A story that teaches a lesson about life",
+    "A word that sounds like the thing it describes"
+   ],
+   "a": 0,
+   "hint": "It is about the gap between what somebody expects and what is really so. This whole book runs on it.",
+   "why": "Your guide: “irony = a meaningful contrast between expectation and reality.”",
+   "src": "guide"
+  },
+  {
+   "page": 4,
+   "group": 3,
+   "q": "Which moment in pages 1–12 is the best example of <b>irony</b>?",
+   "opts": [
+    "He spends four whole days deciding what he ought to call his horse",
+    "He sells good cropland so that he can buy himself more books",
+    "He sets out before daybreak so that nobody will see him go",
+    "He destroys his own visor, rebuilds it, then refuses to test it"
+   ],
+   "a": 3,
+   "hint": "Look at what he does with the visor after he lines the cardboard with iron. He declares it strong without risking any more experiments.",
+   "why": "He proved the visor useless with one stroke, then made certain never to prove it again. He expects to be a great knight; the reality is cardboard and strips of iron. Page 4."
+  }
  ]
 }

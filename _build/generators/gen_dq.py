@@ -52,14 +52,27 @@ def check(spec, src):
     known = src["pages"]
     spread, pages_used = set(), set()
 
+    # A question is either about the book or about Ms. Santos's guide -- the
+    # RACES toolkit and the Week 1 word list. Both cite a page, and they are
+    # different books, so an item that does not say which would send him to
+    # page 2 of Cervantes looking for the word "paraphrase".
+    GUIDE_PAGES = {2: "the RACES toolkit", 3: "the Week 1 page"}
+
     for it in spec["items"]:
         stem = it["q"]
         pg = str(it.get("page"))
-        if pg not in known:
+
+        if it.get("src") == "guide":
+            if it.get("page") not in GUIDE_PAGES:
+                bad.append("%r cites guide page %r, and the guide has %s"
+                           % (stem[:40], it.get("page"),
+                              " and ".join(str(k) for k in sorted(GUIDE_PAGES))))
+        elif pg not in known:
             bad.append("%r cites page %s, which is not in the transcription"
                        % (stem[:40], pg))
             continue
-        pages_used.add(int(pg))
+        else:
+            pages_used.add(int(pg))
 
         if not (0 <= it.get("a", -1) < len(it["opts"])):
             bad.append("%r has no answer at index %r" % (stem[:40], it.get("a")))
@@ -81,6 +94,10 @@ def check(spec, src):
                        % (stem[:40], it.get("group")))
 
         # The answer and the explanation have to be about what is on that page.
+        # Only for the book: the guide is not transcribed here, and checking a
+        # RACES question against Cervantes would fail every time.
+        if it.get("src") == "guide":
+            continue
         page = known[pg]
         onpage = words(" ".join(page["facts"]) + " " +
                        " ".join("%s %s" % (k, v) for k, v in
@@ -131,8 +148,13 @@ def main():
     print("  reading/%s  %.1f KB" % (out_dir, len(out) / 1024))
     for gi, g in enumerate(spec["groups"]):
         n = [it for it in spec["items"] if it["group"] == gi]
-        print("    %-14s %-24s %2d questions, pages %d\u2013%d"
-              % (g["name"], g["sub"], len(n),
+        # Say which book those page numbers belong to. "pages 2-2" meaning the
+        # RACES toolkit and "pages 2-2" meaning Cervantes look identical, and
+        # that ambiguity is what this whole file exists to stop.
+        g_ = sum(1 for i in n if i.get("src") == "guide")
+        where = "guide" if g_ == len(n) else "book" if g_ == 0 else "mixed"
+        print("    %-9s %-25s %2d questions, %s pages %d\u2013%d"
+              % (g["name"], g["sub"], len(n), where,
                  min(i["page"] for i in n), max(i["page"] for i in n)))
     print("    %d questions, about %d minutes"
           % (len(spec["items"]), round(len(spec["items"]) * 0.45)))
