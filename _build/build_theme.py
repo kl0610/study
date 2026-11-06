@@ -384,6 +384,21 @@ def aeexp(s):
     return Patcher(s, "aeexp")
 
 
+def vocab7(s):
+    """Word List 7 sheet — config only."""
+    return Patcher(s, "vocabulary7")
+
+
+def vtest7(s):
+    """Word List 7 practice forms — config only."""
+    return Patcher(s, "vocabtest7")
+
+
+def wwtest7(s):
+    """Word List 7 test rehearsal, the five-part paper — config only."""
+    return Patcher(s, "wwtest7")
+
+
 def wwtest5(s):
     """Word List 5 test rehearsal — written fresh rather than grown from
     another app's shell, because no app here had a lettered matching bank, a
@@ -567,6 +582,12 @@ APPS = {
                                            dragon=["all"])),
     "history/ae-explorers":        (aeexp, dict(app="aeexp", shake="#card", lift=None,
                                            dragon=["match"])),
+    "vocabulary/ww6-lesson7":      (vocab7, dict(app="vocabulary7", shake="#sheet",
+                                           lift=".bar", dragon=["sheet"])),
+    "vocabulary/ww6-lesson7-test": (vtest7, dict(app="vocabtest7", shake=None, lift=None,
+                                           dragon=["final"], hud=False)),
+    "vocabulary/ww6-lesson7-exam": (wwtest7, dict(app="wwtest7", shake="#card", lift=None,
+                                           dragon=["p5"])),
     "vocabulary/ww6-lesson5-exam": (wwtest5, dict(app="wwtest5", shake="#card", lift=None,
                                            dragon=["p5"])),
     "vocabulary/ww6-lesson6":      (vocab6, dict(app="vocabulary6", shake="#sheet",
