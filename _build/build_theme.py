@@ -378,6 +378,14 @@ def dqp1(s):
     return Patcher(s, "dqp1")
 
 
+def dqp49(s):
+    """Don Quixote pages 49-53 — the funeral procession in the dark, and the
+    noise in the haunted glen. Same route as pages 1-12: the scan rendered and
+    read by eye into dq_pages_49_53.json, which every question is checked
+    against. Config only."""
+    return Patcher(s, "dqp49")
+
+
 def aeexp(s):
     """The Age of Exploration explorer review — ten explorers, two rounds,
     every question carrying the page it came from. Config only."""
@@ -579,6 +587,8 @@ APPS = {
     # Read before the quiz rather than after: he sees what to look for, then
     # reads. The dragon is the full run through all twelve pages.
     "reading/dq-p1-12":            (dqp1,  dict(app="dqp1", shake="#card", lift=None,
+                                           dragon=["all"])),
+    "reading/dq-p49-53":           (dqp49, dict(app="dqp49", shake="#card", lift=None,
                                            dragon=["all"])),
     "history/ae-explorers":        (aeexp, dict(app="aeexp", shake="#card", lift=None,
                                            dragon=["match"])),

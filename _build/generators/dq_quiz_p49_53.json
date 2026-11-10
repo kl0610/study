@@ -1,0 +1,114 @@
+{
+ "title": "Don Quixote, pages 49–53",
+ "blurb": "What happened in the funeral procession, and what is making the noise in the dark. About four minutes.",
+ "sub": "Eight questions on tonight's reading, about four minutes. Just the story: what happened, and who it happened to.",
+ "cite": "Don Quixote by Miguel de Cervantes, Core Classics abridged for young readers",
+ "note": "Questions and answers are shuffled every time, so running it twice is not the same quiz twice. Get one wrong and a hint names the page.",
+ "from": "dq_pages_49_53.json",
+ "items": [
+  {
+   "page": 49,
+   "q": "After the fight with the shepherds, what did Sancho find was missing?",
+   "opts": [
+    "The saddlebags holding their food, which the innkeeper had kept as payment.",
+    "His donkey, which had bolted when the shepherds began slinging stones.",
+    "The mule carrying their water, which had strayed off in the dark.",
+    "Rocinante's saddle and bridle, which Don Quixote had pawned at the last inn to pay for the balsam."
+   ],
+   "a": 0,
+   "hint": "Sancho went to the pouches on his donkey for something to clean his master's mouth, and got a shock instead.",
+   "why": "He went to the pouches to clean his master's mouth and found the bags gone. The innkeeper had taken them as payment, and Sancho never noticed during his hasty exit."
+  },
+  {
+   "page": 49,
+   "q": "How did Don Quixote explain being beaten by a flock of sheep?",
+   "opts": [
+    "The sheep had been enchanted by the innkeeper who stole their bags.",
+    "He had drunk too much of the balsam and could not see straight.",
+    "His enemy the enchanter had turned the armies into flocks out of envy.",
+    "He said he had never claimed they were armies, and that Sancho had misheard every word of it."
+   ],
+   "a": 2,
+   "hint": "Sancho scolded him for meddling with what were only sheep. Don Quixote blamed the same person he always blames.",
+   "why": "He told Sancho that the thief of an enchanter, his mortal enemy, envies the glory he would gain from battle, and so transforms armies into flocks."
+  },
+  {
+   "page": 50,
+   "q": "What did the moving lights on the road turn out to be?",
+   "opts": [
+    "A band of enchanted Moors on their way to the nearest inn.",
+    "A throng of figures dressed in white, carrying a black litter.",
+    "Shepherds with torches, out looking for the sheep that had scattered.",
+    "Mule drivers taking lanterns down to the inn where the blanket-tossers were waiting."
+   ],
+   "a": 1,
+   "hint": "Look again at what the figures were wearing on page 50, and at what they carried between them.",
+   "why": "A vast throng dressed in white carried a black litter in their midst. Sancho hid at the side of the road while Don Quixote held his ground."
+  },
+  {
+   "page": 51,
+   "q": "How did the man in white end up on the ground with a broken leg?",
+   "opts": [
+    "Don Quixote ran him through with the lance as he tried to push past.",
+    "He fell while trying to lift the black litter down off its poles.",
+    "Sancho jumped out from the roadside and pulled him down by his white robe.",
+    "Don Quixote seized his mule's bridle and the mule reared and threw him."
+   ],
+   "a": 3,
+   "hint": "The lance never touched him. Look at what Don Quixote grabbed when the man tried to push past.",
+   "why": "The man tried to push past, so Don Quixote grabbed the bridle; the mule reared on its hind legs and threw its rider to the ground."
+  },
+  {
+   "page": 52,
+   "q": "Who were the white figures really, and what were they carrying?",
+   "opts": [
+    "Friars taking the bones of a saint from Baeza back to La Mancha.",
+    "Masqueraders on their way home from a carnival in the next village.",
+    "Brothers in Holy Orders, escorting a dead gentleman's body to Segovia.",
+    "Mourners from Segovia carrying a knight who had been killed in a duel on the road to Baeza."
+   ],
+   "a": 2,
+   "hint": "The man Don Quixote knocked down told him where they had set out from and where the casket was going.",
+   "why": "They had come from Baeza to escort a casket holding the body of a gentleman they were taking to Segovia, his birthplace, for burial."
+  },
+  {
+   "page": 52,
+   "q": "Why was Don Quixote disappointed by what the man told him?",
+   "opts": [
+    "The gentleman had died of a fever, so there was no wrong to set right.",
+    "The man refused to name the knight who had killed the gentleman.",
+    "The brothers had no food or wine with them that he could ask for.",
+    "The man would not swear that Dulcinea del Toboso was the most beautiful lady in the world."
+   ],
+   "a": 0,
+   "hint": "He asked who had killed the man. The answer left him nothing to avenge.",
+   "why": "He asked who killed the gentleman and was told: God, by a fever. Nobody had done a wrong, and righting wrongs is his business."
+  },
+  {
+   "page": 53,
+   "q": "What sounds stopped the two of them in the dark valley?",
+   "opts": [
+    "Trumpets and drums, the same ones he had heard out on the dusty plain.",
+    "The bleating of sheep somewhere further up among the lofty trees.",
+    "Many voices whispering together, which Sancho took for the spirits of the dead.",
+    "Falling water, and heavy blows with clanging iron and rattling chains."
+   ],
+   "a": 3,
+   "hint": "They set out looking for water. They found the sound of it, and something else sounding underneath it.",
+   "why": "Hunting for a spring, they heard falling waters, and then heavy blows at regular intervals with the clanging of iron and the rattling of chains. They could not understand the noise."
+  },
+  {
+   "page": 53,
+   "q": "What did Don Quixote tell Sancho to do before riding into the glen?",
+   "opts": [
+    "Follow him in at a distance, carrying the lance and the shield.",
+    "Wait three days, then go home to the village and on to Toboso.",
+    "Ride straight for the inn and bring back help before midnight.",
+    "Go back to the funeral procession and beg the brothers for wine and water."
+   ],
+   "a": 1,
+   "hint": "He gave Sancho a number of days to wait, and two places to go to if he never came back.",
+   "why": "His final instruction was to wait three days; if he had not returned by then, Sancho was to go home to their village and then to Toboso."
+  }
+ ]
+}

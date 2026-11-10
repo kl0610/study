@@ -113,12 +113,15 @@ def check(spec, src):
         bad.append("%d questions is about %.0f minutes, and ten was the limit"
                    % (len(spec["items"]), mins))
 
-    # The evidence rows are what he will draw on for Friday. Too few and the
-    # sheet cannot offer him a choice of three.
-    ev = [it for it in spec["items"] if it.get("evidence")]
-    if len(ev) < 3:
-        bad.append("only %d questions are marked as evidence, and Friday needs "
-                   "three examples" % len(ev))
+    # The evidence rows are what he draws on for a piece of writing, and only
+    # a quiz that sets a big question needs them. A later segment read purely
+    # for what happened in the story has nothing to collect evidence for, and
+    # asking for three unconditionally would refuse to build every one of them.
+    if spec.get("bigq"):
+        ev = [it for it in spec["items"] if it.get("evidence")]
+        if len(ev) < 3:
+            bad.append("only %d questions are marked as evidence, and the big "
+                       "question needs three examples" % len(ev))
 
     if len(spread) < 3:
         bad.append("the answers only ever sit at %s, which is a pattern he will "
@@ -160,8 +163,9 @@ def main():
     print("    %d questions, about %d minutes"
           % (len(spec["items"]), round(len(spec["items"]) * 0.45)))
     ev = [it for it in spec["items"] if it.get("evidence")]
-    print("    %d of them collect on the sheet for Friday: pages %s"
-          % (len(ev), ", ".join(str(i["page"]) for i in ev)))
+    if ev:
+        print("    %d of them collect on the sheet for the writing: pages %s"
+              % (len(ev), ", ".join(str(i["page"]) for i in ev)))
     print("    every page from %s to %s is asked about"
           % (min(src["pages"], key=int), max(src["pages"], key=int)))
 

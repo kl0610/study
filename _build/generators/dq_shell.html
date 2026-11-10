@@ -112,7 +112,7 @@ footer{color:#7E8DA2;font-size:13px;text-align:center;margin-top:18px}
   <button class="qbtn" id="studybtn" style="--c:#5AA9DB">
     <span class="tag">If you get stuck</span>
     <h3>What is on each page</h3>
-    <p>A short note on every page from 1 to 12, so you can find anything you missed.</p>
+    <p id="studyblurb"></p>
     <span class="go">Open the page notes &rsaquo;</span>
   </button>
   <footer id="foot"></footer>
@@ -123,7 +123,7 @@ footer{color:#7E8DA2;font-size:13px;text-align:center;margin-top:18px}
     <button class="back" id="sback" aria-label="Back">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
     </button>
-    <div class="t"><strong>Page notes</strong><span>Pages 1 to 12</span></div>
+    <div class="t"><strong>Page notes</strong><span id="studyrange"></span></div>
   </div>
   <div id="sheet"></div>
 </div>
@@ -151,6 +151,11 @@ const $ = id => document.getElementById(id);
 const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const COLORS = ["#5AA9DB","#C98A3C"];
 
+/* The page range is read off the transcription rather than written out by
+   hand, so the heading can never disagree with the pages the quiz covers. */
+const PAGENOS = Object.keys(DATA.source.pages).map(Number).sort((a, b) => a - b);
+const RANGE = "Pages " + PAGENOS[0] + " to " + PAGENOS[PAGENOS.length - 1];
+
 /* Fisher-Yates. Options are shuffled at render, so an answer never stays in
    the slot it was written in. */
 function shuffle(a){ a = a.slice();
@@ -170,12 +175,16 @@ function home(){
   $("quizzes").innerHTML =
     '<button class="qbtn" style="--c:#5AA9DB" data-g="all">' +
     '<span class="tag">Tonight &middot; ' + DATA.items.length + ' questions</span>' +
-    "<h3>Pages 1 to 12</h3>" +
-    "<p>Everything your reading guide asks you to look for. Under ten minutes.</p>" +
+    "<h3>" + RANGE + "</h3>" +
+    "<p>" + esc(DATA.blurb || "Everything your reading guide asks you to look " +
+                             "for. Under ten minutes.") + "</p>" +
     '<span class="go">' + (b != null ? "Again" : "Start") + " &rsaquo;</span>" +
     (b != null ? '<span class="badge">best ' + b + "%</span>" : "") + "</button>";
   [...document.querySelectorAll("#quizzes .qbtn")].forEach(x =>
     x.onclick = () => start("all"));
+  $("studyblurb").textContent = "A short note on every page from " + PAGENOS[0] +
+    " to " + PAGENOS[PAGENOS.length - 1] + ", so you can find anything you missed.";
+  $("studyrange").textContent = RANGE;
   $("foot").innerHTML = esc(DATA.cite) +
     "<br>Based on an original work of the Core Knowledge Foundation " +
     "(coreknowledge.org), used under CC BY-NC-SA 4.0. This does not imply " +
@@ -189,10 +198,14 @@ function show(w){ ["home","study","play","done"].forEach(x => $(x).classList.tog
    holds, so a miss sends him somewhere real instead of to a bare number. */
 function studySheet(){
   const P = DATA.source.pages;
-  /* The evidence table first. Every Round 2 question is already a row of it:
-     a page, what he believed, and what was really there. He needs three. */
+  /* The evidence table first, on the quizzes that set a big question. Every
+     marked question is already a row of it: a page, what he believed, and
+     what was really there. He needs three. A segment read just for what
+     happened has no big question, and gets the page notes on their own --
+     printing an empty "evidence you could use" table would be worse than
+     printing nothing. */
   const ev = DATA.items.filter(it => it.evidence);
-  const table =
+  const table = !DATA.bigq ? "" :
     '<div class="rule" style="margin-bottom:14px"><b>Your big question</b><br>' +
     esc(DATA.bigq) + "</div>" +
     '<div class="sheet"><div class="srow"><b>Evidence you could use</b>' +
@@ -225,7 +238,7 @@ function start(which){
   order = shuffle(RUN.map((_, i) => i));
   idx = 0; got = []; missed = [];
   MC.begin({partial: which !== "all"});
-  $("qname").textContent = "Pages 1 to 12";
+  $("qname").textContent = RANGE;
   $("qclue").textContent = RUN.length + " questions";
   show("play"); render();
 }

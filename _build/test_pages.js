@@ -226,6 +226,14 @@ group("the footer every borrowed page owes");
   const missing = ck.filter(f => !/Core Knowledge Foundation/.test(joined(f)));
   ok(`${ck.length} pages draw on Core Knowledge, and all of them say so`, !missing.length,
      missing.map(f => f.rel).join(", "));
+
+  /* Naming the Foundation is not the same as naming the licence. BY-NC-SA is
+     the term we are actually bound by, and nothing asserted it until now: a
+     page could lose its licence line, keep the credit, and leave every suite
+     green. Deleting "CC BY-NC-SA 4.0" from a built reading app proved it. */
+  const unlicensed = ck.filter(f => !/CC BY-NC-SA/.test(joined(f)));
+  ok(`and all ${ck.length} name the licence they are used under`, !unlicensed.length,
+     unlicensed.map(f => f.rel).join(", "));
 }
 
 /* Every option gets a letter in the little circle beside it. KEYS held six, A
