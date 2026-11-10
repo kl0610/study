@@ -358,6 +358,12 @@ def recite4(s):
     return Patcher(s, "recite4")
 
 
+def recite5(s):
+    """A word is dead — Dickinson, six lines, generated from the owl's shell
+    with its own six drawings. Config only."""
+    return Patcher(s, "recite5")
+
+
 def spell8(s):
     """Spelling List 8 — same again. Config only. There is no List 7: that
     week's sheet never came, and the hub still shows it unbuilt."""
@@ -611,6 +617,9 @@ APPS = {
                                           dragon=["l5"], subject="Recitation")),
     "recitation/fireflies-in-the-garden": (recite4,
                                      dict(app="recite4", shake="#card", lift=None,
+                                          dragon=["l5"], subject="Recitation")),
+    "recitation/a-word-is-dead": (recite5,
+                                     dict(app="recite5", shake="#card", lift=None,
                                           dragon=["l5"], subject="Recitation")),
     # Twenty lines learnt over four evenings, so the levels are named per
     # group rather than l1..l5. The dragon is the last one on the list: the

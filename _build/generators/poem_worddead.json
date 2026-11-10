@@ -1,0 +1,83 @@
+{
+ "title": "A word is <em>dead</em>",
+ "plain": "A word is dead",
+ "eyebrow": "Recitation · Poem of the fortnight",
+ "sub": "Six short lines, and the whole poem turns in the middle. Some say a word dies the moment you say it — she says that is the day it starts living. Each level gives you a little less.",
+ "source": "Emily Dickinson (1830–1886). Out of copyright.",
+ "lines": [
+  {
+   "t": "A word is dead",
+   "art": "dead"
+  },
+  {
+   "t": "When it is said,",
+   "art": "said"
+  },
+  {
+   "t": "Some say.",
+   "art": "some"
+  },
+  {
+   "t": "I say it just",
+   "art": "isay"
+  },
+  {
+   "t": "Begins to live",
+   "art": "live"
+  },
+  {
+   "t": "That day.",
+   "art": "day"
+  }
+ ],
+ "levels": [
+  {
+   "id": "l1",
+   "mode": "last",
+   "name": "Last words",
+   "tag": "One blank at the end of each line",
+   "blurb": "The whole poem is in front of you. Only the last word of each line is missing — and dead rhymes with said, say with day, so the rhymes will hand you most of them.",
+   "art": "always"
+  },
+  {
+   "id": "l2",
+   "mode": "first",
+   "name": "First words",
+   "tag": "One blank at the start of each line",
+   "blurb": "Now the first word of each line is gone. Watch lines three and four: Some say, then I say. Those two words are the whole argument, and they are the ones people swap by accident.",
+   "art": "always"
+  },
+  {
+   "id": "l3",
+   "mode": "half",
+   "name": "Half gone",
+   "tag": "Every other word missing",
+   "blurb": "About half the words are away now. It is a short poem, so there is less to lean on here than there looks.",
+   "art": "always"
+  },
+  {
+   "id": "l4",
+   "mode": "line",
+   "name": "Line by line",
+   "tag": "Type a whole line",
+   "blurb": "One whole line at a time, with the rest of the poem still around it. Mind the commas: there is one after said, and a full stop after say.",
+   "art": "always"
+  },
+  {
+   "id": "l5",
+   "mode": "heart",
+   "name": "By heart",
+   "boss": true,
+   "tag": "Nothing but the picture",
+   "blurb": "No words on the screen at all. A picture for each line, and you say it out loud from memory — which is what you will be doing when you stand up."
+  }
+ ],
+ "art": {
+  "dead": "<svg viewBox=\"0 0 200 140\" role=\"img\" aria-label=\"A small gravestone with the word WORD carved on it\">\n  <rect width=\"200\" height=\"140\" fill=\"#DCEAF4\"/>\n  <path d=\"M0 104 L48 98 L104 106 L156 96 L200 104 L200 140 L0 140 Z\" fill=\"#9A8D7B\"/>\n  <path d=\"M0 120 L60 112 L128 122 L200 114 L200 140 L0 140 Z\" fill=\"#7E7365\"/>\n  <path d=\"M68 116 L68 56 q32 -26 64 0 L132 116 Z\" fill=\"#BFB6A8\"/>\n  <path d=\"M68 116 L68 56 q16 -13 32 -16 L100 116 Z\" fill=\"#D2CABE\"/>\n  <text x=\"100\" y=\"88\" text-anchor=\"middle\" font-family=\"Georgia, 'Times New Roman', serif\"\n        font-size=\"18\" fill=\"#54381F\" letter-spacing=\"1.5\">WORD</text>\n  <rect x=\"60\" y=\"114\" width=\"80\" height=\"9\" rx=\"3\" fill=\"#8A7E6E\"/>\n  <g stroke=\"#6E8F5E\" stroke-width=\"3\" stroke-linecap=\"round\" fill=\"none\">\n    <path d=\"M150 114 q4 -14 -4 -22\"/>\n  </g>\n  <path d=\"M146 92 q-10 -6 -4 -13 q8 -3 10 6 q8 -6 12 1 q-4 8 -14 6 Z\" fill=\"#B98FA8\"/>\n</svg>",
+  "said": "<svg viewBox=\"0 0 200 140\" role=\"img\" aria-label=\"An open mouth saying a word, with a speech bubble beside it\">\n  <rect width=\"200\" height=\"140\" fill=\"#F6EBD6\"/>\n  <ellipse cx=\"66\" cy=\"78\" rx=\"44\" ry=\"31\" fill=\"#B4565A\"/>\n  <path d=\"M22 78 q44 -33 88 0 q-44 13 -88 0 Z\" fill=\"#FBF6EC\"/>\n  <path d=\"M22 78 q44 33 88 0 q-44 -11 -88 0 Z\" fill=\"#8E3A3E\"/>\n  <g fill=\"#FFFFFF\">\n    <path d=\"M36 70 h16 v9 h-16 Z\"/><path d=\"M56 68 h18 v11 h-18 Z\"/><path d=\"M78 70 h16 v9 h-16 Z\"/>\n  </g>\n  <path d=\"M134 74 L122 88 L146 80 Z\" fill=\"#FBF6EC\"/>\n  <rect x=\"130\" y=\"34\" width=\"58\" height=\"42\" rx=\"13\" fill=\"#FBF6EC\"/>\n  <g stroke=\"#9A8D7B\" stroke-width=\"4\" stroke-linecap=\"round\">\n    <path d=\"M142 50 h34\"/><path d=\"M142 62 h20\"/>\n  </g>\n</svg>",
+  "some": "<svg viewBox=\"0 0 200 140\" role=\"img\" aria-label=\"Three people standing together, each with a small speech bubble\">\n  <rect width=\"200\" height=\"140\" fill=\"#DCEAF4\"/>\n  <rect x=\"0\" y=\"118\" width=\"200\" height=\"22\" fill=\"#BBD2E2\"/>\n  <g fill=\"#FBF6EC\">\n    <rect x=\"12\" y=\"16\" width=\"34\" height=\"23\" rx=\"8\"/>\n    <rect x=\"80\" y=\"8\" width=\"38\" height=\"25\" rx=\"8\"/>\n    <rect x=\"152\" y=\"18\" width=\"34\" height=\"23\" rx=\"8\"/>\n  </g>\n  <g fill=\"#FBF6EC\">\n    <path d=\"M24 38 L22 50 L34 39 Z\"/><path d=\"M94 32 L92 45 L104 33 Z\"/><path d=\"M164 40 L162 52 L174 41 Z\"/>\n  </g>\n  <g stroke=\"#9FB4C6\" stroke-width=\"3.5\" stroke-linecap=\"round\">\n    <path d=\"M20 26 h18\"/><path d=\"M88 18 h22\"/><path d=\"M160 28 h18\"/>\n  </g>\n  <g>\n    <circle cx=\"32\" cy=\"72\" r=\"15\" fill=\"#E0B98E\"/>\n    <path d=\"M32 88 q-22 3 -25 30 h50 q-3 -27 -25 -30 Z\" fill=\"#6E8BA8\"/>\n  </g>\n  <g>\n    <circle cx=\"100\" cy=\"64\" r=\"17\" fill=\"#C99A72\"/>\n    <path d=\"M100 82 q-25 4 -28 36 h56 q-3 -32 -28 -36 Z\" fill=\"#7E6E96\"/>\n  </g>\n  <g>\n    <circle cx=\"170\" cy=\"74\" r=\"15\" fill=\"#E8C9A6\"/>\n    <path d=\"M170 90 q-22 3 -25 28 h50 q-3 -25 -25 -28 Z\" fill=\"#6E9A86\"/>\n  </g>\n</svg>",
+  "isay": "<svg viewBox=\"0 0 200 140\" role=\"img\" aria-label=\"One person alone, a hand at her chest, with one large speech bubble\">\n  <rect width=\"200\" height=\"140\" fill=\"#F3E7F0\"/>\n  <rect x=\"0\" y=\"118\" width=\"200\" height=\"22\" fill=\"#E2D2DE\"/>\n  <rect x=\"96\" y=\"12\" width=\"92\" height=\"52\" rx=\"16\" fill=\"#FBF6EC\"/>\n  <path d=\"M110 62 L98 82 L128 66 Z\" fill=\"#FBF6EC\"/>\n  <g stroke=\"#B98FA8\" stroke-width=\"4.5\" stroke-linecap=\"round\">\n    <path d=\"M110 32 h58\"/><path d=\"M110 46 h38\"/>\n  </g>\n  <circle cx=\"58\" cy=\"60\" r=\"19\" fill=\"#E8C9A6\"/>\n  <path d=\"M39 54 q6 -24 30 -20 q14 3 8 22 q-10 -12 -38 -2 Z\" fill=\"#5A4433\"/>\n  <path d=\"M58 80 q-28 5 -31 40 h62 q-3 -35 -31 -40 Z\" fill=\"#9C6F90\"/>\n  <path d=\"M85 95 q9 16 -16 14\" stroke=\"#85597A\" stroke-width=\"9\"\n        fill=\"none\" stroke-linecap=\"round\"/>\n  <circle cx=\"67\" cy=\"109\" r=\"7\" fill=\"#E8C9A6\"/>\n</svg>",
+  "live": "<svg viewBox=\"0 0 200 140\" role=\"img\" aria-label=\"A green seedling breaking up through the soil\">\n  <rect width=\"200\" height=\"140\" fill=\"#F6EBD6\"/>\n  <path d=\"M0 88 q52 -9 100 0 t100 -1 L200 140 L0 140 Z\" fill=\"#8A6F4E\"/>\n  <path d=\"M0 108 q56 -8 104 1 t96 -3 L200 140 L0 140 Z\" fill=\"#6F5839\"/>\n  <path d=\"M100 94 q-3 -22 0 -40\" stroke=\"#5E9E62\" stroke-width=\"7\"\n        stroke-linecap=\"round\" fill=\"none\"/>\n  <path d=\"M100 68 q-28 -9 -34 -30 q26 -2 34 22 Z\" fill=\"#79BE78\"/>\n  <path d=\"M100 62 q28 -12 32 -34 q-26 0 -32 24 Z\" fill=\"#5E9E62\"/>\n  <g stroke=\"#C9B48E\" stroke-width=\"3\" stroke-linecap=\"round\" fill=\"none\">\n    <path d=\"M78 92 q10 -7 18 -3\"/><path d=\"M122 94 q-10 -7 -18 -3\"/>\n  </g>\n  <g fill=\"#E8D9B8\"><circle cx=\"58\" cy=\"100\" r=\"4\"/><circle cx=\"146\" cy=\"104\" r=\"3.5\"/></g>\n</svg>",
+  "day": "<svg viewBox=\"0 0 200 140\" role=\"img\" aria-label=\"The sun rising over the horizon at the start of a day\">\n  <rect width=\"200\" height=\"140\" fill=\"#F7DFB0\"/>\n  <rect x=\"0\" y=\"0\" width=\"200\" height=\"46\" fill=\"#F3CE94\"/>\n  <g stroke=\"#EFC063\" stroke-width=\"5\" stroke-linecap=\"round\">\n    <path d=\"M100 18 v-12\"/><path d=\"M58 30 l-9 -9\"/><path d=\"M142 30 l9 -9\"/>\n    <path d=\"M30 62 h-13\"/><path d=\"M170 62 h13\"/>\n    <path d=\"M44 44 l-10 -6\"/><path d=\"M156 44 l10 -6\"/>\n  </g>\n  <path d=\"M56 96 a44 44 0 0 1 88 0 Z\" fill=\"#F0B23C\"/>\n  <rect x=\"0\" y=\"94\" width=\"200\" height=\"6\" fill=\"#E2A233\"/>\n  <path d=\"M0 100 L40 92 L92 100 L140 90 L200 98 L200 140 L0 140 Z\" fill=\"#8A7E6E\"/>\n  <path d=\"M0 116 L62 108 L126 118 L200 110 L200 140 L0 140 Z\" fill=\"#6E6355\"/>\n</svg>"
+ }
+}
