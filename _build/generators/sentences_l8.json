@@ -1,0 +1,54 @@
+{
+ "book": "Wordly Wise 3000, Book 6",
+ "lesson": "Word List 8",
+ "cite": "Wordly Wise 3000, Book 6, Word List 8",
+ "title": "Word List 8 — Practice sentences",
+ "from": "ww6_l8.json",
+ "outof": 16,
+ "intro": "Eight prompts. Four ask for two words in one sentence and four ask for one, and between them they use every word on the list. This is the part of the test nobody can guess their way through.",
+ "rule": "Eight prompts, two points each — <b>16 points</b>. There is nothing here to tap. You write the sentence; the app checks it uses the word and is a proper sentence; then you read an answer that would score full marks and mark your own against it honestly.",
+ "parts": [
+  {
+   "id": "s1",
+   "name": "Practice sentences",
+   "title": "Use the words in sentences of your own",
+   "pts": 16,
+   "each": 2,
+   "how": "Answer in complete sentences, using the vocabulary word correctly.",
+   "type": "say",
+   "items": [
+    {"q": "Use <b>expedition</b> and <b>expanse</b> together in one logical sentence.",
+     "need": ["expedition", "expanse"],
+     "model": "The expedition set out across a frozen expanse of ice that took eleven days to cross."},
+
+    {"q": "Use <b>captive</b> and <b>retrieve</b> together in one logical sentence.",
+     "need": ["captive", "retrieve"],
+     "model": "The soldiers went back across the river to retrieve a captive who had been left behind in the dark."},
+
+    {"q": "Explain the difference between something <b>convenient</b> and something <b>beneficial</b>. Something can be one without being the other.",
+     "need": ["convenient", "beneficial"],
+     "model": "A bag of crisps is convenient because you can eat it anywhere, but an apple is beneficial because it actually does your body some good."},
+
+    {"q": "Use <b>inept</b> and <b>invaluable</b> together in one logical sentence about two different people.",
+     "need": ["inept", "invaluable"],
+     "model": "My first attempt at the map was inept, but my grandfather's old notes were invaluable and showed me where I had gone wrong."},
+
+    {"q": "<b>Accompany</b> has two meanings. Use it in a sentence where it means <i>to play music for somebody</i>, not just to go along with them.",
+     "need": ["accompany"],
+     "model": "My aunt is going to accompany the choir on the piano at the Christmas concert."},
+
+    {"q": "Describe a moment that would fill somebody with <b>ecstasy</b>. Use <b>ecstasy</b> in your answer.",
+     "need": ["ecstasy"],
+     "model": "Scoring the winning goal in the last minute of a final would fill anybody with ecstasy."},
+
+    {"q": "<b>Interpret</b> does not only mean to translate. Use it in a sentence where it means something else.",
+     "need": ["interpret"],
+     "model": "I had to interpret my brother's shrug as a yes, because he would not say another word about it."},
+
+    {"q": "Write a sentence about something that <b>lingers</b> after everybody else has gone.",
+     "need": ["linger"],
+     "model": "The smell of woodsmoke lingers in the garden for hours after the last of the guests has gone home."}
+   ]
+  }
+ ]
+}

@@ -138,8 +138,14 @@ def check(spec):
                     bad.append("%s: the model answer for %r is not a finished sentence"
                                % (where, it["q"][:40]))
 
-    if total != 50:
-        bad.append("the five parts come to %d points, and the paper is out of 50" % total)
+    # The rehearsal of the teacher's paper is out of 50 and must stay out of 50.
+    # The week's writing set is built on the same shell and is not a paper at all,
+    # so it declares its own total rather than being refused for not being 50.
+    outof = spec.get("outof", 50)
+    if total != outof:
+        bad.append("the %d part%s come to %d points, and this one is out of %d"
+                   % (len(spec["parts"]), "" if len(spec["parts"]) == 1 else "s",
+                      total, outof))
 
     # Every headword on the list has to be asked about somewhere, or the part
     # of the list he never sees is the part that turns up on the paper.
@@ -176,6 +182,10 @@ def main():
 
     shell = io.open(os.path.join(HERE, "wwtest_shell.html"), encoding="utf-8").read()
     data = {k: spec[k] for k in ("book", "lesson", "cite", "intro", "parts", "total")}
+    # Optional: the line under the heading. Left out, the page writes the one
+    # about the teacher's five-part paper, which is wrong for anything else.
+    if spec.get("rule"):
+        data["rule"] = spec["rule"]
     out = shell.replace("DATA_GOES_HERE", json.dumps(data, ensure_ascii=False, indent=1))
     out = out.replace("TITLE_GOES_HERE", "%s \u2014 %s" % (spec["title"], spec["book"]))
     out = out.replace("EYEBROW_GOES_HERE", "Vocabulary \u00b7 " + spec["lesson"])
@@ -191,8 +201,9 @@ def main():
             newline="\r\n").write(out)
 
     print("  vocabulary/%s  %.1f KB" % (out_dir, len(out) / 1024))
-    print("  %s, %s \u2014 %d points over %d parts"
-          % (spec["book"], spec["lesson"], total, len(spec["parts"])))
+    print("  %s, %s \u2014 %d points over %d part%s"
+          % (spec["book"], spec["lesson"], total, len(spec["parts"]),
+             "" if len(spec["parts"]) == 1 else "s"))
     for p in spec["parts"]:
         print("    %-9s %-42s %2d items  %2d pts" %
               (p["name"], p["title"], len(p["items"]), p["pts"]))

@@ -101,6 +101,46 @@ HTML.
 
 ---
 
+## Vocabulary — what a week ships
+
+**From Word List 8 on (11 Nov 2026), every week is four apps, not three.**
+Earlier lists are not being gone back over; they stay as they are.
+
+| App | Spec | Built with |
+|---|---|---|
+| `ww6-lessonN` | `ww6_lN.json` | `gen_sheet.py ww6_lN.json ww6-lessonN` |
+| `ww6-lessonN-test` | `ww6_lN.json` | `gen_vocab.py ww6_lN.json ww6-lessonN-test` |
+| `ww6-lessonN-exam` | `wwtest_lN.json` | `gen_wwtest.py wwtest_lN.json ww6-lessonN-exam` |
+| `ww6-lessonN-sentences` | `sentences_lN.json` | `gen_wwtest.py sentences_lN.json ww6-lessonN-sentences` |
+
+The fourth is **Practice sentences**, added because Keith asked for more of
+what the end section of the teacher's real paper does: use one or two of the
+week's words in a sentence of your own. It is the same `say` machinery as the
+rehearsal's Part V, on the same shell, but it is the whole app rather than five
+questions at the end of one.
+
+What a sentences spec has to be:
+
+- **One part, `"type": "say"`, every item worth 2 points.** `"outof"` declares
+  its own total, so it is not refused for not being 50 — but the rehearsal next
+  door still is, and must stay out of 50.
+- **Eight prompts: four asking for two words in one sentence, four for one.**
+  The pairs are the point. Picking two words that have to sit in one sentence
+  is where he has to actually hold both meanings, and a set of eight singles is
+  a set of eight easy ones.
+- **Every headword on the list asked for somewhere.** `gen_wwtest.py` refuses a
+  set that leaves one out, reading the list from the `"from"` spec next door.
+- **A `"rule"` line**, or the page tells him he is sitting the teacher's
+  five-part paper.
+- **Prompts may name their words in bold** — unlike Part III, where naming the
+  word would hand over the answer, here the word *is* the task.
+- **A model answer that would itself pass the app's gate**: uses the words, six
+  words or more, capitalised, finished with a full stop. He marks his own
+  against it, 2 / 1 / 0. Do not turn that into a machine score — see Spelling
+  Challenge 2 above; it is the same decision for the same reason.
+
+---
+
 ## Math — the nightly loop
 
 Math is not a chapter to cover. It is last night's written practice and the

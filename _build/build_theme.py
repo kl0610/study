@@ -398,6 +398,12 @@ def aeexp(s):
     return Patcher(s, "aeexp")
 
 
+def wwsent8(s):
+    """Word List 8 practice sentences — the week's writing set, built on the
+    rehearsal's shell with one part and nothing to tap. Config only."""
+    return Patcher(s, "wwsent8")
+
+
 def vocab8(s):
     """Word List 8 sheet — config only."""
     return Patcher(s, "vocabulary8")
@@ -619,6 +625,10 @@ APPS = {
                                            dragon=["final"], hud=False)),
     "vocabulary/ww6-lesson8-exam": (wwtest8, dict(app="wwtest8", shake="#card", lift=None,
                                            dragon=["p5"])),
+    # The week's writing set. One part, so the dragon sits on it: there is no
+    # easier section to clear it on, which is the point of the thing.
+    "vocabulary/ww6-lesson8-sentences": (wwsent8, dict(app="wwsent8", shake="#card",
+                                           lift=None, dragon=["s1"])),
     "vocabulary/ww6-lesson7":      (vocab7, dict(app="vocabulary7", shake="#sheet",
                                            lift=".bar", dragon=["sheet"])),
     "vocabulary/ww6-lesson7-test": (vtest7, dict(app="vocabtest7", shake=None, lift=None,

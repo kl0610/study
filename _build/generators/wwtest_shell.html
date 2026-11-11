@@ -157,8 +157,15 @@ let PART = null, order = [], idx = 0, got = [], picked = null, tries = 0,
 function home(){
   const best = MC.bests();
   $("introline").textContent = DATA.intro;
-  $("ruleline").innerHTML = "The real paper is <b>" + DATA.total + " points</b> over five parts. " +
-    "This one is marked the same way, so the number you see here is the number you would get.";
+  /* Two things are built on this shell now: the five-part rehearsal of the
+     teacher's paper, and the week's single-part writing set. The sentence
+     under the heading said "over five parts" whatever it was looking at, so
+     a set of eight writing prompts announced itself as the real paper. */
+  $("ruleline").innerHTML = DATA.rule ||
+    ("The real paper is <b>" + DATA.total + " points</b> over five parts. " +
+     "This one is marked the same way, so the number you see here is the number you would get.");
+  /* And a one-part set has nothing to sit the whole of; its only card does it. */
+  $("runall").classList.toggle("hide", DATA.parts.length < 2);
   $("parts").innerHTML = DATA.parts.map((p, i) => `
     <button class="partbtn" style="--c:${COLORS[i]}" data-p="${i}">
       <span class="tag">${esc(p.name)} &middot; ${p.pts} point${p.pts === 1 ? "" : "s"}</span>

@@ -57,22 +57,47 @@ APPS.forEach(A => {
   const D = A.DATA;
   G(D.lesson + "  (vocabulary/" + A.dir + ")");
 
-  /* ---- the paper's arithmetic ---- */
+  /* Two different things are built on this shell. The rehearsal of the paper
+     his teacher hands out is five parts and fifty points. The week's writing
+     set is one part of sentence prompts and is not a paper at all, so holding
+     it to the paper's shape would mean failing it for being what it is. They
+     are told apart by what they contain, not by a list of directory names
+     here: a list goes quiet the week a new app arrives, which this file has
+     been caught doing twice. */
+  const kinds = D.parts.map(p => p.type);
+  const isPaper = D.parts.length > 1;
+
+  /* ---- the arithmetic, whichever it is ---- */
   const sum = D.parts.reduce((n, p) => n + p.pts, 0);
-  ok("the five parts add up to the paper's " + D.total + " points", sum === D.total, "got " + sum);
+  ok("the " + D.parts.length + (D.parts.length === 1 ? " part adds" : " parts add") +
+     " up to the " + D.total + " points it claims", sum === D.total, "got " + sum);
   ok("...and every part's items times its per-item value is its own total",
      D.parts.every(p => p.items.length * p.each === p.pts),
      D.parts.filter(p => p.items.length * p.each !== p.pts).map(p => p.id).join(", "));
   ok("...and no two parts share an id",
      new Set(D.parts.map(p => p.id)).size === D.parts.length);
 
-  /* ---- the two parts that cannot be tapped ---- */
-  const kinds = D.parts.map(p => p.type);
-  ok("there is a part that makes him write the word himself",
-     kinds.indexOf("write") !== -1, kinds.join(", "));
-  ok("...and a part that makes him answer in sentences",
-     kinds.indexOf("say") !== -1, kinds.join(", "));
-  ok("...and a part on parts of speech", kinds.indexOf("pos") !== -1, kinds.join(", "));
+  if (isPaper) {
+    /* ---- the two parts of the paper that cannot be tapped ---- */
+    ok("it is the teacher's paper, marked out of 50", D.total === 50, "out of " + D.total);
+    ok("...and there is a part that makes him write the word himself",
+       kinds.indexOf("write") !== -1, kinds.join(", "));
+    ok("...and a part that makes him answer in sentences",
+       kinds.indexOf("say") !== -1, kinds.join(", "));
+    ok("...and a part on parts of speech", kinds.indexOf("pos") !== -1, kinds.join(", "));
+  } else {
+    /* ---- the writing set: nothing in it may be answerable by tapping ---- */
+    ok("it is a writing set, and every part of it asks for sentences",
+       kinds.every(k => k === "say"), kinds.join(", "));
+    ok("...worth 2 points each, the way the written answers are marked",
+       D.parts.every(p => p.each === 2),
+       D.parts.map(p => p.id + "=" + p.each).join(", "));
+    /* A set of prompts that never asks for two words together is a set of
+       eight easy ones; pairing them is where the meanings have to hold. */
+    const pairs = D.parts.reduce((n, p) =>
+      n + p.items.filter(it => (it.need || []).length > 1).length, 0);
+    ok("...and some prompts ask for two words in one sentence: " + pairs, pairs >= 1);
+  }
 
   /* ---- matching: the bank must not run parallel to the words ---- */
   D.parts.filter(p => p.type === "match").forEach(p => {
