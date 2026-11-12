@@ -139,6 +139,57 @@ What a sentences spec has to be:
   against it, 2 / 1 / 0. Do not turn that into a machine score — see Spelling
   Challenge 2 above; it is the same decision for the same reason.
 
+### The meaning check — every written answer carries one
+
+Keith, 11 Nov 2026: *"I am able to make sentences, but ones that don't really
+make sense. Are you able to at least check that the sentence makes sense and is
+used in the correct context? If it works mechanically, you can say so, but you
+also say that it doesn't really make sense and maybe give it another try."*
+
+He is right that this was the hole. *"The expedition went on an expedition
+across the expanse."* uses the words, runs long enough and is punctuated, and
+the app used to send it straight through to full marks.
+
+There is no model behind a page on github.io and there is not going to be one,
+so the page looks instead for the evidence a right answer cannot help leaving
+behind: something musical in a sentence about *accompany* in that sense, a
+thing the *expanse* is an expanse of, both halves of a question that asks for a
+difference. Every `say` item carries a `"sense"` block saying what its answer
+has to show, and `gen_wwtest.py` **refuses to build a written answer without
+one** — there is no flag to forget.
+
+```json
+"sense": {
+  "ask":   "the nudge under the bullets, in words he can act on",
+  "show":  [{"of": ["piano", "sing", "choir"], "why": "what is missing, in his words"}],
+  "avoid": [{"of": ["translat", "is when"],    "why": "why this is the wrong track"}],
+  "note":  "optional: why this block is the shape it is, for whoever edits it next"
+}
+```
+
+Entries match a word plus an ending (`cross` covers crossing, `clums` covers
+clumsy), or a whole phrase if they contain a space. They do **not** match any
+word that merely starts with them — `win` used to match *window*, `sea`
+matched *search* — so a group is a list of short stems, not prefixes.
+
+Four rules, every one of them learned the hard way:
+
+1. **It never blocks.** A doubt shows the reason, offers another go, and takes
+   his word for it if he says the sentence is right. Guessing wrong about a
+   good sentence must not cost him a right answer, so the page says *"Kept,
+   because you said so"* rather than pretending he was right.
+2. **One copy of the code.** `_build/generators/sense.js` is inlined into the
+   app, required by the suites, and run by the build over every model answer.
+   A model answer its own check would turn back cannot ship.
+3. **Tune it against sentences, never by eye.** `node _build/test_sense.js`
+   holds good sentences that must be let through and bad ones that must be
+   stopped. The first sweep flagged **five of twenty-seven good sentences**;
+   nothing else noticed, and nothing else could have. It also shows every
+   block a sentence built to say nothing, and fails any block that shrugs.
+4. **Add three or four good sentences and two bad ones for each new week** to
+   `TRIALS` in that file. It prints how many written answers have nobody
+   vouching for them, so skipping it says so out loud instead of going quiet.
+
 ---
 
 ## Math — the nightly loop

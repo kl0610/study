@@ -161,6 +161,15 @@ APPS.forEach(A => {
     ok("..." + p.name + " model answers would themselves pass the app's own check",
        p.items.every(it => String(it.model).trim().split(/\s+/).length >= 6 &&
                            /^[A-Z]/.test(String(it.model).trim())));
+    /* A sentence can use the word, run long enough and be punctuated and
+       still say nothing, and for a year that was waved through to full marks.
+       The meaning check has to have travelled into the app with the question:
+       what is tested here is the built page, not the spec it came from. See
+       _build/test_sense.js for whether the checks are any good. */
+    const noSense = p.items.filter(it => !it.sense || !(it.sense.show || []).length
+                                      || !it.sense.ask);
+    ok("..." + p.name + " ships a meaning check with every written answer",
+       !noSense.length, noSense.map(it => (it.need || []).join("+")).join(", "));
   });
 });
 

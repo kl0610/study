@@ -393,14 +393,131 @@
       "brawl",
       "stampede"
      ],
-     "model": "A brawl is a rough, noisy fight that people choose to start, but a stampede is a sudden rush of animals or people who are running because they are frightened."
+     "model": "A brawl is a rough, noisy fight that people choose to start, but a stampede is a sudden rush of animals or people who are running because they are frightened.",
+     "sense": {
+      "ask": "One is a fight people choose. The other is a run nobody chooses. Say both.",
+      "show": [
+       {
+        "of": [
+         "fight",
+         "punch",
+         "hit",
+         "blow",
+         "scuffle",
+         "row",
+         "argu",
+         "pub",
+         "street",
+         "rough",
+         "noisy",
+         "chose",
+         "choose",
+         "start",
+         "angry",
+         "shout",
+         "shove",
+         "brawl"
+        ],
+        "why": "A brawl is a rough fight. Say that it is a fight, and who is fighting."
+       },
+       {
+        "of": [
+         "rush",
+         "run",
+         "stamp",
+         "charge",
+         "panic",
+         "fright",
+         "scared",
+         "afraid",
+         "herd",
+         "cattle",
+         "cow",
+         "horse",
+         "animal",
+         "crowd",
+         "trampl",
+         "flee",
+         "escap",
+         "sudden",
+         "away",
+         "gate",
+         "exit"
+        ],
+        "why": "A stampede is a sudden rush of frightened animals or people. Say what is running, and why."
+       },
+       {
+        "of": [
+         "but",
+         "while",
+         "whereas",
+         "although",
+         "though",
+         "however",
+         "yet",
+         "instead",
+         "difference",
+         "differ",
+         "other hand",
+         "not the same"
+        ],
+        "why": "You are explaining a difference, so both halves have to be in the one answer, with a but or a while between them."
+       }
+      ]
+     }
     },
     {
      "q": "Why would a chore feel <b>monotonous</b>? Use <b>monotonous</b> in your answer.",
      "need": [
       "monotonous"
      ],
-     "model": "A chore feels monotonous when every part of it is exactly the same as the last, so there is nothing new to think about while you do it."
+     "model": "A chore feels monotonous when every part of it is exactly the same as the last, so there is nothing new to think about while you do it.",
+     "sense": {
+      "ask": "What repeats, and what does all that repeating feel like?",
+      "show": [
+       {
+        "of": [
+         "same",
+         "identical",
+         "over and over",
+         "again and again",
+         "repeat",
+         "every",
+         "each",
+         "no change",
+         "never chang",
+         "alike",
+         "exactly",
+         "all day",
+         "row",
+         "hundred",
+         "thousand"
+        ],
+        "why": "Monotonous means every bit is the same as the last. Say what it is that repeats."
+       },
+       {
+        "of": [
+         "dull",
+         "bor",
+         "nothing new",
+         "nothing to think",
+         "tired",
+         "drag",
+         "slow",
+         "switch off",
+         "mind",
+         "wander",
+         "forever",
+         "endless",
+         "hate",
+         "sick of",
+         "feel",
+         "sleep"
+        ],
+        "why": "Say what the sameness does to you — why it is so dull to do."
+       }
+      ]
+     }
     },
     {
      "q": "Use <b>hardy</b> and <b>exhaust</b> together in one logical sentence.",
@@ -408,21 +525,214 @@
       "hardy",
       "exhaust"
      ],
-     "model": "The hardy ponies could cross the moor all day without tiring, but the climb would exhaust an ordinary horse before noon."
+     "model": "The hardy ponies could cross the moor all day without tiring, but the climb would exhaust an ordinary horse before noon.",
+     "sense": {
+      "ask": "One that can keep going, one that cannot. What is the weather or the work that tells them apart?",
+      "show": [
+       {
+        "of": [
+         "pony",
+         "ponie",
+         "horse",
+         "sheep",
+         "plant",
+         "tree",
+         "dog",
+         "goat",
+         "cattle",
+         "climber",
+         "sailor",
+         "soldier",
+         "walker",
+         "cold",
+         "wind",
+         "rain",
+         "snow",
+         "frost",
+         "winter",
+         "moor",
+         "mountain",
+         "hill",
+         "desert",
+         "sea",
+         "rough",
+         "weather",
+         "all day",
+         "without",
+         "tough",
+         "survive"
+        ],
+        "why": "Hardy means tough enough for hard conditions. Say what the hard conditions are."
+       },
+       {
+        "of": [
+         "tir",
+         "worn",
+         "wear",
+         "collaps",
+         "give up",
+         "puff",
+         "drain",
+         "rest",
+         "sleep",
+         "beat",
+         "finish",
+         "unfit",
+         "ordinary",
+         "weaker",
+         "softer",
+         "noon",
+         "halfway",
+         "could not",
+         "would not"
+        ],
+        "why": "Exhaust means to wear somebody right out. Say who gets worn out, and by what."
+       },
+       {
+        "of": [
+         "but",
+         "while",
+         "whereas",
+         "although",
+         "though",
+         "however",
+         "yet",
+         "instead",
+         "difference",
+         "differ",
+         "other hand",
+         "not the same"
+        ],
+        "why": "You are explaining a difference, so both halves have to be in the one answer, with a but or a while between them."
+       }
+      ]
+     }
     },
     {
      "q": "Why might somebody be called a <b>veteran</b> without ever having been a soldier? Use <b>veteran</b> in your answer.",
      "need": [
       "veteran"
      ],
-     "model": "A veteran can also mean anybody with a great deal of experience at something, so a teacher of thirty years is a veteran of the classroom."
+     "model": "A veteran can also mean anybody with a great deal of experience at something, so a teacher of thirty years is a veteran of the classroom.",
+     "sense": {
+      "ask": "Who has been doing the same thing for thirty years?",
+      "show": [
+       {
+        "of": [
+         "experienc",
+         "year",
+         "decade",
+         "long",
+         "many",
+         "thirty",
+         "twenty",
+         "forty",
+         "fifty",
+         "since",
+         "always",
+         "whole life",
+         "career",
+         "done it",
+         "old hand",
+         "expert",
+         "season",
+         "seen it"
+        ],
+        "why": "The other meaning is about long experience. Say how long, or how much."
+       },
+       {
+        "of": [
+         "teacher",
+         "nurse",
+         "doctor",
+         "farmer",
+         "driver",
+         "player",
+         "coach",
+         "actor",
+         "chef",
+         "cook",
+         "builder",
+         "fisher",
+         "reporter",
+         "writer",
+         "miner",
+         "umpire",
+         "referee",
+         "engineer",
+         "classroom",
+         "stage",
+         "kitchen",
+         "field",
+         "office",
+         "shop",
+         "team",
+         "game",
+         "school",
+         "newspaper"
+        ],
+        "why": "Name the person — a teacher, a nurse, a player — so it is clear you do not mean a soldier."
+       }
+      ]
+     }
     },
     {
      "q": "Explain what it means to be <b>realistic</b> about a plan. Use <b>realistic</b> in your answer.",
      "need": [
       "realistic"
      ],
-     "model": "Being realistic about a plan means seeing the thing as it actually is, so you allow enough time and money instead of hoping it all goes perfectly."
+     "model": "Being realistic about a plan means seeing the thing as it actually is, so you allow enough time and money instead of hoping it all goes perfectly.",
+     "sense": {
+      "ask": "What do you admit to yourself, and what do you do differently once you have admitted it?",
+      "show": [
+       {
+        "of": [
+         "actual",
+         "real",
+         "truth",
+         "as it is",
+         "honest",
+         "face",
+         "admit",
+         "accept",
+         "see",
+         "seeing",
+         "what will",
+         "likely",
+         "probab",
+         "fact",
+         "pretend",
+         "kid"
+        ],
+        "why": "Realistic means seeing the thing as it actually is. Say what you are being honest about."
+       },
+       {
+        "of": [
+         "time",
+         "money",
+         "cost",
+         "enough",
+         "allow",
+         "extra",
+         "plan for",
+         "prepar",
+         "instead",
+         "hope",
+         "hoping",
+         "wrong",
+         "go wrong",
+         "delay",
+         "spare",
+         "budget",
+         "sensib",
+         "work",
+         "late",
+         "fail"
+        ],
+        "why": "Say what being realistic makes you do — the time, the money, the thing you leave room for."
+       }
+      ]
+     }
     }
    ]
   }

@@ -20,8 +20,15 @@ machine can see that the word was used, that it is a sentence and that it is
 punctuated; it cannot see whether the sentence says anything true. Pretending
 otherwise would hand him a score he had not earned, which is worse than asking
 him to be honest.
+
+What a machine can do is notice that the evidence of a right answer is not
+there -- that a sentence using "accompany" in the musical sense has nothing
+musical in it, or that an "expanse" is not an expanse of anything. That check
+is sense.js, one copy shared by this build, the app and the test suite, and it
+is run here over every model answer: a model this page would turn back is a
+model that teaches him the wrong lesson, so it is not allowed to ship.
 """
-import io, json, os, re, sys
+import io, json, os, re, shutil, subprocess, sys
 
 ROOT = r"C:\Users\kl\projects\study"
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -166,6 +173,26 @@ def check(spec):
     return total
 
 
+def meaning(path):
+    """Hold every written answer to the check the app will hold him to.
+
+    The rule lives in sense.js rather than being written out a second time
+    here: a rule with two copies drifts, and the drift is silent. If node has
+    gone missing this stops the build rather than building a paper with its
+    most important check quietly switched off."""
+    node = shutil.which("node") or shutil.which("node.exe")
+    if not node:
+        raise SystemExit("  refusing to build: node is not on PATH, so the meaning "
+                         "check cannot be run over the model answers")
+    r = subprocess.run([node, os.path.join(HERE, "sense.js"), path],
+                       stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
+                       encoding="utf-8", errors="replace")
+    if r.returncode:
+        raise SystemExit("  refusing to build:\n    "
+                         + "\n    ".join(r.stdout.strip().splitlines()))
+    print(r.stdout.rstrip())
+
+
 def main():
     spec_name = MINE[0] if MINE else "wwtest_l5.json"
     out_dir = MINE[1] if len(MINE) > 1 else "ww6-lesson5-exam"
@@ -178,6 +205,7 @@ def main():
         spec["words"] = json.load(io.open(src, encoding="utf-8"))["headwords"]
 
     total = check(spec)
+    meaning(os.path.join(HERE, spec_name))
     spec["total"] = total
 
     shell = io.open(os.path.join(HERE, "wwtest_shell.html"), encoding="utf-8").read()
@@ -186,12 +214,16 @@ def main():
     # about the teacher's five-part paper, which is wrong for anything else.
     if spec.get("rule"):
         data["rule"] = spec["rule"]
-    out = shell.replace("DATA_GOES_HERE", json.dumps(data, ensure_ascii=False, indent=1))
+    sense = io.open(os.path.join(HERE, "sense.js"), encoding="utf-8").read()
+    # The app gets the same file, inlined: one page, no fetch, works offline.
+    out = shell.replace("SENSE_GOES_HERE", sense)
+    out = out.replace("DATA_GOES_HERE", json.dumps(data, ensure_ascii=False, indent=1))
     out = out.replace("TITLE_GOES_HERE", "%s \u2014 %s" % (spec["title"], spec["book"]))
     out = out.replace("EYEBROW_GOES_HERE", "Vocabulary \u00b7 " + spec["lesson"])
     out = out.replace("H1_GOES_HERE", spec["title"])
 
-    for leftover in ("DATA_GOES_HERE", "TITLE_GOES_HERE", "EYEBROW_GOES_HERE", "H1_GOES_HERE"):
+    for leftover in ("DATA_GOES_HERE", "TITLE_GOES_HERE", "EYEBROW_GOES_HERE",
+                     "H1_GOES_HERE", "SENSE_GOES_HERE"):
         if leftover in out:
             raise SystemExit("  %s was never filled in" % leftover)
 

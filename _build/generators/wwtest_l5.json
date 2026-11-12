@@ -152,19 +152,300 @@
    "items": [
     {"q": "Explain how being diligent could help someone learn a hard skill. Use <b>diligent</b> in your answer.",
      "need": ["diligent"],
-     "model": "A diligent player practises carefully every day, so the hard parts get a little easier each week instead of staying hard."},
+     "model": "A diligent player practises carefully every day, so the hard parts get a little easier each week instead of staying hard.",
+     "sense": {
+      "ask": "What does a diligent person actually do every day, and what does it change?",
+      "show": [
+       {
+        "of": [
+         "practis",
+         "practice",
+         "every day",
+         "daily",
+         "again",
+         "keep",
+         "kept",
+         "carefu",
+         "steady",
+         "work",
+         "effort",
+         "hour",
+         "week",
+         "month",
+         "year",
+         "regular",
+         "bit by bit",
+         "little",
+         "slow",
+         "repeat",
+         "stick",
+         "patien",
+         "attention",
+         "try",
+         "trying"
+        ],
+        "why": "Diligent is steady, careful work kept up over time. Say what the person keeps doing, and how often."
+       },
+       {
+        "of": [
+         "easier",
+         "easi",
+         "better",
+         "improv",
+         "learn",
+         "skill",
+         "master",
+         "good at",
+         "progress",
+         "hard part",
+         "gets",
+         "grow",
+         "faster",
+         "confiden",
+         "manage",
+         "able",
+         "easy",
+         "quick",
+         "fluent",
+         "sure",
+         "nail",
+         "memor",
+         "off by heart"
+        ],
+        "why": "The question asks how it helps. Say what gets better because of it."
+       }
+      ]
+     }},
     {"q": "Explain the difference between something <b>innate</b> and something learned.",
      "need": ["innate"],
-     "model": "An innate ability is one you are born with, and a learned ability is one you picked up by being taught or by practising."},
+     "model": "An innate ability is one you are born with, and a learned ability is one you picked up by being taught or by practising.",
+     "sense": {
+      "ask": "One you were born with, one somebody taught you — both halves in the answer.",
+      "show": [
+       {
+        "of": [
+         "born",
+         "birth",
+         "natural",
+         "nature",
+         "from the start",
+         "always had",
+         "inherit",
+         "instinct",
+         "built in",
+         "in you",
+         "came with"
+        ],
+        "why": "Innate means you were born with it. Say that part in so many words."
+       },
+       {
+        "of": [
+         "learn",
+         "taught",
+         "teach",
+         "practis",
+         "practice",
+         "school",
+         "lesson",
+         "train",
+         "picked up",
+         "study",
+         "copied",
+         "shown",
+         "coach",
+         "effort"
+        ],
+        "why": "The other half is the one you picked up. Say how that one was learned."
+       }
+      ]
+     }},
     {"q": "Use <b>shroud</b> and <b>tranquil</b> together in one logical sentence.",
      "need": ["shroud", "tranquil"],
-     "model": "A shroud of mist lay over the tranquil lake until the sun came up and burned it off."},
+     "model": "A shroud of mist lay over the tranquil lake until the sun came up and burned it off.",
+     "sense": {
+      "ask": "Somewhere quiet, and something spread over the top of it.",
+      "show": [
+       {
+        "of": [
+         "mist",
+         "fog",
+         "cloud",
+         "smoke",
+         "snow",
+         "dust",
+         "dark",
+         "night",
+         "sheet",
+         "blanket",
+         "cover",
+         "hid",
+         "hidden",
+         "wrapp",
+         "veil",
+         "steam",
+         "rain",
+         "shadow",
+         "haze",
+         "silence",
+         "secrecy",
+         "mystery"
+        ],
+        "why": "A shroud is something that covers and hides. Say what the covering is made of — mist, smoke, darkness."
+       },
+       {
+        "of": [
+         "lake",
+         "sea",
+         "water",
+         "valley",
+         "garden",
+         "village",
+         "morning",
+         "evening",
+         "night",
+         "field",
+         "wood",
+         "forest",
+         "river",
+         "pond",
+         "meadow",
+         "hill",
+         "bay",
+         "harbour",
+         "street",
+         "room",
+         "calm",
+         "quiet",
+         "still",
+         "peace",
+         "silence",
+         "sleep",
+         "asleep"
+        ],
+        "why": "Tranquil means calm and still. Say what the calm place or the calm moment is."
+       }
+      ]
+     }},
     {"q": "Why might a <b>tentative</b> plan still be worth making? Use <b>tentative</b> in your answer.",
      "need": ["tentative"],
-     "model": "A tentative plan gives everybody something to work from, and it can be changed later when the missing details are known."},
+     "model": "A tentative plan gives everybody something to work from, and it can be changed later when the missing details are known.",
+     "sense": {
+      "ask": "Nothing is settled yet — so what does having the plan let you get on with?",
+      "show": [
+       {
+        "of": [
+         "chang",
+         "not final",
+         "unsure",
+         "not certain",
+         "might",
+         "may",
+         "could",
+         "later",
+         "yet",
+         "first draft",
+         "rough",
+         "adjust",
+         "fix",
+         "unfinish",
+         "uncertain",
+         "depend",
+         "if",
+         "still",
+         "missing",
+         "pencil"
+        ],
+        "why": "Tentative means not settled yet. Say what is still uncertain, or what could change later."
+       },
+       {
+        "of": [
+         "worth",
+         "start",
+         "begin",
+         "something to",
+         "work from",
+         "idea",
+         "prepar",
+         "ready",
+         "better than",
+         "plan ahead",
+         "book",
+         "organis",
+         "organiz",
+         "everybody",
+         "team",
+         "agree",
+         "time",
+         "know",
+         "move"
+        ],
+        "why": "The question asks why it is still worth making. Say what having it gives you."
+       }
+      ]
+     }},
     {"q": "Explain what makes a tool or a person <b>versatile</b>. Use <b>versatile</b> in your answer.",
      "need": ["versatile"],
-     "model": "A versatile tool is useful for many different jobs, so a pocket knife is more versatile than a tool that only opens tins."}
+     "model": "A versatile tool is useful for many different jobs, so a pocket knife is more versatile than a tool that only opens tins.",
+     "sense": {
+      "ask": "Name the thing, then name two different jobs it can do.",
+      "show": [
+       {
+        "of": [
+         "many",
+         "lots",
+         "several",
+         "different",
+         "various",
+         "more than one",
+         "all sorts",
+         "any",
+         "every",
+         "multiple",
+         "job",
+         "task",
+         "way",
+         "use",
+         "both",
+         "either",
+         "dozen",
+         "hundred"
+        ],
+        "why": "Versatile means good for many different jobs. Say how many, or how different they are."
+       },
+       {
+        "of": [
+         "knife",
+         "tool",
+         "phone",
+         "spoon",
+         "scarf",
+         "shoe",
+         "player",
+         "hammer",
+         "bike",
+         "app",
+         "computer",
+         "box",
+         "bag",
+         "blanket",
+         "van",
+         "car",
+         "person",
+         "teacher",
+         "musician",
+         "actor",
+         "open",
+         "cut",
+         "carry",
+         "fix",
+         "play",
+         "wear",
+         "build"
+        ],
+        "why": "Give the example the question asks for — a tool or a person, and what they can do."
+       }
+      ]
+     }}
    ]
   }
  ]

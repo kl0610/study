@@ -6,7 +6,7 @@
  "from": "ww6_l8.json",
  "outof": 16,
  "intro": "Eight prompts. Four ask for two words in one sentence and four ask for one, and between them they use every word on the list. This is the part of the test nobody can guess their way through.",
- "rule": "Eight prompts, two points each — <b>16 points</b>. There is nothing here to tap. You write the sentence; the app checks it uses the word and is a proper sentence; then you read an answer that would score full marks and mark your own against it honestly.",
+ "rule": "Eight prompts, two points each — <b>16 points</b>. There is nothing here to tap. You write the sentence; the app checks it is a proper sentence <i>and</i> looks for the thing the question was actually after; then you read an answer that would score full marks and mark your own against it honestly.",
  "parts": [
   {
    "id": "s1",
@@ -17,37 +17,179 @@
    "how": "Answer in complete sentences, using the vocabulary word correctly.",
    "type": "say",
    "items": [
+
     {"q": "Use <b>expedition</b> and <b>expanse</b> together in one logical sentence.",
      "need": ["expedition", "expanse"],
-     "model": "The expedition set out across a frozen expanse of ice that took eleven days to cross."},
+     "model": "The expedition set out across a frozen expanse of ice that took eleven days to cross.",
+     "sense": {
+      "ask": "Picture it first: a group going somewhere on purpose, and the wide empty country they have to get across.",
+      "show": [
+       {"of": ["ice", "icy", "snow", "frozen", "desert", "sand", "dune", "ocean", "sea", "water",
+               "lake", "sky", "plain", "prairie", "grass", "field", "farmland", "land", "forest",
+               "jungle", "wood", "moor", "marsh", "swamp", "tundra", "steppe", "savanna", "rock",
+               "salt", "mud", "space", "wilderness", "nothing", "empty", "open", "bare", "barren",
+               "endless", "mile", "acre", "stretch", "sheet", "blanket"],
+        "why": "An expanse is a wide open stretch of something. Say what it is an expanse of — ice, desert, ocean, grassland."},
+       {"of": ["cross", "travel", "journey", "voyage", "explor", "march", "trek", "sail", "climb",
+               "hike", "walk", "rode", "drove", "flew", "set out", "set off", "head", "went",
+               "search", "rescue", "map", "camp", "tent", "supplies", "sledge", "sled", "boat",
+               "ship", "mile", "day", "week", "month", "north", "south", "pole", "mountain",
+               "river", "coast", "team", "scientist", "guide", "reach", "return", "discover"],
+        "why": "An expedition is a long journey with a job to do. Say where it was going, or what it was going for."}
+      ],
+      "avoid": [
+       {"of": ["means", "definition", "dictionary", "is when", "is where", "is a word", "opposite of"],
+        "why": "That tells me what the word means instead of using it. Write a sentence where the word is just doing its job."}
+      ]
+     }},
 
     {"q": "Use <b>captive</b> and <b>retrieve</b> together in one logical sentence.",
      "need": ["captive", "retrieve"],
-     "model": "The soldiers went back across the river to retrieve a captive who had been left behind in the dark."},
+     "model": "The soldiers went back across the river to retrieve a captive who had been left behind in the dark.",
+     "sense": {
+      "ask": "Two halves to get in: somebody is being held, and somebody goes to get them back.",
+      "show": [
+       {"of": ["back", "lost", "left", "behind", "dropp", "fell", "fallen", "stolen", "taken",
+               "missing", "again", "rescue", "recover", "fetch", "return", "escap", "find",
+               "found", "hidden", "where", "river", "water", "woods", "forest", "mud", "bottom",
+               "camp", "line", "border", "lock", "tower", "castle", "cell", "cage", "inside",
+               "away", "out", "rode", "ride", "drove", "sent", "bring", "brought", "took",
+               "take", "get", "reach", "grab", "pull", "carry", "swore", "promis", "vow",
+               "went", "go", "gone"],
+        "why": "Retrieve means going and getting something back. Say what was lost or left behind, or where you had to go to get it."},
+       {"of": ["prison", "held", "hold", "guard", "cage", "cell", "chain", "rope", "tied", "lock",
+               "captur", "enemy", "soldier", "army", "camp", "kidnapp", "trapped", "hostage",
+               "keeper", "zoo", "pirate", "war", "ransom", "escap", "free", "rescue"],
+        "why": "A captive is somebody being held against their will. Say who is holding them, or where they are being kept."}
+      ],
+      "avoid": [
+       {"of": ["means", "definition", "dictionary", "is when", "is where", "is a word", "opposite of"],
+        "why": "That tells me what the word means instead of using it. Write a sentence where the word is just doing its job."}
+      ]
+     }},
 
     {"q": "Explain the difference between something <b>convenient</b> and something <b>beneficial</b>. Something can be one without being the other.",
      "need": ["convenient", "beneficial"],
-     "model": "A bag of crisps is convenient because you can eat it anywhere, but an apple is beneficial because it actually does your body some good."},
+     "model": "A bag of crisps is convenient because you can eat it anywhere, but an apple is beneficial because it actually does your body some good.",
+     "sense": {
+      "ask": "The whole point of this one: a thing can be handy without being good for you, and good for you without being handy. Say both halves.",
+      "show": [
+       {"of": ["but", "while", "whereas", "although", "though", "however", "yet", "instead",
+               "difference", "differ", "other hand", "not the same"],
+        "why": "You are explaining a difference, so the sentence needs a turn in it — a but, a while, a whereas."},
+       {"of": ["easy", "easi", "quick", "handy", "fast", "near", "nearby", "close", "anywhere",
+               "anytime", "simple", "effort", "trouble", "bother", "save", "time", "without",
+               "straight", "already", "hand", "minute", "second"],
+        "why": "Convenient is about being easy or handy. Say what makes it easy — no effort, close by, quick."},
+       {"of": ["health", "help", "better", "strong", "body", "grow", "vitamin", "mind", "learn",
+               "benefit", "improv", "nutrit", "exercis", "clean", "safe", "teeth", "bone",
+               "muscle", "energy", "long run", "does you", "do you", "fit",
+               "salad", "fruit", "veg", "apple", "banana", "orange", "carrot", "water",
+               "milk", "sleep", "walk", "run", "swim", "read", "study", "practis",
+               "medicine", "doctor", "dentist", "fresh", "homework", "revision", "stretch"],
+        "why": "Beneficial is about doing somebody good. Say what good it does, or name something that obviously does you good."}
+      ]
+     }},
 
-    {"q": "Use <b>inept</b> and <b>invaluable</b> together in one logical sentence about two different people.",
+    {"q": "Use <b>inept</b> and <b>invaluable</b> together in one logical sentence — one thing that was no help at all, and one thing that was worth a great deal.",
      "need": ["inept", "invaluable"],
-     "model": "My first attempt at the map was inept, but my grandfather's old notes were invaluable and showed me where I had gone wrong."},
+     "model": "My first attempt at the map was inept, but my grandfather's old notes were invaluable and showed me where I had gone wrong.",
+     "sense": {
+      "ask": "One thing that was no help at all, one thing that was worth everything, set against each other with a but. Say what went wrong, and what saved it.",
+      "note": "This one checks only that the two are set against each other. It had groups for clumsiness and for worth as well, and they failed a perfectly good answer — \"My drawing of the castle was inept and lopsided, but the photograph my uncle lent me was invaluable\" — because no word list covers everything a child can be clumsy at. Guessing wrong costs him a right answer, so the rest is left to the ask line and his own marking. Do not put them back without running try_good.js.",
+      "show": [
+       {"of": ["but", "while", "whereas", "although", "though", "however", "yet", "instead",
+               "luckily", "thankfully", "at least"],
+        "why": "Put the two side by side with a but or a while, or the sentence never shows the difference."}
+      ],
+      "avoid": [
+       {"of": ["means", "definition", "dictionary", "is when", "is where", "is a word", "opposite of"],
+        "why": "That tells me what the words mean instead of using them. Write a sentence where they are just doing their job."}
+      ]
+     }},
 
     {"q": "<b>Accompany</b> has two meanings. Use it in a sentence where it means <i>to play music for somebody</i>, not just to go along with them.",
      "need": ["accompany"],
-     "model": "My aunt is going to accompany the choir on the piano at the Christmas concert."},
+     "model": "My aunt is going to accompany the choir on the piano at the Christmas concert.",
+     "sense": {
+      "ask": "Who is singing or playing, and what are you playing for them?",
+      "show": [
+       {"of": ["piano", "organ", "guitar", "violin", "cello", "flute", "drum", "trumpet",
+               "clarinet", "keyboard", "accordion", "fiddle", "harp", "ukulele", "banjo",
+               "sing", "sang", "sung", "singer", "song", "choir", "chorus", "hymn", "carol",
+               "music", "band", "orchestra", "concert", "recital", "tune", "melody", "chord",
+               "note", "play", "perform", "stage", "duet", "solo", "verse", "practis"],
+        "why": "Here accompany means to play music while somebody else sings or plays. The music has to be in the sentence — a piano, a choir, a song."}
+      ],
+      "avoid": [
+       {"of": ["means", "definition", "dictionary", "is when", "is where", "is a word", "opposite of"],
+        "why": "That tells me what the word means instead of using it. Write a sentence where the word is just doing its job."}
+      ]
+     }},
 
     {"q": "Describe a moment that would fill somebody with <b>ecstasy</b>. Use <b>ecstasy</b> in your answer.",
      "need": ["ecstasy"],
-     "model": "Scoring the winning goal in the last minute of a final would fill anybody with ecstasy."},
+     "model": "Scoring the winning goal in the last minute of a final would fill anybody with ecstasy.",
+     "sense": {
+      "ask": "Name the actual moment — the goal, the letter, the news — and then say it would fill somebody with ecstasy.",
+      "show": [
+       {"of": ["won", "win", "goal", "scor", "prize", "final", "champion", "medal", "cup",
+               "trophy", "race", "match", "game", "team", "birthday", "christmas", "present",
+               "gift", "news", "letter", "passed", "exam", "dream", "surprise", "trip",
+               "holiday", "snow", "puppy", "kitten", "ticket", "concert", "rescue",
+               "home", "return", "found", "born", "baby", "first time", "moment", "finish",
+               "top", "best", "beat"],
+        "why": "Ecstasy is an overwhelming joy, so something big enough to cause it has to be in there. Say what happened."}
+      ],
+      "avoid": [
+       {"of": ["means", "definition", "dictionary", "is when", "is where", "is a word", "opposite of"],
+        "why": "That tells me what the word means instead of showing it. Describe the moment itself and let the word do the work."}
+      ]
+     }},
 
     {"q": "<b>Interpret</b> does not only mean to translate. Use it in a sentence where it means something else.",
      "need": ["interpret"],
-     "model": "I had to interpret my brother's shrug as a yes, because he would not say another word about it."},
+     "model": "I had to interpret my brother's shrug as a yes, because he would not say another word about it.",
+     "sense": {
+      "ask": "Something happened that did not come with words. What did you decide it meant?",
+      "show": [
+       {"of": ["shrug", "look", "face", "silence", "quiet", "smile", "frown", "sigh", "stare",
+               "dream", "sign", "signal", "gesture", "nod", "wave", "data", "graph", "chart",
+               "number", "result", "score", "map", "rule", "law", "poem", "story", "picture",
+               "painting", "music", "clue", "weather", "cloud", "sky", "track", "print",
+               "mood", "tone", "behav", "answer", "as a", "as an", "to mean", "mean",
+               "meant", "meaning"],
+        "why": "Interpret here means working out what something means — a look, a silence, a dream, a set of numbers. Say what you were reading the meaning of."}
+      ],
+      "avoid": [
+       {"of": ["translat", "spanish", "french", "german", "italian", "chinese", "japanese",
+               "latin", "language"],
+        "why": "That is the translating meaning, and this question wants the other one. Try something that has to be read rather than translated — a shrug, a silence, a dream, a graph."}
+      ]
+     }},
 
     {"q": "Write a sentence about something that <b>lingers</b> after everybody else has gone.",
      "need": ["linger"],
-     "model": "The smell of woodsmoke lingers in the garden for hours after the last of the guests has gone home."}
+     "model": "The smell of woodsmoke lingers in the garden for hours after the last of the guests has gone home.",
+     "sense": {
+      "ask": "Everybody has left. What is still there?",
+      "show": [
+       {"of": ["smell", "scent", "perfume", "smoke", "woodsmoke", "mist", "fog", "steam",
+               "taste", "sound", "echo", "music", "note", "light", "glow", "warmth", "heat",
+               "cold", "chill", "damp", "dust", "rain", "snow", "memory", "feeling", "sadness",
+               "silence", "quiet", "laughter", "crumb", "litter", "balloon", "footprint",
+               "shadow", "cloud", "stain", "ache", "chatter"],
+        "why": "Say what it is that lingers — a smell, a sound, a mist, a feeling. Something you can still notice once the room is empty."},
+       {"of": ["after", "still", "hour", "minute", "long", "late", "end", "once", "gone",
+               "left", "over", "finish", "remain", "all night", "all evening", "next",
+               "morning", "empty", "last"],
+        "why": "Lingering is about staying on after the thing is over. Say what it is staying on after."}
+      ],
+      "avoid": [
+       {"of": ["means", "definition", "dictionary", "is when", "is where", "is a word", "opposite of"],
+        "why": "That tells me what the word means instead of using it. Write a sentence where the word is just doing its job."}
+      ]
+     }}
    ]
   }
  ]

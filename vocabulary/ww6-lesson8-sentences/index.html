@@ -89,6 +89,9 @@ footer{color:#7E8DA2;font-size:13px;text-align:center;margin-top:18px}
 .fb strong{display:block;margin-bottom:3px}
 .fb.yes{background:#E8F5E6;color:#2F6B33;border-left:4px solid var(--lime)}
 .fb.no{background:#FBECEA;color:#9A3B30;border-left:4px solid var(--red)}
+.fb.warn{background:#FCF3DF;color:#876012;border-left:4px solid var(--amber)}
+.fb ul{margin:7px 0 7px;padding-left:19px}
+.fb li{margin:4px 0}
 .model{background:#F3F0E7;border-radius:13px;padding:11px 13px;margin-top:9px;font-size:15px;line-height:1.5}
 .model .cap{font-size:11.5px;letter-spacing:1.3px;text-transform:uppercase;color:var(--soft);
   margin-bottom:4px;font-family:ui-monospace,Menlo,Consolas,monospace}
@@ -1647,7 +1650,123 @@ const DATA = {
       "expedition",
       "expanse"
      ],
-     "model": "The expedition set out across a frozen expanse of ice that took eleven days to cross."
+     "model": "The expedition set out across a frozen expanse of ice that took eleven days to cross.",
+     "sense": {
+      "ask": "Picture it first: a group going somewhere on purpose, and the wide empty country they have to get across.",
+      "show": [
+       {
+        "of": [
+         "ice",
+         "icy",
+         "snow",
+         "frozen",
+         "desert",
+         "sand",
+         "dune",
+         "ocean",
+         "sea",
+         "water",
+         "lake",
+         "sky",
+         "plain",
+         "prairie",
+         "grass",
+         "field",
+         "farmland",
+         "land",
+         "forest",
+         "jungle",
+         "wood",
+         "moor",
+         "marsh",
+         "swamp",
+         "tundra",
+         "steppe",
+         "savanna",
+         "rock",
+         "salt",
+         "mud",
+         "space",
+         "wilderness",
+         "nothing",
+         "empty",
+         "open",
+         "bare",
+         "barren",
+         "endless",
+         "mile",
+         "acre",
+         "stretch",
+         "sheet",
+         "blanket"
+        ],
+        "why": "An expanse is a wide open stretch of something. Say what it is an expanse of — ice, desert, ocean, grassland."
+       },
+       {
+        "of": [
+         "cross",
+         "travel",
+         "journey",
+         "voyage",
+         "explor",
+         "march",
+         "trek",
+         "sail",
+         "climb",
+         "hike",
+         "walk",
+         "rode",
+         "drove",
+         "flew",
+         "set out",
+         "set off",
+         "head",
+         "went",
+         "search",
+         "rescue",
+         "map",
+         "camp",
+         "tent",
+         "supplies",
+         "sledge",
+         "sled",
+         "boat",
+         "ship",
+         "mile",
+         "day",
+         "week",
+         "month",
+         "north",
+         "south",
+         "pole",
+         "mountain",
+         "river",
+         "coast",
+         "team",
+         "scientist",
+         "guide",
+         "reach",
+         "return",
+         "discover"
+        ],
+        "why": "An expedition is a long journey with a job to do. Say where it was going, or what it was going for."
+       }
+      ],
+      "avoid": [
+       {
+        "of": [
+         "means",
+         "definition",
+         "dictionary",
+         "is when",
+         "is where",
+         "is a word",
+         "opposite of"
+        ],
+        "why": "That tells me what the word means instead of using it. Write a sentence where the word is just doing its job."
+       }
+      ]
+     }
     },
     {
      "q": "Use <b>captive</b> and <b>retrieve</b> together in one logical sentence.",
@@ -1655,7 +1774,118 @@ const DATA = {
       "captive",
       "retrieve"
      ],
-     "model": "The soldiers went back across the river to retrieve a captive who had been left behind in the dark."
+     "model": "The soldiers went back across the river to retrieve a captive who had been left behind in the dark.",
+     "sense": {
+      "ask": "Two halves to get in: somebody is being held, and somebody goes to get them back.",
+      "show": [
+       {
+        "of": [
+         "back",
+         "lost",
+         "left",
+         "behind",
+         "dropp",
+         "fell",
+         "fallen",
+         "stolen",
+         "taken",
+         "missing",
+         "again",
+         "rescue",
+         "recover",
+         "fetch",
+         "return",
+         "escap",
+         "find",
+         "found",
+         "hidden",
+         "where",
+         "river",
+         "water",
+         "woods",
+         "forest",
+         "mud",
+         "bottom",
+         "camp",
+         "line",
+         "border",
+         "lock",
+         "tower",
+         "castle",
+         "cell",
+         "cage",
+         "inside",
+         "away",
+         "out",
+         "rode",
+         "ride",
+         "drove",
+         "sent",
+         "bring",
+         "brought",
+         "took",
+         "take",
+         "get",
+         "reach",
+         "grab",
+         "pull",
+         "carry",
+         "swore",
+         "promis",
+         "vow",
+         "went",
+         "go",
+         "gone"
+        ],
+        "why": "Retrieve means going and getting something back. Say what was lost or left behind, or where you had to go to get it."
+       },
+       {
+        "of": [
+         "prison",
+         "held",
+         "hold",
+         "guard",
+         "cage",
+         "cell",
+         "chain",
+         "rope",
+         "tied",
+         "lock",
+         "captur",
+         "enemy",
+         "soldier",
+         "army",
+         "camp",
+         "kidnapp",
+         "trapped",
+         "hostage",
+         "keeper",
+         "zoo",
+         "pirate",
+         "war",
+         "ransom",
+         "escap",
+         "free",
+         "rescue"
+        ],
+        "why": "A captive is somebody being held against their will. Say who is holding them, or where they are being kept."
+       }
+      ],
+      "avoid": [
+       {
+        "of": [
+         "means",
+         "definition",
+         "dictionary",
+         "is when",
+         "is where",
+         "is a word",
+         "opposite of"
+        ],
+        "why": "That tells me what the word means instead of using it. Write a sentence where the word is just doing its job."
+       }
+      ]
+     }
     },
     {
      "q": "Explain the difference between something <b>convenient</b> and something <b>beneficial</b>. Something can be one without being the other.",
@@ -1663,49 +1893,473 @@ const DATA = {
       "convenient",
       "beneficial"
      ],
-     "model": "A bag of crisps is convenient because you can eat it anywhere, but an apple is beneficial because it actually does your body some good."
+     "model": "A bag of crisps is convenient because you can eat it anywhere, but an apple is beneficial because it actually does your body some good.",
+     "sense": {
+      "ask": "The whole point of this one: a thing can be handy without being good for you, and good for you without being handy. Say both halves.",
+      "show": [
+       {
+        "of": [
+         "but",
+         "while",
+         "whereas",
+         "although",
+         "though",
+         "however",
+         "yet",
+         "instead",
+         "difference",
+         "differ",
+         "other hand",
+         "not the same"
+        ],
+        "why": "You are explaining a difference, so the sentence needs a turn in it — a but, a while, a whereas."
+       },
+       {
+        "of": [
+         "easy",
+         "easi",
+         "quick",
+         "handy",
+         "fast",
+         "near",
+         "nearby",
+         "close",
+         "anywhere",
+         "anytime",
+         "simple",
+         "effort",
+         "trouble",
+         "bother",
+         "save",
+         "time",
+         "without",
+         "straight",
+         "already",
+         "hand",
+         "minute",
+         "second"
+        ],
+        "why": "Convenient is about being easy or handy. Say what makes it easy — no effort, close by, quick."
+       },
+       {
+        "of": [
+         "health",
+         "help",
+         "better",
+         "strong",
+         "body",
+         "grow",
+         "vitamin",
+         "mind",
+         "learn",
+         "benefit",
+         "improv",
+         "nutrit",
+         "exercis",
+         "clean",
+         "safe",
+         "teeth",
+         "bone",
+         "muscle",
+         "energy",
+         "long run",
+         "does you",
+         "do you",
+         "fit",
+         "salad",
+         "fruit",
+         "veg",
+         "apple",
+         "banana",
+         "orange",
+         "carrot",
+         "water",
+         "milk",
+         "sleep",
+         "walk",
+         "run",
+         "swim",
+         "read",
+         "study",
+         "practis",
+         "medicine",
+         "doctor",
+         "dentist",
+         "fresh",
+         "homework",
+         "revision",
+         "stretch"
+        ],
+        "why": "Beneficial is about doing somebody good. Say what good it does, or name something that obviously does you good."
+       }
+      ]
+     }
     },
     {
-     "q": "Use <b>inept</b> and <b>invaluable</b> together in one logical sentence about two different people.",
+     "q": "Use <b>inept</b> and <b>invaluable</b> together in one logical sentence — one thing that was no help at all, and one thing that was worth a great deal.",
      "need": [
       "inept",
       "invaluable"
      ],
-     "model": "My first attempt at the map was inept, but my grandfather's old notes were invaluable and showed me where I had gone wrong."
+     "model": "My first attempt at the map was inept, but my grandfather's old notes were invaluable and showed me where I had gone wrong.",
+     "sense": {
+      "ask": "One thing that was no help at all, one thing that was worth everything, set against each other with a but. Say what went wrong, and what saved it.",
+      "note": "This one checks only that the two are set against each other. It had groups for clumsiness and for worth as well, and they failed a perfectly good answer — \"My drawing of the castle was inept and lopsided, but the photograph my uncle lent me was invaluable\" — because no word list covers everything a child can be clumsy at. Guessing wrong costs him a right answer, so the rest is left to the ask line and his own marking. Do not put them back without running try_good.js.",
+      "show": [
+       {
+        "of": [
+         "but",
+         "while",
+         "whereas",
+         "although",
+         "though",
+         "however",
+         "yet",
+         "instead",
+         "luckily",
+         "thankfully",
+         "at least"
+        ],
+        "why": "Put the two side by side with a but or a while, or the sentence never shows the difference."
+       }
+      ],
+      "avoid": [
+       {
+        "of": [
+         "means",
+         "definition",
+         "dictionary",
+         "is when",
+         "is where",
+         "is a word",
+         "opposite of"
+        ],
+        "why": "That tells me what the words mean instead of using them. Write a sentence where they are just doing their job."
+       }
+      ]
+     }
     },
     {
      "q": "<b>Accompany</b> has two meanings. Use it in a sentence where it means <i>to play music for somebody</i>, not just to go along with them.",
      "need": [
       "accompany"
      ],
-     "model": "My aunt is going to accompany the choir on the piano at the Christmas concert."
+     "model": "My aunt is going to accompany the choir on the piano at the Christmas concert.",
+     "sense": {
+      "ask": "Who is singing or playing, and what are you playing for them?",
+      "show": [
+       {
+        "of": [
+         "piano",
+         "organ",
+         "guitar",
+         "violin",
+         "cello",
+         "flute",
+         "drum",
+         "trumpet",
+         "clarinet",
+         "keyboard",
+         "accordion",
+         "fiddle",
+         "harp",
+         "ukulele",
+         "banjo",
+         "sing",
+         "sang",
+         "sung",
+         "singer",
+         "song",
+         "choir",
+         "chorus",
+         "hymn",
+         "carol",
+         "music",
+         "band",
+         "orchestra",
+         "concert",
+         "recital",
+         "tune",
+         "melody",
+         "chord",
+         "note",
+         "play",
+         "perform",
+         "stage",
+         "duet",
+         "solo",
+         "verse",
+         "practis"
+        ],
+        "why": "Here accompany means to play music while somebody else sings or plays. The music has to be in the sentence — a piano, a choir, a song."
+       }
+      ],
+      "avoid": [
+       {
+        "of": [
+         "means",
+         "definition",
+         "dictionary",
+         "is when",
+         "is where",
+         "is a word",
+         "opposite of"
+        ],
+        "why": "That tells me what the word means instead of using it. Write a sentence where the word is just doing its job."
+       }
+      ]
+     }
     },
     {
      "q": "Describe a moment that would fill somebody with <b>ecstasy</b>. Use <b>ecstasy</b> in your answer.",
      "need": [
       "ecstasy"
      ],
-     "model": "Scoring the winning goal in the last minute of a final would fill anybody with ecstasy."
+     "model": "Scoring the winning goal in the last minute of a final would fill anybody with ecstasy.",
+     "sense": {
+      "ask": "Name the actual moment — the goal, the letter, the news — and then say it would fill somebody with ecstasy.",
+      "show": [
+       {
+        "of": [
+         "won",
+         "win",
+         "goal",
+         "scor",
+         "prize",
+         "final",
+         "champion",
+         "medal",
+         "cup",
+         "trophy",
+         "race",
+         "match",
+         "game",
+         "team",
+         "birthday",
+         "christmas",
+         "present",
+         "gift",
+         "news",
+         "letter",
+         "passed",
+         "exam",
+         "dream",
+         "surprise",
+         "trip",
+         "holiday",
+         "snow",
+         "puppy",
+         "kitten",
+         "ticket",
+         "concert",
+         "rescue",
+         "home",
+         "return",
+         "found",
+         "born",
+         "baby",
+         "first time",
+         "moment",
+         "finish",
+         "top",
+         "best",
+         "beat"
+        ],
+        "why": "Ecstasy is an overwhelming joy, so something big enough to cause it has to be in there. Say what happened."
+       }
+      ],
+      "avoid": [
+       {
+        "of": [
+         "means",
+         "definition",
+         "dictionary",
+         "is when",
+         "is where",
+         "is a word",
+         "opposite of"
+        ],
+        "why": "That tells me what the word means instead of showing it. Describe the moment itself and let the word do the work."
+       }
+      ]
+     }
     },
     {
      "q": "<b>Interpret</b> does not only mean to translate. Use it in a sentence where it means something else.",
      "need": [
       "interpret"
      ],
-     "model": "I had to interpret my brother's shrug as a yes, because he would not say another word about it."
+     "model": "I had to interpret my brother's shrug as a yes, because he would not say another word about it.",
+     "sense": {
+      "ask": "Something happened that did not come with words. What did you decide it meant?",
+      "show": [
+       {
+        "of": [
+         "shrug",
+         "look",
+         "face",
+         "silence",
+         "quiet",
+         "smile",
+         "frown",
+         "sigh",
+         "stare",
+         "dream",
+         "sign",
+         "signal",
+         "gesture",
+         "nod",
+         "wave",
+         "data",
+         "graph",
+         "chart",
+         "number",
+         "result",
+         "score",
+         "map",
+         "rule",
+         "law",
+         "poem",
+         "story",
+         "picture",
+         "painting",
+         "music",
+         "clue",
+         "weather",
+         "cloud",
+         "sky",
+         "track",
+         "print",
+         "mood",
+         "tone",
+         "behav",
+         "answer",
+         "as a",
+         "as an",
+         "to mean",
+         "mean",
+         "meant",
+         "meaning"
+        ],
+        "why": "Interpret here means working out what something means — a look, a silence, a dream, a set of numbers. Say what you were reading the meaning of."
+       }
+      ],
+      "avoid": [
+       {
+        "of": [
+         "translat",
+         "spanish",
+         "french",
+         "german",
+         "italian",
+         "chinese",
+         "japanese",
+         "latin",
+         "language"
+        ],
+        "why": "That is the translating meaning, and this question wants the other one. Try something that has to be read rather than translated — a shrug, a silence, a dream, a graph."
+       }
+      ]
+     }
     },
     {
      "q": "Write a sentence about something that <b>lingers</b> after everybody else has gone.",
      "need": [
       "linger"
      ],
-     "model": "The smell of woodsmoke lingers in the garden for hours after the last of the guests has gone home."
+     "model": "The smell of woodsmoke lingers in the garden for hours after the last of the guests has gone home.",
+     "sense": {
+      "ask": "Everybody has left. What is still there?",
+      "show": [
+       {
+        "of": [
+         "smell",
+         "scent",
+         "perfume",
+         "smoke",
+         "woodsmoke",
+         "mist",
+         "fog",
+         "steam",
+         "taste",
+         "sound",
+         "echo",
+         "music",
+         "note",
+         "light",
+         "glow",
+         "warmth",
+         "heat",
+         "cold",
+         "chill",
+         "damp",
+         "dust",
+         "rain",
+         "snow",
+         "memory",
+         "feeling",
+         "sadness",
+         "silence",
+         "quiet",
+         "laughter",
+         "crumb",
+         "litter",
+         "balloon",
+         "footprint",
+         "shadow",
+         "cloud",
+         "stain",
+         "ache",
+         "chatter"
+        ],
+        "why": "Say what it is that lingers — a smell, a sound, a mist, a feeling. Something you can still notice once the room is empty."
+       },
+       {
+        "of": [
+         "after",
+         "still",
+         "hour",
+         "minute",
+         "long",
+         "late",
+         "end",
+         "once",
+         "gone",
+         "left",
+         "over",
+         "finish",
+         "remain",
+         "all night",
+         "all evening",
+         "next",
+         "morning",
+         "empty",
+         "last"
+        ],
+        "why": "Lingering is about staying on after the thing is over. Say what it is staying on after."
+       }
+      ],
+      "avoid": [
+       {
+        "of": [
+         "means",
+         "definition",
+         "dictionary",
+         "is when",
+         "is where",
+         "is a word",
+         "opposite of"
+        ],
+        "why": "That tells me what the word means instead of using it. Write a sentence where the word is just doing its job."
+       }
+      ]
+     }
     }
    ]
   }
  ],
  "total": 16,
- "rule": "Eight prompts, two points each — <b>16 points</b>. There is nothing here to tap. You write the sentence; the app checks it uses the word and is a proper sentence; then you read an answer that would score full marks and mark your own against it honestly."
+ "rule": "Eight prompts, two points each — <b>16 points</b>. There is nothing here to tap. You write the sentence; the app checks it is a proper sentence <i>and</i> looks for the thing the question was actually after; then you read an answer that would score full marks and mark your own against it honestly."
 };
 
 const $ = id => document.getElementById(id);
@@ -1801,13 +2455,14 @@ function render(){
       <span class="pts">${PART.each} point${PART.each === 1 ? "" : "s"}</span>
     </div>
     ${body}
-    <div class="act"><button class="btn p" id="go" disabled>Check it</button></div>
-    <div id="fb"></div>`;
+    <div id="fb"></div>
+    <div class="act"><button class="btn p" id="go" disabled>Check it</button></div>`;
 
   if (PART.type === "write" || PART.type === "say"){
     const t = $("typed");
     t.addEventListener("input", () => {
-      $("go").disabled = PART.type === "say"
+      const g = $("go");                     /* gone while a doubt is showing */
+      if (g) g.disabled = PART.type === "say"
         ? t.value.trim().split(/\s+/).filter(Boolean).length < 4
         : t.value.trim().length < 2;
       t.classList.remove("bad"); });
@@ -1868,13 +2523,210 @@ function settle(right, it, say){
   $("next").onclick = advance;
 }
 
-/* Part V cannot be marked by a machine and this does not pretend to. It checks
-   the three things a machine can see -- the word is used, it is a sentence,
-   it is punctuated -- then shows a model answer and asks him to mark his own
-   against it. The honest version of that is worth more than a fake score. */
-function judgeSay(it){
+/* ---------- the meaning check ---------- */
+/* Does the sentence actually mean anything? -- the one check this site had no
+   answer for.
+ *
+ * The writing parts of the vocabulary paper used to be judged on three things
+ * a machine can see: the word is in there, it runs to a sentence, it is
+ * punctuated. All three can pass on a sentence that says nothing at all.
+ *
+ *     "The expedition went on an expedition across the expanse."
+ *     "Ecstasy means being very happy."
+ *     "My dad will accompany me to the shop."     <- the wrong meaning
+ *
+ * There is no model behind a page on github.io and there is not going to be
+ * one, so this does the next honest thing: it looks for the evidence a right
+ * answer cannot help leaving behind. Every prompt carries, in its own data,
+ * the ideas its answer has to show -- "accompany" in the musical sense needs
+ * something musical in the sentence; an "expanse" has to be an expanse OF
+ * something; a prompt that asks for a difference needs both halves of it.
+ * What comes back is a list of things that look missing, in words Myles can
+ * act on.
+ *
+ * Two rules this must obey, and both are load-bearing:
+ *
+ *   1. It never overrules him. A doubt is shown, another try is offered, and
+ *      he can keep the sentence and mark it himself. Guessing wrong about a
+ *      good sentence must not cost him a right answer.
+ *   2. There is one copy of this code. The app inlines this file, the test
+ *      suite requires it, and the build runs it over every model answer -- so
+ *      a model answer that would fail its own check cannot ship. Three
+ *      hand-written copies of a rule drift, and the drift is silent.
+ */
+(function (root) {
+  "use strict";
+
+  /* Words that carry no content on their own. Only used for "is there
+     anything in this sentence besides the word itself", so the list is
+     deliberately harsh: "nice", "good" and "stuff" are padding here even
+     though they are real words. */
+  var STOP = ("a an the and but or nor so for to of in on at by with from as if then than "
+    + "that this these those there here it its it's is am are was were be been being do does "
+    + "did doing done have has had having will would shall should can could may might must "
+    + "i me my mine myself you your yours he him his she her hers they them their theirs we "
+    + "us our ours who whom whose which what when where why how not no none very really quite "
+    + "just too also only even still yet about into onto over under up down out off again "
+    + "more most much many some any all both each other another same one two first next last "
+    + "thing things stuff lot lots bit good bad nice cool fun great big small okay ok like "
+    + "likes liked get gets got getting go goes going went gone come comes came say says said "
+    + "make makes made take takes took put puts use uses used want wants wanted know knows "
+    + "knew think thinks thought see sees saw look looks looked").split(" ");
+
+  function words(s) {
+    return String(s).toLowerCase().match(/[a-z']+/g) || [];
+  }
+
+  /* An entry matches a word that is that entry plus an ending: "cross" covers
+     crossed and crossing, "music" covers musical, "clums" covers clumsy.
+     What it must NOT do is match any word that merely starts with it --
+     "win" matched "window", "sea" matched "search" and "war" matched "warm",
+     and every one of those made the check quietly agree with nonsense, which
+     is the failure that cannot be seen from the outside. An entry with a
+     space in it is matched as a phrase instead. */
+  var TAIL = ["", "s", "es", "ed", "d", "ing", "ings", "er", "ers", "est", "ly", "y",
+              "ies", "ied", "ion", "ions", "ment", "ments", "ement", "le", "al", "ful",
+              "ness", "en", "ant", "ance", "ence", "ous", "ity", "'s"];
+
+  function grown(word, stem) {
+    if (word.indexOf(stem) !== 0) return false;
+    if (TAIL.indexOf(word.slice(stem.length)) !== -1) return true;
+    /* English doubles the last letter before an ending often enough to matter:
+       admit/admitting, drop/dropped, stop/stopping, plan/planned. */
+    return word.charAt(stem.length) === stem.slice(-1)
+      && TAIL.indexOf(word.slice(stem.length + 1)) !== -1;
+  }
+
+  function hasAny(ws, line, of) {
+    for (var i = 0; i < of.length; i++) {
+      var x = of[i];
+      if (x.indexOf(" ") !== -1) {
+        if (line.indexOf(" " + x + " ") !== -1) return true;
+      } else {
+        for (var j = 0; j < ws.length; j++) {
+          if (grown(ws[j], x)) return true;
+        }
+      }
+    }
+    return false;
+  }
+
+  /* The word he was told to use, and its close relations: captive/captivity,
+     linger/lingered. Those do not count as content -- the question handed him
+     those, so they are not evidence that he wrote anything. */
+  function stems(need) {
+    return (need || []).map(function (w) {
+      var b = String(w).toLowerCase().replace(/[^a-z]/g, "");
+      return b.slice(0, Math.max(4, Math.min(5, b.length)));
+    });
+  }
+
+  /* How much of the sentence is his own. */
+  function content(ws, need) {
+    var st = stems(need);
+    return ws.filter(function (w) {
+      if (STOP.indexOf(w) !== -1) return false;
+      for (var i = 0; i < st.length; i++) if (w.indexOf(st[i]) === 0) return false;
+      return true;
+    });
+  }
+
+  var THIN = "There is almost nothing in your sentence except the word itself. "
+    + "Say what happened, or who, or where — give it something to be about.";
+
+  /* The whole point of the file. Returns a list of plain-English doubts; an
+     empty list means nothing looked missing. */
+  function doubts(it, text) {
+    var S = it && it.sense;
+    var out = [];
+    if (!S) return out;
+
+    var ws = words(text);
+    var line = " " + ws.join(" ") + " ";
+
+    if (content(ws, it.need).length < 3) out.push(THIN);
+
+    (S.avoid || []).forEach(function (g) {
+      if (hasAny(ws, line, g.of)) out.push(g.why);
+    });
+    (S.show || []).forEach(function (g) {
+      if (!hasAny(ws, line, g.of)) out.push(g.why);
+    });
+    return out;
+  }
+
+  /* Shape of a sense block, checked by the build and by the suite. A block
+     with no groups in it would pass everything silently, which is the failure
+     this whole file exists to stop happening quietly. */
+  function faults(it) {
+    var bad = [];
+    var S = it && it.sense;
+    if (!S) return ["has no sense block, so nothing checks whether the answer means anything"];
+    if (!S.ask || String(S.ask).length < 20) bad.push("has no ask line worth reading");
+    var groups = (S.show || []).concat(S.avoid || []);
+    if (!(S.show || []).length) bad.push("has no show group, so no answer can ever look wrong");
+    groups.forEach(function (g, i) {
+      if (!g || !g.of || !g.of.length) bad.push("group " + i + " matches nothing");
+      else g.of.forEach(function (x) {
+        if (x !== String(x).toLowerCase()) bad.push("group " + i + " has a capital in " + x);
+        if (String(x).replace(/[^a-z ]/g, "").length < 2) bad.push("group " + i + " has the stub " + x);
+      });
+      if (!g || !g.why || String(g.why).length < 20) bad.push("group " + i + " does not say what is missing");
+    });
+    /* The one that matters: he marks himself against the model, so a model the
+       page would turn back is a model that teaches him the wrong lesson. */
+    doubts(it, it.model || "").forEach(function (d) {
+      bad.push("its own model answer is turned back — " + d);
+    });
+    return bad;
+  }
+
+  var SENSE = { doubts: doubts, faults: faults, words: words, content: content, STOP: STOP };
+
+  if (typeof module !== "undefined" && module.exports) module.exports = SENSE;
+  else root.SENSE = SENSE;
+
+  /* Run over a spec from the build:  node sense.js wwtest_l8.json  */
+  if (typeof module !== "undefined" && require.main === module) {
+    var spec = JSON.parse(require("fs").readFileSync(process.argv[2], "utf8"));
+    var bad = [], n = 0;
+    (spec.parts || []).forEach(function (p) {
+      if (p.type !== "say") return;
+      (p.items || []).forEach(function (it) {
+        n++;
+        faults(it).forEach(function (f) {
+          bad.push(p.id + ": " + String(it.q).replace(/<[^>]+>/g, "").slice(0, 46) + " — " + f);
+        });
+      });
+    });
+    if (bad.length) {
+      console.log(bad.join("\n"));
+      process.exit(1);
+    }
+    console.log("  " + n + " written answer" + (n === 1 ? "" : "s")
+      + ", every model answer passes its own meaning check");
+  }
+})(typeof self !== "undefined" ? self : this);
+
+/* The written answers are judged in two stages, and neither of them is a mark.
+
+   Stage one is mechanical: the word is used, it runs to a sentence, it is
+   punctuated. All three can pass on a sentence that means nothing, which is
+   exactly what kept happening -- "The expedition went on an expedition across
+   the expanse" used to be waved straight through to full marks.
+
+   So stage two asks whether the sentence shows any sign of meaning what it
+   should: see sense.js, which holds the one copy of that code. When something
+   looks missing the page says so and offers another go -- and then takes his
+   word for it if he says the sentence is right, because this is a pile of word
+   lists, not a reader, and it must not cost him a right answer for being
+   cleverer than the check.
+
+   Only then does it show the model and ask him to mark his own. A machine
+   still cannot see whether a sentence says something true; all this does is
+   stop him marking rubbish as right because the full stop was in place. */
+function judgeSay(it, kept){
   const t = $("typed").value.trim();
-  const low = " " + bare(t) + " ";
   const miss = it.need.filter(w => bare(t).indexOf(bare(w)) === -1);
   const words = t.split(/\s+/).filter(Boolean);
   let problem = null;
@@ -1889,9 +2741,36 @@ function judgeSay(it){
     $("fb").innerHTML = `<div class="fb no"><strong>Not yet.</strong>${esc(problem)}</div>`;
     return;
   }
+
+  const doubt = kept ? [] : SENSE.doubts(it, t);
+  if (doubt.length){
+    tries++;
+    $("typed").classList.remove("good");
+    $("fb").innerHTML =
+      `<div class="fb warn"><strong>That works as a sentence — but I do not think it means what it should yet.</strong>
+         <ul>${doubt.slice(0, 2).map(d => `<li>${esc(d)}</li>`).join("")}</ul>
+         ${esc(it.sense.ask)}</div>`;
+    $("card").querySelector(".act").innerHTML =
+      `<button class="btn p" id="redo">Let me have another go</button>
+       <button class="btn o" id="keep">Mine is right — keep it</button>`;
+    $("redo").onclick = () => {
+      $("fb").innerHTML = "";
+      $("card").querySelector(".act").innerHTML =
+        `<button class="btn p" id="go">Check it</button>`;
+      $("go").onclick = check;
+      $("typed").focus();
+    };
+    $("keep").onclick = () => judgeSay(it, true);
+    return;
+  }
+
   $("typed").readOnly = true; $("typed").classList.add("good");
   $("fb").innerHTML =
-    `<div class="fb yes"><strong>That works mechanically.</strong>It uses the word, it is a full sentence and it is punctuated. Now the part no machine can mark — read the model and decide whether yours says something true.</div>
+    `<div class="fb yes"><strong>${kept
+        ? "Kept, because you said so."
+        : "That works, and it reads like it means it."}</strong>${kept
+        ? "I could not see what this prompt was looking for in it, so read the model twice as carefully before you mark yourself."
+        : "It uses the word, it is a full sentence, and what this prompt was looking for is in there. Now the part no machine can mark — read the model and decide whether yours says something true."}</div>
      <div class="model"><div class="cap">One answer that would score full marks</div>${esc(it.model)}</div>`;
   $("card").querySelector(".act").innerHTML =
     `<button class="btn g" id="y2">Mine says the same thing — 2 points</button>
