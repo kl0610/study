@@ -188,8 +188,16 @@ def main():
         raise SystemExit("the sheet's heading is not where it was")
 
     m = re.search(r"(\d+)", spec["lesson"])
-    h1 = ("<h1>Word <em>List %s</em></h1>" % m.group(1) if m
-          else "<h1><em>%s</em></h1>" % spec["lesson"])
+    # A sheet of part of a list has to say which part in the heading itself,
+    # not only in the drawer behind a button. The catch-up sheet for the three
+    # words page 85 held was headed "Word List 8" and so was the sheet of the
+    # other twelve, which is two tiles on the hub opening two pages he cannot
+    # tell apart — and nothing that is checked by a test could see it. The
+    # tail is whatever the spec's own lesson name says after the number, so a
+    # sheet of a whole list comes out exactly as it did before.
+    tail = spec["lesson"][m.end():].strip() if m else ""
+    h1 = ("<h1>Word <em>List %s</em>%s</h1>" % (m.group(1), " " + tail if tail else "")
+          if m else "<h1><em>%s</em></h1>" % spec["lesson"])
     out, n = re.subn(r"<h1>.*?</h1>", h1, out, count=1, flags=re.S)
     if not n:
         raise SystemExit("the sheet's title is not where it was")

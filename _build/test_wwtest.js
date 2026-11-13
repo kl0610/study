@@ -57,15 +57,22 @@ APPS.forEach(A => {
   const D = A.DATA;
   G(D.lesson + "  (vocabulary/" + A.dir + ")");
 
-  /* Two different things are built on this shell. The rehearsal of the paper
-     his teacher hands out is five parts and fifty points. The week's writing
-     set is one part of sentence prompts and is not a paper at all, so holding
-     it to the paper's shape would mean failing it for being what it is. They
-     are told apart by what they contain, not by a list of directory names
-     here: a list goes quiet the week a new app arrives, which this file has
-     been caught doing twice. */
+  /* Three different things are built on this shell now. The rehearsal of the
+     paper his teacher hands out is five parts and fifty points. The week's
+     writing set is sentence prompts and is not a paper at all. And a catch-up
+     section — the three words page 85 held — is the paper's five parts over a
+     handful of words, so it is out of 28 and would fail the 50-point rule for
+     being what it is.
+
+     They are told apart by what they contain, not by a list of directory
+     names here: a list goes quiet the week a new app arrives, which this file
+     has been caught doing twice. The mark is the rule line. Only the rehearsal
+     leaves it out, and leaving it out is what makes the page tell him he is
+     sitting the teacher's five-part, fifty-point paper — so anything that
+     writes its own rule line is, in so many words, saying it is not that. */
   const kinds = D.parts.map(p => p.type);
-  const isPaper = D.parts.length > 1;
+  const isWriting = kinds.every(k => k === "say");
+  const isPaper = !isWriting && !D.rule;
 
   /* ---- the arithmetic, whichever it is ---- */
   const sum = D.parts.reduce((n, p) => n + p.pts, 0);
@@ -85,6 +92,19 @@ APPS.forEach(A => {
     ok("...and a part that makes him answer in sentences",
        kinds.indexOf("say") !== -1, kinds.join(", "));
     ok("...and a part on parts of speech", kinds.indexOf("pos") !== -1, kinds.join(", "));
+  } else if (!isWriting) {
+    /* ---- a section of the chapter, not the chapter's paper ---- */
+    ok("it is a section rather than the teacher's paper, and says so itself",
+       /\b\d+ ?points?\b/.test(strip(D.rule)) && !/50 ?points/.test(strip(D.rule)),
+       strip(D.rule).slice(0, 80));
+    ok("...and the number it says out loud is the number it adds up to",
+       strip(D.rule).indexOf(String(D.total) + " point") !== -1,
+       "it is out of " + D.total + ": " + strip(D.rule).slice(0, 80));
+    /* A section that drops the two parts he cannot tap his way through is a
+       section that drills the easy half of the chapter. */
+    ok("...and it still makes him write the word, and write sentences",
+       kinds.indexOf("write") !== -1 && kinds.indexOf("say") !== -1,
+       kinds.join(", "));
   } else {
     /* ---- the writing set: nothing in it may be answerable by tapping ---- */
     ok("it is a writing set, and every part of it asks for sentences",

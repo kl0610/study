@@ -190,6 +190,55 @@ Four rules, every one of them learned the hard way:
    `TRIALS` in that file. It prints how many written answers have nobody
    vouching for them, so skipping it says so out loud instead of going quiet.
 
+### A section, when a week turns out to be short
+
+Keith, 12 Nov 2026, with page 85 of the Word List attached: *"we forgot to
+include these three words for Lesson 8. Make a special section for these three
+missing words and include it with Lesson 8 so that he can study the same way as
+the rest of the chapter."*
+
+Lesson 8 was built from pages 83–84 and shipped twelve headwords. The list has
+fifteen: **skirmish, supplement and territory** are on page 85, and all four of
+the week's apps were missing them.
+
+They were **not** folded into `ww6_l8.json`. Two things stop that, and both are
+rules worth more than the tidiness:
+
+- the rehearsal next door is the teacher's paper and has to stay **out of 50**,
+  so three more words cannot be added to a part without unbalancing it;
+- `gen_wwtest.py` refuses a sentences set that leaves a headword out, reading
+  the list from the `"from"` spec — so widening that list fails the build of
+  an app that is already right.
+
+So a short week gets a **section of its own**, built from the same generators:
+
+| App | Spec | Built with |
+|---|---|---|
+| `ww6-lesson8-extra` | `ww6_l8_extra.json` | `gen_sheet.py ww6_l8_extra.json ww6-lesson8-extra` |
+| `ww6-lesson8-extra-exam` | `wwtest_l8_extra.json` | `gen_wwtest.py wwtest_l8_extra.json ww6-lesson8-extra-exam` |
+
+What makes it a section rather than a paper:
+
+1. **It declares its own total** with `"outof"`, and **writes its own `"rule"`
+   line**. Leaving the rule line out is what makes the page tell him he is
+   sitting the five-part fifty-point paper, so the rule line is the mark that
+   says he is not. `test_wwtest.js` tells the three kinds of app apart by it
+   and nothing else — not by a list of directory names, which goes quiet.
+2. **It keeps all five shapes**, including the two he cannot tap his way
+   through. A section that drops Part III and Part V drills the easy half.
+3. **A few words he already knows are mixed into Part I and Part II**, because
+   that is how the three will arrive on the paper: among the other twelve.
+4. **The heading says which slice of the list it is.** Two tiles on the hub
+   both opening a page headed "Word List 8" are two tiles he cannot tell apart
+   — `gen_sheet.py` now carries whatever the spec's lesson name says after the
+   number into the `<h1>`, and `test_vocabsheet.js` fails a part-sheet headed
+   like the whole list. Nothing but looking at the rendered page found that.
+
+And the thing that caused it: **the word list came as a scan, and the scan was
+short by a page.** Count the headwords against the book before building a
+week — fifteen is the usual size of a Wordly Wise list, and twelve should have
+been the question it was.
+
 ---
 
 ## Math — the nightly loop

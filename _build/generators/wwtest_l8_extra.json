@@ -1,0 +1,214 @@
+{
+ "book": "Wordly Wise 3000, Book 6",
+ "lesson": "Word List 8 — the last three words",
+ "cite": "Wordly Wise 3000, Book 6, Word List 8, page 85",
+ "title": "Word List 8 — The last three words",
+ "from": "ww6_l8_extra.json",
+ "outof": 28,
+ "intro": "Skirmish, supplement and territory came on page 85 and were missed when the rest of Word List 8 was built. This is the same five parts the real paper has, over those three words only — with a few of the twelve you already know mixed in, because that is how they will arrive on Friday.",
+ "rule": "Five parts, <b>28 points</b> — a short section, not the teacher's paper. Parts III and V are the ones nobody can tap their way through: you write the word yourself, then you write whole sentences and mark them against an answer worth full marks.",
+
+ "parts": [
+  {
+   "id": "p1",
+   "name": "Part I",
+   "title": "Vocabulary Matching",
+   "pts": 6,
+   "each": 1,
+   "how": "Choose the letter of the best definition for each word.",
+   "type": "match",
+   "defs": [
+    ["A", "being of use; helpful; favorable"],
+    ["B", "a wide, open area or surface; a stretch"],
+    ["C", "a minor fight or battle; or to take part in one"],
+    ["D", "a long journey by a group to explore or do battle"],
+    ["E", "a particular area of land; or land under a government's control"],
+    ["F", "something added to make up for what is missing; or to add to"]
+   ],
+   "items": [
+    {"w": "skirmish",   "a": "C"},
+    {"w": "territory",  "a": "E"},
+    {"w": "beneficial", "a": "A"},
+    {"w": "supplement", "a": "F"},
+    {"w": "expanse",    "a": "B"},
+    {"w": "expedition", "a": "D"}
+   ]
+  },
+  {
+   "id": "p2",
+   "name": "Part II",
+   "title": "Multiple Choice: Meaning in Context",
+   "pts": 6,
+   "each": 1,
+   "how": "Choose the word that best completes each sentence.",
+   "type": "pick",
+   "items": [
+    {"q": "Apart from a few ______, both sides kept the cease-fire that had been agreed to.",
+     "opts": ["expeditions", "skirmishes", "territories", "supplements"], "a": 1,
+     "why": "A skirmish is a minor fight or battle. The plural takes -es, because the word ends in -sh."},
+    {"q": "The two armies began to ______ in the woods a week before the major battle.",
+     "opts": ["linger", "interpret", "skirmish", "retrieve"], "a": 2,
+     "why": "The same word as a verb: to take part in a minor fight. A battle is the big one; this is the small one."},
+    {"q": "Those who eat a well-balanced diet probably do not need vitamin ______.",
+     "opts": ["conveniences", "supplements", "expeditions", "skirmishes"], "a": 1,
+     "why": "A supplement is something added to make up for something missing — here, what the food leaves out."},
+    {"q": "Each summer I ______ my allowance with the money I earn from a paper route.",
+     "opts": ["accompany", "interpret", "supplement", "invaluable"], "a": 2,
+     "why": "The same word as a verb: to add to. The noun and the verb are spelled exactly the same."},
+    {"q": "A dog will defend its ______ against any other dog that comes near the garden.",
+     "opts": ["territory", "expedition", "captivity", "expanse"], "a": 0,
+     "why": "A particular area of land — the patch an animal treats as its own. An expanse is wide and open; a territory is held."},
+    {"q": "The island of Guam is a ______ of the United States.",
+     "opts": ["convenience", "skirmish", "supplement", "territory"], "a": 3,
+     "why": "The second meaning: a land area under the control of a particular group or government."}
+   ]
+  },
+  {
+   "id": "p3",
+   "name": "Part III",
+   "title": "Write the Word",
+   "pts": 5,
+   "each": 1,
+   "how": "Write the vocabulary word on each line. Spelling counts.",
+   "type": "write",
+   "items": [
+    {"q": "A noun meaning a minor fight or battle:", "ok": ["skirmish"],
+     "why": "Skirmish. A battle is the big one; this is the small one that happens before or beside it."},
+    {"q": "A verb meaning to add to something that is not enough on its own:",
+     "ok": ["supplement"],
+     "why": "Supplement. The noun and the verb are spelled the same — only the job in the sentence changes."},
+    {"q": "A noun meaning an area of land held by a group or a government:",
+     "ok": ["territory"],
+     "why": "Territory. Its other meaning is any particular area of land, such as the patch a dog defends."},
+    {"q": "The plural of the word for a small battle — the ending changes:",
+     "ok": ["skirmishes"],
+     "why": "Skirmishes. A word ending in -sh takes -es, not -s."},
+    {"q": "The plural of the word for an area of land — the y changes:",
+     "ok": ["territories"],
+     "why": "Territories. The y turns into -ies."}
+   ]
+  },
+  {
+   "id": "p4",
+   "name": "Part IV",
+   "title": "Parts of Speech",
+   "pts": 5,
+   "each": 1,
+   "how": "Write noun, verb, adjective or adverb for the bold word as it is used.",
+   "type": "pos",
+   "items": [
+    {"q": "Apart from a few <b>skirmishes</b>, both sides kept the cease-fire.",
+     "a": "noun",
+     "why": "A noun — the fights themselves. You can count them, which is the giveaway: a few of them."},
+    {"q": "I <b>supplement</b> my allowance with earnings from a paper route.",
+     "a": "verb",
+     "why": "A verb — it is something I do to my allowance."},
+    {"q": "The two sides began to <b>skirmish</b> before the major battle.",
+     "a": "verb",
+     "why": "A verb. The <i>to</i> in front of it is the clue: began to skirmish."},
+    {"q": "The island of Guam is a <b>territory</b> of the United States.",
+     "a": "noun",
+     "why": "A noun — the thing Guam is. Territory is only ever a noun, whichever of its two meanings is in play."},
+    {"q": "Those who eat a well-balanced diet do not need vitamin <b>supplements</b>.",
+     "a": "noun",
+     "why": "A noun here — the things themselves, the pills in the bottle. The same word was a verb two questions ago."}
+   ]
+  },
+  {
+   "id": "p5",
+   "name": "Part V",
+   "title": "Application & Critical Thinking",
+   "pts": 6,
+   "each": 2,
+   "how": "Answer in complete sentences, using the vocabulary word correctly.",
+   "type": "say",
+   "items": [
+
+    {"q": "Use <b>skirmish</b> and <b>territory</b> together in one logical sentence.",
+     "need": ["skirmish", "territory"],
+     "model": "The two patrols fought a brief skirmish along the edge of the disputed territory, and both sides pulled back before dark.",
+     "sense": {
+      "ask": "Picture it first: a small fight, and the piece of land somebody is claiming. Say who was fighting, and whose land it was.",
+      "show": [
+       {"of": ["fight", "fought", "battle", "soldier", "troop", "patrol", "army", "armies",
+               "shot", "shoot", "gun", "rifle", "sword", "arrow", "spear", "attack",
+               "clash", "enemy", "raid", "retreat", "pull", "wound", "brief", "short",
+               "minor", "scuffle", "struggle", "defend", "defenc", "defens", "guard",
+               "captur", "charge", "chase", "drove", "drive", "push", "held", "hold",
+               "broke", "break", "stand", "flare", "scrap", "quarrel", "argu"],
+        "why": "A skirmish is a small fight. Say who was doing the fighting, or what the fight was over."},
+       {"of": ["land", "border", "edge", "ground", "field", "forest", "wood", "hill",
+               "valley", "river", "stream", "island", "country", "nation", "state",
+               "govern", "king", "queen", "tribe", "claim", "own", "belong", "disput",
+               "mark", "patch", "farm", "village", "town", "north", "northern", "south",
+               "southern", "east", "eastern", "west", "western", "mile", "acre", "map",
+               "frontier", "boundary", "fence", "wall", "gate", "pasture", "ridge",
+               "cross", "den", "nest", "pack", "herd", "flock"],
+        "why": "A territory is a piece of land somebody holds. Say whose it was, or where it was."}
+      ],
+      "avoid": [
+       {"of": ["means", "definition", "dictionary", "is when", "is where", "is a word", "opposite of"],
+        "why": "That tells me what the words mean instead of using them. Write a sentence where they are just doing their job."}
+      ]
+     }},
+
+    {"q": "<b>Supplement</b> has two jobs on this list. Use it as a <i>verb</i>, meaning to add to something that is not enough on its own.",
+     "need": ["supplement"],
+     "model": "My brother supplements his wages by washing cars on a Saturday morning.",
+     "sense": {
+      "ask": "Say what was not enough on its own, and then say what you added to it.",
+      "note": "Nothing here can tell the verb from the noun — \"I take a vitamin supplement every morning\" satisfies both groups and is the wrong job. Spotting that is his to do against the model answer, and guessing at it with a word list would cost him right answers. Do not add a group for it without running the trials in _build/test_sense.js.",
+      "show": [
+       {"of": ["wage", "allowance", "money", "income", "earn", "pay", "salary", "pension",
+               "saving", "budget", "diet", "food", "meal", "dinner", "lunch", "breakfast",
+               "vitamin", "iron", "calcium", "protein", "lesson", "practice", "practis",
+               "training", "hour", "sleep", "supply", "stock", "wood", "coal", "reading",
+               "study", "heat", "water", "wardrobe", "shelf", "collection", "team"],
+        "why": "To supplement is to top up something that is short. Say what was short — your allowance, your dinner, your hours of practice."},
+       {"of": ["extra", "another", "second", "job", "work", "round", "route", "paper",
+               "wash", "mow", "babysit", "chore", "weekend", "saturday", "sunday",
+               "evening", "morning", "afternoon", "nut", "raisin", "fruit", "vegetable",
+               "pill", "tablet", "sell", "sold", "deliver", "tutor", "class", "club",
+               "snack", "handful", "half an hour", "twenty minutes", "on top", "as well",
+               "add", "added", "adding", "topped", "boost"],
+        "why": "Say what you actually added — the extra job, the handful of nuts, the extra half-hour."}
+      ],
+      "avoid": [
+       {"of": ["means", "definition", "dictionary", "is when", "is where", "is a word", "opposite of"],
+        "why": "That tells me what the word means instead of using it. Write a sentence where the word is just doing its job."}
+      ]
+     }},
+
+    {"q": "<b>Territory</b> has two meanings. Use it in a sentence where it means <i>land under the control of a group or a government</i> — not just a patch of ground.",
+     "need": ["territory"],
+     "model": "Guam is a small island in the Pacific, and it has been a territory of the United States for more than a century.",
+     "sense": {
+      "ask": "Name the country, the government or the group that holds the land, and say where it is.",
+      "show": [
+       {"of": ["united states", "america", "american", "government", "govern", "nation",
+               "country", "empire", "colony", "colonial", "colonist", "settler", "crown",
+               "king", "queen", "ruler", "rule", "control", "flag", "citizen", "law",
+               "capital", "state", "province", "guam", "puerto rico", "alaska", "hawaii",
+               "canada", "britain", "british", "england", "spain", "spanish", "france",
+               "french", "russia", "russian", "mexico", "australia", "india", "indian",
+               "africa", "china", "chinese", "japan", "portugal", "portuguese", "dutch",
+               "netherlands", "roman", "soviet", "union", "treaty", "annex", "claim",
+               "possess", "belong", "tribe", "chief", "council", "occupi", "occupy"],
+        "why": "Here a territory belongs to somebody — a country, a government, a tribe. Say who holds it."},
+       {"of": ["island", "land", "coast", "ocean", "pacific", "atlantic", "caribbean",
+               "sea", "border", "map", "mile", "acre", "north", "northern", "south",
+               "southern", "east", "eastern", "west", "western", "region", "area",
+               "district", "city", "town", "province", "state", "overseas", "mainland",
+               "desert", "mountain", "forest", "plain", "prairie", "arctic", "frontier",
+               "part of", "far from", "miles from", "lies", "situated"],
+        "why": "Say where it is, or what kind of place it is — an island, a stretch of coast, a region in the north."}
+      ],
+      "avoid": [
+       {"of": ["means", "definition", "dictionary", "is when", "is where", "is a word", "opposite of"],
+        "why": "That tells me what the word means instead of using it. Write a sentence where the word is just doing its job."}
+      ]
+     }}
+   ]
+  }
+ ]
+}

@@ -167,7 +167,29 @@ const TRIALS = [
    []],
   ["wwtest_l7.json", "realistic",
    ["Being realistic about the garden means admitting it will take two weekends, so I allow the time instead of hoping."],
-   []]
+   []],
+
+  /* The catch-up section: the three words page 85 held. Two of its three
+     prompts ask for a particular one of the word's two meanings, which is the
+     thing no word list can see, so the bad sentences below are the ones that
+     use the word correctly and answer the wrong question. */
+  ["wwtest_l8_extra.json", "skirmish",
+   ["A patrol of soldiers fought a short skirmish at the fence that marks the edge of our territory.",
+    "The wolves defend their territory, and a skirmish breaks out whenever a strange pack crosses the river."],
+   ["The skirmish was a skirmish and the territory was a territory.",
+    "My territory had a skirmish in it last week and it was quite good."]],
+
+  ["wwtest_l8_extra.json", "supplement",
+   ["I supplement my pocket money by mowing two lawns and washing the car every weekend.",
+    "Dad supplements our evening meal with vegetables from the allotment when the shop has run out."],
+   ["I supplement a lot and it is quite good for me.",
+    "The supplement was a supplement and I had one yesterday."]],
+
+  ["wwtest_l8_extra.json", "territory",
+   ["Puerto Rico is a territory of the United States, so its people are citizens even though it is not a state.",
+    "The Northern Territory is governed from Darwin rather than by a parliament of its own."],
+   ["A dog will defend its territory from the cat next door.",
+    "The territory was a very big territory indeed."]]
 ];
 
 G("sentences it must let through");

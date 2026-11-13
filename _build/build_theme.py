@@ -409,6 +409,21 @@ def vocab8(s):
     return Patcher(s, "vocabulary8")
 
 
+def vocab8extra(s):
+    """The three words page 85 held and the rest of List 8 never saw —
+    skirmish, supplement and territory, on a sheet of their own. Same sheet
+    program as every other week, six meanings instead of twenty-two. Config
+    only."""
+    return Patcher(s, "vocab8extra")
+
+
+def wwtest8extra(s):
+    """The catch-up section for those same three words: five parts in the
+    shape of the paper, 28 points rather than 50, because it is a section and
+    not the paper. Config only."""
+    return Patcher(s, "wwtest8extra")
+
+
 def vtest8(s):
     """Word List 8 practice forms — config only."""
     return Patcher(s, "vocabtest8")
@@ -629,6 +644,19 @@ APPS = {
     # easier section to clear it on, which is the point of the thing.
     "vocabulary/ww6-lesson8-sentences": (wwsent8, dict(app="wwsent8", shake="#card",
                                            lift=None, dragon=["s1"])),
+    # Page 85 of the word list arrived after Lesson 8 had been built, so
+    # skirmish, supplement and territory were missing from all four of its
+    # apps. They are caught up here rather than folded in: the rehearsal next
+    # door has to stay out of fifty points and the sentences set already asks
+    # for every word in its own list, so widening that list would break both.
+    # The sheet carries the dragon, as every other sheet does; on the section
+    # it sits on Part V, which is the part no amount of tapping prepares for.
+    "vocabulary/ww6-lesson8-extra": (vocab8extra, dict(app="vocab8extra",
+                                           shake="#sheet", lift=".bar",
+                                           dragon=["sheet"])),
+    "vocabulary/ww6-lesson8-extra-exam": (wwtest8extra, dict(app="wwtest8extra",
+                                           shake="#card", lift=None,
+                                           dragon=["p5"])),
     "vocabulary/ww6-lesson7":      (vocab7, dict(app="vocabulary7", shake="#sheet",
                                            lift=".bar", dragon=["sheet"])),
     "vocabulary/ww6-lesson7-test": (vtest7, dict(app="vocabtest7", shake=None, lift=None,

@@ -1,0 +1,41 @@
+{
+ "book": "Wordly Wise 3000, Book 6",
+ "lesson": "Word List 8 — the last three words",
+ "cite": "Wordly Wise 3000, Book 6, Word List 8, page 85",
+ "posOnWords": true,
+
+ "note": "Page 85 of the Word List did not come with pages 83-84, so skirmish, supplement and territory were missing from ww6_l8.json and from all four of Lesson 8's apps. They are kept in a spec of their own rather than added to that one: the rehearsal next door is out of fifty points and the sentences set already asks for every word in it, so widening the list would break both. This is the catch-up section, and everything in it is from page 85 and nowhere else.",
+
+ "bank": ["skirmish", "supplement", "territory"],
+
+ "headwords": ["skirmish", "supplement", "territory"],
+
+ "senses": [
+  {"w": "skirmish", "head": "skirmish", "first": true, "s": 0, "pos": "n.",
+   "def": "A minor fight or battle.",
+   "sent": "Apart from a few ____, both sides kept the cease-fire that had been agreed to."},
+  {"w": "skirmish", "head": "skirmish", "s": 1, "pos": "v.",
+   "def": "To take part in a minor fight or battle.",
+   "sent": "The two sides began to ____ before the major battle."},
+
+  {"w": "supplement", "head": "supplement", "first": true, "s": 0, "pos": "n.",
+   "def": "Something added to make up for something missing.",
+   "sent": "Those who eat a well-balanced diet probably do not need vitamin ____."},
+  {"w": "supplement", "head": "supplement", "s": 1, "pos": "v.",
+   "def": "To add to.",
+   "sent": "I ____ my allowance with earnings from a paper route."},
+
+  {"w": "territory", "head": "territory", "first": true, "s": 0, "pos": "n.",
+   "def": "A particular area of land.",
+   "sent": "A dog will defend its ____."},
+  {"w": "territory", "head": "territory", "s": 1, "pos": "n.",
+   "def": "A land area under the control of a particular group or government.",
+   "sent": "The island of Guam is a ____ of the United States."}
+ ],
+
+ "rounds": [
+  {"id": "r1", "name": "The three that were left off",
+   "blurb": "Six meanings over three words. Two of them do a noun's job and a verb's job, and the label on the word is the only thing that says which line it belongs on — territory is a noun twice, so either of its two words will do on either of its lines.",
+   "words": ["skirmish", "supplement", "territory"]}
+ ]
+}
