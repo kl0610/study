@@ -392,6 +392,16 @@ def dqp49(s):
     return Patcher(s, "dqp49")
 
 
+def dqp63(s):
+    """Don Quixote pages 63-70 — the chain gang bound for the galleys, the six
+    men who gave their reasons, and the lance thrust at the end of the
+    argument. Same route as the other two: the scan rendered and read by eye
+    into dq_pages_63_70.json, which every question is checked against. Page 65
+    of that stretch is a full-page plate with no story on it, so it is
+    transcribed and marked rather than asked about. Config only."""
+    return Patcher(s, "dqp63")
+
+
 def aeexp(s):
     """The Age of Exploration explorer review — ten explorers, two rounds,
     every question carrying the page it came from. Config only."""
@@ -631,6 +641,8 @@ APPS = {
     "reading/dq-p1-12":            (dqp1,  dict(app="dqp1", shake="#card", lift=None,
                                            dragon=["all"])),
     "reading/dq-p49-53":           (dqp49, dict(app="dqp49", shake="#card", lift=None,
+                                           dragon=["all"])),
+    "reading/dq-p63-70":           (dqp63, dict(app="dqp63", shake="#card", lift=None,
                                            dragon=["all"])),
     "history/ae-explorers":        (aeexp, dict(app="aeexp", shake="#card", lift=None,
                                            dragon=["match"])),

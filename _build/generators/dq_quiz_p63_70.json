@@ -1,0 +1,192 @@
+{
+ "title": "Don Quixote, pages 63–70",
+ "blurb": "The chain gang on the road to the galleys, the men who told him why they were there, and what he did about it. About six minutes.",
+ "sub": "Fourteen questions on tonight's reading, about six minutes. Just the story: what happened, and who it happened to.",
+ "cite": "Don Quixote by Miguel de Cervantes, Core Classics abridged for young readers",
+ "note": "Questions and answers are shuffled every time, so running it twice is not the same quiz twice. Get one wrong and a hint names the page.",
+ "from": "dq_pages_63_70.json",
+ "items": [
+  {
+   "page": 63,
+   "q": "Sancho recognised the party coming along the road at once. What did he say they were?",
+   "opts": [
+    "Shepherds driving their flocks to market in the next town",
+    "Pilgrims walking to a shrine, with a priest leading them in prayer",
+    "A chain gang being taken by force to row in the king's galleys",
+    "Soldiers of the king, marching down to the coast to fight the Moors"
+   ],
+   "a": 2,
+   "hint": "Sancho named them the moment he saw them, before his master had worked out what impressed meant.",
+   "why": "Sancho said it was a chain gang, impressed by the king and going to the galleys. The men on horseback with muskets were guarding them."
+  },
+  {
+   "page": 63,
+   "q": "Sancho did not agree that these men needed rescuing. What was his argument?",
+   "opts": [
+    "The king only punishes them for their crimes; he does them no wrong.",
+    "A knight should never quarrel with men carrying muskets and pikes.",
+    "The guards would never let anyone near enough to speak to the prisoners.",
+    "They had no food left, and no time to stop for anybody on the road."
+   ],
+   "a": 0,
+   "hint": "Sancho was not arguing about danger. He was arguing about justice, and about who had done the wrong.",
+   "why": "Sancho said the king, for the sake of justice, does no wrong or violence to such men but only punishes them for their crimes. Don Quixote had just called it an occasion to oppose violence."
+  },
+  {
+   "page": 63,
+   "q": "Don Quixote said the chain gang was an occasion to perform his duty. What did he say that duty was?",
+   "opts": [
+    "To serve the king wherever his officers needed him.",
+    "To oppose violence and to help those who are suffering.",
+    "To punish wrongdoers and see every crime fairly paid for.",
+    "To win glory that he could lay at the feet of Dulcinea."
+   ],
+   "a": 1,
+   "hint": "Sancho answered this one straight back, telling him the king had done the men no wrong at all.",
+   "why": "He said this was an occasion to perform his duty, which is to oppose violence and help those who are suffering. Sancho answered that the king does no wrong to such men and only punishes them for their crimes."
+  },
+  {
+   "page": 64,
+   "q": "The first convict said he was there “for falling in love.” What did he really mean?",
+   "opts": [
+    "He had run off with a rich man's daughter against her father's will.",
+    "He had written love songs that mocked the king and his officers.",
+    "He fell in love with a thief and took the blame for all her crimes.",
+    "He had stolen a basket of fine linen, and was caught in the act."
+   ],
+   "a": 3,
+   "hint": "He said his was not the sort of love Don Quixote was thinking of. What he had embraced so ardently was not a person.",
+   "why": "His affection was for a laundry basket of fine linen, and only the force of the law separated him from it. He was caught in the act, so nobody had to torture him into confessing."
+  },
+  {
+   "page": 64,
+   "q": "Don Quixote wanted to hear from each man why he was there. What did the chief guard say about the papers he was carrying?",
+   "opts": [
+    "They were forbidden by the king to speak to anyone on the road.",
+    "He had the records with him, but it was no time to read them.",
+    "He could ask whatever he liked once they had all reached the inn.",
+    "The men had nothing to say that was worth his time."
+   ],
+   "a": 1,
+   "hint": "The records were right there. The guard's objection was about the moment, not about the paperwork.",
+   "why": "The chief guard said they carried the official records of the wretches, but that it was not a convenient time to read them out. That is why Don Quixote asked each man himself instead."
+  },
+  {
+   "page": 66,
+   "q": "The second convict was called “a singer.” Among the convicts, what did that mean?",
+   "opts": [
+    "He had broken down under torture and confessed to the crime.",
+    "He had been a musician before he turned to stealing cattle.",
+    "He entertained the guards on the road to keep them in good humour.",
+    "He never stopped complaining about the weight of his chains."
+   ],
+   "a": 0,
+   "hint": "A guard had to explain it to Don Quixote, who thought singing sounded harmless enough.",
+   "why": "A guard explained that among these rogues, singing in pain means confessing under torture. The man had been tortured and confessed to stealing cattle."
+  },
+  {
+   "page": 66,
+   "q": "Why did the other convicts hate and abuse the man who had “sung”?",
+   "opts": [
+    "He had stolen cattle from their own families before he was caught.",
+    "He sang out of tune and kept the whole gang awake at night.",
+    "He confessed his guilt instead of holding out and denying it.",
+    "He was given a lighter sentence than any of them, and boasted of it."
+   ],
+   "a": 2,
+   "hint": "The convicts had a saying about it: No is as easy to say as Yes.",
+   "why": "They hated him for confessing, because he had not the nerve to go on denying his guilt. They reckon a criminal has good luck when his fate depends only on his own tongue."
+  },
+  {
+   "page": 67,
+   "q": "What did Sancho do for the weeping old man with the long gray beard?",
+   "opts": [
+    "He begged Don Quixote to buy the old man's freedom.",
+    "He took a coin out of his own pocket and gave it to him.",
+    "He shared out bread and cheese from his bundle of food.",
+    "He argued with the guards until they took the old man's collar off."
+   ],
+   "a": 1,
+   "hint": "This was Sancho acting on his own, without his master telling him to, and it cost him something.",
+   "why": "Sancho felt such compassion for the old man that he took a coin from his own pocket and gave it to him in charity."
+  },
+  {
+   "page": 67,
+   "q": "One convict wore the clothes of a student. What did he say about his own sentence?",
+   "opts": [
+    "That he would appeal to the king as soon as they reached Toledo.",
+    "That the judges had been prejudiced against him from the start.",
+    "That he would have escaped already if his neck had not been in danger.",
+    "That six years was a fair price to pay, since he was still young."
+   ],
+   "a": 3,
+   "hint": "He was the liveliest of all of them. He ended with a saying about life and hope.",
+   "why": "He said he was satisfied with the price of six years in the galleys, because he was still young, and while there is life there is hope. His neck had been about to be stretched."
+  },
+  {
+   "page": 68,
+   "q": "The last convict was chained far more heavily than the rest. Why?",
+   "opts": [
+    "He had committed more crimes than all the rest put together.",
+    "He had already escaped from the galleys twice before this journey.",
+    "He had insulted the chief guard on the road.",
+    "He was the only one condemned to death rather than to the galleys."
+   ],
+   "a": 0,
+   "hint": "An officer explained it. The answer was not about anything he had done on this particular road.",
+   "why": "An officer said he was guilty of more crimes than all the rest put together, and was so desperate and violent a ruffian that despite his shackles they always feared he would escape."
+  },
+  {
+   "page": 68,
+   "q": "What had Gines de Pasamonte left in pawn at the prison?",
+   "opts": [
+    "A fine sword he had taken from one of the officers.",
+    "The iron collar he had worn through an earlier sentence.",
+    "A book he had written telling the story of his own life.",
+    "Two hundred reals he had won from the other prisoners."
+   ],
+   "a": 2,
+   "hint": "Don Quixote asked him whether it was finished, and Gines said it could not be while he was still alive.",
+   "why": "Gines had written a clever history of his own life and left the book in pawn at the prison for two hundred reals. It told everything from his birth up to this latest sentence."
+  },
+  {
+   "page": 69,
+   "q": "Don Quixote turned to the whole chain gang and made a speech. What reason did he give for helping them?",
+   "opts": [
+    "He had once been a prisoner himself and knew what such men suffer.",
+    "He wanted them to carry word of his deeds to Dulcinea in Toboso.",
+    "He believed his enemy the enchanter had put them all in chains.",
+    "Heaven had sent him into the world to be a professor of chivalry."
+   ],
+   "a": 3,
+   "hint": "He said he had sworn to help the wretched and defend those oppressed by the strong. He said who had given him that job.",
+   "why": "He said Heaven had sent him into the world to be a professor of chivalry, and that he had sworn to help the wretched and defend those oppressed by the strong."
+  },
+  {
+   "page": 70,
+   "q": "What did the chief guard tell Don Quixote to do with himself?",
+   "opts": [
+    "Ride ahead to the next town and fetch a magistrate.",
+    "Hand over his lance and sword before anybody got hurt.",
+    "Go on his way in peace and mind the bowl on his head.",
+    "Pay the twenty ducats he had promised to one of the men."
+   ],
+   "a": 2,
+   "hint": "The guard was mocking him. He called the request pleasant foolery and brought a mouse into it.",
+   "why": "The chief guard told him to go on his way in peace, to mind the barber's bowl on his head, and not to go looking for five legs on a cat."
+  },
+  {
+   "page": 70,
+   "q": "How did the argument with the chief guard end?",
+   "opts": [
+    "The guard agreed to free the prisoners and ride away.",
+    "Don Quixote knocked him to the ground with a lance thrust.",
+    "The guard read the official records aloud to prove his point.",
+    "Don Quixote begged his pardon and rode on, leaving the men chained."
+   ],
+   "a": 1,
+   "hint": "Don Quixote had said that what can be done by fair means should not be done by force. Look at what he did a moment later.",
+   "why": "He answered that the guard was a mouse and a cat himself, then attacked the officer, who had no chance to defend himself, and drove him to the ground with a lance thrust that wounded him badly."
+  }
+ ]
+}

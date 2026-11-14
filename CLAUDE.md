@@ -389,6 +389,51 @@ The apps built under either wrong offset still cite the right pages, because
 their text was located by searching for it rather than by arithmetic. Keep doing
 that: find the sentence, then read the page number off the page it landed on.
 
+### Don Quixote, which cannot be read by machine
+
+The Core Classics Don Quixote is a scan: no text layer, nothing on this machine
+reads it. `pypdf` returns empty strings for it. The pages are rendered and read
+by eye instead, and what was read goes into a `dq_pages_<range>.json`, which is
+the record every question is checked against. **Offset: printed = PDF index + 13
+for the reader as PyMuPDF indexes it from zero** — confirmed by rendering one
+page and reading its running head, which is the only way to confirm it.
+
+```python
+import fitz                                    # PyMuPDF; fitz name is deprecated
+doc = fitz.open(PDF)
+doc[printed + 13].get_pixmap(dpi=190).save("p.png")        # then look at it
+```
+
+Say plainly what this buys: for this book **"verified" means "matches what was
+transcribed", not "matches the book"**. The transcription is a summary of the
+action, not the book's text.
+
+A night's quiz is `dq_quiz_<range>.json` built by `gen_dq.py`, and the build
+refuses it unless every page of the stretch is asked about, every answer and
+hint shares vocabulary with the page it cites, and the answers are not findable
+without reading. Three of those rules were added the night of pages 63–70:
+
+1. **A page that is nothing but a full-page plate carries `"art": true`.** Page
+   65 of that stretch is a Doré engraving whose caption only repeats a line
+   from page 64. It is still transcribed, so the record has no silent hole, but
+   it is exempt from "every page is asked about" — and the exemption runs one
+   way only: a question that cites the plate is refused, because reading a
+   caption is not reading the story.
+2. **The right answer may not be the shortest option, as a habit.** The longest
+   was already refused; the mirror was missing, and the first draft of pages
+   63–70 had the right answer shortest on six cards out of fourteen. One is
+   chance. A third of the quiz is a rule he can learn instead of the book.
+3. **The blurb and the subtitle have to agree with the question count.** That
+   subtitle said "Thirteen questions" over fourteen of them while the hub tile
+   and the card badge both said 14. Nothing could see it, because the subtitle
+   is free text. Only opening the page in a browser and looking at it did.
+
+The teacher sends a short answer key with her own questions for the stretch.
+Check the quiz covers all of it — pages 63–70 needed one more question for the
+half of hers that asked what Don Quixote said his duty was — but ask it as
+multiple choice with one defensible answer rather than copying her wording, and
+keep the distractors to things the book contradicts.
+
 ### Ten minutes a section, and what that buys
 
 **A section is one night's homework and has to be answerable in ten minutes end

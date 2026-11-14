@@ -113,6 +113,32 @@ def check(spec, src):
         bad.append("%d questions is about %.0f minutes, and ten was the limit"
                    % (len(spec["items"]), mins))
 
+    # The blurb and the subtitle are the only two places that say the size of
+    # the quiz in words, and they are the two places that go stale when a
+    # question is added. The subtitle of pages 63-70 said "Thirteen questions"
+    # over fourteen of them, while the hub tile and the card badge both said
+    # 14 -- a thing no test could see and only looking at the page caught.
+    WORDS = {"one": 1, "two": 2, "three": 3, "four": 4, "five": 5, "six": 6,
+             "seven": 7, "eight": 8, "nine": 9, "ten": 10, "eleven": 11,
+             "twelve": 12, "thirteen": 13, "fourteen": 14, "fifteen": 15,
+             "sixteen": 16, "seventeen": 17, "eighteen": 18, "nineteen": 19,
+             "twenty": 20}
+
+    def spoken(n):
+        return re.compile(r"\b(%s|\d+)\s+%s\b"
+                          % ("|".join(WORDS), n), re.I)
+
+    for field in ("sub", "blurb"):
+        text = spec.get(field) or ""
+        for noun, want in (("questions", len(spec["items"])),
+                           ("minutes", int(round(mins)))):
+            for said in spoken(noun).findall(text):
+                got = WORDS.get(said.lower(), None)
+                got = int(said) if got is None and said.isdigit() else got
+                if got is not None and got != want:
+                    bad.append("the %s says %s %s, and there are %d"
+                               % (field, said, noun, want))
+
     # The evidence rows are what he draws on for a piece of writing, and only
     # a quiz that sets a big question needs them. A later segment read purely
     # for what happened in the story has nothing to collect evidence for, and
@@ -123,16 +149,45 @@ def check(spec, src):
             bad.append("only %d questions are marked as evidence, and the big "
                        "question needs three examples" % len(ev))
 
+    # Refusing only the longest answer catches half of the tell. A right
+    # answer that is the shortest thing on the card reads as the plain one
+    # among four elaborate guesses, and the pages 63-70 draft had six of them
+    # out of thirteen before anyone looked. One is chance; a third of the
+    # quiz is a rule he can learn instead of the book.
+    shortest = [it for it in spec["items"]
+                if 0 <= it.get("a", -1) < len(it["opts"])
+                and len(it["opts"][it["a"]]) < min(
+                    [len(o) for i, o in enumerate(it["opts"]) if i != it["a"]]
+                    or [0])]
+    if len(shortest) * 3 > len(spec["items"]):
+        bad.append("the right answer is the shortest option on %d of %d "
+                   "questions, which is a habit he will find before he finds "
+                   "the story: %s" % (len(shortest), len(spec["items"]),
+                                      "; ".join(i["q"][:34] for i in shortest[:4])))
+
     if len(spread) < 3:
         bad.append("the answers only ever sit at %s, which is a pattern he will "
                    "find before he finds the story" % sorted(spread))
 
     # A quiz that skips pages he was told to read leaves him guessing which
-    # parts mattered.
-    missing = sorted(set(int(p) for p in known) - pages_used)
+    # parts mattered. The one exception is a page that is nothing but a
+    # full-page plate: there is no story on it to ask about, and pages 63-70
+    # has one at 65. It is still transcribed, so the record of what was read
+    # has no silent hole in it, and it carries "art": true rather than being
+    # quietly left out of the file.
+    art = set(int(p) for p, v in known.items() if v.get("art"))
+    missing = sorted(set(int(p) for p in known) - pages_used - art)
     if missing:
         bad.append("no question touches page(s) %s"
                    % ", ".join(str(m) for m in missing))
+
+    # The exemption only runs one way. A question that cites the plate is a
+    # question about a caption, which is looking at a picture rather than
+    # reading the story, and the caption only repeats a line from the page
+    # before it anyway.
+    for p in sorted(art & pages_used):
+        bad.append("page %d is a full-page illustration, and a question cites "
+                   "it as though there were a story on it" % p)
 
     if bad:
         raise SystemExit("  refusing to build:\n    " + "\n    ".join(bad))
