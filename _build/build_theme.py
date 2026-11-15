@@ -402,6 +402,15 @@ def dqp63(s):
     return Patcher(s, "dqp63")
 
 
+def dqp71(s):
+    """Don Quixote pages 71-79 — the rescue going wrong, the donkey stolen out
+    from under a sleeping Sancho, and the knight deciding to go mad on
+    purpose. Scan rendered and read by eye into dq_pages_71_79.json, which
+    every question is checked against. Two full-page plates in this stretch,
+    at 76 and 78: transcribed, marked, not asked about. Config only."""
+    return Patcher(s, "dqp71")
+
+
 def aeexp(s):
     """The Age of Exploration explorer review — ten explorers, two rounds,
     every question carrying the page it came from. Config only."""
@@ -643,6 +652,8 @@ APPS = {
     "reading/dq-p49-53":           (dqp49, dict(app="dqp49", shake="#card", lift=None,
                                            dragon=["all"])),
     "reading/dq-p63-70":           (dqp63, dict(app="dqp63", shake="#card", lift=None,
+                                           dragon=["all"])),
+    "reading/dq-p71-79":           (dqp71, dict(app="dqp71", shake="#card", lift=None,
                                            dragon=["all"])),
     "history/ae-explorers":        (aeexp, dict(app="aeexp", shake="#card", lift=None,
                                            dragon=["match"])),

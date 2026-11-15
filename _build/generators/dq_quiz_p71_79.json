@@ -1,0 +1,192 @@
+{
+ "title": "Don Quixote, pages 71–79",
+ "blurb": "How the rescue went wrong, what Pasamonte took in the night, and the new idea Don Quixote had in the mountains. About six minutes.",
+ "sub": "Fourteen questions on tonight's reading, about six minutes. Just the story: what happened, and who it happened to.",
+ "cite": "Don Quixote by Miguel de Cervantes, Core Classics abridged for young readers",
+ "note": "Questions and answers are shuffled every time, so running it twice is not the same quiz twice. Get one wrong and a hint names the page.",
+ "from": "dq_pages_71_79.json",
+ "items": [
+  {
+   "page": 71,
+   "q": "While the guards were dithering, what did Sancho do?",
+   "opts": [
+    "He helped Gines de Pasamonte get his shackles off him.",
+    "He gathered up the stones the convicts were throwing.",
+    "He rode off to the mountains and waited there for his master.",
+    "He tried to pull his master back from the wounded officer."
+   ],
+   "a": 0,
+   "hint": "He helped one convict in particular, and that convict was the first of the whole gang to get loose.",
+   "why": "Sancho gave Gines de Pasamonte a hand at removing his shackles, and Gines was the first in the gang to get free. He then seized the wounded guard's sword and pistol."
+  },
+  {
+   "page": 71,
+   "q": "Don Quixote would not leave until he had given the freed convicts an order. What was it?",
+   "opts": [
+    "Go back to the galleys once the guards had gone home.",
+    "Carry the wounded guard to the nearest inn for help.",
+    "Scatter into the mountains and hide from the officers of justice.",
+    "Go to Toboso and lay the chain at Lady Dulcinea's feet."
+   ],
+   "a": 3,
+   "hint": "He reminded them how much they owed him first. The errand he gave them was about telling someone what he had done.",
+   "why": "He commanded them to go to Toboso, lay the chain that had bound them at the feet of Lady Dulcinea, and tell how they were freed by his heroic feats. After that they could go where they pleased."
+  },
+  {
+   "page": 72,
+   "q": "Gines spoke for all the convicts and refused. What did he say they had to do instead?",
+   "opts": [
+    "Go home and beg their families to shelter them.",
+    "Scatter in all directions and hide from justice.",
+    "Follow Don Quixote and serve him as his own men.",
+    "Take the guards' weapons and wait for the next gang."
+   ],
+   "a": 1,
+   "hint": "They were escaped prisoners on an open road. Gines was thinking about what would happen next, not about Toboso.",
+   "why": "He said they must scatter and hide from the pursuit of justice. He offered instead that each of them would say prayers for their rescuer, since they could do that as they ran and hid."
+  },
+  {
+   "page": 72,
+   "q": "Don Quixote flew into a rage and demanded Pasamonte carry the chain himself. What did Pasamonte do?",
+   "opts": [
+    "He drew the pistol and fired it over the knight's head.",
+    "He agreed, then slipped away as soon as it got dark.",
+    "He signalled the convicts back and they threw stones.",
+    "He laughed and told the others to say prayers for him."
+   ],
+   "a": 2,
+   "hint": "Pasamonte had worked out by now what sort of man he was arguing with, and stopped arguing.",
+   "why": "Seeing the mental state of the man he was dealing with, Pasamonte motioned the convicts to step back a few paces, and from there they began throwing a hurricane of stones."
+  },
+  {
+   "page": 73,
+   "q": "What did Pasamonte beat Don Quixote with once he was on the ground?",
+   "opts": [
+    "The brass barber's basin he wore for a helmet.",
+    "The chain that had bound the convicts together.",
+    "The flat of the wounded guard's sword.",
+    "The lance Don Quixote had used on the officer."
+   ],
+   "a": 0,
+   "hint": "Both he and Rocinante were already flat on the ground, badly bruised. What came next was the thing he wore on his head.",
+   "why": "Pasamonte beat him repeatedly with the brass barber's basin, then banged the basin on the ground until it was almost smashed to pieces."
+  },
+  {
+   "page": 73,
+   "q": "What did the convicts take before they scattered?",
+   "opts": [
+    "Rocinante's saddle and bridle, and Sancho's donkey.",
+    "The food they had taken from the funeral procession.",
+    "The lance and shield, leaving him nothing to fight with.",
+    "His jacket and trousers, and Sancho's cloak as well."
+   ],
+   "a": 3,
+   "hint": "They took clothes. Sancho lost something too, even though he had hidden behind his donkey.",
+   "why": "They stripped off Don Quixote's jacket and trousers, and took Sancho's cloak as well, then hurriedly divided the spoils and made off in different directions."
+  },
+  {
+   "page": 74,
+   "q": "Where did the two of them go to hide after the beating?",
+   "opts": [
+    "Back to the inn where the blanket-tossing happened.",
+    "Home to their village to wait for the search to pass.",
+    "To the gorges of the Sierra Morena, by night.",
+    "To Toboso, to deliver the chain themselves."
+   ],
+   "a": 2,
+   "hint": "They rode until night, talking about how ungrateful some people are, and stopped among two rocks and some cork trees.",
+   "why": "They made for the mountains and by night time arrived at the gorges of the Sierra Morena, choosing a resting place between two rocks in a grove of cork trees."
+  },
+  {
+   "page": 74,
+   "q": "Who turned up at the very spot where they had stopped to rest?",
+   "opts": [
+    "The old goatherd who knew the mountains.",
+    "Pasamonte, who had wandered the same way.",
+    "The chief guard, who had come after them.",
+    "A party of brothers in white carrying a litter."
+   ],
+   "a": 1,
+   "hint": "They had just settled between two rocks in a grove of cork trees. Fate brought somebody else along in the same direction.",
+   "why": "Fate had it that the villain Pasamonte wandered in the same direction and arrived at the very spot where master and man were resting."
+  },
+  {
+   "page": 75,
+   "q": "Pasamonte wanted the donkey rather than the horse. Why?",
+   "opts": [
+    "The horse was lame and could not have carried him very far.",
+    "Sancho was asleep on the horse and would have woken.",
+    "He had already been promised the donkey by Don Quixote.",
+    "The horse was worth nothing, but the donkey was sturdy."
+   ],
+   "a": 3,
+   "hint": "He cast a covetous eye over both animals while they slept, and judged which of the two was worth having.",
+   "why": "He judged the horse to be of little use and of no cash value, but the donkey was sturdy. Taking it was the hard part, because Sancho was asleep on her back."
+  },
+  {
+   "page": 75,
+   "q": "How did Pasamonte get the donkey out from under a sleeping Sancho?",
+   "opts": [
+    "He woke Sancho and told him to get down from it.",
+    "He lifted Sancho off and laid him on the ground.",
+    "He propped the saddle on four stakes and led her out.",
+    "He waited for Sancho to roll off the saddle in his sleep."
+   ],
+   "a": 2,
+   "hint": "Sancho never woke up. He only found out at daybreak, when he stretched and fell.",
+   "why": "He cut four stakes of wood, propped them under the four corners of the saddle, gently loosened it and led the donkey out, leaving Sancho still mounted and undisturbed."
+  },
+  {
+   "page": 77,
+   "q": "What finally calmed Sancho down after he lost Dapple?",
+   "opts": [
+    "Don Quixote promised him three donkeys from home.",
+    "Don Quixote gave him the gold coins from the case.",
+    "Don Quixote let him ride Rocinante for the day.",
+    "Don Quixote swore to hunt Pasamonte down for him."
+   ],
+   "a": 0,
+   "hint": "His master did not get the donkey back. He offered him something to make up for it instead.",
+   "why": "Sancho calmed down at last after Don Quixote promised him three of the donkeys he had at home. They then ate what was left of their food and rode on."
+  },
+  {
+   "page": 77,
+   "q": "What was inside the rotten leather case they found in the wilderness?",
+   "opts": [
+    "A letter addressed to Lady Dulcinea of Toboso.",
+    "Linen, a pocket-book of poems and gold coins.",
+    "A chain and the papers of the freed convicts.",
+    "Bread and wine, and a map of the Sierra Morena."
+   ],
+   "a": 1,
+   "hint": "Don Quixote was taken with one thing in it and Sancho was taken with another.",
+   "why": "The case held linen underwear, a pocket-book and more than a hundred gold coins. The pocket-book had sad love poems in it, which Don Quixote read with deep interest, while Sancho pocketed the money."
+  },
+  {
+   "page": 79,
+   "q": "Don Quixote decided to go mad on purpose. Whose example was he following?",
+   "opts": [
+    "The lovesick shepherd who was haunting those mountains.",
+    "Gines de Pasamonte, who wrote his own life story.",
+    "The goatherd who told them about the madman.",
+    "Amadis of Gaul, who went mad for Angelica the Fair."
+   ],
+   "a": 3,
+   "hint": "Not anybody he had met. He remembered it out of a book, from a knight in a wilderness like this one.",
+   "why": "He remembered that Amadis of Gaul had gone mad in a similar wilderness to act out his love for Angelica the Fair, who had rejected him, and decided to imitate his example."
+  },
+  {
+   "page": 79,
+   "q": "Sancho objected that Lady Dulcinea had done nothing to deserve it. What did Don Quixote answer?",
+   "opts": [
+    "That going mad for no reason at all is the clever part.",
+    "That Dulcinea had in fact refused him long ago.",
+    "That Sancho could never understand a true knight's heart.",
+    "That he had promised Amadis of Gaul he would do it."
+   ],
+   "a": 0,
+   "hint": "He agreed with Sancho that he had no cause, and said that was exactly the point of it.",
+   "why": "He said there is nothing much in a knight-errant going mad for a good reason, and that the thing is to do it for no reason whatever. He would stay mad until Sancho carried a letter to her and brought an answer back."
+  }
+ ]
+}
