@@ -1,0 +1,84 @@
+{
+ "book": "Don Quixote, Core Classics abridged edition",
+ "author": "Miguel de Cervantes",
+ "note": "A summary of what happens on each printed page of 80-85, read off the Core Classics scan page by page. The book is a scan with no text layer, so this file is the record of that reading and is what every question is checked against. These are notes on the action, not the book's text. Page 84 is a full-page plate whose caption only repeats a line from page 85, so it is marked and not asked about. Chapter 6 ends on page 85.",
+ "chapter": "Flight into the Mountains and Sancho's Errand (the close of it)",
+ "pages": {
+  "80": {
+   "facts": [
+    "A half-page engraving sits at the top, captioned with the line from page 79 about the madman telling Don Quixote of his romantic troubles in his more normal moments",
+    "Sancho said earnestly that in some matters he cannot understand his master, who says and does things that make him think knight-errantry is mostly make-believe and that Don Quixote knows it",
+    "Don Quixote asked whether it was possible Sancho had been with him all this time without being sure of that",
+    "He answered that of course the affairs of knights are mostly delusions",
+    "The reason he gave begins here and finishes on the next page: it is because of the sorcerers"
+   ]
+  },
+  "81": {
+   "facts": [
+    "Don Quixote finished his answer: there are many wicked sorcerers who transform everything in order to frustrate and mislead knights",
+    "He said they can see things like windmills and barber's basins as plainly as anybody else, but they can also see that those can be disguises for giants or magic helmets",
+    "As they talked they came to the foot of a rugged mountain with a green and pleasant valley on the side of it, through which a small creek ran",
+    "Don Quixote declared this to be the place where he would stay, alone and naked, while Sancho went on his errand to the Princess of Toboso",
+    "Sancho suggested using Rocinante to speed his journey, and Don Quixote agreed",
+    "Don Quixote desired that Sancho not leave at once, but wait and witness him tearing up his clothes, throwing his arms around wildly, knocking his head against rocks, and other acts suggesting insanity",
+    "Sancho begged him for the love of heaven to be careful how he trifled with his head, since he might hit it against a sharp point of rock and put an end to himself",
+    "Sancho suggested instead that he ram his head against water, or something soft like cotton, and let Sancho report what he pleased to Lady Dulcinea, since it was all make-believe anyway",
+    "Don Quixote refused, saying his madness must be no mere mockery",
+    "He allowed that Sancho could leave him some lint and ointment to dress his wounds while he was away"
+   ]
+  },
+  "82": {
+   "facts": [
+    "Sancho said that if his master would write the letter at once he would hasten off with it and return without delay to take care of him",
+    "Don Quixote wrote out the letter on a sheet of paper taken from the pocketbook",
+    "He told Sancho to have it recopied in good handwriting before giving it to Lady Dulcinea",
+    "He said she does not know his handwriting, so it would not matter",
+    "He said that during the twelve years he has been in love with her he has only seen her three times, and she has never bothered to cast her eyes on him",
+    "He explained this by the seclusion she is kept in by her father, Lorenzo Corchuelo",
+    "Sancho exclaimed in astonishment: the daughter of Lorenzo Corchuelo, who is named Aldonza, is the Lady Dulcinea del Toboso?",
+    "Don Quixote answered that it is she",
+    "Sancho said he knows her very well, and a fine strapping girl she is too",
+    "He said she can lift as much as the strongest man in the parish and could hold her own against any knight that has ever ridden a horse",
+    "He praised her splendid voice, remembering a day she climbed the church tower to call to laborers in the fields and was heard a mile away as if she stood beside them",
+    "He said she makes a game of everybody and never fails to pay back a joker, with interest"
+   ]
+  },
+  "83": {
+   "facts": [
+    "A half-page engraving sits at the top, captioned with Don Quixote writing the letter and then reading it aloud",
+    "Sancho finished his thought from the page before: what is the good of sending vanquished knights to her?",
+    "When they find her threshing in the barn or working in the fields and fall on their knees before her, she may only laugh at them or think they are making fun of her, which might be worse for them",
+    "Don Quixote called Sancho an eternal babbler who lacks understanding, as he had told him before",
+    "He said the lady in question serves his purpose admirably",
+    "He asked whether Sancho, ignorant and foolish man, thought that the famous ladies in books and ballads are really ladies of flesh and blood",
+    "He answered himself: certainly not, they are mostly imaginary persons",
+    "He said it is enough for him if he imagines Aldonza to be the most beautiful, most gracious princess in the world"
+   ]
+  },
+  "84": {
+   "art": true,
+   "facts": [
+    "A full-page Dore engraving of a man tumbling head over heels on a rock in a mountain gorge, watched by a knight above and a squire on a donkey below",
+    "The caption beneath repeats the line from page 85 about tearing off his clothes, dancing in the air, and tumbling over a few times",
+    "There is no story text on this page"
+   ]
+  },
+  "85": {
+   "facts": [
+    "Sancho answered that his worship is always right and that he is a mere fool, and asked for the letter so he could be on his way",
+    "Don Quixote wrote the letter and then read it aloud to Sancho, so that if by any chance it was lost he would know its general message",
+    "The letter was addressed to a High and Sovereign Lady",
+    "It said that he who is stabbed by the point of absence and pierced by arrows of love greets sweet Dulcinea del Toboso with wishes for that health which he does not enjoy himself",
+    "It said that if her beauty despises him and her disdain still follows him, then though he is used to suffering he can hardly endure a sickness so severe and so lasting",
+    "It said his good squire Sancho would tell her of the condition he is reduced to on her account",
+    "It said that if it is her pleasure to accept him he is hers, and if not she may do what seems good to her, for his death will only mean the end of her cruelty and of his own passion",
+    "The letter was signed The Knight of the Sorrowful Face",
+    "Sancho said how magnificent a composition it was and then mounted Rocinante and prepared to ride away",
+    "Don Quixote ordered him to stay and watch some mad tricks",
+    "Don Quixote then tore off his clothes, danced in the air and tumbled himself over a few times",
+    "The result was that when Sancho left he felt he could honestly swear that his master was crazy",
+    "Chapter 6 ends here"
+   ]
+  }
+ }
+}

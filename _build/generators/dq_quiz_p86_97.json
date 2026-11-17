@@ -1,0 +1,179 @@
+{
+ "title": "Don Quixote, pages 86–97",
+ "blurb": "The priest and the barber lay a trap, Sancho invents an errand he never went on, a giant turns out to be full of wine, and both men get home. All of Chapter 7.",
+ "sub": "Thirteen questions on tonight's reading, about six minutes. Just the story: what happened, and who it happened to.",
+ "cite": "Don Quixote by Miguel de Cervantes, Core Classics abridged for young readers",
+ "note": "Questions and answers are shuffled every time, so running it twice is not the same quiz twice. Get one wrong and a hint names the page.",
+ "from": "dq_pages_86_97.json",
+ "items": [
+  {
+   "page": 86,
+   "q": "Sancho was on the high road for Toboso when he sighted the inn where he had been tossed in a blanket. Who came out of it?",
+   "opts": [
+    "Gines de Pasamonte, still wearing his gypsy disguise.",
+    "The innkeeper, demanding payment for the earlier visit.",
+    "The priest and the barber from his own native village.",
+    "Two officers of justice hunting the escaped galley slaves."
+   ],
+   "a": 2,
+   "hint": "They were friends of his master, and they were already out searching for him. They wanted to know whose horse Sancho was riding.",
+   "why": "He recognized at once the priest and the barber from his native village, two friends of Don Quixote who were in fact searching for the poor gentleman. Seeing Sancho on his master's horse, they demanded an account of him."
+  },
+  {
+   "page": 87,
+   "q": "What plan did the priest and the barber settle on that night at the inn?",
+   "opts": [
+    "To pretend Lady Dulcinea had ordered him to come to Toboso.",
+    "To tie the knight to his horse and lead him home by force.",
+    "To burn the rest of his books while he was in the mountains.",
+    "To send Sancho home and go into the mountains themselves."
+   ],
+   "a": 0,
+   "hint": "They wanted the knight back in his own house, and they needed something he would obey without a fight. Sancho was carefully coached in the part he had to play.",
+   "why": "They concluded the most promising plan was to lure him away by pretending that the Lady Dulcinea had commanded his presence at Toboso, and they instructed Sancho carefully in the part he was to play in carrying it out."
+  },
+  {
+   "page": 88,
+   "q": "Sancho reported that he had found Lady Dulcinea. Doing what?",
+   "opts": [
+    "Stringing pearls on gold thread in a stately apartment.",
+    "Riding out from the city gate with two of her damsels.",
+    "Standing at the fence of her yard, waiting for news of him.",
+    "Winnowing bushels of wheat in her father's own backyard."
+   ],
+   "a": 3,
+   "hint": "His master guessed something far grander. What Sancho described was farm work, and he said he helped her move sacks while he waited.",
+   "why": "Don Quixote supposed he had found his Queen of Beauty stringing pearls on gold thread, but Sancho said he found her winnowing bushels of wheat in her father's backyard, and that he helped move sacks while her hands were full."
+  },
+  {
+   "page": 89,
+   "q": "What did Sancho say Lady Dulcinea did with the letter?",
+   "opts": [
+    "She kissed it and put it away without breaking the seal.",
+    "She tore it up, because she can neither read nor write.",
+    "She had the clerk read it aloud to her.",
+    "She sent it back with a message he was to repeat by heart."
+   ],
+   "a": 1,
+   "hint": "He explained it by a secret of hers that she did not want anybody in Toboso to find out about her.",
+   "why": "Sancho said that when she stopped working she picked up the letter and ripped it up, because she can neither read nor write and did not want her secret to become known by asking anybody to read it to her."
+  },
+  {
+   "page": 89,
+   "q": "Don Quixote supposed she had given Sancho a jewel when he departed. What had she given him?",
+   "opts": [
+    "A piece of bread and cheese, and nothing else at all.",
+    "A ring off her own hand, which Sancho had lost on the road.",
+    "Nothing, for she had gone back inside.",
+    "A lock of her hair, wrapped up in a square of white linen."
+   ],
+   "a": 0,
+   "hint": "She gave him no jewel at all. What he came away with was something plain to eat on the road.",
+   "why": "Don Quixote supposed she had given him a jewel when he departed, and Sancho answered that all she gave him was a piece of bread and cheese."
+  },
+  {
+   "page": 90,
+   "q": "Don Quixote could not see how Sancho had got all the way to Toboso and back in only three days. How did he settle it in his own mind?",
+   "opts": [
+    "He decided Sancho had counted the days of the journey wrong.",
+    "He decided Toboso must be nearer than the maps had told him.",
+    "A friendly magician can carry a knight a thousand leagues a day.",
+    "He decided that Rocinante had been enchanted by Lady Dulcinea herself."
+   ],
+   "a": 2,
+   "hint": "Sancho blamed magic, blushing as he said it, and his master took the idea up and improved on it. The fat squire trudged along on foot while he talked.",
+   "why": "Don Quixote said that is it, and that it often happens that a friendly magician will enable a knight to get over a thousand leagues in a day."
+  },
+  {
+   "page": 91,
+   "q": "The priest told a story about why he and the barber were on the road. What was the sting in it?",
+   "opts": [
+    "He said the knight's own niece had paid them to come after him.",
+    "The highwaymen who robbed them were the galley slaves he freed.",
+    "He said the inheritance had been left to Don Quixote instead.",
+    "He named Sancho as the man who told them where to look."
+   ],
+   "a": 1,
+   "hint": "He said they were robbed on the way to Seville to collect an inheritance. He described the thieves as a pack of wolves let loose by somebody valiant and mad.",
+   "why": "The priest said four highwaymen stripped them of everything worth taking, and that the thieves were part of a gang of galley slaves set free by a man valiant enough to overcome their guards and mad enough to let loose such a pack of wolves. Sancho cried out that it was his master who did that job."
+  },
+  {
+   "page": 92,
+   "q": "How did Sancho get Dapple back?",
+   "opts": [
+    "The priest bought her back from a gypsy at the next village.",
+    "She wandered into the inn yard on her own during the night.",
+    "Don Quixote won her in a fight with the man who had her.",
+    "They met Pasamonte riding her, and the thief fled on foot."
+   ],
+   "a": 3,
+   "hint": "He was plodding along full of regrets about her when a man on a gray donkey came toward them. Two looks were all he needed.",
+   "why": "A single glance convinced Sancho the man was riding his donkey, and a second look satisfied him the rider was Gines de Pasamonte disguised as a gypsy. The thief jumped down and ran off at a speed that made pursuit hopeless, and Sancho ran to Dapple and hugged her neck."
+  },
+  {
+   "page": 93,
+   "q": "Sancho burst in shouting that his master was battling an enormous giant. What was Don Quixote really doing?",
+   "opts": [
+    "Slashing the innkeeper's wine-bags in his sleep with his sword.",
+    "Fighting the landlord, who had come to collect the bill at last.",
+    "Beating the blankets they had tossed him in years before.",
+    "Wrestling the barber for the basin he wore as a helmet."
+   ],
+   "a": 0,
+   "hint": "He was standing in his shirt with a little red nightcap on his head. The innkeeper guessed what had happened before anyone opened the door.",
+   "why": "The room was flooded with wine from the gashed wine-bags. Don Quixote stood in his shirt with a little red nightcap on his head and a blanket over his left arm, slashing with his sword all around him and seeming to be sleepwalking."
+  },
+  {
+   "page": 94,
+   "q": "How did Don Quixote finally travel home to his village?",
+   "opts": [
+    "On Rocinante, with the priest leading the horse by the bridle.",
+    "On foot, with Sancho and the barber holding him up.",
+    "Stretched out in an ox cart hired for that purpose.",
+    "In a cage the barber built, since he would not go willingly."
+   ],
+   "a": 2,
+   "hint": "He was too ill to set out for several days, and when the party did go he was not sitting up at all.",
+   "why": "It was several days before the knight was well enough to resume the homeward journey, which he now made stretched out in an ox cart hired for that purpose. The party reached the village at noon on Sunday."
+  },
+  {
+   "page": 95,
+   "q": "Teresa asked her husband what profit he had to show for deserting his family. What smoothed her temper?",
+   "opts": [
+    "The promise that their daughter Mary would be a countess.",
+    "The news that Dapple had come home sound and in good health.",
+    "His word that this was his last journey.",
+    "The hundred gold crowns he brought home, and his wages."
+   ],
+   "a": 3,
+   "hint": "The glory he claimed did not impress her. She thought as little of that as of the prospect of being the governor of an island.",
+   "why": "Her ruffled temper was smoothed when she learned he had come home with a hundred gold crowns, plus the wages he earned from the trip. As for the glory, she thought as little of that as of being the governor of an island."
+  },
+  {
+   "page": 96,
+   "q": "Teresa could not see the point of an island at all. What did she suggest, if Sancho was set on being a governor?",
+   "opts": [
+    "That he take Dapple along, since the pack saddle is in good order.",
+    "That he take their son along and bring him up to the business.",
+    "That he ask Don Quixote for the money in advance this time.",
+    "That he write home every week so the family would know."
+   ],
+   "a": 1,
+   "hint": "Her suggestion was about one of the children. It was the boy she had in mind, not their daughter.",
+   "why": "Teresa said that if he is determined to be a governor he should take their son Sancho with him and bring him up to the business. Sancho said he would send for the boy with plenty of money for his expenses."
+  },
+  {
+   "page": 97,
+   "q": "Sampson Carrasco encouraged Don Quixote to ride out a third time, which surprised the niece and housekeeper. Why did he do it?",
+   "opts": [
+    "He wanted to ride along and see the adventures for himself.",
+    "He had read the book of their adventures and believed every word.",
+    "He meant to cure the knight by working through his own folly.",
+    "The niece had paid him to get the knight out of the house."
+   ],
+   "a": 2,
+   "hint": "He had just finished his studies at the University of Salamanca. What he wanted was the knight weaned from his delusions, or at least kept safe at home.",
+   "why": "Carrasco's idea was weaning Don Quixote from his delusions, or at least keeping him safe at home, and he could think of no better treatment than one based on the very folly of the knight. Three days later the pair sallied forth, the knight in a new helmet Carrasco supplied."
+  }
+ ]
+}

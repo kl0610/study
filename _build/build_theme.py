@@ -402,6 +402,32 @@ def dqp63(s):
     return Patcher(s, "dqp63")
 
 
+def dqp80(s):
+    """Don Quixote pages 80-85 — the letter to Dulcinea, the discovery that she
+    is Aldonza who can out-lift any man in the parish, and the mad tricks
+    Sancho was made to stay and watch. Scan rendered and read by eye into
+    dq_pages_80_85.json, which every question is checked against. Page 84 is a
+    full-page plate: transcribed, marked, not asked about. Config only."""
+    return Patcher(s, "dqp80")
+
+
+def dqp86(s):
+    """Don Quixote pages 86-97, the whole of Chapter 7 — the priest and barber
+    lay their trap, Sancho invents an errand he never ran, a giant turns out to
+    be the innkeeper's wine-bags, and both men reach home. Scan rendered and
+    read by eye into dq_pages_86_97.json. No full-page plates in this one, so
+    all twelve pages carry a question. Config only."""
+    return Patcher(s, "dqp86")
+
+
+def dqp98(s):
+    """Don Quixote pages 98-111 — Toboso hushed and asleep, the three girls on
+    donkeys Sancho passes off as Dulcinea, and the strange knight singing badly
+    in the dark. Chapter 8 entire plus the opening of Chapter 9, read by eye
+    into dq_pages_98_111.json. Config only."""
+    return Patcher(s, "dqp98")
+
+
 def dqp71(s):
     """Don Quixote pages 71-79 — the rescue going wrong, the donkey stolen out
     from under a sleeping Sancho, and the knight deciding to go mad on
@@ -652,6 +678,12 @@ APPS = {
     "reading/dq-p49-53":           (dqp49, dict(app="dqp49", shake="#card", lift=None,
                                            dragon=["all"])),
     "reading/dq-p63-70":           (dqp63, dict(app="dqp63", shake="#card", lift=None,
+                                           dragon=["all"])),
+    "reading/dq-p80-85":           (dqp80, dict(app="dqp80", shake="#card", lift=None,
+                                           dragon=["all"])),
+    "reading/dq-p86-97":           (dqp86, dict(app="dqp86", shake="#card", lift=None,
+                                           dragon=["all"])),
+    "reading/dq-p98-111":          (dqp98, dict(app="dqp98", shake="#card", lift=None,
                                            dragon=["all"])),
     "reading/dq-p71-79":           (dqp71, dict(app="dqp71", shake="#card", lift=None,
                                            dragon=["all"])),

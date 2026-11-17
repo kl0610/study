@@ -428,6 +428,17 @@ without reading. Three of those rules were added the night of pages 63–70:
    and the card badge both said 14. Nothing could see it, because the subtitle
    is free text. Only opening the page in a browser and looking at it did.
 
+When a night's reading is too long for one quiz, split it on the book's own
+chapter breaks and give the night a single time budget, not each quiz one.
+Pages 80-111 went out as three: 80-85 closes Chapter 6, 86-97 is Chapter 7
+entire, 98-111 is Chapter 8 plus the opening of Chapter 9. Eight, thirteen and
+fourteen questions, about sixteen minutes in all against a twenty-minute
+ceiling. The floor is the coverage rule: every page that is not a plate needs a
+question, so thirty-one content pages cannot be asked about in fewer than
+thirty-one. The hub normally puts the newest tile on top; a night split three
+ways goes up in reading order instead, each note saying which of the three it
+is, or he starts at the bottom of his own evening.
+
 The teacher sends a short answer key with her own questions for the stretch.
 Check the quiz covers all of it — pages 63–70 needed one more question for the
 half of hers that asked what Don Quixote said his duty was — but ask it as

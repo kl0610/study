@@ -1,0 +1,192 @@
+{
+ "title": "Don Quixote, pages 98–111",
+ "blurb": "Toboso by night, the trick Sancho plays with three girls on donkeys, and the strange knight singing badly in the dark. All of Chapter 8, and the start of Chapter 9.",
+ "sub": "Fourteen questions on tonight's reading, about six minutes. Just the story: what happened, and who it happened to.",
+ "cite": "Don Quixote by Miguel de Cervantes, Core Classics abridged for young readers",
+ "note": "Questions and answers are shuffled every time, so running it twice is not the same quiz twice. Get one wrong and a hint names the page.",
+ "from": "dq_pages_98_111.json",
+ "items": [
+  {
+   "page": 98,
+   "q": "Why did Don Quixote set his course for Toboso before anything else?",
+   "opts": [
+    "Because the great festival at Saragossa had not yet begun.",
+    "Because Sancho had promised to show him Dulcinea's palace.",
+    "Because he had sworn to the freed convicts he would go there.",
+    "He wanted her blessing before the adventures that awaited."
+   ],
+   "a": 3,
+   "hint": "Their pouches were well-supplied and their purses were full of money. What he wanted from her was not help of that kind.",
+   "why": "He said he must have all the blessings of her ladyship in order to have good fortune in the perilous adventures that await them."
+  },
+  {
+   "page": 99,
+   "q": "They rode into Toboso late at night. What did they find there?",
+   "opts": [
+    "The square full of people waiting for a festival to begin.",
+    "The whole town hushed and in bed, with only dogs barking.",
+    "A watchman who offered to lead them to Dulcinea's house.",
+    "The gates shut, so that they had to wait until daybreak."
+   ],
+   "a": 1,
+   "hint": "They had waited outside under some oak trees on purpose, having decided not to enter the town before nightfall.",
+   "why": "It was much later when they got into the city and all the inhabitants seemed to be in bed. Except for the barking of dogs, the whole town was hushed in silence."
+  },
+  {
+   "page": 100,
+   "q": "Don Quixote pointed out a vast building and said it must be his lady's palace. What did Sancho say it was?",
+   "opts": [
+    "The inn where they were tossed in a blanket.",
+    "A barn, with her father's wheat still stacked up inside it.",
+    "A church, since the lady herself lives down an alley.",
+    "A pavilion where the great ladies retire for amusement."
+   ],
+   "a": 2,
+   "hint": "He had already told his worship once where she lives, and it was not on a grand street. The knight called him a blockhead for saying it.",
+   "why": "Sancho said that is clearly a church, and that he had already told his worship the lady lives down an alley. The knight cried Blockhead and asked whether palaces exist on alleys."
+  },
+  {
+   "page": 101,
+   "q": "Sancho hid off the road, stuck for a way out of his own lie. What rescued him?",
+   "opts": [
+    "Three peasant girls rode by on donkeys out of the city.",
+    "A laborer passed who claimed to know the lady's house.",
+    "He remembered that his master had never seen her face.",
+    "Don Quixote came looking for him and gave up the search."
+   ],
+   "a": 0,
+   "hint": "He had been thinking that any country girl would serve, if only he could persuade his master she was in disguise.",
+   "why": "Just as he was about to return to his master he saw three peasant girls mounted on donkeys coming from the direction of the city, which was the very thing he wanted. He rode back and announced that Lady Dulcinea and two of her damsels were coming to pay a visit."
+  },
+  {
+   "page": 102,
+   "q": "Sancho said the three were blazing all over with gold and pearls. What did Don Quixote say he saw?",
+   "opts": [
+    "Three ladies, but with their faces hidden from him by magic.",
+    "Nothing at all on the road, which frightened him badly.",
+    "The same shining ladies, and he thanked Sancho for the news.",
+    "Three plain-looking country girls riding along on donkeys."
+   ],
+   "a": 3,
+   "hint": "He said it plainly, and said it more than once. Sancho pretended to be amazed that his master could see only donkeys.",
+   "why": "Don Quixote said he saw only three plain-looking country girls riding on donkeys, and insisted they are donkeys, at least as they appear to him. Sancho told him to clear his eyes and come pay reverence to her anyway."
+  },
+  {
+   "page": 103,
+   "q": "Sancho knelt in the dust and called the girl Queen and Princess. What did his master do?",
+   "opts": [
+    "He stayed on Rocinante, unwilling to kneel to a country girl.",
+    "He knelt as well, but saw a homely face and could not speak.",
+    "He drew his sword, sure the enchanters were mocking him.",
+    "He recited the letter he had written to her in the mountains."
+   ],
+   "a": 1,
+   "hint": "He got down on his knees as well. What stopped him was what he could see of her, and it left him with nothing at all to say.",
+   "why": "By this time Don Quixote was also on his knees in front of the girl, but he could see only her wide, homely face and flat nose, and felt so confused that he could not say a word."
+  },
+  {
+   "page": 104,
+   "q": "The girls told them to get out of the way and called them fools. How did Don Quixote explain to himself what he was seeing?",
+   "opts": [
+    "The enchanters had degraded her beauty to a country girl's.",
+    "Sancho had led him to the wrong girl by an honest mistake.",
+    "He had been fasting too long, and his eyes were failing him.",
+    "The real Dulcinea had sent a servant in her place to test him."
+   ],
+   "a": 0,
+   "hint": "He told Sancho to rise, and said that fate had shot her last cruel arrow into his wretched heart.",
+   "why": "He said the enchanters have doomed him never to see the matchless Lady Dulcinea in her own person, that they have degraded her beauty into the coarse looks of a country girl, and that they may even turn her into a goblin just to increase his suffering."
+  },
+  {
+   "page": 105,
+   "q": "What did Don Quixote offer as proof that the enchanters were at work on her?",
+   "opts": [
+    "That she had vaulted into the saddle the way a man would do it.",
+    "That her donkey had thrown her off as soon as she moved.",
+    "That she smelled of garlic instead of the scent of flowers.",
+    "That she spoke to him rudely, which his lady would not do."
+   ],
+   "a": 2,
+   "hint": "It was something he said he distinctly noticed. Sancho agreed, and said the enchanters might at least have left her breath alone.",
+   "why": "He said the enchanters make her condition as unattractive to him as possible, so that instead of the fragrant scent she has from living among flowers they give her the smell of garlic, which he distinctly noticed."
+  },
+  {
+   "page": 106,
+   "q": "Where did the two of them go once the girls had ridden off laughing?",
+   "opts": [
+    "Back into Toboso, to look for the house a second time.",
+    "To Saragossa, where a great annual festival was coming.",
+    "Home to the village, since the search had come to nothing.",
+    "Into the Sierra Morena again, to wait out the enchanters."
+   ],
+   "a": 1,
+   "hint": "Sancho was struggling not to laugh at how well his trick had gone. After a little more talk they mounted their beasts and took a road.",
+   "why": "After some more conversation of the same sort, they mounted their beasts and took the road to Saragossa, where a great annual festival was about to take place."
+  },
+  {
+   "page": 107,
+   "q": "Chapter 9 opens with the two of them asleep under oak trees. What disturbed Don Quixote?",
+   "opts": [
+    "Sancho crying out in his sleep about the island again.",
+    "A guitar being played badly somewhere further down the valley.",
+    "Rocinante pulling at his tether to get at the pasture.",
+    "Voices: two men on horseback, stopping there for the night."
+   ],
+   "a": 3,
+   "hint": "Sancho slept soundly straight through it. His master's slumber was the lighter of the two.",
+   "why": "Don Quixote's lighter slumber was disturbed by the sound of voices. Sitting up, he saw two men on horseback, and heard one say to stop and attend to the horses, since the place offered pasture and the silence and solitude his thoughts of love require."
+  },
+  {
+   "page": 108,
+   "q": "The strange knight made a boast about his lady Casildea. What did Don Quixote say was untrue in it?",
+   "opts": [
+    "That the knights of La Mancha had granted her first place.",
+    "That she had set him tasks he had already carried out.",
+    "That he had ridden further for her than any knight living.",
+    "That no other knight-errant in all Spain was in love at all."
+   ],
+   "a": 0,
+   "hint": "He counted himself among the men the stranger claimed to have won over, and said he had never made any such acknowledgement.",
+   "why": "The stranger claimed he had caused her superior beauty to be admitted by all the knights of Navarre, Leon, Castile, and all the knights of La Mancha. Don Quixote said that is not true, for he is a knight of La Mancha and has never made such an acknowledgement, and said the man is raving."
+  },
+  {
+   "page": 109,
+   "q": "Don Quixote guessed that the stranger's sorrow came from a love that was not returned. How did the stranger answer?",
+   "opts": [
+    "He denied it, and said his trouble was a debt of honor.",
+    "He laughed, and said knights never speak of such things.",
+    "He nodded, and asked whether the knight suffered so too.",
+    "He stood up and challenged Don Quixote on the spot, at once."
+   ],
+   "a": 2,
+   "hint": "He had just invited the knight to sit down beside him and behold the very model of sorrow and misery.",
+   "why": "The mournful stranger took Don Quixote by the arm and invited him to sit down, and when Don Quixote said he took it the woes were due to an unrequited passion for a fair lady, the stranger nodded and asked if Don Quixote was also suffering so."
+  },
+  {
+   "page": 110,
+   "q": "The two squires drew aside and compared what their masters had promised them. What were the two rewards?",
+   "opts": [
+    "An earldom for Sancho, and a castle for the other squire.",
+    "A share of the spoils for each of them, and nothing more.",
+    "Nothing at all for Sancho, and a fat canonry for the other.",
+    "An island government for Sancho, a canonry for the other."
+   ],
+   "a": 3,
+   "hint": "One of the two rewards belonged to the church, which made Sancho say the other master must be a knight of the church in some sort.",
+   "why": "Sancho answered that his master has promised him the governorship of an island, and the stranger's squire said his own master is offering him a fat canonry."
+  },
+  {
+   "page": 111,
+   "q": "The other squire called his own master a scoundrel. What did Sancho say about his?",
+   "opts": [
+    "He agreed, and said he would leave him at the very next town.",
+    "That his master is mad but honest, which is why he stays.",
+    "That his master is neither mad nor a scoundrel, only unlucky.",
+    "That he had never thought about it."
+   ],
+   "a": 1,
+   "hint": "He granted the madness at once. What he would not grant was that his master tells lies.",
+   "why": "Sancho said his master is certainly mad, but he is not a liar, and is as honest and innocent as a babe. You can persuade him of anything, and that is why Sancho loves him and cannot leave him in spite of all his follies."
+  }
+ ]
+}

@@ -1,0 +1,114 @@
+{
+ "title": "Don Quixote, pages 80–85",
+ "blurb": "The letter to Dulcinea, who Dulcinea really is, and the mad tricks Sancho had to stay and watch. The short one of tonight's three.",
+ "sub": "Eight questions on tonight's reading, about four minutes. Just the story: what happened, and who it happened to.",
+ "cite": "Don Quixote by Miguel de Cervantes, Core Classics abridged for young readers",
+ "note": "Questions and answers are shuffled every time, so running it twice is not the same quiz twice. Get one wrong and a hint names the page.",
+ "from": "dq_pages_80_85.json",
+ "items": [
+  {
+   "page": 80,
+   "q": "Sancho said that knight-errantry seemed to him mostly make-believe, and that his master knew it. How did Don Quixote answer?",
+   "opts": [
+    "He said Sancho had never once understood a word of it.",
+    "He agreed that the affairs of knights are mostly delusions.",
+    "He said no true squire would ever say such a thing aloud.",
+    "He grew angry and would not speak to him for the rest of the day."
+   ],
+   "a": 1,
+   "hint": "He did not argue with Sancho at all. He asked whether Sancho had been with him all this time without being sure of it.",
+   "why": "He said of course the affairs of knights are mostly delusions, and asked whether it was possible Sancho had been with him all this time without being sure of that."
+  },
+  {
+   "page": 81,
+   "q": "Don Quixote finished his answer by explaining why a windmill can turn out to be a giant. What did he blame?",
+   "opts": [
+    "The poor light in the valleys where knights do their riding.",
+    "The plain fact that a squire cannot see what a knight sees.",
+    "The old books of chivalry, which describe things wrongly.",
+    "Wicked sorcerers, who transform things to mislead knights."
+   ],
+   "a": 3,
+   "hint": "He said knights see windmills and barber's basins as plainly as anybody else does. The trouble is what those plain things can be disguises for.",
+   "why": "He said there are many wicked sorcerers who transform everything in order to frustrate and mislead knights, so that windmills and barber's basins can be disguises for giants or magic helmets."
+  },
+  {
+   "page": 81,
+   "q": "Don Quixote meant to batter his head on the rocks as part of his penance. What safer target did Sancho suggest?",
+   "opts": [
+    "Knock his head against water, or something soft like cotton.",
+    "Stay dressed, and only pretend to tear his clothes up there.",
+    "Let Rocinante do the tumbling while he watched from a rock.",
+    "Wait until Sancho was gone, then do as little as he liked."
+   ],
+   "a": 0,
+   "hint": "Sancho was afraid of a sharp point of rock, and said so for the love of heaven. He also offered to report whatever his master pleased to Lady Dulcinea.",
+   "why": "Sancho suggested he ram his head against water, or something soft like cotton, and let Sancho report what he pleased, since it was all make-believe anyway. Don Quixote refused, saying his madness must be no mere mockery."
+  },
+  {
+   "page": 82,
+   "q": "Don Quixote told Sancho to have the letter copied out in a neater hand before giving it to her. Why did he say that would not give the trick away?",
+   "opts": [
+    "Because a parish clerk would swear the words were his own.",
+    "Because Sancho was to read it aloud to her, not hand it over.",
+    "Because Lady Dulcinea does not know his handwriting at all.",
+    "Because knights always have their letters written by a squire."
+   ],
+   "a": 2,
+   "hint": "In twelve years of loving her he had only seen her three times, and she had never once cast her eyes on him.",
+   "why": "He said she does not know his handwriting, so it would not matter. During the twelve years he has been in love with her he has only seen her three times, and she has never bothered to cast her eyes on him."
+  },
+  {
+   "page": 82,
+   "q": "What did Sancho find out about Lady Dulcinea on this page?",
+   "opts": [
+    "That she had been married off to a farmer the winter before.",
+    "That she is Aldonza, the daughter of Lorenzo Corchuelo.",
+    "That she had left Toboso for the mountains.",
+    "That she was the one who first sent his master out as a knight."
+   ],
+   "a": 1,
+   "hint": "It was the name of her father that gave her away. Sancho knew the family, and called her a fine strapping girl.",
+   "why": "Don Quixote named her father as Lorenzo Corchuelo, and Sancho exclaimed that his daughter Aldonza is the Lady Dulcinea del Toboso. He said he knows her very well."
+  },
+  {
+   "page": 83,
+   "q": "Sancho warned that knights sent to Aldonza would find her threshing in a barn, and that she would only laugh at them. What did Don Quixote answer?",
+   "opts": [
+    "That the knights he sends to her are under orders not to laugh.",
+    "That he would write again and warn her they were coming.",
+    "That Sancho had plainly never seen the real lady at all.",
+    "That it is enough for him to imagine her the fairest princess."
+   ],
+   "a": 3,
+   "hint": "He asked whether Sancho thought the famous ladies in books and ballads were really made of flesh and blood.",
+   "why": "He called Sancho an eternal babbler, said the famous ladies in books and ballads are mostly imaginary persons, and said it is enough for him if he imagines Aldonza to be the most beautiful, most gracious princess in the world."
+  },
+  {
+   "page": 85,
+   "q": "How did Don Quixote sign the letter he read aloud to Sancho?",
+   "opts": [
+    "He signed it Don Quixote de la Mancha, Knight of the Lions.",
+    "He signed it Alonso Quixano, of La Mancha.",
+    "He signed it The Knight of the Sorrowful Face.",
+    "He left it unsigned, so no enchanter could trace it to him."
+   ],
+   "a": 2,
+   "hint": "He did not use his own name. The letter closes with a title he had taken for himself, and it is about his face.",
+   "why": "The letter was addressed to a High and Sovereign Lady, and it was signed The Knight of the Sorrowful Face."
+  },
+  {
+   "page": 85,
+   "q": "Don Quixote made Sancho stay and watch before he would let him ride away. What came of it?",
+   "opts": [
+    "Sancho left able to swear honestly that his master was crazy.",
+    "Sancho refused to go until his master had his clothes on again.",
+    "Sancho decided the letter was not worth delivering after all.",
+    "Sancho was so alarmed that he went for the priest instead."
+   ],
+   "a": 0,
+   "hint": "His master tore off his clothes, danced in the air, and tumbled himself over a few times while the squire watched.",
+   "why": "Don Quixote ordered him to stay and watch some mad tricks, then tore off his clothes, danced in the air and tumbled himself over a few times, so that when Sancho left he felt he could honestly swear that his master was crazy."
+  }
+ ]
+}
