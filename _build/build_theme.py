@@ -402,6 +402,15 @@ def dqp63(s):
     return Patcher(s, "dqp63")
 
 
+def dqp112(s):
+    """Don Quixote pages 112-115 — the strange knight's boast that he beat Don
+    Quixote, the description that fits him down to the horse and the squire,
+    and two squires working out how to fight without swords. Scan rendered and
+    read by eye into dq_pages_112_115.json, which every question is checked
+    against. Four pages, all story, no plate. Config only."""
+    return Patcher(s, "dqp112")
+
+
 def dqp80(s):
     """Don Quixote pages 80-85 — the letter to Dulcinea, the discovery that she
     is Aldonza who can out-lift any man in the parish, and the mad tricks
@@ -678,6 +687,8 @@ APPS = {
     "reading/dq-p49-53":           (dqp49, dict(app="dqp49", shake="#card", lift=None,
                                            dragon=["all"])),
     "reading/dq-p63-70":           (dqp63, dict(app="dqp63", shake="#card", lift=None,
+                                           dragon=["all"])),
+    "reading/dq-p112-115":         (dqp112, dict(app="dqp112", shake="#card", lift=None,
                                            dragon=["all"])),
     "reading/dq-p80-85":           (dqp80, dict(app="dqp80", shake="#card", lift=None,
                                            dragon=["all"])),

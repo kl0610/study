@@ -1,0 +1,114 @@
+{
+ "title": "Don Quixote, pages 112–115",
+ "blurb": "The stranger's boast, the description that fits Don Quixote exactly, and two squires working out how to fight without swords.",
+ "sub": "Eight questions on tonight's reading, about four minutes. Just the story: what happened, and who it happened to.",
+ "cite": "Don Quixote by Miguel de Cervantes, Core Classics abridged for young readers",
+ "note": "Questions and answers are shuffled every time, so running it twice is not the same quiz twice. Get one wrong and a hint names the page.",
+ "from": "dq_pages_112_115.json",
+ "items": [
+  {
+   "page": 112,
+   "q": "Among the tasks his lady set him, the stranger says he was sent against the giant-woman of Seville. What did he claim he did to her?",
+   "opts": [
+    "Carried her bodily out of the city and left her standing in a field.",
+    "Made her stay still for a week, though the wind blew constantly.",
+    "Beat her in single combat and took her crown away.",
+    "Nothing, because she would not come down to meet him."
+   ],
+   "a": 1,
+   "hint": "He called her stout and strong as brass, and the most changeable, fickle woman in the world, though she never moves from where she is.",
+   "why": "He said he came, saw and conquered, and made La Giralda stay still for a week even though the wind blew constantly. The joke is that La Giralda is a weathervane."
+  },
+  {
+   "page": 112,
+   "q": "What was he ordered to do at Cabra?",
+   "opts": [
+    "Carve his lady's name into the rock above the entrance.",
+    "Guard the mouth of it for a month against all comers.",
+    "Plunge into the abyss and tell her what was down there.",
+    "Bring up the golden apples that were said to lie in it."
+   ],
+   "a": 2,
+   "hint": "Cabra is a deep cave in the province of Cordoba. The order was to go down and report back.",
+   "why": "Another time she required him to plunge into the abyss of Cabra and tell her what was there. He said he has done all these things and still his hopes are unfulfilled."
+  },
+  {
+   "page": 113,
+   "q": "The stranger boasted of riding down knights all over Spain. Which victory did he say was worth all the rest together?",
+   "opts": [
+    "Beating Don Quixote de la Mancha, who had beaten everyone.",
+    "Beating the knight who served the lady Casildea before him.",
+    "Beating a dozen knights of Navarre in a single morning.",
+    "Beating the giant-woman of Seville, who had never lost."
+   ],
+   "a": 0,
+   "hint": "He reasoned that if a man has defeated all the knights of the world, then whoever defeats him reaps all his glory and fame.",
+   "why": "He named Don Quixote de la Mancha especially, saying he compelled him to confess that Casildea is more beautiful than Dulcinea, and considered that conquest equal to the defeat of all the knights of the world."
+  },
+  {
+   "page": 113,
+   "q": "Don Quixote was sitting right there listening. How did he answer the boast?",
+   "opts": [
+    "He said nothing, and waited to see how far the man would go.",
+    "He drew his sword at once and demanded satisfaction for it.",
+    "He laughed, and said the stranger had dreamed the whole thing.",
+    "Someone resembling him was beaten, but not the man himself."
+   ],
+   "a": 3,
+   "hint": "He answered quietly. He let the stranger keep all his other victories and disputed only the one.",
+   "why": "Don Quixote said quietly that he says nothing about the other victories, but does not admit that the stranger has vanquished Don Quixote de la Mancha. He may have overcome someone resembling him, but certainly not the man himself."
+  },
+  {
+   "page": 114,
+   "q": "The stranger's description of Don Quixote was accurate down to the horse and the squire. How did Don Quixote explain that away?",
+   "opts": [
+    "An enchanter impersonated him and let himself be defeated.",
+    "He said the stranger had got it all from a book of his deeds.",
+    "He said every knight in Spain is thin and gray and lanky.",
+    "He said the stranger had plainly been coached by somebody."
+   ],
+   "a": 0,
+   "hint": "He admitted the description was fairly accurate on the whole, and still said it was not the man in question. His reason was an enemy who wanted the reputation damaged.",
+   "why": "He said the man has many enemies among the enchanters, and that one of these may have impersonated him and allowed himself to be defeated in order to damage Don Quixote's reputation. As proof that enchanters were busy, he offered the recent transformation of Dulcinea into a lowly peasant girl."
+  },
+  {
+   "page": 114,
+   "q": "Don Quixote stood up and clutched the hilt of his sword, ready then and there. What did the strange knight propose instead?",
+   "opts": [
+    "That they settle it with words, since neither would give way.",
+    "That they each find a second and fight four against four.",
+    "That they ride together to Saragossa and fight at the festival.",
+    "Wait for daylight, and the loser obeys the winner's command."
+   ],
+   "a": 3,
+   "hint": "He said it is not becoming for knight-errants to perform feats of arms in the dark, like highwaymen.",
+   "why": "The strange knight proposed they wait for daylight, and that the conditions of battle be that the defeated shall obey the command of the victor, so long as the command is something a knight can obey without dishonoring himself."
+  },
+  {
+   "page": 115,
+   "q": "Why was Sancho even more frightened for himself than for his master?",
+   "opts": [
+    "His master had ordered him to carry the challenge over alone.",
+    "He was told the squires of combating knights fight too.",
+    "The other squire had threatened him.",
+    "He had been told the loser's squire is hanged with the loser."
+   ],
+   "a": 1,
+   "hint": "The other squire took the whole business coolly, and told Sancho what was customary in that part of Spain.",
+   "why": "The other squire informed him that in this part of Spain it is customary for the squires of combating knights to fight each other also. Sancho said he had never heard of that custom and was not going by it."
+  },
+  {
+   "page": 115,
+   "q": "Sancho protested that he had no sword and never had owned one. What did the other squire suggest they fight with?",
+   "opts": [
+    "Their bare fists, which he said was the older custom anyway.",
+    "Their masters' swords, borrowed while the knights slept.",
+    "Linen sacks with half a dozen good-sized stones in them.",
+    "The cudgels both of them were already carrying about."
+   ],
+   "a": 2,
+   "hint": "He said the difficulty could be got over, because they happened to have a couple of things to put something heavy into.",
+   "why": "The other squire said they have a couple of linen sacks, and that with half a dozen good-sized stones in them the two of them could pound each other quite handsomely."
+  }
+ ]
+}

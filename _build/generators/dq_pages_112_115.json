@@ -1,0 +1,75 @@
+{
+ "book": "Don Quixote, Core Classics abridged edition",
+ "author": "Miguel de Cervantes",
+ "note": "A summary of what happens on each printed page of 112-115, read off the Core Classics scan page by page. The book is a scan with no text layer, so this file is the record of that reading and is what every question is checked against. These are notes on the action, not the book's text. This stretch sits inside Chapter 9, which opened on page 107 and carries on past page 115. There is no plate in it; all four pages are story. Page 112 opens in mid-sentence, carrying on from the tasks Casildea laid on her knight at the foot of page 111.",
+ "chapter": "The Strange Knight and Squire, Challenge, Victory and Transformation (the middle of it)",
+ "pages": {
+  "112": {
+   "facts": [
+    "The strange knight finished his sentence from the page before: the tasks Casildea set him were like those imposed on Hercules by his stepmother",
+    "One time she ordered him to challenge the famous giant-woman of Seville, commonly called La Giralda",
+    "He described La Giralda as stout and strong as brass, and as the most changeable and fickle woman in the world, though she never moves from where she is",
+    "He boasted that he came, saw and conquered, and made her stay still for a week even though the wind blew constantly",
+    "He was next commanded to weigh the great antique bulls of Guisando, a task he said was more fitting to porters than to a knight-errant",
+    "Another time she required him to plunge into the abyss of Cabra and tell her what was down there",
+    "He said he has done all these things and still his hopes are unfulfilled",
+    "He said her disdain continues and her tyrannical commands go on",
+    "Her newest order is that he cross all the provinces of Spain and force every knight-errant he meets to confess something"
+   ],
+   "glossary": {
+    "Hercules": "The most popular of the ancient Greek heroes, a son of Zeus and a mortal mother. Zeus' wife Hera hated him and drove him insane, and while mad he killed his wife and children. To atone he performed twelve feats, called his labors, all thought to be impossible, among them killing the nine-headed Hydra and lifting the world off Atlas' shoulders to get the golden apples of Hesperides.",
+    "bulls of Guisando": "Ancient carved figures near the city of Avila.",
+    "Cabra": "A deep cave in the province of Cordoba."
+   }
+  },
+  "113": {
+   "facts": [
+    "The thing every knight-errant must confess is that Casildea is the best and most beautiful of women, and that he himself is the bravest and most adoring knight in the world",
+    "He claimed to have crossed Spain from end to end and defeated all the knights who dared oppose him",
+    "He named one of them especially: Don Quixote de la Mancha, whom he says he compelled to confess that Casildea is more beautiful than Dulcinea",
+    "He considered his conquest of Don Quixote equal to the defeat of all the knights of the world, since Don Quixote had defeated them all, so that he reaps all of Don Quixote's glory and fame",
+    "Don Quixote answered quietly that he says nothing about the other victories, but does not admit that the stranger has vanquished Don Quixote de la Mancha",
+    "He said the stranger may have overcome someone resembling him, but certainly not the man himself",
+    "The knight of the wood exclaimed how not the man himself, and swore the contrary",
+    "He described the man: tall, with a long lean face and a hooked nose bent to one side, gray-haired, lanky-limbed, with a heavy drooping mustache",
+    "He added that the man calls himself the Knight of the Sad Face, or the Sorrowful Countenance",
+    "He added that the man has for his squire a peasant by the name of Sancho, for his horse a steed named Rocinante, and for his lady-love Dulcinea del Toboso"
+   ],
+   "glossary": {
+    "I came, I saw, I conquered": "A famous quote from the Roman emperor Julius Caesar, who said it to explain the ease of one of his victories in battle. In Latin the phrase is Veni, vidi, vici."
+   }
+  },
+  "114": {
+   "facts": [
+    "The stranger finished his description: the lady-love is sometimes called Aldonza Lorenzo",
+    "He said that if that is not enough to prove he is telling the truth, here is his sword, which will force belief on the most incredulous",
+    "Don Quixote answered softly, asking to be listened to for a moment",
+    "He said the man the stranger speaks of is a particular friend of his, and that though the description is fairly accurate on the whole, he is certain it is not the man in question",
+    "He said that man has many enemies among the enchanters, one in particular",
+    "He suggested one of these enchanters may have impersonated him and allowed himself to be defeated, in order to damage Don Quixote's reputation",
+    "He offered as proof that in the last couple of days evil enchanters have transformed the lovely Dulcinea del Toboso into a lowly peasant girl",
+    "He said that if the stranger is still dissatisfied, here stands Don Quixote himself in person, ready to prove his identity with his weapons in whatever fashion the stranger prefers",
+    "Saying this, Don Quixote stood up, clutched the hilt of his sword, and waited for the knight to make his decision",
+    "The strange knight replied quietly that it is not becoming for knight-errants to perform feats of arms in the dark, like highwaymen",
+    "He proposed that they wait for daylight",
+    "He proposed that the conditions of battle be that the defeated shall obey the command of the victor, so long as the command is something a knight can obey without dishonoring himself"
+   ]
+  },
+  "115": {
+   "facts": [
+    "Don Quixote agreed to these conditions, and the two knights went to rouse their squires and order them to prepare for the looming combat",
+    "The stranger's squire took the matter coolly enough",
+    "Sancho was terribly frightened for his master, and even more for himself",
+    "The reason was that the other squire informed him that in this part of Spain it is customary for the squires of combating knights to fight each other also",
+    "Sancho said he has never heard of that custom before and is not going by it",
+    "He added that he has no sword and has never had one in his life",
+    "The other squire said they can get over that difficulty, since they have a couple of linen sacks",
+    "His plan was to put half a dozen good-sized stones in the sacks, so the two of them could pound each other quite handsomely",
+    "Sancho still objected, saying it was unchristian for two friends who had just been eating and drinking together to begin knocking each other about when they had no reason to quarrel",
+    "The other squire answered that if that is all, then before they get started he will come up and knock Sancho down with a few blows, which will make him feel mad enough",
+    "Sancho answered that if he tries that, he knows how to stop him with his cudgel",
+    "Sancho said he is a man of peace, but a cornered one"
+   ]
+  }
+ }
+}
