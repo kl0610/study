@@ -1,0 +1,166 @@
+{
+ "title": "Don Quixote, pages 116–124",
+ "blurb": "Daylight shows Sancho the nose he has to fight, a stubborn horse decides the duel, and the fallen knight turns out to be somebody from home.",
+ "sub": "Twelve questions on tonight's reading, about five minutes. Just the story: what happened, and who it happened to.",
+ "cite": "Don Quixote by Miguel de Cervantes, Core Classics abridged for young readers",
+ "note": "Questions and answers are shuffled every time, so running it twice is not the same quiz twice. Get one wrong and a hint names the page.",
+ "from": "dq_pages_116_124.json",
+ "items": [
+  {
+   "page": 117,
+   "q": "Daylight came at last, and Sancho finally got a good look at the other squire's face. What did he decide about the duel?",
+   "opts": [
+    "Wake his master and talk him out of the whole business.",
+    "Run for the horses and put as much road behind him as he could.",
+    "Put up with anything at all rather than fight such a monster.",
+    "Pretend to be asleep until the two knights had finished with it."
+   ],
+   "a": 2,
+   "hint": "He was trembling from head to foot by then. What he had seen was a snout like the hooked beak of a bird of prey.",
+   "why": "Instead of an ordinary nose the man had a monstrous snout covered with warts and purple boils, hanging down past his mouth. Sancho, trembling from head to foot, made up his mind that he would endure anything rather than fight such a monster."
+  },
+  {
+   "page": 117,
+   "q": "Sancho would not be left standing on the ground while the knights charged. What did he beg his master to do with him?",
+   "opts": [
+    "Lift him up into a tree, where he could watch in safety.",
+    "Tie him to the saddle so he could not bolt.",
+    "Send him back down the road to wait at the inn they had passed.",
+    "Let him hold the horse's head and keep his back to the fighting."
+   ],
+   "a": 0,
+   "hint": "He clung to his master's stirrup first. What frightened him was not the strange knight at all.",
+   "why": "Sancho ran up and clung to his master's stirrup, begging not to be left alone with the nose-monster. Rather than that, he asked Don Quixote to help lift him up into one of the trees, where he could observe the combat in safety."
+  },
+  {
+   "page": 118,
+   "q": "The knight in the gold tunic was somebody they both knew. Who was under the armor?",
+   "opts": [
+    "Thomas Cecial, the neighbor, in his master's armor.",
+    "Gines de Pasamonte, the galley slave, in another of his disguises.",
+    "The barber from their village, who had tried a trick like this before.",
+    "Sampson Carrasco, the scholar from Salamanca, in disguise."
+   ],
+   "a": 3,
+   "hint": "He was the one who had encouraged this third sally in the first place, and he figured on an easy victory.",
+   "why": "The stranger was none other than Sampson Carrasco, the scholar of the University of Salamanca, masquerading as a knight-errant, who figured on having an easy victory over Don Quixote."
+  },
+  {
+   "page": 118,
+   "q": "Carrasco had quietly written one more term into the rules of the combat. What was it?",
+   "opts": [
+    "That whoever lost must give up his armor and weapons to the winner.",
+    "Whoever lost was bound to go straight home and remain there.",
+    "That the beaten man must confess in public at the next town they came to.",
+    "That neither man was to use a lance."
+   ],
+   "a": 1,
+   "hint": "He expected to win easily, so the conditions he added were really about where his opponent would end up.",
+   "why": "Carrasco figured on having an easy victory, and had therefore added to the conditions of the combat that the loser must return home."
+  },
+  {
+   "page": 119,
+   "q": "Sampson had picked badly when he chose his mount, and it cost him the duel. What went wrong at the worst possible moment?",
+   "opts": [
+    "It shied away from Rocinante and carried him off among the trees.",
+    "It went lame on the stony ground a few steps into the charge.",
+    "It threw its head up and he could not see past it.",
+    "The animal stopped dead just when speed was needed most."
+   ],
+   "a": 3,
+   "hint": "The horse was an even worse hack than Rocinante, which is saying a good deal.",
+   "why": "Sampson's horse stubbornly came to a complete standstill just at the moment when the most speed was needed to withstand the force of Don Quixote's charge. The shock sent Sampson flying over his horse's rear to land heavily on the ground, half stunned."
+  },
+  {
+   "page": 119,
+   "q": "Don Quixote drew his sword over the man on the ground, and Sancho was urging him on. What stopped him?",
+   "opts": [
+    "The other squire shouted out who he was and who the beaten man was.",
+    "The fallen man begged for mercy and offered to confess on the spot.",
+    "He remembered the vow he had sworn never to harm a man already down.",
+    "Sancho took hold of his arm and said it had gone far enough."
+   ],
+   "a": 0,
+   "hint": "He had already opened the visor and found a familiar face. Sancho's advice was to run the sword through the throat anyway.",
+   "why": "The squire of the fallen knight ran up and called out to take care, that this man is his friend Sampson Carrasco, and that he himself is Thomas Cecial from Don Quixote's own village, whom he knows very well."
+  },
+  {
+   "page": 120,
+   "q": "Sancho's first question for his old neighbor was about that frightful nose. What became of it?",
+   "opts": [
+    "He said it was his own, and that the cold night air had swelled it.",
+    "He had already thrown it into the bushes before anyone looked.",
+    "He pulled a cardboard mask out of his pocket and showed them.",
+    "He said he had borrowed it from a player in Salamanca."
+   ],
+   "a": 2,
+   "hint": "He produced it on the spot, and then said they must see to Master Sampson first.",
+   "why": "Thomas Cecial said here it is and drew a cardboard mask out of his pocket, saying he would tell them about it, but that first they must see to Master Sampson."
+  },
+  {
+   "page": 120,
+   "q": "With the sword point at his throat, the beaten man was made to admit something about two ladies. What did he say?",
+   "opts": [
+    "That he had never laid eyes on either of them.",
+    "Even the dirty shoe of Dulcinea is better than Casildea.",
+    "That the two of them were equal, and he could not choose between.",
+    "That Casildea was the fairer, but he would not say so again in Spain."
+   ],
+   "a": 1,
+   "hint": "He was also ordered to go to Toboso and put himself at the lady's disposal, or accept death that instant.",
+   "why": "Don Quixote put his sword point on Sampson's throat, and the knight answered that he confesses the dirty shoe of Lady Dulcinea del Toboso is superior to Casildea, and promised to do all he is commanded to do."
+  },
+  {
+   "page": 120,
+   "q": "Sampson was carried off to a shady spot to have his bruises seen to. What was he doing while he lay there?",
+   "opts": [
+    "Promising himself he would get even with the knight yet.",
+    "Working out how to explain the whole business to the housekeeper.",
+    "Telling his squire that the cure had worked better than expected.",
+    "Praying his friend would never learn who it was."
+   ],
+   "a": 0,
+   "hint": "His plan had been to cure his friend of his folly, and the bad luck that fell on it left him cursing and moaning.",
+   "why": "Sampson lay there and cursed and moaned and regretted the bad luck that had fallen on his plan to cure Don Quixote of his folly. He swore to himself that he would get even with him yet and satisfy his feeling for revenge."
+  },
+  {
+   "page": 121,
+   "q": "Sancho said the two men looked exactly like neighbors of theirs. Why did his master think an enchanter would take a friend's shape?",
+   "opts": [
+    "Because a friend is the one person a man will not strike at.",
+    "Because the enchanters had run out of other faces to borrow from.",
+    "Because it would make Sancho doubt his own eyes forever after.",
+    "So that he could get away alive if the fight went against him."
+   ],
+   "a": 3,
+   "hint": "The answer began with their devilish minds understanding that he might be victorious in spite of all their power.",
+   "why": "Don Quixote said their devilish minds allowed them to understand that he might be victorious in spite of all their power, so the enchanter cunningly assumed the appearance of his friend in order that he might escape with his life if that happened."
+  },
+  {
+   "page": 122,
+   "q": "Don Quixote offered the visit outside Toboso as proof that magicians do this sort of thing often. Why did that not settle it for Sancho?",
+   "opts": [
+    "He had seen the three girls ride off laughing and never come back.",
+    "He knew how little magic had been at work in that one.",
+    "He thought his master had invented the visit.",
+    "He had been told by the priest that magicians cannot change a face."
+   ],
+   "a": 1,
+   "hint": "He had to keep silent about it, and comforted himself instead with a thought about who knows the truth.",
+   "why": "That example did not resolve the doubts in Sancho's mind in favor of the magicians, because he knew how little magic was at work in that particular transformation. He had to keep silent about that, and contented himself with the thought that God knows the truth about everything."
+  },
+  {
+   "page": 124,
+   "q": "Chapter 10 starts with somebody overtaking them on the road. How is he described?",
+   "opts": [
+    "A young man on foot with a bundle, singing.",
+    "A priest on a mule, riding to the festival at Saragossa as well.",
+    "A gentleman in a long green coat, riding a very fine mare.",
+    "A muleteer with a string of animals, who would not give the road."
+   ],
+   "a": 2,
+   "hint": "His whole outfit gave the impression of a country gentleman of taste and importance.",
+   "why": "By and by they were overtaken by a gentleman mounted on a very fine mare, wearing a long green riding coat, whose whole outfit gave the impression of a country gentleman of taste and importance."
+  }
+ ]
+}

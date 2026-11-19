@@ -1,0 +1,115 @@
+{
+ "book": "Don Quixote, Core Classics abridged edition",
+ "author": "Miguel de Cervantes",
+ "note": "A summary of what happens on each printed page of 116-124, read off the Core Classics scan page by page. The book is a scan with no text layer, so this file is the record of that reading and is what every question is checked against. These are notes on the action, not the book's text. This stretch finishes Chapter 9, which opened on page 107, and then starts Chapter 10 on page 124. Two of the nine pages carry no story. Page 116 is a full-page Dore plate and is marked art. Page 123 is the half-title that divides the book, printed only with the title and PART 2, and is marked divider. Page 117 opens in mid-sentence, carrying on from Sancho's last speech at the foot of page 115, since the plate at 116 sits between them. Page 124 breaks off in mid-sentence at the foot of the page.",
+ "chapter": "The Strange Knight and Squire, Challenge, Victory and Transformation (the end of it), then The Gentleman in Green, Adventure with the Lions, and Astonished Friends (the start of it)",
+ "pages": {
+  "116": {
+   "art": true,
+   "caption": "The squire had a monstrous snout, covered with warts and boils.",
+   "facts": [
+    "A full-page engraving of the strange squire: a huge hooked snout covering most of his face, a cloak drawn up around his shoulders, a plumed cap above",
+    "The caption repeats the description of the snout that the text gives on page 117, so there is no story on this page that is not told better on the next one"
+   ]
+  },
+  "117": {
+   "facts": [
+    "Sancho finished the sentence he began on page 115, that a cornered cat can fight like a lion, and that God only knows what a cornered man like him might do",
+    "The other squire said that they should wait for daylight and see what is going to happen",
+    "When day broke and there was enough light to see by, Sancho beheld to his terror and amazement what his brother squire's face was like",
+    "Instead of an ordinary nose the man had a monstrous snout that looked like the hooked beak of a bird of prey",
+    "The snout was covered with warts and purple boils and hung down past his mouth",
+    "Sancho trembled from head to foot and made up his mind that he would endure anything rather than fight such a monster",
+    "Don Quixote meanwhile took the measure of his adversary and saw he was a sturdy man of middle height, likely to be a strong opponent",
+    "The stranger's visor was down, so Don Quixote could not see his face",
+    "Over his armor was a tight-fitting gold tunic decorated with moon-shaped pieces of silvered glass",
+    "His helmet had a plume of green, yellow and white feathers",
+    "After a brief meeting the two knights each rode off a short way and prepared to charge the other",
+    "At this moment Sancho ran up and clung to his master's stirrup, begging him not to leave him alone with the nose-monster",
+    "Rather than that, he asked Don Quixote to help lift him up into one of the trees, where he could observe the combat in safety"
+   ]
+  },
+  "118": {
+   "facts": [
+    "Don Quixote admitted the nose was a fearful sight that probably would inspire terror in anyone other than himself",
+    "He helped his squire get safely seated among the branches, and then turned to face his enemy",
+    "The stranger was none other than Sampson Carrasco, the scholar of the University of Salamanca, masquerading as a knight-errant",
+    "Carrasco figured on having an easy victory over Don Quixote",
+    "He had therefore added to the conditions of the combat that the loser must return home",
+    "But Sampson had made a great mistake in selecting his horse",
+    "There is a half-page plate on this page, captioned that the force of Don Quixote's charge was irresistible, with the story continuing underneath it"
+   ]
+  },
+  "119": {
+   "facts": [
+    "The horse Sampson had chosen was an even worse hack than Rocinante",
+    "As the knights rode toward each other, Sampson's horse stubbornly came to a complete standstill, just at the moment when the most speed was needed to withstand the force of Don Quixote's charge",
+    "That shock was irresistible to Sampson, who flew over his horse's rear and landed heavily on the ground, half stunned",
+    "Don Quixote jumped promptly from his charger and opened the visor of the fallen man to see if he was still alive",
+    "What he saw amazed him, for it was the familiar face of his friend Sampson Carrasco",
+    "He called Sancho over to behold again what wizards are capable of doing",
+    "Sancho's advice was that his worship run his sword through the man's throat, and so destroy one of his enemies, the enchanters",
+    "Don Quixote agreed, saying the fewer enemies one has the better, and began drawing his sword",
+    "The squire of the fallen knight ran up and called out to take care, that this man is his friend Sampson Carrasco",
+    "The squire said that he himself is Thomas Cecial, from Don Quixote's own village, whom he knows very well",
+    "Sancho shouted Blessed Virgin, that it truly is Thomas Cecial, and asked him where his nose was"
+   ]
+  },
+  "120": {
+   "facts": [
+    "Thomas Cecial said here it is, and drew a cardboard mask out of his pocket",
+    "He said he would tell them about it, but that first they must see to Master Sampson",
+    "By that time the Knight of the Mirrors had come to his senses",
+    "Don Quixote put his sword point on Sampson's throat and demanded that he admit Dulcinea del Toboso surpassed Casildea de Vandalia in beauty",
+    "He further demanded that Sampson go to the city of Toboso and put himself at her disposal, or accept death that instant",
+    "The knight answered that he confesses the dirty shoe of Lady Dulcinea del Toboso is superior to Casildea, and promised to do all he is commanded to do",
+    "Don Quixote also required him to swear that the knight he conquered was not Don Quixote himself but someone resembling him",
+    "Don Quixote said that he likewise will say that the fallen man is not Sampson Carrasco, who he truly does greatly resemble, but someone else",
+    "Sampson swore everything exactly as he was asked to, and said now let me get up if I can",
+    "They got Sampson on his legs, and his squire helped him to a shady spot where his injuries could be examined and his bruises tended to",
+    "Sampson lay there and cursed and moaned and regretted the bad luck that had fallen on his plan to cure Don Quixote of his folly",
+    "He swore to himself that he would get even with Don Quixote yet and satisfy his feeling for revenge"
+   ]
+  },
+  "121": {
+   "facts": [
+    "Don Quixote and Sancho resumed their journey toward Saragossa, the knight elated over his victory",
+    "The squire was in doubt over whether the Knight of the Mirrors and his squire were transformed devils or really and truly Sampson Carrasco and Thomas Cecial, their old friends and neighbors",
+    "Sancho said it is strange that those two should look so like men they know, and that he cannot help suspecting they may be the same men",
+    "Don Quixote asked how it can be imagined that his good friend Carrasco would come out armed against him, with the harmless Cecial as his squire, whom he has never insulted in any way",
+    "He told Sancho to trust him, that this is another trick of the wicked magicians who dog him, only this time the trick has failed",
+    "Sancho asked why magicians should take the form of those two men instead of any others in the world",
+    "Don Quixote said that is easy to explain, that their devilish minds allowed them to understand he might be victorious in spite of all their power",
+    "So the enchanter cunningly assumed the appearance of his friend, in order that he might escape with his life if that happened",
+    "He said this trick of transformation is one of their favorites, and reminded Sancho how successfully they played it off on him when the Lady Dulcinea"
+   ]
+  },
+  "122": {
+   "facts": [
+    "The sentence from the page before finished: when the Lady Dulcinea del Toboso and her handmaidens came to visit him outside Toboso",
+    "That example did not resolve the doubts in Sancho's mind in favor of the magicians, because he knew how little magic was at work in that particular transformation",
+    "Sancho had to keep silent about that",
+    "He contented himself with the thought that God knows the truth about everything",
+    "Chapter 9 ends here, and the rest of the page is blank"
+   ]
+  },
+  "123": {
+   "divider": true,
+   "facts": [
+    "A half-title page dividing the book, printed with the title The Adventures of Don Quixote and the words PART 2 in large type",
+    "There is no story on this page and no page number printed on it"
+   ]
+  },
+  "124": {
+   "facts": [
+    "Chapter 10 begins, titled The Gentleman in Green, Adventure with the Lions, and Astonished Friends",
+    "By and by Don Quixote and Sancho were overtaken by a gentleman mounted on a very fine mare",
+    "The gentleman wore a long green riding coat",
+    "His whole outfit gave the impression of a country gentleman of taste and importance",
+    "His courteous greeting of Don Quixote was courteously returned",
+    "The customs of politeness could not prevent the gentleman from staring in amazement at the strange figure of the knight",
+    "Don Quixote saw him staring and began to speak about it, and the page breaks off in the middle of that sentence"
+   ]
+  }
+ }
+}

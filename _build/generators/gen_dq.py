@@ -175,8 +175,14 @@ def check(spec, src):
     # has one at 65. It is still transcribed, so the record of what was read
     # has no silent hole in it, and it carries "art": true rather than being
     # quietly left out of the file.
+    # The second exemption is a page with no story on it that is not a
+    # picture either: pages 116-124 contains the half-title that divides the
+    # book, printed with the title and PART 2 and nothing else. Calling that
+    # "art" would put a falsehood in the record of what was read, so it
+    # carries "divider" and is transcribed like every other page.
     art = set(int(p) for p, v in known.items() if v.get("art"))
-    missing = sorted(set(int(p) for p in known) - pages_used - art)
+    blank = set(int(p) for p, v in known.items() if v.get("divider"))
+    missing = sorted(set(int(p) for p in known) - pages_used - art - blank)
     if missing:
         bad.append("no question touches page(s) %s"
                    % ", ".join(str(m) for m in missing))
@@ -188,6 +194,10 @@ def check(spec, src):
     for p in sorted(art & pages_used):
         bad.append("page %d is a full-page illustration, and a question cites "
                    "it as though there were a story on it" % p)
+
+    for p in sorted(blank & pages_used):
+        bad.append("page %d is a half-title with no story on it, and a question "
+                   "cites it as though there were" % p)
 
     if bad:
         raise SystemExit("  refusing to build:\n    " + "\n    ".join(bad))

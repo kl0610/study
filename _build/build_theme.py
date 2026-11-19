@@ -402,6 +402,16 @@ def dqp63(s):
     return Patcher(s, "dqp63")
 
 
+def dqp116(s):
+    """Don Quixote pages 116-124 — daylight on the nose-monster, the horse
+    that stood still and lost Sampson Carrasco the duel, the cardboard mask,
+    and the gentleman in green overtaking them as Chapter 10 opens. Scan
+    rendered and read by eye into dq_pages_116_124.json, which every question
+    is checked against. Nine pages, two of them carrying no story: 116 is a
+    full-page plate and 123 is the Part 2 half-title. Config only."""
+    return Patcher(s, "dqp116")
+
+
 def dqp112(s):
     """Don Quixote pages 112-115 — the strange knight's boast that he beat Don
     Quixote, the description that fits him down to the horse and the squire,
@@ -687,6 +697,8 @@ APPS = {
     "reading/dq-p49-53":           (dqp49, dict(app="dqp49", shake="#card", lift=None,
                                            dragon=["all"])),
     "reading/dq-p63-70":           (dqp63, dict(app="dqp63", shake="#card", lift=None,
+                                           dragon=["all"])),
+    "reading/dq-p116-124":         (dqp116, dict(app="dqp116", shake="#card", lift=None,
                                            dragon=["all"])),
     "reading/dq-p112-115":         (dqp112, dict(app="dqp112", shake="#card", lift=None,
                                            dragon=["all"])),

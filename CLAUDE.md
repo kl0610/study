@@ -439,6 +439,21 @@ thirty-one. The hub normally puts the newest tile on top; a night split three
 ways goes up in reading order instead, each note saying which of the three it
 is, or he starts at the bottom of his own evening.
 
+A second kind of page carries no story and is not a picture either: the
+half-title that divides the book, printed with the title and PART 2 and nothing
+else. Page 123 is one. It carries `"divider": true`, not `"art"`, because
+calling it art would put a falsehood in the record of what was read and make
+the refusal message describe a picture that is not there. It behaves the same
+way otherwise: transcribed so the record has no hole, exempt from coverage, and
+refused as a question target. Both the generator and the browser probe know
+about it, and both exemptions are sabotage-tested each way -- cite the page and
+the build must refuse, unmark it and the coverage rule must notice the hole.
+
+Tile notes on the hub are read months after they are written, so they must not
+depend on when they were written. The three tiles for 80-111 went up saying
+"first of tonight's three", which was true for one evening and misleading
+after it. They now say "first of three for 80-111".
+
 The teacher sends a short answer key with her own questions for the stretch.
 Check the quiz covers all of it — pages 63–70 needed one more question for the
 half of hers that asked what Don Quixote said his duty was — but ask it as
