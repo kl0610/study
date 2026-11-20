@@ -1,0 +1,207 @@
+{
+ "chapter": "Chapter 1 · The Hydrosphere · pages 1–5",
+ "title": "The Hydrosphere, pages 1–5 — Modeling Earth's Systems, Chapter 1",
+ "eyebrow": "CKSci Grade 5 &middot; Modeling Earth&rsquo;s Systems &middot; Chapter 1 &middot; Student Reader pp. 1&ndash;5",
+ "h1": "The <em>Hydrosphere</em>: What Water There Is",
+ "bigQuestion": "What is the hydrosphere?",
+ "mission": {
+  "name": "Pages 1–5 quiz",
+  "tag": "9 questions · about 8 minutes",
+  "blurb": "The first half of the chapter — what water there is on Earth, and where it sits."
+ },
+ "videos": [],
+ "passages": {
+  "hydro": {
+   "title": "What the hydrosphere is",
+   "cite": "Student Reader, page 1",
+   "vocab": [
+    ["hydrosphere", "the Earth system that contains all of the water on Earth"],
+    ["system", "parts that interact, that is, have an effect on one another"]
+   ],
+   "text": [
+    "If you look at Earth from space, directly above the center of the Pacific Ocean, you would barely see any land at all. About seven-tenths of Earth's surface is covered by water. Most of the water is found in Earth's oceans. Water is also found in streams, rivers, ponds, and lakes. Cracks and spaces in underground rocks and soil contain water, too. So does the air.",
+    "Most of Earth's water is liquid. However, some of Earth's water is solid, frozen in ice caps and other glaciers. Some of Earth's water is an invisible gas, called water vapor, in the atmosphere. Altogether, all the water on Earth makes up a system called the hydrosphere."
+   ]
+  },
+  "ocean": {
+   "title": "One world ocean, many names",
+   "cite": "Student Reader, page 2",
+   "text": [
+    "All the surface ocean water on Earth is interconnected and forms one giant world ocean. But people have named ocean regions with their own names.",
+    "The largest ocean region is the Pacific Ocean. It covers approximately one-third of Earth's surface. This is where Earth's ocean is deepest. The average depth of the Pacific Ocean is about 13,000 feet (4,000 meters). At its deepest point in a far western area, the ocean floor is about 36,000 feet (11,000 meters) below the surface. That is almost seven miles! This section of the ocean is called the Challenger Deep. Because it is so deep, it is mostly unexplored by scientists."
+   ]
+  },
+  "salty": {
+   "title": "Seas, gulfs, straits, and why the ocean is salty",
+   "cite": "Student Reader, page 3",
+   "vocab": [
+    ["salt water", "water that contains dissolved salt"]
+   ],
+   "text": [
+    "Specific regions of oceans can be called seas or gulfs. These regions are defined by land that borders or partially surrounds them. Larger regions of ocean water are connected by narrow bodies of water between landmasses. These narrower waterways are called straits.",
+    "Oceans, seas, and gulfs all contain salt water. Salt water is simply water that contains salt. Most of the salt, the chemical sodium chloride, is the same as table salt! Some bodies of water are saltier than others. The salt comes from rocks on Earth's land surfaces. It is picked up by streams and rivers as they flow toward the ocean. As water evaporates from the ocean into the air, the salt is left behind. Over very long periods of time, this process has made the oceans salty."
+   ]
+  },
+  "fresh": {
+   "title": "Fresh water, groundwater, and reservoirs",
+   "cite": "Student Reader, page 4",
+   "vocab": [
+    ["groundwater", "water stored in the spaces between materials beneath Earth's surface"],
+    ["reservoir", "a place where water collects"],
+    ["fresh water", "naturally occurring water that contains little or no salt"]
+   ],
+   "text": [
+    "Oceans are only one part of the hydrosphere. Water also occurs in streams, rivers, ponds, and lakes. These bodies of water lie on Earth's land surfaces. There is also water beneath Earth's surface in the spaces between rocky material. This water is called groundwater. Places where water collects, in all its states, are called reservoirs. Earth's main water reservoir is the ocean, which contains salt water. But most of Earth's inland water reservoirs contain fresh water. Fresh water is any water that has low amounts of salt in it. Rivers, streams, and wetlands all contain fresh water.",
+    "Some groundwater and water in lakes are salt water instead of fresh water. The Great Salt Lake in Utah is one example. It formed when water carrying salts from rocks flowed into the lake. The lake has nowhere for the water to flow out. When water in the lake evaporates, salt is left behind. Over time, the salt accumulated, making the water very salty."
+   ]
+  },
+  "frozen": {
+   "title": "Frozen water, and water that is part salt",
+   "cite": "Student Reader, page 5",
+   "vocab": [
+    ["brackish", "having more salt than fresh water, but not as much as ocean water"]
+   ],
+   "text": [
+    "Some of the fresh water on Earth is liquid, but most fresh water is frozen in glaciers. The ice caps at the North and South Poles are two very large glaciers. Much of this water is permanently frozen. However, some polar ice thaws and refreezes with the seasons. When this freshwater polar ice melts, it can make the ocean water around it less salty. Because of recent warming of Earth's climate, more polar ice melts each year than refreezes.",
+    "Fresh water from rivers flows into larger bodies of water. Rivers flow into lakes, oceans, gulfs, and seas. Where ocean water backs up into freshwater streams and rivers, the water becomes brackish. Brackish water has more salt than fresh water but not as much salt as ocean water."
+   ]
+  }
+ },
+ "items": [
+  {
+   "type": "pick",
+   "p": "hydro",
+   "hi": "Altogether, all the water on Earth makes up a system called the hydrosphere.",
+   "q": "The book gives the hydrosphere a one-sentence definition. What is it?",
+   "opts": [
+    "All of the water on Earth, taken together as one system",
+    "The oceans and seas, but not water on land or in the air",
+    "The layer of water vapor that surrounds the planet",
+    "The part of Earth where water can be found as a liquid"
+   ],
+   "a": 0,
+   "why": "Altogether, all the water on Earth makes up a system called the hydrosphere. That takes in the oceans, the water in streams, rivers, ponds, and lakes, the water in cracks and spaces underground, and the water vapor in the air.",
+   "cite": "Student Reader, page 1"
+  },
+  {
+   "type": "pick",
+   "p": "hydro",
+   "hi": "About seven-tenths of Earth's surface is covered by water.",
+   "q": "About how much of Earth's surface does the book say is covered by water?",
+   "opts": [
+    "About one-half",
+    "About seven-tenths",
+    "About one-third",
+    "Almost all of it, except for the mountains"
+   ],
+   "a": 1,
+   "why": "About seven-tenths of Earth's surface is covered by water. One-third is the share covered by the Pacific Ocean alone, which the book gives on the next page, so it is a real number in the wrong place.",
+   "cite": "Student Reader, page 1"
+  },
+  {
+   "type": "pick",
+   "p": "ocean",
+   "hi": "At its deepest point in a far western area, the ocean floor is about 36,000 feet (11,000 meters) below the surface.",
+   "q": "At its deepest point, how far below the surface is the floor of the Pacific Ocean?",
+   "opts": [
+    "About 13,000 feet, which is its average depth",
+    "About 36,000 feet, or almost seven miles",
+    "About 4,000 feet, in a far western area",
+    "About 11,000 feet, at the Challenger Deep"
+   ],
+   "a": 1,
+   "why": "At its deepest point in a far western area, the ocean floor is about 36,000 feet (11,000 meters) below the surface, which is almost seven miles. That spot is called the Challenger Deep. The 13,000 feet (4,000 meters) figure is the Pacific's average depth, not its deepest point, and 11,000 is the deepest point in meters.",
+   "cite": "Student Reader, page 2"
+  },
+  {
+   "type": "pick",
+   "p": "salty",
+   "hi": "These narrower waterways are called straits.",
+   "q": "What is a strait?",
+   "opts": [
+    "A narrow waterway joining larger regions of ocean",
+    "A region of ocean defined by the land that surrounds it",
+    "A place where a river empties into the ocean",
+    "A body of salt water with no outlet to the ocean"
+   ],
+   "a": 0,
+   "why": "Larger regions of ocean water are connected by narrow bodies of water between landmasses, and those narrower waterways are called straits. Seas and gulfs are the regions defined by land that borders or partially surrounds them.",
+   "cite": "Student Reader, page 3"
+  },
+  {
+   "type": "pick",
+   "p": "salty",
+   "hi": "The salt comes from rocks on Earth's land surfaces.",
+   "q": "Where does the salt in the ocean come from, according to the book?",
+   "opts": [
+    "From rocks on land, washed to the sea by streams and rivers",
+    "From the ocean floor, where salt seeps up through cracks",
+    "From sea creatures, which release salt as they live and die",
+    "From rain, which picks up salt as it falls through the air"
+   ],
+   "a": 0,
+   "why": "The salt comes from rocks on Earth's land surfaces. Streams and rivers pick it up as they flow toward the ocean, and as water evaporates from the ocean into the air the salt is left behind. Over very long periods of time that process has made the oceans salty.",
+   "cite": "Student Reader, page 3"
+  },
+  {
+   "type": "pick",
+   "p": "fresh",
+   "hi": "This water is called groundwater.",
+   "q": "The book has a name for water held beneath the surface, in the spaces between rocky material. What is it?",
+   "opts": [
+    "Groundwater",
+    "A reservoir",
+    "Fresh water",
+    "Brackish water"
+   ],
+   "a": 0,
+   "why": "Water beneath Earth's surface, in the spaces between rocky material, is called groundwater. A reservoir is any place where water collects, in all its states, so the ocean counts as one too.",
+   "cite": "Student Reader, page 4"
+  },
+  {
+   "type": "pick",
+   "p": "fresh",
+   "hi": "The lake has nowhere for the water to flow out.",
+   "q": "Why is the Great Salt Lake in Utah so salty?",
+   "opts": [
+    "Water carrying salts flows in, but no water flows out",
+    "It was once part of the ocean and never fully drained",
+    "Salt seeps into it from a layer of rock underneath it",
+    "It is fed by groundwater, which is saltier than rivers"
+   ],
+   "a": 0,
+   "why": "It formed when water carrying salts from rocks flowed into the lake, and the lake has nowhere for the water to flow out. When water in the lake evaporates, salt is left behind, and over time the salt accumulated and made the water very salty.",
+   "cite": "Student Reader, page 4"
+  },
+  {
+   "type": "pick",
+   "p": "frozen",
+   "hi": "Some of the fresh water on Earth is liquid, but most fresh water is frozen in glaciers.",
+   "q": "Most of Earth's fresh water is not in rivers and lakes at all. Where is it?",
+   "opts": [
+    "Frozen in glaciers, including the polar ice caps",
+    "Underground, in the spaces between rocks and soil",
+    "In the atmosphere, as invisible water vapor",
+    "In the wetlands, spread thinly across the land"
+   ],
+   "a": 0,
+   "why": "Some of the fresh water on Earth is liquid, but most fresh water is frozen in glaciers. The ice caps at the North and South Poles are two very large glaciers, and much of that water is permanently frozen.",
+   "cite": "Student Reader, page 5"
+  },
+  {
+   "type": "pick",
+   "p": "frozen",
+   "hi": "Brackish water has more salt than fresh water but not as much salt as ocean water.",
+   "q": "What does the book mean by brackish water?",
+   "opts": [
+    "Saltier than fresh water, but less salty than the ocean",
+    "Water that is salty enough to kill freshwater fish",
+    "Fresh water that has been muddied by a river in flood",
+    "Water that is saltier than the ocean, as in a salt lake"
+   ],
+   "a": 0,
+   "why": "Where ocean water backs up into freshwater streams and rivers, the water becomes brackish. Brackish water has more salt than fresh water but not as much salt as ocean water. The book's photograph shows it where the Mississippi River empties into the Gulf of Mexico.",
+   "cite": "Student Reader, page 5"
+  }
+ ]
+}

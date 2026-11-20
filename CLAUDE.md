@@ -330,6 +330,11 @@ _source/science/  CKSci_G5U1_Matter_TG.pdf                        173 pp
                   CKSci_G5U2_Ecosystems_SR.pdf                     64 pp
                     — Book 2, Energy and Matter in Ecosystems. Chapters 1–8,
                       all built. `printed = PDF − 5`, confirmed at both ends.
+                  CKSci_G5EarthSystems_TG.pdf                     176 pp
+                  CKSci_G5EarthSystems_SR.pdf                      76 pp
+                    — Book 3, Modeling Earth's Systems. Chapter 1 built as two
+                      apps by page range. `printed = PDF − 5`, confirmed on the
+                      chapter openings in the table of contents.
 _source/reading/  CC_SherlockHolmes_Reader_W1.pdf                 228 pp
                   Core-Classics-Sherlock-Holmes-Teacher-Guide.pdf  92 pp
 ```
@@ -370,6 +375,7 @@ number, read it rather than counting:
 ```
 Sherlock Reader   printed = PDF − 13   PDF 116 is printed 103
 CKSci G5 Unit 2   printed = PDF − 5    chapter 2 opens on 11, glossary on 53
+CKSci G5 Unit 3   printed = PDF − 5    chapter 1 opens on PDF 6, page 8 on PDF 13
 Saxon Course 2    printed = PDF − 21   confirmed at both ends
 CKHG / CKSci SR   printed = PDF − 6
 ```
@@ -578,6 +584,37 @@ missing — no upload needed. Example:
 **CKSci reader→lesson mapping is not a constant offset.** Confirmed:
 SR1→L2, SR2→L3, SR3→L5, SR4→L7, SR5→L9, SR6→L11. Lesson 4 is a demonstration
 lesson with no reader chapter. Verify per unit; don't assume.
+
+**A new CKSci chapter was born broken, and the cause is in the build, not
+the spec.** `gen_science.py` writes its apps with CRLF; every anchor in
+`review.py` is written with LF. On a pure-CRLF file the multi-line anchors
+match nothing, so `unpatch` cannot find the retake block to revert, while the
+single-line forward anchors still match — and the app ends up declaring `miss`
+twice. That is a SyntaxError, which kills the entire app script: the page
+renders its shell, its heading and its mission card, and not one question.
+Nothing in the build complains, every unit test passes, and the only way to see
+it is to open the page. A revert for this exact fault already existed in
+`review.py` and had never fired, because it too was written in LF. `patch()`
+now normalises a pure-CRLF file on the way in and restores the endings on the
+way out; a mixed file, which the reading apps are, is left alone. Any
+`--retheme` of the existing science apps would have hit the same fault, since
+they are CRLF on disk too.
+
+**A highlight that matches nothing fails silently, so the generator checks it.**
+Each question names a sentence in `hi`, and the app marks it by scanning the
+passage paragraph by paragraph. A sentence that is not there, or that straddles
+two paragraphs, throws nothing and logs nothing: the book simply opens with no
+line marked, which is the one thing opening it is for. `gen_science.py` now
+refuses a spec whose `hi` is not inside a single paragraph of its own passage,
+and refuses a question whose `cite` names a different page from the passage it
+draws on. Both are sabotage-tested.
+
+**Splitting a chapter by page range.** Pages 1–5 and 6–8 of Chapter 1 went out
+as `g5-earth-ch1a` and `g5-earth-ch1b`, the `a`/`b` suffix the Sherlock
+segments already use. The split fell where the teacher guide's own guided
+reading stops fall — it groups pages 1, 2–3, 4–5, then 6–7 and 8 — so neither
+half cuts across a stop. Both tiles carry chapter number 1 and say their page
+range in the note.
 
 **Licensing.** CKHG, CKSci, and Core Knowledge **Core Classics** (the abridged
 Sherlock Holmes) are CC BY-NC-SA 4.0 — quote verbatim with the attribution footer.

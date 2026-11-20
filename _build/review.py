@@ -1263,4 +1263,22 @@ def patch(html):
     to the bare shell and patching that means a rebuild always applies today's
     version rather than whatever was current when the file was last written.
     """
-    return cites(versions(excerpt(retake(hide_teacher_guide(history1(mission(history(unpatch(html)))))))))
+    # Every anchor in this module is written with \n, and gen_science.py
+    # writes its apps with \r\n. On such a file the multi-line anchors
+    # match nothing: unpatch cannot find the block to revert, the
+    # single-line forward anchors still match, and the file ends up
+    # declaring `miss` twice -- a SyntaxError that kills the whole app
+    # script, so the page renders its shell and no questions at all. The
+    # revert added for that fault was itself written in \n and so never
+    # fired on these files. Normalise here, at the one entry point, and
+    # put the endings back on the way out.
+    #
+    # Only a file that is purely CRLF is converted. A mixed file -- the
+    # reading apps are mixed -- is left exactly as it was rather than
+    # being quietly rewritten from end to end on its way through here.
+    crlf = "\r\n" in html and html.count("\n") == html.count("\r\n")
+    if crlf:
+        html = html.replace("\r\n", "\n")
+    out = cites(versions(excerpt(retake(hide_teacher_guide(
+        history1(mission(history(unpatch(html)))))))))
+    return out.replace("\n", "\r\n") if crlf else out

@@ -101,6 +101,27 @@ def check(spec):
     for k, P in spec["passages"].items():
         if not P.get("title") or not P.get("cite") or not P.get("text"):
             bad.append("passage %r is missing title, cite or text" % k)
+
+    # The line that answers the question has to be findable in the passage,
+    # and findable the way the app looks for it: excerptFor() filters
+    # p.text paragraph by paragraph, so a sentence that straddles two of
+    # them matches nothing. Nothing throws when it misses -- the book
+    # drawer just opens with no line marked, which is the whole point of
+    # opening it -- so it has to be caught here or not at all.
+    for n, it in enumerate(spec["items"], 1):
+        P = spec["passages"].get(it.get("p")) or {}
+        paras = P.get("text") or []
+        for h in ([it["hi"]] if isinstance(it.get("hi"), str)
+                  else (it.get("hi") or [])):
+            if not any(h in t for t in paras):
+                bad.append("q%d: the line it highlights is not in passage "
+                           "%r, so the book opens with nothing marked: %r"
+                           % (n, it.get("p"), h[:60]))
+        # A question that cites a different page from the passage it draws
+        # on sends him to the wrong page to settle it.
+        if it.get("cite") and P.get("cite") and it["cite"] != P["cite"]:
+            bad.append("q%d cites %r but its passage was read off %r"
+                       % (n, it["cite"], P["cite"]))
     unused = keys - {it.get("p") for it in spec["items"]}
     for k in sorted(unused):
         print("    note: passage %r is not used by any question" % k)

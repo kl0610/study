@@ -1,0 +1,173 @@
+{
+ "chapter": "Chapter 1 · The Hydrosphere · pages 6–8",
+ "title": "The Hydrosphere, pages 6–8 — Modeling Earth's Systems, Chapter 1",
+ "eyebrow": "CKSci Grade 5 &middot; Modeling Earth&rsquo;s Systems &middot; Chapter 1 &middot; Student Reader pp. 6&ndash;8",
+ "h1": "The <em>Hydrosphere</em>: Water on the Move",
+ "bigQuestion": "What is the hydrosphere?",
+ "mission": {
+  "name": "Pages 6–8 quiz",
+  "tag": "8 questions · about 7 minutes",
+  "blurb": "Tonight's three pages — how water changes state, and the cycle it travels."
+ },
+ "videos": [],
+ "passages": {
+  "props": {
+   "title": "Water has physical properties",
+   "cite": "Student Reader, page 6",
+   "vocab": [
+    ["condensation", "when water changes from a gas back to a liquid"]
+   ],
+   "text": [
+    "Water can be found in nature as a solid, a liquid, or a gas. This is because water's physical properties cause it to evaporate, condense, freeze, and melt within a relatively close range of temperatures.",
+    "The temperature at which water boils is 212°F (100°C). The temperature at which it freezes is 32°F (0°C). Water evaporates, or changes to a gas, very quickly at the boiling point. But it can evaporate at lower temperatures when heat energy is present. Water can even evaporate when it is frozen.",
+    "Condensation occurs when water changes from a gas (water vapor) back to a liquid. Water vapor condenses when it cools. This can also happen at different temperatures. Condensation on the outside of a glass of ice water happens when water vapor in the air contacts the cold glass."
+   ]
+  },
+  "air": {
+   "title": "Water vapor, clouds, and precipitation",
+   "cite": "Student Reader, page 7",
+   "vocab": [
+    ["precipitation", "water falling back to Earth, as rain, snow, sleet, freezing rain, or hail"]
+   ],
+   "text": [
+    "Earth's atmosphere contains water that enters the air as water vapor. As the water vapor rises into the air, it encounters cooler temperatures. This may cause the water vapor to condense into liquid water. Clouds are tightly packed droplets of liquid water. Eventually, these droplets of water fall back to Earth as precipitation. Precipitation can occur as rain, snow, sleet, freezing rain, or hail. The form that precipitation takes usually depends on the temperature of the air near Earth's surface.",
+    "Because wind pushes the clouds around, water is deposited in new places on Earth when it falls. The water that you see in a lake or river was once water vapor in the atmosphere. The water that falls to Earth continuously replenishes Earth's ocean, lake, and groundwater reservoirs. And water evaporates from surface reservoirs to become water vapor again."
+   ]
+  },
+  "cycle": {
+   "title": "The water cycle",
+   "cite": "Student Reader, page 8",
+   "vocab": [
+    ["water cycle", "the dynamic movement of water on, below, and above Earth's surface"],
+    ["dynamic", "constantly changing, from the Greek dynamikos, meaning powerful"]
+   ],
+   "text": [
+    "The hydrosphere is constantly moving and changing. Evaporation, wind, and precipitation move water from one water reservoir to another. Gravity also moves water. Its pull causes water to flow downward. Currents in Earth's oceans continuously move the water, too.",
+    "The dynamic movement of water on, below, and above Earth's surface is called the water cycle. As water moves, the hydrosphere interacts with Earth's land, air, and living things. In addition to changing position, water in the water cycle is constantly changing states.",
+    "The sun is the energy source for state changes in the water cycle. It provides heat that causes water to evaporate. Water vapor rises, cools, and condenses into cloud droplets. Then liquid water falls back to Earth as precipitation somewhere else. This process happens over and over, in cycles."
+   ]
+  }
+ },
+ "items": [
+  {
+   "type": "pick",
+   "p": "props",
+   "hi": "This is because water's physical properties cause it to evaporate, condense, freeze, and melt within a relatively close range of temperatures.",
+   "q": "Water turns up in nature as a solid, a liquid, and a gas. Why, according to the book?",
+   "opts": [
+    "Its physical properties let it change state within a close temperature range",
+    "Because Earth's temperature changes so much between the poles and the equator",
+    "Because water is the only substance that can exist in all three states",
+    "Because the sun heats the oceans while the ice caps stay frozen"
+   ],
+   "a": 0,
+   "why": "Water can be found in nature as a solid, a liquid, or a gas. The reason the book gives is water's own physical properties, which cause it to evaporate, condense, freeze, and melt within a relatively close range of temperatures.",
+   "cite": "Student Reader, page 6"
+  },
+  {
+   "type": "pick",
+   "p": "props",
+   "hi": "The temperature at which water boils is 212°F (100°C).",
+   "q": "What two temperatures does the book give for water?",
+   "opts": [
+    "It boils at 212°F and freezes at 32°F",
+    "It boils at 100°F and freezes at 0°F",
+    "It boils at 212°C and freezes at 32°C",
+    "It boils at 180°F and freezes at 32°F"
+   ],
+   "a": 0,
+   "why": "The temperature at which water boils is 212°F (100°C), and the temperature at which it freezes is 32°F (0°C). The book gives both scales, so 100 and 0 are the Celsius numbers for those same two temperatures, not Fahrenheit ones.",
+   "cite": "Student Reader, page 6"
+  },
+  {
+   "type": "pick",
+   "p": "props",
+   "hi": "Condensation on the outside of a glass of ice water happens when water vapor in the air contacts the cold glass.",
+   "q": "A glass of ice water goes wet on the outside. What does the book say is happening?",
+   "opts": [
+    "Water vapor in the air is condensing on the cold glass",
+    "Water is leaking slowly through the side of the glass",
+    "Ice is melting and running down the outside of the glass",
+    "The cold glass is pulling salt and water out of the air"
+   ],
+   "a": 0,
+   "why": "Condensation occurs when water changes from a gas (water vapor) back to a liquid, and water vapor condenses when it cools. Condensation on the outside of a glass of ice water happens when water vapor in the air contacts the cold glass.",
+   "cite": "Student Reader, page 6"
+  },
+  {
+   "type": "pick",
+   "p": "air",
+   "hi": "Clouds are tightly packed droplets of liquid water.",
+   "q": "What does the book say a cloud is made of?",
+   "opts": [
+    "Tightly packed droplets of liquid water",
+    "Water vapor, which is a gas",
+    "A mixture of water vapor and tiny ice crystals",
+    "Dust and smoke with water gathered around it"
+   ],
+   "a": 0,
+   "why": "Water vapor rises into the air, meets cooler temperatures, and may condense into liquid water. Clouds are tightly packed droplets of liquid water, so a cloud is liquid, even though the water got up there as a gas.",
+   "cite": "Student Reader, page 7"
+  },
+  {
+   "type": "pick",
+   "p": "air",
+   "hi": "The form that precipitation takes usually depends on the temperature of the air near Earth's surface.",
+   "q": "Precipitation can fall as rain, snow, sleet, freezing rain, or hail. What usually decides which?",
+   "opts": [
+    "The temperature of the air near Earth's surface",
+    "How high up in the atmosphere the cloud formed",
+    "How long the droplets stayed inside the cloud",
+    "The strength of the wind pushing the cloud along"
+   ],
+   "a": 0,
+   "why": "Precipitation can occur as rain, snow, sleet, freezing rain, or hail, and the form it takes usually depends on the temperature of the air near Earth's surface.",
+   "cite": "Student Reader, page 7"
+  },
+  {
+   "type": "pick",
+   "p": "cycle",
+   "hi": "The dynamic movement of water on, below, and above Earth's surface is called the water cycle.",
+   "q": "The chapter ends by naming what it has been describing. What is the water cycle?",
+   "opts": [
+    "The movement of water on, below, and above Earth's surface",
+    "The way water changes between solid, liquid, and gas states",
+    "The path a river takes from its source down to the sea",
+    "The yearly thawing and refreezing of the polar ice caps"
+   ],
+   "a": 0,
+   "why": "The dynamic movement of water on, below, and above Earth's surface is called the water cycle. Changing state is part of it, since water in the water cycle is constantly changing states as well as position, but what the book names is the movement.",
+   "cite": "Student Reader, page 8"
+  },
+  {
+   "type": "pick",
+   "p": "cycle",
+   "hi": "Gravity also moves water.",
+   "q": "Besides evaporation, wind, and precipitation, what else does the book say moves water?",
+   "opts": [
+    "Gravity, whose pull makes water flow downward",
+    "Earth's rotation, which drags the oceans along with it",
+    "The pull of the moon, acting through the tides",
+    "Plants, which lift water up out of the ground"
+   ],
+   "a": 0,
+   "why": "Evaporation, wind, and precipitation move water from one water reservoir to another. Gravity also moves water: its pull causes water to flow downward. Currents in Earth's oceans move the water continuously as well.",
+   "cite": "Student Reader, page 8"
+  },
+  {
+   "type": "pick",
+   "p": "cycle",
+   "hi": "The sun is the energy source for state changes in the water cycle.",
+   "q": "What does the book name as the energy source behind the changes of state in the cycle?",
+   "opts": [
+    "The sun, which provides the heat that evaporates water",
+    "Gravity, which pulls water down and warms it as it falls",
+    "Wind, which carries heat from the equator to the poles",
+    "Earth's interior, which is hotter than its surface"
+   ],
+   "a": 0,
+   "why": "The sun is the energy source for state changes in the water cycle. It provides heat that causes water to evaporate; the vapor rises, cools, and condenses into cloud droplets, and then liquid water falls back to Earth as precipitation somewhere else.",
+   "cite": "Student Reader, page 8"
+  }
+ ]
+}

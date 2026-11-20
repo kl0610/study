@@ -168,6 +168,16 @@ def eco(n):
     return go
 
 
+# Book 3, Modeling Earth's Systems. Chapter 1 is split by page range rather
+# than by chapter, because he was set pages 6-8 for one night and had already
+# read 1-5: hence 1a and 1b rather than a single chapter 1. Config only.
+def earth(tag):
+    def go(s):
+        return Patcher(s, "earth%s" % tag)
+    go.__name__ = "earth%s" % tag
+    return go
+
+
 def recite2(s):
     """The Eagle — the second poem, built from the first one's shell with its own
     pictures. Config only, like every generated app."""
@@ -774,6 +784,10 @@ APPS = {
     "science/g5-matter-ch5":  (sci5,  dict(app="science5",   shake="#card",   lift=None,
                                            dragon=["m1"])),
     "science/g5-matter-ch6":  (sci6,  dict(app="science6",   shake="#card",   lift=None,
+                                           dragon=["m1"])),
+    "science/g5-earth-ch1a":  (earth("1a"), dict(app="earth1a", shake="#card", lift=None,
+                                           dragon=["m1"])),
+    "science/g5-earth-ch1b":  (earth("1b"), dict(app="earth1b", shake="#card", lift=None,
                                            dragon=["m1"])),
     "science/g5-eco-ch1":     (eco(1), dict(app="eco1", shake="#card", lift=None,
                                            dragon=["m1"])),
